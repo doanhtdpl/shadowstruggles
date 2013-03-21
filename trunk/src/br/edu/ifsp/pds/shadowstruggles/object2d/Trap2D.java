@@ -7,6 +7,7 @@ import br.edu.ifsp.pds.shadowstruggles.model.Trap;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
@@ -29,19 +30,23 @@ public class Trap2D extends Image {
 	private Settings settings;
 
 	public Trap2D(Trap trap, ShadowStruggles game) {
-		super(new TextureRegion(game.getAssets().get("data/images/sprites/"
-				+ trap.getName() + "/animation_sheet.png", Texture.class), 1, 1,
-				64, 64));
+		super(game
+				.getAssets()
+				.get("data/images/card_effects/card_effects.atlas",
+						TextureAtlas.class)
+				.findRegion(trap.getName().toLowerCase()));
 		this.trap = trap;
 		this.game = game;
-		this.settings = game.getManager()
-				.getSettings();
+		this.settings = game.getManager().getSettings();
 		this.setVisible(false);
 	}
 
 	public void create() {
-		animationSheet = new TextureRegion(game.getAssets().get("data/images/sprites/"
-				+ trap.getName() + "/animation_sheet.png", Texture.class), 1, 1, 64 * 3, 64 * 3);
+		animationSheet = game
+				.getAssets()
+				.get("data/images/card_effects/card_effects.atlas",
+						TextureAtlas.class)
+				.findRegion(trap.getName().toLowerCase());
 
 		TextureRegion[][] tmp = animationSheet.split(
 				animationSheet.getRegionWidth() / FRAME_COLS,
@@ -58,8 +63,11 @@ public class Trap2D extends Image {
 
 		animation = new Animation(0.075f, animationFrames);
 		stateTime = 0f;
-		animationSheet = new TextureRegion(game.getAssets().get("data/images/sprites/"
-				+ trap.getName() + "/animation_sheet.png", Texture.class), 1, 1, 64 * 3, 64 * 3);
+		animationSheet = game
+				.getAssets()
+				.get("data/images/card_effects/card_effects.atlas",
+						TextureAtlas.class)
+				.findRegion(trap.getName().toLowerCase());
 		tmp = animationSheet.split(
 				animationSheet.getRegionWidth() / FRAME_COLS,
 				animationSheet.getRegionHeight() / FRAME_ROWS);
@@ -149,7 +157,7 @@ public class Trap2D extends Image {
 	}
 
 	public void update(float delta) {
-		trap.action(game.getController().getPlatform(), this,delta);
+		trap.action(game.getController().getPlatform(), this, delta);
 	}
 
 }
