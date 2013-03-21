@@ -12,10 +12,10 @@
 							{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter","name":"DR-002","energyCost":10,"description":"","buyCost":0,"health":15,"damage":3,"speed":"FAST","range":1,"hasEffect":false,"size":"MEDIUM","attackDelay":"FAST","preRequisites":[]},
 								{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter","name":"DR-002","energyCost":10,"description":"","buyCost":0,"health":15,"damage":3,"speed":"FAST","range":1,"hasEffect":false,"size":"MEDIUM","attackDelay":"FAST","preRequisites":[]},
 									{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter","name":"DR-002","energyCost":10,"description":"","buyCost":0,"health":15,"damage":3,"speed":"FAST","range":1,"hasEffect":false,"size":"MEDIUM","attackDelay":"FAST","preRequisites":[]},
-	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Trap","name":"Electric Current Level 1","energyCost":45,"description":"","buyCost":0,"duration":5.0,"hasImmediateEffect":true,"isActivated":false,"preRequisites":[]},
-	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Trap","name":"Electric Current Level 1","energyCost":45,"description":"","buyCost":0,"duration":5.0,"hasImmediateEffect":true,"isActivated":false,"preRequisites":[]},
-	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Trap","name":"Electric Current Level 1","energyCost":45,"description":"","buyCost":0,"duration":5.0,"hasImmediateEffect":true,"isActivated":false,"preRequisites":[]},
-	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Trap","name":"Electric Current Level 1","energyCost":45,"description":"","buyCost":0,"duration":5.0,"hasImmediateEffect":true,"isActivated":false,"preRequisites":[]},
+	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Trap","name":"Electric_Current_Level_One","energyCost":45,"description":"","buyCost":0,"duration":5.0,"hasImmediateEffect":true,"isActivated":false,"preRequisites":[]},
+	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Trap","name":"Electric_Current_Level_One","energyCost":45,"description":"","buyCost":0,"duration":5.0,"hasImmediateEffect":true,"isActivated":false,"preRequisites":[]},
+	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Trap","name":"Electric_Current_Level_One","energyCost":45,"description":"","buyCost":0,"duration":5.0,"hasImmediateEffect":true,"isActivated":false,"preRequisites":[]},
+	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Trap","name":"Electric_Current_Level_One","energyCost":45,"description":"","buyCost":0,"duration":5.0,"hasImmediateEffect":true,"isActivated":false,"preRequisites":[]},
 	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Effect","name":"Mineralogy","energyCost":40,"description":"","buyCost":0,"duration":0,"isImmediateEffect":true,"isActivated":true,"onFighter":false},
 	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Effect","name":"Mineralogy","energyCost":40,"description":"","buyCost":0,"duration":0,"isImmediateEffect":true,"isActivated":true,"onFighter":false},
 	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Effect","name":"Mineralogy","energyCost":40,"description":"","buyCost":0,"duration":0,"isImmediateEffect":true,"isActivated":true,"onFighter":false},
@@ -57,12 +57,12 @@
 	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter","name":"DR-003","energyCost":35,"description":"","buyCost":0,"health":20,"damage":5,"speed":"NORMAL","range":2,"hasEffect":false,"size":"MEDIUM","attackDelay":"NORMAL","preRequisites":[]},
 	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter","name":"DR-003","energyCost":35,"description":"","buyCost":0,"health":20,"damage":5,"speed":"NORMAL","range":2,"hasEffect":false,"size":"MEDIUM","attackDelay":"NORMAL","preRequisites":[]},
 
-	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Trap","name":"Electric Current Level 1","energyCost":45,"description":"","buyCost":0,"duration":5.0,"hasImmediateEffect":true,"isActivated":false,"preRequisites":[]},
+	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Trap","name":"Electric_Current_Level_One","energyCost":45,"description":"","buyCost":0,"duration":5.0,"hasImmediateEffect":true,"isActivated":false,"preRequisites":[]},
 
 	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Trap","name":"Hacking","energyCost":30,"description":"By altering the composition of the robot’s core systems, converts the next “DR” enemy fighter which activates the trap into an ally.","buyCost":0,"duration":0.0,"hasImmediateEffect":true,"isActivated":false},
 	
-	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Effect","name":"Reconnect Circuits","energyCost":45,"description":"","buyCost":0,"duration":1.0,"isImmediateEffect":true,"isActivated":false,"onFighter":false},
-	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Effect","name":"Reconnect Circuits","energyCost":45,"description":"","buyCost":0,"duration":1.0,"isImmediateEffect":true,"isActivated":false,"onFighter":false},
+	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Effect","name":"Reconnect_Circuits","energyCost":45,"description":"","buyCost":0,"duration":1.0,"isImmediateEffect":true,"isActivated":false,"onFighter":false},
+	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Effect","name":"Reconnect_Circuits","energyCost":45,"description":"","buyCost":0,"duration":1.0,"isImmediateEffect":true,"isActivated":false,"onFighter":false},
 
 	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Effect","name":"Mineralogy","energyCost":40,"description":"","buyCost":0,"duration":0,"isImmediateEffect":true,"isActivated":true,"onFighter":false},
 	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Effect","name":"Mineralogy","energyCost":40,"description":"","buyCost":0,"duration":0,"isImmediateEffect":true,"isActivated":true,"onFighter":false},

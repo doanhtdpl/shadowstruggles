@@ -1,5 +1,5 @@
 [{"class":"br.edu.ifsp.pds.shadowstruggles.model.Effect",
-"name":"Reconnect Circuits",
+"name":"Reconnect_Circuits",
 "nameVisualization":"Reconnect Circuits",
 "energyCost":15,
 "description":"Reconnects the danified circuits of all �DR� fighters in the player�s field, restoring 30% of their vitality.",

@@ -43,8 +43,10 @@ public class DeckDAO {
 						.getAction().copy());
 			} else if (card.getClass().equals(Trap.class)){
 				card = TrapDAO.getTrap(card.getName(), manager);
-				card.setAction(TrapDAO.getTrap(card.getName(), manager)
-						.getAction().copy());
+				card.setAction(
+						TrapDAO.getTrap(card.getName(), manager)
+						.getAction().copy()
+						);
 			}
 			cardsCopy.add(card);
 		}

@@ -33,7 +33,7 @@
 	},
 	
 	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
-	"name":"Scrap Boy",
+	"name":"scrap_boy",
 	"nameVisualization":"Garoto Entulho",
 	"energyCost":35,
 	"description":"Um amigo improvisado e ecologicamente correto para todas as almas solitárias! O único problema é que esta... criatura, ou o que quer que seja, é um tanto covarde. Ele pode ultrapassar um lutador inimigo com 50% de chance, ignorando quaisquer ataques, se não houver obstáculos o impedindo.",
