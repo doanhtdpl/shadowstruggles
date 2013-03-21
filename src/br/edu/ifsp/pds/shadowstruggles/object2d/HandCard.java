@@ -8,6 +8,7 @@ import br.edu.ifsp.pds.shadowstruggles.screens.BattleScreen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -36,13 +37,13 @@ public class HandCard extends FixedObject implements InputProcessor {
 	private TextureRegion illustration;
 
 	public HandCard(ShadowStruggles game, String name, int initialX, Card card) {
-		super(new TextureRegion(game.getAssets().get(
-				"data/images/sprites/" + name + "/card.png", Texture.class), 0,
-				0, 360, 480), initialX, true);
+		super(game.getAssets()
+				.get("data/images/cards/cards.atlas", TextureAtlas.class)
+				.findRegion(name.toLowerCase()), initialX, true);
 
-		this.illustration = new TextureRegion(
-				new Texture(Gdx.files.internal("data/images/sprites/" + name
-						+ "/card.png")), 0, 0, 360, 480);
+		this.illustration = game.getAssets()
+				.get("data/images/cards/cards.atlas", TextureAtlas.class)
+				.findRegion(name.toLowerCase());
 		((TextureRegionDrawable) super.getDrawable()).setRegion(illustration);
 
 		this.card = card;
@@ -55,15 +56,16 @@ public class HandCard extends FixedObject implements InputProcessor {
 		this.justTouched = false;
 		this.dragging = false;
 	}
-	
-	//----------------------------------------CLASS METHODS--------------------------------------------------------------
+
+	// ----------------------------------------CLASS
+	// METHODS--------------------------------------------------------------
 
 	public void move(Stage st, int cameraInitialX) {
 		if (!dragging)
 			this.setX(this.getInitialX() + st.getCamera().position.x
 					- cameraInitialX);
 	}
-	
+
 	public void startBlink() {
 		this.addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.3f),
 				Actions.fadeIn(0.3f))));
@@ -73,7 +75,7 @@ public class HandCard extends FixedObject implements InputProcessor {
 		this.clearActions();
 		this.addAction(Actions.fadeIn(0.3f));
 	}
-	
+
 	public void resetPosition() {
 		this.setX(getInitialX()
 				+ (int) (game.getController().getCurrentScreen().getCamera().position.x - BaseScreen.CAMERA_INITIAL_X));
@@ -81,8 +83,8 @@ public class HandCard extends FixedObject implements InputProcessor {
 		this.setScaleX(SCALE_X);
 		this.setScaleY(SCALE_Y);
 	}
-	
-	//----------------------------------------GETTERS/SETTERS-------------------------------------------------------------
+
+	// ----------------------------------------GETTERS/SETTERS-------------------------------------------------------------
 
 	public int getType() {
 		return type;
@@ -106,7 +108,7 @@ public class HandCard extends FixedObject implements InputProcessor {
 
 	public boolean isDragging() {
 		return this.dragging;
-	}	
+	}
 
 	public boolean isSelected() {
 		return isSelected;
@@ -115,8 +117,9 @@ public class HandCard extends FixedObject implements InputProcessor {
 	public void setSelected(boolean isSelected) {
 		this.isSelected = isSelected;
 	}
-	
-	//---------------------------------------EVENT METHODS ------------------------------------------------------------
+
+	// ---------------------------------------EVENT METHODS
+	// ------------------------------------------------------------
 
 	private int getInvertY(int y) {
 		return (int) ((game.getController().getCurrentScreen().getHeight() - y) * (float) ((float) game
@@ -229,8 +232,6 @@ public class HandCard extends FixedObject implements InputProcessor {
 		}
 		return false;
 	}
-
-	
 
 	@Override
 	public boolean keyDown(int keycode) {

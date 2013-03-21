@@ -1,0 +1,323 @@
+
+card_images.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Berserk
+  rotate: false
+  xy: 1, 403
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+advanced_carbon
+  rotate: false
+  xy: 1, 1
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+
+card_images2.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+andros
+  rotate: false
+  xy: 1, 403
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+astrology
+  rotate: false
+  xy: 1, 1
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+
+card_images3.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+broomy
+  rotate: false
+  xy: 1, 403
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+cloning
+  rotate: false
+  xy: 1, 1
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+
+card_images4.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+dr-000
+  rotate: false
+  xy: 1, 403
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+dr-001
+  rotate: false
+  xy: 1, 1
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+
+card_images5.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+dr-003
+  rotate: false
+  xy: 1, 403
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+dr-005
+  rotate: false
+  xy: 1, 1
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+
+card_images6.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+electric_current_level_one
+  rotate: false
+  xy: 1, 403
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+electric_current_level_two
+  rotate: false
+  xy: 1, 1
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+
+card_images7.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+elements_of_life_and_death
+  rotate: false
+  xy: 1, 403
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+elite_patrol
+  rotate: false
+  xy: 1, 1
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+
+card_images8.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+emergency_supplies
+  rotate: false
+  xy: 1, 403
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+factory
+  rotate: false
+  xy: 1, 1
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+
+card_images9.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+golem
+  rotate: false
+  xy: 1, 403
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+hacking
+  rotate: false
+  xy: 1, 1
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+
+card_images10.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+introduction_to_carbon
+  rotate: false
+  xy: 1, 403
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+laser_shots
+  rotate: false
+  xy: 1, 1
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+
+card_images11.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meditation
+  rotate: false
+  xy: 1, 403
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+mineralogy
+  rotate: false
+  xy: 1, 1
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+
+card_images12.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+navigation_stars
+  rotate: false
+  xy: 1, 403
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+null_space
+  rotate: false
+  xy: 1, 1
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+
+card_images13.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+occultism_for_dummies
+  rotate: false
+  xy: 1, 403
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+reconnect_circuits
+  rotate: false
+  xy: 1, 1
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+
+card_images14.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+rock
+  rotate: false
+  xy: 1, 403
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+saving_grace
+  rotate: false
+  xy: 1, 1
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+
+card_images15.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+scrap_boy
+  rotate: false
+  xy: 1, 403
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+star_punishment
+  rotate: false
+  xy: 1, 1
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+
+card_images16.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+stun_grenade
+  rotate: false
+  xy: 1, 403
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+sunlight
+  rotate: false
+  xy: 1, 1
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+
+card_images17.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+vantage_point
+  rotate: false
+  xy: 1, 403
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+wheel_of_damnation
+  rotate: false
+  xy: 1, 1
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1

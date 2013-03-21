@@ -8,6 +8,7 @@ import br.edu.ifsp.pds.shadowstruggles.model.Fighter;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
@@ -36,9 +37,9 @@ public class Fighter2D extends Image implements ApplicationListener {
 	private float stateTime;
 
 	public Fighter2D(Fighter fighter, ShadowStruggles game) {
-		super(new TextureRegion(game.getAssets().get(
-				"data/images/sprites/" + fighter.getName()
-						+ "/walk/animation_sheet.png", Texture.class), 1, 1, 64, 64));
+		super(game.getAssets()
+				.get("data/images/card_walking/card_walking.atlas", TextureAtlas.class)
+				.findRegion(fighter.getName().toLowerCase()));
 		this.fighter = fighter;
 
 		this.game = game;
@@ -55,10 +56,9 @@ public class Fighter2D extends Image implements ApplicationListener {
 
 	@Override
 	public void create() {
-		walkSheet = new TextureRegion(
-				game.getAssets().get(
-						"data/images/sprites/" + fighter.getName()
-								+ "/walk/animation_sheet.png", Texture.class), 1, 1, 64 * 3, 64 * 3);
+		walkSheet = game.getAssets()
+				.get("data/images/card_walking/card_walking.atlas", TextureAtlas.class)
+				.findRegion(fighter.getName().toLowerCase());
 
 		TextureRegion[][] tmp = walkSheet.split(walkSheet.getRegionWidth()
 				/ FRAME_COLS, walkSheet.getRegionHeight() / FRAME_ROWS);
@@ -75,9 +75,9 @@ public class Fighter2D extends Image implements ApplicationListener {
 		
 		stateTime = 0f;
 		
-		attackSheet = new TextureRegion(game.getAssets().get(
-				"data/images/sprites/" + fighter.getName()
-				+ "/attack/animation_sheet.png", Texture.class), 1, 1, 64 * 3, 64 * 3);
+		attackSheet = game.getAssets()
+				.get("data/images/card_attacking/card_attacking.atlas", TextureAtlas.class)
+				.findRegion(fighter.getName().toLowerCase());
 		tmp = attackSheet.split(attackSheet.getRegionWidth() / FRAME_COLS,
 				attackSheet.getRegionHeight() / FRAME_ROWS);
 		attackFrames = new TextureRegion[FRAME_COLS * FRAME_ROWS];

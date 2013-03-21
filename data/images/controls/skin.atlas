@@ -6,8 +6,8 @@ repeat: none
 table_texture
   rotate: false
   xy: 1, 1
-  size: 1020, 1020
-  orig: 1020, 1020
+  size: 1022, 1022
+  orig: 1022, 1022
   offset: 0, 0
   index: -1
 
@@ -18,8 +18,8 @@ repeat: none
 book
   rotate: false
   xy: 1, 457
-  size: 1020, 510
-  orig: 1020, 510
+  size: 1016, 511
+  orig: 1016, 511
   offset: 0, 0
   index: -1
 button
@@ -50,14 +50,14 @@ candle
   orig: 256, 128
   offset: 0, 0
   index: -1
-profiles
+beaker
   rotate: false
   xy: 515, 197
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-beaker
+profiles
   rotate: false
   xy: 773, 327
   size: 128, 128
@@ -92,30 +92,37 @@ mute
   orig: 64, 64
   offset: 0, 0
   index: -1
-plus
+next-dialog
   rotate: false
   xy: 745, 261
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-right
+plus
   rotate: false
   xy: 811, 261
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-scroll_down
+right
   rotate: false
   xy: 515, 1
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-scroll_up
+scroll_down
   rotate: false
   xy: 903, 325
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+scroll_up
+  rotate: false
+  xy: 679, 195
   size: 64, 64
   orig: 64, 64
   offset: 0, 0

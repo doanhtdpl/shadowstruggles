@@ -7,6 +7,7 @@ import br.edu.ifsp.pds.shadowstruggles.model.Effect;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
@@ -28,9 +29,9 @@ public class Effect2D extends Image {
 	private Settings settings;
 
 	public Effect2D(Effect effect, ShadowStruggles game) {
-		super(new TextureRegion(game.getAssets().get(
-				"data/images/sprites/" + effect.getName() + "/animation_sheet.png",
-				Texture.class), 1, 1, 64, 64));
+		super(game.getAssets()
+				.get("data/images/card_effects/card_effects.atlas", TextureAtlas.class)
+				.findRegion(effect.getName().toLowerCase()));
 		
 		this.effect = effect;
 		this.game = game;
@@ -38,9 +39,9 @@ public class Effect2D extends Image {
 	}
 
 	public void create() {
-		animationSheet = new TextureRegion(game.getAssets().get(
-				"data/images/sprites/" + effect.getName() + "/animation_sheet.png",
-				Texture.class), 1, 1, 64 * 3, 64 * 3);
+		animationSheet = game.getAssets()
+				.get("data/images/card_effects/card_effects.atlas", TextureAtlas.class)
+				.findRegion(effect.getName().toLowerCase());
 
 		TextureRegion[][] tmp = animationSheet.split(
 				animationSheet.getRegionWidth() / FRAME_COLS,
@@ -56,9 +57,9 @@ public class Effect2D extends Image {
 		}
 		animation = new Animation(0.075f, animationFrames);
 		stateTime = 0f;
-		animationSheet = new TextureRegion(game.getAssets().get(
-				"data/images/sprites/" + effect.getName() + "/animation_sheet.png",
-				Texture.class), 1, 1, 64 * 3, 64 * 3);
+		animationSheet = game.getAssets()
+				.get("data/images/card_effects/card_effects.atlas", TextureAtlas.class)
+				.findRegion(effect.getName().toLowerCase());
 		tmp = animationSheet.split(
 				animationSheet.getRegionWidth() / FRAME_COLS,
 				animationSheet.getRegionHeight() / FRAME_ROWS);

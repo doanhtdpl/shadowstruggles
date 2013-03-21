@@ -64,33 +64,49 @@ public class LoadingScreen extends BaseScreen {
 		super(game);
 
 		// Load main textures.
-		
-//		game.getAssets().load("data/images/controls/right.png", Texture.class);
-//		game.getAssets().load("data/images/controls/minus.png", Texture.class);
-//		game.getAssets().load("data/images/controls/plus.png", Texture.class);
-//		game.getAssets().load("data/images/controls/mute.png", Texture.class);
-//		game.getAssets().load("data/images/controls/Profiles.png",
-//				Texture.class);
-//		game.getAssets().load("data/images/objects/deck.png", Texture.class);
-//		game.getAssets().load("data/images/objects/deckNotReady.png",
-//				Texture.class);
-//		game.getAssets().load("data/images/objects/background.png",
-//				Texture.class);
-//		game.getAssets().load("data/images/objects/msbackground.png",
-//				Texture.class);
-//		game.getAssets().load("data/images/objects/life100.png", Texture.class);
-//		game.getAssets().load("data/images/objects/hexagram.png",
-//				Texture.class);
-//		game.getAssets().load("data/images/objects/back_card.png",
-//				Texture.class);
+
+		// game.getAssets().load("data/images/controls/right.png",
+		// Texture.class);
+		// game.getAssets().load("data/images/controls/minus.png",
+		// Texture.class);
+		// game.getAssets().load("data/images/controls/plus.png",
+		// Texture.class);
+		// game.getAssets().load("data/images/controls/mute.png",
+		// Texture.class);
+		// game.getAssets().load("data/images/controls/Profiles.png",
+		// Texture.class);
+		// game.getAssets().load("data/images/objects/deck.png", Texture.class);
+		// game.getAssets().load("data/images/objects/deckNotReady.png",
+		// Texture.class);
+		// game.getAssets().load("data/images/objects/background.png",
+		// Texture.class);
+		// game.getAssets().load("data/images/objects/msbackground.png",
+		// Texture.class);
+		// game.getAssets().load("data/images/objects/life100.png",
+		// Texture.class);
+		// game.getAssets().load("data/images/objects/hexagram.png",
+		// Texture.class);
+		// game.getAssets().load("data/images/objects/back_card.png",
+		// Texture.class);
+		// TODO: Remover o loading de energy100.png
 		game.getAssets().load("data/images/objects/energy100.png",
 				Texture.class);
-		//TODO: adicionar next-dialog no Atlas
-		game.getAssets().load("data/images/controls/next-dialog.png", Texture.class);
-		game.getAssets().load("data/images/objects/objects.atlas", TextureAtlas.class);
+
+		game.getAssets().load("data/images/objects/objects.atlas",
+				TextureAtlas.class);
+		game.getAssets().load("data/images/cards/cards.atlas",
+				TextureAtlas.class);
+		game.getAssets().load("data/images/card_attacking/card_attacking.atlas",
+				TextureAtlas.class);
+		game.getAssets().load("data/images/card_effects/card_effects.atlas",
+				TextureAtlas.class);
+		game.getAssets().load("data/images/card_images/card_images.atlas",
+				TextureAtlas.class);
+		game.getAssets().load("data/images/card_walking/card_walking.atlas",
+				TextureAtlas.class);
 
 		// Load music and sound effects.
-		
+
 		game.getAssets().load("data/audio/battle.ogg", Music.class);
 		game.getAssets().load("data/audio/button_1.ogg", Sound.class);
 		game.getAssets().load("data/audio/button_2.ogg", Sound.class);
@@ -102,41 +118,39 @@ public class LoadingScreen extends BaseScreen {
 		game.getAssets().load("data/audio/button_8.ogg", Sound.class);
 		game.getAssets().load("data/audio/intro.ogg", Music.class);
 
-		// Load textures for each card: fighter, effect and trap.
-		
-		for (Fighter f : game.getManager().getFighterList()) {
-			game.getAssets().load(
-					"data/images/sprites/" + f.getName()
-							+ "/walk/animation_sheet.png", Texture.class);
-
-			game.getAssets().load(
-					"data/images/sprites/" + f.getName()
-							+ "/attack/animation_sheet.png", Texture.class);
-
-			game.getAssets().load(
-					"data/images/sprites/" + f.getName() + "/card.png",
-					Texture.class);
-		}
-
-		for (Effect e : game.getManager().getEffectList()) {
-			game.getAssets().load(
-					"data/images/sprites/" + e.getName() + "/card.png",
-					Texture.class);
-
-			game.getAssets().load(
-					"data/images/sprites/" + e.getName()
-							+ "/animation_sheet.png", Texture.class);
-		}
-
-		for (Trap t : game.getManager().getTrapList()) {
-			game.getAssets().load(
-					"data/images/sprites/" + t.getName() + "/card.png",
-					Texture.class);
-
-			game.getAssets().load(
-					"data/images/sprites/" + t.getName()
-							+ "/animation_sheet.png", Texture.class);
-		}
+		// for (Fighter f : game.getManager().getFighterList()) {
+		// game.getAssets().load(
+		// "data/images/sprites/" + f.getName()
+		// + "/walk/animation_sheet.png", Texture.class);
+		//
+		// game.getAssets().load(
+		// "data/images/sprites/" + f.getName()
+		// + "/attack/animation_sheet.png", Texture.class);
+		//
+		// game.getAssets().load(
+		// "data/images/sprites/" + f.getName() + "/card.png",
+		// Texture.class);
+		// }
+		//
+		// for (Effect e : game.getManager().getEffectList()) {
+		// game.getAssets().load(
+		// "data/images/sprites/" + e.getName() + "/card.png",
+		// Texture.class);
+		//
+		// game.getAssets().load(
+		// "data/images/sprites/" + e.getName()
+		// + "/animation_sheet.png", Texture.class);
+		// }
+		//
+		// for (Trap t : game.getManager().getTrapList()) {
+		// game.getAssets().load(
+		// "data/images/sprites/" + t.getName() + "/card.png",
+		// Texture.class);
+		//
+		// game.getAssets().load(
+		// "data/images/sprites/" + t.getName()
+		// + "/animation_sheet.png", Texture.class);
+		// }
 
 		this.game = game;
 	}
@@ -158,7 +172,7 @@ public class LoadingScreen extends BaseScreen {
 						512, 512));
 		background.setScaleX(960f / 512f);
 		background.setScaleY(640f / 512f);
-		background.setY( background.getImageY() + 100);
+		background.setY(background.getImageY() + 100);
 
 		bar = new LoadingBar();
 		bar.setX(80);
