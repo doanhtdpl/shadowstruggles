@@ -36,7 +36,7 @@
 	},
 	
 	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
-	"name":"Scrap Boy",
+	"name":"scrap_boy",
 	"nameVisualization":"Scrap Boy",
 	"energyCost":35,
 	"description":"An improvised and nature-friendly buddy for all lonely souls! The only problem is that this... creature, or whatever it is, is a bit of a coward. He has a 50% chance of surpassing an enemy fighter, ignoring any attacks, as long as there are no obstacles preventing it.",

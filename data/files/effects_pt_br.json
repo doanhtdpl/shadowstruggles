@@ -1,5 +1,5 @@
 [{"class":"br.edu.ifsp.pds.shadowstruggles.model.Effect",
-"name":"Reconnect Circuits",
+"name":"Reconnect_Circuits",
 "nameVisualization":"Reconectar Circuitos",
 "energyCost":15,
 "description":"Reconecta os circuitos danificados de todos os lutadores do tipo “RD” em campo, restaurando 30% da vitalidade de cada.",
