@@ -94,7 +94,14 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 		text.setHeight(text.getPrefHeight());
 		text.setX(80);
 		text.setY(580 - text.getHeight() - 50);
-
+		text.addListener(new ClickListener(){
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				currentTextIndex++;
+				updateText();
+				super.clicked(event, x, y);
+			}
+		});
 		box = new Image(game.getAssets()
 				.get("data/images/objects/objects.atlas", TextureAtlas.class)
 				.findRegion("box"));
@@ -104,6 +111,14 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 		box.setX(55);
 		//box.setY(text.getY() - 25);
 		box.setY(100);
+		box.addListener(new ClickListener(){
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				currentTextIndex++;
+				updateText();
+				super.clicked(event, x, y);
+			}
+		});
 
 		next = new TransitionControl(1, this.getSkin());
 		next.addListener(new ClickListener(){
