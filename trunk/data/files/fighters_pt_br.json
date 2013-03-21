@@ -9,7 +9,8 @@
 	"buyCost":10,"health":15,"damage":3,
 	"speed":"FAST","range":1,
 	"hasEffect":false,"size":"MEDIUM","attackDelay":"FAST",
-	"preRequisites":[]
+	"preRequisites":[],
+	"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction"}
 	},
 	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
 	"name":"Broomy",
@@ -19,7 +20,8 @@
 	"buyCost":20,"health":20,"damage":5,
 	"speed":"NORMAL","range":1,
 	"hasEffect":false,"size":"MEDIUM","attackDelay":"NORMAL",
-	"preRequisites":[]
+	"preRequisites":[],
+	"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction"}
 	},
 	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
 	"name":"Golem",
@@ -29,7 +31,8 @@
 	"buyCost":60,"health":25,"damage":15,
 	"speed":"SLOW","range":1,
 	"hasEffect":false,"size":"MEDIUM","attackDelay":"SLOW",
-	"preRequisites":["Mineralogy"]	
+	"preRequisites":["Mineralogy"],
+	"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction"}
 	},
 	
 	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
@@ -40,7 +43,8 @@
 	"buyCost":70,"health":15,"damage":3,
 	"speed":"NORMAL","range":1,
 	"hasEffect":false,"size":"MEDIUM","attackDelay":"NORMAL",
-	"preRequisites":["Mineralogy"]
+	"preRequisites":["Mineralogy"],
+	"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction"}
 	},
 	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
 	"name":"DR-003",
@@ -50,7 +54,8 @@
 	"buyCost":80,"health":20,"damage":5,
 	"speed":"NORMAL","range":3,
 	"hasEffect":false,"size":"MEDIUM","attackDelay":"NORMAL",
-	"preRequisites":[]
+	"preRequisites":[],
+	"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction"}
 	},
 {"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
 	"name":"DR-004",
@@ -60,7 +65,8 @@
 	"buyCost":90,"health":30,"damage":8,
 	"speed":"NORMAL","range":1,
 	"hasEffect":false,"size":"LARGE","attackDelay":"NORMAL",
-	"preRequisites":[]
+	"preRequisites":[],
+	"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction"}
 	},
 	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
 	"name":"DR-000",
@@ -80,7 +86,8 @@
 	"buyCost":20,"health":25,"damage":0,
 	"speed":0,"range":0,
 	"hasEffect":false,"size":"SMALL","attackDelay":"FAST",
-	"preRequisites":["Mineralogy"]
+	"preRequisites":["Mineralogy"],
+	"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction"}
 	}
 	
 	
