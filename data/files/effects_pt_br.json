@@ -7,7 +7,8 @@
 "duration":1.0,
 "isImmediateEffect":true,
 "isActivated":false,
-"onFighter":false},
+"onFighter":false,
+"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.RecoveryAction"}},
 {"class":"br.edu.ifsp.pds.shadowstruggles.model.Effect",
 "name":"Mineralogy",
 "nameVisualization":"Mineralogia",
@@ -17,5 +18,6 @@
 "duration":0,
 "isImmediateEffect":true,
 "isActivated":true,
-"onFighter":false}
+"onFighter":false,
+"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.MineralogyAction"}}
 ]
