@@ -12,12 +12,20 @@ import br.edu.ifsp.pds.shadowstruggles.model.Card;
 
 public class CardDAO {
 	
+	//wrong method name
 	public static Card getCard(String key) {
 		return null;
 	}
 	
+	//wrong method name
 	public static ArrayList<Card> getCards() {
 		return null;
+	}
+
+	//wrong method name
+	public void setCard(String numS, Card card) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
