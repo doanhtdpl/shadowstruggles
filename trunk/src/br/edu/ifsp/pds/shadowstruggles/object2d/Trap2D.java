@@ -48,9 +48,7 @@ public class Trap2D extends Image {
 						TextureAtlas.class)
 				.findRegion(trap.getName().toLowerCase());
 
-		TextureRegion[][] tmp = animationSheet.split(
-				animationSheet.getRegionWidth() / FRAME_COLS,
-				animationSheet.getRegionHeight() / FRAME_ROWS);
+		TextureRegion[][] tmp = animationSheet.split(64, 64);
 		animationFrames = new TextureRegion[FRAME_COLS * FRAME_ROWS];
 		int index = 0;
 		for (int i = 0; i < FRAME_ROWS; i++) {
@@ -68,9 +66,7 @@ public class Trap2D extends Image {
 				.get("data/images/card_effects/card_effects.atlas",
 						TextureAtlas.class)
 				.findRegion(trap.getName().toLowerCase());
-		tmp = animationSheet.split(
-				animationSheet.getRegionWidth() / FRAME_COLS,
-				animationSheet.getRegionHeight() / FRAME_ROWS);
+		tmp = animationSheet.split(64, 64);
 		animationFrames = new TextureRegion[FRAME_COLS * FRAME_ROWS];
 		index = 0;
 		for (int i = 0; i < FRAME_ROWS; i++) {

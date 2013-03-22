@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.utils.Array;
 
 /***
  * A representation of an fighter on the field.
@@ -28,9 +29,9 @@ public class Fighter2D extends Image implements ApplicationListener {
 	private Animation attackAnimation;
 	private TextureRegion currentFrame;
 	private TextureRegion walkSheet;
-	private TextureRegion[] walkFrames;
+	private Array<TextureRegion> walkFrames;
 	private TextureRegion attackSheet;
-	private TextureRegion[] attackFrames;
+	private Array<TextureRegion> attackFrames;
 	private boolean attacking = false;
 	private ShadowStruggles game;
 	private Fighter fighter;
@@ -40,6 +41,7 @@ public class Fighter2D extends Image implements ApplicationListener {
 		super(game.getAssets()
 				.get("data/images/card_walking/card_walking.atlas", TextureAtlas.class)
 				.findRegion(fighter.getName().toLowerCase()));
+		this.setSize(64, 64);
 		this.fighter = fighter;
 
 		this.game = game;
@@ -60,15 +62,13 @@ public class Fighter2D extends Image implements ApplicationListener {
 				.get("data/images/card_walking/card_walking.atlas", TextureAtlas.class)
 				.findRegion(fighter.getName().toLowerCase());
 
-		TextureRegion[][] tmp = walkSheet.split(walkSheet.getRegionWidth()
-				/ FRAME_COLS, walkSheet.getRegionHeight() / FRAME_ROWS);
-		walkFrames = new TextureRegion[FRAME_COLS * FRAME_ROWS];
-		int index = 0;
+		TextureRegion[][] tmp = walkSheet.split(64, 64);
+		walkFrames = new Array<TextureRegion>();
 		for (int i = 0; i < FRAME_ROWS; i++) {
 			for (int j = 0; j < FRAME_COLS; j++) {
 				if (fighter.getDirection() == -1)
 					tmp[i][j].flip(true, false);
-				walkFrames[index++] = tmp[i][j];
+				walkFrames.add(tmp[i][j]);
 			}
 		}
 		walkAnimation = new Animation(0.075f, walkFrames);
@@ -78,16 +78,14 @@ public class Fighter2D extends Image implements ApplicationListener {
 		attackSheet = game.getAssets()
 				.get("data/images/card_attacking/card_attacking.atlas", TextureAtlas.class)
 				.findRegion(fighter.getName().toLowerCase());
-		tmp = attackSheet.split(attackSheet.getRegionWidth() / FRAME_COLS,
-				attackSheet.getRegionHeight() / FRAME_ROWS);
-		attackFrames = new TextureRegion[FRAME_COLS * FRAME_ROWS];
-		index = 0;
+		tmp = attackSheet.split(64, 64);
+		attackFrames = new Array<TextureRegion>();
 		
 		for (int i = 0; i < FRAME_ROWS; i++) {
 			for (int j = 0; j < FRAME_COLS; j++) {
 				if (fighter.getDirection() == -1)
 					tmp[i][j].flip(true, false);
-				attackFrames[index++] = tmp[i][j];
+				attackFrames.add(tmp[i][j]);
 			}
 		}
 		
@@ -177,11 +175,11 @@ public class Fighter2D extends Image implements ApplicationListener {
 		this.walkSheet = walkSheet;
 	}
 
-	public TextureRegion[] getWalkFrames() {
+	public Array<TextureRegion> getWalkFrames() {
 		return walkFrames;
 	}
 
-	public void setWalkFrames(TextureRegion[] walkFrames) {
+	public void setWalkFrames(Array<TextureRegion> walkFrames) {
 		this.walkFrames = walkFrames;
 	}
 
@@ -193,11 +191,11 @@ public class Fighter2D extends Image implements ApplicationListener {
 		this.attackSheet = attackSheet;
 	}
 
-	public TextureRegion[] getAttackFrames() {
+	public Array<TextureRegion> getAttackFrames() {
 		return attackFrames;
 	}
 
-	public void setAttackFrames(TextureRegion[] attackFrames) {
+	public void setAttackFrames(Array<TextureRegion> attackFrames) {
 		this.attackFrames = attackFrames;
 	}
 
