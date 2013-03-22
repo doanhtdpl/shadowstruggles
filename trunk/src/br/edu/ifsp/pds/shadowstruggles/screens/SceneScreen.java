@@ -97,8 +97,7 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 		text.addListener(new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				currentTextIndex++;
-				updateText();
+				nextText();
 				super.clicked(event, x, y);
 			}
 		});
@@ -110,12 +109,11 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 		box.setHeight(500);
 		box.setX(55);
 		//box.setY(text.getY() - 25);
-		box.setY(100);
+		box.setY(50);
 		box.addListener(new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				currentTextIndex++;
-				updateText();
+				nextText();
 				super.clicked(event, x, y);
 			}
 		});
@@ -123,10 +121,8 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 		next = new TransitionControl(1, this.getSkin());
 		next.addListener(new ClickListener(){
 			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				//nextScreen();
-				currentTextIndex++;
-				updateText();
+			public void clicked(InputEvent event, float x, float y) {				
+				nextText();
 				super.clicked(event, x, y);
 				game.getAudio().playSound("button_7");
 			}
@@ -190,17 +186,28 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 			stage.addActor(next);
 	}
 	
+	private void nextText(){
+		currentTextIndex++;		
+		updateText();
+	}
+	
 	private void updateText(){
 		if(currentTextIndex < splitScript().length){
 			currentText=splitScript()[currentTextIndex];
+			System.out.println(currentText.length());
 			if(currentText.length()>2){
+				if((splitScript()[currentTextIndex]+ 
+						splitScript()[currentTextIndex-1]).length()<=500)
+					text.setText((splitScript()[currentTextIndex-1]+ 
+							splitScript()[currentTextIndex]));
+				else
 			text.setText(currentText);
 			text.setHeight(text.getPrefHeight());
 			text.setY(580 - text.getHeight() - 50);
 			}else {
-				currentTextIndex++;
-				updateText();
+				nextText();
 			}
+			
 		}else nextScreen();
 	}
 
@@ -222,7 +229,9 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 	}
 	
 	private String[] splitScript(){
-		return scene.getScript().split("\n");
+		
+		return scene.getScript().split("/:/");
+		
 	}
 
 	@Override
