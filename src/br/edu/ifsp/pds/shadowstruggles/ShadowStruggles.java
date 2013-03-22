@@ -93,7 +93,7 @@ public class ShadowStruggles extends Game {
 	public void render() {
 		super.render();
 		
-		LOGGER.setLevel(Level.INFO);
+		LOGGER.setLevel(Level.SEVERE);
 	    LOGGER.severe("Info Log");
 	    LOGGER.warning("Info Log");
 	    LOGGER.info("Info Log");
