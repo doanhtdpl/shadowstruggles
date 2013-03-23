@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
@@ -54,6 +55,10 @@ public class LoadingScreen extends BaseScreen {
 					.getFont("andalus-font"), Color.WHITE));
 			this.getStage().addActor(percentageLbl);
 		}
+		
+		public float getPercentage() {
+			return this.percentage;
+		}
 	}
 
 	private Image background;
@@ -63,35 +68,12 @@ public class LoadingScreen extends BaseScreen {
 	public LoadingScreen(ShadowStruggles game) {
 		super(game);
 
-		// Load main textures.
-
-		// game.getAssets().load("data/images/controls/right.png",
-		// Texture.class);
-		// game.getAssets().load("data/images/controls/minus.png",
-		// Texture.class);
-		// game.getAssets().load("data/images/controls/plus.png",
-		// Texture.class);
-		// game.getAssets().load("data/images/controls/mute.png",
-		// Texture.class);
-		// game.getAssets().load("data/images/controls/Profiles.png",
-		// Texture.class);
-		// game.getAssets().load("data/images/objects/deck.png", Texture.class);
-		// game.getAssets().load("data/images/objects/deckNotReady.png",
-		// Texture.class);
-		// game.getAssets().load("data/images/objects/background.png",
-		// Texture.class);
-		// game.getAssets().load("data/images/objects/msbackground.png",
-		// Texture.class);
-		// game.getAssets().load("data/images/objects/life100.png",
-		// Texture.class);
-		// game.getAssets().load("data/images/objects/hexagram.png",
-		// Texture.class);
-		// game.getAssets().load("data/images/objects/back_card.png",
-		// Texture.class);
 		// TODO: Remover o loading de energy100.png
 		game.getAssets().load("data/images/objects/energy100.png",
 				Texture.class);
 
+		// Load main textures.
+		
 		game.getAssets().load("data/images/objects/objects.atlas",
 				TextureAtlas.class);
 		game.getAssets().load("data/images/cards/cards.atlas",
@@ -117,40 +99,6 @@ public class LoadingScreen extends BaseScreen {
 		game.getAssets().load("data/audio/button_7.ogg", Sound.class);
 		game.getAssets().load("data/audio/button_8.ogg", Sound.class);
 		game.getAssets().load("data/audio/intro.ogg", Music.class);
-
-		// for (Fighter f : game.getManager().getFighterList()) {
-		// game.getAssets().load(
-		// "data/images/sprites/" + f.getName()
-		// + "/walk/animation_sheet.png", Texture.class);
-		//
-		// game.getAssets().load(
-		// "data/images/sprites/" + f.getName()
-		// + "/attack/animation_sheet.png", Texture.class);
-		//
-		// game.getAssets().load(
-		// "data/images/sprites/" + f.getName() + "/card.png",
-		// Texture.class);
-		// }
-		//
-		// for (Effect e : game.getManager().getEffectList()) {
-		// game.getAssets().load(
-		// "data/images/sprites/" + e.getName() + "/card.png",
-		// Texture.class);
-		//
-		// game.getAssets().load(
-		// "data/images/sprites/" + e.getName()
-		// + "/animation_sheet.png", Texture.class);
-		// }
-		//
-		// for (Trap t : game.getManager().getTrapList()) {
-		// game.getAssets().load(
-		// "data/images/sprites/" + t.getName() + "/card.png",
-		// Texture.class);
-		//
-		// game.getAssets().load(
-		// "data/images/sprites/" + t.getName()
-		// + "/animation_sheet.png", Texture.class);
-		// }
 
 		this.game = game;
 	}
@@ -185,14 +133,14 @@ public class LoadingScreen extends BaseScreen {
 	@Override
 	public void render(float delta) {
 		super.render(delta);
-
+		
 		if (game.getAssets().update()) {
 			game.setAudio(new SoundManager(game.getAssets()));
 			game.getAudio().setMusic("intro");
 			game.setScreenWithTransition(new StartScreen(game, game
 					.getController()));
 		} else {
-			bar.update(game.getAssets().getProgress());
+			bar.update(Interpolation.linear.apply(bar.getPercentage(), 1.0f, 0.01f));
 			bar.drawLabel(super.getSkin());
 		}
 

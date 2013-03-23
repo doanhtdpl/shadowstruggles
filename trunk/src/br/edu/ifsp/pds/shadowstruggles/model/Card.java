@@ -28,17 +28,17 @@ public class Card implements Serializable {
 	public int tile;
 
 	public int count = 0;
-	
+
 	public Array<String> preRequisites = new Array<String>();
 
 	/***
 	 * Specifies the card's orientation and which player it belongs to. 1 - The
-	 * card moves to the right and belongs to the human player. -1 - The
-	 * card moves to the left and belongs to the machine player.
+	 * card moves to the right and belongs to the human player. -1 - The card
+	 * moves to the left and belongs to the machine player.
 	 */
 
 	protected int direction;
-	
+
 	/***
 	 * The lane is counted from bottom to top, starting from 0.
 	 */
@@ -49,10 +49,10 @@ public class Card implements Serializable {
 		this.description = "";
 	}
 
-	public Card(BattlePlatform platform, int tile, int lane, String name, String nameVisualization,
-			CardAction action, Image img) {
+	public Card(BattlePlatform platform, int tile, int lane, String name,
+			String nameVisualization, CardAction action, Image img) {
 		this.name = name;
-		this.nameVisualization=nameVisualization;
+		this.nameVisualization = nameVisualization;
 		this.platform = platform;
 		this.lane = lane;
 		this.tile = tile;
@@ -61,24 +61,22 @@ public class Card implements Serializable {
 		this.description = "";
 	}
 
-	public Card(String name, String nameVisualization, int energyCost, String description, int buyCost,
-			CardAction action) {
+	public Card(String name, String nameVisualization, int energyCost,
+			String description, int buyCost, CardAction action) {
 		this.name = name;
-		this.nameVisualization=nameVisualization;
+		this.nameVisualization = nameVisualization;
 		this.energyCost = energyCost;
 		this.description = description;
 		this.buyCost = buyCost;
 		this.action = action;
 	}
 
-	public void action(BattlePlatform platform, Image image,float delta) {
-		this.action.doAction(platform, image,delta);
+	public void action(BattlePlatform platform, Image image, float delta) {
+		this.action.doAction(platform, image, delta);
 	}
 
-	
-
 	@Override
-	public void write(Json json) {		
+	public void write(Json json) {
 		json.writeValue("name", this.name);
 		json.writeValue("nameVisualization", this.nameVisualization);
 		json.writeValue("energyCost", this.energyCost);
@@ -92,27 +90,29 @@ public class Card implements Serializable {
 	@Override
 	public void read(Json json, OrderedMap<String, Object> jsonData) {
 		this.name = json.readValue("name", String.class, jsonData);
-		this.nameVisualization = json.readValue("nameVisualization", String.class, jsonData);
+		this.nameVisualization = json.readValue("nameVisualization",
+				String.class, jsonData);
 		this.energyCost = json.readValue("energyCost", Integer.class, jsonData);
 		this.description = json
 				.readValue("description", String.class, jsonData);
 		this.buyCost = json.readValue("buyCost", Integer.class, jsonData);
-		this.preRequisites = json.readValue("preRequisites", Array.class, jsonData);
+		this.preRequisites = json.readValue("preRequisites", Array.class,
+				jsonData);
 		this.action = json.readValue("Action", CardAction.class, jsonData);
 	}
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public int getEnergyCost() {
 		return energyCost;
 	}
-	
+
 	public String getDescription() {
 		return description;
 	}
-	
+
 	public int getBuyCost() {
 		return buyCost;
 	}
@@ -148,19 +148,19 @@ public class Card implements Serializable {
 	public void setDirection(int direction) {
 		this.direction = direction;
 	}
-	
+
 	public int getLane() {
 		return lane;
 	}
-	
+
 	public int getTile() {
 		return tile;
 	}
-	
+
 	public void setLane(int lane) {
 		this.lane = lane;
 	}
-	
+
 	public void setTile(int tile) {
 		this.tile = tile;
 	}
@@ -169,32 +169,30 @@ public class Card implements Serializable {
 	 * Verifies if a card is ready to summon based on its preRequisites
 	 * 
 	 * @param platform
-	 * 			Gathers the current data of the battle
-	 * @return
-	 * 			true: the card can be summoned right now
-	 * 			false: the card can't be summoned right now
+	 *            Gathers the current data of the battle
+	 * @return true: the card can be summoned right now false: the card can't be
+	 *         summoned right now
 	 */
 	/**
 	 * Verifies if a card is ready to summon based on its preRequisites
 	 * 
 	 * @param platform
-	 * 			Gathers the current data of the battle
-	 * @return
-	 * 			true: the card can be summoned right now
-	 * 			false: the card can't be summoned right now
+	 *            Gathers the current data of the battle
+	 * @return true: the card can be summoned right now false: the card can't be
+	 *         summoned right now
 	 */
-	public boolean readyToSummom(BattlePlatform platform){
+	public boolean readyToSummom(BattlePlatform platform) {
 		boolean bool = true;
-		for( String card: this.preRequisites){
-			if(!platform.getMap()
-					.cardOnMap(
-							new Card(card,card, 0,null,0,null), -1,Map.HUMAN_PLAYER)){
-				bool =false;
+		for (String card : this.preRequisites) {
+			if (!platform.getMap().cardOnMap(
+					new Card(card, card, 0, null, 0, null), -1,
+					Map.HUMAN_PLAYER)) {
+				bool = false;
 				break;
 			}
 		}
 		return bool;
-		
+
 	}
 
 	public String getNameVisualization() {
@@ -208,21 +206,18 @@ public class Card implements Serializable {
 	public float getMarkLane() {
 		return markLane;
 	}
-	
+
 	public void setMarkLane(float markLane) {
 		this.markLane = markLane;
 	}
 
-	public void setMarkPosition(float lane, float tile){
-		this.markLane=lane;
-		this.markTile=tile;
+	public void setMarkPosition(float lane, float tile) {
+		this.markLane = lane;
+		this.markTile = tile;
 	}
 
 	public float getMarkTile() {
 		return markTile;
 	}
 
-	
-	
-	
 }
