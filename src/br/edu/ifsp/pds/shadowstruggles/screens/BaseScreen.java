@@ -24,6 +24,8 @@ public abstract class BaseScreen implements Screen {
 	private SpriteBatch batch;
 	private Skin skin;
 	private TextureAtlas atlas;
+	private Table table;
+	
 	protected final ShadowStruggles game;
 	protected final MyStage stage;
 	protected BitmapFont font;
@@ -34,7 +36,6 @@ public abstract class BaseScreen implements Screen {
 	protected int screenHeight;
 	protected OrthographicCamera camera;
 	protected Settings settings;
-	protected Table table;
 
 	public BaseScreen(ShadowStruggles game, Controller controller) {
 		this.game = game;
@@ -47,10 +48,6 @@ public abstract class BaseScreen implements Screen {
 		this.camera.zoom = ((float) 960 / (float) width);
 		this.camera.position.x = CAMERA_INITIAL_X;
 		this.stage.setCamera(camera);
-
-		this.table = new Table();
-		table.setFillParent(true);
-		this.stage.addActor(table);
 	}
 
 	/**
@@ -100,6 +97,17 @@ public abstract class BaseScreen implements Screen {
 		return atlas;
 	}
 
+	public Table getTable() {
+		if(this.table == null) {
+			this.table = new Table();
+			this.table.setFillParent(true);
+			table.debug();
+			this.stage.addActor(this.table);
+		}
+		
+		return this.table;
+	}
+	
 	protected String getName() {
 		return getClass().getSimpleName();
 	}

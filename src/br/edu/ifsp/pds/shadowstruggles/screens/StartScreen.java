@@ -6,61 +6,68 @@ import br.edu.ifsp.pds.shadowstruggles.data.ProfileDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.Profile;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectMap;
 
 public class StartScreen extends BaseScreen {
-	// private TextButton continueGame;
-	// private TextButton newGame;
-	// private Drawable tableTexture;
-	// private Image book;
-	// private Image beaker;
-	// private Image candle;
-	// private Image tripod;
-	// private ScrollPane scrollStates;
-	// private Array<TextButton> states;
-	//
-	// private boolean loadStates;
-	//
-	// public StartScreen(ShadowStruggles game, Controller controller) {
-	// super(game, controller);
-	// }
-	//
-	// @Override
-	// public void resize(int width, int height) {
-	// super.resize(width, height);
-	// }
-	//
-	// public void initComponents() {
-	// stage.clear();
-	// }
-	//
-	// @Override
-	// public void show() {
-	// super.show();
-	//
-	// continueGame = new
-	// TextButton(game.getManager().getMenuText().continueGame,
-	// this.getSkin().get("blur", TextButtonStyle.class));
-	// newGame = new TextButton(game.getManager().getMenuText().newGame,
-	// this.getSkin().get("blur", TextButtonStyle.class));
-	// TextButton teste = new TextButton("Blabla", this.getSkin());
-	// tableTexture = this.getSkin().getDrawable("table_texture");
-	// book = new Image(this.getSkin().getDrawable("book"));
-	// beaker = new Image(this.getSkin().getDrawable("beaker"));
-	// candle = new Image(this.getSkin().getDrawable("candle"));
-	// tripod = new Image(this.getSkin().getDrawable("tripod"));
-	// scrollStates = new ScrollPane(null);
-	//
-	// table.add(continueGame);
-	// table.row();
-	// table.add(newGame);
-	// }
+//	private TextButton continueGame;
+//	private TextButton newGame;
+//	private Drawable tableTexture;
+//	private Image book;
+//	private Image beaker;
+//	private Image candle;
+//	private Image tripod;
+//	private ScrollPane scrollStates;
+//	private Array<TextButton> states;
+//
+//	private boolean loadStates;
+//
+//	public StartScreen(ShadowStruggles game, Controller controller) {
+//		super(game, controller);
+//	}
+//
+//	@Override
+//	public void resize(int width, int height) {
+//		super.resize(width, height);
+//	}
+//
+//	public void initComponents() {
+//		stage.clear();
+//	}
+//
+//	@Override
+//	public void show() {
+//		super.show();
+//
+//		continueGame = new TextButton(
+//				game.getManager().getMenuText().continueGame, this.getSkin()
+//						.get("blur", TextButtonStyle.class));
+//		newGame = new TextButton(game.getManager().getMenuText().newGame, this
+//				.getSkin().get("blur", TextButtonStyle.class));
+//		tableTexture = this.getSkin().getDrawable("table_texture");
+//		book = new Image(this.getSkin().getDrawable("book"));
+//		beaker = new Image(this.getSkin().getDrawable("beaker"));
+//		candle = new Image(this.getSkin().getDrawable("candle"));
+//		tripod = new Image(this.getSkin().getDrawable("tripod"));
+//		scrollStates = new ScrollPane(null);
+//		Label nameLabel = new Label("Name:", new LabelStyle(new BitmapFont(), Color.WHITE));
+//
+//		Table table = super.getTable();
+//		table.add(nameLabel);
+//	}
 
 	private Image background;
 	private TextButton continueGame;
@@ -144,7 +151,6 @@ public class StartScreen extends BaseScreen {
 		stage.addActor(background);
 		stage.addActor(continueGame);
 		stage.addActor(newGame);
-
 	}
 
 }
