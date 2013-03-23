@@ -33,9 +33,9 @@ public class Profile implements Serializable, Comparable<Object> {
 		this.light = light;
 		this.dark = dark;
 		this.path = path;
-		this.money=money;
-		this.trunk=trunk;
-		this.deck=deck;
+		this.money = money;
+		this.trunk = trunk;
+		this.deck = deck;
 		this.setBattlesFought(new Array<Float>());
 	}
 
@@ -45,22 +45,23 @@ public class Profile implements Serializable, Comparable<Object> {
 		this.language = "en_us";
 		this.dark = 0;
 		this.light = 0;
-		this.money=10000;
-		this.path="";
-		this.trunk= new Array<Card>();
-		this.deck="Starter Deck";
+		this.money = 10000;
+		this.path = "";
+		this.trunk = new Array<Card>();
+		this.deck = "Starter Deck";
 		this.setBattlesFought(new Array<Float>());
 	}
-	public Profile(int id){
+
+	public Profile(int id) {
 		this.id = id;
 		this.currentScene = Scene.FIRST_SCENE;
 		this.language = "en_us";
 		this.dark = 0;
 		this.light = 0;
-		this.money=10000;
-		this.path="";
-		this.trunk= new Array<Card>();
-		this.deck="Starter Deck";
+		this.money = 10000;
+		this.path = "";
+		this.trunk = new Array<Card>();
+		this.deck = "Starter Deck";
 		this.setBattlesFought(new Array<Float>());
 	}
 
@@ -87,7 +88,7 @@ public class Profile implements Serializable, Comparable<Object> {
 	public void setCurrentScene(Scene currentScene) {
 		this.currentScene = currentScene;
 	}
-	
+
 	public Array<Float> getBattlesFought() {
 		return battlesFought;
 	}
@@ -95,27 +96,27 @@ public class Profile implements Serializable, Comparable<Object> {
 	public void setBattlesFought(Array<Float> battlesFought) {
 		this.battlesFought = battlesFought;
 	}
-	
+
 	public Deck getDeck(DataManager data) {
 		return DeckDAO.getDeck(deck, data);
 	}
-	
+
 	public int getMoney() {
 		return money;
 	}
-	
-	public boolean moveMoney(int value){
-		
-		if((money+value)>=0){
-			money+=value;
+
+	public boolean moveMoney(int value) {
+
+		if ((money + value) >= 0) {
+			money += value;
 			return true;
-		}else return false;
+		} else
+			return false;
 	}
-	
+
 	public Array<Card> getTrunk() {
 		return trunk;
 	}
-	
 
 	@Override
 	public void write(Json json) {
@@ -141,7 +142,8 @@ public class Profile implements Serializable, Comparable<Object> {
 		this.light = json.readValue("light", Integer.class, jsonData);
 		this.dark = json.readValue("dark", Integer.class, jsonData);
 		this.path = json.readValue("path", String.class, jsonData);
-		this.battlesFought = json.readValue("battlesFought", Array.class, jsonData);
+		this.battlesFought = json.readValue("battlesFought", Array.class,
+				jsonData);
 		this.money = json.readValue("money", Integer.class, jsonData);
 		this.trunk = json.readValue("trunk", Array.class, jsonData);
 		this.deck = json.readValue("deck", String.class, jsonData);
@@ -151,7 +153,5 @@ public class Profile implements Serializable, Comparable<Object> {
 	public int compareTo(Object o) {
 		return this.id - ((Profile) o).getId();
 	}
-
-
 
 }

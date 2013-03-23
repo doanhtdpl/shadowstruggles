@@ -5,9 +5,9 @@ import br.edu.ifsp.pds.shadowstruggles.model.enemies.Enemy;
 import com.badlogic.gdx.utils.Array;
 
 /**
- * A BattlePlatform object storages all the information regarding
- * a battle: the players' decks, the map and the cards placed on it,
- * the rules being applied etc.
+ * A BattlePlatform object storages all the information regarding a battle: the
+ * players' decks, the map and the cards placed on it, the rules being applied
+ * etc.
  */
 public class BattlePlatform {
 
@@ -138,25 +138,26 @@ public class BattlePlatform {
 	 * Verifies if there is any card on enemy hand
 	 * 
 	 * @param card
-	 * 			Card object used to compare to enemyHandCards
-	 * @return boolean
-	 * 			true: There is a card on enemy hand
-	 * 			false: there is no card on enemy hand
+	 *            Card object used to compare to enemyHandCards
+	 * @return boolean true: There is a card on enemy hand false: there is no
+	 *         card on enemy hand
 	 */
 	public boolean cardOnEnemyHand(Card card) {
 		boolean b = false;
-		for(Card c: enemyHandCards){
-			if(c.getName().equals(card.getName())){
-				b=true;}
+		for (Card c : enemyHandCards) {
+			if (c.getName().equals(card.getName())) {
+				b = true;
+			}
 		}
 		return b;
 	}
 
 	public Card getCardFromEnemy(String string) {
-		Card c= null;
-		for(Card card: enemyHandCards){
-			if(card.getName().equals(string)){
-				c = card;break;
+		Card c = null;
+		for (Card card : enemyHandCards) {
+			if (card.getName().equals(string)) {
+				c = card;
+				break;
 			}
 		}
 		return c;
@@ -169,8 +170,5 @@ public class BattlePlatform {
 	public void setEnemy(Enemy enemy) {
 		this.enemy = enemy;
 	}
-
-	
-	
 
 }
