@@ -41,6 +41,7 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 	private TextButton menu;
 	private String currentText;
 	private int currentTextIndex;
+	private Object[] target;
 	
 	
 
@@ -208,7 +209,36 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 				nextText();
 			}
 			
-		}else nextScreen();
+		}else {
+			if(scene.getChoices().length<2)
+				nextScreen();
+			else showChoices();
+		}
+	}
+	
+	
+	private void showChoices(){
+		TextButton choice1 = new TextButton(scene.getChoices()[0], this.getSkin());
+		TextButton choice2 = new TextButton(scene.getChoices()[1], this.getSkin());
+		choice1.addListener(new ClickListener(){
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				//TODO: verificar target[0] e mandar para próxima tela de acordo com a classe do target 
+				super.clicked(event, x, y);
+			}
+		});
+		choice2.addListener(new ClickListener(){
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				//TODO: verificar target[1] e mandar para próxima tela de acordo com a classe do target 
+				super.clicked(event, x, y);
+			}
+		});
+		choice1= ScreenUtils.defineButton(choice1, 50, 400, 700, 200, this.getSkin());
+		choice2= ScreenUtils.defineButton(choice1, 50, 100, 700, 200, this.getSkin());
+		text.remove();
+		stage.addActor(choice1);
+		stage.addActor(choice2);
 	}
 
 	public void nextScreen() {

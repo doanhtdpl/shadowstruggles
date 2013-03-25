@@ -9,7 +9,7 @@ import junit.framework.TestCase;
 
 import org.junit.Test;
 
-import br.edu.ifsp.pds.shadowstruggles.data.CardDAO;
+/*import br.edu.ifsp.pds.shadowstruggles.data.CardDAO;
 
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
 
@@ -23,7 +23,7 @@ public class CardDAOTest extends TestCase{
 	
 	@Test
 	public void getCardTest() {
-		CardDAO cardDao = new CardDAO();
+		CardDAO
 		if(cardDao == null){
 			fail("Constructor not yet implemented");
 		}
@@ -57,4 +57,4 @@ public class CardDAOTest extends TestCase{
 		
 		assertEquals(cardAL, cardDao.getCards());
 	}
-}
+}*/
