@@ -24,7 +24,6 @@ public abstract class BaseScreen implements Screen {
 	private SpriteBatch batch;
 	private Skin skin;
 	private TextureAtlas atlas;
-	private Table table;
 	
 	protected final ShadowStruggles game;
 	protected final MyStage stage;
@@ -95,17 +94,6 @@ public abstract class BaseScreen implements Screen {
 					Gdx.files.internal("image-atlases/pages-info"));
 		}
 		return atlas;
-	}
-
-	public Table getTable() {
-		if(this.table == null) {
-			this.table = new Table();
-			this.table.setFillParent(true);
-			table.debug();
-			this.stage.addActor(this.table);
-		}
-		
-		return this.table;
 	}
 	
 	protected String getName() {

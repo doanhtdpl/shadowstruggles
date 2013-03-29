@@ -23,55 +23,17 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectMap;
 
 public class StartScreen extends BaseScreen {
-//	private TextButton continueGame;
-//	private TextButton newGame;
-//	private Drawable tableTexture;
-//	private Image book;
-//	private Image beaker;
-//	private Image candle;
-//	private Image tripod;
-//	private ScrollPane scrollStates;
-//	private Array<TextButton> states;
-//
-//	private boolean loadStates;
-//
-//	public StartScreen(ShadowStruggles game, Controller controller) {
-//		super(game, controller);
-//	}
-//
-//	@Override
-//	public void resize(int width, int height) {
-//		super.resize(width, height);
-//	}
-//
-//	public void initComponents() {
-//		stage.clear();
-//	}
-//
-//	@Override
-//	public void show() {
-//		super.show();
-//
-//		continueGame = new TextButton(
-//				game.getManager().getMenuText().continueGame, this.getSkin()
-//						.get("blur", TextButtonStyle.class));
-//		newGame = new TextButton(game.getManager().getMenuText().newGame, this
-//				.getSkin().get("blur", TextButtonStyle.class));
-//		tableTexture = this.getSkin().getDrawable("table_texture");
-//		book = new Image(this.getSkin().getDrawable("book"));
-//		beaker = new Image(this.getSkin().getDrawable("beaker"));
-//		candle = new Image(this.getSkin().getDrawable("candle"));
-//		tripod = new Image(this.getSkin().getDrawable("tripod"));
-//		scrollStates = new ScrollPane(null);
-//		Label nameLabel = new Label("Name:", new LabelStyle(new BitmapFont(), Color.WHITE));
-//
-//		Table table = super.getTable();
-//		table.add(nameLabel);
-//	}
-
-	private Image background;
 	private TextButton continueGame;
 	private TextButton newGame;
+	private Image tableTexture;
+	private Image book;
+	private Image beaker;
+	private Image candle;
+	private Image tripod;
+	private ScrollPane scrollStates;
+	private Array<TextButton> states;
+
+	private boolean loadStates;
 
 	public StartScreen(ShadowStruggles game, Controller controller) {
 		super(game, controller);
@@ -80,24 +42,29 @@ public class StartScreen extends BaseScreen {
 	@Override
 	public void resize(int width, int height) {
 		super.resize(width, height);
-		initComponents();
 	}
 
 	public void initComponents() {
 		stage.clear();
+	}
 
-		background = new Image(game.getAssets()
-				.get("data/images/objects/objects.atlas", TextureAtlas.class)
-				.findRegion("msbackground"));
-		background.setScaleX(960f / 512f);
-		background.setScaleY(640f / 380f);
+	@Override
+	public void show() {
+		super.show();
+
+		tableTexture = new Image(this.getSkin().getDrawable("table_texture"));
+		book = new Image(this.getSkin().getDrawable("book"));
+		book.setX(book.getX() - 10);
+		book.setY(book.getY() + 20);
+		beaker = new Image(this.getSkin().getDrawable("beaker"));
+		candle = new Image(this.getSkin().getDrawable("candle"));
+		tripod = new Image(this.getSkin().getDrawable("tripod"));
+		scrollStates = new ScrollPane(null);
 
 		continueGame = new TextButton(
-				game.getManager().getMenuText().continueGame, super.getSkin());
-		//continueGame = ScreenUtils.defineButton(continueGame, 240, 384, 480,
-		//		215, super.getSkin());
+				game.getManager().getMenuText().continueGame, this.getSkin()
+						.get("blur", TextButtonStyle.class));
 		continueGame.addListener(new ClickListener() {
-
 			@Override
 			public void clicked(InputEvent event, float arg1, float arg2) {
 				game.getAudio().playSound("button_4");
@@ -106,13 +73,9 @@ public class StartScreen extends BaseScreen {
 			}
 		});
 
-		newGame = new TextButton(game.getManager().getMenuText().newGame,
-				super.getSkin());
-		//newGame = ScreenUtils.defineButton(newGame, 240, 128, 480, 215,
-		//		super.getSkin());
-
+		newGame = new TextButton(game.getManager().getMenuText().newGame, this
+				.getSkin().get("blur", TextButtonStyle.class));
 		newGame.addListener(new ClickListener() {
-
 			@Override
 			public void clicked(InputEvent event, float arg1, float arg2) {
 				try {
@@ -144,19 +107,32 @@ public class StartScreen extends BaseScreen {
 					game.setScreenWithTransition(new MainScreen(game,
 							controller));
 				}
-				
 
 			}
 		});
-		
-		Table table = new Table();			
-		table.defaults().pad(10).width(480).height(215);
+
+		Table table = new Table();
+		table.defaults().padTop(50).width(310).height(200);
+		table.debug();
+
+		table.add(beaker).left();
+		table.add(candle);
+		table.add(tripod);
+		table.row();
 		table.add(continueGame);
 		table.row();
 		table.add(newGame);
+
 		table.setPosition(480, 384);
-		stage.addActor(background);
-		stage.addActor(table);		
+
+		stage.addActor(tableTexture);
+		stage.addActor(book);
+		stage.addActor(table);
 	}
 
+	@Override
+	public void render(float delta) {
+		super.render(delta);
+		Table.drawDebug(stage);
+	}
 }
