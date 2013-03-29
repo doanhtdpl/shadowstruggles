@@ -94,8 +94,8 @@ public class StartScreen extends BaseScreen {
 
 		continueGame = new TextButton(
 				game.getManager().getMenuText().continueGame, super.getSkin());
-		continueGame = ScreenUtils.defineButton(continueGame, 240, 384, 480,
-				215, super.getSkin());
+		//continueGame = ScreenUtils.defineButton(continueGame, 240, 384, 480,
+		//		215, super.getSkin());
 		continueGame.addListener(new ClickListener() {
 
 			@Override
@@ -108,8 +108,8 @@ public class StartScreen extends BaseScreen {
 
 		newGame = new TextButton(game.getManager().getMenuText().newGame,
 				super.getSkin());
-		newGame = ScreenUtils.defineButton(newGame, 240, 128, 480, 215,
-				super.getSkin());
+		//newGame = ScreenUtils.defineButton(newGame, 240, 128, 480, 215,
+		//		super.getSkin());
 
 		newGame.addListener(new ClickListener() {
 
@@ -144,13 +144,19 @@ public class StartScreen extends BaseScreen {
 					game.setScreenWithTransition(new MainScreen(game,
 							controller));
 				}
+				
 
 			}
 		});
-
+		
+		Table table = new Table();			
+		table.defaults().pad(10).width(480).height(215);
+		table.add(continueGame);
+		table.row();
+		table.add(newGame);
+		table.setPosition(480, 384);
 		stage.addActor(background);
-		stage.addActor(continueGame);
-		stage.addActor(newGame);
+		stage.addActor(table);		
 	}
 
 }
