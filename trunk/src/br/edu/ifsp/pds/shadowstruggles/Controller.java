@@ -142,8 +142,6 @@ public class Controller {
 	 *            specified amount.
 	 */
 	
-	
-
 	public void playerLifeChanged(int amount) {		
 		int newLife = this.platform.getRules().getPlayerHP() + amount;
 		int maxLife= this.platform.getRules().getPlayerHPmax();
@@ -202,7 +200,7 @@ public class Controller {
 	
 	//----------------------------------------------ACTION METHODS---------------------------------------------------
 
-	private void playCard(Card handCard, int lane, int tile) {
+	public void playCard(Card handCard, int lane, int tile) {
 		handCard.setLane(lane);
 		handCard.setTile(tile);
 		((BattleScreen) currentScreen).getBackcards()
