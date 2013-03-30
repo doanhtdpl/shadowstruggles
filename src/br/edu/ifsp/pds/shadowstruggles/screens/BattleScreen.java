@@ -151,6 +151,7 @@ public class BattleScreen extends BaseScreen {
 	}
 
 	public void update(float delta) {
+		//Verificar vitória
 		if (this.battlePlatform.getRules().gameState()
 				.equals(DefaultRules.ENEMY_VICTORY)) {
 			playerLose();
