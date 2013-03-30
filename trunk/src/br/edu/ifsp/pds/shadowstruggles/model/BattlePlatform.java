@@ -37,6 +37,18 @@ public class BattlePlatform {
 		this.EnemyField = new Field();
 		this.enemy = enemy;
 	}
+	public BattlePlatform(Deck playerDeck, Deck enemyDeck, Map map,
+			DefaultRules rules) {
+		super();
+		this.playerDeck = playerDeck;
+		this.enemyDeck = enemyDeck;
+		this.map = map;
+		this.rules = rules;
+		this.playerHandCards = new Array<Card>();
+		this.enemyHandCards = new Array<Card>();
+		this.PlayerField = new Field();
+		this.EnemyField = new Field();		
+	}
 
 	public void addPlayerHandCard(Card card) {
 		playerHandCards.add(card);

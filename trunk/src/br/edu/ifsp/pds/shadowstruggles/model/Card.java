@@ -219,5 +219,7 @@ public class Card implements Serializable {
 	public float getMarkTile() {
 		return markTile;
 	}
+	
+	public void act(){}
 
 }
