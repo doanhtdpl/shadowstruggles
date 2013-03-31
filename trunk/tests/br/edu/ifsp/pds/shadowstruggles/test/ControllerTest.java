@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
 
@@ -76,6 +78,17 @@ public class ControllerTest {
 		
 		
 	}
+	
+	@Test
+	public void testAddCardToMap(){
+		Card cartaTest = new Card("Teste", "CartaTeste", 10, "Descricao", 1, null);
+		int laneTest = 10;
+		int tileTest = 20;
+		Controller control = new Controller();
+		Image cardImage = new Image();
+		
+		control.addCardToMap(cartaTest, cardImage, tileTest, laneTest);
+	}
 
 	@Test
 	public void testUpdateTimer() {
@@ -89,7 +102,16 @@ public class ControllerTest {
 
 	@Test
 	public void testVerifyValueChange() {
-		fail("Not yet implemented");
+		Controller controlTest = new Controller();
+		int value1 = 200;
+		int value2 = 400;
+		int value3 = 0;
+		int valueMax = 300;
+		
+		int result = controlTest.verifyValueChange(value1, valueMax);
+		
+		assertEquals(value1, result);
+		
 	}
 
 }
