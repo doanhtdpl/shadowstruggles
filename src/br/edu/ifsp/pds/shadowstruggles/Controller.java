@@ -232,7 +232,7 @@ public class Controller {
 	}
 	
 	
-	private void addCardToMap(Card handCard, Image cardImage, int tile, int lane){
+	public void addCardToMap(Card handCard, Image cardImage, int tile, int lane){
 		platform.getMap().addCard(handCard, tile, lane);
 		currentScreen.addGameObject(cardImage);
 		platform.getPlayerHandCards().removeValue(platform.getSelectedCard(),
