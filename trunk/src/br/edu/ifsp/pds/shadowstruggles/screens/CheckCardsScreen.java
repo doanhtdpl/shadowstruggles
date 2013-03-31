@@ -141,9 +141,9 @@ public class CheckCardsScreen extends BaseScreen {
 		int count = 0;
 		cardImages = new Array<Image>();
 		for (Card card : cards) {
-			Image cardImage = new Image(new TextureRegion(game.getAssets().get(
-					"data/images/sprites/" + card.getName() + "/card.png",
-					Texture.class), 360, 480));
+			Image cardImage = new Image(game.getAssets()
+					.get("data/images/cards/cards.atlas", TextureAtlas.class)
+					.findRegion(card.getName().toLowerCase()));
 			ScreenUtils.defineImage(cardImage, 180 + count * 120, 5,
 					cardImage.getWidth(), cardImage.getHeight(), 0.3f, 0.3f);
 
@@ -200,9 +200,9 @@ public class CheckCardsScreen extends BaseScreen {
 			stage.removeActor(selectedImage);
 		} catch (Exception e) {
 		}
-		selectedImage = new Image(new TextureRegion(game.getAssets().get(
-				"data/images/sprites/" + card.getName() + "/card.png",
-				Texture.class), 360, 480));
+		selectedImage = new Image(game.getAssets()
+				.get("data/images/cards/cards.atlas", TextureAtlas.class)
+				.findRegion(card.getName().toLowerCase()));
 		selectedImage.setX(20);
 		selectedImage.setY(160);
 		name.setText(selectedCard.getNameVisualization());
