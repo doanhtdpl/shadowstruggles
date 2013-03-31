@@ -32,6 +32,8 @@ public class Fighter extends Card {
 	private float attackDelay;
 	private String size;
 	private float delay;
+	private float moveTimer;
+	private boolean attacking;
 
 	public Fighter() {
 		super();
@@ -46,6 +48,7 @@ public class Fighter extends Card {
 		this.direction = direction;
 		this.size = size;
 		this.attackDelay = 0;
+		this.moveTimer=0;		
 	}
 
 	public Fighter(String name, String nameVisualization, int energyCost,
@@ -53,7 +56,6 @@ public class Fighter extends Card {
 			int damage, float speed, int range, boolean hasEffect, String size,
 			float attackDelay, Array<String> preRequisite) {
 		super(name, nameVisualization, energyCost, description, buyCost, action);
-
 		this.health = health;
 		this.damage = damage;
 		this.speed = speed;
@@ -64,8 +66,53 @@ public class Fighter extends Card {
 		this.attackDelay = attackDelay;
 		this.direction = 1;
 		this.maxHealth = health;
+		this.moveTimer=0;
+	}
+	
+	public void move (float delta){
+		this.moveTimer+=delta*direction*speed*60;		
+		if (direction == 1) {
+			if ((int) ((moveTimer - 96) / 48) > tile) {
+				tile ++;
+			}
+		} else {
+			if ((int) ((moveTimer - 48) / 48) < tile) {
+				tile--;
+			}
+
+		}
 	}
 
+	
+	@Override
+	public void write(Json json) {
+		super.write(json);
+		json.writeValue("health", this.health);
+		json.writeValue("damage", this.damage);
+		json.writeValue("speed", this.speed);
+		json.writeValue("range", this.range);
+		json.writeValue("hasEffect", this.hasEffect);
+		json.writeValue("size", this.size);
+		json.writeValue("attackDelay", getAttackDelay(this.attackDelay));
+	}
+	
+
+	@Override
+	public void read(Json json, OrderedMap<String, Object> jsonData) {
+		super.read(json, jsonData);
+
+		this.health = json.readValue("health", Integer.class, jsonData);
+		this.damage = json.readValue("damage", Integer.class, jsonData);
+		setSpeed(json.readValue("speed", String.class, jsonData));
+		this.range = json.readValue("range", Integer.class, jsonData);
+		this.hasEffect = json.readValue("hasEffect", Boolean.class, jsonData);
+		this.size = json.readValue("size", String.class, jsonData);
+		setAttackDelay(json.readValue("attackDelay", String.class, jsonData));
+		this.delay = attackDelay;
+
+	}
+	
+	
 	public int getHealth() {
 		return health;
 	}
@@ -109,34 +156,7 @@ public class Fighter extends Card {
 	public void setDirection(int direction) {
 		this.direction = direction;
 	}
-
-	@Override
-	public void write(Json json) {
-		super.write(json);
-		json.writeValue("health", this.health);
-		json.writeValue("damage", this.damage);
-		json.writeValue("speed", this.speed);
-		json.writeValue("range", this.range);
-		json.writeValue("hasEffect", this.hasEffect);
-		json.writeValue("size", this.size);
-		json.writeValue("attackDelay", getAttackDelay(this.attackDelay));
-	}
 	
-
-	@Override
-	public void read(Json json, OrderedMap<String, Object> jsonData) {
-		super.read(json, jsonData);
-
-		this.health = json.readValue("health", Integer.class, jsonData);
-		this.damage = json.readValue("damage", Integer.class, jsonData);
-		setSpeed(json.readValue("speed", String.class, jsonData));
-		this.range = json.readValue("range", Integer.class, jsonData);
-		this.hasEffect = json.readValue("hasEffect", Boolean.class, jsonData);
-		this.size = json.readValue("size", String.class, jsonData);
-		setAttackDelay(json.readValue("attackDelay", String.class, jsonData));
-		this.delay = attackDelay;
-
-	}
 
 	public float getAttackDelay() {
 		return attackDelay;
@@ -207,6 +227,14 @@ public class Fighter extends Card {
 
 	public void setAttackDelay(float attackDelay) {
 		this.attackDelay = attackDelay;
+	}
+	
+	public void setAttacking(boolean attacking) {
+		this.attacking = attacking;
+	}
+	
+	public boolean isAttacking() {
+		return attacking;
 	}
 
 }

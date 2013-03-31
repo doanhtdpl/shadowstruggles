@@ -1,6 +1,8 @@
 package br.edu.ifsp.pds.shadowstruggles.scripts;
 
 import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
+import br.edu.ifsp.pds.shadowstruggles.model.Card;
+
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Json.Serializable;
@@ -18,11 +20,13 @@ public abstract class CardAction  implements Serializable{
 	 */
 	public void doAction(BattlePlatform platform, Image img, float delta) { }
 	public void doAction(BattlePlatform platform, int lane, int tile){}
+	public void doAction(BattlePlatform platform, Card card, float delta){}
 	
 	/***
 	 * Updates the visual representation of the card.
 	 */
 	public void update(Image f1){}
+	public void update(Card card){}
 	public abstract CardAction copy();
 	
 	@Override

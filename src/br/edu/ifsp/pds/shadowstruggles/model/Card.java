@@ -220,6 +220,8 @@ public class Card implements Serializable {
 		return markTile;
 	}
 	
-	public void act(){}
+	public void act(float delta){
+		action.doAction(platform, this, delta);
+	}
 
 }
