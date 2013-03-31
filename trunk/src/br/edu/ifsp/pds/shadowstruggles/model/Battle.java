@@ -53,11 +53,11 @@ public class Battle {
 		cardsinField.addAll(player2.getCardsInField());
 		for (Card card : cardsinField) {			
 			if (card.getClass().equals(Fighter.class))
-				((Fighter)card).act();
+				((Fighter)card).act(delta);
 			else if (card.getClass().equals(Effect.class))
-				((Effect) (card)).act();
+				((Effect) (card)).act(delta);
 			else if (card.getClass().equals(Trap.class))
-				((Trap) (card)).act();
+				((Trap) (card)).act(delta);
 		}
 	}
 	
