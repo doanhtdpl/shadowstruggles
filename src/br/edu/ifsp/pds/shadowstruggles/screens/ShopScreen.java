@@ -22,9 +22,9 @@ import br.edu.ifsp.pds.shadowstruggles.object2d.TransitionControl;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
 public class ShopScreen extends BaseScreen {
-	
-	private BaseScreen previousScreen;	
-	private Shop shop;	
+
+	private BaseScreen previousScreen;
+	private Shop shop;
 	private Image selectedImage;
 	private Image background;
 	private Image box;
@@ -34,19 +34,16 @@ public class ShopScreen extends BaseScreen {
 	private TransitionControl right;
 	private TransitionControl left;
 	private TextButton exit;
-	private TextButton buyButton;	
+	private TextButton buyButton;
 	private Card selectedCard;
 	private Array<Card> cards;
 	private Array<Image> cardImages;
-	
-	
-	
 
 	public ShopScreen(ShadowStruggles game, Controller controller,
 			BaseScreen previousScreen) {
 		super(game, controller);
 		this.previousScreen = previousScreen;
-		this.shop= new Shop(game);
+		this.shop = new Shop(game);
 		initComponents();
 	}
 
@@ -58,29 +55,32 @@ public class ShopScreen extends BaseScreen {
 		background.setScaleX(960f / 512f);
 		background.setScaleY((640f / 380f));
 
-		name = new Label("",super.getSkin());
+		name = new Label("", super.getSkin());
 		name.setX(410);
 		name.setWidth(500);
 		name.setHeight(50);
 		name.setWrap(true);
 		name.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
 				Color.BLACK));
-		description = new Label("" , super.getSkin());
+		description = new Label("", super.getSkin());
 		description.setX(410);
 		description.setWidth(500);
 		description.setWrap(true);
 		description.setStyle(new LabelStyle(super.getSkin().getFont(
 				"andalus-font"), Color.BLACK));
-		
-		moneyLabel= new Label("",super.getSkin());
-		moneyLabel.setText("Money: $ "+String.valueOf(shop.getPlayerMoney()));//TODO: string Money para arquivo
+
+		moneyLabel = new Label("", super.getSkin());
+		moneyLabel.setText("Money: $ " + String.valueOf(shop.getPlayerMoney()));// TODO:
+																				// string
+																				// Money
+																				// para
+																				// arquivo
 		moneyLabel.setX(30);
 		moneyLabel.setY(590);
 		moneyLabel.setWidth(200);
 		moneyLabel.setHeight(50);
-		moneyLabel.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
-						Color.BLACK));	
-		
+		moneyLabel.setStyle(new LabelStyle(super.getSkin().getFont(
+				"andalus-font"), Color.BLACK));
 
 		box = new Image(game.getAssets()
 				.get("data/images/objects/objects.atlas", TextureAtlas.class)
@@ -105,7 +105,7 @@ public class ShopScreen extends BaseScreen {
 				moveCards(1);
 			}
 		});
-		
+
 		left = new TransitionControl(-1, this.getSkin());
 		left.setY(20);
 		left.setX(120);
@@ -132,16 +132,22 @@ public class ShopScreen extends BaseScreen {
 				game.getManager().writeProfile(game.getProfile());
 			}
 		});
-		
-		buyButton = new TextButton("Buy", getSkin());//TODO: string Buy p/ arquivo
-		buyButton = ScreenUtils.defineButton(buyButton, 70, 180, 288, 70, super.getSkin());
+
+		buyButton = new TextButton("Buy", getSkin());// TODO: string Buy p/
+														// arquivo
+		buyButton = ScreenUtils.defineButton(buyButton, 70, 180, 288, 70,
+				super.getSkin());
 		buyButton.addListener(new ClickListener() {
 
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_6");
 				shop.buyCard(selectedCard);
-				moneyLabel.setText("Money: $ "+String.valueOf(shop.getPlayerMoney()));//TODO: string Money para arquivo
+				moneyLabel.setText("Money: $ "
+						+ String.valueOf(shop.getPlayerMoney()));// TODO: string
+																	// Money
+																	// para
+																	// arquivo
 			}
 		});
 
@@ -152,13 +158,15 @@ public class ShopScreen extends BaseScreen {
 		stage.addActor(exit);
 		stage.addActor(right);
 		stage.addActor(moneyLabel);
+		
 		cards = shop.getAvailableCards();
 		int count = 0;
 		cardImages = new Array<Image>();
+		
 		for (Card card : cards) {
-			Image cardImage = new Image(new TextureRegion(game.getAssets().get(
-					"data/images/sprites/" + card.getName() + "/card.png",
-					Texture.class), 360, 480));
+			Image cardImage = new Image(game.getAssets()
+					.get("data/images/cards/cards.atlas", TextureAtlas.class)
+					.findRegion(card.getName().toLowerCase()));
 			cardImage.setY(5);
 			cardImage.setX(180 + count * 120);
 			cardImage.setScaleX(0.3f);
@@ -194,7 +202,7 @@ public class ShopScreen extends BaseScreen {
 
 		if ((side > 0 && movableToLeft) || (side < 0 && movableToRight))
 			for (Image card : cardImages) {
-				card.setX( card.getX()-120 * side);
+				card.setX(card.getX() - 120 * side);
 				if (card.getX() >= 120 && card.getX() < 900)
 					stage.addActor(card);
 				else {
@@ -217,9 +225,9 @@ public class ShopScreen extends BaseScreen {
 			stage.removeActor(selectedImage);
 		} catch (Exception e) {
 		}
-		selectedImage = new Image(new TextureRegion(game.getAssets().get(
-				"data/images/sprites/" + card.getName() + "/card.png",
-				Texture.class), 360, 480));
+		selectedImage = new Image(game.getAssets()
+				.get("data/images/cards/cards.atlas", TextureAtlas.class)
+				.findRegion(card.getName().toLowerCase()));
 		selectedImage.setX(75);
 		selectedImage.setY(256);
 		selectedImage.setScaleX(0.7f);
@@ -227,7 +235,7 @@ public class ShopScreen extends BaseScreen {
 		name.setText(selectedCard.getNameVisualization());
 		name.setY(590);
 		stage.addActor(selectedImage);
-		buyButton.setText("Buy ($ "+card.getBuyCost()+")");
+		buyButton.setText("Buy ($ " + card.getBuyCost() + ")");
 	}
 
 	@Override

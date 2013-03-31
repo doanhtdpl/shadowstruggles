@@ -153,9 +153,9 @@ public class EditDeckScreen extends BaseScreen {
 		int count = 0;
 		cardImages = new Array<Image>();
 		for (Card card : trunk) {
-			Image cardImage = new Image(new TextureRegion(game.getAssets().get(
-					"data/images/sprites/" + card.getName() + "/card.png",
-					Texture.class), 360, 480));
+			Image cardImage = new Image(game.getAssets()
+					.get("data/images/cards/cards.atlas", TextureAtlas.class)
+					.findRegion(card.getName().toLowerCase()));
 			cardImage.setY(5);
 			cardImage.setX(180 + count * 120);
 			cardImage.setScaleX(0.3f);
