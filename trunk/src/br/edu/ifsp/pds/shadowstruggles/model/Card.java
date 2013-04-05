@@ -215,6 +215,12 @@ public class Card implements Serializable {
 		this.markLane = lane;
 		this.markTile = tile;
 	}
+	public void setPosition(int lane, int tile) {
+		this.lane = lane;
+		this.tile = tile;
+	}
+	
+	
 
 	public float getMarkTile() {
 		return markTile;
