@@ -1,7 +1,13 @@
 package br.edu.ifsp.pds.shadowstruggles.model;
 
+import br.edu.ifsp.pds.shadowstruggles.MyStage;
+import br.edu.ifsp.pds.shadowstruggles.object2d.Effect2D;
+import br.edu.ifsp.pds.shadowstruggles.object2d.Fighter2D;
+import br.edu.ifsp.pds.shadowstruggles.object2d.HandCard;
+import br.edu.ifsp.pds.shadowstruggles.object2d.Trap2D;
 import br.edu.ifsp.pds.shadowstruggles.screens.BattleScreen;
 
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Array;
 
 public class Player {
@@ -59,6 +65,19 @@ public class Player {
 		}
 		return b;
 	}
+	
+	public void summonCard(Battle battle, Card card, int tile, int lane) {
+		card.setPosition(lane, tile);		
+		card.setMarkPosition(lane, tile);
+		field.getTiles().get(card.getTile() / 2)
+				.set(card.getLane(), card);
+		battle.getMap().addCard(card, tile, lane);
+		handCards.removeValue(card,true);
+		if (card.getClass().equals(Effect.class)) {
+			//((Effect)card).action(?);
+		}		
+	}
+	
 	
 	public Deck getDeck() {
 		return deck;

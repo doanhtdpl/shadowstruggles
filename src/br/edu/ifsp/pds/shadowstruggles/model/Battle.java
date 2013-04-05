@@ -17,6 +17,7 @@ public class Battle {
 	private Player player1;
 	private Player player2;
 	private boolean isInCampaign;
+	private Map map;
 	
 	
 	
@@ -24,6 +25,7 @@ public class Battle {
 		this.platform = new BattlePlatform(player1.getDeck(), player2.getDeck(), new Map(""), 
 				new DefaultRules(game.getManager().getSettings()));
 		this.game=game;
+		this.map=platform.getMap();
 		this.player1=player1;
 		this.player2=player2;
 		this.isInCampaign=isInCampaign;
@@ -71,5 +73,8 @@ public class Battle {
 	
 	public void end(){
 		
+	}
+	public Map getMap() {
+		return map;
 	}
 }
