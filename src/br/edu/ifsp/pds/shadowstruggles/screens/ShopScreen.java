@@ -93,10 +93,11 @@ public class ShopScreen extends BaseScreen {
 		box.setScaleY(0.76f);
 
 		right = new TransitionControl(1, this.getSkin());
-		right.setY(20);
+		right.setY(150);
 		right.setX(900);
 		right.setScaleY(4f);
 		right.setScaleX(1.5f);
+		right.rotate(180);
 		right.addListener(new ClickListener() {
 
 			@Override
