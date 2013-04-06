@@ -72,10 +72,11 @@ public class CheckCardsScreen extends BaseScreen {
 		ScreenUtils.defineImage(box, 390, 177, 600, 600, 0.9f, 0.76f);
 
 		right = new TransitionControl(1, this.getSkin());
-		right.setY(20);
+		right.setY(150);
 		right.setX(900);
 		right.setScaleY(4f);
 		right.setScaleX(1.5f);
+		right.setRotation(180);
 
 		right.addListener(new ClickListener() {
 
