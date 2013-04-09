@@ -15,21 +15,21 @@ import com.badlogic.gdx.utils.OrderedMap;
 
 public class Card implements Serializable {
 
-	public int energyCost;
-	public String description;
-	public int buyCost;
-	public String name;
-	public String nameVisualization;
-	public Image image;
-	public CardAction action;
-	public BattlePlatform platform;
-	public float markLane;
-	public float markTile;
-	public int tile;
+	private int energyCost;
+	private String description;
+	private int buyCost;
+	private String name;
+	private String nameVisualization;
+	private Image image;
+	private CardAction action;
+	private BattlePlatform platform;
+	private float markLane;
+	private float markTile;
+	protected int tile;
 
-	public int count = 0;
+	private int count = 0;
 
-	public Array<String> preRequisites = new Array<String>();
+	private Array<String> preRequisites = new Array<String>();
 
 	/***
 	 * Specifies the card's orientation and which player it belongs to. 1 - The
@@ -42,7 +42,7 @@ public class Card implements Serializable {
 	/***
 	 * The lane is counted from bottom to top, starting from 0.
 	 */
-	public int lane;
+	protected int lane;
 
 	public Card() {
 		this.name = "";
@@ -230,4 +230,11 @@ public class Card implements Serializable {
 		action.doAction(platform, this, delta);
 	}
 
+	public Array<String> getPreRequisites() {
+		return preRequisites;
+	}
+	
+	public void setPreRequisites(Array<String> preRequisites) {
+		this.preRequisites = preRequisites;
+	}
 }

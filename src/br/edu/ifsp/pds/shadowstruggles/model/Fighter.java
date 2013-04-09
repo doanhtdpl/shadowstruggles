@@ -60,7 +60,7 @@ public class Fighter extends Card {
 		this.damage = damage;
 		this.speed = speed;
 		this.range = range;
-		this.preRequisites = preRequisite;
+		setPreRequisites(preRequisite);
 		this.hasEffect = hasEffect;
 		this.size = size;
 		this.attackDelay = attackDelay;
@@ -209,9 +209,7 @@ public class Fighter extends Card {
 		this.delay = delay;
 	}
 
-	public Array<String> getPreRequisites() {
-		return preRequisites;
-	}
+	
 
 	public int getMaxHealth() {
 		return maxHealth;

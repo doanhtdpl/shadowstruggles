@@ -355,6 +355,10 @@ public class Controller {
 	//----------------------------------------------------GETTERS/SETTERS---------------------------------------------------
 	
 
+	public Card getCardFromImage(Image cardImage){
+		//TODO: implementar
+		return null;
+	}
 	public BaseScreen getCurrentScreen() {
 		return currentScreen;
 	}

@@ -12,6 +12,7 @@ import br.edu.ifsp.pds.shadowstruggles.object2d.Deck2D;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Effect2D;
 import br.edu.ifsp.pds.shadowstruggles.object2d.EnergyBar;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Fighter2D;
+import br.edu.ifsp.pds.shadowstruggles.object2d.FixedObject;
 import br.edu.ifsp.pds.shadowstruggles.object2d.HandBackground;
 import br.edu.ifsp.pds.shadowstruggles.object2d.HandCard;
 import br.edu.ifsp.pds.shadowstruggles.object2d.LifeBar;
@@ -20,14 +21,22 @@ import br.edu.ifsp.pds.shadowstruggles.object2d.MenuButton;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Hexagram;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Timer2D;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Trap2D;
+import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 
 /***
@@ -52,6 +61,7 @@ public class BattleScreen extends BaseScreen {
 	private float time;
 	private Deck2D deck;
 	private InputMultiplexer inputSources;
+	private Image selectedCard;
 
 	private Map2D map2d;
 	private HandBackground background;
@@ -403,6 +413,53 @@ public class BattleScreen extends BaseScreen {
 	public void playerLose() {
 		game.setScreenWithTransition(new DefeatScreen(game, controller, game
 				.getManager().getMenuText().defeat, this));
+	}
+	
+	private void showCardInfo(){
+		Card card = controller.getCardFromImage(selectedCard);
+		//FixedObject cardImage = new fixedObject(
+		Label name = new Label("", super.getSkin());
+		name.setX(410);
+		name.setWidth(500);
+		name.setHeight(50);
+		name.setWrap(true);
+		name.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
+				Color.BLACK));
+
+		Label description = new Label("", super.getSkin());
+		description.setX(410);
+		description.setWidth(500);
+		description.setWrap(true);
+		description.setStyle(new LabelStyle(super.getSkin().getFont(
+				"andalus-font"), Color.BLACK));
+		Image box = new Image(game.getAssets()
+				.get("data/images/objects/objects.atlas", TextureAtlas.class)
+				.findRegion("box"));
+		ScreenUtils.defineImage(box, 390, 177, 600, 600, 0.9f, 0.76f);
+		
+		Image cardImage = new Image(game.getAssets()
+				.get("data/images/cards/cards.atlas", TextureAtlas.class)
+				.findRegion(card.getName().toLowerCase()));
+		ScreenUtils.defineImage(cardImage, 180 , 100,
+				cardImage.getWidth(), cardImage.getHeight(), 0.3f, 0.3f);
+
+		
+		cardImage.addListener(new ClickListener() {
+
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				game.getAudio().playSound("button_2");
+				
+			}
+		});
+		stage.addActor(box);
+		stage.addActor(name);
+		stage.addActor(description);
+		stage.addActor(cardImage);
+	}
+	
+	private void showResumedCardInfo(){
+		Card card = controller.getCardFromImage(selectedCard);
 	}
 
 	public Array<BackCard> getBackcards() {
