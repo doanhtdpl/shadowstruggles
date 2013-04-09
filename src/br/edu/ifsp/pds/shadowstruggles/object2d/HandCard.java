@@ -40,6 +40,7 @@ public class HandCard extends FixedObject implements InputProcessor {
 		super(game.getAssets()
 				.get("data/images/cards/cards.atlas", TextureAtlas.class)
 				.findRegion(name.toLowerCase()), initialX, true);
+		this.setSize(360, 480);
 
 		this.illustration = game.getAssets()
 				.get("data/images/cards/cards.atlas", TextureAtlas.class)

@@ -2,10 +2,12 @@ package br.edu.ifsp.pds.shadowstruggles.object2d;
 
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 
 /***
  * A visual representation of the player/enemy current life.
@@ -47,6 +49,8 @@ public class LifeBar extends FixedObject {
 		this.life = new Label(lifeString, skin);
 		this.life.setX(this.getX() + 20);
 		this.life.setY(this.getY());
+		this.life.setStyle(new LabelStyle(skin
+				.getFont("basic-font"), Color.WHITE));
 		this.getStage().addActor(life);
 	}
 
