@@ -87,6 +87,7 @@ public class Controller {
 			putTrap(handCard, lane, tile);
 		}
 		platform.setSelectedCard(null);
+		battleScreen.removeResumedCardInfo();
 	}
 
 	public void handCardClicked(Card handCard, boolean isSelected) {
@@ -108,6 +109,9 @@ public class Controller {
 			platform.setSelectedCard(null);
 		}
 		((BattleScreen) currentScreen).changeHexagram(isSelected);
+		try{
+		((BattleScreen) currentScreen).showResumedCardInfo();
+		}catch(Exception execaoNaoIdentificada){}
 
 	}
 
@@ -356,8 +360,8 @@ public class Controller {
 	
 
 	public Card getCardFromImage(Image cardImage){
-		//TODO: implementar
-		return null;
+		
+		return platform.getSelectedCard();
 	}
 	public BaseScreen getCurrentScreen() {
 		return currentScreen;

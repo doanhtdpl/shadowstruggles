@@ -6,6 +6,7 @@ import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.Deck;
 import br.edu.ifsp.pds.shadowstruggles.model.DefaultRules;
+import br.edu.ifsp.pds.shadowstruggles.model.Fighter;
 import br.edu.ifsp.pds.shadowstruggles.model.Profile;
 import br.edu.ifsp.pds.shadowstruggles.object2d.BackCard;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Deck2D;
@@ -68,10 +69,12 @@ public class BattleScreen extends BaseScreen {
 	private boolean inicializado = false;
 	private Array<Hexagram> hexagrams;
 	private Array<BackCard> backcards;
-	
+	private Array<Label> cardInfo;
+
 	protected Deck playerDeck;
 	protected BattlePlatform battlePlatform;
 	protected String name;
+	
 	/**
 	 * Informs if the player has accessed the battle through the campaign or,
 	 * otherwise, free play.
@@ -97,7 +100,7 @@ public class BattleScreen extends BaseScreen {
 		this.name = name;
 		this.isInCampaign = isInCampaign;
 		inputSources = new InputMultiplexer();
-
+		cardInfo= new Array<Label>();
 		controller.setCurrentscreen(this);
 		controller.setPlatform(battlePlatform);
 
@@ -161,7 +164,7 @@ public class BattleScreen extends BaseScreen {
 	}
 
 	public void update(float delta) {
-		//Verificar vitória
+		// Verificar vitória
 		if (this.battlePlatform.getRules().gameState()
 				.equals(DefaultRules.ENEMY_VICTORY)) {
 			playerLose();
@@ -272,35 +275,35 @@ public class BattleScreen extends BaseScreen {
 
 	private void initComponents() {
 		map2d.setWidth(settings.backgroundWidth);
-		map2d.setHeight( settings.backgroundHeight);
+		map2d.setHeight(settings.backgroundHeight);
 		if (!inicializado) {
 
 			map2d.setX(0);
-			map2d.setY( BACKGROUND_Y);
+			map2d.setY(BACKGROUND_Y);
 
 			background = new HandBackground(0, game);
 			background.setY(0);
 
 			menu = new MenuButton(controller, game);
-			menu.setScale( 1.5f);
-			
+			menu.setScale(1.5f);
+
 			inputSources.addProcessor(menu);
 			inputSources.addProcessor(map2d);
 			deck = new Deck2D(game, settings.deckX);
-			deck.setY( settings.bottomElementY);
+			deck.setY(settings.bottomElementY);
 			inputSources.addProcessor(deck);
 
 			energyBar = new EnergyBar(settings.energyX - 40, game);
-			energyBar.setY( settings.bottomElementY);
+			energyBar.setY(settings.bottomElementY);
 
 			playerLife = new LifeBar(settings.playerLifeX, game);
 			playerLife.setY(settings.lifeBarY);
 
 			enemyLife = new LifeBar(settings.enemyLifeX, game);
-			enemyLife.setY( settings.lifeBarY);
+			enemyLife.setY(settings.lifeBarY);
 
 			timer = new Timer2D(this, settings.screenWidth / 2);
-			timer.setY( settings.screenHeight - 40);
+			timer.setY(settings.screenHeight - 40);
 
 			inicializado = true;
 
@@ -365,9 +368,17 @@ public class BattleScreen extends BaseScreen {
 		for (int i = 0; i < 5; i++) {
 			Card temp = battlePlatform.getPlayerDeck().draw();
 			battlePlatform.getPlayerHandCards().add(temp);
-			HandCard h = new HandCard(game, temp.getName(),
-					settings.firstCardX + 130 * i, temp);
-			h.setY( settings.bottomElementY);
+			HandCard h = new HandCard(game, temp.getName(), settings.firstCardX
+					+ 130 * i, temp);
+			h.setY(settings.bottomElementY);
+			h.addListener(new ClickListener(){
+				@Override
+				public void clicked(InputEvent event, float x, float y) {
+					
+					super.clicked(event, x, y);
+					showResumedCardInfo();
+				}
+			});
 			stage.addActor(h);
 		}
 		for (int i = 0; i < 5; i++) {
@@ -388,7 +399,15 @@ public class BattleScreen extends BaseScreen {
 		HandCard handCard = new HandCard(game, card.getName(),
 				settings.firstCardX + 130
 						* (battlePlatform.getPlayerHandCards().size), card);
-		handCard.setY( settings.bottomElementY);
+		handCard.setY(settings.bottomElementY);
+		handCard.addListener(new ClickListener(){
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				showResumedCardInfo();
+				super.clicked(event, x, y);
+			}
+			
+		});
 		stage.addActor(handCard);
 		this.inputSources.addProcessor(handCard);
 	}
@@ -414,10 +433,10 @@ public class BattleScreen extends BaseScreen {
 		game.setScreenWithTransition(new DefeatScreen(game, controller, game
 				.getManager().getMenuText().defeat, this));
 	}
-	
-	private void showCardInfo(){
+
+	private void showCardInfo() {
 		Card card = controller.getCardFromImage(selectedCard);
-		//FixedObject cardImage = new fixedObject(
+		// FixedObject cardImage = new fixedObject(
 		Label name = new Label("", super.getSkin());
 		name.setX(410);
 		name.setWidth(500);
@@ -436,20 +455,19 @@ public class BattleScreen extends BaseScreen {
 				.get("data/images/objects/objects.atlas", TextureAtlas.class)
 				.findRegion("box"));
 		ScreenUtils.defineImage(box, 390, 177, 600, 600, 0.9f, 0.76f);
-		
+
 		Image cardImage = new Image(game.getAssets()
 				.get("data/images/cards/cards.atlas", TextureAtlas.class)
 				.findRegion(card.getName().toLowerCase()));
-		ScreenUtils.defineImage(cardImage, 180 , 100,
-				cardImage.getWidth(), cardImage.getHeight(), 0.3f, 0.3f);
+		ScreenUtils.defineImage(cardImage, 180, 100, cardImage.getWidth(),
+				cardImage.getHeight(), 0.3f, 0.3f);
 
-		
 		cardImage.addListener(new ClickListener() {
 
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_2");
-				
+
 			}
 		});
 		stage.addActor(box);
@@ -457,9 +475,48 @@ public class BattleScreen extends BaseScreen {
 		stage.addActor(description);
 		stage.addActor(cardImage);
 	}
-	
-	private void showResumedCardInfo(){
+
+	public void showResumedCardInfo() {		
+		removeResumedCardInfo();
 		Card card = controller.getCardFromImage(selectedCard);
+		Label cardName = new Label(card.getNameVisualization(), getSkin());
+		cardName = ScreenUtils.defineLabel(cardName, 10, 150, 200, 70);
+		Label energyCost = ScreenUtils.defineLabel(
+				new Label(String.valueOf(card.getEnergyCost()), getSkin()), 330,
+				150, 200, 70);
+		if(card.getClass().equals(Fighter.class) && !card.getName().equals("Rock")){
+			Label life = ScreenUtils.defineLabel(
+					new Label("HP : "+String.valueOf(((Fighter)card).getHealth()), getSkin()),440,
+					150, 200, 70);
+			stage.addActor(life);
+			cardInfo.add(life);
+			Label atk = ScreenUtils.defineLabel(
+					new Label("ATK : "+String.valueOf(((Fighter)card).getDamage()), getSkin()), 860,
+					150, 200, 70);
+			stage.addActor(atk);
+			cardInfo.add(atk);
+			Label spd = ScreenUtils.defineLabel(
+					new Label("SPD : "+String.valueOf(((Fighter)card).getSpeedValue()), getSkin()),600,
+					150, 200, 70);
+			stage.addActor(spd);
+			cardInfo.add(spd);
+		}
+		stage.addActor(cardName);
+		stage.addActor(energyCost);
+		cardInfo.add(cardName);
+		cardInfo.add(energyCost);
+		
+	}
+	
+	public void removeResumedCardInfo(){
+		
+			for(Label label: cardInfo){
+				try{
+				label.remove();				
+				}catch(Exception inexistentActor){}
+			}
+			cardInfo.clear();
+		
 	}
 
 	public Array<BackCard> getBackcards() {
