@@ -11,8 +11,8 @@ import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.OrderedMap;
 
 /**
- * EletricCurrent1 action. The first enemy that pass it, cannot move and take
- * 10 of damage over 5 seconds.
+ * EletricCurrent1 action. The first enemy that pass it, cannot move and take 10
+ * of damage over 5 seconds.
  * 
  */
 
@@ -22,7 +22,8 @@ public class EletricCurrent1Action extends CardAction {
 	private boolean started;
 	private float initialSpeed;
 	private int count;
-	private Card aflicted;
+	private Fighter aflicted;
+
 	public EletricCurrent1Action() {
 		this.finished = false;
 		this.started = false;
@@ -31,7 +32,7 @@ public class EletricCurrent1Action extends CardAction {
 	}
 
 	@Override
-	public void doAction(BattlePlatform platform, Image img,float delta) {
+	public void doAction(BattlePlatform platform, Image img, float delta) {
 
 		Trap2D f = (Trap2D) img;
 
@@ -40,31 +41,17 @@ public class EletricCurrent1Action extends CardAction {
 			started = true;
 		}
 		if (aflicted != null) {
-			if (((Fighter) aflicted).getHealth() > 0) {
-				for (Card c : platform.getMap().getTiles()
-						.get(f.getTrap().getTile()).get(f.getTrap().getLane())) {
-					if (c.getClass().equals(Fighter.class)
-							&& c.getDirection() != f.getTrap().getDirection()) {
-						if (((Fighter) c).getSpeed() > 0) {
-							f.setVisible(true);
-							initialSpeed = ((Fighter) c).getSpeed();
-							((Fighter) c).setSpeed(0);
-						} else {
-							if (finished) {
-								((Fighter) c).setSpeed(initialSpeed);
-								f.getController().removeCard(f.getTrap());
-								break;
-							} else if (((int) f.getStateTime()) == count) {
-								((Fighter) c).setHealth(((Fighter) c)
-										.getHealth() - 2);
-								count++;
+			if ((aflicted).getHealth() > 0) {
 
-							}
+				if (finished) {
+					((Fighter) aflicted).setSpeed(initialSpeed);
+					f.getController().removeCard(f.getTrap());
+				} else if (((int) f.getStateTime()) == count) {
+					(aflicted).setHealth(((Fighter) aflicted).getHealth() - 2);
+					count++;
 
-						}
-
-					}
 				}
+
 			} else {
 				f.getController().removeCard(f.getTrap());
 			}
@@ -77,7 +64,7 @@ public class EletricCurrent1Action extends CardAction {
 						f.setVisible(true);
 						initialSpeed = ((Fighter) c).getSpeed();
 						((Fighter) c).setSpeed(0);
-						aflicted = c;
+						aflicted = (Fighter) c;
 					} else {
 						if (finished) {
 							((Fighter) c).setSpeed(initialSpeed);
@@ -104,7 +91,7 @@ public class EletricCurrent1Action extends CardAction {
 		if (trap.isVisible()) {
 			trap.setStateTime(Gdx.graphics.getDeltaTime() + trap.getStateTime());
 			trap.setCurrentFrame(trap.getAnimation().getKeyFrame(
-					trap.getStateTime(), true));			
+					trap.getStateTime(), true));
 			if (trap.getStateTime() > 5f) {
 				finished = true;
 			}
@@ -113,15 +100,14 @@ public class EletricCurrent1Action extends CardAction {
 
 	@Override
 	public void write(Json json) {
-		
+
 	}
-	
 
 	@Override
 	public void read(Json json, OrderedMap<String, Object> jsonData) {
-		//this.id = json.readValue("id", Integer.class, jsonData);
+		// this.id = json.readValue("id", Integer.class, jsonData);
 	}
-	
+
 	@Override
 	public CardAction copy() {
 		return new EletricCurrent1Action();
