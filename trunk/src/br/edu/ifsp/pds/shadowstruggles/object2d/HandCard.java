@@ -20,7 +20,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 public class HandCard extends FixedObject implements InputProcessor {
 
-	private static final float SCALE_X = 0.3f;
+	private static final float SCALE_X = 0.4f;
 	private static final float SCALE_Y = 0.3f;
 
 	private int type = 1;
