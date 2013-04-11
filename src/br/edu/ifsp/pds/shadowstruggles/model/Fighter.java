@@ -186,7 +186,7 @@ public class Fighter extends Card {
 		if (speed.equals("SLOW"))
 			this.speed = MOV_SPEED_SLOW;
 	}
-	public String getSpeed(float speed){
+	public String getSpeedValue(){
 		if(speed==MOV_SPEED_FAST) return "FAST";
 		if(speed==MOV_SPEED_NORMAL) return "NORMAL";
 		if(speed==MOV_SPEED_SLOW) return "SLOW";
