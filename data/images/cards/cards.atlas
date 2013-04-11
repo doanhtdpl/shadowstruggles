@@ -99,35 +99,35 @@ dr-005
   orig: 256, 256
   offset: 0, 0
   index: -1
-electric_current_level_two
+electric_current_level_one
   rotate: false
   xy: 259, 259
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
-elements_of_life_and_death
+electric_current_level_two
   rotate: false
   xy: 517, 259
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
-eletric_current_level_one
+elements_of_life_and_death
   rotate: false
   xy: 1, 1
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
-elite_patrol
+eletric_current_level_one
   rotate: false
   xy: 259, 1
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
-emergency_supplies
+elite_patrol
   rotate: false
   xy: 517, 1
   size: 256, 256
@@ -139,35 +139,35 @@ cards3.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-factory
+emergency_supplies
   rotate: false
   xy: 1, 517
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
-golem
+factory
   rotate: false
   xy: 259, 517
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
-hacking
+golem
   rotate: false
   xy: 517, 517
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
-introduction_to_carbon
+hacking
   rotate: false
   xy: 1, 259
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
-introdution_to_carbon
+introduction_to_carbon
   rotate: false
   xy: 259, 259
   size: 256, 256
@@ -275,7 +275,7 @@ cards5.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-electric_current_level_one
+electric_current_level_one_old
   rotate: false
   xy: 1, 259
   size: 512, 512
