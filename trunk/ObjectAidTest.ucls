@@ -2,8 +2,8 @@
 <class-diagram version="1.1.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true">  
   <class id="1" language="java" name="br.edu.ifsp.pds.shadowstruggles.DesktopStarter" 
-    project="ShadowStruggles (Google Code)" 
-    file="/ShadowStruggles (Google Code)/src/br/edu/ifsp/pds/shadowstruggles/DesktopStarter.java" binary="false" 
+    project="ShadowStruggles" 
+    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/DesktopStarter.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="99" width="145" x="291" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -13,8 +13,8 @@
     </display>  
   </class>  
   <class id="2" language="java" name="br.edu.ifsp.pds.shadowstruggles.Controller" 
-    project="ShadowStruggles (Google Code)" 
-    file="/ShadowStruggles (Google Code)/src/br/edu/ifsp/pds/shadowstruggles/Controller.java" binary="false" 
+    project="ShadowStruggles" 
+    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/Controller.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="585" width="235" x="41" y="545"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -24,8 +24,8 @@
     </display>  
   </class>  
   <class id="3" language="java" name="br.edu.ifsp.pds.shadowstruggles.ShadowStruggles" 
-    project="ShadowStruggles (Google Code)" 
-    file="/ShadowStruggles (Google Code)/src/br/edu/ifsp/pds/shadowstruggles/ShadowStruggles.java" binary="false" 
+    project="ShadowStruggles" 
+    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/ShadowStruggles.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="468" width="210" x="41" y="37"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -34,8 +34,8 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="br.edu.ifsp.pds.shadowstruggles.MyStage" project="ShadowStruggles (Google Code)" 
-    file="/ShadowStruggles (Google Code)/src/br/edu/ifsp/pds/shadowstruggles/MyStage.java" binary="false" 
+  <class id="4" language="java" name="br.edu.ifsp.pds.shadowstruggles.MyStage" project="ShadowStruggles" 
+    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/MyStage.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="171" width="188" x="476" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
