@@ -30,6 +30,17 @@ public class FreePlayScreen extends BaseScreen {
 		super.resize(width, height);
 
 	}
+	
+	private void initTempButton() {
+		TextButton tempButton = ScreenUtils.defineButton(new TextButton("Tutorial", getSkin()), 10, 500, 200, 100, getSkin());
+		tempButton.addListener(new ClickListener(){@Override
+		public void clicked(InputEvent event, float x, float y) {
+			
+			super.clicked(event, x, y);
+			game.setScreenWithTransition(new BattleTutorial(game));
+		}});
+		stage.addActor(tempButton);
+	}
 
 	private void initComponents() {
 		background = new Image(game.getAssets()
@@ -82,5 +93,6 @@ public class FreePlayScreen extends BaseScreen {
 		});
 
 		stage.addActor(returnButton);
+		initTempButton();
 	}
 }

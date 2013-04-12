@@ -57,6 +57,7 @@ public abstract class BaseScreen implements Screen {
 	public BaseScreen(ShadowStruggles game) {
 		this.game = game;
 		this.stage = new MyStage(0, 0, true);
+		this.settings = game.getManager().getSettings();
 		this.camera = new OrthographicCamera(this.width, this.height);
 		this.camera.position.set(CAMERA_INITIAL_X, CAMERA_INITIAL_Y, 0);
 		this.camera.zoom = ((float) 960 / (float) width);
