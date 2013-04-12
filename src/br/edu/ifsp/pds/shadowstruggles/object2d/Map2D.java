@@ -108,6 +108,14 @@ public class Map2D extends Image implements InputProcessor {
 							.moveFixedObjects();
 					this.touchX = x;
 				}
+				if(controller.getCurrentScreen().getCamera().position.x
+								+ touchX - x > settings.backgroundWidth - settings.screenWidth/2){
+					controller.getCurrentScreen().getCamera().position.x = settings.backgroundWidth - settings.screenWidth/2;
+				}
+				if(controller.getCurrentScreen().getCamera().position.x
+						+ touchX - x < BaseScreen.CAMERA_INITIAL_X){
+					controller.getCurrentScreen().getCamera().position.x = BaseScreen.CAMERA_INITIAL_X;
+				}
 				return true;
 			}
 		}
