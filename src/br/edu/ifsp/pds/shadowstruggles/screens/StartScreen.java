@@ -64,6 +64,8 @@ public class StartScreen extends BaseScreen {
 		continueGame = new TextButton(
 				game.getManager().getMenuText().continueGame, this.getSkin()
 						.get("blur", TextButtonStyle.class));
+		continueGame.setX(100);
+		continueGame.setY(100);
 		continueGame.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float arg1, float arg2) {
@@ -119,15 +121,22 @@ public class StartScreen extends BaseScreen {
 		table.add(candle);
 		table.add(tripod);
 		table.row();
-		table.add(continueGame);
-		table.row();
-		table.add(newGame);
-
-		table.setPosition(480, 384);
+		
+		Table menu = new Table();
+		menu.defaults().width(250).height(200);
+		menu.debug();
+		menu.add(continueGame);
+		menu.row();
+		menu.add(newGame);
+		
+		
+		table.setPosition(500, 600);
+		menu.setPosition(300,280);
 
 		stage.addActor(tableTexture);
 		stage.addActor(book);
 		stage.addActor(table);
+		stage.addActor(menu);
 	}
 
 	@Override
