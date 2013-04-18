@@ -8,10 +8,12 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 
+import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.data.DeckDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
@@ -30,6 +32,7 @@ import br.edu.ifsp.pds.shadowstruggles.object2d.Map2D;
 import br.edu.ifsp.pds.shadowstruggles.object2d.MenuButton;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Timer2D;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Trap2D;
+import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
 public class BattleTutorial extends BaseScreen{
 	final static private String TUTORIAL_MAP="cena1";
@@ -49,11 +52,18 @@ public class BattleTutorial extends BaseScreen{
 	private Array<BackCard> backcards;
 	private Array<Label> cardInfo;
 	private Array<FixedImage> fixedImages;
+	private Image dialogBox;
+	private Label dialogText;
 	
 	private Deck tutorialDeck;
 	
+	
 	public BattleTutorial(ShadowStruggles game) {
 		super(game);
+		this.controller=new Controller(){@Override
+		public void mapClicked(float x, float y) {			
+		}};
+		controller.setCurrentscreen(this);
 		inputSources = new InputMultiplexer();
 		String mapPath = "data/images/maps/"
 				+ TUTORIAL_MAP + ".png";
@@ -83,7 +93,7 @@ public class BattleTutorial extends BaseScreen{
 				.findRegion("pause"), 10, this){@Override
 				public void clicked() {
 					System.out.println("clicouuu");
-					super.clicked();
+					//super.clicked();
 				}};
 		menu.setScale(1.5f);
 		menu.setY(560);
@@ -161,6 +171,13 @@ public class BattleTutorial extends BaseScreen{
 					inputSources.addProcessor((HandCard) a);
 			}
 		}
+		
+		dialogBox = ScreenUtils.defineImage(new Image(game.getAssets()
+				.get("data/images/objects/objects.atlas", TextureAtlas.class)
+				.findRegion("box")), 150, 400, 650, 200);
+		dialogText = ScreenUtils.defineLabel(new Label("Olá, aqui iremos te ensinar a jogar essa porra !",
+				getSkin()), 170, 430, 600, 200);
+		
 		stage.addActor(background);
 		stage.addActor(deck);
 		stage.addActor(energyBar);
@@ -169,6 +186,8 @@ public class BattleTutorial extends BaseScreen{
 		stage.addActor(enemyLife);
 		stage.addActor(timer);
 		stage.addActor(menu);
+		stage.addActor(dialogBox);
+		stage.addActor(dialogText);
 	}
 	
 	@Override
