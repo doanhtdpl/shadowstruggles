@@ -69,12 +69,12 @@ public class Map2D extends Image implements InputProcessor {
 						- 480, invertY - 160);
 			}
 			touched = false;
-		} else if (this.controller.getPlatform().getSelectedCard() != null) {
+		} else 
 
 			controller.mapClicked(x
 					+ controller.getCurrentScreen().getCamera().position.x
 					- 480, invertY - 160);
-		}
+		
 
 		justTouched = false;
 
