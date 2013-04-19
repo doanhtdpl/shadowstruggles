@@ -24,6 +24,7 @@ import br.edu.ifsp.pds.shadowstruggles.object2d.Effect2D;
 import br.edu.ifsp.pds.shadowstruggles.object2d.EnergyBar;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Fighter2D;
 import br.edu.ifsp.pds.shadowstruggles.object2d.FixedImage;
+import br.edu.ifsp.pds.shadowstruggles.object2d.FixedLabel;
 import br.edu.ifsp.pds.shadowstruggles.object2d.HandBackground;
 import br.edu.ifsp.pds.shadowstruggles.object2d.HandCard;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Hexagram;
@@ -52,8 +53,9 @@ public class BattleTutorial extends BaseScreen{
 	private Array<BackCard> backcards;
 	private Array<Label> cardInfo;
 	private Array<FixedImage> fixedImages;
-	private Image dialogBox;
-	private Label dialogText;
+	private FixedImage dialogBox;
+	private FixedLabel dialogText;
+	private FixedImage menu;
 	
 	private Deck tutorialDeck;
 	
@@ -62,6 +64,7 @@ public class BattleTutorial extends BaseScreen{
 		super(game);
 		this.controller=new Controller(){@Override
 		public void mapClicked(float x, float y) {			
+			System.out.println("clicou no mapaa");
 		}};
 		controller.setCurrentscreen(this);
 		inputSources = new InputMultiplexer();
@@ -70,7 +73,8 @@ public class BattleTutorial extends BaseScreen{
 		TextureRegion mapImage = new TextureRegion(new Texture(
 				Gdx.files.internal(mapPath)), settings.backgroundWidth / 2,
 				settings.backgroundHeight / 2);
-		map2d = new Map2D(controller, mapImage);
+		map2d = new Map2D(controller, mapImage){@Override
+		public void moveFixedObjects() {moveObjects();}};
 		hexagrams = new Array<Hexagram>();
 		backcards = new Array<BackCard>();
 		
@@ -88,7 +92,7 @@ public class BattleTutorial extends BaseScreen{
 		background = new HandBackground(0, game);
 		background.setY(0);
 
-		FixedImage menu = new FixedImage(game.getAssets()
+		menu = new FixedImage(game.getAssets()
 				.get("data/images/objects/objects.atlas", TextureAtlas.class)
 				.findRegion("pause"), 10, this){@Override
 				public void clicked() {
@@ -99,8 +103,9 @@ public class BattleTutorial extends BaseScreen{
 		menu.setY(560);
 		
 
-		inputSources.addProcessor(menu);
+		
 		inputSources.addProcessor(map2d);
+		inputSources.addProcessor(menu);
 		deck = new Deck2D(game, settings.deckX);
 		deck.setY(settings.bottomElementY);
 		inputSources.addProcessor(deck);
@@ -148,11 +153,17 @@ public class BattleTutorial extends BaseScreen{
 
 			}
 		}
-		
+		stage.addActor(background);
 		for (int i = 0; i < 5; i++) {
 			Card temp = tutorialDeck.draw();			
 			HandCard h = new HandCard(game, temp.getName(), settings.firstCardX
-					+ 130 * i, temp);
+					+ 130 * i, temp){@Override
+					public void unSelect() {
+						
+					}@Override
+						public void clicked() {
+							
+						}};
 			h.setY(settings.bottomElementY);
 			h.addListener(new ClickListener(){
 				@Override
@@ -172,13 +183,15 @@ public class BattleTutorial extends BaseScreen{
 			}
 		}
 		
-		dialogBox = ScreenUtils.defineImage(new Image(game.getAssets()
+		dialogBox = new FixedImage(game.getAssets()
 				.get("data/images/objects/objects.atlas", TextureAtlas.class)
-				.findRegion("box")), 150, 400, 650, 200);
-		dialogText = ScreenUtils.defineLabel(new Label("Olá, aqui iremos te ensinar a jogar essa porra !",
-				getSkin()), 170, 430, 600, 200);
+				.findRegion("box"), 150, this);
+		dialogBox=(FixedImage)ScreenUtils.defineImage(dialogBox, 150, 370, 650, 200);
+		dialogText= new FixedLabel("Seja bem vindo ao tutorial! Toque aqui para prosseguir.", 170, this);
+		dialogText = (FixedLabel)ScreenUtils.defineLabel(dialogText, 170, 400, 550, 200);
+		dialogText.setWrap(true);
 		
-		stage.addActor(background);
+		
 		stage.addActor(deck);
 		stage.addActor(energyBar);
 		stage.addActor(map2d);
@@ -188,6 +201,8 @@ public class BattleTutorial extends BaseScreen{
 		stage.addActor(menu);
 		stage.addActor(dialogBox);
 		stage.addActor(dialogText);
+		playerLife.drawLife(100, 100, getSkin());
+		enemyLife.drawLife(100, 100, getSkin());
 	}
 	
 	@Override
@@ -215,16 +230,42 @@ public class BattleTutorial extends BaseScreen{
 					((Trap2D) (a)).render();
 
 			}
-
-			// if (time >= (float) (1 / FPS)) {
+			playerLife.drawLife(100, 100);
+			enemyLife.drawLife(100, 100);
+			 
 			time=0;
-			
-
-			// }
+			this.timeDelay -= delta;
+			this.prevTime = (int) timeElapsed;
+			this.timeElapsed += delta;
+			timer.setTime(timeElapsed);
+			 
 			
 			time+=delta;
 			camera.update();
 		}
+	}
+	
+	public void moveObjects() {
+		//try{
+		for (int i = 0; i < stage.getActors().size; i++) {
+			Actor a = stage.getActors().get(i);
+			if (a.getClass().equals(HandCard.class)) {
+				((HandCard) a).move(this.stage, CAMERA_INITIAL_X);
+			}
+		}
+
+		deck.move(this.stage, CAMERA_INITIAL_X);
+		energyBar.move(this.stage, CAMERA_INITIAL_X);
+		background.move(this.stage, CAMERA_INITIAL_X);
+		timer.move(this.stage, CAMERA_INITIAL_X);
+		playerLife.move(this.stage, CAMERA_INITIAL_X);
+		enemyLife.move(this.stage, CAMERA_INITIAL_X);
+		menu.move(this.stage, CAMERA_INITIAL_X);		
+		//energyBar.update();		
+		//for(FixedImage image : fixedImages) image.move(stage, CAMERA_INITIAL_X);
+		dialogBox.move(stage, CAMERA_INITIAL_X);
+		dialogText.move(stage, CAMERA_INITIAL_X);
+		//}catch (Exception unknownError){}
 	}
 
 }

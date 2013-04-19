@@ -180,21 +180,16 @@ public class HandCard extends FixedObject implements InputProcessor {
 						isSelected = false;
 
 					if (isSelected) {
-						game.getController().handCardClicked(getCard(),
-								isSelected);
-
+						
+						clicked();
 						startBlink();
 					} else {
-						game.getController().handCardClicked(getCard(),
-								isSelected);
+						clicked();
 					}
 
 				}
 			} else {
-				resetPosition();
-				game.getController().getPlatform().setSelectedCard(null);
-				((BattleScreen) (game.getController().getCurrentScreen()))
-						.changeHexagram(false);
+				unSelect();
 			}
 
 			touched = false;
@@ -204,6 +199,18 @@ public class HandCard extends FixedObject implements InputProcessor {
 		justTouched = false;
 
 		return false;
+	}
+	
+	public void clicked(){
+		game.getController().handCardClicked(getCard(),
+				isSelected);
+	}
+	
+	public void unSelect(){
+		resetPosition();
+		game.getController().getPlatform().setSelectedCard(null);
+		((BattleScreen) (game.getController().getCurrentScreen()))
+				.changeHexagram(false);
 	}
 
 	@Override
