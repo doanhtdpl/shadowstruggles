@@ -28,7 +28,7 @@ import com.badlogic.gdx.utils.Array;
 public class ShadowStruggles extends Game {
 	public static final String LOG = ShadowStruggles.class.getName();
 	private final static Logger LOGGER = Logger.getLogger(ShadowStruggles.class
-		      .getName());
+			.getName());
 	private Controller controller;
 	private Profile profile;
 	private DataManager manager;
@@ -51,12 +51,13 @@ public class ShadowStruggles extends Game {
 		this.controller = new Controller();
 		this.setAssets(new AssetManager());
 		this.setScreen(new LoadingScreen(this));
-		try {
-		      MyLogger.setup();
-		    } catch (IOException e) {
-		      e.printStackTrace();
-		      throw new RuntimeException("Problems with creating the log files");
-		    }
+//		try {
+//			if (debugMode)
+//				MyLogger.setup();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//			throw new RuntimeException("Problems with creating the log files");
+//		}
 	}
 
 	public void setScreen(Screen screen) {
@@ -92,7 +93,7 @@ public class ShadowStruggles extends Game {
 	@Override
 	public void render() {
 		super.render();
-		
+
 	}
 
 	@Override
@@ -108,13 +109,13 @@ public class ShadowStruggles extends Game {
 	@Override
 	public void dispose() {
 		super.dispose();
-		
+
 	}
 
 	public void setController(Controller controller) {
 		this.controller = controller;
 	}
-	
+
 	public Controller getController() {
 		return this.controller;
 	}
@@ -142,7 +143,7 @@ public class ShadowStruggles extends Game {
 	public void setAudio(SoundManager audio) {
 		this.audio = audio;
 	}
-	
+
 	public SoundManager getAudio() {
 		return this.audio;
 	}
