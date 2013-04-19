@@ -152,4 +152,8 @@ public class FixedImage extends Image implements InputProcessor {
 	public boolean scrolled(int amount) {
 		return false;
 	}
+	
+	public void setInitialX(int initialX) {
+		this.initialX = initialX;
+	}
 }
