@@ -168,10 +168,10 @@ public class ShopScreen extends BaseScreen {
 			Image cardImage = new Image(game.getAssets()
 					.get("data/images/cards/cards.atlas", TextureAtlas.class)
 					.findRegion(card.getName().toLowerCase()));
-			cardImage.setY(5);
-			cardImage.setX(180 + count * 120);
-			cardImage.setScaleX(0.3f);
-			cardImage.setScaleY(0.3f);
+			cardImage.setY(10);
+			cardImage.setX(180 + count * 135);
+			cardImage.setScaleX(0.5f);
+			cardImage.setScaleY(0.5f);
 			final Card card2 = card;
 			cardImage.addListener(new ClickListener() {
 
@@ -182,7 +182,7 @@ public class ShopScreen extends BaseScreen {
 				}
 			});
 			cardImages.add(cardImage);
-			if (cardImage.getX() >= 180 && cardImage.getX() < 900)
+			if (cardImage.getX() >= 180 && cardImage.getX() < 800)
 				stage.addActor(cardImage);
 			count++;
 		}
@@ -203,8 +203,8 @@ public class ShopScreen extends BaseScreen {
 
 		if ((side > 0 && movableToLeft) || (side < 0 && movableToRight))
 			for (Image card : cardImages) {
-				card.setX(card.getX() - 120 * side);
-				if (card.getX() >= 120 && card.getX() < 900)
+				card.setX(card.getX() - 135 * side);
+				if (card.getX() >= 135 && card.getX() < 800)
 					stage.addActor(card);
 				else {
 					try {
@@ -229,10 +229,10 @@ public class ShopScreen extends BaseScreen {
 		selectedImage = new Image(game.getAssets()
 				.get("data/images/cards/cards.atlas", TextureAtlas.class)
 				.findRegion(card.getName().toLowerCase()));
-		selectedImage.setX(75);
+		selectedImage.setX(50);
 		selectedImage.setY(256);
-		selectedImage.setScaleX(0.7f);
-		selectedImage.setScaleY(0.7f);
+		selectedImage.setScaleX(1.3f);
+		selectedImage.setScaleY(1.3f);
 		name.setText(selectedCard.getNameVisualization());
 		name.setY(590);
 		stage.addActor(selectedImage);
