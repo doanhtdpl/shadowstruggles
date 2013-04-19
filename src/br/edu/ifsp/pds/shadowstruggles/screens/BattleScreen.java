@@ -13,6 +13,8 @@ import br.edu.ifsp.pds.shadowstruggles.object2d.Deck2D;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Effect2D;
 import br.edu.ifsp.pds.shadowstruggles.object2d.EnergyBar;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Fighter2D;
+import br.edu.ifsp.pds.shadowstruggles.object2d.FixedImage;
+import br.edu.ifsp.pds.shadowstruggles.object2d.FixedLabel;
 import br.edu.ifsp.pds.shadowstruggles.object2d.FixedObject;
 import br.edu.ifsp.pds.shadowstruggles.object2d.HandBackground;
 import br.edu.ifsp.pds.shadowstruggles.object2d.HandCard;
@@ -69,11 +71,14 @@ public class BattleScreen extends BaseScreen {
 	private boolean inicializado = false;
 	private Array<Hexagram> hexagrams;
 	private Array<BackCard> backcards;
-	private Array<Label> cardInfo;
+	private Array<FixedLabel> cardInfo;
 
 	protected Deck playerDeck;
 	protected BattlePlatform battlePlatform;
 	protected String name;
+	
+	protected Array<FixedImage> fixedImages;
+	
 	
 	/**
 	 * Informs if the player has accessed the battle through the campaign or,
@@ -100,7 +105,7 @@ public class BattleScreen extends BaseScreen {
 		this.name = name;
 		this.isInCampaign = isInCampaign;
 		inputSources = new InputMultiplexer();
-		cardInfo= new Array<Label>();
+		cardInfo= new Array<FixedLabel>();
 		controller.setCurrentscreen(this);
 		controller.setPlatform(battlePlatform);
 
@@ -118,6 +123,7 @@ public class BattleScreen extends BaseScreen {
 		battlePlatform.getPlayerDeck().shuffle();
 		hexagrams = new Array<Hexagram>();
 		backcards = new Array<BackCard>();
+		fixedImages = new Array<FixedImage>();		
 		initComponents();
 	}
 
@@ -226,6 +232,8 @@ public class BattleScreen extends BaseScreen {
 				battlePlatform.getRules().getPlayerHPmax());
 		energyBar.drawEnergy(battlePlatform.getRules().getPlayerEnergy(),
 				battlePlatform.getRules().getPlayerEnergyMax());
+		for(FixedImage image : fixedImages) image.move(stage, CAMERA_INITIAL_X);
+		for(FixedLabel label : cardInfo) label.move(stage, CAMERA_INITIAL_X);
 	}
 
 	/***
@@ -479,33 +487,32 @@ public class BattleScreen extends BaseScreen {
 	public void showResumedCardInfo() {		
 		removeResumedCardInfo();
 		Card card = controller.getCardFromImage(selectedCard);
-		Label cardName = new Label(card.getNameVisualization(), getSkin());
+		Label cardName = new FixedLabel(card.getNameVisualization(), 10,this);
 		cardName = ScreenUtils.defineLabel(cardName, 10, 150, 200, 70);
 		Label energyCost = ScreenUtils.defineLabel(
-				new Label(String.valueOf(card.getEnergyCost()), getSkin()), 330,
+				new FixedLabel(String.valueOf(card.getEnergyCost()), 330,this), 330,
 				150, 200, 70);
 		if(card.getClass().equals(Fighter.class) && !card.getName().equals("Rock")){
-			Label life = ScreenUtils.defineLabel(
-					new Label("HP : "+String.valueOf(((Fighter)card).getHealth()), getSkin()),440,
+			FixedLabel life = (FixedLabel)ScreenUtils.defineLabel(
+					new FixedLabel("HP : "+String.valueOf(((Fighter)card).getHealth()), 440,this),440,
 					150, 200, 70);
 			stage.addActor(life);
-			cardInfo.add(life);
-			Label atk = ScreenUtils.defineLabel(
-					new Label("ATK : "+String.valueOf(((Fighter)card).getDamage()), getSkin()), 860,
+			cardInfo.add(life);			
+			FixedLabel atk = (FixedLabel)ScreenUtils.defineLabel(
+					new FixedLabel("ATK : "+String.valueOf(((Fighter)card).getDamage()), 860,this), 860,
 					150, 200, 70);
 			stage.addActor(atk);
-			cardInfo.add(atk);
-			Label spd = ScreenUtils.defineLabel(
-					new Label("SPD : "+String.valueOf(((Fighter)card).getSpeedValue()), getSkin()),600,
+			cardInfo.add(atk);			
+			FixedLabel spd =(FixedLabel) ScreenUtils.defineLabel(
+					new FixedLabel("SPD : "+String.valueOf(((Fighter)card).getSpeedValue()), 600,this),600,
 					150, 200, 70);
 			stage.addActor(spd);
-			cardInfo.add(spd);
+			cardInfo.add(spd);			
 		}
 		stage.addActor(cardName);
 		stage.addActor(energyCost);
-		cardInfo.add(cardName);
-		cardInfo.add(energyCost);
-		
+		cardInfo.add((FixedLabel)cardName);
+		cardInfo.add((FixedLabel)energyCost);		
 	}
 	
 	public void removeResumedCardInfo(){

@@ -94,33 +94,37 @@ public class Map2D extends Image implements InputProcessor {
 					&& invertY <= this.getY() + this.getHeight()) {
 
 				Settings settings = controller.getCurrentScreen().getSettings();
-
-				if (controller.getCurrentScreen().getCamera().position.x
+				BaseScreen screen = controller.getCurrentScreen();
+				if (screen.getCamera().position.x
 						+ touchX - x > BaseScreen.CAMERA_INITIAL_X
-						&& controller.getCurrentScreen().getCamera().position.x
+						&& screen.getCamera().position.x
 								+ touchX - x < settings.backgroundWidth
 								- BaseScreen.CAMERA_INITIAL_X) {
-					controller.getCurrentScreen().getCamera().position.x += touchX
+					screen.getCamera().position.x += touchX
 							- x;
 
 					// Render the screen again to avoid blinking.
-					((BattleScreen) this.controller.getCurrentScreen())
-							.moveFixedObjects();
+					moveFixedObjects();
 					this.touchX = x;
 				}
-				if(controller.getCurrentScreen().getCamera().position.x
+				if(screen.getCamera().position.x
 								+ touchX - x > settings.backgroundWidth - settings.screenWidth/2){
-					controller.getCurrentScreen().getCamera().position.x = settings.backgroundWidth - settings.screenWidth/2;
+					screen.getCamera().position.x = settings.backgroundWidth - settings.screenWidth/2;
 				}
-				if(controller.getCurrentScreen().getCamera().position.x
+				if(screen.getCamera().position.x
 						+ touchX - x < BaseScreen.CAMERA_INITIAL_X){
-					controller.getCurrentScreen().getCamera().position.x = BaseScreen.CAMERA_INITIAL_X;
+					screen.getCamera().position.x = BaseScreen.CAMERA_INITIAL_X;
 				}
 				return true;
 			}
 		}
 
 		return false;
+	}
+	
+	public void moveFixedObjects(){
+		((BattleScreen) controller.getCurrentScreen())
+		.moveFixedObjects();
 	}
 
 	@Override
