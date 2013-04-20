@@ -77,7 +77,7 @@ public class FixedImage extends Image implements InputProcessor {
 	}
 
 	public void clicked() {
-	};
+	}
 
 	@Override
 	public boolean keyDown(int keycode) {
@@ -128,6 +128,7 @@ public class FixedImage extends Image implements InputProcessor {
 					&& screenX + deltaCamX <= this.getX() + this.getWidth()
 							* getScaleX() && invertY >= this.getY()
 					&& invertY <= this.getY() + this.getHeight() * getScaleY()) {
+				
 				clicked();
 			}
 			touched = false;

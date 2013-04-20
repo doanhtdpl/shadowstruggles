@@ -63,10 +63,10 @@ public class BattleScreen extends BaseScreen {
 	private float timeDelay;
 	private float time;
 	private Deck2D deck;
-	private InputMultiplexer inputSources;
+	protected InputMultiplexer inputSources;
 	private Image selectedCard;
 
-	private Map2D map2d;
+	protected Map2D map2d;
 	private HandBackground background;
 	private boolean inicializado = false;
 	private Array<Hexagram> hexagrams;
@@ -101,7 +101,7 @@ public class BattleScreen extends BaseScreen {
 			Controller controller, BattlePlatform battlePlatform, String name,
 			boolean isInCampaign) {
 		super(game, controller);
-
+		
 		this.name = name;
 		this.isInCampaign = isInCampaign;
 		inputSources = new InputMultiplexer();
@@ -121,6 +121,7 @@ public class BattleScreen extends BaseScreen {
 		timeDelay = 0;
 		battlePlatform.getEnemyDeck().shuffle();
 		battlePlatform.getPlayerDeck().shuffle();
+		doBeforeSet();
 		hexagrams = new Array<Hexagram>();
 		backcards = new Array<BackCard>();
 		fixedImages = new Array<FixedImage>();		
@@ -525,6 +526,7 @@ public class BattleScreen extends BaseScreen {
 			cardInfo.clear();
 		
 	}
+	public void doBeforeSet(){}
 
 	public Array<BackCard> getBackcards() {
 		return backcards;
