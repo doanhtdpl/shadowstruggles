@@ -81,6 +81,7 @@ public class LoadingScreen extends BaseScreen {
 				TextureAtlas.class);
 		game.getAssets().load("data/images/card_effects/card_effects.atlas",
 				TextureAtlas.class);
+		game.getAssets().load("data/images/objects/energy100.png", Texture.class);
 //		game.getAssets().load("data/images/card_images/card_images.atlas",
 //				TextureAtlas.class);
 		
