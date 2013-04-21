@@ -66,9 +66,9 @@ public class FreePlayScreen extends BaseScreen {
 
 				@Override
 				public void clicked(InputEvent event, float x, float y) {
-					if (!game.getAudio().getMusicName().equals("scene1")) {
+					if (!game.getAudio().getMusicName().equals("battle")) {
 						game.getAudio().stop();
-						game.getAudio().setMusic("scene1");
+						game.getAudio().setMusic("battle");
 					}
 					game.setScreenWithTransition(battle);
 				}
