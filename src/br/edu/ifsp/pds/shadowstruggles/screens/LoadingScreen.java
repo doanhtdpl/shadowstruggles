@@ -24,8 +24,7 @@ import br.edu.ifsp.pds.shadowstruggles.model.Trap;
  * player indicating how much of the resources have been loaded.
  */
 public class LoadingScreen extends BaseScreen {
-	private static int BAR_MAX_WIDTH = 1024; // The width of the progress bar.
-
+	
 	private class LoadingBar extends Image {
 		private float percentage = 0.0f;
 		private Label percentageLbl;
@@ -60,17 +59,15 @@ public class LoadingScreen extends BaseScreen {
 			return this.percentage;
 		}
 	}
-
+	
+	private static int BAR_MAX_WIDTH = 1024; // The width of the progress bar.
+	
 	private Image background;
 	private ShadowStruggles game;
 	private LoadingBar bar;
 
 	public LoadingScreen(ShadowStruggles game) {
 		super(game);
-
-		// TODO: Remover o loading de energy100.png
-		game.getAssets().load("data/images/objects/energy100.png",
-				Texture.class);
 
 		// Load main textures.
 		
@@ -80,13 +77,13 @@ public class LoadingScreen extends BaseScreen {
 				TextureAtlas.class);
 		game.getAssets().load("data/images/card_attacking/card_attacking.atlas",
 				TextureAtlas.class);
-		game.getAssets().load("data/images/card_effects/card_effects.atlas",
-				TextureAtlas.class);
-		game.getAssets().load("data/images/card_images/card_images.atlas",
-				TextureAtlas.class);
 		game.getAssets().load("data/images/card_walking/card_walking.atlas",
 				TextureAtlas.class);
-
+		game.getAssets().load("data/images/card_effects/card_effects.atlas",
+				TextureAtlas.class);
+//		game.getAssets().load("data/images/card_images/card_images.atlas",
+//				TextureAtlas.class);
+		
 		// Load music and sound effects.
 
 		game.getAssets().load("data/audio/battle.ogg", Music.class);
