@@ -22,7 +22,6 @@ public class EnergyBar extends FixedObject {
 		super(game.getAssets()
 				.get("data/images/objects/objects.atlas", TextureAtlas.class)
 				.findRegion("energy100"), initialX);
-		this.scale(0.0f, 1.0f);
 		this.percentage = 0.45f;
 		this.game = game;
 	}
@@ -36,10 +35,9 @@ public class EnergyBar extends FixedObject {
 		this.setHeight(h1);
 		int h2 = (int) h1;
 
-		// TODO: Implementar maneira eficiente de modificar o nível de energia.
-//		this.setDrawable(new TextureRegionDrawable(new TextureRegion(game
-//				.getAssets().get("data/images/objects/energy100.png",
-//						Texture.class), 0, 128 - h2, 128, h2)));
+		this.setDrawable(new TextureRegionDrawable(new TextureRegion(game
+				.getAssets().get("data/images/objects/energy100.png",
+						Texture.class), 0, 128 - h2, 128, h2)));
 	}
 
 	public void initEnergy(int currentEnergy, int maxEnergy, Skin skin) {
