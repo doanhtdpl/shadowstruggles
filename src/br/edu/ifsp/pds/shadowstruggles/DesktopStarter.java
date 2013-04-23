@@ -10,11 +10,6 @@ public class DesktopStarter {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		ApplicationListener listener = new ShadowStruggles();
-		String title = "Shadow Struggles";
-        int width = 960, height = 640;
-        boolean useOpenGLES2 = false;
-        new LwjglApplication( listener, title, width, height, useOpenGLES2 );
 //		TexturePacker2.process("data/images/controls", "data/images/controls", "skin");
 //		TexturePacker2.process("data/images/objects", "data/images/objects", "objects");
 //        TexturePacker2.process("data/images/card_attacking", "data/images/card_attacking", "card_attacking");
@@ -22,6 +17,12 @@ public class DesktopStarter {
 //        TexturePacker2.process("data/images/card_images", "data/images/card_images", "card_images");
 //        TexturePacker2.process("data/images/card_walking", "data/images/card_walking", "card_walking");
 //        TexturePacker2.process("data/images/cards", "data/images/cards", "cards");
+		
+		ApplicationListener listener = new ShadowStruggles();
+		String title = "Shadow Struggles";
+        int width = 960, height = 640;
+        boolean useOpenGLES2 = false;
+        new LwjglApplication( listener, title, width, height, useOpenGLES2 );
 	}
 
 }
