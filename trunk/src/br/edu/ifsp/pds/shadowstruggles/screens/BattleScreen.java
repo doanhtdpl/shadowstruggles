@@ -519,9 +519,9 @@ public class BattleScreen extends BaseScreen {
 	public void removeResumedCardInfo(){
 		
 			for(Label label: cardInfo){
-				try{
-				label.remove();				
-				}catch(Exception inexistentActor){}
+				
+				stage.removeActor(label);				
+				
 			}
 			cardInfo.clear();
 		
