@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 
 import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
 import br.edu.ifsp.pds.shadowstruggles.data.SoundManager;
+import br.edu.ifsp.pds.shadowstruggles.dataTest.DataManagerTest;
 import br.edu.ifsp.pds.shadowstruggles.logging.MyLogger;
 import br.edu.ifsp.pds.shadowstruggles.model.Profile;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
@@ -39,10 +40,24 @@ public class ShadowStruggles extends Game {
 	 * When the application is in debug mode, the error messages are thrown into
 	 * the standard output in order to make exception handling easier to the
 	 * developer. Otherwise (in the versions released to the public), the
-	 * exceptions are encapsulated into an user-friendly error screen. The
-	 * default value is true.
+	 * exceptions are encapsulated into an user-friendly error screen.
 	 */
-	private boolean debugMode = true;
+	private boolean debugMode;
+
+	/**
+	 * Indicates whether or not to execute unit tests. If true, the application
+	 * will not set any screen and will instead only run the test cases.
+	 */
+	private boolean unitTests;
+
+	public ShadowStruggles() {
+		this(true, false);
+	}
+
+	public ShadowStruggles(boolean debugMode, boolean unitTests) {
+		this.debugMode = debugMode;
+		this.unitTests = unitTests;
+	}
 
 	@Override
 	public void create() {
@@ -50,14 +65,21 @@ public class ShadowStruggles extends Game {
 		this.audio = new SoundManager(assets);
 		this.controller = new Controller();
 		this.setAssets(new AssetManager());
-		this.setScreen(new LoadingScreen(this));
-//		try {
-//			if (debugMode)
-//				MyLogger.setup();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//			throw new RuntimeException("Problems with creating the log files");
-//		}
+		
+		if(!unitTests)
+			this.setScreen(new LoadingScreen(this));
+		else {
+			DataManagerTest dataTest = new DataManagerTest();
+			dataTest.dataManagerTest();
+			//dataTest.dataManagerLanguageTest();
+		}
+		// try {
+		// if (debugMode)
+		// MyLogger.setup();
+		// } catch (IOException e) {
+		// e.printStackTrace();
+		// throw new RuntimeException("Problems with creating the log files");
+		// }
 	}
 
 	public void setScreen(Screen screen) {
