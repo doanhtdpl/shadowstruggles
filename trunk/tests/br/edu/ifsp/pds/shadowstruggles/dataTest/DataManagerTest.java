@@ -11,7 +11,10 @@ public class DataManagerTest {
 	@Test
 	public void dataManagerTest() {
 		DataManager dataManager = new DataManager();
-		assertNotNull("Right", dataManager);
+		if(dataManager != null)
+			System.out.println("dataManagerTest: Success");
+		else
+			System.out.println("dataManagerTest: Fail");
 	}
 	
 	@Test
