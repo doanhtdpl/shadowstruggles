@@ -1,7 +1,5 @@
 package br.edu.ifsp.pds.shadowstruggles.dataTest;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
@@ -13,10 +11,13 @@ import com.badlogic.gdx.utils.Array;
 public class ProfileDAOTest {
 
 	@Test
-	public void test() {
-		Array<Profile> profiles= ProfileDAO.getProfiles(new DataManager());
-		assertEquals("Result:", 1, profiles.get(0).getId());
+	public void getProfilesTest() {
+		Array<Profile> profiles = ProfileDAO.getProfiles(new DataManager());
 		
+		if(profiles.get(0).getId() == 1)
+			System.out.println("getProfilesTest: Success");
+		else
+			System.out.println("getProfilesTest: Fail");
 	}
 
 }
