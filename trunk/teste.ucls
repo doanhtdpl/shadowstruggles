@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true">  
-  <class id="1" language="java" name="br.edu.ifsp.pds.shadowstruggles.MyStage" project="ShadowStruggles" 
-    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/MyStage.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position x="181" y="-98" width="188" height="171"/>    
+  <class id="1" language="java" name="br.edu.ifsp.pds.shadowstruggles.screens.MyStage" project="ShadowStruggles" 
+    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/screens/MyStage.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="188" x="181" y="-98"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -12,7 +13,7 @@
   </class>  
   <class id="2" language="java" name="br.edu.ifsp.pds.shadowstruggles.Controller" project="ShadowStruggles" 
     file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/Controller.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position x="409" y="491" width="235" height="603"/>    
+    <position height="603" width="235" x="409" y="491"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -22,7 +23,7 @@
   <class id="3" language="java" name="br.edu.ifsp.pds.shadowstruggles.ShadowStruggles" project="ShadowStruggles" 
     file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/ShadowStruggles.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position x="409" y="-98" width="210" height="549"/>    
+    <position height="549" width="210" x="409" y="-98"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -31,7 +32,7 @@
   </class>  
   <class id="4" language="java" name="br.edu.ifsp.pds.shadowstruggles.DesktopStarter" project="ShadowStruggles" 
     file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/DesktopStarter.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position x="659" y="-98" width="145" height="99"/>    
+    <position height="99" width="145" x="659" y="-98"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -40,7 +41,7 @@
   </class>  
   <class id="5" language="java" name="br.edu.ifsp.pds.shadowstruggles.data.Languages" project="ShadowStruggles" 
     file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/data/Languages.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position x="872" y="574" width="239" height="171"/>    
+    <position height="171" width="239" x="872" y="574"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -50,7 +51,7 @@
   <class id="6" language="java" name="br.edu.ifsp.pds.shadowstruggles.data.FighterDAO" project="ShadowStruggles" 
     file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/data/FighterDAO.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position x="127" y="-213" width="228" height="117"/>    
+    <position height="117" width="228" x="127" y="-213"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -59,7 +60,7 @@
   </class>  
   <class id="7" language="java" name="br.edu.ifsp.pds.shadowstruggles.data.TrapDAO" project="ShadowStruggles" 
     file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/data/TrapDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position x="395" y="-213" width="206" height="117"/>    
+    <position height="117" width="206" x="395" y="-213"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -68,7 +69,7 @@
   </class>  
   <class id="8" language="java" name="br.edu.ifsp.pds.shadowstruggles.data.MenuText" project="ShadowStruggles" 
     file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/data/MenuText.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position x="1151" y="574" width="239" height="531"/>    
+    <position height="531" width="239" x="1151" y="574"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -78,7 +79,7 @@
   <class id="9" language="java" name="br.edu.ifsp.pds.shadowstruggles.data.DataManager" project="ShadowStruggles" 
     file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/data/DataManager.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position x="1151" y="-213" width="228" height="747"/>    
+    <position height="747" width="228" x="1151" y="-213"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -87,7 +88,7 @@
   </class>  
   <class id="10" language="java" name="br.edu.ifsp.pds.shadowstruggles.data.EffectDAO" project="ShadowStruggles" 
     file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/data/EffectDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position x="891" y="-213" width="220" height="117"/>    
+    <position height="117" width="220" x="891" y="-213"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -96,7 +97,7 @@
   </class>  
   <class id="11" language="java" name="br.edu.ifsp.pds.shadowstruggles.data.DeckDAO" project="ShadowStruggles" 
     file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/data/DeckDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position x="641" y="-213" width="210" height="117"/>    
+    <position height="117" width="210" x="641" y="-213"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -106,7 +107,7 @@
   <class id="12" language="java" name="br.edu.ifsp.pds.shadowstruggles.data.SoundManager" project="ShadowStruggles" 
     file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/data/SoundManager.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position x="1683" y="-213" width="178" height="297"/>    
+    <position height="297" width="178" x="1683" y="-213"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -115,7 +116,7 @@
   </class>  
   <class id="13" language="java" name="br.edu.ifsp.pds.shadowstruggles.data.SceneDAO" project="ShadowStruggles" 
     file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/data/SceneDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position x="1419" y="-213" width="224" height="117"/>    
+    <position height="117" width="224" x="1419" y="-213"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -125,7 +126,7 @@
   <class id="14" language="java" name="br.edu.ifsp.pds.shadowstruggles.data.ProfileDAO" project="ShadowStruggles" 
     file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/data/ProfileDAO.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position x="1901" y="-213" width="222" height="135"/>    
+    <position height="135" width="222" x="1901" y="-213"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -134,7 +135,7 @@
   </class>  
   <class id="15" language="java" name="br.edu.ifsp.pds.shadowstruggles.data.Settings" project="ShadowStruggles" 
     file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/data/Settings.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position x="1430" y="574" width="239" height="585"/>    
+    <position height="585" width="239" x="1430" y="574"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      

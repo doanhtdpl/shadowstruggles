@@ -1,7 +1,7 @@
 package br.edu.ifsp.pds.shadowstruggles.object2d;
 
-import br.edu.ifsp.pds.shadowstruggles.MyStage;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
+import br.edu.ifsp.pds.shadowstruggles.screens.MyStage;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
