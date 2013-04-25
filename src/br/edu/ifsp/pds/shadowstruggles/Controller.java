@@ -13,6 +13,7 @@ import br.edu.ifsp.pds.shadowstruggles.object2d.Trap2D;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.BattleScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.InGameMenu;
+import br.edu.ifsp.pds.shadowstruggles.screens.MyStage;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;

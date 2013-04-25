@@ -1,6 +1,5 @@
-package br.edu.ifsp.pds.shadowstruggles;
+package br.edu.ifsp.pds.shadowstruggles.screens;
 
-import br.edu.ifsp.pds.shadowstruggles.screens.BattleScreen;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
