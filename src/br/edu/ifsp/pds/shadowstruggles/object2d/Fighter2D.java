@@ -6,7 +6,6 @@ import br.edu.ifsp.pds.shadowstruggles.data.Settings;
 import br.edu.ifsp.pds.shadowstruggles.model.Fighter;
 
 import com.badlogic.gdx.ApplicationListener;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;

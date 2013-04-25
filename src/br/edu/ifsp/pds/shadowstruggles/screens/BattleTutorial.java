@@ -1,24 +1,20 @@
 package br.edu.ifsp.pds.shadowstruggles.screens;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.utils.Array;
-
-import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.data.DeckDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.model.DefaultRules;
 import br.edu.ifsp.pds.shadowstruggles.model.Map;
-import br.edu.ifsp.pds.shadowstruggles.model.Profile;
 import br.edu.ifsp.pds.shadowstruggles.model.enemies.TutorialEnemy;
 import br.edu.ifsp.pds.shadowstruggles.object2d.FixedImage;
 import br.edu.ifsp.pds.shadowstruggles.object2d.FixedLabel;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.utils.Array;
 
 public class BattleTutorial extends BattleScreen{
 	private FixedImage dialogBox;
