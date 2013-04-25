@@ -55,7 +55,7 @@ public class DataManager {
 	 *            The language to write/recover the files from. The currently
 	 *            supported languages are en_us and pt_br.
 	 */
-	public DataManager(String language) {
+	public DataManager(String language) throws SerializationException {
 		this.json = new Json();
 
 		this.gameSettings = Gdx.files.internal("data/game_settings.json");
