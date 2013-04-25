@@ -56,6 +56,7 @@ public class BTutorial extends BattleScreen{
 		stage.addActor(dialogText);
 		fixedImages.add(dialogBox);
 		loadData();
+		// TODO: Usar TextureRegion carregada pelo AssetsManager, sem instanciar novas Textures ou TextureRegion.
 		image = new FixedImage(new TextureRegion(new Texture(Gdx.files.internal("data/images/objects/indicator.png"))), image1X.get(currentIndex), this);
 		stage.addActor(image);
 		nextDialog();
@@ -136,7 +137,7 @@ public class BTutorial extends BattleScreen{
         image1X.add(470);
 		image1Y.add(570);
 		imageVisible.add(true);
-        text.add("Agora, destrua a base inimiga! Invoque suas cartas com sabedoria. Acredite no coração das cartas");
+        text.add("Agora, destrua a base inimiga!");
         image1X.add(10);
 		image1Y.add(10);
 		imageVisible.add(false);
