@@ -2,6 +2,7 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
 import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.Deck;
@@ -76,10 +77,9 @@ public class BattleScreen extends BaseScreen {
 	protected Deck playerDeck;
 	protected BattlePlatform battlePlatform;
 	protected String name;
-	
+
 	protected Array<FixedImage> fixedImages;
-	
-	
+
 	/**
 	 * Informs if the player has accessed the battle through the campaign or,
 	 * otherwise, free play.
@@ -101,11 +101,11 @@ public class BattleScreen extends BaseScreen {
 			Controller controller, BattlePlatform battlePlatform, String name,
 			boolean isInCampaign) {
 		super(game, controller);
-		
+
 		this.name = name;
 		this.isInCampaign = isInCampaign;
 		inputSources = new InputMultiplexer();
-		cardInfo= new Array<FixedLabel>();
+		cardInfo = new Array<FixedLabel>();
 		controller.setCurrentscreen(this);
 		controller.setPlatform(battlePlatform);
 
@@ -124,7 +124,7 @@ public class BattleScreen extends BaseScreen {
 		doBeforeSet();
 		hexagrams = new Array<Hexagram>();
 		backcards = new Array<BackCard>();
-		fixedImages = new Array<FixedImage>();		
+		fixedImages = new Array<FixedImage>();
 		initComponents();
 	}
 
@@ -233,8 +233,10 @@ public class BattleScreen extends BaseScreen {
 				battlePlatform.getRules().getPlayerHPmax());
 		energyBar.drawEnergy(battlePlatform.getRules().getPlayerEnergy(),
 				battlePlatform.getRules().getPlayerEnergyMax());
-		for(FixedImage image : fixedImages) image.move(stage, CAMERA_INITIAL_X);
-		for(FixedLabel label : cardInfo) label.move(stage, CAMERA_INITIAL_X);
+		for (FixedImage image : fixedImages)
+			image.move(stage, CAMERA_INITIAL_X);
+		for (FixedLabel label : cardInfo)
+			label.move(stage, CAMERA_INITIAL_X);
 	}
 
 	/***
@@ -257,22 +259,23 @@ public class BattleScreen extends BaseScreen {
 				|| Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
 			controller.menuButtonClicked(game);
 		}
-		if (game.isDebugMode() && Gdx.input.isKeyPressed(Input.Keys.UP)) {
+		if (game.getMode() == RunMode.DEBUG
+				&& Gdx.input.isKeyPressed(Input.Keys.UP)) {
 			this.controller.playerLifeChanged(4);
 		}
-		if (game.isDebugMode() && Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+		if (game.getMode() == RunMode.DEBUG && Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
 			this.controller.playerLifeChanged(-4);
 		}
-		if (game.isDebugMode() && Gdx.input.isKeyPressed(Input.Keys.W)) {
+		if (game.getMode() == RunMode.DEBUG && Gdx.input.isKeyPressed(Input.Keys.W)) {
 			this.controller.playerEnergyChanged(4);
 		}
-		if (game.isDebugMode() && Gdx.input.isKeyPressed(Input.Keys.S)) {
+		if (game.getMode() == RunMode.DEBUG && Gdx.input.isKeyPressed(Input.Keys.S)) {
 			this.controller.playerEnergyChanged(-4);
 		}
-		if (game.isDebugMode() && Gdx.input.isKeyPressed(Input.Keys.I)) {
+		if (game.getMode() == RunMode.DEBUG && Gdx.input.isKeyPressed(Input.Keys.I)) {
 			this.controller.enemyLifeChanged(4);
 		}
-		if (game.isDebugMode() && Gdx.input.isKeyPressed(Input.Keys.K)) {
+		if (game.getMode() == RunMode.DEBUG && Gdx.input.isKeyPressed(Input.Keys.K)) {
 			this.controller.enemyLifeChanged(-4);
 		}
 	}
@@ -380,10 +383,10 @@ public class BattleScreen extends BaseScreen {
 			HandCard h = new HandCard(game, temp.getName(), settings.firstCardX
 					+ 130 * i, temp);
 			h.setY(settings.bottomElementY);
-			h.addListener(new ClickListener(){
+			h.addListener(new ClickListener() {
 				@Override
 				public void clicked(InputEvent event, float x, float y) {
-					
+
 					super.clicked(event, x, y);
 					showResumedCardInfo();
 				}
@@ -409,13 +412,13 @@ public class BattleScreen extends BaseScreen {
 				settings.firstCardX + 130
 						* (battlePlatform.getPlayerHandCards().size), card);
 		handCard.setY(settings.bottomElementY);
-		handCard.addListener(new ClickListener(){
+		handCard.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				showResumedCardInfo();
 				super.clicked(event, x, y);
 			}
-			
+
 		});
 		stage.addActor(handCard);
 		this.inputSources.addProcessor(handCard);
@@ -485,48 +488,55 @@ public class BattleScreen extends BaseScreen {
 		stage.addActor(cardImage);
 	}
 
-	public void showResumedCardInfo() {		
+	public void showResumedCardInfo() {
 		removeResumedCardInfo();
 		Card card = controller.getCardFromImage(selectedCard);
-		Label cardName = new FixedLabel(card.getNameVisualization(), 10,this);
+		Label cardName = new FixedLabel(card.getNameVisualization(), 10, this);
 		cardName = ScreenUtils.defineLabel(cardName, 10, 150, 200, 70);
-		Label energyCost = ScreenUtils.defineLabel(
-				new FixedLabel(String.valueOf(card.getEnergyCost()), 330,this), 330,
-				150, 200, 70);
-		if(card.getClass().equals(Fighter.class) && !card.getName().equals("Rock")){
-			FixedLabel life = (FixedLabel)ScreenUtils.defineLabel(
-					new FixedLabel("HP : "+String.valueOf(((Fighter)card).getHealth()), 440,this),440,
-					150, 200, 70);
+		Label energyCost = ScreenUtils
+				.defineLabel(
+						new FixedLabel(String.valueOf(card.getEnergyCost()),
+								330, this), 330, 150, 200, 70);
+		if (card.getClass().equals(Fighter.class)
+				&& !card.getName().equals("Rock")) {
+			FixedLabel life = (FixedLabel) ScreenUtils.defineLabel(
+					new FixedLabel("HP : "
+							+ String.valueOf(((Fighter) card).getHealth()),
+							440, this), 440, 150, 200, 70);
 			stage.addActor(life);
-			cardInfo.add(life);			
-			FixedLabel atk = (FixedLabel)ScreenUtils.defineLabel(
-					new FixedLabel("ATK : "+String.valueOf(((Fighter)card).getDamage()), 860,this), 860,
-					150, 200, 70);
+			cardInfo.add(life);
+			FixedLabel atk = (FixedLabel) ScreenUtils.defineLabel(
+					new FixedLabel("ATK : "
+							+ String.valueOf(((Fighter) card).getDamage()),
+							860, this), 860, 150, 200, 70);
 			stage.addActor(atk);
-			cardInfo.add(atk);			
-			FixedLabel spd =(FixedLabel) ScreenUtils.defineLabel(
-					new FixedLabel("SPD : "+String.valueOf(((Fighter)card).getSpeedValue()), 600,this),600,
-					150, 200, 70);
+			cardInfo.add(atk);
+			FixedLabel spd = (FixedLabel) ScreenUtils.defineLabel(
+					new FixedLabel("SPD : "
+							+ String.valueOf(((Fighter) card).getSpeedValue()),
+							600, this), 600, 150, 200, 70);
 			stage.addActor(spd);
-			cardInfo.add(spd);			
+			cardInfo.add(spd);
 		}
 		stage.addActor(cardName);
 		stage.addActor(energyCost);
-		cardInfo.add((FixedLabel)cardName);
-		cardInfo.add((FixedLabel)energyCost);		
+		cardInfo.add((FixedLabel) cardName);
+		cardInfo.add((FixedLabel) energyCost);
 	}
-	
-	public void removeResumedCardInfo(){
-		
-			for(Label label: cardInfo){
-				
-				stage.removeActor(label);				
-				
-			}
-			cardInfo.clear();
-		
+
+	public void removeResumedCardInfo() {
+
+		for (Label label : cardInfo) {
+
+			stage.removeActor(label);
+
+		}
+		cardInfo.clear();
+
 	}
-	public void doBeforeSet(){}
+
+	public void doBeforeSet() {
+	}
 
 	public Array<BackCard> getBackcards() {
 		return backcards;

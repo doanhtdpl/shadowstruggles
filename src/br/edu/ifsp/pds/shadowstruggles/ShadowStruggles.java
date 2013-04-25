@@ -28,35 +28,21 @@ import com.badlogic.gdx.utils.Array;
 
 public class ShadowStruggles extends Game {
 	public static final String LOG = ShadowStruggles.class.getName();
-	private final static Logger LOGGER = Logger.getLogger(ShadowStruggles.class
-			.getName());
+	public static enum RunMode { DEBUG, TESTS, RELEASE };
+	
 	private Controller controller;
 	private Profile profile;
 	private DataManager manager;
 	private SoundManager audio;
 	private AssetManager assets;
-
-	/**
-	 * When the application is in debug mode, the error messages are thrown into
-	 * the standard output in order to make exception handling easier to the
-	 * developer. Otherwise (in the versions released to the public), the
-	 * exceptions are encapsulated into an user-friendly error screen.
-	 */
-	private boolean debugMode;
-
-	/**
-	 * Indicates whether or not to execute unit tests. If true, the application
-	 * will not set any screen and will instead only run the test cases.
-	 */
-	private boolean unitTests;
+	private RunMode mode;
 
 	public ShadowStruggles() {
-		this(true, false);
+		this(RunMode.DEBUG);
 	}
 
-	public ShadowStruggles(boolean debugMode, boolean unitTests) {
-		this.debugMode = debugMode;
-		this.unitTests = unitTests;
+	public ShadowStruggles(RunMode mode) {
+		this.mode = mode;
 	}
 
 	@Override
@@ -66,15 +52,13 @@ public class ShadowStruggles extends Game {
 		this.controller = new Controller();
 		this.setAssets(new AssetManager());
 		
-		if(!unitTests)
+		if(this.mode != RunMode.TESTS)
 			this.setScreen(new LoadingScreen(this));
 		else {
-			DataManagerTest dataTest = new DataManagerTest();
-			dataTest.dataManagerTest();
-			//dataTest.dataManagerLanguageTest();
+			// Test cases go here.
 		}
 		// try {
-		// if (debugMode)
+		// if (mode == RunMode.DEBUG)
 		// MyLogger.setup();
 		// } catch (IOException e) {
 		// e.printStackTrace();
@@ -150,14 +134,6 @@ public class ShadowStruggles extends Game {
 		return this.profile;
 	}
 
-	public void setDebugMode(boolean debugMode) {
-		this.debugMode = debugMode;
-	}
-
-	public boolean isDebugMode() {
-		return this.debugMode;
-	}
-
 	public DataManager getManager() {
 		return this.manager;
 	}
@@ -176,5 +152,9 @@ public class ShadowStruggles extends Game {
 
 	public void setAssets(AssetManager assets) {
 		this.assets = assets;
+	}
+	
+	public RunMode getMode() {
+		return this.mode;
 	}
 }

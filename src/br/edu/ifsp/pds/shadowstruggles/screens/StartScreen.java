@@ -2,6 +2,7 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
 import br.edu.ifsp.pds.shadowstruggles.data.ProfileDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.Profile;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
@@ -115,7 +116,9 @@ public class StartScreen extends BaseScreen {
 
 		Table table = new Table();
 		table.defaults().padTop(50).width(310).height(200);
-		table.debug();
+		
+		if(game.getMode() == RunMode.DEBUG)
+			table.debug();
 
 		table.add(beaker).left();
 		table.add(candle);
@@ -128,7 +131,6 @@ public class StartScreen extends BaseScreen {
 		menu.add(continueGame);
 		menu.row();
 		menu.add(newGame);
-		
 		
 		table.setPosition(500, 600);
 		menu.setPosition(300,280);
