@@ -1,12 +1,11 @@
 package br.edu.ifsp.pds.shadowstruggles.screens;
 
+import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-
-import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 
 public class TableLayoutTest extends BaseScreen{
 

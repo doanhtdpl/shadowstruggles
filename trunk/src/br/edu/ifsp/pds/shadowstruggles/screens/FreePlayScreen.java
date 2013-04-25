@@ -37,7 +37,7 @@ public class FreePlayScreen extends BaseScreen {
 		public void clicked(InputEvent event, float x, float y) {
 			
 			super.clicked(event, x, y);
-			game.setScreenWithTransition(new BTutorial(game));
+			game.setScreenWithTransition(new BattleTutorial(game));
 		}});
 		stage.addActor(tempButton);
 	}
