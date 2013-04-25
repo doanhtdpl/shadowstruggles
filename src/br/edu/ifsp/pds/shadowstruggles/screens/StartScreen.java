@@ -116,24 +116,27 @@ public class StartScreen extends BaseScreen {
 
 		Table table = new Table();
 		table.defaults().padTop(50).width(310).height(200);
-		
-		if(game.getMode() == RunMode.DEBUG)
+
+		if (game.getMode() == RunMode.DEBUG)
 			table.debug();
 
 		table.add(beaker).left();
 		table.add(candle);
 		table.add(tripod);
 		table.row();
-		
+
 		Table menu = new Table();
 		menu.defaults().width(250).height(200);
-		menu.debug();
+		
+		if(game.getMode() == RunMode.DEBUG)
+			menu.debug();
+		
 		menu.add(continueGame);
 		menu.row();
 		menu.add(newGame);
-		
+
 		table.setPosition(500, 600);
-		menu.setPosition(300,280);
+		menu.setPosition(300, 280);
 
 		stage.addActor(tableTexture);
 		stage.addActor(book);
