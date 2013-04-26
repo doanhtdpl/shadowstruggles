@@ -2,7 +2,7 @@
 "name":"Reconnect_Circuits",
 "nameVisualization":"Reconnect Circuits",
 "energyCost":15,
-"description":"Reconnects the danified circuits of all ï¿½DRï¿½ fighters in the playerï¿½s field, restoring 30% of their vitality.",
+"description":"Reconnects the danified circuits of all “DR” fighters in the player's field, restoring 30% of their vitality.",
 "buyCost":0,
 "duration":1.0,
 "isImmediateEffect":true,

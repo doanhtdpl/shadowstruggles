@@ -144,7 +144,7 @@ public class CheckCardsScreen extends BaseScreen {
 					.get("data/images/cards/cards.atlas", TextureAtlas.class)
 					.findRegion(card.getName().toLowerCase()));
 			ScreenUtils.defineImage(cardImage, 180 + count * 120, 5,
-					cardImage.getWidth(), cardImage.getHeight(), 0.3f, 0.3f);
+					cardImage.getWidth(), cardImage.getHeight(),0.6f,0.6f);
 
 			final Card card2 = card;
 			cardImage.addListener(new ClickListener() {
