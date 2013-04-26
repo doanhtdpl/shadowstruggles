@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
@@ -78,7 +79,7 @@ public class EditDeckScreen extends BaseScreen {
 		decks.setY(50);
 		
 		
-		exit = new TextButton("", super.getSkin());
+		exit = new TextButton("", super.getSkin().get("blur", TextButtonStyle.class));
 		exit.setText("Exit");
 		exit.setX(10);
 		exit.setY(100);
@@ -87,7 +88,7 @@ public class EditDeckScreen extends BaseScreen {
 		menuTable.row();
 		menuTable.addActor(decks);
 		menuTable.row();
-		menuTable.add(exit);
+		menuTable.add(exit).maxHeight(30);
 		
 		menuTable.setPosition(100, 500);
 		
