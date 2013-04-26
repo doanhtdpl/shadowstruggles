@@ -25,6 +25,8 @@ public class BattleTutorial extends BattleScreen{
 	private Array<Integer> image1Y;
 	private int currentIndex;
 	private Array<Boolean> imageVisible;
+	private Array<Boolean> goals;
+	private int currentGoalIndex;
 
 	public BattleTutorial(ShadowStruggles game) {
 		super(game, game.getProfile(), game.getController(),
@@ -142,10 +144,12 @@ public class BattleTutorial extends BattleScreen{
 
 	}
 	
-	private void boxCLicked()
-	{
-		if(currentIndex<text.size)
-		nextDialog();
+	private void boxCLicked(){
+		if(goals.get(currentGoalIndex))
+			if(currentIndex<text.size)
+				nextDialog();
+		
+		
 	}	
 	
 	private void nextDialog(){
@@ -162,6 +166,7 @@ public class BattleTutorial extends BattleScreen{
 			stage.removeActor(image);
 		}
 		currentIndex++;
+		currentGoalIndex++;
 	}
 	@Override
 	public void moveFixedObjects() {
