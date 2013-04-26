@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 /***
  * A representation of a trap on the field. Becomes visible when activated.
@@ -34,6 +35,7 @@ public class Trap2D extends Image {
 				.get("data/images/card_effects/card_effects.atlas",
 						TextureAtlas.class)
 				.findRegion(trap.getName().toLowerCase()));
+		this.setSize(64, 64);
 		this.trap = trap;
 		this.game = game;
 		this.settings = game.getManager().getSettings();
@@ -97,6 +99,7 @@ public class Trap2D extends Image {
 
 	public void setCurrentFrame(TextureRegion currentFrame) {
 		this.currentFrame = currentFrame;
+		((TextureRegionDrawable) this.getDrawable()).setRegion(currentFrame);
 	}
 
 	public TextureRegion getAnimationSheet() {

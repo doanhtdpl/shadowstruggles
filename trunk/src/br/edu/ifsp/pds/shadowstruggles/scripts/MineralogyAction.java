@@ -40,8 +40,9 @@ public class MineralogyAction extends CardAction {
 	@Override
 	public void update(Image f1) {
 		Effect2D f = (Effect2D) f1;
-		f.setStateTime(Gdx.graphics.getDeltaTime() + f.getStateTime());
+		f.setStateTime(Gdx.graphics.getDeltaTime() + f.getStateTime());		
 		f.setCurrentFrame(f.getAnimation().getKeyFrame(f.getStateTime(), true));
+		
 	
 		if (f.getStateTime() > 120f) {
 			finished = true;

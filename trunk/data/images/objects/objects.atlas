@@ -41,8 +41,8 @@ back_card
 pause
   rotate: false
   xy: 67, 5
-  size: 41, 44
-  orig: 41, 44
+  size: 44, 44
+  orig: 44, 44
   offset: 0, 0
   index: -1
 deck
