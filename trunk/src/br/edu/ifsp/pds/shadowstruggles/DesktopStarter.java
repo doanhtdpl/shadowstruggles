@@ -1,5 +1,7 @@
 package br.edu.ifsp.pds.shadowstruggles;
 
+import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
+
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.tools.imagepacker.TexturePacker2;
@@ -18,7 +20,7 @@ public class DesktopStarter {
 //        TexturePacker2.process("data/images/card_walking", "data/images/card_walking", "card_walking");
 //        TexturePacker2.process("data/images/cards", "data/images/cards", "cards");
 		
-		ApplicationListener listener = new ShadowStruggles();
+		ApplicationListener listener = new ShadowStruggles(RunMode.DEBUG);
 		String title = "Shadow Struggles";
         int width = 960, height = 640;
         boolean useOpenGLES2 = false;

@@ -262,19 +262,24 @@ public class BattleScreen extends BaseScreen {
 				&& Gdx.input.isKeyPressed(Input.Keys.UP)) {
 			this.controller.playerLifeChanged(4);
 		}
-		if (game.getMode() == RunMode.DEBUG && Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+		if (game.getMode() == RunMode.DEBUG
+				&& Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
 			this.controller.playerLifeChanged(-4);
 		}
-		if (game.getMode() == RunMode.DEBUG && Gdx.input.isKeyPressed(Input.Keys.W)) {
+		if (game.getMode() == RunMode.DEBUG
+				&& Gdx.input.isKeyPressed(Input.Keys.W)) {
 			this.controller.playerEnergyChanged(4);
 		}
-		if (game.getMode() == RunMode.DEBUG && Gdx.input.isKeyPressed(Input.Keys.S)) {
+		if (game.getMode() == RunMode.DEBUG
+				&& Gdx.input.isKeyPressed(Input.Keys.S)) {
 			this.controller.playerEnergyChanged(-4);
 		}
-		if (game.getMode() == RunMode.DEBUG && Gdx.input.isKeyPressed(Input.Keys.I)) {
+		if (game.getMode() == RunMode.DEBUG
+				&& Gdx.input.isKeyPressed(Input.Keys.I)) {
 			this.controller.enemyLifeChanged(4);
 		}
-		if (game.getMode() == RunMode.DEBUG && Gdx.input.isKeyPressed(Input.Keys.K)) {
+		if (game.getMode() == RunMode.DEBUG
+				&& Gdx.input.isKeyPressed(Input.Keys.K)) {
 			this.controller.enemyLifeChanged(-4);
 		}
 	}
@@ -441,8 +446,11 @@ public class BattleScreen extends BaseScreen {
 	}
 
 	public void playerLose() {
-		game.setScreenWithTransition(new DefeatScreen(game, controller, game
-				.getManager().getMenuText().defeat, this));
+		DefeatScreen defeatScreen = DefeatScreen.getInstance(game, controller,
+				null, null);
+		defeatScreen.setMessage(game.getManager().getMenuText().defeat);
+		defeatScreen.setBattleScreen(this);
+		game.setScreenWithTransition(defeatScreen);
 	}
 
 	private void showCardInfo() {

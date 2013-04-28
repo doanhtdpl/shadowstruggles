@@ -28,8 +28,18 @@ public class StartScreen extends BaseScreen {
 	private Array<TextButton> states;
 
 	private boolean loadStates;
+	private static StartScreen instance;
+	
+	public static StartScreen getInstance(ShadowStruggles game, Controller controller) {
+		if(instance != null)
+			return instance;
+		else {
+			instance = new StartScreen(game, controller);
+			return instance;
+		}
+	}
 
-	public StartScreen(ShadowStruggles game, Controller controller) {
+	private StartScreen(ShadowStruggles game, Controller controller) {
 		super(game, controller);
 	}
 
@@ -93,14 +103,14 @@ public class StartScreen extends BaseScreen {
 					ProfileDAO.createProfile(newProfile, game.getManager());
 					game.setProfile(newProfile);
 					game.getAudio().playSound("button_4");
-					game.setScreenWithTransition(new MainScreen(game,
+					game.setScreenWithTransition(MainScreen.getInstance(game,
 							controller));
 				} catch (Exception e) {
 					Profile newProfile = new Profile();
 					ProfileDAO.createProfile(newProfile, game.getManager());
 					game.setProfile(newProfile);
 					game.getAudio().playSound("button_4");
-					game.setScreenWithTransition(new MainScreen(game,
+					game.setScreenWithTransition(MainScreen.getInstance(game,
 							controller));
 				}
 

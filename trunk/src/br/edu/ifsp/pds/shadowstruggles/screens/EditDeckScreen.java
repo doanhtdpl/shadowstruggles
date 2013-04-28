@@ -37,16 +37,29 @@ public class EditDeckScreen extends BaseScreen {
 	private Deck selectedDeck;
 	private Array<Image> cardImages;
 	private Array<Card> trunk;
-
-	public EditDeckScreen(ShadowStruggles game, Controller controller,
+	private static EditDeckScreen instance;
+	
+	public static EditDeckScreen getInstance(ShadowStruggles game, Controller controller,
+			BaseScreen previousScreen) {
+		if(instance != null)
+			return instance;
+		else {
+			instance = new EditDeckScreen(game, controller, previousScreen);
+			return instance;
+		}
+	}
+	
+	private EditDeckScreen(ShadowStruggles game, Controller controller,
 			BaseScreen previousScreen) {
 		super(game, controller);
 		this.previousScreen = previousScreen;
-		initComponents();
-
+	}
+	
+	public void setPreviousScreen(BaseScreen previousScreen) {
+		this.previousScreen = previousScreen;
 	}
 
-	private void initComponents() {
+	public void initComponents() {
 		stage.clear();
 		
 		final BaseScreen menu = this.previousScreen;

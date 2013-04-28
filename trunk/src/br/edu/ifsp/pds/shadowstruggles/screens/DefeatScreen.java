@@ -19,21 +19,38 @@ public class DefeatScreen extends BaseScreen {
 	private TextButton retryButton;
 	private TextButton mainMenu;
 	private BattleScreen battleScreen;
+	private String message;
+	private static DefeatScreen instance;
 
-	public DefeatScreen(ShadowStruggles game, Controller controller,
-			String message) {
-		super(game, controller);
-		initComponents(message);
+	public static DefeatScreen getInstance(ShadowStruggles game,
+			Controller controller, String message, BattleScreen battleScreen) {
+		if (instance != null)
+			return instance;
+		else {
+			instance = new DefeatScreen(game, controller, message, battleScreen);
+			return instance;
+		}
+	}
+	
+	public void setBattleScreen(BattleScreen battleScreen) {
+		this.battleScreen = battleScreen;
+	}
+	
+	public void setMessage(String message) {
+		if(this.text != null)
+			this.text.setText(message);
+		else
+			this.message = message;
 	}
 
-	public DefeatScreen(ShadowStruggles game, Controller controller,
+	private DefeatScreen(ShadowStruggles game, Controller controller,
 			String message, BattleScreen battleScreen) {
 		super(game, controller);
-		initComponents(message);
-		this.battleScreen=battleScreen;
+		this.battleScreen = battleScreen;
+		this.message = message;
 	}
 
-	public void initComponents(String message) {
+	public void initComponents() {
 		background = new Image(game.getAssets()
 				.get("data/images/objects/objects.atlas", TextureAtlas.class)
 				.findRegion("msbackground"));
@@ -42,8 +59,8 @@ public class DefeatScreen extends BaseScreen {
 
 		retryButton = new TextButton(
 				game.getManager().getMenuText().retryButton, super.getSkin());
-		retryButton = ScreenUtils.defineButton(retryButton, 100, 100, 300,
-				100, super.getSkin());
+		retryButton = ScreenUtils.defineButton(retryButton, 100, 100, 300, 100,
+				super.getSkin());
 		retryButton.addListener(new ClickListener() {
 
 			@Override
@@ -54,22 +71,24 @@ public class DefeatScreen extends BaseScreen {
 		});
 		mainMenu = new TextButton(
 				game.getManager().getMenuText().mainMenuButton, super.getSkin());
-		mainMenu = ScreenUtils.defineButton(mainMenu, 500, 100, game.getManager()
-				.getMenuText().mainMenuButton.length() * 32, 100, super.getSkin());
+		mainMenu = ScreenUtils.defineButton(mainMenu, 500, 100, game
+				.getManager().getMenuText().mainMenuButton.length() * 32, 100,
+				super.getSkin());
 		mainMenu.setClip(true);
 		mainMenu.addListener(new ClickListener() {
 
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_4");
-				game.setScreenWithTransition(new MainScreen(game, controller));
+				game.setScreenWithTransition(MainScreen.getInstance(game,
+						controller));
 			}
 
 		});
 		this.text = new Label(message, super.getSkin());
 		text.setStyle(new LabelStyle(super.getSkin().getFont("gg-font"),
 				Color.YELLOW));
-		
+
 		text.setX((960 - text.getPrefWidth()) / 2);
 		text.setY(400);
 

@@ -1,6 +1,8 @@
 package br.edu.ifsp.pds.shadowstruggles.screens;
 
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.data.Loader;
+import br.edu.ifsp.pds.shadowstruggles.data.Loader.ManagementStrategy;
 import br.edu.ifsp.pds.shadowstruggles.data.SoundManager;
 
 import com.badlogic.gdx.Gdx;
@@ -62,39 +64,12 @@ public class LoadingScreen extends BaseScreen {
 	private Image background;
 	private ShadowStruggles game;
 	private LoadingBar bar;
+	private Loader loader;
 
 	public LoadingScreen(ShadowStruggles game) {
 		super(game);
-
-		// Load main textures.
-		
-		game.getAssets().load("data/images/objects/objects.atlas",
-				TextureAtlas.class);
-		game.getAssets().load("data/images/cards/cards.atlas",
-				TextureAtlas.class);
-		game.getAssets().load("data/images/card_attacking/card_attacking.atlas",
-				TextureAtlas.class);
-		game.getAssets().load("data/images/card_walking/card_walking.atlas",
-				TextureAtlas.class);
-		game.getAssets().load("data/images/card_effects/card_effects.atlas",
-				TextureAtlas.class);
-		game.getAssets().load("data/images/objects/energy100.png", Texture.class);
-//		game.getAssets().load("data/images/card_images/card_images.atlas",
-//				TextureAtlas.class);
-		
-		// Load music and sound effects.
-
-		game.getAssets().load("data/audio/battle.ogg", Music.class);
-		game.getAssets().load("data/audio/button_1.ogg", Sound.class);
-		game.getAssets().load("data/audio/button_2.ogg", Sound.class);
-		game.getAssets().load("data/audio/button_3.ogg", Sound.class);
-		game.getAssets().load("data/audio/button_4.ogg", Sound.class);
-		game.getAssets().load("data/audio/button_5.ogg", Sound.class);
-		game.getAssets().load("data/audio/button_6.ogg", Sound.class);
-		game.getAssets().load("data/audio/button_7.ogg", Sound.class);
-		game.getAssets().load("data/audio/button_8.ogg", Sound.class);
-		game.getAssets().load("data/audio/intro.ogg", Music.class);
-
+		loader = new Loader(game, ManagementStrategy.STATIC_TEXTURE_ATLAS, null, null);
+		loader.loadAssets();
 		this.game = game;
 	}
 
@@ -132,7 +107,8 @@ public class LoadingScreen extends BaseScreen {
 		if (game.getAssets().update()) {
 			game.setAudio(new SoundManager(game.getAssets()));
 			game.getAudio().setMusic("intro");
-			game.setScreenWithTransition(new StartScreen(game, game
+			loader.instantiateScreens();
+			game.setScreenWithTransition(StartScreen.getInstance(game, game
 					.getController()));
 		} else {
 			bar.update(Interpolation.linear.apply(bar.getPercentage(), 1.0f, 0.01f));
