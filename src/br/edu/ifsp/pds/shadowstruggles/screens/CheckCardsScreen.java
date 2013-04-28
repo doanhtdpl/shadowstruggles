@@ -34,15 +34,29 @@ public class CheckCardsScreen extends BaseScreen {
 	private Card selectedCard;
 	private Array<Card> cards;
 	private Array<Image> cardImages;
+	private static CheckCardsScreen instance;
 
-	public CheckCardsScreen(ShadowStruggles game, Controller controller,
+	public static CheckCardsScreen getInstance(ShadowStruggles game,
+			Controller controller, InGameMenu menu) {
+		if (instance != null)
+			return instance;
+		else {
+			instance = new CheckCardsScreen(game, controller, menu);
+			return instance;
+		}
+	}
+
+	private CheckCardsScreen(ShadowStruggles game, Controller controller,
 			InGameMenu menu) {
 		super(game, controller);
 		this.menu = menu;
-		initComponents();
 	}
 
-	private void initComponents() {
+	public void setMenu(InGameMenu menu) {
+		this.menu = menu;
+	}
+	
+	public void initComponents() {
 		final InGameMenu menu = this.menu;
 		background = new Image(game.getAssets()
 				.get("data/images/objects/objects.atlas", TextureAtlas.class)
@@ -144,7 +158,7 @@ public class CheckCardsScreen extends BaseScreen {
 					.get("data/images/cards/cards.atlas", TextureAtlas.class)
 					.findRegion(card.getName().toLowerCase()));
 			ScreenUtils.defineImage(cardImage, 180 + count * 120, 5,
-					cardImage.getWidth(), cardImage.getHeight(),0.6f,0.6f);
+					cardImage.getWidth(), cardImage.getHeight(), 0.6f, 0.6f);
 
 			final Card card2 = card;
 			cardImage.addListener(new ClickListener() {

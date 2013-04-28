@@ -134,8 +134,10 @@ public class Controller {
 	}
 	
 	public void menuButtonClicked(ShadowStruggles game) {
-		game.setScreenWithTransition(new InGameMenu(game, game.getController(),
-				(BattleScreen) game.getScreen()));
+		InGameMenu menu = InGameMenu.getInstance(game, game.getController(),
+				null);
+		menu.setBattleScreen((BattleScreen) game.getScreen());
+		game.setScreenWithTransition(menu);
 	}
 	
 	/***

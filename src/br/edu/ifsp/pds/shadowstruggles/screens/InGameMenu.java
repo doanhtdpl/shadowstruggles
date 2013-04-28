@@ -19,8 +19,19 @@ public class InGameMenu extends BaseScreen {
 	private TextButton config;
 	private TextButton checkCards;
 	private BattleScreen battleScreen;
+	private static InGameMenu instance;
 
-	public InGameMenu(ShadowStruggles game, Controller controller,
+	public static InGameMenu getInstance(ShadowStruggles game,
+			Controller controller, BattleScreen battleScreen) {
+		if (instance != null) {
+			return instance;
+		} else {
+			instance = new InGameMenu(game, controller, battleScreen);
+			return instance;
+		}
+	}
+
+	private InGameMenu(ShadowStruggles game, Controller controller,
 			BattleScreen battleScreen) {
 		super(game, controller);
 		this.battleScreen = battleScreen;
@@ -50,7 +61,8 @@ public class InGameMenu extends BaseScreen {
 
 		returnToGame = new TextButton(
 				game.getManager().getMenuText().returnToGame, getSkin());
-		returnToGame = ScreenUtils.defineButton(returnToGame, 230, 500, 500, 100, super.getSkin());
+		returnToGame = ScreenUtils.defineButton(returnToGame, 230, 500, 500,
+				100, super.getSkin());
 		returnToGame.addListener(new ClickListener() {
 
 			@Override
@@ -62,42 +74,50 @@ public class InGameMenu extends BaseScreen {
 		});
 		checkCards = new TextButton(game.getManager().getMenuText().checkCards,
 				getSkin());
-		checkCards = ScreenUtils.defineButton(checkCards, 230, 380, 500, 100, super.getSkin());
+		checkCards = ScreenUtils.defineButton(checkCards, 230, 380, 500, 100,
+				super.getSkin());
 		final InGameMenu menu = this;
 		checkCards.addListener(new ClickListener() {
 
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_4");
-				game.setScreenWithTransition(new CheckCardsScreen(game,
-						controller, menu));
+				CheckCardsScreen cardsScreen = CheckCardsScreen.getInstance(
+						game, controller, menu);
+				cardsScreen.setMenu(menu);
+				cardsScreen.initComponents();
+				game.setScreenWithTransition(cardsScreen);
 
 			}
 		});
 		config = new TextButton(game.getManager().getMenuText().configurations,
 				getSkin());
-		config = ScreenUtils.defineButton(config, 230, 260, 500, 100, super.getSkin());
+		config = ScreenUtils.defineButton(config, 230, 260, 500, 100,
+				super.getSkin());
 
 		config.addListener(new ClickListener() {
 
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_4");
-				game.setScreenWithTransition(new ConfigurationScreen(game,
-						controller, menu));
-
+				ConfigurationScreen configurationScreen = ConfigurationScreen
+						.getInstance(game, controller, null);
+				configurationScreen.setPreviousScreen(menu);
+				game.setScreenWithTransition(configurationScreen);
 			}
 		});
 
 		exitGame = new TextButton(game.getManager().getMenuText().exit,
 				getSkin());
-		exitGame = ScreenUtils.defineButton(exitGame, 230, 80, 500, 100, super.getSkin());
+		exitGame = ScreenUtils.defineButton(exitGame, 230, 80, 500, 100,
+				super.getSkin());
 		exitGame.addListener(new ClickListener() {
 
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_4");
-				game.setScreenWithTransition(new MainScreen(game, controller));
+				game.setScreenWithTransition(MainScreen.getInstance(game,
+						controller));
 			}
 
 		});
@@ -114,6 +134,10 @@ public class InGameMenu extends BaseScreen {
 		config.setText(game.getManager().getMenuText().configurations);
 		exitGame.setText(game.getManager().getMenuText().exit);
 		returnToGame.setText(game.getManager().getMenuText().returnToGame);
+	}
+
+	public void setBattleScreen(BattleScreen battleScreen) {
+		this.battleScreen = battleScreen;
 	}
 
 	public BattleScreen getBattleScreen() {

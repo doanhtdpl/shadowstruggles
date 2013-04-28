@@ -11,8 +11,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
-//TODO: Adicionar op��o de salvar o jogo.
-
 public class MainScreen extends BaseScreen {
 
 	private Image background;
@@ -22,8 +20,19 @@ public class MainScreen extends BaseScreen {
 	private TextButton shop;
 	private TextButton editDeck;
 	private ImageButton changeProfile;
+	private static MainScreen instance;
 
-	public MainScreen(ShadowStruggles game, Controller controller) {
+	public static MainScreen getInstance(ShadowStruggles game,
+			Controller controller) {
+		if (instance != null)
+			return instance;
+		else {
+			instance = new MainScreen(game, controller);
+			return instance;
+		}
+	}
+
+	private MainScreen(ShadowStruggles game, Controller controller) {
 		super(game, controller);
 		initComponents();
 	}
@@ -85,16 +94,19 @@ public class MainScreen extends BaseScreen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_4");
-				game.setScreenWithTransition(new EditDeckScreen(game,
-						controller, screen));
+				EditDeckScreen editScreen = EditDeckScreen.getInstance(game,
+						controller, null);
+				editScreen.setPreviousScreen(screen);
+				editScreen.initComponents();
+				game.setScreenWithTransition(editScreen);
 			}
 
 		});
 
 		shop = new TextButton(game.getManager().getMenuText().shop,
 				super.getSkin());
-		shop = ScreenUtils
-				.defineButton(shop, 240, 165, 480, 110, super.getSkin());
+		shop = ScreenUtils.defineButton(shop, 240, 165, 480, 110,
+				super.getSkin());
 
 		shop.addListener(new ClickListener() {
 
@@ -117,8 +129,10 @@ public class MainScreen extends BaseScreen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_4");
-				game.setScreenWithTransition(new ConfigurationScreen(game, game
-						.getController(), screen));
+				ConfigurationScreen configurationScreen = ConfigurationScreen
+						.getInstance(game, controller, null);
+				configurationScreen.setPreviousScreen(screen);
+				game.setScreenWithTransition(configurationScreen);
 			}
 		});
 

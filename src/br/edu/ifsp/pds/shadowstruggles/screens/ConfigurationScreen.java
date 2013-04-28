@@ -26,11 +26,26 @@ public class ConfigurationScreen extends BaseScreen {
 	private Image soundOnOff;
 	private Array<TextButton> languages;
 	private BaseScreen previousScreen;
+	private static ConfigurationScreen instance;
 
-	public ConfigurationScreen(ShadowStruggles game, Controller controller,
+	public static ConfigurationScreen getInstance(ShadowStruggles game,
+			Controller controller, BaseScreen screen) {
+		if (instance != null)
+			return instance;
+		else {
+			instance = new ConfigurationScreen(game, controller, screen);
+			return instance;
+		}
+	}
+
+	private ConfigurationScreen(ShadowStruggles game, Controller controller,
 			BaseScreen screen) {
 		super(game, controller);
 		this.previousScreen = screen;
+	}
+	
+	public void setPreviousScreen(BaseScreen previousScreen) {
+		this.previousScreen = previousScreen;
 	}
 
 	@Override
@@ -43,13 +58,13 @@ public class ConfigurationScreen extends BaseScreen {
 		background = new Image(game.getAssets()
 				.get("data/images/objects/objects.atlas", TextureAtlas.class)
 				.findRegion("msbackground"));
-		background.setScaleX (960f / 512f);
-		background.setScaleY (640f / 380f);
-		
+		background.setScaleX(960f / 512f);
+		background.setScaleY(640f / 380f);
+
 		volumePlus = new Image(this.getSkin().getDrawable("plus"));
-		volumePlus.setWidth (100);
+		volumePlus.setWidth(100);
 		volumePlus.setHeight(100);
-		volumePlus.setX( 290);
+		volumePlus.setX(290);
 		volumePlus.setY(400);
 		volumePlus.addListener(new ClickListener() {
 
@@ -62,12 +77,12 @@ public class ConfigurationScreen extends BaseScreen {
 
 			}
 		});
-		
+
 		volumeMinus = new Image(this.getSkin().getDrawable("minus"));
 		volumeMinus.setWidth(100);
-		volumeMinus.setHeight ( 100);
-		volumeMinus.setX( 50);
-		volumeMinus.setY (400);
+		volumeMinus.setHeight(100);
+		volumeMinus.setX(50);
+		volumeMinus.setY(400);
 		volumeMinus.addListener(new ClickListener() {
 
 			@Override
@@ -78,10 +93,11 @@ public class ConfigurationScreen extends BaseScreen {
 
 			}
 		});
-		
+
 		returnButton = new TextButton(
 				game.getManager().getMenuText().returnToStart, super.getSkin());
-		returnButton = ScreenUtils.defineButton(returnButton, 100, 100, 300, 100, super.getSkin());
+		returnButton = ScreenUtils.defineButton(returnButton, 100, 100, 300,
+				100, super.getSkin());
 		returnButton.addListener(new ClickListener() {
 
 			@Override
@@ -94,13 +110,13 @@ public class ConfigurationScreen extends BaseScreen {
 		});
 
 		volume = new Label(game.getAudio().getVolumeNumber(), super.getSkin());
-		volume.setWidth (50);
+		volume.setWidth(50);
 		volume.setHeight(100);
 		volume.setX(200);
 		volume.setY(400);
 		volume.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
 				Color.BLACK));
-		
+
 		volumeLabel = new Label(
 				this.getGame().getManager().getMenuText().volume,
 				super.getSkin());
@@ -166,7 +182,6 @@ public class ConfigurationScreen extends BaseScreen {
 
 	private void updateVolume() {
 		this.volume.setText(game.getAudio().getVolumeNumber());
-
 	}
 
 }

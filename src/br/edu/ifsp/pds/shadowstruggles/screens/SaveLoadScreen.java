@@ -76,10 +76,10 @@ public class SaveLoadScreen extends BaseScreen implements InputProcessor {
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_6");
 				if (returnScreen.toLowerCase().equals("start"))
-					game.setScreenWithTransition(new StartScreen(game,
+					game.setScreenWithTransition(StartScreen.getInstance(game,
 							controller));
 				else if (returnScreen.toLowerCase().equals("main"))
-					game.setScreenWithTransition(new MainScreen(game,
+					game.setScreenWithTransition(MainScreen.getInstance(game,
 							controller));
 				else if (returnScreen.toLowerCase().equals("scene"))
 					game.setScreenWithTransition(new SceneScreen(game,
@@ -126,7 +126,7 @@ public class SaveLoadScreen extends BaseScreen implements InputProcessor {
 									SceneDAO.getScene(game.getProfile()
 											.getCurrentScene().getId(),
 											game.getManager()));
-							game.setScreenWithTransition(new MainScreen(game,
+							game.setScreenWithTransition(MainScreen.getInstance(game,
 									controller));
 						}
 					}

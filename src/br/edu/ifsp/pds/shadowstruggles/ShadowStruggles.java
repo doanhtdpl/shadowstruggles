@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
 import br.edu.ifsp.pds.shadowstruggles.data.SoundManager;
 import br.edu.ifsp.pds.shadowstruggles.dataTest.DataManagerTest;
+import br.edu.ifsp.pds.shadowstruggles.dataTest.LoaderTest;
 import br.edu.ifsp.pds.shadowstruggles.logging.MyLogger;
 import br.edu.ifsp.pds.shadowstruggles.model.Profile;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
@@ -17,6 +18,7 @@ import br.edu.ifsp.pds.shadowstruggles.screens.utils.TransitionEffect;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.TransitionScreen;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.utils.Array;
@@ -56,6 +58,11 @@ public class ShadowStruggles extends Game {
 			this.setScreen(new LoadingScreen(this));
 		else {
 			// Test cases go here.
+			LoaderTest loaderTest = new LoaderTest();
+			loaderTest.testStaticTextureAtlasStrategy(this);
+			
+			// End of test cases.
+			Gdx.app.exit();
 		}
 		// try {
 		// if (mode == RunMode.DEBUG)

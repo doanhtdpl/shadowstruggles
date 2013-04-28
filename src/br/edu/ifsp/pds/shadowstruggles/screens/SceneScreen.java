@@ -140,7 +140,7 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_6");
-				game.setScreenWithTransition(new MainScreen(game, controller));
+				game.setScreenWithTransition(MainScreen.getInstance(game, controller));
 			}
 
 		});
@@ -249,7 +249,7 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 			firstScene.setLanguage(game.getProfile().getLanguage());
 			game.getProfile().setCurrentScene(firstScene);
 			game.getManager().writeProfile(game.getProfile());
-			game.setScreenWithTransition(new MainScreen(game, controller));
+			game.setScreenWithTransition(MainScreen.getInstance(game, controller));
 		} else {
 			game.getProfile().setCurrentScene(
 					SceneDAO.getScene(scene.getNextId(), game.getManager()));

@@ -87,7 +87,7 @@ public class FreePlayScreen extends BaseScreen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_6");
-				game.setScreenWithTransition(new MainScreen(game, controller));
+				game.setScreenWithTransition(MainScreen.getInstance(game, controller));
 
 			}
 		});

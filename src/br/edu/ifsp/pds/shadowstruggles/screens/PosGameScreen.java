@@ -64,7 +64,7 @@ public class PosGameScreen extends BaseScreen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_4");
-				game.setScreenWithTransition(new MainScreen(game, controller));
+				game.setScreenWithTransition(MainScreen.getInstance(game, controller));
 			}
 
 		});
