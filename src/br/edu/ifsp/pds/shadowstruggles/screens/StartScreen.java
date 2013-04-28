@@ -58,8 +58,9 @@ public class StartScreen extends BaseScreen {
 
 		tableTexture = new Image(this.getSkin().getDrawable("table_texture"));
 		book = new Image(this.getSkin().getDrawable("book"));
-		book.setX(book.getX() - 10);
-		book.setY(book.getY() + 20);
+		book.setScale(0.9f);
+		book.setX(book.getX() + 50);
+		book.setY(book.getY() + 10);
 		beaker = new Image(this.getSkin().getDrawable("beaker"));
 		candle = new Image(this.getSkin().getDrawable("candle"));
 		tripod = new Image(this.getSkin().getDrawable("tripod"));
@@ -118,14 +119,14 @@ public class StartScreen extends BaseScreen {
 		});
 
 		Table table = new Table();
-		table.defaults().padTop(50).width(310).height(200);
+		table.defaults().padTop(30).width(150).height(130);
 
 		if (game.getMode() == RunMode.DEBUG)
 			table.debug();
 
-		table.add(beaker).left();
-		table.add(candle);
-		table.add(tripod);
+		table.add(beaker).left().padRight(270);
+		table.add(candle).width(190);
+		table.add(tripod).padLeft(250);
 		table.row();
 
 		Table menu = new Table();
