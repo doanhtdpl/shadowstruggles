@@ -27,9 +27,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 public class Controller {
 	private BaseScreen currentScreen;
 	private BattlePlatform platform;
-	
-	
-	//---------------------------------------------EVENT HANDLE----------------------------------------------------
+
+	// ---------------------------------------------EVENT
+	// HANDLE----------------------------------------------------
 
 	public void mapClicked(float x, float y) {
 		int lane = (int) ((y - 48) / 72);
@@ -49,7 +49,7 @@ public class Controller {
 					// Verifica se clicou em uma backCard
 					if (platform.getPlayerField().getTiles().get(tile / 2)
 							.get(lane) == null) {
-						pentagramClicked(lane, tile);
+						hexagramClicked(lane, tile);
 					} else
 						backCardClicked(lane / 2, tile);
 				} else {
@@ -61,7 +61,7 @@ public class Controller {
 
 		}
 	}
-	
+
 	public void backCardClicked(int lane, int tile) {
 		Card handCard = platform.getSelectedCard();
 		if (handCard.getClass().equals(Effect.class)
@@ -72,8 +72,8 @@ public class Controller {
 		} else
 			returnHandCard();
 	}
-	
-	public void pentagramClicked(int lane, int tile) {
+
+	public void hexagramClicked(int lane, int tile) {
 		BattleScreen battleScreen = (BattleScreen) currentScreen;
 		Card handCard = platform.getSelectedCard();
 		this.playerEnergyChanged(-handCard.getEnergyCost());
@@ -110,9 +110,10 @@ public class Controller {
 			platform.setSelectedCard(null);
 		}
 		((BattleScreen) currentScreen).changeHexagram(isSelected);
-		try{
-		((BattleScreen) currentScreen).showResumedCardInfo();
-		}catch(Exception execaoNaoIdentificada){}
+		try {
+			((BattleScreen) currentScreen).showResumedCardInfo();
+		} catch (Exception execaoNaoIdentificada) {
+		}
 
 	}
 
@@ -132,14 +133,14 @@ public class Controller {
 			}
 		}
 	}
-	
+
 	public void menuButtonClicked(ShadowStruggles game) {
 		InGameMenu menu = InGameMenu.getInstance(game, game.getController(),
 				null);
 		menu.setBattleScreen((BattleScreen) game.getScreen());
 		game.setScreenWithTransition(menu);
 	}
-	
+
 	/***
 	 * Updates the player life to the BattlePlatform and LifeBar objects.
 	 * 
@@ -148,11 +149,12 @@ public class Controller {
 	 *            damage. If positive, it means the player was healed by the
 	 *            specified amount.
 	 */
-	
-	public void playerLifeChanged(int amount) {		
+
+	public void playerLifeChanged(int amount) {
 		int newLife = this.platform.getRules().getPlayerHP() + amount;
-		int maxLife= this.platform.getRules().getPlayerHPmax();
-		this.platform.getRules().setPlayerHP(verifyValueChange(newLife, maxLife));		
+		int maxLife = this.platform.getRules().getPlayerHPmax();
+		this.platform.getRules().setPlayerHP(
+				verifyValueChange(newLife, maxLife));
 		try {
 
 			((BattleScreen) this.currentScreen).getPlayerLife().setPercentage(
@@ -175,27 +177,26 @@ public class Controller {
 		int newLife = this.platform.getRules().getEnemyHP() + amount;
 		int maxLife = this.platform.getRules().getEnemyHPmax();
 
-		this.platform.getRules().setEnemyHP(verifyValueChange(newLife, maxLife));
+		this.platform.getRules()
+				.setEnemyHP(verifyValueChange(newLife, maxLife));
 		((BattleScreen) this.currentScreen).getEnemyLife().setPercentage(
 				this.platform.getRules().getEnemyHpPercent());
 	}
 
-	
-	
-	
-	
-	public void playerEnergyChanged(int amount) {		
+	public void playerEnergyChanged(int amount) {
 		int newEnergy = this.platform.getRules().getPlayerEnergy() + amount;
-		int maxEnergy= this.platform.getRules().getPlayerEnergyMax();		
-		this.platform.getRules().setPlayerEnergy(verifyValueChange(newEnergy, maxEnergy));
+		int maxEnergy = this.platform.getRules().getPlayerEnergyMax();
+		this.platform.getRules().setPlayerEnergy(
+				verifyValueChange(newEnergy, maxEnergy));
 		((BattleScreen) this.currentScreen).getEnergyBar().setPercentage(
 				this.platform.getRules().getPlayerEnergyPercent());
 	}
 
-	public void enemyEnergyChanged(int amount) {		
+	public void enemyEnergyChanged(int amount) {
 		int newEnergy = this.platform.getRules().getEnemyEnergy() + amount;
-		int maxEnergy= this.platform.getRules().getPlayerEnergyMax();		
-		this.platform.getRules().setEnemyEnergy(verifyValueChange(newEnergy, maxEnergy));
+		int maxEnergy = this.platform.getRules().getPlayerEnergyMax();
+		this.platform.getRules().setEnemyEnergy(
+				verifyValueChange(newEnergy, maxEnergy));
 	}
 
 	public void tileChanged(Fighter card) {
@@ -204,8 +205,9 @@ public class Controller {
 		this.platform.getMap().addCard(card,
 				card.getTile() + card.getDirection(), (card.getLane()));
 	}
-	
-	//----------------------------------------------ACTION METHODS---------------------------------------------------
+
+	// ----------------------------------------------ACTION
+	// METHODS---------------------------------------------------
 
 	public void playCard(Card handCard, int lane, int tile) {
 		handCard.setLane(lane);
@@ -219,7 +221,7 @@ public class Controller {
 		float initialX = 0;
 		if ((handCard.getImage()).getClass().equals(HandCard.class))
 			initialX = ((HandCard) handCard.getImage()).getInitialX();
-		
+
 		if (handCard.getClass().equals(Fighter.class)) {
 			Fighter2D f2d = new Fighter2D((Fighter) handCard,
 					currentScreen.getGame());
@@ -237,9 +239,8 @@ public class Controller {
 		}
 		rearrangeCards(initialX);
 	}
-	
-	
-	public void addCardToMap(Card handCard, Image cardImage, int tile, int lane){
+
+	public void addCardToMap(Card handCard, Image cardImage, int tile, int lane) {
 		platform.getMap().addCard(handCard, tile, lane);
 		currentScreen.addGameObject(cardImage);
 		platform.getPlayerHandCards().removeValue(platform.getSelectedCard(),
@@ -254,7 +255,7 @@ public class Controller {
 			Effect2D e2d = (Effect2D) cardImage;
 			e2d.getEffect().action(platform, cardImage, 0);
 		}
-		currentScreen.getGame().getAudio().playSound("button_7");		
+		currentScreen.getGame().getAudio().playSound("button_7");
 	}
 
 	private void activateEffect(Card handCard, int lane, int tile) {
@@ -268,9 +269,6 @@ public class Controller {
 	private void putTrap(Card handCard, int lane, int tile) {
 		playCard(handCard, lane, tile);
 	}
-
-	
-
 
 	private void returnHandCard() {
 		for (Actor actor : currentScreen.getStage().getActors())
@@ -294,7 +292,7 @@ public class Controller {
 			}
 		}
 	}
-	
+
 	public void updateTimer(float delta) {
 		this.platform.getRules().update(delta);
 
@@ -324,8 +322,8 @@ public class Controller {
 
 	}
 
-	//-----------------------------------------------------------------CALC METHODS---------------------------------------
-	
+	// -----------------------------------------------------------------CALC
+	// METHODS---------------------------------------
 
 	@SuppressWarnings("unused")
 	private int nextAvailableSlot(int lane) {
@@ -338,15 +336,14 @@ public class Controller {
 		}
 		return next;
 	}
-	
-	public int verifyValueChange(int newValue, int maxValue){	
+
+	public int verifyValueChange(int newValue, int maxValue) {
 		/*
-		 * If new value is in normal range, apply changes without correction.
-		 * If new value is less than zero, set new value to zero. If new
-		 * value is greater than maximum value, set new value to maximum
-		 * value. */		
-		if (newValue >= 0
-				&& newValue <= maxValue) {
+		 * If new value is in normal range, apply changes without correction. If
+		 * new value is less than zero, set new value to zero. If new value is
+		 * greater than maximum value, set new value to maximum value.
+		 */
+		if (newValue >= 0 && newValue <= maxValue) {
 			return newValue;
 		} else if (newValue < 0) {
 			return 0;
@@ -355,17 +352,14 @@ public class Controller {
 		}
 		return 0;
 	}
-	
-	
-	
-	
-	//----------------------------------------------------GETTERS/SETTERS---------------------------------------------------
-	
 
-	public Card getCardFromImage(Image cardImage){
-		
+	// ----------------------------------------------------GETTERS/SETTERS---------------------------------------------------
+
+	public Card getCardFromImage(Image cardImage) {
+
 		return platform.getSelectedCard();
 	}
+
 	public BaseScreen getCurrentScreen() {
 		return currentScreen;
 	}
@@ -382,8 +376,4 @@ public class Controller {
 		this.platform = platform;
 	}
 
-	
-	
-
-	
 }

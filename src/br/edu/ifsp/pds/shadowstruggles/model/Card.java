@@ -27,8 +27,6 @@ public class Card implements Serializable {
 	private float markTile;
 	protected int tile;
 
-	private int count = 0;
-
 	private Array<String> preRequisites = new Array<String>();
 
 	/***
@@ -173,14 +171,6 @@ public class Card implements Serializable {
 	 * @return true: the card can be summoned right now false: the card can't be
 	 *         summoned right now
 	 */
-	/**
-	 * Verifies if a card is ready to summon based on its preRequisites
-	 * 
-	 * @param platform
-	 *            Gathers the current data of the battle
-	 * @return true: the card can be summoned right now false: the card can't be
-	 *         summoned right now
-	 */
 	public boolean readyToSummom(BattlePlatform platform) {
 		boolean bool = true;
 		for (String card : this.preRequisites) {
@@ -203,6 +193,10 @@ public class Card implements Serializable {
 		this.nameVisualization = nameVisualization;
 	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	public float getMarkLane() {
 		return markLane;
 	}
@@ -215,27 +209,24 @@ public class Card implements Serializable {
 		this.markLane = lane;
 		this.markTile = tile;
 	}
+
 	public void setPosition(int lane, int tile) {
 		this.lane = lane;
 		this.tile = tile;
 	}
-	
-	
-	public void setName(String name) {
-		this.name = name;
-	}
+
 	public float getMarkTile() {
 		return markTile;
 	}
-	
-	public void act(float delta){
+
+	public void act(float delta) {
 		action.doAction(platform, this, delta);
 	}
 
 	public Array<String> getPreRequisites() {
 		return preRequisites;
 	}
-	
+
 	public void setPreRequisites(Array<String> preRequisites) {
 		this.preRequisites = preRequisites;
 	}

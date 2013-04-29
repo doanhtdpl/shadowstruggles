@@ -1,17 +1,31 @@
 package br.edu.ifsp.pds.shadowstruggles.modelTest;
 
 import org.junit.Test;
+import static org.junit.Assert.*;
+
+import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
+import br.edu.ifsp.pds.shadowstruggles.model.Card;
+import br.edu.ifsp.pds.shadowstruggles.model.Deck;
+import br.edu.ifsp.pds.shadowstruggles.model.DefaultRules;
+import br.edu.ifsp.pds.shadowstruggles.model.Map;
 
 public class BattlePlatformTest {
-
+	
 	@Test
 	public void testCardOnEnemyHand() {
-		//TODO: Implementar teste.
+		BattlePlatform platform = new BattlePlatform(new Deck(), new Deck(), new Map(""), new DefaultRules());
+		Card card = new Card();
+		platform.addEnemyHandCard(card);
+		assertTrue(platform.cardOnEnemyHand(card));
 	}
 
 	@Test
 	public void testGetCardFromEnemy() {
-		//TODO: Implementar teste.
+		BattlePlatform platform = new BattlePlatform(new Deck(), new Deck(), new Map(""), new DefaultRules());
+		Card expected = new Card();
+		platform.addEnemyHandCard(expected);
+		Card actual = platform.getCardFromEnemy("");
+		assertEquals(expected, actual);
 	}
 	
 }

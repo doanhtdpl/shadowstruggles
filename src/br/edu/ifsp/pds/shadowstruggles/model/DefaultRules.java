@@ -24,6 +24,10 @@ public class DefaultRules {
 	private int playerEnergyMax;
 	private int enemyEnergyMax;
 
+	public DefaultRules() {
+		this(new Settings());
+	}
+	
 	public DefaultRules(Settings settings) {
 
 		this.playerHPmax = settings.playerMaxHP;
