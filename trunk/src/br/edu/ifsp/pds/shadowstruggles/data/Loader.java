@@ -66,7 +66,6 @@ public class Loader {
 		}
 	}
 
-	// TODO: Implementar instanciação estática das demais telas.
 	/**
 	 * Optional initialization method which forces the instantiation of screens
 	 * so that the screen transitions are smoother and less memory is consumed
@@ -80,7 +79,7 @@ public class Loader {
 		MainScreen.getInstance(game, game.getController());
 		InGameMenu.getInstance(game, game.getController(), null);
 		StartScreen.getInstance(game, game.getController());
-		//TODO: Implementar instanciação estática nas demais telas.
+		// TODO: Implementar instanciação estática nas demais telas.
 	}
 
 	public void dispose() {

@@ -27,7 +27,7 @@ public class LoaderTest {
 			System.out.println("testStaticTextureAtlasStrategy: Success");
 		} catch (Exception e) {
 			System.out
-					.println("testStaticTextureAtlasStrategy: Fail (asset not loaded)");
+					.println("testStaticTextureAtlasStrategy: Fail");
 			e.printStackTrace();
 		}
 	}
