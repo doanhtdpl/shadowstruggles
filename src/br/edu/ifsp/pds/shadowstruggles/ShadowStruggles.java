@@ -45,7 +45,7 @@ public class ShadowStruggles extends Game {
 	public void create() {
 		this.manager = new DataManager();
 		this.audio = new SoundManager(assets);
-		this.controller = new Controller();
+		this.controller = Controller.getInstance();
 		this.setAssets(new AssetManager());
 		
 		if(this.mode != RunMode.TESTS)

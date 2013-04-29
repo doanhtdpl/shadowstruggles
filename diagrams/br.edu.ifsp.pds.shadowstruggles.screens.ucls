@@ -142,7 +142,7 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="br.edu.ifsp.pds.shadowstruggles.screens.PosGameScreen" project="ShadowStruggles" 
+  <class id="15" language="java" name="br.edu.ifsp.pds.shadowstruggles.screens.VictoryScreen" project="ShadowStruggles" 
     file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/screens/PosGameScreen.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="207" width="387" x="3996" y="1197"/>    

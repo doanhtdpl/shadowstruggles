@@ -79,8 +79,10 @@ public class MainScreen extends BaseScreen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_4");
-				game.setScreenWithTransition(new FreePlayScreen(game, game
-						.getController()));
+				FreePlayScreen freePlay = FreePlayScreen.getInstance(game,
+						game.getController());
+				game.setScreenWithTransition(freePlay);
+				freePlay.initComponents();
 			}
 		});
 
@@ -144,8 +146,12 @@ public class MainScreen extends BaseScreen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_4");
-				game.setScreenWithTransition(new SaveLoadScreen(game,
-						controller, "main", false));
+				SaveLoadScreen saveLoad = SaveLoadScreen.getInstance(game,
+						controller, "main", false);
+				saveLoad.setReturnScreen("main");
+				saveLoad.setSaveMode(false);
+				game.setScreenWithTransition(saveLoad);
+				saveLoad.initComponents();
 			}
 
 		});
