@@ -12,17 +12,12 @@ import br.edu.ifsp.pds.shadowstruggles.model.Card;
 public class ControllerTest {
 
 	@Test
-	public void testMapClicked() {
-		fail("Not yet implemented"); //TODO: Implementar teste.
-	}
-
-	@Test
 	public void testBackCardClicked() {
 		fail("Not yet implemented"); //TODO: Implementar teste.
 	}
 
 	@Test
-	public void testPentagramClicked() {
+	public void testHexagramClicked() {
 		fail("Not yet implemented"); //TODO: Implementar teste.
 	}
 
@@ -33,31 +28,6 @@ public class ControllerTest {
 
 	@Test
 	public void testDeckClicked() {
-		fail("Not yet implemented"); //TODO: Implementar teste.
-	}
-
-	@Test
-	public void testMenuButtonClicked() {
-		fail("Not yet implemented"); //TODO: Implementar teste.
-	}
-
-	@Test
-	public void testPlayerLifeChanged() {
-		fail("Not yet implemented"); //TODO: Implementar teste.
-	}
-
-	@Test
-	public void testEnemyLifeChanged() {
-		fail("Not yet implemented"); //TODO: Implementar teste.
-	}
-
-	@Test
-	public void testPlayerEnergyChanged() {
-		fail("Not yet implemented"); //TODO: Implementar teste.
-	}
-
-	@Test
-	public void testEnemyEnergyChanged() {
 		fail("Not yet implemented"); //TODO: Implementar teste.
 	}
 
@@ -89,11 +59,6 @@ public class ControllerTest {
 		Image cardImage = new Image();
 
 		control.addCardToMap(cartaTest, cardImage, tileTest, laneTest);
-	}
-
-	@Test
-	public void testUpdateTimer() {
-		fail("Not yet implemented"); //TODO: Implementar teste.
 	}
 
 	@Test
