@@ -11,8 +11,10 @@ import br.edu.ifsp.pds.shadowstruggles.screens.CheckCardsScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.ConfigurationScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.DefeatScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.EditDeckScreen;
+import br.edu.ifsp.pds.shadowstruggles.screens.FreePlayScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.InGameMenu;
 import br.edu.ifsp.pds.shadowstruggles.screens.MainScreen;
+import br.edu.ifsp.pds.shadowstruggles.screens.SaveLoadScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.StartScreen;
 
 /**
@@ -76,10 +78,11 @@ public class Loader {
 		ConfigurationScreen.getInstance(game, game.getController(), null);
 		DefeatScreen.getInstance(game, game.getController(), "", null);
 		EditDeckScreen.getInstance(game, game.getController(), null);
+		FreePlayScreen.getInstance(game, game.getController());
 		MainScreen.getInstance(game, game.getController());
 		InGameMenu.getInstance(game, game.getController(), null);
+		SaveLoadScreen.getInstance(game, game.getController(), "", false);
 		StartScreen.getInstance(game, game.getController());
-		// TODO: Implementar instanciação estática nas demais telas.
 	}
 
 	public void dispose() {

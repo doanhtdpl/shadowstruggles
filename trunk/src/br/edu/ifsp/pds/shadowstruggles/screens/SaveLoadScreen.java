@@ -20,6 +20,8 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectMap;
 
 public class SaveLoadScreen extends BaseScreen implements InputProcessor {
+	private static SaveLoadScreen instance;
+	
 	private Image background;
 	private TextButton returnButton;
 	private Array<TextButton> slots;
@@ -37,7 +39,17 @@ public class SaveLoadScreen extends BaseScreen implements InputProcessor {
 	 */
 	private String returnScreen;
 
-	public SaveLoadScreen(ShadowStruggles game, Controller controller,
+	public static SaveLoadScreen getInstance(ShadowStruggles game, Controller controller,
+			String returnScreen, boolean saveMode) {
+		if(instance != null)
+			return instance;
+		else {
+			instance = new SaveLoadScreen(game, controller, returnScreen, saveMode);
+			return instance;
+		}
+	}
+	
+	private SaveLoadScreen(ShadowStruggles game, Controller controller,
 			String returnScreen, boolean saveMode) {
 		super(game, controller);
 
@@ -45,9 +57,14 @@ public class SaveLoadScreen extends BaseScreen implements InputProcessor {
 		this.saveMode = saveMode;
 		this.slots = new Array<TextButton>();
 		this.inputSources = new InputMultiplexer();
-
-		initComponents();
-		
+	}
+	
+	public void setReturnScreen(String returnScreen) {
+		this.returnScreen = returnScreen;
+	}
+	
+	public void setSaveMode(boolean saveMode) {
+		this.saveMode = saveMode;
 	}
 	
 	@Override
@@ -58,7 +75,7 @@ public class SaveLoadScreen extends BaseScreen implements InputProcessor {
 	}
 
 
-	private void initComponents() {
+	public void initComponents() {
 		
 		background = new Image(game.getAssets()
 				.get("data/images/objects/objects.atlas", TextureAtlas.class)

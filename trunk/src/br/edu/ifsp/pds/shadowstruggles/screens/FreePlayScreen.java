@@ -17,12 +17,22 @@ public class FreePlayScreen extends BaseScreen {
 	private ShadowStruggles game;
 	private Array<TextButton> battles;
 	private TextButton returnButton;
+	private static FreePlayScreen instance;
 	BattleScreen battle;
 
-	public FreePlayScreen(ShadowStruggles game, Controller controller) {
+	public static FreePlayScreen getInstance(ShadowStruggles game,
+			Controller controller) {
+		if (instance != null)
+			return instance;
+		else {
+			instance = new FreePlayScreen(game, controller);
+			return instance;
+		}
+	}
+
+	private FreePlayScreen(ShadowStruggles game, Controller controller) {
 		super(game, controller);
 		this.game = game;
-		initComponents();
 	}
 
 	@Override
@@ -30,19 +40,22 @@ public class FreePlayScreen extends BaseScreen {
 		super.resize(width, height);
 
 	}
-	
-	private void initTempButton() {
-		TextButton tempButton = ScreenUtils.defineButton(new TextButton("Tutorial", getSkin()), 10, 500, 200, 100, getSkin());
-		tempButton.addListener(new ClickListener(){@Override
-		public void clicked(InputEvent event, float x, float y) {
-			
-			super.clicked(event, x, y);
-			game.setScreenWithTransition(new BattleTutorial(game));
-		}});
+
+	public void initTempButton() {
+		TextButton tempButton = ScreenUtils.defineButton(new TextButton(
+				"Tutorial", getSkin()), 10, 500, 200, 100, getSkin());
+		tempButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+
+				super.clicked(event, x, y);
+				game.setScreenWithTransition(new BattleTutorial(game));
+			}
+		});
 		stage.addActor(tempButton);
 	}
 
-	private void initComponents() {
+	public void initComponents() {
 		background = new Image(game.getAssets()
 				.get("data/images/objects/objects.atlas", TextureAtlas.class)
 				.findRegion("msbackground"));
@@ -53,11 +66,12 @@ public class FreePlayScreen extends BaseScreen {
 		battles = new Array<TextButton>();
 
 		for (Float id : game.getProfile().getBattlesFought()) {
-			TextButton button = new TextButton("",getSkin());
+			TextButton button = new TextButton("", getSkin());
 			switch (id.intValue()) {
 			case 1:
 				button.setText(game.getManager().getMenuText().practiceBattle);
-				button = ScreenUtils.defineButton(button, 100, 300, 300, 100, super.getSkin());
+				button = ScreenUtils.defineButton(button, 100, 300, 300, 100,
+						super.getSkin());
 				battle = new Practice(game, false);
 				break;
 			}
@@ -74,20 +88,22 @@ public class FreePlayScreen extends BaseScreen {
 				}
 
 			});
-			
+
 			stage.addActor(button);
 			battles.add(button);
 		}
 
 		returnButton = new TextButton(
 				game.getManager().getMenuText().returnToStart, super.getSkin());
-		returnButton = ScreenUtils.defineButton(returnButton, 100, 100, 250, 100, super.getSkin());
+		returnButton = ScreenUtils.defineButton(returnButton, 100, 100, 250,
+				100, super.getSkin());
 		returnButton.addListener(new ClickListener() {
 
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_6");
-				game.setScreenWithTransition(MainScreen.getInstance(game, controller));
+				game.setScreenWithTransition(MainScreen.getInstance(game,
+						controller));
 
 			}
 		});

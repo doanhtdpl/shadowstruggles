@@ -15,13 +15,15 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
-public class PosGameScreen extends BaseScreen {
+public class VictoryScreen extends BaseScreen {
+	private static VictoryScreen instance;
 
 	private Image background;
 	private Label text;
 	private TextButton continueButton;
 	private TextButton mainMenu;
 	private BattleScreen battleScreen;
+	private String message;
 
 	/**
 	 * Informs if the player has accessed the battle through the campaign or,
@@ -30,23 +32,39 @@ public class PosGameScreen extends BaseScreen {
 	 */
 	private boolean isInCampaign;
 
-	public PosGameScreen(ShadowStruggles game, Controller controller,
-			String message, boolean isInCampaign) {
-		super(game, controller);
-		this.isInCampaign = isInCampaign;
-		initComponents(message);
+	public static VictoryScreen getInstance(ShadowStruggles game,
+			Controller controller, String message, BattleScreen battleScreen,
+			boolean isInCampaign) {
+		if (instance != null)
+			return instance;
+		else {
+			instance = new VictoryScreen(game, controller, message,
+					battleScreen, false);
+			return instance;
+		}
 	}
 
-	public PosGameScreen(ShadowStruggles game, Controller controller,
+	private VictoryScreen(ShadowStruggles game, Controller controller,
 			String message, BattleScreen battleScreen, boolean isInCampaign) {
 		super(game, controller);
 		this.isInCampaign = isInCampaign;
 		this.battleScreen = battleScreen;
-		initComponents(message);
-
+		this.message = message;
+	}
+	
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
-	public void initComponents(String message) {
+	public void setBattleScreen(BattleScreen battleScreen) {
+		this.battleScreen = battleScreen;
+	}
+	
+	public void setIsInCampaign(boolean isInCampaign) {
+		this.isInCampaign = isInCampaign;
+	}
+	
+	public void initComponents() {
 		background = new Image(game.getAssets()
 				.get("data/images/objects/objects.atlas", TextureAtlas.class)
 				.findRegion("msbackground"));
@@ -55,16 +73,18 @@ public class PosGameScreen extends BaseScreen {
 
 		mainMenu = new TextButton(
 				game.getManager().getMenuText().mainMenuButton, super.getSkin());
-		mainMenu = ScreenUtils.defineButton(mainMenu, 500, 100,game.getManager()
-				.getMenuText().mainMenuButton.length() * 32, 100, super.getSkin());
+		mainMenu = ScreenUtils.defineButton(mainMenu, 500, 100, game
+				.getManager().getMenuText().mainMenuButton.length() * 32, 100,
+				super.getSkin());
 		mainMenu.setClip(true);
-		
+
 		mainMenu.addListener(new ClickListener() {
 
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_4");
-				game.setScreenWithTransition(MainScreen.getInstance(game, controller));
+				game.setScreenWithTransition(MainScreen.getInstance(game,
+						controller));
 			}
 
 		});
@@ -73,7 +93,6 @@ public class PosGameScreen extends BaseScreen {
 				Color.YELLOW));
 		text.setOriginX((960 - text.getPrefWidth()) / 2);
 		text.setOriginY(300);
-		
 
 		this.getStage().addActor(background);
 		this.getStage().addActor(text);
@@ -81,33 +100,37 @@ public class PosGameScreen extends BaseScreen {
 
 		if (isInCampaign) {
 			continueButton = new TextButton(
-					game.getManager().getMenuText().continueButton, super.getSkin());
-			continueButton = ScreenUtils.defineButton(continueButton, 100, 100, 300, 100, super.getSkin());
+					game.getManager().getMenuText().continueButton,
+					super.getSkin());
+			continueButton = ScreenUtils.defineButton(continueButton, 100, 100,
+					300, 100, super.getSkin());
 			continueButton.addListener(new ClickListener() {
 
 				@Override
 				public void clicked(InputEvent event, float x, float y) {
 					game.getAudio().playSound("button_4");
-					game.setScreenWithTransition(new SceneScreen(game, controller));
+					game.setScreenWithTransition(new SceneScreen(game,
+							controller));
 
 				}
 			});
-			
+
 			this.getStage().addActor(continueButton);
-			
-			//TODO: Perguntar ao jogador se ele gostaria de salvar ao invés de save automático.
-			
+
+			// TODO: Perguntar ao jogador se ele gostaria de salvar ao invés de
+			// save automático.
+
 			// Moves the plot forward to the next scene.
 			game.getProfile().setCurrentScene(
 					SceneDAO.getScene(game.getProfile().getCurrentScene()
 							.getNextId(), game.getManager()));
-			//ProfileDAO.createProfile(game.getProfile(), game.getManager());
+			// ProfileDAO.createProfile(game.getProfile(), game.getManager());
 
 			// Adds the battles to the array of fought battles.
 			if (battleScreen.getClass() == Practice.class) {
 				if (!game.getProfile().getBattlesFought().contains(1f, true)) {
 					game.getProfile().getBattlesFought().add(1f);
-					//game.getManager().writeProfile(game.getProfile());
+					// game.getManager().writeProfile(game.getProfile());
 				}
 			}
 		}

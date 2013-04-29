@@ -176,8 +176,13 @@ public class BattleScreen extends BaseScreen {
 			playerLose();
 		} else if (this.battlePlatform.getRules().gameState()
 				.equals(DefaultRules.PLAYER_VICTORY)) {
-			game.setScreenWithTransition(new PosGameScreen(game, controller,
-					game.getManager().getMenuText().victory, this, isInCampaign));
+			VictoryScreen victory = VictoryScreen.getInstance(game, controller,
+					null, null, false);
+			victory.setBattleScreen(this);
+			victory.setIsInCampaign(isInCampaign);
+			victory.setMessage(game.getManager().getMenuText().victory);
+			game.setScreenWithTransition(victory);
+			victory.initComponents();
 		}
 		keyInput(delta);
 

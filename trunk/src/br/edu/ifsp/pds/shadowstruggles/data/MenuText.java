@@ -31,7 +31,7 @@ public class MenuText implements Serializable {
 	public String editDeck="";
 	public String shop="";
 
-	// PosGameScreen
+	// VictoryScreen
 	public String victory = "";
 	public String continueButton = "";
 	public String mainMenuButton = "";

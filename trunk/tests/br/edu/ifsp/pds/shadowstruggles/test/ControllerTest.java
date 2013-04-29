@@ -43,7 +43,7 @@ public class ControllerTest {
 		int laneTest = 10;
 		int tileTest = 20;
 
-		Controller control = new Controller();
+		Controller control = Controller.getInstance();
 
 		control.playCard(cartaTest, laneTest, tileTest);
 
@@ -55,7 +55,7 @@ public class ControllerTest {
 				null);
 		int laneTest = 10;
 		int tileTest = 20;
-		Controller control = new Controller();
+		Controller control = Controller.getInstance();
 		Image cardImage = new Image();
 
 		control.addCardToMap(cartaTest, cardImage, tileTest, laneTest);
@@ -68,7 +68,7 @@ public class ControllerTest {
 
 	@Test
 	public void testVerifyValueChange() {
-		Controller controlTest = new Controller();
+		Controller controlTest = Controller.getInstance();
 		int value1 = 200;
 		int valueMax = 300;
 

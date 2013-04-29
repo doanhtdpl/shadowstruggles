@@ -29,9 +29,10 @@ public class StartScreen extends BaseScreen {
 
 	private boolean loadStates;
 	private static StartScreen instance;
-	
-	public static StartScreen getInstance(ShadowStruggles game, Controller controller) {
-		if(instance != null)
+
+	public static StartScreen getInstance(ShadowStruggles game,
+			Controller controller) {
+		if (instance != null)
 			return instance;
 		else {
 			instance = new StartScreen(game, controller);
@@ -75,8 +76,12 @@ public class StartScreen extends BaseScreen {
 			@Override
 			public void clicked(InputEvent event, float arg1, float arg2) {
 				game.getAudio().playSound("button_4");
-				game.setScreenWithTransition(new SaveLoadScreen(game,
-						controller, "start", false));
+				SaveLoadScreen saveLoad = SaveLoadScreen.getInstance(game,
+						controller, "start", false);
+				saveLoad.setReturnScreen("start");
+				saveLoad.setSaveMode(false);
+				game.setScreenWithTransition(saveLoad);
+				saveLoad.initComponents();
 			}
 		});
 
@@ -131,10 +136,10 @@ public class StartScreen extends BaseScreen {
 
 		Table menu = new Table();
 		menu.defaults().width(250).height(200);
-		
-		if(game.getMode() == RunMode.DEBUG)
+
+		if (game.getMode() == RunMode.DEBUG)
 			menu.debug();
-		
+
 		menu.add(continueGame);
 		menu.row();
 		menu.add(newGame);
