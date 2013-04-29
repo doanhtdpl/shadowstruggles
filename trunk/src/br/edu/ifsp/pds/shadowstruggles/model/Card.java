@@ -221,7 +221,9 @@ public class Card implements Serializable {
 	}
 	
 	
-
+	public void setName(String name) {
+		this.name = name;
+	}
 	public float getMarkTile() {
 		return markTile;
 	}

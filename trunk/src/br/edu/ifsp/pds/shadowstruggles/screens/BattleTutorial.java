@@ -3,6 +3,7 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.data.DeckDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
+import br.edu.ifsp.pds.shadowstruggles.model.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.DefaultRules;
 import br.edu.ifsp.pds.shadowstruggles.model.Map;
 import br.edu.ifsp.pds.shadowstruggles.model.enemies.TutorialEnemy;
@@ -69,9 +70,14 @@ public class BattleTutorial extends BattleScreen {
 					}
 				}
 			}
-
-			// TODO: Adicionar condições para CARD_SUMMONED
-
+			if (this.eventType == EventType.CARD_SUMMONED){
+				Card card = new Card();
+				card.setName(target);
+				if(controller.getPlatform().getMap().cardOnMap(card, -1, 1)){
+					completed=true;
+				}
+			}
+			
 			return completed;
 		}
 
