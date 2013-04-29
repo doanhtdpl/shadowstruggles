@@ -15,9 +15,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 public class Deck2D extends FixedObject implements InputProcessor {
 	private static final float SCALE_X = 2;
 	private static final float SCALE_Y = 2;
-	private static final int DECK_WIDTH = 64;
-	private static final int DECK_HEIGHT = 64;
-
 	private boolean ready;
 	private boolean touched;
 	private ShadowStruggles game;

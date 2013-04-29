@@ -23,7 +23,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
-//TODO: Adicionar opção de salvar o jogo.
 
 public class SceneScreen extends BaseScreen implements InputProcessor {
 	private Scene scene;

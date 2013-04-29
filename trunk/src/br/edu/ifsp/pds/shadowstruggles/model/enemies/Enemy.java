@@ -20,21 +20,19 @@ import br.edu.ifsp.pds.shadowstruggles.screens.BattleScreen;
 public abstract class Enemy {
 
 	protected float delay;
-	private Controller controller;
 
-	public Enemy(Controller controller) {
+	public Enemy() {
 		this.delay = 5;
-		this.controller=controller;
 	}
 
 	public abstract void action(BattlePlatform platform, BattleScreen screen,
 			float delta);
 
 	/***
-	 * Summom a card in the enemy field
+	 * Summons a card in the enemy field
 	 */
 
-	protected void summomCard(int tile, int lane, Card card,
+	protected void summonCard(int tile, int lane, Card card,
 			BattlePlatform platform, BattleScreen screen) {
 		platform.getEnemyHandCards().removeValue(card, true);
 		card.setLane(lane);
@@ -42,20 +40,19 @@ public abstract class Enemy {
 		card.setDirection(-card.getDirection());
 		Image cardImage = new Image();
 		if (card.getClass().equals(Fighter.class)) {
-			Fighter2D f2d = new Fighter2D((Fighter) card,
-					screen.getGame());
+			Fighter2D f2d = new Fighter2D((Fighter) card, screen.getGame());
 			f2d.create();
 			card.setMarkLane(lane);
-			cardImage=f2d;		
+			cardImage = f2d;
 		} else if (card.getClass().equals(Effect.class)) {
 			Effect2D e2d = new Effect2D((Effect) card, screen.getGame());
 			e2d.create();
-			cardImage=e2d;
+			cardImage = e2d;
 		} else if (card.getClass().equals(Trap.class)) {
 			Trap2D t2d = new Trap2D((Trap) card, screen.getGame());
 			t2d.create();
-			cardImage=t2d;
-		}		
+			cardImage = t2d;
+		}
 		card.setImage(cardImage);
 		platform.getMap().addCard(card, tile, lane);
 		screen.addGameObject(cardImage);

@@ -21,8 +21,9 @@ public class Practice extends BattleScreen {
 						game.getManager()), DeckDAO.getDeck(
 						"Practice Deck Enemy", game.getManager()), new Map(
 						"cena1"), new DefaultRules(game.getManager()
-						.getSettings()), new PracticeEnemy(game.getController())), game
-						.getManager().getMenuText().practiceBattle, isInCampaign);
+						.getSettings()), new PracticeEnemy()), game
+						.getManager().getMenuText().practiceBattle,
+				isInCampaign);
 		game.getAudio().stop();
 		game.getAudio().setMusic("battle");
 	}

@@ -1,14 +1,8 @@
 package br.edu.ifsp.pds.shadowstruggles;
 
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
 import br.edu.ifsp.pds.shadowstruggles.data.SoundManager;
-import br.edu.ifsp.pds.shadowstruggles.dataTest.DataManagerTest;
 import br.edu.ifsp.pds.shadowstruggles.dataTest.LoaderTest;
-import br.edu.ifsp.pds.shadowstruggles.logging.MyLogger;
 import br.edu.ifsp.pds.shadowstruggles.model.Profile;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.LoadingScreen;
