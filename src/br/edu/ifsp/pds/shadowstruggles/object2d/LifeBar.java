@@ -15,8 +15,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 
 public class LifeBar extends FixedObject {
 
-	private static int MAX_WIDTH = 128;
-
 	/***
 	 * The percentage of the remaining life.
 	 */

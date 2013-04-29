@@ -2,15 +2,14 @@ package br.edu.ifsp.pds.shadowstruggles.model.enemies;
 
 import com.badlogic.gdx.math.MathUtils;
 
-import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.Map;
 import br.edu.ifsp.pds.shadowstruggles.screens.BattleScreen;
 
 public class PracticeEnemy extends Enemy {
-	public PracticeEnemy(Controller controller) {
-		super(controller);
+	public PracticeEnemy() {
+		super();
 	}
 
 	@Override
@@ -68,9 +67,9 @@ public class PracticeEnemy extends Enemy {
 				platform.getRules().setEnemyEnergy(
 						platform.getRules().getEnemyEnergy()
 								- card.getEnergyCost());
-				summomCard(tile, lane, card, platform, screen);
+				summonCard(tile, lane, card, platform, screen);
 			} else {
-				if (platform.getEnemyDeck().getCards().size >0) {
+				if (platform.getEnemyDeck().getCards().size > 0) {
 					platform.getEnemyHandCards().add(
 							platform.getEnemyDeck().draw());
 				}
