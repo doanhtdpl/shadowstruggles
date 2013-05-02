@@ -4,7 +4,9 @@ import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
 import br.edu.ifsp.pds.shadowstruggles.data.ProfileDAO;
+import br.edu.ifsp.pds.shadowstruggles.data.SceneDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.Profile;
+import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -27,7 +29,6 @@ public class StartScreen extends BaseScreen {
 	private ScrollPane scrollStates;
 	private Array<TextButton> states;
 
-	private boolean loadStates;
 	private static StartScreen instance;
 
 	public static StartScreen getInstance(ShadowStruggles game,
@@ -42,6 +43,7 @@ public class StartScreen extends BaseScreen {
 
 	private StartScreen(ShadowStruggles game, Controller controller) {
 		super(game, controller);
+		this.states = new Array<TextButton>();
 	}
 
 	@Override
@@ -65,7 +67,6 @@ public class StartScreen extends BaseScreen {
 		beaker = new Image(this.getSkin().getDrawable("beaker"));
 		candle = new Image(this.getSkin().getDrawable("candle"));
 		tripod = new Image(this.getSkin().getDrawable("tripod"));
-		scrollStates = new ScrollPane(null);
 
 		continueGame = new TextButton(
 				game.getManager().getMenuText().continueGame, this.getSkin()
@@ -75,13 +76,7 @@ public class StartScreen extends BaseScreen {
 		continueGame.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float arg1, float arg2) {
-				game.getAudio().playSound("button_4");
-				SaveLoadScreen saveLoad = SaveLoadScreen.getInstance(game,
-						controller, "start", false);
-				saveLoad.setReturnScreen("start");
-				saveLoad.setSaveMode(false);
-				game.setScreenWithTransition(saveLoad);
-				saveLoad.initComponents();
+				initSaveStates();
 			}
 		});
 
@@ -145,12 +140,70 @@ public class StartScreen extends BaseScreen {
 		menu.add(newGame);
 
 		table.setPosition(500, 600);
-		menu.setPosition(300, 280);
+		menu.setPosition(270, 280);
 
 		stage.addActor(tableTexture);
 		stage.addActor(book);
 		stage.addActor(table);
 		stage.addActor(menu);
+	}
+
+	private void initSaveStates() {
+		if (this.scrollStates == null) {
+			Table table = new Table();
+			table.defaults().width(400).height(200);
+			if (game.getMode() == RunMode.DEBUG)
+				table.debug();
+			table.setPosition(480, 280);
+
+			if (game.getManager().profileExists()) {
+				Array<Profile> profiles = ProfileDAO.getProfiles(game
+						.getManager());
+
+				for (Profile profile : profiles) {
+					String text = String.valueOf(profile.getId()) + " - "
+							+ profile.getCurrentScene().getName();
+					TextButton textButton = new TextButton(text, this.getSkin()
+							.get("blur", TextButtonStyle.class));
+					textButton = ScreenUtils.defineButton(textButton, 240,
+							480 - profile.getId() * 100, text.length() * 30,
+							90, this.getSkin());
+					textButton.setClip(true);
+					textButton.addListener(new ClickListener() {
+
+						@Override
+						public void clicked(InputEvent event, float x, float y) {
+							game.getAudio().playSound("button_2");
+
+							TextButton tx = (TextButton) event
+									.getListenerActor();
+							int id = Character.getNumericValue(tx.getText()
+									.charAt(0));
+							game.setProfile(ProfileDAO.getProfile(id,
+									game.getManager()));
+							game.getManager().changeLanguage(
+									ProfileDAO
+											.getProfile(id, game.getManager())
+											.getLanguage());
+							game.getProfile().setCurrentScene(
+									SceneDAO.getScene(game.getProfile()
+											.getCurrentScene().getId(),
+											game.getManager()));
+							game.setScreenWithTransition(MainScreen
+									.getInstance(game, controller));
+						}
+					});
+
+					this.states.add(textButton);
+					table.add(textButton);
+					table.row();
+				}
+
+				scrollStates = new ScrollPane(table, this.getSkin());
+				scrollStates.setBounds(480, 100, 400, book.getHeight());
+				stage.addActor(scrollStates);
+			}
+		}
 	}
 
 	@Override
