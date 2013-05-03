@@ -24,7 +24,7 @@ public class BattleTutorial extends BattleScreen {
 	 * Summon a card.
 	 */
 	private static enum EventType {
-		NONE, CARD_SELECTED, CARD_SUMMONED
+		NONE, CARD_SELECTED, CARD_SUMMONED, PREPARE_EVENT
 	};
 
 	/**
@@ -65,16 +65,27 @@ public class BattleTutorial extends BattleScreen {
 					if (handCard.getClass().equals(HandCard.class)) {
 						HandCard castedHandCard = (HandCard) handCard;
 						if (castedHandCard.getCard().getName().equals(target)
-								&& castedHandCard.isSelected())
+								&& castedHandCard.isSelected()){
 							completed = true;
+							inputSources.removeProcessor(dialogBox);
+							inputSources.addProcessor(map2d);
+						}
+						
 					}
 				}
+			}
+			if(this.eventType==EventType.PREPARE_EVENT){				
+				inputSources.addProcessor(map2d);
+				completed=true;
 			}
 			if (this.eventType == EventType.CARD_SUMMONED){
 				Card card = new Card();
 				card.setName(target);
 				if(controller.getPlatform().getMap().cardOnMap(card, -1, 1)){
 					completed=true;
+					inputSources.removeProcessor(map2d);
+					if(!inputSources.getProcessors().contains(dialogBox, true))
+					inputSources.addProcessor(dialogBox);
 				}
 			}
 			
@@ -154,7 +165,7 @@ public class BattleTutorial extends BattleScreen {
 		imageVisible = new Array<Boolean>();
 
 		// TODO incluir em arquivo json
-		text.add("Hora de aprender a batalhar! Toque para prosseguir com a aula");
+		text.add("Hora de aprender a batalhar! (Toque para prosseguir com a aula)");
 		events.add(new TutorialEvent());
 		image1X.add(10);
 		image1Y.add(10);
@@ -171,23 +182,23 @@ public class BattleTutorial extends BattleScreen {
 		imageVisible.add(true);
 		text.add("Fique sempre atento à vida da sua base. Perdeu a base, perdeu a batalha!");
 		events.add(new TutorialEvent());
-		image1X.add(15);
-		image1Y.add(490);
+		image1X.add(10);
+		image1Y.add(470);
 		imageVisible.add(true);
 		text.add("Vamos ao ataque! Aqui fica o seu deck, onde voce deverá sacar as cartas sempre que possível");
 		events.add(new TutorialEvent());
 		image1X.add(840);
 		image1Y.add(25);
 		imageVisible.add(true);
-		text.add("Logo ao lado estão as cartas que você sacou. Selecione a carta DR-002");
+		text.add("Logo ao lado estão as cartas que você sacou. (Selecione a carta DR-002)");
 		events.add(new TutorialEvent(this, EventType.CARD_SELECTED, "DR-002"));
-		image1X.add(215);
-		image1Y.add(40);
+		image1X.add(210);
+		image1Y.add(35);
 		imageVisible.add(true);
 		text.add("Para invocá-la, mande-a em um dos circulos de transmutação");
-		events.add(new TutorialEvent());
-		image1X.add(260);
-		image1Y.add(320);
+		events.add(new TutorialEvent(this, EventType.CARD_SUMMONED, "DR-002"));
+		image1X.add(270);
+		image1Y.add(260);
 		imageVisible.add(true);
 		text.add("Cada carta terá um gasto de energia ao ser invocada. Sem energia, sem invocação!");
 		events.add(new TutorialEvent());
@@ -195,29 +206,44 @@ public class BattleTutorial extends BattleScreen {
 		image1Y.add(15);
 		imageVisible.add(true);
 		text.add("Uma vez invocado, o lutador irá ao ataque da base inimiga");
-		events.add(new TutorialEvent());
+		events.add(new TutorialEvent(this, EventType.PREPARE_EVENT, "DR-002"));
 		image1X.add(10);
 		image1Y.add(10);
 		imageVisible.add(false);
-		text.add("Lembre-se de sacar uma carta do deck! Agora, vamos às cartas de efeito! Invoque Mineralogia em um dos circulos");
+		text.add("Lembre-se de sacar uma carta do deck! ");
 		events.add(new TutorialEvent());
-		image1X.add(470);
+		image1X.add(840);
+		image1Y.add(25);
+		imageVisible.add(true);
+		text.add("Agora, vamos às cartas de efeito! (Invoque Mineralogia em um dos circulos)");
+		events.add(new TutorialEvent(this, EventType.CARD_SUMMONED, "Mineralogy"));
+		image1X.add(335);
 		image1Y.add(30);
 		imageVisible.add(true);
-		text.add("Essa carta te permite utilizar o poder da terra! Invoque uma Rocha para te proteger!");
-		events.add(new TutorialEvent());
+		text.add("Essa carta te permite utilizar o poder da terra. É um requisito para invocar algumas cartas.");
+		events.add(new TutorialEvent(this, EventType.PREPARE_EVENT, "DR-002"));
+		image1X.add(10);
+		image1Y.add(10);
+		imageVisible.add(false);
+		text.add("Agora você pode invocar a Rocha para te proteger! (Invoque a Rocha em um dos circulos)");
+		events.add(new TutorialEvent(this, EventType.CARD_SUMMONED, "Rock"));
 		image1X.add(600);
-		image1Y.add(40);
+		image1Y.add(30);
 		imageVisible.add(true);
 		text.add("A rocha irá proteger o caminho temporariamente contra o ataque inimigo");
 		events.add(new TutorialEvent());
 		image1X.add(10);
 		image1Y.add(10);
 		imageVisible.add(false);
-		text.add("Que tal deixar um presentinho pro lutador inimigo? Experimente invocar uma armadilha");
-		events.add(new TutorialEvent());
-		image1X.add(730);
-		image1Y.add(50);
+		text.add("Que tal deixar um presentinho pro lutador inimigo? Armadilhas são um ótimo meio de surpreender o inimigo." );
+		events.add(new TutorialEvent(this, EventType.PREPARE_EVENT, "DR-002"));
+		image1X.add(10);
+		image1Y.add(10);
+		imageVisible.add(false);
+		text.add("Experimente invocar a armadilha indicada abaixo!");
+		events.add(new TutorialEvent(this, EventType.CARD_SUMMONED,"Electric_Current_Level_One"));
+		image1X.add(470);
+		image1Y.add(30);
 		imageVisible.add(true);
 		text.add("A corrente elétrica será ativada assim que um lutador inimigo pisar sobre a carta");
 		events.add(new TutorialEvent());
@@ -226,13 +252,13 @@ public class BattleTutorial extends BattleScreen {
 		imageVisible.add(false);
 		text.add("Você pode acessar o menu para verificar informações detalhadas das suas cartas");
 		events.add(new TutorialEvent());
-		image1X.add(0);
-		image1Y.add(550);
+		image1X.add(-20);
+		image1Y.add(520);
 		imageVisible.add(true);
 		text.add("Seja rápido, se o tempo acabar, vencerá aquele que estiver com a base com maior vida");
 		events.add(new TutorialEvent());
-		image1X.add(470);
-		image1Y.add(570);
+		image1X.add(450);
+		image1Y.add(540);
 		imageVisible.add(true);
 		text.add("Agora, destrua a base inimiga!");
 		events.add(new TutorialEvent());
@@ -247,7 +273,7 @@ public class BattleTutorial extends BattleScreen {
 		// method actually requires the previous event to be completed, not the
 		// current one; hence the currentEventIndex - 1.
 		TutorialEvent event = events.get(currentEventIndex - 1);
-		if (event.eventCompleted() && event.getEventType() == EventType.NONE)
+		if (event.eventCompleted() && (event.getEventType() == EventType.NONE || event.getEventType() == EventType.PREPARE_EVENT))
 			if (currentIndex < text.size)
 				nextDialog();
 	}
