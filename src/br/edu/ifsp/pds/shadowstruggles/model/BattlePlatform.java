@@ -154,7 +154,7 @@ public class BattlePlatform {
 	 * @return boolean true: There is a card on enemy hand false: there is no
 	 *         card on enemy hand
 	 */
-	public boolean cardOnEnemyHand(Card card) {
+     public boolean cardOnEnemyHand(Card card) { //TODO: Passar uma String como argumento, não Card.
 		boolean b = false;
 		for (Card c : enemyHandCards) {
 			if (c.getName().equals(card.getName())) {
