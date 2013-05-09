@@ -62,6 +62,7 @@ public class LoadingScreen extends BaseScreen {
 	private ShadowStruggles game;
 	private LoadingBar bar;
 	private Loader loader;
+	private float percent;
 
 	public LoadingScreen(ShadowStruggles game) {
 		super(game);
@@ -108,7 +109,8 @@ public class LoadingScreen extends BaseScreen {
 			game.setScreenWithTransition(StartScreen.getInstance(game, game
 					.getController()));
 		} else {
-			bar.update(Interpolation.linear.apply(bar.getPercentage(), 1.0f, 0.01f));
+			percent = percent + (game.getAssets().getProgress() - percent) * 0.1f;
+			bar.update(percent);
 			bar.drawLabel(super.getSkin());
 		}
 
