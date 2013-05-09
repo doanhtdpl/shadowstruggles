@@ -11,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
  * A TransitionControl object is an arrow pointing either to the right or left,
  * moving the camera to the specified direction in a {@link BattleScreen}. It
  * has been replaced by the A-D and arrow keys and scrolling on the
- * {@link Map2D} due to usability decisions and currently is being used for
+ * {@link BattleMap2D} due to usability decisions and currently is being used for
  * advancing the story in a {@link SceneScreen}.
  */
 

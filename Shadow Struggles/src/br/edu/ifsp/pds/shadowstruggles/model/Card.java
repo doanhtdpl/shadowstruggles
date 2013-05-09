@@ -176,7 +176,7 @@ public class Card implements Serializable {
 		for (String card : this.preRequisites) {
 			if (!platform.getMap().cardOnMap(
 					new Card(card, card, 0, null, 0, null), -1,
-					Map.HUMAN_PLAYER)) {
+					BattleMap.HUMAN_PLAYER)) {
 				bool = false;
 				break;
 			}
