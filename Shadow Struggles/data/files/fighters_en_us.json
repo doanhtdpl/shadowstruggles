@@ -1,0 +1,98 @@
+[
+
+	
+{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
+	"name":"DR-002",
+	"nameVisualization":"DR-002",
+	"energyCost":10,
+	"description":"The ultimate defense robot!...If you are a child running away from a very fragile aggressor, at least. In practice, this little guy is mostly used for distraction, continuously unleashing attacks and being able to move very quickly.",
+	"buyCost":20,"health":15,"damage":3,
+	"speed":"FAST","range":1,
+	"hasEffect":false,"size":"MEDIUM","attackDelay":"FAST",
+	"preRequisites":[],
+	"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction"}
+	},
+	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
+	"name":"Broomy",
+	"nameVisualization":"Broomy",
+	"energyCost":25,
+	"description":"The perfect way of sweeping all of your enemies from the face of the Earth! Despite its appearance, Broomy can handle itself pretty well on the battlefield with its unpredictable moves.",
+	"buyCost":30,"health":20,"damage":5,
+	"speed":"NORMAL","range":1,
+	"hasEffect":false,"size":"MEDIUM","attackDelay":"NORMAL",
+	"preRequisites":[],
+	"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction"}
+	},
+	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
+	"name":"Golem",
+	"nameVisualization":"Golem",
+	"energyCost":40,
+	"description":"An unstoppable creature transmuted from many different sediments, the Golem is without a doubt one of the rebels� trump cards. It can only be transmuted when at least one Mineralogy card is active in the player�s field and has a 1/5 chance of attacking a nearby ally fighter.",
+	"buyCost":0,"health":25,"damage":15,
+	"speed":"SLOW","range":1,
+	"hasEffect":false,"size":"MEDIUM","attackDelay":"SLOW",
+	"preRequisites":["Mineralogy"]	,
+	"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction"}
+	},
+	
+	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
+	"name":"scrap_boy",
+	"nameVisualization":"Scrap Boy",
+	"energyCost":35,
+	"description":"An improvised and nature-friendly buddy for all lonely souls! The only problem is that this... creature, or whatever it is, is a bit of a coward. He has a 50% chance of surpassing an enemy fighter, ignoring any attacks, as long as there are no obstacles preventing it.",
+	"buyCost":40,"health":15,"damage":3,
+	"speed":"NORMAL","range":1,
+	"hasEffect":false,"size":"MEDIUM","attackDelay":"NORMAL",
+	"preRequisites":["Mineralogy"],
+	"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction"}
+	},
+	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
+	"name":"DR-003",
+	"nameVisualization":"DR-003",
+	"energyCost":35,
+	"description":"A reliable partner, DR-003 was made to protect its owner wherever he is by shooting powerful projectiles. That is, as long as the aggressor is right in front of him.",
+	"buyCost":50,"health":20,"damage":5,
+	"speed":"NORMAL","range":3,
+	"hasEffect":false,"size":"MEDIUM","attackDelay":"NORMAL",
+	"preRequisites":[],
+	"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction"}
+	},
+{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
+	"name":"DR-004",
+	"nameVisualization":"DR-004",
+	"energyCost":45,
+	"description":"A powerful military model able to withstand a series of attacks.",
+	"buyCost":60,"health":30,"damage":8,
+	"speed":"NORMAL","range":1,
+	"hasEffect":false,"size":"LARGE","attackDelay":"NORMAL",
+	"preRequisites":[],
+	"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction"}
+	},
+	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
+	"name":"DR-000",
+	"nameVisualization":"DR-000",
+	"energyCost":55,
+	"description":"Hard to spot, hard to kill and hard to predict; these are the qualities which best define the secret project DR-000. It was designed for assassination jobs, and it does so very well. If there are no allied fighters on his line and there are no obstacles preventing it, DR-000 will jump over any enemy fighter.",
+	"buyCost":70,"health":30,"damage":6,
+	"speed":"FAST","range":1,
+	"hasEffect":false,"size":"LARGE","attackDelay":"FAST",
+	"preRequisites":[],
+	"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction"}
+	},
+{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
+	"name":"Rock",
+	"nameVisualization":"Rock",
+	"energyCost":5,
+	"description":"In order to use this card, at least one Mineralogy card must be active on the player's field. It transmutates a rock in the specified location, which takes up to 10 units of damage from attacks and prevents enemy fighters from advancing.",
+	"buyCost":80,"health":25,"damage":0,
+	"speed":0,"range":0,
+	"hasEffect":false,"size":"SMALL","attackDelay":"FAST",
+	"preRequisites":["Mineralogy"],
+	"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction"}
+	}
+	
+	
+	
+	
+
+]
