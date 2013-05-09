@@ -20,7 +20,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
  * player indicating how much of the resources have been loaded.
  */
 public class LoadingScreen extends BaseScreen {
-	
+
 	private class LoadingBar extends Image {
 		private float percentage = 0.0f;
 		private Label percentageLbl;
@@ -50,14 +50,14 @@ public class LoadingScreen extends BaseScreen {
 					.getFont("andalus-font"), Color.WHITE));
 			this.getStage().addActor(percentageLbl);
 		}
-		
+
 		public float getPercentage() {
 			return this.percentage;
 		}
 	}
-	
+
 	private static int BAR_MAX_WIDTH = 1024; // The width of the progress bar.
-	
+
 	private Image background;
 	private ShadowStruggles game;
 	private LoadingBar bar;
@@ -66,7 +66,8 @@ public class LoadingScreen extends BaseScreen {
 
 	public LoadingScreen(ShadowStruggles game) {
 		super(game);
-		loader = new Loader(game, ManagementStrategy.STATIC_TEXTURE_ATLAS, null, null);
+		loader = new Loader(game, ManagementStrategy.STATIC_TEXTURE_ATLAS,
+				null, null);
 		loader.loadAssets();
 		this.game = game;
 	}
@@ -101,15 +102,17 @@ public class LoadingScreen extends BaseScreen {
 	@Override
 	public void render(float delta) {
 		super.render(delta);
-		
+
 		if (game.getAssets().update()) {
 			game.setAudio(new SoundManager(game.getAssets()));
 			game.getAudio().setMusic("intro");
 			loader.instantiateScreens();
-			game.setScreenWithTransition(StartScreen.getInstance(game, game
-					.getController()));
+			game.setScreenWithTransition(StartScreen.getInstance(game,
+					game.getController()));
 		} else {
-			percent = percent + (game.getAssets().getProgress() - percent) * 0.1f;
+			percent += 0.005f;
+			if(game.getAssets().getProgress() - percent > 0.0f)
+				percent += (game.getAssets().getProgress() - percent) * 0.9f;
 			bar.update(percent);
 			bar.drawLabel(super.getSkin());
 		}
