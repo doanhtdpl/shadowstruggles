@@ -5,7 +5,7 @@ import br.edu.ifsp.pds.shadowstruggles.data.DeckDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.DefaultRules;
-import br.edu.ifsp.pds.shadowstruggles.model.Map;
+import br.edu.ifsp.pds.shadowstruggles.model.BattleMap;
 import br.edu.ifsp.pds.shadowstruggles.model.enemies.TutorialEnemy;
 import br.edu.ifsp.pds.shadowstruggles.object2d.FixedImage;
 import br.edu.ifsp.pds.shadowstruggles.object2d.FixedLabel;
@@ -114,7 +114,7 @@ public class BattleTutorial extends BattleScreen {
 		super(game, game.getProfile(), game.getController(),
 				new BattlePlatform(DeckDAO.getDeck("Tutorial Deck",
 						game.getManager()), DeckDAO.getDeck(
-						"Practice Deck Enemy", game.getManager()), new Map(
+						"Practice Deck Enemy", game.getManager()), new BattleMap(
 						"cena1"), new DefaultRules(game.getManager()
 						.getSettings()), new TutorialEnemy()), game
 						.getManager().getMenuText().practiceBattle, false);

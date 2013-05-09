@@ -13,14 +13,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
  * A visual representation of the map.
  */
 
-public class Map2D extends Image implements InputProcessor {
+public class BattleMap2D extends Image implements InputProcessor {
 
 	private Controller controller;
 	private boolean touched;
 	private boolean justTouched;
 	private int touchX;
 
-	public Map2D(final Controller controller, TextureRegion tRegion) {
+	public BattleMap2D(final Controller controller, TextureRegion tRegion) {
 		super(tRegion);		
 		touched = false;
 		justTouched = false;

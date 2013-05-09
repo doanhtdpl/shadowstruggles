@@ -4,7 +4,7 @@ import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.data.DeckDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.model.DefaultRules;
-import br.edu.ifsp.pds.shadowstruggles.model.Map;
+import br.edu.ifsp.pds.shadowstruggles.model.BattleMap;
 import br.edu.ifsp.pds.shadowstruggles.model.enemies.PracticeEnemy;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.BattleScreen;
@@ -19,7 +19,7 @@ public class Practice extends BattleScreen {
 		super(game, game.getProfile(), game.getController(),
 				new BattlePlatform(DeckDAO.getDeck("Practice Deck Player",
 						game.getManager()), DeckDAO.getDeck(
-						"Practice Deck Enemy", game.getManager()), new Map(
+						"Practice Deck Enemy", game.getManager()), new BattleMap(
 						"cena1"), new DefaultRules(game.getManager()
 						.getSettings()), new PracticeEnemy()), game
 						.getManager().getMenuText().practiceBattle,

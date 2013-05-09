@@ -4,7 +4,7 @@ import com.badlogic.gdx.math.MathUtils;
 
 import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
-import br.edu.ifsp.pds.shadowstruggles.model.Map;
+import br.edu.ifsp.pds.shadowstruggles.model.BattleMap;
 import br.edu.ifsp.pds.shadowstruggles.screens.BattleScreen;
 
 public class PracticeEnemy extends Enemy {
@@ -23,7 +23,7 @@ public class PracticeEnemy extends Enemy {
 				tile = 35;
 				if (platform.getMap().cardOnMap(
 						new Card("Mineralogy", null, 0, "", 0, null), -1,
-						Map.COMPUTER_PLAYER)) {
+						BattleMap.COMPUTER_PLAYER)) {
 					if (platform.cardOnEnemyHand(new Card("Rock", null, 0, "",
 							0, null)))
 						card = platform.getCardFromEnemy("Rock");

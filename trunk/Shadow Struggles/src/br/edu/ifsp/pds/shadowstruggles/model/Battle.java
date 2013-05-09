@@ -17,12 +17,12 @@ public class Battle {
 	private Player player1;
 	private Player player2;
 	private boolean isInCampaign;
-	private Map map;
+	private BattleMap map;
 	
 	
 	
 	public Battle(ShadowStruggles game, Player player1, Player player2, boolean isInCampaign) {
-		this.platform = new BattlePlatform(player1.getDeck(), player2.getDeck(), new Map(""), 
+		this.platform = new BattlePlatform(player1.getDeck(), player2.getDeck(), new BattleMap(""), 
 				new DefaultRules(game.getManager().getSettings()));
 		this.game=game;
 		this.map=platform.getMap();
@@ -74,7 +74,7 @@ public class Battle {
 	public void end(){
 		
 	}
-	public Map getMap() {
+	public BattleMap getMap() {
 		return map;
 	}
 }

@@ -121,8 +121,9 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="br.edu.ifsp.pds.shadowstruggles.object2d.Map2D" project="ShadowStruggles" 
-    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/object2d/Map2D.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="13" language="java" name="br.edu.ifsp.pds.shadowstruggles.object2d.BattleMap2DeMap2D" project="ShadowStruggles" 
+    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/object2d/BattleMap2D.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="315" width="184" x="1593" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      

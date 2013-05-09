@@ -20,7 +20,7 @@ import br.edu.ifsp.pds.shadowstruggles.object2d.HandBackground;
 import br.edu.ifsp.pds.shadowstruggles.object2d.HandCard;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Hexagram;
 import br.edu.ifsp.pds.shadowstruggles.object2d.LifeBar;
-import br.edu.ifsp.pds.shadowstruggles.object2d.Map2D;
+import br.edu.ifsp.pds.shadowstruggles.object2d.BattleMap2D;
 import br.edu.ifsp.pds.shadowstruggles.object2d.MenuButton;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Timer2D;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Trap2D;
@@ -66,7 +66,7 @@ public class BattleScreen extends BaseScreen {
 	protected InputMultiplexer inputSources;
 	private Image selectedCard;
 
-	protected Map2D map2d;
+	protected BattleMap2D map2d;
 	private HandBackground background;
 	private boolean inicializado = false;
 	private Array<Hexagram> hexagrams;
@@ -114,7 +114,7 @@ public class BattleScreen extends BaseScreen {
 		TextureRegion mapImage = new TextureRegion(new Texture(
 				Gdx.files.internal(mapPath)), settings.backgroundWidth / 2,
 				settings.backgroundHeight / 2);
-		map2d = new Map2D(controller, mapImage);
+		map2d = new BattleMap2D(controller, mapImage);
 
 		timeElapsed = 0;
 		timeDelay = 0;

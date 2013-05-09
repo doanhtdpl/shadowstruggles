@@ -7,13 +7,13 @@ import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.Deck;
 import br.edu.ifsp.pds.shadowstruggles.model.DefaultRules;
-import br.edu.ifsp.pds.shadowstruggles.model.Map;
+import br.edu.ifsp.pds.shadowstruggles.model.BattleMap;
 
 public class BattlePlatformTest {
 	
 	@Test
 	public void testCardOnEnemyHand() {
-		BattlePlatform platform = new BattlePlatform(new Deck(), new Deck(), new Map(""), new DefaultRules());
+		BattlePlatform platform = new BattlePlatform(new Deck(), new Deck(), new BattleMap(""), new DefaultRules());
 		Card card = new Card();
 		platform.addEnemyHandCard(card);
 		assertTrue(platform.cardOnEnemyHand(card));
@@ -21,7 +21,7 @@ public class BattlePlatformTest {
 
 	@Test
 	public void testGetCardFromEnemy() {
-		BattlePlatform platform = new BattlePlatform(new Deck(), new Deck(), new Map(""), new DefaultRules());
+		BattlePlatform platform = new BattlePlatform(new Deck(), new Deck(), new BattleMap(""), new DefaultRules());
 		Card expected = new Card();
 		platform.addEnemyHandCard(expected);
 		Card actual = platform.getCardFromEnemy("");

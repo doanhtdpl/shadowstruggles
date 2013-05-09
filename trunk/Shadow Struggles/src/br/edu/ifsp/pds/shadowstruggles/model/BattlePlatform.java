@@ -13,7 +13,7 @@ public class BattlePlatform {
 
 	private Deck playerDeck;
 	private Deck enemyDeck;
-	private Map map;
+	private BattleMap map;
 	private DefaultRules rules;
 	private Array<Card> playerDestroyedCards;
 	private Array<Card> enemyDestroyedCards;
@@ -24,7 +24,7 @@ public class BattlePlatform {
 	private Field EnemyField;
 	private Enemy enemy;
 
-	public BattlePlatform(Deck playerDeck, Deck enemyDeck, Map map,
+	public BattlePlatform(Deck playerDeck, Deck enemyDeck, BattleMap map,
 			DefaultRules rules, Enemy enemy) {
 		super();
 		this.playerDeck = playerDeck;
@@ -37,7 +37,7 @@ public class BattlePlatform {
 		this.EnemyField = new Field();
 		this.enemy = enemy;
 	}
-	public BattlePlatform(Deck playerDeck, Deck enemyDeck, Map map,
+	public BattlePlatform(Deck playerDeck, Deck enemyDeck, BattleMap map,
 			DefaultRules rules) {
 		super();
 		this.playerDeck = playerDeck;
@@ -82,11 +82,11 @@ public class BattlePlatform {
 		this.enemyDeck = enemyDeck;
 	}
 
-	public Map getMap() {
+	public BattleMap getMap() {
 		return map;
 	}
 
-	public void setMap(Map map) {
+	public void setMap(BattleMap map) {
 		this.map = map;
 	}
 

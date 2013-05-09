@@ -8,14 +8,14 @@ import com.badlogic.gdx.utils.Array;
 
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.Fighter;
-import br.edu.ifsp.pds.shadowstruggles.model.Map;
+import br.edu.ifsp.pds.shadowstruggles.model.BattleMap;
 import br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction;
 
 public class MapTest {
 
 	@Test
 	public void testCardOnMap() {
-		Map map = new Map("teste");
+		BattleMap map = new BattleMap("teste");
 		Card card = new Card("DR-002", "DR-002", 15, "description", 100,
 				new DefaultAction());
 		card.setDirection(1);
@@ -25,7 +25,7 @@ public class MapTest {
 
 	@Test
 	public void testEnemyBaseAttacked() {
-		Map map = new Map("teste");
+		BattleMap map = new BattleMap("teste");
 		Fighter fighter = new Fighter("DR002", "DR002", 15, "", 14,
 				new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
 		fighter.setDirection(1);
@@ -35,7 +35,7 @@ public class MapTest {
 
 	@Test
 	public void testPlayerBaseAttacked() {
-		Map map = new Map("teste");
+		BattleMap map = new BattleMap("teste");
 		Fighter fighter = new Fighter("DR002", "DR002", 15, "", 14,
 				new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
 		fighter.setDirection(-1);
@@ -45,7 +45,7 @@ public class MapTest {
 
 	@Test
 	public void testNextAvailableLane() {
-		Map map = new Map("teste");
+		BattleMap map = new BattleMap("teste");
 		Card card1 = new Card("DR-002", "DR-002", 15, "description", 100,
 				new DefaultAction());
 		card1.setDirection(1);
@@ -71,7 +71,7 @@ public class MapTest {
 
 	@Test
 	public void testNextAvailableTile() {
-		Map map = new Map("teste");
+		BattleMap map = new BattleMap("teste");
 		Card card1 = new Card("DR-002", "DR-002", 15, "description", 100,
 				new DefaultAction());
 		card1.setDirection(1);
@@ -93,7 +93,7 @@ public class MapTest {
 
 	@Test
 	public void testLaneWithMoreEnemies() {
-		Map map = new Map("teste");
+		BattleMap map = new BattleMap("teste");
 		Fighter fighter1 = new Fighter("DR002", "DR002", 15, "", 14,
 				new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
 		fighter1.setDirection(-1);
@@ -115,7 +115,7 @@ public class MapTest {
 
 	@Test
 	public void testLaneWithLessAllies() {
-		Map map = new Map("teste");
+		BattleMap map = new BattleMap("teste");
 		Fighter fighter1 = new Fighter("DR002", "DR002", 15, "", 14,
 				new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
 		fighter1.setDirection(1);
@@ -133,7 +133,7 @@ public class MapTest {
 
 	@Test
 	public void testLaneWithMoreEnemiesInvading() {
-		Map map = new Map("teste");
+		BattleMap map = new BattleMap("teste");
 		Fighter fighter1 = new Fighter("DR002", "DR002", 15, "", 14,
 				new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
 		fighter1.setDirection(1);
@@ -155,7 +155,7 @@ public class MapTest {
 
 	@Test
 	public void testTileClosestToBase() {
-		Map map = new Map("teste");
+		BattleMap map = new BattleMap("teste");
 		Card card1 = new Card("DR-002", "DR-002", 15, "description", 100,
 				new DefaultAction());
 		card1.setDirection(1);
@@ -173,7 +173,7 @@ public class MapTest {
 
 	@Test
 	public void testTileFurthestFromBase() {
-		Map map = new Map("teste");
+		BattleMap map = new BattleMap("teste");
 		Card card1 = new Card("DR-002", "DR-002", 15, "description", 100,
 				new DefaultAction());
 		card1.setDirection(1);
@@ -187,7 +187,7 @@ public class MapTest {
 
 	@Test
 	public void testAddCard() {
-		Map map = new Map("teste");
+		BattleMap map = new BattleMap("teste");
 		Card card1 = new Card("DR-002", "DR-002", 15, "description", 100,
 				new DefaultAction());
 		card1.setDirection(1);

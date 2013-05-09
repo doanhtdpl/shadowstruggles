@@ -75,8 +75,9 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.Map" project="ShadowStruggles" 
-    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/model/Map.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="9" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.BattleMaptleMap" project="ShadowStruggles" 
+    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/model/BattleMap.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="441" width="237" x="330" y="2025"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      

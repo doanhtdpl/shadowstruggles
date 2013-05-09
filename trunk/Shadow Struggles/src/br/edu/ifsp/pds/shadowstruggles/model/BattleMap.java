@@ -4,20 +4,20 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.OrderedMap;
 
 /**
- * A Map object is a three-dimensional Array containing the cards placed on the
+ * A BattleMap object is a three-dimensional Array containing the cards placed on the
  * field. A card is inside an Array of cards, which is inside a tile, which is
  * inside an Array of tiles. Thus, it is possible to have multiple cards on each
  * tile.
  */
 
-public class Map {
+public class BattleMap {
 	public static final int HUMAN_PLAYER = 1;
 	public static final int COMPUTER_PLAYER = -1;
 
 	private Array<Array<Array<Card>>> tiles;
 	private String name;
 
-	public Map(String name) {
+	public BattleMap(String name) {
 		this.name = name;
 		this.tiles = new Array<Array<Array<Card>>>();
 		for (int i = 0; i < 50; i++) {
@@ -131,8 +131,8 @@ public class Map {
 	 * there is at least one free slot in it.
 	 * 
 	 * @param player
-	 *            Indicates which field to look into: Map.HUMAN_PLAYER or
-	 *            Map.ENEMY_PLAYER.
+	 *            Indicates which field to look into: BattleMap.HUMAN_PLAYER or
+	 *            BattleMap.ENEMY_PLAYER.
 	 */
 
 	public int nextAvailableLane(int player) {
@@ -157,8 +157,8 @@ public class Map {
 	 * 
 	 * @param lane
 	 * @param player
-	 *            Indicates which field to look into: Map.HUMAN_PLAYER or
-	 *            Map.ENEMY_PLAYER.
+	 *            Indicates which field to look into: BattleMap.HUMAN_PLAYER or
+	 *            BattleMap.ENEMY_PLAYER.
 	 */
 
 	public int nextAvailableTile(int lane, int player) {
@@ -186,8 +186,8 @@ public class Map {
 	 * Returns the lane with the greatest number of enemy fighters.
 	 * 
 	 * @param player
-	 *            Indicates which field to look into: Map.HUMAN_PLAYER or
-	 *            Map.ENEMY_PLAYER.
+	 *            Indicates which field to look into: BattleMap.HUMAN_PLAYER or
+	 *            BattleMap.ENEMY_PLAYER.
 	 */
 	public int laneWithMoreEnemies(int player) {
 		int lane = 0;
@@ -221,8 +221,8 @@ public class Map {
 	 * Returns the lane with the least number of allied fighters.
 	 * 
 	 * @param player
-	 *            Indicates which field to look into: Map.HUMAN_PLAYER or
-	 *            Map.ENEMY_PLAYER.
+	 *            Indicates which field to look into: BattleMap.HUMAN_PLAYER or
+	 *            BattleMap.ENEMY_PLAYER.
 	 */
 	public int laneWithLessAllies(int player) {
 		int lane = 0;
@@ -257,8 +257,8 @@ public class Map {
 	 * player's field.
 	 * 
 	 * @param player
-	 *            Indicates which field to look into: Map.HUMAN_PLAYER or
-	 *            Map.ENEMY_PLAYER.
+	 *            Indicates which field to look into: BattleMap.HUMAN_PLAYER or
+	 *            BattleMap.ENEMY_PLAYER.
 	 */
 
 	public int laneWithMoreEnemiesInvading(int player) {
@@ -281,8 +281,8 @@ public class Map {
 	 * 
 	 * @param lane
 	 * @param player
-	 *            Indicates which field to look into: Map.HUMAN_PLAYER or
-	 *            Map.ENEMY_PLAYER.
+	 *            Indicates which field to look into: BattleMap.HUMAN_PLAYER or
+	 *            BattleMap.ENEMY_PLAYER.
 	 */
 	// TODO: Implementar método.
 	public int tileClosestToBase(int lane, int player) {
@@ -297,8 +297,8 @@ public class Map {
 	 * 
 	 * @param lane
 	 * @param player
-	 *            Indicates which field to look into: Map.HUMAN_PLAYER or
-	 *            Map.ENEMY_PLAYER.
+	 *            Indicates which field to look into: BattleMap.HUMAN_PLAYER or
+	 *            BattleMap.ENEMY_PLAYER.
 	 */
 	// TODO: Implementar método.
 	public int tileFurthestFromBase(int lane, int player) {
