@@ -2,6 +2,8 @@ package br.edu.ifsp.pds.shadowstruggles.screens.utils;
 
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 
+// Based on: http://blog.gemserk.com/2012/03/05/implementing-transitions-between-screens/.
+
 public class TransitionEffect {
 
 	protected float alpha;
