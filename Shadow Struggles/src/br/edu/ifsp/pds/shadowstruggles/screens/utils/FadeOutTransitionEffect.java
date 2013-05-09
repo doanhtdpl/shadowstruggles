@@ -10,6 +10,8 @@ import com.badlogic.gdx.graphics.glutils.ImmediateModeRenderer10;
 import com.badlogic.gdx.graphics.glutils.ImmediateModeRenderer20;
 import com.badlogic.gdx.math.Matrix4;
 
+// Based on: http://blog.gemserk.com/2012/03/05/implementing-transitions-between-screens/.
+
 public class FadeOutTransitionEffect extends TransitionEffect {
 
 	private static ImmediateModeRenderer renderer;

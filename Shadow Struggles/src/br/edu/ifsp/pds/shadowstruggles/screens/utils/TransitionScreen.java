@@ -6,6 +6,8 @@ import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 
 import com.badlogic.gdx.utils.Array;
 
+// Based on: http://blog.gemserk.com/2012/03/05/implementing-transitions-between-screens/.
+
 public class TransitionScreen extends BaseScreen {
 	// Game game;
 
