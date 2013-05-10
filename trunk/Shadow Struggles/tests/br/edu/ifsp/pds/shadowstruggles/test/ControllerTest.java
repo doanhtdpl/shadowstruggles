@@ -7,13 +7,19 @@ import org.junit.Test;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 import br.edu.ifsp.pds.shadowstruggles.Controller;
+import br.edu.ifsp.pds.shadowstruggles.model.BattleMap;
+import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
+import br.edu.ifsp.pds.shadowstruggles.model.Deck;
+import br.edu.ifsp.pds.shadowstruggles.model.DefaultRules;
 
 public class ControllerTest {
 
 	@Test
 	public void testBackCardClicked() {
 		fail("Not yet implemented"); //TODO: Implementar teste.
+		Card card = new Card("Teste", "CartaTeste", 10, "Descrição", 0, null);
+		
 	}
 
 	@Test
@@ -23,7 +29,18 @@ public class ControllerTest {
 
 	@Test
 	public void testHandCardClicked() {
-		fail("Not yet implemented"); //TODO: Implementar teste.
+		//fail("Not yet implemented"); //TODO: Implementar teste.
+		Controller control = Controller.getInstance();
+		Card card = new Card("Teste", "CartaTeste", 10, "Descrição", 0, null);
+		BattlePlatform platform = new BattlePlatform(new Deck(), new Deck(), 
+				new BattleMap(""), new DefaultRules());
+		platform.addPlayerHandCard(card);
+		platform.addPlayerHandCard(card);
+		platform.addPlayerHandCard(card);
+		platform.addPlayerHandCard(card);
+		platform.addPlayerHandCard(card);
+		control.handCardClicked(card, true);
+		assertEquals(card, platform.getSelectedCard());
 	}
 
 	@Test
@@ -38,7 +55,7 @@ public class ControllerTest {
 
 	@Test
 	public void testPlayCard() {
-		Card cartaTest = new Card("Teste", "CartaTeste", 10, "Descri��o", 0,
+		Card cartaTest = new Card("Teste", "CartaTeste", 10, "Descrição", 0,
 				null);
 		int laneTest = 10;
 		int tileTest = 20;
@@ -51,7 +68,7 @@ public class ControllerTest {
 
 	@Test
 	public void testAddCardToMap() {
-		Card cartaTest = new Card("Teste", "CartaTeste", 10, "Descricao", 1,
+		Card cartaTest = new Card("Teste", "CartaTeste", 10, "Descrição", 1,
 				null);
 		int laneTest = 10;
 		int tileTest = 20;
@@ -63,7 +80,15 @@ public class ControllerTest {
 
 	@Test
 	public void testRemoveCard() {
-		fail("Not yet implemented"); //TODO: Implementar teste.
+		//fail("Not yet implemented"); //TODO: Implementar teste.
+		Controller control = Controller.getInstance();
+		Card card = new Card("Teste", "CartaTeste", 10, "Descrição", 0, null);
+		BattlePlatform platform = new BattlePlatform(new Deck(), new Deck(), 
+				new BattleMap(""), new DefaultRules());
+		
+		
+		
+		
 	}
 
 	@Test
