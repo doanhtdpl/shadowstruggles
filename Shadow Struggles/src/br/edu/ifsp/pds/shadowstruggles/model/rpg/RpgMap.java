@@ -17,7 +17,7 @@ public class RpgMap {
 		for(int i = 0;i < width;i++){
 			tiles.add(new Array<Tile>());
 			for(int j = 0 ; j< height; j++)
-				tiles.get(i).add(new Tile());
+				tiles.get(i).add(new Tile(true));
 				
 		}
 				
