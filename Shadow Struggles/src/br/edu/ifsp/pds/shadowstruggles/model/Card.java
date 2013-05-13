@@ -5,6 +5,7 @@ import br.edu.ifsp.pds.shadowstruggles.scripts.CardAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.Json.Serializable;
 import com.badlogic.gdx.utils.OrderedMap;
 
@@ -86,7 +87,7 @@ public class Card implements Serializable {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public void read(Json json, OrderedMap<String, Object> jsonData) {
+	public void read(Json json, JsonValue jsonData) {
 		this.name = json.readValue("name", String.class, jsonData);
 		this.nameVisualization = json.readValue("nameVisualization",
 				String.class, jsonData);

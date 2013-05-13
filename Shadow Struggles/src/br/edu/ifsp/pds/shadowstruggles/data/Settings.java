@@ -1,6 +1,7 @@
 package br.edu.ifsp.pds.shadowstruggles.data;
 
 import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.Json.Serializable;
 import com.badlogic.gdx.utils.OrderedMap;
 
@@ -76,7 +77,7 @@ public class Settings implements Serializable {
 	}
 
 	@Override
-	public void read(Json json, OrderedMap<String, Object> jsonData) {
+	public void read(Json json, JsonValue jsonData) {
 		tileWidth = json.readValue("tileWidth", Integer.class, jsonData);
 		tileHeight = json.readValue("tileHeight", Integer.class, jsonData);
 		playerMaxHP = json.readValue("playerMaxHP", Integer.class, jsonData);

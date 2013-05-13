@@ -6,6 +6,7 @@ import br.edu.ifsp.pds.shadowstruggles.data.DeckDAO;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Json.Serializable;
+import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.OrderedMap;
 
 /**
@@ -134,7 +135,7 @@ public class Profile implements Serializable, Comparable<Object> {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public void read(Json json, OrderedMap<String, Object> jsonData) {
+	public void read(Json json, JsonValue jsonData) {
 		this.id = json.readValue("id", Integer.class, jsonData);
 		this.currentScene = json.readValue("currentScene", Scene.class,
 				jsonData);

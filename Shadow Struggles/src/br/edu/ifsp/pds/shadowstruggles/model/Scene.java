@@ -1,6 +1,7 @@
 package br.edu.ifsp.pds.shadowstruggles.model;
 
 import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.Json.Serializable;
 import com.badlogic.gdx.utils.OrderedMap;
 
@@ -104,7 +105,7 @@ public class Scene implements Serializable {
 	}
 
 	@Override
-	public void read(Json json, OrderedMap<String, Object> jsonData) {
+	public void read(Json json, JsonValue jsonData) {
 		this.id = json.readValue("id", Integer.class, jsonData);
 		this.nextId = json.readValue("nextId", Integer.class, jsonData);
 		this.name = json.readValue("name", String.class, jsonData);

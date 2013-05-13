@@ -4,6 +4,7 @@ import br.edu.ifsp.pds.shadowstruggles.scripts.CardAction;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.OrderedMap;
 
 /***
@@ -72,7 +73,7 @@ public class Effect extends Card {
 	}
 
 	@Override
-	public void read(Json json, OrderedMap<String, Object> jsonData) {
+	public void read(Json json, JsonValue jsonData) {
 		super.read(json, jsonData);
 		this.duration = json.readValue("duration", Float.class, jsonData);
 		this.isImmediateEffect = json.readValue("isImmediateEffect",
