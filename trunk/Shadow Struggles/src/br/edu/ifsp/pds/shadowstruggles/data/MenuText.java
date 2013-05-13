@@ -2,6 +2,7 @@ package br.edu.ifsp.pds.shadowstruggles.data;
 
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Json.Serializable;
+import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.OrderedMap;
 
 /**
@@ -78,7 +79,7 @@ public class MenuText implements Serializable {
 	}
 
 	@Override
-	public void read(Json json, OrderedMap<String, Object> jsonData) {
+	public void read(Json json, JsonValue jsonData) {
 		continueGame = json.readValue("continueGame", String.class, jsonData);
 		newGame = json.readValue("newGame", String.class, jsonData);
 		returnToStart = json.readValue("returnToStart", String.class, jsonData);

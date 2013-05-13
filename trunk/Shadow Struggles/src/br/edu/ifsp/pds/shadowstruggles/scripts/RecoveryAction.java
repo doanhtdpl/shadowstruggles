@@ -9,6 +9,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.OrderedMap;
 
 /**
@@ -93,7 +94,7 @@ public class RecoveryAction extends CardAction {
 	
 
 	@Override
-	public void read(Json json, OrderedMap<String, Object> jsonData) {
+	public void read(Json json, JsonValue jsonData) {
 		//this.id = json.readValue("id", Integer.class, jsonData);
 	}
 

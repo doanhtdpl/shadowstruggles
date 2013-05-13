@@ -2,6 +2,7 @@ package br.edu.ifsp.pds.shadowstruggles.data;
 
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Json.Serializable;
+import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.OrderedMap;
 
@@ -23,12 +24,7 @@ public class Languages implements Serializable{
 
 	}
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public void read(Json json, OrderedMap<String, Object> jsonData) {
-		language = json.readValue("language", ObjectMap.class, jsonData);
-
-	}
+	
 
 	public String get(String name) {
 		return language.get(name);
@@ -36,5 +32,12 @@ public class Languages implements Serializable{
 
 	public ObjectMap<String, String> getLanguages() {
 		return language;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public void read(Json json, JsonValue jsonData) {
+		language = json.readValue("language", ObjectMap.class, jsonData);
+		
 	}
 }

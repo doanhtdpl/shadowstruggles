@@ -5,6 +5,7 @@ import br.edu.ifsp.pds.shadowstruggles.model.Card;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.Json.Serializable;
 import com.badlogic.gdx.utils.OrderedMap;
 
@@ -36,7 +37,7 @@ public abstract class CardAction  implements Serializable{
 	
 
 	@Override
-	public void read(Json json, OrderedMap<String, Object> jsonData) {
+	public void read(Json json, JsonValue jsonData) {
 		//precisa colocar algo?
 	}
 }
