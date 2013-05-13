@@ -27,25 +27,25 @@ public class Character {
 		boolean walked = false;
 		switch (direction) {
 		case WALK_UP:
-			if (tileY < map.getHeight() - 1) {
+			if (tileY < map.getHeight() - 1 && map.getTile(tileX, tileY+1).isWalkable()) {
 				tileY++;
 				walked = true;
 			}
 			break;
 		case WALK_DOWN:
-			if (tileY > 0) {
+			if (tileY > 0 && map.getTile(tileX, tileY-1).isWalkable()) {
 				tileY--;
 				walked = true;
 			}
 			break;
 		case WALK_LEFT:
-			if (tileX > 0) {
+			if (tileX > 0 && map.getTile(tileX-1, tileY).isWalkable()) {
 				tileX--;
 				walked = true;
 			}
 			break;
 		case WALK_RIGHT:
-			if (tileX < map.getWidth() - 1) {
+			if (tileX < map.getWidth() - 1 && map.getTile(tileX+1, tileY).isWalkable()) {
 				tileX++;
 				walked = true;
 			}
