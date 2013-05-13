@@ -12,5 +12,13 @@ public class Tile {
 	
 	public Item hasItem(){return item;}
 	
+	public void removeCharacer(){
+		this.character=null;
+	}
+	
+	public void insertCharacter(Character character){
+		this.character=character;
+	}
+	
 
 }

@@ -22,7 +22,17 @@ public class Character {
 	}
 	
 	
-	public void walk(WalkDirection direction){}
+	public void walk(WalkDirection direction, RpgMap map){
+		map.getTile(tileX, tileY).removeCharacer();
+		switch(direction){
+		case WALK_UP:tileY++;break;
+			case WALK_DOWN:tileY--;break;
+			case WALK_LEFT:tileX--;break;
+			case WALK_RIGHT:tileX++;break;
+		default:break;
+		}
+		map.getTile(tileX, tileY).insertCharacter(this);
+	}
 
 	public int getTileX() {
 		return tileX;
