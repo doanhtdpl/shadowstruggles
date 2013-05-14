@@ -3,6 +3,7 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.games.Practice;
+import br.edu.ifsp.pds.shadowstruggles.rpg.viewer.RpgScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -49,7 +50,8 @@ public class FreePlayScreen extends BaseScreen {
 			public void clicked(InputEvent event, float x, float y) {
 
 				super.clicked(event, x, y);
-				game.setScreenWithTransition(new BattleTutorial(game));
+				//game.setScreenWithTransition(new BattleTutorial(game));
+				game.setScreenWithTransition(new RpgScreen(game, controller));
 			}
 		});
 		stage.addActor(tempButton);
