@@ -9,14 +9,14 @@ import br.edu.ifsp.pds.shadowstruggles.model.Profile;
 public class ProfileTest {
 
 	@Test
-	public void moveMoneyTest() {
+	public void testMoveMoney() {
 		Profile tester = new Profile();
 		tester.moveMoney(10000);
 		assertEquals("Result:", 20000, tester.getMoney());
 	}
 
 	@Test
-	public void compareToTest() {
+	public void testCompareTo() {
 		Profile tester = new Profile();
 		Profile tester2 = new Profile();
 		int isEqual = tester.compareTo(tester2);

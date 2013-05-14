@@ -51,17 +51,18 @@ public class ControllerTest {
 	@Test
 	public void testTileChanged() {
 		fail("Not yet implemented"); //TODO: Implementar teste.
+		
 	}
 
 	@Test
 	public void testPlayCard() {
 		Card cartaTest = new Card("Teste", "CartaTeste", 10, "Descrição", 0,
 				null);
-		int laneTest = 10;
-		int tileTest = 20;
+		int laneTest = 2;
+		int tileTest = 2;
 
 		Controller control = Controller.getInstance();
-
+		
 		control.playCard(cartaTest, laneTest, tileTest);
 
 	}
@@ -70,8 +71,8 @@ public class ControllerTest {
 	public void testAddCardToMap() {
 		Card cartaTest = new Card("Teste", "CartaTeste", 10, "Descrição", 1,
 				null);
-		int laneTest = 10;
-		int tileTest = 20;
+		int laneTest = 3;
+		int tileTest = 3;
 		Controller control = Controller.getInstance();
 		Image cardImage = new Image();
 
@@ -87,7 +88,7 @@ public class ControllerTest {
 				new BattleMap(""), new DefaultRules());
 		
 		
-		
+		fail("not yet implemented");
 		
 	}
 
