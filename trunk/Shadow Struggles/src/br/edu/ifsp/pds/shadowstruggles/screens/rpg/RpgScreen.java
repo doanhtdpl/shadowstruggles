@@ -1,4 +1,4 @@
-package br.edu.ifsp.pds.shadowstruggles.rpg.viewer;
+package br.edu.ifsp.pds.shadowstruggles.screens.rpg;
 
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true">  
-  <class id="1" language="java" name="br.edu.ifsp.pds.shadowstruggles.rpg.model.Character" project="ShadowStruggles" 
-    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/rpg/model/Character.java" binary="false" 
+  <class id="1" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.rpg.Character" project="ShadowStruggles" 
+    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/model/rpg/Character.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="314" y="62"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -11,8 +11,8 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="br.edu.ifsp.pds.shadowstruggles.rpg.model.Item" project="ShadowStruggles" 
-    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/rpg/model/Item.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="2" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.rpg.Item" project="ShadowStruggles" 
+    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/model/rpg/Item.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="525" y="62"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -20,8 +20,8 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="br.edu.ifsp.pds.shadowstruggles.rpg.model.RpgMap" project="ShadowStruggles" 
-    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/rpg/model/RpgMap.java" binary="false" 
+  <class id="3" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgMap" project="ShadowStruggles" 
+    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/model/rpg/RpgMap.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="639" y="372"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -30,8 +30,8 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="br.edu.ifsp.pds.shadowstruggles.rpg.model.RpgPlatform" project="ShadowStruggles" 
-    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/rpg/model/RpgPlatform.java" binary="false" 
+  <class id="4" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgPlatform" project="ShadowStruggles" 
+    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/model/rpg/RpgPlatform.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="109" y="60"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
