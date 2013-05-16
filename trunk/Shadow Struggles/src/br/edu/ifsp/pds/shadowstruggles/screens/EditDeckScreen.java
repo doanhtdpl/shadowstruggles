@@ -79,21 +79,14 @@ public class EditDeckScreen extends BaseScreen {
 		deckName.setText("Deck A");
 		deckName.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
 				Color.BLACK));
-		deckName.setX(10);
-		deckName.setY(10);
 		
 		decks = new Label("", super.getSkin());
 		decks.setText("Deck B");
 		decks.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
 				Color.BLACK));
-		decks.setX(10);
-		decks.setY(50);
-		
 		
 		exit = new TextButton("", super.getSkin().get("blur", TextButtonStyle.class));
 		exit.setText("Exit");
-//		exit.setX(10);
-//		exit.setY(50);
 		exit.addListener(new ClickListener() {
 
 			@Override
