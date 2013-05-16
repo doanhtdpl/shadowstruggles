@@ -11,8 +11,6 @@ import com.badlogic.gdx.utils.OrderedMap;
 
 /**
  * Class for implementing the actions/effects for each card.
- * A CardAction object can only exist in the local memory, unable
- * to go under serialization.
  */
 public abstract class CardAction  implements Serializable{
 
