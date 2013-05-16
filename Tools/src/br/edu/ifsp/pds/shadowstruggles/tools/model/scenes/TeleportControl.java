@@ -14,7 +14,12 @@ public class TeleportControl extends SceneItem {
 	public float x, y;
 	
 	public TeleportControl() {
-		// TODO Auto-generated constructor stub
+		this.target = null;
+		this.targetPlayer = false;
+		this.map = "";
+		this.layer = "";
+		this.x = 0;
+		this.y = 0;
 	}
 	
 	public TeleportControl(Event target, boolean targetPlayer, String map,

@@ -9,7 +9,8 @@ public class LayerControl extends SceneItem {
 	public String map;
 	
 	public LayerControl() {
-		// TODO Auto-generated constructor stub
+		this.nextLayer = "";
+		this.map = "";
 	}
 	
 	public LayerControl(String nextLayer, String map) {

@@ -8,7 +8,7 @@ import com.esotericsoftware.jsonbeans.JsonValue;
 public class SavePoint extends Event {
 
 	public SavePoint() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
 	
 	public SavePoint(int id, float x, float y, String map, String layer,
@@ -18,19 +18,15 @@ public class SavePoint extends Event {
 	
 	@Override
 	public void trigger() {
-		// TODO Auto-generated method stub
-
 	}
 	
 	@Override
 	public void read(Json arg0, JsonValue arg1) {
-		// TODO Auto-generated method stub
-
+		super.read(arg0, arg1);
 	}
 
 	@Override
 	public void write(Json arg0) {
-		// TODO Auto-generated method stub
-
+		super.write(arg0);
 	}
 }

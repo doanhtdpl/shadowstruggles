@@ -10,7 +10,10 @@ public class WarpPoint extends Event {
 	public boolean active;
 
 	public WarpPoint() {
-		// TODO Auto-generated constructor stub
+		super();
+		
+		this.destination = this;
+		this.active = false;
 	}
 
 	public WarpPoint(int id, float x, float y, String map, String layer,

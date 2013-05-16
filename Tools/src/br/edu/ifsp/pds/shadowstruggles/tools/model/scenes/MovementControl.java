@@ -15,7 +15,10 @@ public class MovementControl extends SceneItem {
 	public int steps;
 	
 	public MovementControl() {
-		// TODO Auto-generated constructor stub
+		this.targetEvent = null;
+		this.targetPlayer = false;
+		this.direction = Direction.EAST;
+		this.steps = 0;
 	}
 	
 	public MovementControl(Event targetEvent, boolean targetPlayer,

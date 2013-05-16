@@ -7,7 +7,9 @@ public class MoneyRequirement extends Requirement {
 	public int money;
 	
 	public MoneyRequirement() {
-		// TODO Auto-generated constructor stub
+		super();
+		
+		this.money = 0;
 	}
 	
 	public MoneyRequirement(String name, String description, int money) {

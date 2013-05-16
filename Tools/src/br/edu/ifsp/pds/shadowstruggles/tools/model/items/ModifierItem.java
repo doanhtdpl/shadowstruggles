@@ -1,6 +1,6 @@
 package br.edu.ifsp.pds.shadowstruggles.tools.model.items;
 
-import br.edu.ifsp.pds.shadowstruggles.tools.model.Modifier;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.modifiers.Modifier;
 
 import com.esotericsoftware.jsonbeans.Json;
 import com.esotericsoftware.jsonbeans.JsonValue;
@@ -9,7 +9,9 @@ public class ModifierItem extends Item {
 	public Modifier modifier;
 	
 	public ModifierItem() {
-		// TODO Auto-generated constructor stub
+		super();
+		
+		this.modifier = null;
 	}
 	
 	public ModifierItem(int id, String name, String description, int buyCost,

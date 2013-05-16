@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import com.esotericsoftware.jsonbeans.Json;
 import com.esotericsoftware.jsonbeans.JsonValue;
 
-import br.edu.ifsp.pds.shadowstruggles.tools.model.Deck;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.profiles.Player;
 
 public class Enemy extends Player {
@@ -14,7 +14,11 @@ public class Enemy extends Player {
 	public ArrayList<Sequence> strategy;
 
 	public Enemy() {
-		// TODO Auto-generated constructor stub
+		super();
+		
+		this.id = 1;
+		this.name = "";
+		this.strategy = new ArrayList<Sequence>();
 	}
 
 	public Enemy(Deck deck, int maxHealth, int maxEnergy, int initialEnergy,

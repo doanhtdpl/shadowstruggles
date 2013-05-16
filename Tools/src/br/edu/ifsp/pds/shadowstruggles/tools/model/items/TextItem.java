@@ -7,7 +7,9 @@ public class TextItem extends Item {
 	public String text;
 	
 	public TextItem() {
-		// TODO Auto-generated constructor stub
+		super();
+		
+		this.text = "";
 	}
 	
 	public TextItem(int id, String name, String description, int buyCost,

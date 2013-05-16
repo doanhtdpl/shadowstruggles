@@ -16,7 +16,15 @@ public class Item implements Serializable {
 	public boolean consumable;
 	
 	public Item() {
-		// TODO Auto-generated constructor stub
+		this.id = 1;
+		this.name = "";
+		this.description = "";
+		this.buyCost = 0;
+		this.sellCost = 0;
+		this.sellable = false;
+		this.icon = "";
+		this.availableInMainShop = false;
+		this.consumable = false;
 	}
 	
 	public Item(int id, String name, String description, int buyCost,

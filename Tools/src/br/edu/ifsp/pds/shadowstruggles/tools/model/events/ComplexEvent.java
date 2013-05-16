@@ -11,7 +11,8 @@ public class ComplexEvent extends Event {
 	public ArrayList<Event> events;
 	
 	public ComplexEvent() {
-		// TODO Auto-generated constructor stub
+		super();
+		this.events = new ArrayList<Event>();
 	}
 	
 	public ComplexEvent(int id, float x, float y, String map, String layer,

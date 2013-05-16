@@ -12,7 +12,9 @@ public class EventControl extends SceneItem {
 	public String newSprite;
 	
 	public EventControl() {
-		// TODO Auto-generated constructor stub
+		this.manipulationType = EventManipulation.DELETE_EVENT;
+		this.newLayer = "";
+		this.newSprite = "";
 	}
 	
 	public EventControl(EventManipulation manipulationType, String newLayer,

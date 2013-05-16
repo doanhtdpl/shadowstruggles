@@ -12,7 +12,10 @@ public class Scene implements Serializable {
 	public String description;
 	
 	public Scene() {
-		// TODO Auto-generated constructor stub
+		this.id = 1;
+		this.ending = new Ending();
+		this.name = "";
+		this.description = "";
 	}
 	
 	public Scene(int id, Ending ending, String name, String description) {

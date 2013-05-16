@@ -3,13 +3,13 @@ package br.edu.ifsp.pds.shadowstruggles.tools.model;
 import java.util.ArrayList;
 
 import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Enemy;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.modifiers.Modifier;
 
 import com.esotericsoftware.jsonbeans.Json;
 import com.esotericsoftware.jsonbeans.Json.Serializable;
 import com.esotericsoftware.jsonbeans.JsonValue;
 
 public class BattlePlatform implements Serializable {
-
 	public int id;
 	public boolean tutorial;
 	public Enemy opponent;
@@ -18,7 +18,12 @@ public class BattlePlatform implements Serializable {
 	public DefaultRules rules;
 	
 	public BattlePlatform() {
-		// TODO Auto-generated constructor stub
+		this.id = 1;
+		this.tutorial = false;
+		this.opponent = new Enemy();
+		this.rewards = new ArrayList<Modifier>();
+		this.map = "";
+		this.rules = new DefaultRules();
 	}
 	
 	public BattlePlatform(int id, boolean tutorial, Enemy opponent,

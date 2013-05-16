@@ -10,7 +10,9 @@ public class SceneEvent extends Event {
 	public Scene scene;
 	
 	public SceneEvent() {
-		// TODO Auto-generated constructor stub
+		super();
+		
+		this.scene = new Scene();
 	}
 	
 	public SceneEvent(int id, float x, float y, String map, String layer,

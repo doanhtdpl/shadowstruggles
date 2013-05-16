@@ -1,43 +1,37 @@
-package br.edu.ifsp.pds.shadowstruggles.tools.model.quests;
+package br.edu.ifsp.pds.shadowstruggles.tools.model.modifiers;
 
 import java.util.ArrayList;
+
+import br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.profiles.Profile;
 
 import com.esotericsoftware.jsonbeans.Json;
 import com.esotericsoftware.jsonbeans.JsonValue;
 
-import br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item;
+public class UnlockModifier extends Modifier {
 
-public class ItemRequirement extends Requirement {
 	public ArrayList<Item> items;
 	
-	public ItemRequirement() {
-		super();
-		
+	public UnlockModifier() {
 		this.items = new ArrayList<Item>();
 	}
 	
-	public ItemRequirement(String name, String description, ArrayList<Item> items) {
-		super(name, description);
-		
+	public UnlockModifier(ArrayList<Item> items) {
 		this.items = items;
 	}
 
 	@Override
-	public boolean checkCompleted() {
+	public void modify(Profile profile) {
 		// TODO Auto-generated method stub
-		return false;
 	}
 	
 	@Override
 	public void read(Json arg0, JsonValue arg1) {
 		// TODO Auto-generated method stub
-		super.read(arg0, arg1);
 	}
-	
+
 	@Override
 	public void write(Json arg0) {
 		// TODO Auto-generated method stub
-		super.write(arg0);
 	}
-
 }

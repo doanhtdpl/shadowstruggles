@@ -1,6 +1,6 @@
 package br.edu.ifsp.pds.shadowstruggles.tools.model.scenes;
 
-import br.edu.ifsp.pds.shadowstruggles.tools.model.Modifier;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.modifiers.Modifier;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.profiles.Profile;
 
 import com.esotericsoftware.jsonbeans.Json;
@@ -11,7 +11,8 @@ public class ProfileControl extends SceneItem {
 	public Profile profile;
 	
 	public ProfileControl() {
-		// TODO Auto-generated constructor stub
+		this.modifier = null;
+		this.profile = new Profile();
 	}
 	
 	public ProfileControl(Modifier modifier, Profile profile) {

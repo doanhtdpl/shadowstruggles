@@ -10,7 +10,9 @@ public class Dialogue extends SceneItem {
 	public String characterImage;
 	
 	public Dialogue() {
-		// TODO Auto-generated constructor stub
+		this.text = "";
+		this.characterName = "";
+		this.characterImage = "";
 	}
 	
 	public Dialogue(String text, String characterName, String characterImage) {
