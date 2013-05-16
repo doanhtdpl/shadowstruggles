@@ -11,7 +11,9 @@ public class Pack extends Item {
 	public ArrayList<Card> cards;
 	
 	public Pack() {
-		// TODO Auto-generated constructor stub
+		super();
+		
+		this.cards = new ArrayList<Card>();
 	}
 	
 	public Pack(int id, String name, String description, int buyCost,

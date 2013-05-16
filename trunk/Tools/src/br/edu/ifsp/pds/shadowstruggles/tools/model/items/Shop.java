@@ -12,7 +12,9 @@ public class Shop implements Serializable {
 	public ArrayList<Item> items;
 	
 	public Shop() {
-		// TODO Auto-generated constructor stub
+		this.id = 1;
+		this.mainShop = false;
+		this.items = new ArrayList<Item>();
 	}
 	
 	public Shop(int id, boolean mainShop, ArrayList<Item> items) {

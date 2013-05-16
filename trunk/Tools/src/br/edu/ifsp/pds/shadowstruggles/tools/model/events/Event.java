@@ -20,7 +20,14 @@ public abstract class Event implements Serializable {
 	public abstract void trigger();
 	
 	public Event() {
-		// TODO Auto-generated constructor stub
+		this.id = 1;
+		this.x = 0;
+		this.y = 0;
+		this.map = "";
+		this.layer = "";
+		this.quest = new Quest();
+		this.triggered = false;
+		this.sprite = "";
 	}
 
 	public Event(int id, float x, float y, String map, String layer,

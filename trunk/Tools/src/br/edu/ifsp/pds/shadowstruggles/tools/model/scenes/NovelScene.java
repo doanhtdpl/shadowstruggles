@@ -9,7 +9,10 @@ public class NovelScene extends Scene {
 	public String background;
 	
 	public NovelScene() {
-		// TODO Auto-generated constructor stub
+		super();
+		
+		this.text = "";
+		this.background = "";
 	}
 	
 	public NovelScene(int id, Ending ending, String name, String description, String text, String background) {

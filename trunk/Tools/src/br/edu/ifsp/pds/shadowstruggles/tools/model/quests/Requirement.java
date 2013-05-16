@@ -9,7 +9,8 @@ public abstract class Requirement implements Serializable {
 	public String description;
 
 	public Requirement() {
-		// TODO Auto-generated constructor stub
+		this.name = "";
+		this.description = "";
 	}
 	
 	public Requirement(String name, String description) {

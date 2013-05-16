@@ -15,7 +15,10 @@ public class Ending implements Serializable {
 	public ArrayList<SceneEvent> returnScenes;
 	
 	public Ending() {
-		// TODO Auto-generated constructor stub
+		this.id = 1;
+		this.name = "";
+		this.path = "";
+		this.returnScenes = new ArrayList<SceneEvent>();
 	}
 	
 	public Ending(int id, String name, String path,

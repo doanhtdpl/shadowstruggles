@@ -9,7 +9,7 @@ public class BattleControl extends SceneItem {
 	public BattlePlatform nextBattle;
 	
 	public BattleControl() {
-		// TODO Auto-generated constructor stub
+		this.nextBattle = new BattlePlatform();
 	}
 	
 	public BattleControl(BattlePlatform nextBattle) {

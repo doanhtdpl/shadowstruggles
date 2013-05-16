@@ -11,7 +11,8 @@ public class Action implements Serializable {
 	public Object value;
 	
 	public Action() {
-		// TODO Auto-generated constructor stub
+		this.type = Attribute.LANE;
+		this.value = new Object();
 	}
 	
 	public Action(Attribute type, Object value) {

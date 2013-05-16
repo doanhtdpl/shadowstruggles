@@ -11,7 +11,8 @@ public class Sequence implements Serializable {
 	public ArrayList<Action> actions;
 	
 	public Sequence() {
-		// TODO Auto-generated constructor stub
+		this.conditions = new ArrayList<Condition>();
+		this.actions = new ArrayList<Action>();
 	}
 	
 	public Sequence(ArrayList<Condition> conditions, ArrayList<Action> actions) {

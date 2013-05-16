@@ -1,6 +1,6 @@
 package br.edu.ifsp.pds.shadowstruggles.tools.model.profiles;
 
-import br.edu.ifsp.pds.shadowstruggles.tools.model.Deck;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck;
 
 import com.esotericsoftware.jsonbeans.Json;
 import com.esotericsoftware.jsonbeans.Json.Serializable;
@@ -17,7 +17,14 @@ public class Player implements Serializable {
 	public float doubleDraw;
 	
 	public Player() {
-		// TODO Auto-generated constructor stub
+		this.deck = new Deck();
+		this.maxHealth = 0;
+		this.maxEnergy = 0;
+		this.initialEnergy = 0;
+		this.maxCardPoints = 0;
+		this.deckCapacity = 0;
+		this.energyRecovery = 0;
+		this.doubleDraw = 0;
 	}
 	
 	public Player(Deck deck, int maxHealth, int maxEnergy, int initialEnergy,
@@ -32,8 +39,6 @@ public class Player implements Serializable {
 		this.energyRecovery = energyRecovery;
 		this.doubleDraw = doubleDraw;
 	}
-
-
 
 	@Override
 	public void read(Json arg0, JsonValue arg1) {

@@ -12,6 +12,16 @@ public class Decision extends SceneItem {
 	public class Choice implements Serializable {
 		public String text;
 		public SceneItem consequence;
+		
+		public Choice() {
+			this.text = "";
+			this.consequence = null;
+		}
+
+		public Choice(String text, SceneItem consequence) {
+			this.text = text;
+			this.consequence = consequence;
+		}
 
 		@Override
 		public void read(Json arg0, JsonValue arg1) {
@@ -28,7 +38,7 @@ public class Decision extends SceneItem {
 	public ArrayList<Choice> choices;
 	
 	public Decision() {
-		// TODO Auto-generated constructor stub
+		this.choices = new ArrayList<Decision.Choice>();
 	}
 	
 	public Decision(ArrayList<Choice> choices) {

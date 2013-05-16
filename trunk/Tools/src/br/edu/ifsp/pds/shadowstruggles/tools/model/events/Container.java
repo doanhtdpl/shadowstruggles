@@ -9,18 +9,21 @@ import com.esotericsoftware.jsonbeans.Json;
 import com.esotericsoftware.jsonbeans.JsonValue;
 
 public class Container extends Event {
-	public ArrayList<Item> itens;
+	public ArrayList<Item> items;
 	public int money;
 	
 	public Container() {
-		// TODO Auto-generated constructor stub
+		super();
+		
+		this.items = new ArrayList<Item>();
+		this.money = 0;
 	}
 	
 	public Container(int id, float x, float y, String map, String layer,
 			Quest quest, boolean triggered, String sprite, ArrayList<Item> itens, int money) {
 		super(id, x, money, map, layer, quest, triggered, sprite);
 		
-		this.itens = itens;
+		this.items = itens;
 		this.money = money;
 	}
 

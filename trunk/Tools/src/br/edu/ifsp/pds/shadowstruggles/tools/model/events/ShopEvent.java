@@ -9,7 +9,9 @@ public class ShopEvent extends Event {
 	public Shop shop;
 	
 	public ShopEvent() {
-		// TODO Auto-generated constructor stub
+		super();
+		
+		this.shop = new Shop();
 	}
 	
 	public ShopEvent(Shop shop) {

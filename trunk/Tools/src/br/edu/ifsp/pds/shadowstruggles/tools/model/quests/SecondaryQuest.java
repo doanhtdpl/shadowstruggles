@@ -7,7 +7,9 @@ public class SecondaryQuest extends Requirement {
 	public Quest quest;
 	
 	public SecondaryQuest() {
-		// TODO Auto-generated constructor stub
+		super();
+		
+		this.quest = new Quest();
 	}
 	
 	public SecondaryQuest(String name, String description, Quest quest) {
