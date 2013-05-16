@@ -8,12 +8,14 @@ import br.edu.ifsp.pds.shadowstruggles.model.Deck;
 import br.edu.ifsp.pds.shadowstruggles.object2d.TransitionControl;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 
 public class EditDeckScreen extends BaseScreen {
@@ -68,7 +70,7 @@ public class EditDeckScreen extends BaseScreen {
 		background.setScaleY(640f / 380f);
 
 		Table menuTable = new Table();
-		menuTable.defaults().padTop(50).width(100).height(360);
+		menuTable.defaults().padTop(10).width(50).height(50);
 		
 		if (game.getMode() == RunMode.DEBUG)
 			menuTable.debug();
@@ -90,14 +92,23 @@ public class EditDeckScreen extends BaseScreen {
 		
 		exit = new TextButton("", super.getSkin().get("blur", TextButtonStyle.class));
 		exit.setText("Exit");
-		exit.setX(10);
-		exit.setY(100);
+//		exit.setX(10);
+//		exit.setY(50);
+		exit.addListener(new ClickListener() {
+
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				game.getAudio().playSound("button_6");
+				game.setScreenWithTransition(menu);
+				game.getManager().writeProfile(game.getProfile());
+			}
+		});
 		
-		menuTable.addActor(deckName);
+		menuTable.add(deckName);
 		menuTable.row();
-		menuTable.addActor(decks);
+		menuTable.add(decks);
 		menuTable.row();
-		menuTable.add(exit).maxHeight(30);
+		menuTable.add(exit);
 		
 		menuTable.setPosition(100, 500);
 		
