@@ -5,10 +5,10 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import br.edu.ifsp.pds.shadowstruggles.model.Profile;
-import br.edu.ifsp.pds.shadowstruggles.rpg.model.Character;
-import br.edu.ifsp.pds.shadowstruggles.rpg.model.RpgMap;
-import br.edu.ifsp.pds.shadowstruggles.rpg.model.RpgPlatform;
-import br.edu.ifsp.pds.shadowstruggles.rpg.model.Character.WalkDirection;
+import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character;
+import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgMap;
+import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgPlatform;
+import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character.WalkDirection;
 
 import com.badlogic.gdx.math.MathUtils;
 

@@ -1,4 +1,4 @@
-package br.edu.ifsp.pds.shadowstruggles.rpg.model;
+package br.edu.ifsp.pds.shadowstruggles.model.rpg;
 
 import br.edu.ifsp.pds.shadowstruggles.model.Profile;
 

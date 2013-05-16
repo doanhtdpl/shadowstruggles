@@ -3,7 +3,7 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.games.Practice;
-import br.edu.ifsp.pds.shadowstruggles.rpg.viewer.RpgScreen;
+import br.edu.ifsp.pds.shadowstruggles.screens.rpg.RpgScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
