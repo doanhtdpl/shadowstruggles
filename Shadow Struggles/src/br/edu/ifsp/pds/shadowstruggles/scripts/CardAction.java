@@ -36,6 +36,5 @@ public abstract class CardAction  implements Serializable{
 
 	@Override
 	public void read(Json json, JsonValue jsonData) {
-		//precisa colocar algo?
 	}
 }
