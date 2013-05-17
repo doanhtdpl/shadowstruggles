@@ -1,5 +1,8 @@
 package br.edu.ifsp.pds.shadowstruggles.model.rpg;
 
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+
 import br.edu.ifsp.pds.shadowstruggles.model.Profile;
 
 public class Character {
@@ -22,30 +25,35 @@ public class Character {
 
 	}
 
-	public boolean walk(WalkDirection direction, RpgMap map) {
-		map.getTile(tileX, tileY).removeCharacer();
-		boolean walked = false;
+	public boolean walk(WalkDirection direction, TiledMap map) {		
+		boolean walked = false;		
+		TiledMapTileLayer tileLayer = (TiledMapTileLayer)map.getLayers().get(0);
+		
 		switch (direction) {
 		case WALK_UP:
-			if (tileY < map.getHeight() - 1 && map.getTile(tileX, tileY+1).isWalkable()) {
+			if (tileY < tileLayer.getHeight() - 1 && !tileLayer.getCell(tileX, tileY+1).getTile().getProperties().containsKey("obstacle")) {
 				tileY++;
 				walked = true;
 			}
 			break;
 		case WALK_DOWN:
-			if (tileY > 0 && map.getTile(tileX, tileY-1).isWalkable()) {
+			if (tileY > 0 && 
+					!tileLayer.getCell(tileX, tileY-1)
+					.getTile()
+					.getProperties().
+					containsKey("obstacle")) {
 				tileY--;
 				walked = true;
 			}
 			break;
 		case WALK_LEFT:
-			if (tileX > 0 && map.getTile(tileX-1, tileY).isWalkable()) {
+			if (tileX > 0 && !tileLayer.getCell(tileX-1, tileY).getTile().getProperties().containsKey("obstacle")) {
 				tileX--;
 				walked = true;
 			}
 			break;
 		case WALK_RIGHT:
-			if (tileX < map.getWidth() - 1 && map.getTile(tileX+1, tileY).isWalkable()) {
+			if (tileX < tileLayer.getWidth() - 1 && !tileLayer.getCell(tileX+1, tileY).getTile().getProperties().containsKey("obstacle")) {
 				tileX++;
 				walked = true;
 			}
@@ -53,7 +61,7 @@ public class Character {
 		default:
 			break;
 		}
-		map.getTile(tileX, tileY).insertCharacter(this);
+		
 		return walked;
 	}
 

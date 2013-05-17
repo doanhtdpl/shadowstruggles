@@ -1,9 +1,12 @@
 package br.edu.ifsp.pds.shadowstruggles.data;
 
+import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.utils.Array;
 
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
@@ -112,6 +115,8 @@ public class Loader {
 					Texture.class);
 			// game.getAssets().load("data/images/card_images/card_images.atlas",
 			// TextureAtlas.class);
+			game.getAssets().setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
+			game.getAssets().load("data/images/maps/example/map.tmx", TiledMap.class);
 		}
 	}
 

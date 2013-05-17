@@ -1,20 +1,27 @@
 package br.edu.ifsp.pds.shadowstruggles.model.rpg;
 
+import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+
 public class RpgPlatform {
-	private RpgMap map;
+	private TiledMap map;
 	private Character character;
-	public RpgPlatform(RpgMap map, Character character) {
-		//definir mapa pela ID da fase;
-		this.map=map;
-		this.character=character;		
+	public RpgPlatform(String stageName, Character character) {
+		
+		this.map=new TmxMapLoader(new InternalFileHandleResolver()).load("data/images/maps/example/map.tmx");
+		this.character=character;	
+		
 	}
 	
 	public Character getCharacter() {
 		return character;
 	}
 	
-	public RpgMap getMap() {
+	public TiledMap getMap() {
 		return map;
 	}
+	
+	
 
 }
