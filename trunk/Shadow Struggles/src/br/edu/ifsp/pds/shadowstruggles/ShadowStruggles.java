@@ -4,6 +4,7 @@ import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
 import br.edu.ifsp.pds.shadowstruggles.data.SoundManager;
 import br.edu.ifsp.pds.shadowstruggles.dataTest.LoaderTest;
 import br.edu.ifsp.pds.shadowstruggles.model.Profile;
+import br.edu.ifsp.pds.shadowstruggles.model.rpg.test.CharacterTest;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.LoadingScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.FadeInTransitionEffect;
@@ -34,7 +35,7 @@ public class ShadowStruggles extends Game {
 	private RunMode mode;
 
 	public ShadowStruggles() {
-		this(RunMode.DEBUG);
+		this(RunMode.TESTS);
 	}
 
 	public ShadowStruggles(RunMode mode) {
@@ -54,7 +55,11 @@ public class ShadowStruggles extends Game {
 			// Test cases go here.
 			LoaderTest loaderTest = new LoaderTest();
 			loaderTest.testStaticTextureAtlasStrategy(this);
-			
+			CharacterTest characterTest = new CharacterTest();
+			characterTest.WalkDownTest();
+			characterTest.WalkUpTest();
+			characterTest.WalkRightTest();
+			characterTest.WalkLeftTest();
 			// End of test cases.
 			Gdx.app.exit();
 		}
