@@ -76,7 +76,7 @@ public class EditDeckScreen extends BaseScreen {
 			menuTable.debug();
 		
 		deckName = new Label("", super.getSkin());
-		deckName.setText("Deck A");
+		deckName.setText("Select a Deck");
 		deckName.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
 				Color.BLACK));
 		
@@ -86,7 +86,7 @@ public class EditDeckScreen extends BaseScreen {
 				Color.BLACK));
 		
 		exit = new TextButton("", super.getSkin().get("blur", TextButtonStyle.class));
-		exit.setText("Exit");
+		exit.setText("Back");
 		exit.addListener(new ClickListener() {
 
 			@Override
@@ -97,16 +97,108 @@ public class EditDeckScreen extends BaseScreen {
 			}
 		});
 		
+		
+		
 		menuTable.add(deckName);
 		menuTable.row();
-		menuTable.add(decks);
+		menuTable.add(decks).height(400);
 		menuTable.row();
 		menuTable.add(exit);
 		
-		menuTable.setPosition(100, 500);
+		menuTable.setPosition(100, 350);
+		
+		Table deckTable = new Table();
+		if (game.getMode() == RunMode.DEBUG)
+			deckTable.debug();
+		box = new Image(game.getAssets()
+				.get("data/images/objects/objects.atlas", TextureAtlas.class)
+				.findRegion("box"));
+		deckTable.defaults().width(700).height(600);
+		box.setWidth(680);
+		box.setHeight(600);
+//		box.setX(180);
+//		box.setY(177);
+		box.setScaleX(0.9f);
+		box.setScaleY(0.76f);
+		
+		deckTable.add(box);
+		
+		deckTable.setPosition(600, 450);
+		
+		
+		
+		
+		Table cardTable = new Table();
+		if (game.getMode() == RunMode.DEBUG)
+			cardTable.debug();
+		
+		cardTable.defaults().width(50).height(100);
+		
+		right = new TransitionControl(1, this.getSkin());
+//		right.setY(150);
+//		right.setX(900);
+		right.setScaleY(4f);
+		right.setScaleX(1.5f);
+		right.setRotation(180);
+		right.addListener(new ClickListener() {
+
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				game.getAudio().playSound("button_6");
+				moveCards(1);
+
+			}
+		});
+		left = new TransitionControl(-1, this.getSkin());
+//		left.setY(20);
+//		left.setX(120);
+		left.setScaleY(4f);
+		left.setScaleX(1.5f);
+		left.addListener(new ClickListener() {
+
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				game.getAudio().playSound("button_6");
+				moveCards(-1);
+
+			}
+		});
+		
+		int count = 0;
+		cardImages = new Array<Image>();
+		for (Card card : trunk) {
+			Image cardImage = new Image(game.getAssets()
+					.get("data/images/cards/cards.atlas", TextureAtlas.class)
+					.findRegion(card.getName().toLowerCase()));
+			cardImage.setY(5);
+			cardImage.setX(180 + count * 120);
+			cardImage.setScaleX(0.3f);
+			cardImage.setScaleY(0.3f);
+			final Card card2 = card;
+			cardImage.addListener(new ClickListener() {
+
+				@Override
+				public void clicked(InputEvent event, float x, float y) {
+					game.getAudio().playSound("button_2");
+					changeCard(card2);
+				}
+			});
+			cardImages.add(cardImage);
+			if (cardImage.getX() >= 180 && cardImage.getX() < 900)
+				stage.addActor(cardImage);
+			count++;
+		}
+		
+		cardTable.add(left).height(100).width(50);
+//		cardTable.add(cardImages);
+		cardTable.add(right);
+		
+		cardTable.setPosition(300, 100);
 		
 		stage.addActor(background);
 		stage.addActor(menuTable);
+		stage.addActor(deckTable);
+		stage.addActor(cardTable);
 		
 	}
 
