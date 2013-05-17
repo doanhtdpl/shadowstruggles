@@ -3,7 +3,6 @@ package br.edu.ifsp.pds.shadowstruggles.tools.data;
 import static org.junit.Assert.*;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Random;
 
 import org.junit.Test;
