@@ -3,6 +3,8 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.games.Practice;
+import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character;
+import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgPlatform;
 import br.edu.ifsp.pds.shadowstruggles.screens.rpg.RpgScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
@@ -51,7 +53,8 @@ public class FreePlayScreen extends BaseScreen {
 
 				super.clicked(event, x, y);
 				//game.setScreenWithTransition(new BattleTutorial(game));
-				game.setScreenWithTransition(new RpgScreen(game, controller));
+				RpgPlatform platform = new RpgPlatform("example", new Character(game.getProfile()));
+				game.setScreenWithTransition(new RpgScreen(game, controller, platform));
 			}
 		});
 		stage.addActor(tempButton);
