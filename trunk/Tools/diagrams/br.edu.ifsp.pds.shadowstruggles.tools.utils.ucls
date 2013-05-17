@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" language="java" name="br.edu.ifsp.pds.shadowstruggles.tools.utils.MyLogger" project="Tools" 
+    file="/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/utils/MyLogger.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="188" x="186" y="34"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="br.edu.ifsp.pds.shadowstruggles.tools.utils.MyHtmlFormatter" project="Tools" 
+    file="/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/utils/MyHtmlFormatter.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="153" width="188" x="681" y="34"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="br.edu.ifsp.pds.shadowstruggles.tools.utils.Base64Coder" project="Tools" 
+    file="/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/utils/Base64Coder.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="333" width="227" x="414" y="34"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

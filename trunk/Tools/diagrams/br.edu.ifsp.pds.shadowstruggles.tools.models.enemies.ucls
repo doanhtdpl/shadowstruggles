@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" language="java" name="br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Condition" project="Tools" 
+    file="/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/model/enemies/Condition.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="234" x="-34" y="467"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="2" language="java" name="br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Condition.Comparator" 
+    project="Tools" file="/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/model/enemies/Condition.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="258" x="-58" y="660"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="3" language="java" name="br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Action" project="Tools" 
+    file="/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/model/enemies/Action.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="153" width="234" x="240" y="467"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="4" language="java" name="br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Action.Attribute" 
+    project="Tools" file="/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/model/enemies/Action.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="135" width="234" x="240" y="660"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="5" language="java" name="br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Sequence" project="Tools" 
+    file="/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/model/enemies/Sequence.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="275" x="103" y="256"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Enemy" project="Tools" 
+    file="/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/model/enemies/Enemy.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="352" x="103" y="45"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <nesting id="7">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="2"/>  
+  </nesting>  
+  <nesting id="8">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="4"/>  
+  </nesting>  
+  <association id="9">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="10" name="type"/>      
+      <multiplicity id="11" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="12">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="13" name="actions"/>      
+      <multiplicity id="14" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="15">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="16" name="strategy"/>      
+      <multiplicity id="17" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="18">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="19" name="conditions"/>      
+      <multiplicity id="20" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
