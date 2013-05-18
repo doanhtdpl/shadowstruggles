@@ -53,8 +53,15 @@ public class BattlePlatform implements Serializable {
 
 	@Override
 	public void write(Json arg0) {
-		// TODO Auto-generated method stub
-		
+		try {
+			SerializationHelper.writeToJson(this, arg0, new ArrayList<String>());
+		} catch (IllegalArgumentException e) {
+			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
+			e.printStackTrace();
+		}
 	}
 	
 }

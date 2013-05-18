@@ -1,39 +1,61 @@
 package br.edu.ifsp.pds.shadowstruggles.tools.model.cards;
 
 import java.util.ArrayList;
-
+import java.util.logging.Logger;
 
 import com.esotericsoftware.jsonbeans.Json;
-import com.esotericsoftware.jsonbeans.Json.Serializable;
 import com.esotericsoftware.jsonbeans.JsonValue;
 
-public class Deck implements Serializable{
-	public int id;
+import br.edu.ifsp.pds.shadowstruggles.tools.data.SerializationHelper;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item;
+
+public class Deck extends Item {
 	public ArrayList<Card> cards;
 	public String deckImage;
-	public String name;
-	
+	public int totalCardPoints;
+
 	public Deck() {
-		this.id = 1;
+		super();
 		this.cards = new ArrayList<Card>();
 		this.deckImage = "";
-		this.name = "";
+		this.totalCardPoints = 0;
 	}
-	
-	public Deck(int id, ArrayList<Card> cards, String deckImage, String name) {
-		this.id = id;
+
+	public Deck(int id, String name, ArrayList<Card> cards, String deckImage,
+			int totalCardPoints) {
+		super(id, name, "", 0, 0, false, "", false, false);
 		this.cards = cards;
 		this.deckImage = deckImage;
-		this.name = name;
+		this.totalCardPoints = totalCardPoints;
+	}
+	
+	@Override
+	public void read(Json arg0, JsonValue arg1) {
+		super.read(arg0, arg1);
+		
+		try {
+			SerializationHelper.read(this, arg0, arg1, new ArrayList<String>());
+		} catch (IllegalArgumentException e) {
+			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
+			e.printStackTrace();
+		}
 	}
 
 	@Override
-	public void write(Json json) {
-		// TODO Auto-generated method stub
+	public void write(Json arg0) {
+		super.write(arg0);
+		
+		try {
+			SerializationHelper.writeToJson(this, arg0, new ArrayList<String>());
+		} catch (IllegalArgumentException e) {
+			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
+			e.printStackTrace();
+		}
 	}
-
-	@Override
-	public void read(Json json, JsonValue jsonData) {
-		// TODO Auto-generated method stub
-	}	
 }

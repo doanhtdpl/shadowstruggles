@@ -2,9 +2,6 @@ package br.edu.ifsp.pds.shadowstruggles.tools.model.items;
 
 import br.edu.ifsp.pds.shadowstruggles.tools.model.modifiers.Modifier;
 
-import com.esotericsoftware.jsonbeans.Json;
-import com.esotericsoftware.jsonbeans.JsonValue;
-
 public class ModifierItem extends Item {
 	public Modifier modifier;
 	
@@ -21,23 +18,4 @@ public class ModifierItem extends Item {
 		
 		this.modifier = modifier;
 	}
-	
-	@Override
-	public void activate() {
-		// TODO Auto-generated method stub
-		super.activate();
-	}
-
-	@Override
-	public void read(Json arg0, JsonValue arg1) {
-		// TODO Auto-generated method stub
-		super.read(arg0, arg1);
-	}
-	
-	@Override
-	public void write(Json arg0) {
-		// TODO Auto-generated method stub
-		super.write(arg0);
-	}
-
 }

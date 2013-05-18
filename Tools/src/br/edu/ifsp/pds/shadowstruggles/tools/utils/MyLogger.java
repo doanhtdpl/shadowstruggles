@@ -22,7 +22,7 @@ public class MyLogger {
 		// Get the global logger to configure it
 		Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
-		logger.setLevel(Level.INFO);
+		logger.setLevel(Level.WARNING);
 		fileTxt = new FileHandler("Logging.txt");
 		fileHTML = new FileHandler("Logging.html");
 		// Create txt Formatter

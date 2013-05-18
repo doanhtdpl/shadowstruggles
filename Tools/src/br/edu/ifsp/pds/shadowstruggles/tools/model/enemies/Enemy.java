@@ -2,9 +2,6 @@ package br.edu.ifsp.pds.shadowstruggles.tools.model.enemies;
 
 import java.util.ArrayList;
 
-import com.esotericsoftware.jsonbeans.Json;
-import com.esotericsoftware.jsonbeans.JsonValue;
-
 import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.profiles.Player;
 
@@ -30,17 +27,5 @@ public class Enemy extends Player {
 		this.id = id;
 		this.name = name;
 		this.strategy = strategy;
-	}
-
-	@Override
-	public void read(Json arg0, JsonValue arg1) {
-		// TODO Auto-generated method stub
-		super.read(arg0, arg1);
-	}
-
-	@Override
-	public void write(Json arg0) {
-		// TODO Auto-generated method stub
-		super.write(arg0);
 	}
 }
