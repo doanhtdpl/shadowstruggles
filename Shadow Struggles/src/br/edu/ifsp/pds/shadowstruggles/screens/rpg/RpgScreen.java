@@ -30,7 +30,7 @@ public class RpgScreen extends BaseScreen {
 	private boolean readyToWalk = true;
 	private float walked = 0;
 	private WalkDirection direction = null;
-	private int tileSize = 34;
+	private int tileSize = 33;
 
 	public RpgScreen(ShadowStruggles game, Controller controller,
 			RpgPlatform rpgPlatform) {
