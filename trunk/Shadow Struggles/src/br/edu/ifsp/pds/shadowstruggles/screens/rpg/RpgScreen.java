@@ -1,5 +1,7 @@
 package br.edu.ifsp.pds.shadowstruggles.screens.rpg;
 
+import java.util.ArrayList;
+
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.data.ProfileDAO;
@@ -31,6 +33,7 @@ public class RpgScreen extends BaseScreen {
 	private float walked = 0;
 	private WalkDirection direction = null;
 	private int tileSize = 33;
+	private ArrayList<WalkDirection> directionBuffer = new ArrayList<WalkDirection>();
 
 	public RpgScreen(ShadowStruggles game, Controller controller,
 			RpgPlatform rpgPlatform) {
@@ -60,34 +63,39 @@ public class RpgScreen extends BaseScreen {
 			direction = null;
 		}
 
+		if (readyToWalk && directionBuffer.size() > 0) {
+			moveCharacter(directionBuffer.get(0));
+			directionBuffer.remove(0);
+		}
+
 		if (readyToWalk) {
 			shapeRenderer.rect(character.getTileX() * tileSize,
 					character.getTileY() * tileSize, tileSize, tileSize);
 		} else {
 
 			walked = walked + character.getWalkSpeed();
-//			System.out.println(":\nReady to walk: " + readyToWalk
-//					+ "\nWalked: " + walked + "\nDirection: " + direction
-//					+ "\nCharacter speed: " + character.getWalkSpeed() + "\n");
+			// System.out.println(":\nReady to walk: " + readyToWalk
+			// + "\nWalked: " + walked + "\nDirection: " + direction
+			// + "\nCharacter speed: " + character.getWalkSpeed() + "\n");
 			switch (direction) {
 			case WALK_UP:
 				shapeRenderer.rect(character.getTileX() * tileSize,
-						character.getTileY() * tileSize + walked -  tileSize,
+						character.getTileY() * tileSize + walked - tileSize,
 						tileSize, tileSize);
 				break;
 			case WALK_DOWN:
 				shapeRenderer.rect(character.getTileX() * tileSize,
-						character.getTileY() * tileSize - walked +  tileSize,
+						character.getTileY() * tileSize - walked + tileSize,
 						tileSize, tileSize);
 				break;
 			case WALK_LEFT:
-				shapeRenderer.rect(character.getTileX() * tileSize
-						- walked + tileSize, character.getTileY() * tileSize, tileSize,
+				shapeRenderer.rect(character.getTileX() * tileSize - walked
+						+ tileSize, character.getTileY() * tileSize, tileSize,
 						tileSize);
 				break;
 			case WALK_RIGHT:
-				shapeRenderer.rect(character.getTileX() * tileSize
-						+ walked - tileSize, character.getTileY() * tileSize, tileSize,
+				shapeRenderer.rect(character.getTileX() * tileSize + walked
+						- tileSize, character.getTileY() * tileSize, tileSize,
 						tileSize);
 				break;
 			default:
@@ -97,7 +105,7 @@ public class RpgScreen extends BaseScreen {
 		shapeRenderer.end();
 
 	}
-	
+
 	public void update(float delta) {
 		keyInput(delta);
 	}
@@ -127,6 +135,12 @@ public class RpgScreen extends BaseScreen {
 			// "\nWalked: "
 			// + walked + "\nDirection: " + direction + "\n\n");
 		}
+		if (Gdx.input.isKeyPressed(Input.Keys.W)) {
+			moveCharacter(WalkDirection.WALK_UP, 3);
+			// System.out.println("Down:\nReady to walk: " + readyToWalk +
+			// "\nWalked: "
+			// + walked + "\nDirection: " + direction + "\n\n");
+		}
 	}
 
 	public void moveCharacter(WalkDirection direction) {
@@ -134,26 +148,27 @@ public class RpgScreen extends BaseScreen {
 			readyToWalk = false;
 			this.direction = direction;
 
-			switch (direction) {
-			case WALK_UP:
-
-				break;
-			case WALK_DOWN:
-
-				break;
-			case WALK_LEFT:
-
-				break;
-			case WALK_RIGHT:
-
-				break;
-			default:
-				break;
-			}
-			// System.out.println("moveCharacter:\nReady to walk: " +
-			// readyToWalk + "\nWalked: "
-			// + walked + "\nDirection: " + direction + "\n\n");
+			/*
+			 * switch (direction) { case WALK_UP:
+			 * 
+			 * break; case WALK_DOWN:
+			 * 
+			 * break; case WALK_LEFT:
+			 * 
+			 * break; case WALK_RIGHT:
+			 * 
+			 * break; default: break; }
+			 * System.out.println("moveCharacter:\nReady to walk: " +
+			 * readyToWalk + "\nWalked: " + walked + "\nDirection: " + direction
+			 * + "\n\n");
+			 */
 		}
+	}
+
+	public void moveCharacter(WalkDirection direction, int times) {
+		for (int i = 0; i < times; i++)
+			if (readyToWalk)		//Remover condição
+				directionBuffer.add(direction);
 	}
 
 }
