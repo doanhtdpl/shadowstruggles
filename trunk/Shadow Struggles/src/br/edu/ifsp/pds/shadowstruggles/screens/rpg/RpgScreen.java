@@ -167,7 +167,7 @@ public class RpgScreen extends BaseScreen {
 
 	public void moveCharacter(WalkDirection direction, int times) {
 		for (int i = 0; i < times; i++)
-			if (readyToWalk)		//Remover condição
+			if (readyToWalk) // Remover condição
 				directionBuffer.add(direction);
 	}
 
