@@ -9,6 +9,7 @@ public class Character {
 	private Profile profile;
 	private int tileX;
 	private int tileY;
+	private float walkSpeed = 1.5f;
 
 	public static enum WalkDirection {
 		WALK_UP, WALK_DOWN, WALK_LEFT, WALK_RIGHT;
@@ -71,5 +72,13 @@ public class Character {
 
 	public int getTileY() {
 		return tileY;
+	}
+	
+	public float getWalkSpeed(){
+		return walkSpeed;
+	}
+	
+	public void setWalkSpeed(int walkSpeed){
+		this.walkSpeed = walkSpeed;
 	}
 }
