@@ -66,9 +66,9 @@ public class RpgScreen extends BaseScreen {
 		} else {
 
 			walked = walked + character.getWalkSpeed();
-			System.out.println(":\nReady to walk: " + readyToWalk
-					+ "\nWalked: " + walked + "\nDirection: " + direction
-					+ "\nCharacter speed: " + character.getWalkSpeed() + "\n");
+//			System.out.println(":\nReady to walk: " + readyToWalk
+//					+ "\nWalked: " + walked + "\nDirection: " + direction
+//					+ "\nCharacter speed: " + character.getWalkSpeed() + "\n");
 			switch (direction) {
 			case WALK_UP:
 				shapeRenderer.rect(character.getTileX() * tileSize,
