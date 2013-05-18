@@ -9,7 +9,7 @@ public class Character {
 	private Profile profile;
 	private int tileX;
 	private int tileY;
-	private float walkSpeed = 1.5f;
+	private float walkSpeed = 5;
 
 	public static enum WalkDirection {
 		WALK_UP, WALK_DOWN, WALK_LEFT, WALK_RIGHT;
