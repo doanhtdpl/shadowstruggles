@@ -29,8 +29,8 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="br.edu.ifsp.pds.shadowstruggles.tools.model.Deck" project="Tools" 
-    file="/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/model/Deck.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="4" language="java" name="br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Decks.Deck" project="Tools" 
+    file="/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/model/cards/Deck.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="81" width="196" x="752" y="25"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      

@@ -2,9 +2,6 @@ package br.edu.ifsp.pds.shadowstruggles.tools.model.events;
 
 import br.edu.ifsp.pds.shadowstruggles.tools.model.quests.Quest;
 
-import com.esotericsoftware.jsonbeans.Json;
-import com.esotericsoftware.jsonbeans.JsonValue;
-
 public class WarpPoint extends Event {
 	public WarpPoint destination;
 	public boolean active;
@@ -22,23 +19,5 @@ public class WarpPoint extends Event {
 		
 		this.destination = destination;
 		this.active = active;
-	}
-
-	@Override
-	public void trigger() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void read(Json arg0, JsonValue arg1) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void write(Json arg0) {
-		// TODO Auto-generated method stub
-
 	}
 }

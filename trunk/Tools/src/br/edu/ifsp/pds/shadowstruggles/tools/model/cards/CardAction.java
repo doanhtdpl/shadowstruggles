@@ -2,9 +2,9 @@ package br.edu.ifsp.pds.shadowstruggles.tools.model.cards;
 
 import br.edu.ifsp.pds.shadowstruggles.tools.model.BattlePlatform;
 
+import com.esotericsoftware.jsonbeans.Json;
+import com.esotericsoftware.jsonbeans.JsonValue;
 import com.esotericsoftware.jsonbeans.Json.Serializable;
-
-// TODO: Implementar classes filhas de CardAction.
 
 public abstract class CardAction implements Serializable{
 	/***
@@ -14,10 +14,8 @@ public abstract class CardAction implements Serializable{
 	public void doAction(BattlePlatform platform, int lane, int tile){}
 	public void doAction(BattlePlatform platform, Card card, float delta){}
 	
-	/***
-	 * Updates the visual representation of the card.
-	 */
-	public void update(String f1){}
-	public void update(Card card){}
-	public abstract CardAction copy();
+	@Override
+	public void read(Json arg0, JsonValue arg1) {}
+	@Override
+	public void write(Json arg0) {}
 }

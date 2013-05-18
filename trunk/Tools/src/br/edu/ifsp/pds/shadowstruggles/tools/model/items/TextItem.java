@@ -1,8 +1,5 @@
 package br.edu.ifsp.pds.shadowstruggles.tools.model.items;
 
-import com.esotericsoftware.jsonbeans.Json;
-import com.esotericsoftware.jsonbeans.JsonValue;
-
 public class TextItem extends Item {
 	public String text;
 	
@@ -19,23 +16,4 @@ public class TextItem extends Item {
 		
 		this.text = text;
 	}
-
-	@Override
-	public void activate() {
-		// TODO Auto-generated method stub
-		super.activate();
-	}
-	
-	@Override
-	public void read(Json arg0, JsonValue arg1) {
-		// TODO Auto-generated method stub
-		super.read(arg0, arg1);
-	}
-	
-	@Override
-	public void write(Json arg0) {
-		// TODO Auto-generated method stub
-		super.write(arg0);
-	}
-
 }

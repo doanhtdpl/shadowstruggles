@@ -10,11 +10,4 @@ public class EnemyDefeatRequirement extends Requirement {
 		
 		this.enemyDefeat = new EnemyDefeat();
 	}
-	
-	@Override
-	public boolean checkCompleted() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }
