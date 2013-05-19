@@ -3,7 +3,6 @@ package br.edu.ifsp.pds.shadowstruggles.data;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Json.Serializable;
 import com.badlogic.gdx.utils.JsonValue;
-import com.badlogic.gdx.utils.OrderedMap;
 
 /**
  * Class for storage of all text shown in the GUI, for purposes of i18n.

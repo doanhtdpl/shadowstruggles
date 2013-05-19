@@ -1,9 +1,8 @@
 package br.edu.ifsp.pds.shadowstruggles.model;
 
 import com.badlogic.gdx.utils.Json;
-import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.Json.Serializable;
-import com.badlogic.gdx.utils.OrderedMap;
+import com.badlogic.gdx.utils.JsonValue;
 
 /**
  * A Scene is an object which represents a narrative sequence within the story.
