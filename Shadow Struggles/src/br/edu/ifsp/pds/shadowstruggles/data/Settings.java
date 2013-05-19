@@ -1,9 +1,8 @@
 package br.edu.ifsp.pds.shadowstruggles.data;
 
 import com.badlogic.gdx.utils.Json;
-import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.Json.Serializable;
-import com.badlogic.gdx.utils.OrderedMap;
+import com.badlogic.gdx.utils.JsonValue;
 
 /***
  * Class used as a container for the game's settings, so that they can be loaded

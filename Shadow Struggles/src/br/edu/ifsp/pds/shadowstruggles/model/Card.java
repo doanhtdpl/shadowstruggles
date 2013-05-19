@@ -5,9 +5,8 @@ import br.edu.ifsp.pds.shadowstruggles.scripts.CardAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
-import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.Json.Serializable;
-import com.badlogic.gdx.utils.OrderedMap;
+import com.badlogic.gdx.utils.JsonValue;
 
 /***
  * Template for the behavior of the cards on the field. This class only concerns

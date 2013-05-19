@@ -1,13 +1,5 @@
 package br.edu.ifsp.pds.shadowstruggles.model;
 
-import br.edu.ifsp.pds.shadowstruggles.object2d.Effect2D;
-import br.edu.ifsp.pds.shadowstruggles.object2d.Fighter2D;
-import br.edu.ifsp.pds.shadowstruggles.object2d.HandCard;
-import br.edu.ifsp.pds.shadowstruggles.object2d.Trap2D;
-import br.edu.ifsp.pds.shadowstruggles.screens.BattleScreen;
-import br.edu.ifsp.pds.shadowstruggles.screens.MyStage;
-
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Array;
 
 public class Player {

@@ -26,35 +26,40 @@ public class Character {
 
 	}
 
-	public boolean walk(WalkDirection direction, TiledMap map) {		
-		boolean walked = false;		
-		TiledMapTileLayer tileLayer = (TiledMapTileLayer)map.getLayers().get(0);
-		
+	public boolean walk(WalkDirection direction, TiledMap map) {
+		boolean walked = false;
+		TiledMapTileLayer tileLayer = (TiledMapTileLayer) map.getLayers()
+				.get(0);
+
 		switch (direction) {
 		case WALK_UP:
-			if (tileY < tileLayer.getHeight() - 1 && !tileLayer.getCell(tileX, tileY+1).getTile().getProperties().containsKey("obstacle")) {
+			if (tileY < tileLayer.getHeight() - 1
+					&& !tileLayer.getCell(tileX, tileY + 1).getTile()
+							.getProperties().containsKey("obstacle")) {
 				tileY++;
 				walked = true;
 			}
 			break;
 		case WALK_DOWN:
-			if (tileY > 0 && 
-					!tileLayer.getCell(tileX, tileY-1)
-					.getTile()
-					.getProperties().
-					containsKey("obstacle")) {
+			if (tileY > 0
+					&& !tileLayer.getCell(tileX, tileY - 1).getTile()
+							.getProperties().containsKey("obstacle")) {
 				tileY--;
 				walked = true;
 			}
 			break;
 		case WALK_LEFT:
-			if (tileX > 0 && !tileLayer.getCell(tileX-1, tileY).getTile().getProperties().containsKey("obstacle")) {
+			if (tileX > 0
+					&& !tileLayer.getCell(tileX - 1, tileY).getTile()
+							.getProperties().containsKey("obstacle")) {
 				tileX--;
 				walked = true;
 			}
 			break;
 		case WALK_RIGHT:
-			if (tileX < tileLayer.getWidth() - 1 && !tileLayer.getCell(tileX+1, tileY).getTile().getProperties().containsKey("obstacle")) {
+			if (tileX < tileLayer.getWidth() - 1
+					&& !tileLayer.getCell(tileX + 1, tileY).getTile()
+							.getProperties().containsKey("obstacle")) {
 				tileX++;
 				walked = true;
 			}
@@ -62,7 +67,7 @@ public class Character {
 		default:
 			break;
 		}
-		
+
 		return walked;
 	}
 
@@ -73,12 +78,12 @@ public class Character {
 	public int getTileY() {
 		return tileY;
 	}
-	
-	public float getWalkSpeed(){
+
+	public float getWalkSpeed() {
 		return walkSpeed;
 	}
-	
-	public void setWalkSpeed(int walkSpeed){
+
+	public void setWalkSpeed(int walkSpeed) {
 		this.walkSpeed = walkSpeed;
 	}
 }

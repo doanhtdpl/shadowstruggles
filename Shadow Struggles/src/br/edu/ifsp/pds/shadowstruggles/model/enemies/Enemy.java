@@ -1,8 +1,5 @@
 package br.edu.ifsp.pds.shadowstruggles.model.enemies;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-
-import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.Effect;
@@ -12,6 +9,8 @@ import br.edu.ifsp.pds.shadowstruggles.object2d.Effect2D;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Fighter2D;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Trap2D;
 import br.edu.ifsp.pds.shadowstruggles.screens.BattleScreen;
+
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 /***
  * A representation of an enemy.

@@ -5,7 +5,6 @@ import br.edu.ifsp.pds.shadowstruggles.scripts.CardAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
-import com.badlogic.gdx.utils.OrderedMap;
 
 /***
  * A representation of an effect card on the field.
