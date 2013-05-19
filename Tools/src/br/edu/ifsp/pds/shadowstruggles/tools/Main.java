@@ -1,5 +1,6 @@
 package br.edu.ifsp.pds.shadowstruggles.tools;
 
+import br.edu.ifsp.pds.shadowstruggles.tools.data.FileMap;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.Window;
 
 public class Main {
@@ -37,6 +38,7 @@ public class Main {
 	// }
 
 	public static void main(String[] args) {
+		FileMap.initMap();
 		new Window();
 		
 		// Some tests with JSON for reference, they should be removed soon.
