@@ -23,8 +23,8 @@ public class MyLogger {
 		Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
 		logger.setLevel(Level.WARNING);
-		fileTxt = new FileHandler("Logging.txt");
-		fileHTML = new FileHandler("Logging.html");
+		fileTxt = new FileHandler("Logging.txt", true);
+		fileHTML = new FileHandler("Logging.html", true);
 		// Create txt Formatter
 		formatterTxt = new SimpleFormatter();
 		fileTxt.setFormatter(formatterTxt);
