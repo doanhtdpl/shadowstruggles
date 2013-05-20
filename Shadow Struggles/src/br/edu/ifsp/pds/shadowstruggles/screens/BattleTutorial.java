@@ -6,6 +6,7 @@ import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.DefaultRules;
 import br.edu.ifsp.pds.shadowstruggles.model.BattleMap;
+import br.edu.ifsp.pds.shadowstruggles.model.TutorialDialog;
 import br.edu.ifsp.pds.shadowstruggles.model.enemies.TutorialEnemy;
 import br.edu.ifsp.pds.shadowstruggles.object2d.FixedImage;
 import br.edu.ifsp.pds.shadowstruggles.object2d.FixedLabel;
@@ -109,6 +110,7 @@ public class BattleTutorial extends BattleScreen {
 	private Array<Integer> image1X;
 	private Array<Integer> image1Y;
 	private Array<Boolean> imageVisible;
+	private Array<TutorialDialog> dialogs;
 
 	public BattleTutorial(ShadowStruggles game) {
 		super(game, game.getProfile(), game.getController(),
@@ -158,6 +160,7 @@ public class BattleTutorial extends BattleScreen {
 	}
 
 	private void loadData() {
+		dialogs= new Array<TutorialDialog>();
 		text = new Array<String>();
 		events = new Array<TutorialEvent>();
 		image1X = new Array<Integer>();
@@ -165,6 +168,7 @@ public class BattleTutorial extends BattleScreen {
 		imageVisible = new Array<Boolean>();
 
 		// TODO incluir em arquivo json
+		TutorialDialog temp = new TutorialDialog();
 		text.add("Hora de aprender a batalhar! (Toque para prosseguir com a aula)");
 		events.add(new TutorialEvent());
 		image1X.add(10);

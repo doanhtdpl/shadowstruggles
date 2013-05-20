@@ -6,6 +6,8 @@ import br.edu.ifsp.pds.shadowstruggles.model.Fighter;
 import br.edu.ifsp.pds.shadowstruggles.model.Profile;
 import br.edu.ifsp.pds.shadowstruggles.model.Scene;
 import br.edu.ifsp.pds.shadowstruggles.model.Trap;
+import br.edu.ifsp.pds.shadowstruggles.model.TutorialDialog;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Array;
@@ -30,15 +32,17 @@ public class DataManager {
 	private FileHandle effects;
 	private FileHandle traps;
 	private FileHandle menuTextFile;
+	private FileHandle tutorialDialogs;
 
 	private Array<Fighter> fighterList;
 	private Array<Effect> effectList;
-	private Array<Trap> trapList;
-	private Settings settings;
+	private Array<Trap> trapList;	
 	private Array<Deck> decksList;
 	private Array<Scene> scenesList;
-	private Languages languages;
-
+	private Array<TutorialDialog> tutorialDialogsList;
+	
+	private Languages languages;	
+	private Settings settings;
 	private MenuText menuText;
 
 	public DataManager() {
@@ -80,12 +84,14 @@ public class DataManager {
 				+ ".json");
 		this.menuTextFile = Gdx.files.internal("data/menu/text_" + language
 				+ ".json");
-		
+		this.tutorialDialogs= Gdx.files.internal("data/files/tutorial_" + language
+				+ ".json");
 		this.createFighters();
 		this.createEffects();
 		this.createTraps();
 		this.createMenuText();
 		this.createScenes();
+		this.createTutorialDialogs();
 	}
 
 	/**
@@ -193,6 +199,15 @@ public class DataManager {
 		}
 
 	}
+	
+	private void createTutorialDialogs() throws SerializationException{
+		tutorialDialogsList= new Array<TutorialDialog>();
+		if (!this.tutorialDialogs.exists()) {
+			tutorialDialogsList.add(new TutorialDialog());
+		} else {
+			tutorialDialogsList.addAll(json.fromJson(Array.class, this.tutorialDialogs));
+		}
+	}
 
 	/***
 	 * Gets the profiles from a file. If the file doesn't exist, it will create
@@ -238,6 +253,10 @@ public class DataManager {
 		allProfiles.add(newProfile);
 		json.toJson(allProfiles, this.profiles);
 	}
+	
+	public void writeTutorialDialogs(){
+		
+	}
 
 	public Array<Fighter> getFighterList() {
 		return fighterList;
@@ -273,6 +292,10 @@ public class DataManager {
 
 	public boolean profileExists() {
 		return this.profiles.exists();
+	}
+	
+	public Array<TutorialDialog> getTutorialDialogsList() {
+		return tutorialDialogsList;
 	}
 
 	/**
