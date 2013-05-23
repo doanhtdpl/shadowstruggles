@@ -1,9 +1,12 @@
 package br.edu.ifsp.pds.shadowstruggles.tools.data;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 public class DataManager {
@@ -38,10 +41,9 @@ public class DataManager {
 			ZipEntry entry = new ZipEntry(FileMap.resourcesToDirectory.get(s));
 			zos.putNextEntry(entry);
 		}
-
-		//TODO: Inserir conteúdo no arquivo languages.json com o idioma padrão.
-		
 		zos.close();
+
+		this.insert(this.languages, Languages.class);
 	}
 
 	public boolean openZip(String path) throws IOException {
@@ -59,7 +61,40 @@ public class DataManager {
 	 */
 	public static boolean checkZip(String zip) throws IOException {
 		boolean check = true;
+		ZipInputStream zis = new ZipInputStream(new FileInputStream(zip));
+		ZipEntry entry;
+		Languages retrievedLanguages = null;
+
+		// First, check language-independent files and resources. Also, get the
+		// Languages file.
+
+		boolean hasLanguages = false;
+		while ((entry = zis.getNextEntry()) != null) {
+			if (entry.isDirectory()) {
+				if (!FileMap.resourcesToDirectory
+						.containsValue(entry.getName()))
+					return false;
+			} else {
+				if (entry.getName() == FileMap.classToFile.get(Languages.class)) {
+					hasLanguages = true;
+					retrievedLanguages = JsonInitializer.getJson().fromJson(
+							Languages.class, new File(entry.getName()));
+				}
+			}
+		}
+
+		if (!hasLanguages)
+			return false;
 		
+		// Close InputStream and open another.
+		zis.close();
+		zis = new ZipInputStream(new FileInputStream(zip));
+
+		// Then, look into each language's folder structure and check them.
+		// TODO: Concluir método.
+		
+		zis.close();
+
 		return check;
 	}
 
@@ -93,7 +128,7 @@ public class DataManager {
 	}
 
 	private String localizedPath(String path) {
-		return this.languages.get(currentLanguage) + "/" + path;
+		return currentLanguage + "/" + path;
 	}
 
 	public String getCurrentFile() {
