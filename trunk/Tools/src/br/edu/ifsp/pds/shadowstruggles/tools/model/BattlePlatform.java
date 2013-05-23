@@ -63,5 +63,4 @@ public class BattlePlatform implements Serializable {
 			e.printStackTrace();
 		}
 	}
-	
 }
