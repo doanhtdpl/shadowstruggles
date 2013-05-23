@@ -35,8 +35,7 @@ public class DataManager {
 			zos.putNextEntry(entry);
 		}
 		for (String s : FileMap.resourcesToDirectory.keySet()) {
-			ZipEntry entry = new ZipEntry(
-					this.localizedPath(FileMap.resourcesToDirectory.get(s)));
+			ZipEntry entry = new ZipEntry(FileMap.resourcesToDirectory.get(s));
 			zos.putNextEntry(entry);
 		}
 
