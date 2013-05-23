@@ -39,6 +39,8 @@ public class DataManager {
 			zos.putNextEntry(entry);
 		}
 
+		//TODO: Inserir conteúdo no arquivo languages.json com o idioma padrão.
+		
 		zos.close();
 	}
 
@@ -68,14 +70,14 @@ public class DataManager {
 
 	// TODO: Implementar método.
 	public Object search(Object key, Class<?> c) {
-		Object obj = new Object();
+		Object obj = null;
 
 		return obj;
 	}
 
 	// TODO: Implementar método.
-	public ArrayList<Object> searchAll(Class<?> c) {
-		ArrayList<Object> list = new ArrayList<Object>();
+	public <T> ArrayList<T> searchAll() {
+		ArrayList<T> list = new ArrayList<T>();
 
 		return list;
 	}
