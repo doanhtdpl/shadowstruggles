@@ -9,7 +9,6 @@ import com.esotericsoftware.jsonbeans.Json;
 import com.esotericsoftware.jsonbeans.JsonValue;
 import com.esotericsoftware.jsonbeans.Json.Serializable;
 
-//TODO: Implementar condições abstratas.
 
 public abstract class Condition implements Serializable {
 	public static enum Comparator {

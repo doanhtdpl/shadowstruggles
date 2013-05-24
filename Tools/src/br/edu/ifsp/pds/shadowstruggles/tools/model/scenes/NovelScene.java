@@ -24,13 +24,11 @@ public class NovelScene extends Scene {
 
 	@Override
 	public void read(Json arg0, JsonValue arg1) {
-		// TODO Auto-generated method stub
 		super.read(arg0, arg1);
 	}
 	
 	@Override
 	public void write(Json arg0) {
-		// TODO Auto-generated method stub
 		super.write(arg0);
 	}
 }
