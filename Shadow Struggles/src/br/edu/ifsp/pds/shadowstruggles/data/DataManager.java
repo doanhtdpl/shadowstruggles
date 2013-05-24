@@ -84,7 +84,7 @@ public class DataManager {
 				+ ".json");
 		this.menuTextFile = Gdx.files.internal("data/menu/text_" + language
 				+ ".json");
-		this.tutorialDialogs= Gdx.files.internal("data/files/tutorial_" + language
+		this.tutorialDialogs= Gdx.files.local("data/files/tutorial_" + language
 				+ ".json");
 		this.createFighters();
 		this.createEffects();
@@ -230,6 +230,20 @@ public class DataManager {
 
 		return profilesList;
 	}
+	
+	public Array<TutorialDialog> retrieveTutorial() throws SerializationException {
+		Array<TutorialDialog> dialogs = new Array<TutorialDialog>();
+
+		if (this.tutorialDialogs.exists()) {
+			dialogs.addAll((json.fromJson(Array.class, tutorialDialogs)));			
+		} else {
+			
+			json.toJson(dialogs, this.profiles);
+		}
+
+		return dialogs;
+	}
+	
 
 	/**
 	 * Saves a profile to a file ("data/data_profiles.json").
@@ -254,8 +268,16 @@ public class DataManager {
 		json.toJson(allProfiles, this.profiles);
 	}
 	
-	public void writeTutorialDialogs(){
+	public void writeTutorialDialog(TutorialDialog dialog){
+		Array<TutorialDialog> dialogs;
+		try {
+			dialogs = this.retrieveTutorial();
+		} catch (Exception ew) {
+			dialogs = new Array<TutorialDialog>();
+		}
 		
+		dialogs.add(dialog);
+		json.toJson(dialogs, this.tutorialDialogs);
 	}
 
 	public Array<Fighter> getFighterList() {
