@@ -10,6 +10,34 @@ public class Character {
 	private int tileX;
 	private int tileY;
 	private float walkSpeed = 5;
+	
+	private boolean readyToWalk = true;
+	private float walked = 0;
+	private WalkDirection direction = null;
+
+	public boolean isReadyToWalk() {
+		return readyToWalk;
+	}
+
+	public void setReadyToWalk(boolean readyToWalk) {
+		this.readyToWalk = readyToWalk;
+	}
+
+	public float getWalked() {
+		return walked;
+	}
+
+	public void setWalked(float walked) {
+		this.walked = walked;
+	}
+
+	public WalkDirection getDirection() {
+		return direction;
+	}
+
+	public void setDirection(WalkDirection direction) {
+		this.direction = direction;
+	}
 
 	public static enum WalkDirection {
 		WALK_UP, WALK_DOWN, WALK_LEFT, WALK_RIGHT;
