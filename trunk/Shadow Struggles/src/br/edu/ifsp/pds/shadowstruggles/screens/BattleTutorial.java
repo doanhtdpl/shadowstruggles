@@ -162,191 +162,8 @@ public class BattleTutorial extends BattleScreen {
 		events = new Array<TutorialEvent>();
 		for(TutorialDialog dialog : dialogs){
 			events.add(new TutorialEvent(this, dialog.getEventType(), dialog.getEventTarget()));
-		}
-		
-		
-		
-		
-
-		/*// TODO incluir em arquivo json
-		TutorialDialog temp = new TutorialDialog();
-		temp.setText("Hora de aprender a batalhar! (Toque para prosseguir com a aula)");
-		temp.setIndicatorX(10);
-		temp.setIndicatorY(10);
-		temp.setIndicatorVisible(false);		
-		dialogs.add(temp);
-		//events.add(new TutorialEvent());		
-		//TutorialDAO.writeDialog(temp, game.getManager());
-		temp = new TutorialDialog();
-		temp.setText("Este é o campo de batalha, onde a ação acontece! Percorra-o para reconhecer o território");
-		temp.setIndicatorX(10);
-		temp.setIndicatorY(10);
-		temp.setIndicatorVisible(false);
-		dialogs.add(temp);		
-		//events.add(new TutorialEvent());		
-		//TutorialDAO.writeDialog(temp, game.getManager());
-		temp = new TutorialDialog();
-		temp.setText("Seu objetivo é destruir a base inimiga, enquanto defende sua própria base");
-		temp.setIndicatorX(25);
-		temp.setIndicatorY(330);
-		temp.setIndicatorVisible(true);
-		dialogs.add(temp);		
-		//events.add(new TutorialEvent());				
-		TutorialDAO.writeDialog(temp, game.getManager());
-		temp = new TutorialDialog();
-		temp.setText("Fique sempre atento à vida da sua base. Perdeu a base, perdeu a batalha!");
-		temp.setIndicatorX(10);
-		temp.setIndicatorY(470);
-		temp.setIndicatorVisible(true);
-		dialogs.add(temp);		
-		//events.add(new TutorialEvent());		
-		//TutorialDAO.writeDialog(temp, game.getManager());
-		temp = new TutorialDialog();
-		temp.setText("Vamos ao ataque! Aqui fica o seu deck, onde voce deverá sacar as cartas sempre que possível");
-		temp.setIndicatorX(840);
-		temp.setIndicatorY(25);
-		temp.setIndicatorVisible(true);
-		dialogs.add(temp);	
-		//events.add(new TutorialEvent());		
-		//TutorialDAO.writeDialog(temp, game.getManager());
-		temp = new TutorialDialog();
-		temp.setText("Logo ao lado estão as cartas que você sacou. (Selecione a carta DR-002)");
-		temp.setIndicatorX(210);
-		temp.setIndicatorY(35);
-		temp.setIndicatorVisible(true);
-		temp.setEventType(EventType.CARD_SELECTED);
-		temp.setEventTarget("DR-002");
-		dialogs.add(temp);	
-		//events.add(new TutorialEvent(this, EventType.CARD_SELECTED, "DR-002"));		
-		//TutorialDAO.writeDialog(temp, game.getManager());
-		temp = new TutorialDialog();
-		temp.setText("Para invocá-la, mande-a em um dos circulos de transmutação");
-		temp.setIndicatorX(270);
-		temp.setIndicatorY(260);
-		temp.setIndicatorVisible(true);
-		temp.setEventType(EventType.CARD_SUMMONED);
-		temp.setEventTarget("DR-002");
-		dialogs.add(temp);	
-		//events.add(new TutorialEvent(this, EventType.CARD_SUMMONED, "DR-002"));
-	//	TutorialDAO.writeDialog(temp, game.getManager());
-		
-		temp = new TutorialDialog();
-		temp.setText("Cada carta terá um gasto de energia ao ser invocada. Sem energia, sem invocação!");
-		temp.setIndicatorX(60);
-		temp.setIndicatorY(15);
-		temp.setIndicatorVisible(true);
-		dialogs.add(temp);	
-		//events.add(new TutorialEvent());
-		//TutorialDAO.writeDialog(temp, game.getManager());
-		
-		temp.setText("Uma vez invocado, o lutador irá ao ataque da base inimiga");
-		temp.setIndicatorX(60);
-		temp.setIndicatorY(15);
-		temp.setIndicatorVisible(false);
-		temp.setEventType(EventType.PREPARE_EVENT);
-		temp.setEventTarget("DR-002");
-		dialogs.add(temp);	
-		//events.add(new TutorialEvent(this, EventType.PREPARE_EVENT, "DR-002"));
-	//	TutorialDAO.writeDialog(temp, game.getManager());
-		
-		temp.setText("Lembre-se de sacar uma carta do deck! ");
-		temp.setIndicatorX(840);
-		temp.setIndicatorY(25);
-		temp.setIndicatorVisible(true);
-		dialogs.add(temp);	
-		//events.add(new TutorialEvent());
-		//TutorialDAO.writeDialog(temp, game.getManager());
-		
-		temp.setText("Agora, vamos às cartas de efeito! (Invoque Mineralogia em um dos circulos)");
-		temp.setIndicatorX(335);
-		temp.setIndicatorY(30);
-		temp.setIndicatorVisible(true);
-		temp.setEventType(EventType.CARD_SUMMONED);
-		temp.setEventTarget("Mineralogy");
-		dialogs.add(temp);	
-		//events.add(new TutorialEvent(this, EventType.CARD_SUMMONED, "Mineralogy"));
-		//TutorialDAO.writeDialog(temp, game.getManager());
-		
-		temp.setText("Essa carta te permite utilizar o poder da terra. É um requisito para invocar algumas cartas.");
-		temp.setIndicatorX(60);
-		temp.setIndicatorY(15);
-		temp.setIndicatorVisible(false);
-		temp.setEventType(EventType.PREPARE_EVENT);
-		temp.setEventTarget("DR-002");
-		dialogs.add(temp);	
-		//events.add(new TutorialEvent(this, EventType.PREPARE_EVENT, "DR-002"));
-		//TutorialDAO.writeDialog(temp, game.getManager());
-		
-		temp.setText("Agora você pode invocar a Rocha para te proteger! (Invoque a Rocha em um dos circulos)");
-		temp.setIndicatorX(600);
-		temp.setIndicatorY(30);
-		temp.setIndicatorVisible(true);
-		temp.setEventType(EventType.CARD_SUMMONED);
-		temp.setEventTarget("Rock");
-		dialogs.add(temp);	
-		//events.add(new TutorialEvent(this, EventType.CARD_SUMMONED, "Rock"));
-		//TutorialDAO.writeDialog(temp, game.getManager());
-		
-		temp.setText("A rocha irá proteger o caminho temporariamente contra o ataque inimigo");
-		temp.setIndicatorX(60);
-		temp.setIndicatorY(15);
-		temp.setIndicatorVisible(false);
-		dialogs.add(temp);	
-	///	events.add(new TutorialEvent());
-		//TutorialDAO.writeDialog(temp, game.getManager());
-		
-		temp.setText("Que tal deixar um presentinho pro lutador inimigo? Armadilhas são um ótimo meio de surpreender o inimigo." );
-		temp.setIndicatorX(60);
-		temp.setIndicatorY(15);
-		temp.setIndicatorVisible(false);
-		temp.setEventType(EventType.PREPARE_EVENT);
-		temp.setEventTarget("DR-002");
-		dialogs.add(temp);	
-		//events.add(new TutorialEvent(this, EventType.PREPARE_EVENT, "DR-002"));
-		//TutorialDAO.writeDialog(temp, game.getManager());
-		
-		temp.setText("Experimente invocar a armadilha indicada abaixo!");
-		temp.setIndicatorX(470);
-		temp.setIndicatorY(30);
-		temp.setIndicatorVisible(true);
-		temp.setEventType(EventType.CARD_SUMMONED);
-		temp.setEventTarget("Electric_Current_Level_One");
-		dialogs.add(temp);	
-		//events.add(new TutorialEvent(this, EventType.CARD_SUMMONED,"Electric_Current_Level_One"));
-		//TutorialDAO.writeDialog(temp, game.getManager());
-		
-		temp.setText("A corrente elétrica será ativada assim que um lutador inimigo pisar sobre a carta");
-		temp.setIndicatorX(60);
-		temp.setIndicatorY(15);
-		temp.setIndicatorVisible(false);
-		dialogs.add(temp);	
-		//events.add(new TutorialEvent());
-		//TutorialDAO.writeDialog(temp, game.getManager());
-		
-		temp.setText("Você pode acessar o menu para verificar informações detalhadas das suas cartas");
-		temp.setIndicatorX(-20);
-		temp.setIndicatorY(520);
-		temp.setIndicatorVisible(true);
-		dialogs.add(temp);	
-		//events.add(new TutorialEvent());
-		//TutorialDAO.writeDialog(temp, game.getManager());
-		
-		temp.setText("Seja rápido, se o tempo acabar, vencerá aquele que estiver com a base com maior vida");
-		temp.setIndicatorX(450);
-		temp.setIndicatorY(540);
-		temp.setIndicatorVisible(true);
-		//dialogs.add(temp);	
-		//events.add(new TutorialEvent());
-		//TutorialDAO.writeDialog(temp, game.getManager());
-		
-		temp.setText("Agora, destrua a base inimiga!");
-		temp.setIndicatorX(60);
-		temp.setIndicatorY(15);
-		temp.setIndicatorVisible(false);
-		//dialogs.add(temp);	
-		//events.add(new TutorialEvent());
-		//TutorialDAO.writeDialog(temp, game.getManager());
-*/	}
+		}	
+	}
 
 	private void boxClicked() {
 		// Because the event index is updated before clicking the box, this
@@ -354,11 +171,13 @@ public class BattleTutorial extends BattleScreen {
 		// current one; hence the currentEventIndex - 1.
 		TutorialEvent event = events.get(currentEventIndex - 1);
 		if (event.eventCompleted() && (event.getEventType() == EventType.NONE || event.getEventType() == EventType.PREPARE_EVENT|| event.getEventType() == null))
-			if (currentIndex < dialogs.size)
-				nextDialog();
+			if (currentIndex < dialogs.size){
+				
+				nextDialog();}
 	}
 
 	private void nextDialog() {
+		
 		dialogText.setText(dialogs.get(currentIndex).getText());
 
 		image.setX(dialogs.get(currentIndex).getIndicatorX());
@@ -376,21 +195,21 @@ public class BattleTutorial extends BattleScreen {
 
 		currentIndex++;
 		currentEventIndex++;
-		System.out.println(currentIndex);
-		System.out.println(dialogs.size);
+		
 	}
 
 	@Override
 	public void render(float delta) {
 		super.render(delta);
-
+		
 		// Updates the box as soon as the user completes some kinds of events,
 		// such as summoning cards.
 		TutorialEvent event = events.get(currentIndex-1);
 		if (event.getEventType() == EventType.CARD_SELECTED
-				|| event.getEventType() == EventType.CARD_SUMMONED) {
-			if (event.eventCompleted())
-				this.nextDialog();
+				|| event.getEventType() == EventType.CARD_SUMMONED ) {
+			if (event.eventCompleted()){
+				
+				this.nextDialog();}
 		}
 	}
 
