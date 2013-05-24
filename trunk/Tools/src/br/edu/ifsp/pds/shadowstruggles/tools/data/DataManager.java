@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
 import java.util.ArrayList;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -26,6 +28,7 @@ public class DataManager {
 		languages.getLanguages().put("en_us", "English");
 
 		ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(path));
+
 		for (Class<?> c : FileMap.classToFile.keySet()) {
 			ZipEntry entry;
 
@@ -43,7 +46,7 @@ public class DataManager {
 		}
 		zos.close();
 
-		this.insert(this.languages, Languages.class);
+		this.insertObject(this.languages, Languages.class);
 	}
 
 	public boolean openZip(String path) throws IOException {
@@ -63,13 +66,16 @@ public class DataManager {
 		boolean check = true;
 		ZipInputStream zis = new ZipInputStream(new FileInputStream(zip));
 		ZipEntry entry;
+		ArrayList<String> retrievedEntries = new ArrayList<String>();
 		Languages retrievedLanguages = null;
 
 		// First, check language-independent files and resources. Also, get the
-		// Languages file.
+		// Languages file and storage all entries as strings.
 
 		boolean hasLanguages = false;
 		while ((entry = zis.getNextEntry()) != null) {
+			retrievedEntries.add(entry.getName());
+
 			if (entry.isDirectory()) {
 				if (!FileMap.resourcesToDirectory
 						.containsValue(entry.getName()))
@@ -85,22 +91,68 @@ public class DataManager {
 
 		if (!hasLanguages)
 			return false;
-		
-		// Close InputStream and open another.
-		zis.close();
-		zis = new ZipInputStream(new FileInputStream(zip));
 
 		// Then, look into each language's folder structure and check them.
-		// TODO: Concluir método.
-		
+		for (String lang : retrievedLanguages.getLanguages().keySet()) {
+			for (String s : retrievedEntries) {
+				if (!FileMap.classToFile.containsValue(s.replace(lang, "")))
+					return false;
+			}
+		}
+
+		// Final check: has any required file been deleted?
+		for (String value : FileMap.resourcesToDirectory.values()) {
+			if (!retrievedEntries.contains(value))
+				return false;
+		}
+
+		for (Class<?> c : FileMap.classToFile.keySet()) {
+			if (c == Languages.class)
+				if (!retrievedEntries.contains(FileMap.classToFile.get(c)))
+					return false;
+				else {
+					// This class is language-dependent, therefore, it must be
+					// localized first according to each retrieved language.
+					for (String lang : retrievedLanguages.getLanguages()
+							.keySet()) {
+						String localizedPath = lang + "/"
+								+ FileMap.classToFile.get(c);
+						if (!retrievedEntries.contains(localizedPath))
+							return false;
+					}
+				}
+		}
+
 		zis.close();
 
 		return check;
 	}
 
 	// TODO: Implementar método.
-	public void insert(Object obj, Class<?> c) {
+	public <T> void insertObject(T obj, Class<?> c) throws IOException {
+		if (FileMap.classToFile.containsKey(c)) {
+		}
+	}
 
+	public <T> void insertFile(File file, String resourceType)
+			throws IOException {
+		if (FileMap.resourcesToDirectory.containsKey(resourceType)) {
+			ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(
+					this.currentFile, false));
+
+			FileInputStream fis = new FileInputStream(file);
+			zos.putNextEntry(new ZipEntry(FileMap.resourcesToDirectory
+					.get(resourceType) + file.getName()));
+
+			int len;
+			byte[] buf = new byte[1024];
+
+			while ((len = fis.read(buf)) > 0)
+				zos.write(buf, 0, len);
+
+			fis.close();
+			zos.closeEntry();
+		}
 	}
 
 	// TODO: Implementar método.

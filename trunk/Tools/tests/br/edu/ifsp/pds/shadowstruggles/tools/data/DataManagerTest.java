@@ -63,7 +63,7 @@ public class DataManagerTest {
 		try {
 			manager.newZip("test.zip");
 			BattlePlatform expected = new BattlePlatform();
-			manager.insert(expected, BattlePlatform.class);
+			manager.insertObject(expected, BattlePlatform.class);
 
 			BattlePlatform actual = (BattlePlatform) manager.search(
 					expected.id, BattlePlatform.class);
@@ -87,7 +87,7 @@ public class DataManagerTest {
 			manager.newZip("test.zip");
 			BattlePlatform bp = new BattlePlatform();
 			bp.id = new Random().nextInt();
-			manager.insert(bp, BattlePlatform.class);
+			manager.insertObject(bp, BattlePlatform.class);
 
 			ArrayList<BattlePlatform> list = manager.searchAll();
 			assertEquals(1, list.size());
@@ -107,7 +107,7 @@ public class DataManagerTest {
 		try {
 			manager.newZip("test.zip");
 			BattlePlatform original = new BattlePlatform();
-			manager.insert(original, BattlePlatform.class);
+			manager.insertObject(original, BattlePlatform.class);
 
 			BattlePlatform modified = new BattlePlatform();
 			String expected = "Foo";
@@ -135,7 +135,7 @@ public class DataManagerTest {
 			manager.newZip("test.zip");
 			BattlePlatform bp = new BattlePlatform();
 			bp.id = new Random().nextInt();
-			manager.insert(bp, BattlePlatform.class);
+			manager.insertObject(bp, BattlePlatform.class);
 			ArrayList<BattlePlatform> previousList = manager.searchAll();
 			
 			manager.delete(bp.id, BattlePlatform.class);
