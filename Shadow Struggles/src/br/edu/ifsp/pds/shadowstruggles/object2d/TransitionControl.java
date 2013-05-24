@@ -19,9 +19,10 @@ public class TransitionControl extends FixedObject implements InputProcessor {
 
 	public TransitionControl(int side, Skin skin) {
 		super(skin.getRegion("right"), 480 + 440 * side);
-		if (side == -1)
-			((TextureRegionDrawable) this.getDrawable()).getRegion().flip(true,
-					false);
+//		if (side != 1)
+//			((TextureRegionDrawable) this.getDrawable()).getRegion().flip(true,
+//					false);
+		
 		this.setY(340);
 		this.setWidth(32);
 		this.setHeight(32);
