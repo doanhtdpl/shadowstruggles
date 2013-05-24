@@ -8,6 +8,7 @@ import br.edu.ifsp.pds.shadowstruggles.model.Deck;
 import br.edu.ifsp.pds.shadowstruggles.object2d.TransitionControl;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -16,6 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Array;
 
 public class EditDeckScreen extends BaseScreen {
@@ -36,23 +38,23 @@ public class EditDeckScreen extends BaseScreen {
 	private Array<Image> cardImages;
 	private Array<Card> trunk;
 	private static EditDeckScreen instance;
-	
-	public static EditDeckScreen getInstance(ShadowStruggles game, Controller controller,
-			BaseScreen previousScreen) {
-		if(instance != null)
+
+	public static EditDeckScreen getInstance(ShadowStruggles game,
+			Controller controller, BaseScreen previousScreen) {
+		if (instance != null)
 			return instance;
 		else {
 			instance = new EditDeckScreen(game, controller, previousScreen);
 			return instance;
 		}
 	}
-	
+
 	private EditDeckScreen(ShadowStruggles game, Controller controller,
 			BaseScreen previousScreen) {
 		super(game, controller);
 		this.previousScreen = previousScreen;
 	}
-	
+
 	public void setPreviousScreen(BaseScreen previousScreen) {
 		this.previousScreen = previousScreen;
 	}
@@ -70,7 +72,7 @@ public class EditDeckScreen extends BaseScreen {
 		background.setScaleY(640f / 380f);
 
 		Table menuTable = new Table();
-		menuTable.defaults().padTop(10).width(50).height(50);
+		menuTable.defaults().padTop(10).width(160).height(50);
 		
 		if (game.getMode() == RunMode.DEBUG)
 			menuTable.debug();
@@ -113,33 +115,24 @@ public class EditDeckScreen extends BaseScreen {
 		box = new Image(game.getAssets()
 				.get("data/images/objects/objects.atlas", TextureAtlas.class)
 				.findRegion("box"));
-		deckTable.defaults().width(700).height(600);
-		box.setWidth(680);
-		box.setHeight(600);
-//		box.setX(180);
-//		box.setY(177);
-		box.setScaleX(0.9f);
-		box.setScaleY(0.76f);
+		deckTable.defaults().width(600).height(400);
+		box.setWidth(600);
+		box.setHeight(400);
+//		box.setScaleX(0.9f);
+//		box.setScaleY(0.76f);
 		
 		deckTable.add(box);
 		
-		deckTable.setPosition(600, 450);
-		
-		
-		
+		deckTable.setPosition(580, 380);
+
 		
 		Table cardTable = new Table();
 		if (game.getMode() == RunMode.DEBUG)
 			cardTable.debug();
 		
-		cardTable.defaults().width(50).height(100);
+		cardTable.defaults().width(100).height(100);
 		
 		right = new TransitionControl(1, this.getSkin());
-//		right.setY(150);
-//		right.setX(900);
-		right.setScaleY(4f);
-		right.setScaleX(1.5f);
-		right.setRotation(180);
 		right.addListener(new ClickListener() {
 
 			@Override
@@ -149,11 +142,8 @@ public class EditDeckScreen extends BaseScreen {
 
 			}
 		});
+		
 		left = new TransitionControl(-1, this.getSkin());
-//		left.setY(20);
-//		left.setX(120);
-		left.setScaleY(4f);
-		left.setScaleX(1.5f);
 		left.addListener(new ClickListener() {
 
 			@Override
@@ -189,7 +179,7 @@ public class EditDeckScreen extends BaseScreen {
 			count++;
 		}
 		
-		cardTable.add(left).height(100).width(50);
+		cardTable.add(left).left();
 //		cardTable.add(cardImages);
 		cardTable.add(right);
 		
@@ -230,5 +220,12 @@ public class EditDeckScreen extends BaseScreen {
 	private void changeCard(Card card) {
 		this.selectedCard = card;
 
+	}
+
+	@Override
+	public void render(float delta) {
+		// TODO Auto-generated method stub
+		super.render(delta);
+		Table.drawDebug(stage);
 	}
 }
