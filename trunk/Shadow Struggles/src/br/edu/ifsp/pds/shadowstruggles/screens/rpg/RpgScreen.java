@@ -7,6 +7,7 @@ import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character.WalkDirection;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgPlatform;
+import br.edu.ifsp.pds.shadowstruggles.object2d.Character2D;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 
 import com.badlogic.gdx.Gdx;
@@ -25,12 +26,14 @@ public class RpgScreen extends BaseScreen {
 	private boolean readyToWalk = true;
 	private float walked = 0;
 	private WalkDirection direction = null;
+	private Character2D character2d;
 	private int tileSize = 32;
 	private ArrayList<WalkDirection> directionBuffer = new ArrayList<WalkDirection>();
 
 	public RpgScreen(ShadowStruggles game, Controller controller,
 			RpgPlatform rpgPlatform) {
 		super(game, controller);
+		
 		this.map = rpgPlatform.getMap();
 		character = new Character(game.getProfile());
 		shapeRenderer = new ShapeRenderer();
@@ -96,6 +99,8 @@ public class RpgScreen extends BaseScreen {
 			}
 		}
 		shapeRenderer.end();
+		
+		
 
 	}
 
