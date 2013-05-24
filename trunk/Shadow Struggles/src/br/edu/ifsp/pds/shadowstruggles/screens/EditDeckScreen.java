@@ -6,6 +6,8 @@ import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.Deck;
 import br.edu.ifsp.pds.shadowstruggles.object2d.TransitionControl;
+import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -87,8 +89,10 @@ public class EditDeckScreen extends BaseScreen {
 		decks.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
 				Color.BLACK));
 		
-		exit = new TextButton("", super.getSkin().get("blur", TextButtonStyle.class));
-		exit.setText("Back");
+		exit = new TextButton(game.getManager().getMenuText().returnToStart, super.getSkin());
+		exit = ScreenUtils.defineButton(exit, 0, 0, 0,
+				0, super.getSkin());
+//		exit.setText("Back");
 		exit.addListener(new ClickListener() {
 
 			@Override
