@@ -28,6 +28,7 @@ public class JsonInitializer {
 
 			json.addClassTag("BattlePlatform", BattlePlatform.class);
 			json.addClassTag("DefaultRules", DefaultRules.class);
+			json.addClassTag("TutorialDialog", TutorialDialog.class);
 
 			json.addClassTag("Card", Card.class);
 			json.addClassTag("CardAction", CardAction.class);
