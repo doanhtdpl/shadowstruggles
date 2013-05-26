@@ -23,7 +23,7 @@
         blur: { down: button_blur, up: button_blur, font: andalus-font, fontColor: black }
 	},
 	com.badlogic.gdx.scenes.scene2d.ui.ScrollPane$ScrollPaneStyle: {
-        default: { vScroll: scroll_bar, vScrollKnob: scroll_up }
+        default: { vScrollKnob: scroll_bar }
 	},
 	com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
         default: { font: andalus-font, fontColor: white }
