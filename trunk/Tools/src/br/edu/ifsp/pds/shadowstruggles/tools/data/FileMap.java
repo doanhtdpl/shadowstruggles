@@ -3,6 +3,7 @@ package br.edu.ifsp.pds.shadowstruggles.tools.data;
 import java.util.HashMap;
 
 import br.edu.ifsp.pds.shadowstruggles.tools.model.BattlePlatform;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.TutorialDialog;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Card;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Enemy;
@@ -45,6 +46,7 @@ public class FileMap {
 		classToFile.put(Quest.class, "files/quests.json");
 		classToFile.put(Scene.class, "files/scenes.json");
 		classToFile.put(Shop.class, "files/shops.json");
+		classToFile.put(TutorialDialog.class, "files/tutorial.json");
 		
 		resourcesToDirectory.put("battle_maps", "images/battle_maps/");
 		resourcesToDirectory.put("card_attacking", "images/card_attacking/");
