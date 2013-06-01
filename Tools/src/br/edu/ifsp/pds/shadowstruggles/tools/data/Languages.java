@@ -2,6 +2,7 @@ package br.edu.ifsp.pds.shadowstruggles.tools.data;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 import java.util.logging.Logger;
 
 import com.esotericsoftware.jsonbeans.Json;
@@ -10,18 +11,22 @@ import com.esotericsoftware.jsonbeans.JsonValue;
 
 public class Languages implements Serializable {
 
-	private HashMap<String, String> language;
+	public HashMap<String, String> languages;
 
 	public Languages() {
-		this.language = new HashMap<String, String>();
+		this.languages = new HashMap<String, String>();
+	}
+	
+	public Set<String> keySet() {
+		return languages.keySet();
 	}
 
 	public String get(String name) {
-		return language.get(name);
+		return languages.get(name);
 	}
-
-	public HashMap<String, String> getLanguages() {
-		return language;
+	
+	public void put(String key, String value) {
+		this.languages.put(key, value);
 	}
 
 	public void read(Json arg0, JsonValue arg1) {
@@ -48,5 +53,10 @@ public class Languages implements Serializable {
 			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
 			e.printStackTrace();
 		}
+	}
+	
+	@Override
+	public String toString() {
+		return languages.toString();
 	}
 }
