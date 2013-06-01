@@ -19,7 +19,7 @@ import br.edu.ifsp.pds.shadowstruggles.tools.model.scenes.Scene;
 /**
  * Provides an easy access to the directory structure by mapping classes and
  * resources to their respective files and directories, without considering the
- * language.
+ * languages.
  */
 public class FileMap {
 

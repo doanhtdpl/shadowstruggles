@@ -16,7 +16,7 @@ import com.esotericsoftware.jsonbeans.Json;
  * Class used for initializing a single Json object in the application and
  * attributing tags to classes for compatibility purposes.
  */
-public class JsonInitializer {
+public class MyJson {
 
 	private static Json json;
 
@@ -26,6 +26,9 @@ public class JsonInitializer {
 		else {
 			json = new Json();
 
+			json.addClassTag("Languages", Languages.class);
+			json.addClassTag("MenuText", MenuText.class);
+			
 			json.addClassTag("BattlePlatform", BattlePlatform.class);
 			json.addClassTag("DefaultRules", DefaultRules.class);
 			json.addClassTag("TutorialDialog", TutorialDialog.class);
