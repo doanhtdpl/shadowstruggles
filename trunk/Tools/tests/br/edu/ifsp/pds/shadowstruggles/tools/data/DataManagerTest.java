@@ -172,7 +172,7 @@ public class DataManagerTest {
 			BattlePlatform modified = new BattlePlatform();
 			String expected = "Foo";
 			modified.map = expected;
-			manager.update(1, BattlePlatform.class, modified);
+			manager.update(original.id, BattlePlatform.class, modified);
 
 			BattlePlatform retrieved = (BattlePlatform) manager.searchObject(1,
 					BattlePlatform.class);

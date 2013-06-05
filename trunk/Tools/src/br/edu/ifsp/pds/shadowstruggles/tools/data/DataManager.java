@@ -138,7 +138,10 @@ public class DataManager {
 	}
 
 	/**
-	 * Inserts the object, overwriting the previous JSON class file.
+	 * Inserts the object or list of objects into its respective JSON class
+	 * file. If a list of objects is passed as argument, the method overwrites
+	 * the file content. The file is also overwritten if the object is a
+	 * Languages instance.
 	 */
 	public <T> void insertObject(T obj, Class<?> c) throws IOException {
 		if (FileMap.classToFile.containsKey(c)) {
@@ -150,33 +153,55 @@ public class DataManager {
 				path += FileMap.classToFile.get(c);
 
 			File file = new File(searchFile(path, null, c));
-			MyJson.getJson().toJson(obj, file);
+
+			if (obj.getClass().isArray() || obj.getClass() == ArrayList.class
+					|| c == Languages.class) {
+				MyJson.getJson().toJson(obj, file);
+
+				// if(obj.getClass().isArray()) {
+				// ArrayList<T> array = (ArrayList<T>) obj;
+				// System.out.println("Array com " + array.size() +
+				// " elementos. Veja-os:");
+				// for(T tmp : array)
+				// System.out.println(tmp);
+				// }
+			} else {
+				ArrayList<T> currentObjects = searchAllObjects(c);
+				if (currentObjects == null)
+					currentObjects = new ArrayList<T>();
+				currentObjects.add(obj);
+				MyJson.getJson().toJson(currentObjects, file);
+			}
+
 			this.modifiedFiles.add(path);
 
 			// If the languages file has been modified, another directory may
 			// have to be created.
 			if (c == Languages.class) {
-				Languages languages = (Languages) obj;
-				File directory = new File("data");
-				ArrayList<String> folders = new ArrayList<String>(
-						Arrays.asList(directory.list()));
+				this.createLangDirectory((Languages) obj);
+			}
+		}
+	}
 
-				for (String lang : languages.keySet()) {
-					if (!folders.contains(lang)) {
-						ZipOutputStream zos = new ZipOutputStream(
-								new FileOutputStream(currentFile));
+	private void createLangDirectory(Languages languages) throws IOException {
+		File directory = new File("data");
+		ArrayList<String> folders = new ArrayList<String>(
+				Arrays.asList(directory.list()));
 
-						for (Class<?> cl : FileMap.classToFile.keySet()) {
-							ZipEntry entry = null;
-							if (cl != Languages.class)
-								entry = new ZipEntry(lang + "/"
-										+ FileMap.classToFile.get(cl));
-							zos.putNextEntry(entry);
-						}
-						
-						modifiedFiles.add(lang);
-					}	
+		for (String lang : languages.keySet()) {
+			if (!folders.contains(lang)) {
+				ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(
+						currentFile));
+
+				for (Class<?> cl : FileMap.classToFile.keySet()) {
+					ZipEntry entry = null;
+					if (cl != Languages.class)
+						entry = new ZipEntry(lang + "/"
+								+ FileMap.classToFile.get(cl));
+					zos.putNextEntry(entry);
 				}
+
+				modifiedFiles.add(lang);
 			}
 		}
 	}
@@ -198,42 +223,41 @@ public class DataManager {
 
 	/**
 	 * Retrieves an object from the respective class file of the object,
-	 * according to a specified key (id). If the objects are stored as an array,
-	 * this method requires an "id" field of type integer as the comparator for
-	 * localizing the searched object.
+	 * according to a specified key (id).
+	 */
+	public <T> T searchObject(int key, Class<?> c) throws IOException,
+			NoSuchFieldException, SecurityException, IllegalArgumentException,
+			IllegalAccessException {
+		T obj = null;
+
+		ArrayList<T> allObjects = searchAllObjects(c);
+		for (T tmp : allObjects) {
+			Field id = c.getField("id");
+			if (id.getInt(tmp) == key)
+				obj = tmp;
+		}
+
+		return obj;
+	}
+
+	/**
+	 * Retrieves the single object in a JSON class file (such as the Languages
+	 * object, which is unique).
 	 */
 	@SuppressWarnings("unchecked")
-	public <T> T searchObject(int key, Class<?> c) throws IOException,
+	public <T> T searchObject(Class<?> c) throws IOException,
 			NoSuchFieldException, SecurityException, IllegalArgumentException,
 			IllegalAccessException {
 		T obj = null;
 
 		if (FileMap.classToFile.containsKey(c)) {
 			String path = "data/";
-
-			if (c != Languages.class)
-				path += localizedPath(FileMap.classToFile.get(c));
-			else
-				path += FileMap.classToFile.get(c);
+			path += FileMap.classToFile.get(c);
 
 			File file = new File(searchFile(path, null, c));
-			Object retrieved = MyJson.getJson().fromJson(c, file);
-
-			if (retrieved.getClass().isArray()) {
-				ArrayList<T> list = (ArrayList<T>) retrieved;
-
-				for (T tmp : list) {
-					Field id = c.getField("id");
-					if (id.getInt(tmp) == key)
-						obj = tmp;
-				}
-
-			} else {
-				obj = (T) retrieved;
-			}
-
+			obj = (T) MyJson.getJson().fromJson(c, file);
 		}
-
+		
 		return obj;
 	}
 
@@ -274,17 +298,6 @@ public class DataManager {
 
 			File file = new File(searchFile(path, null, c));
 			list = MyJson.getJson().fromJson(ArrayList.class, file);
-
-			// Object retrieved = MyJson.getJson().fromJson(ArrayList.class,
-			// file);
-			// if (retrieved != null) {
-			// if (retrieved.getClass() == ArrayList.class) {
-			// list = (ArrayList<T>) retrieved;
-			// } else {
-			// list.add((T) retrieved);
-			// }
-			// }
-
 		}
 
 		return list;
@@ -303,7 +316,6 @@ public class DataManager {
 		return files;
 	}
 
-	// TODO: Corrigir erro causado ao utilizar o método searchAllObjects.
 	public <T> void update(int key, Class<?> c, T editedObject)
 			throws IOException, NoSuchFieldException, SecurityException,
 			IllegalArgumentException, IllegalAccessException {
@@ -324,7 +336,6 @@ public class DataManager {
 		insertObject(objects, c);
 	}
 
-	// TODO: Corrigir erro causado ao utilizar o método searchAllObjects.
 	public <T> void deleteObject(int key, Class<?> c)
 			throws NoSuchFieldException, SecurityException, IOException,
 			IllegalArgumentException, IllegalAccessException {
@@ -355,11 +366,11 @@ public class DataManager {
 		ZipFile zip = new ZipFile(currentFile);
 		ZipParameters parameters = new ZipParameters();
 		parameters.setCompressionMethod(Zip4jConstants.COMP_DEFLATE);
-		
-		for(String path : modifiedFiles) {
+
+		for (String path : modifiedFiles) {
 			File f = new File(path);
-			
-			if(f.isDirectory())
+
+			if (f.isDirectory())
 				zip.addFolder(path, parameters);
 			else {
 				zip.addFile(f, parameters);
