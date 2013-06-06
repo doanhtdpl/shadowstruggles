@@ -12,7 +12,6 @@ public class Character {
 	private float walkSpeed = 5;
 	
 	private boolean readyToWalk = true;
-	private float walked = 0;
 	private WalkDirection direction = null;
 
 	public boolean isReadyToWalk() {
@@ -21,14 +20,6 @@ public class Character {
 
 	public void setReadyToWalk(boolean readyToWalk) {
 		this.readyToWalk = readyToWalk;
-	}
-
-	public float getWalked() {
-		return walked;
-	}
-
-	public void setWalked(float walked) {
-		this.walked = walked;
 	}
 
 	public WalkDirection getDirection() {
