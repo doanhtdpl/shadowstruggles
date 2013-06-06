@@ -39,6 +39,7 @@ public class DataManagerTest {
 		DataManager manager = new DataManager();
 		try {
 			manager.newZip("test.zip");
+			manager.saveToZip();
 			assertTrue(DataManager.checkZip("test.zip"));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -215,7 +216,9 @@ public class DataManagerTest {
 			BattlePlatform bp = new BattlePlatform();
 			manager.insertObject(bp, BattlePlatform.class);
 			manager.saveToZip();
-			manager.deleteDirectory();
+			manager.deleteDirectory("data");
+			
+			assertFalse(new File("data").exists());
 		} catch(Exception e) {
 			e.printStackTrace();
 			fail("");
