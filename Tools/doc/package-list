@@ -1,0 +1,13 @@
+br.edu.ifsp.pds.shadowstruggles.tools
+br.edu.ifsp.pds.shadowstruggles.tools.data
+br.edu.ifsp.pds.shadowstruggles.tools.model
+br.edu.ifsp.pds.shadowstruggles.tools.model.cards
+br.edu.ifsp.pds.shadowstruggles.tools.model.enemies
+br.edu.ifsp.pds.shadowstruggles.tools.model.events
+br.edu.ifsp.pds.shadowstruggles.tools.model.items
+br.edu.ifsp.pds.shadowstruggles.tools.model.modifiers
+br.edu.ifsp.pds.shadowstruggles.tools.model.profiles
+br.edu.ifsp.pds.shadowstruggles.tools.model.quests
+br.edu.ifsp.pds.shadowstruggles.tools.model.scenes
+br.edu.ifsp.pds.shadowstruggles.tools.utils
+br.edu.ifsp.pds.shadowstruggles.tools.view
