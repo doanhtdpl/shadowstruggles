@@ -50,14 +50,30 @@ public class FreePlayScreen extends BaseScreen {
 		tempButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-
 				super.clicked(event, x, y);
 				game.setScreenWithTransition(new BattleTutorial(game));
-				//RpgPlatform platform = new RpgPlatform("example", new Character(game.getProfile()));
-				//game.setScreenWithTransition(new RpgScreen(game, controller, platform));
+				// RpgPlatform platform = new RpgPlatform("example", new
+				// Character(game.getProfile()));
+				// game.setScreenWithTransition(new RpgScreen(game, controller,
+				// platform));
 			}
 		});
+
+		TextButton tempButton2 = ScreenUtils.defineButton(new TextButton("RPG",
+				getSkin()), 10, 300, 200, 100, getSkin());
+		tempButton2.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				super.clicked(event, x, y);
+				RpgPlatform platform = new RpgPlatform("example",
+						new Character(game.getProfile()));
+				game.setScreenWithTransition(new RpgScreen(game, controller,
+						platform));
+			}
+		});
+
 		stage.addActor(tempButton);
+		stage.addActor(tempButton2);
 	}
 
 	public void initComponents() {
