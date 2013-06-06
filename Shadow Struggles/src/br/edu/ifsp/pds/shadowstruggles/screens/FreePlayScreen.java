@@ -5,6 +5,7 @@ import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.games.Practice;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgPlatform;
+import br.edu.ifsp.pds.shadowstruggles.rpg.RpgController;
 import br.edu.ifsp.pds.shadowstruggles.screens.rpg.RpgScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
@@ -52,10 +53,7 @@ public class FreePlayScreen extends BaseScreen {
 			public void clicked(InputEvent event, float x, float y) {
 				super.clicked(event, x, y);
 				game.setScreenWithTransition(new BattleTutorial(game));
-				// RpgPlatform platform = new RpgPlatform("example", new
-				// Character(game.getProfile()));
-				// game.setScreenWithTransition(new RpgScreen(game, controller,
-				// platform));
+
 			}
 		});
 
@@ -65,10 +63,11 @@ public class FreePlayScreen extends BaseScreen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				super.clicked(event, x, y);
-				RpgPlatform platform = new RpgPlatform("example",
-						new Character(game.getProfile()));
+				RpgController rpgController = new RpgController();
+				RpgPlatform platform = new RpgPlatform(rpgController,
+						"example", new Character(game.getProfile()));
 				game.setScreenWithTransition(new RpgScreen(game, controller,
-						platform));
+						rpgController, platform));
 			}
 		});
 

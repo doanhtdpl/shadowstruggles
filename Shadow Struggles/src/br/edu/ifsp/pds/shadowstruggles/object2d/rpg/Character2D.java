@@ -1,4 +1,4 @@
-package br.edu.ifsp.pds.shadowstruggles.object2d;
+package br.edu.ifsp.pds.shadowstruggles.object2d.rpg;
 
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 
@@ -8,6 +8,10 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Array;
 
+/**
+ * This is the visual representation of the RPG Character.
+ * 
+ */
 public class Character2D extends Image implements ApplicationListener {
 
 	private Animation walkAnimation;
@@ -23,41 +27,39 @@ public class Character2D extends Image implements ApplicationListener {
 		this.game = game;
 
 	}
+	
+	public void move(){
+		
+	}
 
 	@Override
 	public void create() {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void render() {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void resume() {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 }

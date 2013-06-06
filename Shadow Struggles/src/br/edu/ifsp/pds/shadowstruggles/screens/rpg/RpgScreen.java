@@ -7,7 +7,8 @@ import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character.WalkDirection;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgPlatform;
-import br.edu.ifsp.pds.shadowstruggles.object2d.Character2D;
+import br.edu.ifsp.pds.shadowstruggles.object2d.rpg.Character2D;
+import br.edu.ifsp.pds.shadowstruggles.rpg.RpgController;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 
 import com.badlogic.gdx.Gdx;
@@ -19,25 +20,30 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
 public class RpgScreen extends BaseScreen {
-	private TiledMap map;
-	private Character character;
-	private ShapeRenderer shapeRenderer;
 
+	/**
+	 * The main screen of the RPG World. It gets the user input and 
+	 * sends the command to the RPG Controller.
+	 */
+	public final static int TILE_SIZE = 32;	
+	private ShapeRenderer shapeRenderer;
+	private RpgController rpgController;
 	private boolean readyToWalk = true;
 	private float walked = 0;
 	private WalkDirection direction = null;
 	private Character2D character2d;
-	private int tileSize = 32;
+
 	private ArrayList<WalkDirection> directionBuffer = new ArrayList<WalkDirection>();
 
 	public RpgScreen(ShadowStruggles game, Controller controller,
-			RpgPlatform rpgPlatform) {
-		super(game, controller);
-		
-		this.map = rpgPlatform.getMap();
-		character = new Character(game.getProfile());
+			RpgController rpgController, RpgPlatform rpgPlatform) {
+		super(game, controller);		
+		rpgController.setViewer(this);		
+		this.rpgController=rpgController;
 		shapeRenderer = new ShapeRenderer();
 	}
+	
+	
 
 	@Override
 	public void render(float delta) {
@@ -45,15 +51,13 @@ public class RpgScreen extends BaseScreen {
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		float unitScale = 1 / 256f;
 		OrthogonalTiledMapRenderer renderer = new OrthogonalTiledMapRenderer(
-				map, unitScale);
+				rpgController.getMap(), unitScale);
 		renderer.setView(camera);
 		camera.setToOrtho(false, 3.75f, 2.5f);
 		renderer.render();
 		update(delta);
-
 		shapeRenderer.begin(ShapeType.Filled);
-
-		if (walked + character.getWalkSpeed() >= tileSize) {
+		if (walked + platform.getCharacter().getWalkSpeed() >= tileSize) {
 			readyToWalk = true;
 			walked = 0;
 			direction = null;
@@ -70,9 +74,7 @@ public class RpgScreen extends BaseScreen {
 		} else {
 
 			walked = walked + character.getWalkSpeed();
-			// System.out.println(":\nReady to walk: " + readyToWalk
-			// + "\nWalked: " + walked + "\nDirection: " + direction
-			// + "\nCharacter speed: " + character.getWalkSpeed() + "\n");
+			
 			switch (direction) {
 			case WALK_UP:
 				shapeRenderer.rect(character.getTileX() * tileSize,
@@ -99,9 +101,6 @@ public class RpgScreen extends BaseScreen {
 			}
 		}
 		shapeRenderer.end();
-		
-		
-
 	}
 
 	public void update(float delta) {
@@ -110,34 +109,21 @@ public class RpgScreen extends BaseScreen {
 
 	public void keyInput(float delta) {
 		if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-			moveCharacter(WalkDirection.WALK_LEFT);
-			// System.out.println("Left:\nReady to walk: " + readyToWalk +
-			// "\nWalked: "
-			// + walked + "\nDirection: " + direction + "\n\n");
+			moveCharacter(WalkDirection.WALK_LEFT);			
 		}
 		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-			moveCharacter(WalkDirection.WALK_RIGHT);
-			// System.out.println("Right:\nReady to walk: " + readyToWalk +
-			// "\nWalked: "
-			// + walked + "\nDirection: " + direction + "\n\n");
+			moveCharacter(WalkDirection.WALK_RIGHT);			
 		}
 		if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-			moveCharacter(WalkDirection.WALK_UP);
-			// System.out.println("Up:\nReady to walk: " + readyToWalk +
-			// "\nWalked: "
-			// + walked + "\nDirection: " + direction + "\n\n");
+			moveCharacter(WalkDirection.WALK_UP);			
 		}
 		if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
 			moveCharacter(WalkDirection.WALK_DOWN);
-			// System.out.println("Down:\nReady to walk: " + readyToWalk +
-			// "\nWalked: "
-			// + walked + "\nDirection: " + direction + "\n\n");
+			
 		}
 		if (Gdx.input.isKeyPressed(Input.Keys.W)) {
 			moveCharacter(WalkDirection.WALK_UP, 3);
-			// System.out.println("Down:\nReady to walk: " + readyToWalk +
-			// "\nWalked: "
-			// + walked + "\nDirection: " + direction + "\n\n");
+			
 		}
 	}
 
@@ -145,21 +131,6 @@ public class RpgScreen extends BaseScreen {
 		if (readyToWalk && character.walk(direction, map)) {
 			readyToWalk = false;
 			this.direction = direction;
-
-			/*
-			 * switch (direction) { case WALK_UP:
-			 * 
-			 * break; case WALK_DOWN:
-			 * 
-			 * break; case WALK_LEFT:
-			 * 
-			 * break; case WALK_RIGHT:
-			 * 
-			 * break; default: break; }
-			 * System.out.println("moveCharacter:\nReady to walk: " +
-			 * readyToWalk + "\nWalked: " + walked + "\nDirection: " + direction
-			 * + "\n\n");
-			 */
 		}
 	}
 
