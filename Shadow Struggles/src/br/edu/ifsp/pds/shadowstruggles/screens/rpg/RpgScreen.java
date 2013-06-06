@@ -32,6 +32,7 @@ public class RpgScreen extends BaseScreen {
 	private float walked = 0;
 	private WalkDirection direction = null;
 	private Character2D character2d;
+	
 
 	private ArrayList<WalkDirection> directionBuffer = new ArrayList<WalkDirection>();
 
