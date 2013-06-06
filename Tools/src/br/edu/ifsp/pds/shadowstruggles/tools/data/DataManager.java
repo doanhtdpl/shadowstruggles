@@ -1,7 +1,6 @@
 package br.edu.ifsp.pds.shadowstruggles.tools.data;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -12,12 +11,13 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 import net.lingala.zip4j.core.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
+import net.lingala.zip4j.model.FileHeader;
 import net.lingala.zip4j.model.ZipParameters;
 import net.lingala.zip4j.util.Zip4jConstants;
 
@@ -26,7 +26,6 @@ public class DataManager {
 	private String currentFile;
 	private Languages languages;
 	private String currentLanguage;
-	private ArrayList<String> modifiedFiles;
 
 	/**
 	 * Creates a new zip file in the specified path and establishes the initial
@@ -37,7 +36,6 @@ public class DataManager {
 		this.currentLanguage = "en_us";
 		this.languages = new Languages();
 		languages.put("en_us", "English");
-		this.modifiedFiles = new ArrayList<String>();
 
 		ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(path));
 
@@ -47,8 +45,8 @@ public class DataManager {
 			if (c == Languages.class)
 				entry = new ZipEntry(FileMap.classToFile.get(c));
 			else
-				entry = new ZipEntry(this.localizedPath(FileMap.classToFile
-						.get(c)));
+				entry = new ZipEntry(localizedPath(currentLanguage,
+						FileMap.classToFile.get(c)));
 
 			zos.putNextEntry(entry);
 		}
@@ -75,7 +73,8 @@ public class DataManager {
 		this.currentFile = path;
 		net.lingala.zip4j.core.ZipFile zip = new net.lingala.zip4j.core.ZipFile(
 				path);
-		zip.extractAll("data");
+		Path currentRelativePath = Paths.get("");
+		zip.extractAll(currentRelativePath.toAbsolutePath().toString());
 
 		return true;
 	}
@@ -85,54 +84,76 @@ public class DataManager {
 	 * application's expected structure. For this, it must have a Languages file
 	 * and all the required files.
 	 */
-	public static boolean checkZip(String zip) throws IOException {
+	public static boolean checkZip(String zip) throws IOException, ZipException {
 		boolean check = true;
-		ZipInputStream zis = new ZipInputStream(new FileInputStream(zip));
-		ZipEntry entry;
 		ArrayList<String> retrievedEntries = new ArrayList<String>();
 		Languages retrievedLanguages = null;
+		ZipFile zipFile = new ZipFile(zip);
+
+		// ZipInputStream zis = new ZipInputStream(new FileInputStream(zip));
+		// ZipEntry entry;
 
 		// First, get the Languages file and storage all entries as strings.
 
 		boolean hasLanguages = false;
-		while ((entry = zis.getNextEntry()) != null) {
-			retrievedEntries.add(entry.getName());
+		List<?> fileHeaderList = zipFile.getFileHeaders();
+		for (int i = 0; i < fileHeaderList.size(); i++) {
+			FileHeader fileHeader = (FileHeader) fileHeaderList.get(i);
+			String fileName = fileHeader.getFileName();
+			System.out.println("Obtive a entrada: " + fileName);
+			retrievedEntries.add(fileName);
 
-			if (entry.getName() == FileMap.classToFile.get(Languages.class)) {
+			if (fileName.equals(FileMap.classToFile.get(Languages.class))) {
 				hasLanguages = true;
-				retrievedLanguages = MyJson.getJson().fromJson(Languages.class,
-						new File(entry.getName()));
+				retrievedLanguages = (Languages) MyJson.getJson()
+						.fromJson(ArrayList.class, new File(fileName)).get(0);
 			}
 		}
+		// while ((entry = zis.getNextEntry()) != null) {
+		// retrievedEntries.add(entry.getName());
+		//
+		// if (entry.getName() == FileMap.classToFile.get(Languages.class)) {
+		// hasLanguages = true;
+		// retrievedLanguages = MyJson.getJson().fromJson(Languages.class,
+		// new File(entry.getName()));
+		// }
+		// }
 
 		if (!hasLanguages)
 			return false;
 
 		// Has any required folder been deleted?
 		for (String value : FileMap.resourcesToDirectory.values()) {
-			if (!retrievedEntries.contains(value))
+			if (!retrievedEntries.contains(value)) {
+				System.out.println("Couldn't find " + value);
 				return false;
+			}
 		}
 
 		// Has any required file been deleted?
 		for (Class<?> c : FileMap.classToFile.keySet()) {
 			// Check languages-independent classes first.
 			if (c == Languages.class) {
-				if (!retrievedEntries.contains(FileMap.classToFile.get(c)))
+				if (!retrievedEntries.contains(FileMap.classToFile.get(c))) {
+					System.out.println("Couldn't find "
+							+ FileMap.classToFile.get(c));
 					return false;
+				}
 			} else {
 				// This class is languages-dependent, therefore, it must be
 				// localized first according to each retrieved languages.
 				for (String lang : retrievedLanguages.languages.keySet()) {
-					String localizedPath = lang + "/"
-							+ FileMap.classToFile.get(c);
-					if (!retrievedEntries.contains(localizedPath))
+					String localizedPath = localizedPath(lang,
+							FileMap.classToFile.get(c));
+					if (!retrievedEntries.contains(localizedPath)) {
+						System.out.println("Couldn't find " + localizedPath);
 						return false;
+					}
 				}
 			}
 		}
 
-		zis.close();
+		// zis.close();
 
 		return check;
 	}
@@ -141,30 +162,27 @@ public class DataManager {
 	 * Inserts the object or list of objects into its respective JSON class
 	 * file. If a list of objects is passed as argument, the method overwrites
 	 * the file content. The file is also overwritten if the object is a
-	 * Languages instance.
+	 * Languages instance. Regardless of the object type, the JSON output will
+	 * always be a list.
 	 */
 	public <T> void insertObject(T obj, Class<?> c) throws IOException {
 		if (FileMap.classToFile.containsKey(c)) {
-			String path = "data/";
+			String path = "";
 
 			if (c != Languages.class)
-				path += localizedPath(FileMap.classToFile.get(c));
+				path += localizedPath(currentLanguage,
+						FileMap.classToFile.get(c));
 			else
 				path += FileMap.classToFile.get(c);
 
 			File file = new File(searchFile(path, null, c));
 
-			if (obj.getClass().isArray() || obj.getClass() == ArrayList.class
-					|| c == Languages.class) {
+			if (obj.getClass().isArray() || obj.getClass() == ArrayList.class) {
 				MyJson.getJson().toJson(obj, file);
-
-				// if(obj.getClass().isArray()) {
-				// ArrayList<T> array = (ArrayList<T>) obj;
-				// System.out.println("Array com " + array.size() +
-				// " elementos. Veja-os:");
-				// for(T tmp : array)
-				// System.out.println(tmp);
-				// }
+			} else if (obj.getClass() == Languages.class) {
+				ArrayList<T> currentObjects = new ArrayList<T>();
+				currentObjects.add(obj);
+				MyJson.getJson().toJson(currentObjects, file);
 			} else {
 				ArrayList<T> currentObjects = searchAllObjects(c);
 				if (currentObjects == null)
@@ -173,11 +191,8 @@ public class DataManager {
 				MyJson.getJson().toJson(currentObjects, file);
 			}
 
-			this.modifiedFiles.add(path);
-
-			// If the languages file has been modified, another directory may
-			// have to be created.
 			if (c == Languages.class) {
+				// Add additional directory for the language.
 				this.createLangDirectory((Languages) obj);
 			}
 		}
@@ -200,8 +215,6 @@ public class DataManager {
 								+ FileMap.classToFile.get(cl));
 					zos.putNextEntry(entry);
 				}
-
-				modifiedFiles.add(lang);
 			}
 		}
 	}
@@ -213,11 +226,10 @@ public class DataManager {
 	public void insertFile(String file, String resourceType) throws IOException {
 		if (FileMap.resourcesToDirectory.containsKey(resourceType)) {
 			Path originPath = Paths.get(file);
-			Path destinyPath = Paths.get("data/"
-					+ FileMap.resourcesToDirectory.get(resourceType) + file);
+			Path destinyPath = Paths.get(FileMap.resourcesToDirectory
+					.get(resourceType) + file);
 			Files.copy(originPath, destinyPath,
 					StandardCopyOption.REPLACE_EXISTING);
-			this.modifiedFiles.add(destinyPath.toString());
 		}
 	}
 
@@ -251,13 +263,12 @@ public class DataManager {
 		T obj = null;
 
 		if (FileMap.classToFile.containsKey(c)) {
-			String path = "data/";
-			path += FileMap.classToFile.get(c);
+			String path = FileMap.classToFile.get(c);
 
 			File file = new File(searchFile(path, null, c));
 			obj = (T) MyJson.getJson().fromJson(c, file);
 		}
-		
+
 		return obj;
 	}
 
@@ -270,12 +281,12 @@ public class DataManager {
 
 		if (FileMap.classToFile.containsKey(c)) {
 			if (c == Languages.class)
-				file = "data/" + FileMap.classToFile.get(c);
+				file = FileMap.classToFile.get(c);
 			else
-				file = "data/" + this.localizedPath(FileMap.classToFile.get(c));
+				file = localizedPath(currentLanguage,
+						FileMap.classToFile.get(c));
 		} else if (FileMap.resourcesToDirectory.containsKey(resourceType)) {
-			file = "data/" + FileMap.resourcesToDirectory.get(resourceType)
-					+ name;
+			file = FileMap.resourcesToDirectory.get(resourceType) + name;
 		}
 
 		if (file != null)
@@ -293,8 +304,7 @@ public class DataManager {
 		ArrayList<T> list = new ArrayList<T>();
 
 		if (FileMap.classToFile.containsKey(c)) {
-			String path = "data/";
-			path += FileMap.classToFile.get(c);
+			String path = FileMap.classToFile.get(c);
 
 			File file = new File(searchFile(path, null, c));
 			list = MyJson.getJson().fromJson(ArrayList.class, file);
@@ -307,8 +317,7 @@ public class DataManager {
 		ArrayList<String> files = new ArrayList<String>();
 
 		if (FileMap.resourcesToDirectory.containsKey(resourceType)) {
-			String path = "data/"
-					+ FileMap.resourcesToDirectory.get(resourceType);
+			String path = FileMap.resourcesToDirectory.get(resourceType);
 			File directory = new File(path);
 			files = new ArrayList<String>(Arrays.asList(directory.list()));
 		}
@@ -357,25 +366,28 @@ public class DataManager {
 		Files.delete(Paths.get(path));
 	}
 
-	public void deleteDirectory() throws IOException {
-		Files.delete(Paths.get("data"));
+	public void deleteDirectory(String dir) throws IOException {
+		File directory = new File(dir);
+		File[] files = directory.listFiles();
+
+		for (File f : files) {
+			if (f.isDirectory() && f.list().length > 0) {
+				deleteDirectory(f.getPath());
+			} else
+				Files.delete(Paths.get(f.getPath()));
+		}
+
+		Files.delete(Paths.get(dir));
 	}
 
-	// TODO: Corrigir método.
-	public void saveToZip() throws ZipException {
+	public void saveToZip() throws ZipException, IOException {
+		Files.delete(Paths.get(currentFile));
 		ZipFile zip = new ZipFile(currentFile);
 		ZipParameters parameters = new ZipParameters();
 		parameters.setCompressionMethod(Zip4jConstants.COMP_DEFLATE);
 
-		for (String path : modifiedFiles) {
-			File f = new File(path);
-
-			if (f.isDirectory())
-				zip.addFolder(path, parameters);
-			else {
-				zip.addFile(f, parameters);
-			}
-		}
+		File f = new File("data");
+		zip.addFolder(f, parameters);
 	}
 
 	public String getCurrentFile() {
@@ -390,7 +402,7 @@ public class DataManager {
 		return currentLanguage;
 	}
 
-	private String localizedPath(String path) {
-		return currentLanguage + "/" + path;
+	private static String localizedPath(String currentLanguage, String path) {
+		return path.replace("data/", "data/" + currentLanguage + "/");
 	}
 }

@@ -30,34 +30,34 @@ public class FileMap {
 		classToFile = new HashMap<Class<?>, String>();
 		resourcesToDirectory = new HashMap<String, String>();
 		
-		resourcesToDirectory.put("sound_effects", "audio/sound_effects/");
-		resourcesToDirectory.put("soundtrack", "audio/soundtrack/");
+		resourcesToDirectory.put("sound_effects", "data/audio/sound_effects/");
+		resourcesToDirectory.put("soundtrack", "data/audio/soundtrack/");
 		
-		classToFile.put(BattlePlatform.class, "files/battles.json");
-		classToFile.put(Card.class, "files/cards.json");
-		classToFile.put(Deck.class, "files/decks.json");
-		classToFile.put(Ending.class, "files/endings.json");
-		classToFile.put(Enemy.class, "files/enemies.json");
-		classToFile.put(Event.class, "files/events.json");
-		classToFile.put(Item.class, "files/items.json");
-		classToFile.put(MenuText.class, "files/menu_text.json");
-		classToFile.put(Pack.class, "files/packs.json");
-		classToFile.put(Profile.class, "files/profiles.json");
-		classToFile.put(Quest.class, "files/quests.json");
-		classToFile.put(Scene.class, "files/scenes.json");
-		classToFile.put(Shop.class, "files/shops.json");
-		classToFile.put(TutorialDialog.class, "files/tutorial.json");
+		classToFile.put(BattlePlatform.class, "data/files/battles.json");
+		classToFile.put(Card.class, "data/files/cards.json");
+		classToFile.put(Deck.class, "data/files/decks.json");
+		classToFile.put(Ending.class, "data/files/endings.json");
+		classToFile.put(Enemy.class, "data/files/enemies.json");
+		classToFile.put(Event.class, "data/files/events.json");
+		classToFile.put(Item.class, "data/files/items.json");
+		classToFile.put(MenuText.class, "data/files/menu_text.json");
+		classToFile.put(Pack.class, "data/files/packs.json");
+		classToFile.put(Profile.class, "data/files/profiles.json");
+		classToFile.put(Quest.class, "data/files/quests.json");
+		classToFile.put(Scene.class, "data/files/scenes.json");
+		classToFile.put(Shop.class, "data/files/shops.json");
+		classToFile.put(TutorialDialog.class, "data/files/tutorial.json");
 		
-		resourcesToDirectory.put("battle_maps", "images/battle_maps/");
-		resourcesToDirectory.put("card_attacking", "images/card_attacking/");
-		resourcesToDirectory.put("card_effects", "images/card_effects/");
-		resourcesToDirectory.put("card_images", "images/card_images/");
-		resourcesToDirectory.put("card_walking", "images/card_walking/");
-		resourcesToDirectory.put("game_ui_images", "images/game_ui_images/");
-		resourcesToDirectory.put("novel_images", "images/novel_images/");
-		resourcesToDirectory.put("rpg_maps", "images/rpg_maps/");
-		resourcesToDirectory.put("skin", "images/skin/");
+		resourcesToDirectory.put("battle_maps", "data/images/battle_maps/");
+		resourcesToDirectory.put("card_attacking", "data/images/card_attacking/");
+		resourcesToDirectory.put("card_effects", "data/images/card_effects/");
+		resourcesToDirectory.put("card_images", "data/images/card_images/");
+		resourcesToDirectory.put("card_walking", "data/images/card_walking/");
+		resourcesToDirectory.put("game_ui_images", "data/images/game_ui_images/");
+		resourcesToDirectory.put("novel_images", "data/images/novel_images/");
+		resourcesToDirectory.put("rpg_maps", "data/images/rpg_maps/");
+		resourcesToDirectory.put("skin", "data/images/skin/");
 
-		classToFile.put(Languages.class, "languages.json");
+		classToFile.put(Languages.class, "data/languages.json");
 	}
 }
