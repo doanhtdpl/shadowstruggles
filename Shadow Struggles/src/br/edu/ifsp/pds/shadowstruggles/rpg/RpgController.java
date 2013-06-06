@@ -37,11 +37,19 @@ public class RpgController {
 		return model.getMap();
 	}
 	
-	public void moveCharacter(){	
-		
+	/**
+	 * Method called only from the Viewer. Sends the move command from input to
+	 * 	 the Model.
+	 */
+	public void moveCharacter(){			
 		
 	}
-	public void render(){
+	
+	/**
+	 * Method called only from the Model. It sends a command to the Viewer to update
+	 * the character sprite as the model's character moves.	
+	 */
+	public void characterMoved(){
 		
 	}
 	
