@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.Array;
  */
 public class BattlePlatform {
 
+	private int id;	
 	private Deck playerDeck;
 	private Deck enemyDeck;
 	private BattleMap map;
@@ -23,6 +24,7 @@ public class BattlePlatform {
 	private Field PlayerField;
 	private Field EnemyField;
 	private Enemy enemy;
+	private boolean tutorial;
 
 	public BattlePlatform(Deck playerDeck, Deck enemyDeck, BattleMap map,
 			DefaultRules rules, Enemy enemy) {
@@ -154,10 +156,10 @@ public class BattlePlatform {
 	 * @return boolean true: There is a card on enemy hand false: there is no
 	 *         card on enemy hand
 	 */
-     public boolean cardOnEnemyHand(Card card) { //TODO: Passar uma String como argumento, não Card.
+     public boolean cardOnEnemyHand(String cardName) { 
 		boolean b = false;
 		for (Card c : enemyHandCards) {
-			if (c.getName().equals(card.getName())) {
+			if (c.getName().equals(cardName)) {
 				b = true;
 			}
 		}
