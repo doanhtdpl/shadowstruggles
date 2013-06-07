@@ -64,10 +64,11 @@ public class FreePlayScreen extends BaseScreen {
 			public void clicked(InputEvent event, float x, float y) {
 				super.clicked(event, x, y);
 				RpgController rpgController = new RpgController();
+				@SuppressWarnings("unused")
 				RpgPlatform platform = new RpgPlatform(rpgController,
 						"example", new Character(game.getProfile()));
 				game.setScreenWithTransition(new RpgScreen(game, controller,
-						rpgController, platform));
+						rpgController));
 			}
 		});
 

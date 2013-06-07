@@ -1,49 +1,50 @@
 package br.edu.ifsp.pds.shadowstruggles.screens.rpg;
 
-import java.util.ArrayList;
 
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
-import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character.WalkDirection;
-import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgPlatform;
 import br.edu.ifsp.pds.shadowstruggles.object2d.rpg.Character2D;
 import br.edu.ifsp.pds.shadowstruggles.rpg.RpgController;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.utils.Array;
 
 public class RpgScreen extends BaseScreen {
 
 	/**
 	 * The main screen of the RPG World. It gets the user input and 
-	 * sends the command to the RPG Controller.
+	 * sends the command to the RPG Controller. Also, renders all the visual elements.
 	 */
 	public final static int TILE_SIZE = 32;	
 	private ShapeRenderer shapeRenderer;
 	private RpgController rpgController;
-//	private boolean readyToWalk = true;
-//	private float walked = 0;
-//	private WalkDirection direction = null;
-	private Character2D character2d;
+	private Character2D character2d;	
+
+	private Array<WalkDirection> directionBuffer = new Array<WalkDirection>();
+
 	
-
-	private ArrayList<WalkDirection> directionBuffer = new ArrayList<WalkDirection>();
-
+	/**
+	 * The constructor initializes the objects and defines itself as the controller's viewer.
+	 * @param game
+	 * 		The ShadowStruggles instance, used for overview.
+	 * @param controller
+	 * 		The game controller to handle screen interactions.
+	 * @param rpgController
+	 * 		The RPG mechanic controller.
+	 */
 	public RpgScreen(ShadowStruggles game, Controller controller,
-			RpgController rpgController, RpgPlatform rpgPlatform) {
+			RpgController rpgController) {
 		super(game, controller);		
 		rpgController.setViewer(this);		
 		this.rpgController=rpgController;
 		shapeRenderer = new ShapeRenderer();
 		
-		character2d = new Character2D("Link",game);
+		character2d = new Character2D(game);
 		
 		//testes com character2d
 		stage.addActor(character2d);
@@ -51,7 +52,10 @@ public class RpgScreen extends BaseScreen {
 	}
 	
 	
-
+	/**
+	 * Renders the all the graphic for this screen. It's called automatically and
+	 * makes the main loop of the game.
+	 */
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClearColor(1, 1, 1, 1);
@@ -63,7 +67,7 @@ public class RpgScreen extends BaseScreen {
 		camera.setToOrtho(false, 3.75f, 2.5f);
 		renderer.render();
 		update(delta);
-		character2d.render();
+		//TODO: ver possibilidade de usar renderização de spriteSheet ao invés de shapeRenderer
 //		shapeRenderer.begin(ShapeType.Filled);
 //		if (walked + platform.getCharacter().getWalkSpeed() >= tileSize) {
 //			readyToWalk = true;
