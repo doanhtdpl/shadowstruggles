@@ -16,7 +16,7 @@ public class BattlePlatformTest {
 		BattlePlatform platform = new BattlePlatform(new Deck(), new Deck(), new BattleMap(""), new DefaultRules());
 		Card card = new Card();
 		platform.addEnemyHandCard(card);
-		assertTrue(platform.cardOnEnemyHand(card));
+		assertTrue(platform.cardOnEnemyHand(card.getName()));
 	}
 
 	@Test

@@ -1,6 +1,5 @@
 package br.edu.ifsp.pds.shadowstruggles.model;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Json.Serializable;
@@ -14,8 +13,9 @@ public class Deck implements Serializable{
 	private int minCapacity;
 	private int maxCapacity;
 	private Array<Card> cards;
-	private Image deckImage;
+	private String deckImage;
 	private String name;
+	private int totalCardPoints;
 	
 	
 	public Deck() {
@@ -36,11 +36,12 @@ public class Deck implements Serializable{
 		
 	}
 
-	public Deck(int minCapacity, int maxCapacity, Array<Card> cards, Image deckImage) {
+	public Deck(int minCapacity, int maxCapacity, Array<Card> cards, String deckImage) {
 		this.minCapacity = minCapacity;
 		this.maxCapacity = maxCapacity;
 		this.cards = cards;
 		this.deckImage = deckImage;
+		//TODO: carregar imagem de acordo com a String recebida
 		shuffle();
 	}
 
@@ -74,12 +75,12 @@ public class Deck implements Serializable{
 	}
 
 
-	public Image getDeckImage() {
+	public String getDeckImage() {
 		return deckImage;
 	}
 
 
-	public void setDeckImage(Image deckImage) {
+	public void setDeckImage(String deckImage) {
 		this.deckImage = deckImage;
 	}
 	
