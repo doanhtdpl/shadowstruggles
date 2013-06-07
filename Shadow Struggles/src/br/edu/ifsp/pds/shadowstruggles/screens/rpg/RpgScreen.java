@@ -28,9 +28,9 @@ public class RpgScreen extends BaseScreen {
 	public final static int TILE_SIZE = 32;	
 	private ShapeRenderer shapeRenderer;
 	private RpgController rpgController;
-	private boolean readyToWalk = true;
-	private float walked = 0;
-	private WalkDirection direction = null;
+//	private boolean readyToWalk = true;
+//	private float walked = 0;
+//	private WalkDirection direction = null;
 	private Character2D character2d;
 	
 
@@ -42,6 +42,13 @@ public class RpgScreen extends BaseScreen {
 		rpgController.setViewer(this);		
 		this.rpgController=rpgController;
 		shapeRenderer = new ShapeRenderer();
+		
+		character2d = new Character2D("Link",game);
+		
+		//testes com character2d
+		character2d.setX(10);
+		character2d.setY(10);
+		
 	}
 	
 	
@@ -57,51 +64,52 @@ public class RpgScreen extends BaseScreen {
 		camera.setToOrtho(false, 3.75f, 2.5f);
 		renderer.render();
 		update(delta);
-		shapeRenderer.begin(ShapeType.Filled);
-		if (walked + platform.getCharacter().getWalkSpeed() >= tileSize) {
-			readyToWalk = true;
-			walked = 0;
-			direction = null;
-		}
-
-		if (readyToWalk && directionBuffer.size() > 0) {
-			moveCharacter(directionBuffer.get(0));
-			directionBuffer.remove(0);
-		}
-
-		if (readyToWalk) {
-			shapeRenderer.rect(character.getTileX() * tileSize,
-					character.getTileY() * tileSize, tileSize, tileSize);
-		} else {
-
-			walked = walked + character.getWalkSpeed();
-			
-			switch (direction) {
-			case WALK_UP:
-				shapeRenderer.rect(character.getTileX() * tileSize,
-						character.getTileY() * tileSize + walked - tileSize,
-						tileSize, tileSize);
-				break;
-			case WALK_DOWN:
-				shapeRenderer.rect(character.getTileX() * tileSize,
-						character.getTileY() * tileSize - walked + tileSize,
-						tileSize, tileSize);
-				break;
-			case WALK_LEFT:
-				shapeRenderer.rect(character.getTileX() * tileSize - walked
-						+ tileSize, character.getTileY() * tileSize, tileSize,
-						tileSize);
-				break;
-			case WALK_RIGHT:
-				shapeRenderer.rect(character.getTileX() * tileSize + walked
-						- tileSize, character.getTileY() * tileSize, tileSize,
-						tileSize);
-				break;
-			default:
-				break;
-			}
-		}
-		shapeRenderer.end();
+		character2d.render();
+//		shapeRenderer.begin(ShapeType.Filled);
+//		if (walked + platform.getCharacter().getWalkSpeed() >= tileSize) {
+//			readyToWalk = true;
+//			walked = 0;
+//			direction = null;
+//		}
+//
+//		if (readyToWalk && directionBuffer.size() > 0) {
+//			moveCharacter(directionBuffer.get(0));
+//			directionBuffer.remove(0);
+//		}
+//
+//		if (readyToWalk) {
+//			shapeRenderer.rect(character.getTileX() * tileSize,
+//					character.getTileY() * tileSize, tileSize, tileSize);
+//		} else {
+//
+//			walked = walked + character.getWalkSpeed();
+//			
+//			switch (direction) {
+//			case WALK_UP:
+//				shapeRenderer.rect(character.getTileX() * tileSize,
+//						character.getTileY() * tileSize + walked - tileSize,
+//						tileSize, tileSize);
+//				break;
+//			case WALK_DOWN:
+//				shapeRenderer.rect(character.getTileX() * tileSize,
+//						character.getTileY() * tileSize - walked + tileSize,
+//						tileSize, tileSize);
+//				break;
+//			case WALK_LEFT:
+//				shapeRenderer.rect(character.getTileX() * tileSize - walked
+//						+ tileSize, character.getTileY() * tileSize, tileSize,
+//						tileSize);
+//				break;
+//			case WALK_RIGHT:
+//				shapeRenderer.rect(character.getTileX() * tileSize + walked
+//						- tileSize, character.getTileY() * tileSize, tileSize,
+//						tileSize);
+//				break;
+//			default:
+//				break;
+//			}
+//		}
+//		shapeRenderer.end();
 	}
 
 	public void update(float delta) {
@@ -110,35 +118,35 @@ public class RpgScreen extends BaseScreen {
 
 	public void keyInput(float delta) {
 		if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-			moveCharacter(WalkDirection.WALK_LEFT);			
+//			moveCharacter(WalkDirection.WALK_LEFT);			
 		}
 		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-			moveCharacter(WalkDirection.WALK_RIGHT);			
+//			moveCharacter(WalkDirection.WALK_RIGHT);			
 		}
 		if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-			moveCharacter(WalkDirection.WALK_UP);			
+//			moveCharacter(WalkDirection.WALK_UP);			
 		}
 		if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-			moveCharacter(WalkDirection.WALK_DOWN);
+//			moveCharacter(WalkDirection.WALK_DOWN);
 			
 		}
 		if (Gdx.input.isKeyPressed(Input.Keys.W)) {
-			moveCharacter(WalkDirection.WALK_UP, 3);
+//			moveCharacter(WalkDirection.WALK_UP, 3);
 			
 		}
 	}
 
-	public void moveCharacter(WalkDirection direction) {
-		if (readyToWalk && character.walk(direction, map)) {
-			readyToWalk = false;
-			this.direction = direction;
-		}
-	}
+//	public void moveCharacter(WalkDirection direction) {
+//		if (readyToWalk && character.walk(direction, map)) {
+//			readyToWalk = false;
+//			this.direction = direction;
+//		}
+//	}
 
-	public void moveCharacter(WalkDirection direction, int times) {
-		for (int i = 0; i < times; i++)
-			if (readyToWalk) // Remover condição
-				directionBuffer.add(direction);
-	}
+//	public void moveCharacter(WalkDirection direction, int times) {
+//		for (int i = 0; i < times; i++)
+//			if (readyToWalk) // Remover condição
+//				directionBuffer.add(direction);
+//	}
 
 }
