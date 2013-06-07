@@ -34,6 +34,7 @@ public class EditDeckScreen extends BaseScreen {
 	private TransitionControl right;
 	private TransitionControl left;
 	private TextButton exit;
+	private TextButton newDeck;
 	private TextButton moveCard;
 	private Card selectedCard;
 	private Deck selectedDeck;
@@ -84,6 +85,11 @@ public class EditDeckScreen extends BaseScreen {
 		deckName.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
 				Color.BLACK));
 		
+		newDeck = new TextButton(game.getManager().getMenuText().newDeck, super.getSkin());
+		newDeck = ScreenUtils.defineButton(newDeck, 0, 0, 0,
+				0, super.getSkin());
+		//TODO: criar método para criacao de novos decks
+		
 		decks = new Label("", super.getSkin());
 		decks.setText("Deck B");
 		decks.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
@@ -92,7 +98,6 @@ public class EditDeckScreen extends BaseScreen {
 		exit = new TextButton(game.getManager().getMenuText().returnToStart, super.getSkin());
 		exit = ScreenUtils.defineButton(exit, 0, 0, 0,
 				0, super.getSkin());
-//		exit.setText("Back");
 		exit.addListener(new ClickListener() {
 
 			@Override
@@ -109,9 +114,11 @@ public class EditDeckScreen extends BaseScreen {
 		menuTable.row();
 		menuTable.add(decks).height(400);
 		menuTable.row();
+		menuTable.add(newDeck);
+		menuTable.row();
 		menuTable.add(exit);
 		
-		menuTable.setPosition(100, 350);
+		menuTable.setPosition(100, 300);
 		
 		Table deckTable = new Table();
 		if (game.getMode() == RunMode.DEBUG)
@@ -122,30 +129,17 @@ public class EditDeckScreen extends BaseScreen {
 		deckTable.defaults().width(600).height(400);
 		box.setWidth(600);
 		box.setHeight(400);
-//		box.setScaleX(0.9f);
-//		box.setScaleY(0.76f);
 		
 		deckTable.add(box);
 		
 		deckTable.setPosition(580, 380);
 
-		
-		Table cardTable = new Table();
+
+		Table leftButtonTable = new Table();
 		if (game.getMode() == RunMode.DEBUG)
-			cardTable.debug();
+			leftButtonTable.debug();
 		
-		cardTable.defaults().width(100).height(100);
-		
-		right = new TransitionControl(1, this.getSkin());
-		right.addListener(new ClickListener() {
-
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				game.getAudio().playSound("button_6");
-				moveCards(1);
-
-			}
-		});
+		leftButtonTable.defaults().width(100).height(100);
 		
 		left = new TransitionControl(-1, this.getSkin());
 		left.addListener(new ClickListener() {
@@ -157,6 +151,24 @@ public class EditDeckScreen extends BaseScreen {
 
 			}
 		});
+		
+		Table rightButtonTable = new Table();
+		if (game.getMode() == RunMode.DEBUG)
+			rightButtonTable.debug();
+		
+		rightButtonTable.defaults().width(100).height(100);
+		
+		right = new TransitionControl(1, this.getSkin());
+		right.addListener(new ClickListener() {
+
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				game.getAudio().playSound("button_6");
+				moveCards(1);
+
+			}
+		});
+
 		
 		int count = 0;
 		cardImages = new Array<Image>();
@@ -183,16 +195,17 @@ public class EditDeckScreen extends BaseScreen {
 			count++;
 		}
 		
-		cardTable.add(left).left();
-//		cardTable.add(cardImages);
-		cardTable.add(right);
+		leftButtonTable.add(left).left();
+		rightButtonTable.add(right);
 		
-		cardTable.setPosition(300, 100);
+		leftButtonTable.setPosition(250, 80);
+		rightButtonTable.setPosition(900, 80);
 		
 		stage.addActor(background);
 		stage.addActor(menuTable);
 		stage.addActor(deckTable);
-		stage.addActor(cardTable);
+		stage.addActor(leftButtonTable);
+		stage.addActor(rightButtonTable);
 		
 	}
 
