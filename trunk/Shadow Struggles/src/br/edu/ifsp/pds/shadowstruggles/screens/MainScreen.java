@@ -2,12 +2,14 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
@@ -49,6 +51,11 @@ public class MainScreen extends BaseScreen {
 			game.getAudio().setMusic("intro");
 		}
 
+		Table table = new Table();
+		table.defaults().width(480).height(110).padTop(10);
+		if (game.getMode() == RunMode.DEBUG)
+			table.debug();
+
 		background = new Image(game.getAssets()
 				.get("data/images/objects/objects.atlas", TextureAtlas.class)
 				.findRegion("msbackground"));
@@ -57,7 +64,7 @@ public class MainScreen extends BaseScreen {
 
 		campaign = new TextButton(game.getManager().getMenuText().campaign,
 				super.getSkin());
-		campaign = ScreenUtils.defineButton(campaign, 240, 525, 480, 110,
+		campaign = ScreenUtils.defineButton(campaign, 0, 0, 0, 0,
 				super.getSkin());
 		campaign.addListener(new ClickListener() {
 
@@ -72,7 +79,7 @@ public class MainScreen extends BaseScreen {
 
 		freePlay = new TextButton(game.getManager().getMenuText().freePlay,
 				super.getSkin());
-		freePlay = ScreenUtils.defineButton(freePlay, 240, 405, 480, 110,
+		freePlay = ScreenUtils.defineButton(freePlay, 0, 0, 0, 0,
 				super.getSkin());
 		freePlay.addListener(new ClickListener() {
 
@@ -88,7 +95,7 @@ public class MainScreen extends BaseScreen {
 
 		editDeck = new TextButton(game.getManager().getMenuText().editDeck,
 				super.getSkin());
-		editDeck = ScreenUtils.defineButton(editDeck, 240, 285, 480, 110,
+		editDeck = ScreenUtils.defineButton(editDeck, 0, 0, 0, 0,
 				super.getSkin());
 		final MainScreen screen = this;
 		editDeck.addListener(new ClickListener() {
@@ -107,7 +114,7 @@ public class MainScreen extends BaseScreen {
 
 		shop = new TextButton(game.getManager().getMenuText().shop,
 				super.getSkin());
-		shop = ScreenUtils.defineButton(shop, 240, 165, 480, 110,
+		shop = ScreenUtils.defineButton(shop, 0, 0, 0, 0,
 				super.getSkin());
 
 		shop.addListener(new ClickListener() {
@@ -123,7 +130,7 @@ public class MainScreen extends BaseScreen {
 
 		config = new TextButton(game.getManager().getMenuText().configurations,
 				super.getSkin());
-		config = ScreenUtils.defineButton(config, 240, 45, 480, 110,
+		config = ScreenUtils.defineButton(config, 0, 0, 0, 0,
 				super.getSkin());
 
 		config.addListener(new ClickListener() {
@@ -137,10 +144,25 @@ public class MainScreen extends BaseScreen {
 				game.setScreenWithTransition(configurationScreen);
 			}
 		});
+		
+		table.add(campaign);
+		table.row();
+		table.add(freePlay);
+		table.row();
+		table.add(editDeck);
+		table.row();
+		table.add(shop);
+		table.row();
+		table.add(config);
+		table.row();
+		table.setPosition(480, 330);
+		
+		Table changeTable = new Table();
+		if (game.getMode() == RunMode.DEBUG)
+			changeTable.debug();
+		changeTable.defaults();
 
 		changeProfile = new ImageButton(this.getSkin().getDrawable("profiles"));
-		changeProfile.setX(30);
-		changeProfile.setY(20);
 		changeProfile.addListener(new ClickListener() {
 
 			@Override
@@ -155,14 +177,13 @@ public class MainScreen extends BaseScreen {
 			}
 
 		});
-
+		
+		changeTable.add(changeProfile);
+		changeTable.setPosition(80, 80);
+		
 		stage.addActor(background);
-		stage.addActor(campaign);
-		stage.addActor(freePlay);
-		stage.addActor(editDeck);
-		stage.addActor(shop);
-		stage.addActor(config);
-		stage.addActor(changeProfile);
+		stage.addActor(table);
+		stage.addActor(changeTable);
 
 	}
 
@@ -179,5 +200,12 @@ public class MainScreen extends BaseScreen {
 	@Override
 	public void show() {
 		super.show();
+	}
+	
+	@Override
+	public void render(float delta) {
+		// TODO Auto-generated method stub
+		super.render(delta);
+		Table.drawDebug(stage);
 	}
 }
