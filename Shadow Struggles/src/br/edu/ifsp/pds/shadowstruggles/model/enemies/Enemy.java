@@ -15,7 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 /***
  * A representation of an enemy.
  */
-
+// TODO: Alterar modelo do inimigo.
 public abstract class Enemy {
 
 	protected float delay;

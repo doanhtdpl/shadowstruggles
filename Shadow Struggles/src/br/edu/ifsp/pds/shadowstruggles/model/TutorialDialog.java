@@ -1,7 +1,6 @@
 package br.edu.ifsp.pds.shadowstruggles.model;
 
 import br.edu.ifsp.pds.shadowstruggles.screens.BattleTutorial.EventType;
-import br.edu.ifsp.pds.shadowstruggles.screens.BattleTutorial.TutorialEvent;
 
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Json.Serializable;
