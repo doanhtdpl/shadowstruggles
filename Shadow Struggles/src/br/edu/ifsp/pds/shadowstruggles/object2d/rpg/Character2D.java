@@ -4,8 +4,10 @@ import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Array;
 
 /**
@@ -31,8 +33,12 @@ public class Character2D extends Image implements ApplicationListener {
 	}
 
 	public Character2D(String characterName, ShadowStruggles game) {
+		super(game.getAssets().get("data/images/char/char.atlas", TextureAtlas.class).findRegion("char_down"));
 		this.setSize(64, 64);
 		this.game = game;
+		this.setPosition(30, 30);
+		
+		this.setScale(1.0f, 1.0f);
 
 	}
 	
