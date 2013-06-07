@@ -19,7 +19,6 @@ public class Character2D extends Image implements ApplicationListener {
 	private TextureRegion walkSheet;
 	private Array<TextureRegion> walkFrames;
 	private ShadowStruggles game;
-	private Character character;
 	private float walked = 0;
 	
 
@@ -31,9 +30,8 @@ public class Character2D extends Image implements ApplicationListener {
 		this.walked = walked;
 	}
 
-	public Character2D(Character character, ShadowStruggles game) {
+	public Character2D(String characterName, ShadowStruggles game) {
 		this.setSize(64, 64);
-		this.character = character;
 		this.game = game;
 
 	}
