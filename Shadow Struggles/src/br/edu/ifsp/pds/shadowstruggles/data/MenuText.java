@@ -50,7 +50,10 @@ public class MenuText implements Serializable {
 
 	// FreePlayScreen
 	public String practiceBattle = "";
-
+	
+	//EditDeckScreen
+	public String newDeck = "";
+	
 	@Override
 	public void write(Json json) {
 		json.writeValue("continueGame", continueGame);
@@ -75,6 +78,7 @@ public class MenuText implements Serializable {
 		json.writeValue("retryButton", retryButton);
 		json.writeValue("defeat", defeat);
 		json.writeValue("practiceBattle", practiceBattle);
+		json.writeValue("newDeck", newDeck);
 	}
 
 	@Override
@@ -104,6 +108,8 @@ public class MenuText implements Serializable {
 		defeat = json.readValue("defeat", String.class, jsonData);
 		retryButton = json.readValue("retryButton", String.class, jsonData);
 		practiceBattle = json.readValue("practiceBattle", String.class,
+				jsonData);
+		newDeck = json.readValue("newDeck", String.class,
 				jsonData);
 	}
 
