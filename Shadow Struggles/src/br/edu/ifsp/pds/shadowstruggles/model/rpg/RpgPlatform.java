@@ -1,30 +1,47 @@
 package br.edu.ifsp.pds.shadowstruggles.model.rpg;
 
 import br.edu.ifsp.pds.shadowstruggles.rpg.RpgController;
-
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 
+/**
+ * This is the main core of the RPG exploring mechanic. It handles the
+ * interaction between the RPG Elements.
+ */
+
+
 public class RpgPlatform {
 	private TiledMap map;
 	private Character character;
+
 	
-	public RpgPlatform(RpgController controller, String stageName, Character character) {
+	/**
+	 * The constructor loads the map according to the stage name.
+	 * 
+	 * @param controller
+	 *      The controller of the MVC scheme.
+	 * @param stageName
+	 * 		Defines which attributes the stage will take.
+	 * @param character
+	 * 		The player's character for this stage.
+	 *           
+	 */
+	public RpgPlatform(RpgController controller, String stageName,
+			Character character) {
 		controller.setModel(this);
-		this.map=new TmxMapLoader(new InternalFileHandleResolver()).load("data/images/maps/example/map.tmx");
-		this.character=character;	
-		
+		this.map = new TmxMapLoader(new InternalFileHandleResolver())
+				.load("data/images/maps/example/map.tmx");
+		this.character = character;
+
 	}
-	
+
 	public Character getCharacter() {
 		return character;
 	}
-	
+
 	public TiledMap getMap() {
 		return map;
 	}
-	
-	
 
 }
