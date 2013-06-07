@@ -100,6 +100,8 @@ public class Loader {
 		if (this.strategy == ManagementStrategy.STATIC_TEXTURE_ATLAS) {
 			game.getAssets().load("data/images/objects/objects.atlas",
 					TextureAtlas.class);
+			game.getAssets().load("data/images/char/char.atlas",
+					TextureAtlas.class);
 			game.getAssets().load("data/images/cards/cards.atlas",
 					TextureAtlas.class);
 			game.getAssets().load(

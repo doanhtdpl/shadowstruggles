@@ -46,8 +46,7 @@ public class RpgScreen extends BaseScreen {
 		character2d = new Character2D("Link",game);
 		
 		//testes com character2d
-		character2d.setX(10);
-		character2d.setY(10);
+		stage.addActor(character2d);
 		
 	}
 	
