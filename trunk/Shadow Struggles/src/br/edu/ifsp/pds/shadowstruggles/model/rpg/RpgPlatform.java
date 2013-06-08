@@ -1,5 +1,8 @@
 package br.edu.ifsp.pds.shadowstruggles.model.rpg;
 
+import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.Path;
+import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.Path.Step;
+import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.TileBasedMap;
 import br.edu.ifsp.pds.shadowstruggles.rpg.RpgController;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -38,7 +41,7 @@ public class RpgPlatform {
 	 * @param stageName
 	 *            Defines which attributes the stage will take.
 	 * @param mapLayer
-	 * 			  The map layer to interpret.
+	 *            The map layer to interpret.
 	 * @param character
 	 *            The player's character for this stage.
 	 * 
@@ -46,8 +49,9 @@ public class RpgPlatform {
 	public RpgPlatform(RpgController controller, String stageName,
 			String mapLayer, Character character) {
 		controller.setModel(this);
-		this.map = new RpgMap(new TmxMapLoader(new InternalFileHandleResolver())
-				.load("data/images/maps/example/map.tmx"));
+		this.map = new RpgMap(
+				new TmxMapLoader(new InternalFileHandleResolver())
+						.load("data/images/maps/example/map.tmx"));
 
 		this.character = character;
 	}
@@ -58,6 +62,35 @@ public class RpgPlatform {
 
 	public TiledMap getMap() {
 		return map.getMap();
+	}
+
+	public TileBasedMap getRpgMap() {
+		return this.map;
+	}
+
+	public void moveCharacter(Path path) {
+		for (Step step : path.getSteps()) {
+			Character.WalkDirection direction = null;
+
+			// TODO: É provável que o algoritmo de pathfinding precise ser
+			// ajustado para lidar com tiles ao invés de pixels, uma vez que o
+			// movimento do personagem pode não seguir o caminho estabelecido.
+
+			if (step.getX() == character.getTileX()
+					&& step.getY() < character.getTileY())
+				direction = Character.WalkDirection.WALK_UP;
+			if (step.getX() == character.getTileX()
+					&& step.getY() > character.getTileY())
+				direction = Character.WalkDirection.WALK_DOWN;
+			if (step.getY() == character.getTileY()
+					&& step.getX() < character.getTileY())
+				direction = Character.WalkDirection.WALK_LEFT;
+			if (step.getY() == character.getTileY()
+					&& step.getX() > character.getTileY())
+				direction = Character.WalkDirection.WALK_RIGHT;
+
+			character.walk(direction, map.getMap());
+		}
 	}
 
 }
