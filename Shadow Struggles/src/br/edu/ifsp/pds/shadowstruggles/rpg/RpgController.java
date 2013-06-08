@@ -4,6 +4,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgPlatform;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character.WalkDirection;
+import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.Path;
 import br.edu.ifsp.pds.shadowstruggles.screens.rpg.RpgScreen;
 
 /**
@@ -52,6 +53,10 @@ public class RpgController {
 
 	public TiledMap getMap() {
 		return model.getMap();
+	}
+
+	public void moveCharacter(Path path) {
+		model.moveCharacter(path);
 	}
 
 }

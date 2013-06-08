@@ -12,13 +12,17 @@ import com.badlogic.gdx.utils.Array;
  */
 public class Path {
 	/** The list of steps building up this path */
-	private Array steps = new Array();
+	private Array<Step> steps = new Array<Step>();
 	
 	/**
 	 * Create an empty path
 	 */
 	public Path() {
 		
+	}
+	
+	public Array<Step> getSteps() {
+		return steps;
 	}
 
 	/**
