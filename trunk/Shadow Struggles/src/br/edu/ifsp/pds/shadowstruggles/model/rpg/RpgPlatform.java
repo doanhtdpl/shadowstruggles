@@ -10,30 +10,46 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
  * interaction between the RPG Elements.
  */
 
-
 public class RpgPlatform {
-	private TiledMap map;
+	private RpgMap map;
 	private Character character;
 
-	
 	/**
 	 * The constructor loads the map according to the stage name.
 	 * 
 	 * @param controller
-	 *      The controller of the MVC scheme.
+	 *            The controller of the MVC scheme.
 	 * @param stageName
-	 * 		Defines which attributes the stage will take.
+	 *            Defines which attributes the stage will take.
 	 * @param character
-	 * 		The player's character for this stage.
-	 *           
+	 *            The player's character for this stage.
+	 * 
 	 */
 	public RpgPlatform(RpgController controller, String stageName,
 			Character character) {
-		controller.setModel(this);
-		this.map = new TmxMapLoader(new InternalFileHandleResolver())
-				.load("data/images/maps/example/map.tmx");
-		this.character = character;
+		this(controller, stageName, "", character);
+	}
 
+	/**
+	 * The constructor loads the map according to the stage name and layer.
+	 * 
+	 * @param controller
+	 *            The controller of the MVC scheme.
+	 * @param stageName
+	 *            Defines which attributes the stage will take.
+	 * @param mapLayer
+	 * 			  The map layer to interpret.
+	 * @param character
+	 *            The player's character for this stage.
+	 * 
+	 */
+	public RpgPlatform(RpgController controller, String stageName,
+			String mapLayer, Character character) {
+		controller.setModel(this);
+		this.map = new RpgMap(new TmxMapLoader(new InternalFileHandleResolver())
+				.load("data/images/maps/example/map.tmx"));
+
+		this.character = character;
 	}
 
 	public Character getCharacter() {
@@ -41,7 +57,7 @@ public class RpgPlatform {
 	}
 
 	public TiledMap getMap() {
-		return map;
+		return map.getMap();
 	}
 
 }
