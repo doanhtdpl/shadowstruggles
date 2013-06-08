@@ -41,13 +41,13 @@ public class RpgScreen extends BaseScreen {
 			RpgController rpgController) {
 		super(game, controller);		
 		rpgController.setViewer(this);		
-		this.rpgController=rpgController;
+		this.rpgController = rpgController;
 		shapeRenderer = new ShapeRenderer();
+		character2d = new Character2D(rpgController, game);
 		
-		character2d = new Character2D(game);
 		
 		//testes com character2d
-		stage.addActor(character2d);
+		this.stage.addActor(character2d);
 		
 	}
 	
@@ -58,8 +58,9 @@ public class RpgScreen extends BaseScreen {
 	 */
 	@Override
 	public void render(float delta) {
-		Gdx.gl.glClearColor(1, 1, 1, 1);
-		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		super.render(delta);
+//		Gdx.gl.glClearColor(1, 1, 1, 1);
+//		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		float unitScale = 1 / 256f;
 		OrthogonalTiledMapRenderer renderer = new OrthogonalTiledMapRenderer(
 				rpgController.getMap(), unitScale);
@@ -67,6 +68,7 @@ public class RpgScreen extends BaseScreen {
 		camera.setToOrtho(false, 3.75f, 2.5f);
 		renderer.render();
 		update(delta);
+		character2d.render();
 		//TODO: ver possibilidade de usar renderização de spriteSheet ao invés de shapeRenderer
 //		shapeRenderer.begin(ShapeType.Filled);
 //		if (walked + platform.getCharacter().getWalkSpeed() >= tileSize) {
