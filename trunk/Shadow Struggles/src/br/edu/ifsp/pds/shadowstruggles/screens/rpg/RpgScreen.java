@@ -10,6 +10,7 @@ import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.utils.Array;
@@ -21,7 +22,8 @@ public class RpgScreen extends BaseScreen {
 	 * sends the command to the RPG Controller. Also, renders all the visual elements.
 	 */
 	public final static int TILE_SIZE = 32;	
-	private ShapeRenderer shapeRenderer;
+//	private ShapeRenderer shapeRenderer;
+	private SpriteBatch batch;
 	private RpgController rpgController;
 	private Character2D character2d;	
 
@@ -42,7 +44,7 @@ public class RpgScreen extends BaseScreen {
 		super(game, controller);		
 		rpgController.setViewer(this);		
 		this.rpgController = rpgController;
-		shapeRenderer = new ShapeRenderer();
+//		shapeRenderer = new ShapeRenderer();
 		character2d = new Character2D(rpgController, game);
 		
 		
@@ -68,7 +70,14 @@ public class RpgScreen extends BaseScreen {
 		camera.setToOrtho(false, 3.75f, 2.5f);
 		renderer.render();
 		update(delta);
+		character2d.create();
 		character2d.render();
+		
+		batch = new SpriteBatch();
+		batch.begin();
+		batch.draw(character2d.getCurrentFrame(), character2d.getX(), character2d.getY());
+		batch.end();
+		
 		//TODO: ver possibilidade de usar renderização de spriteSheet ao invés de shapeRenderer
 //		shapeRenderer.begin(ShapeType.Filled);
 //		if (walked + platform.getCharacter().getWalkSpeed() >= tileSize) {
@@ -123,16 +132,17 @@ public class RpgScreen extends BaseScreen {
 
 	public void keyInput(float delta) {
 		if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-//			moveCharacter(WalkDirection.WALK_LEFT);			
+//			moveCharacter(WalkDirection.WALK_LEFT);
+			character2d.move(WalkDirection.WALK_LEFT);
 		}
 		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-//			moveCharacter(WalkDirection.WALK_RIGHT);			
+			character2d.move(WalkDirection.WALK_RIGHT);
 		}
 		if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-//			moveCharacter(WalkDirection.WALK_UP);			
+			character2d.move(WalkDirection.WALK_UP);
 		}
 		if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-//			moveCharacter(WalkDirection.WALK_DOWN);
+			character2d.move(WalkDirection.WALK_DOWN);
 			
 		}
 		if (Gdx.input.isKeyPressed(Input.Keys.W)) {

@@ -40,15 +40,19 @@ public class Character2D extends Image implements ApplicationListener {
 	private float walked = 0;
 	private float stateTime;
 	private ShadowStruggles game;
+	private TextureRegion currentFrame;
+	private RpgController rpgController;
+	private int size = 64;
 
 	public Character2D(RpgController rpgController, ShadowStruggles game) {
 		super(game.getAssets()
 				.get("data/images/char/char.atlas", TextureAtlas.class)
 				.findRegion("char_down"));
 		this.game = game;
-		this.setSize(64, 64);
-		this.setPosition(30, 30);
+		this.setSize(size, size);
 		this.setScale(1.0f, 1.0f);
+		this.rpgController = rpgController;
+		this.setPosition(0, 0);
 	}
 
 	/**
@@ -58,7 +62,7 @@ public class Character2D extends Image implements ApplicationListener {
 	 *            The direction the character will move on the map.
 	 */
 	public void move(WalkDirection direction) {
-
+		rpgController.moveCharacter(direction);
 	}
 
 	public float getWalked() {
@@ -84,10 +88,10 @@ public class Character2D extends Image implements ApplicationListener {
 				.get("data/images/char/char.atlas", TextureAtlas.class)
 				.findRegion("char_down");
 
-		TextureRegion[][] aux_left = walkSheet_left.split(64, 64);
-		TextureRegion[][] aux_up = walkSheet_up.split(64, 64);
-		TextureRegion[][] aux_right = walkSheet_right.split(64, 64);
-		TextureRegion[][] aux_down = walkSheet_down.split(64, 64);
+		TextureRegion[][] aux_left = walkSheet_left.split(size, size);
+		TextureRegion[][] aux_up = walkSheet_up.split(size, size);
+		TextureRegion[][] aux_right = walkSheet_right.split(size, size);
+		TextureRegion[][] aux_down = walkSheet_down.split(size, size);
 
 		walkLeftFrames = new Array<TextureRegion>();
 		walkUpFrames = new Array<TextureRegion>();
@@ -109,11 +113,8 @@ public class Character2D extends Image implements ApplicationListener {
 		walkDownAnimation = new Animation(0.033f, walkDownFrames);
 
 		stateTime = 0;
-
-		// De onde puxarei a posição X mesmo?
-
-		this.setX(10);
-		this.setY(10);
+		
+		this.currentFrame = walkDownAnimation.getKeyFrame(0);
 	}
 
 	@Override
@@ -144,6 +145,11 @@ public class Character2D extends Image implements ApplicationListener {
 	public void dispose() {
 		// TODO Auto-generated method stub
 
+	}
+	
+	public TextureRegion getCurrentFrame() {
+		return currentFrame;
+		
 	}
 
 }

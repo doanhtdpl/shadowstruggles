@@ -3,6 +3,7 @@ package br.edu.ifsp.pds.shadowstruggles.rpg;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgPlatform;
+import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character.WalkDirection;
 import br.edu.ifsp.pds.shadowstruggles.screens.rpg.RpgScreen;
 
 /**
@@ -20,7 +21,7 @@ public class RpgController {
 	 * Method called only from the Viewer. Sends the move command from input to
 	 * the Model.
 	 */
-	public void moveCharacter() {
+	public void moveCharacter(WalkDirection direction) {
 
 	}
 
