@@ -48,7 +48,7 @@ public class Character {
 	 *  	The direction intended to step.
 	 *  @param map 
 	 *  	The map where the character is.
-	 *  @return true if succesfully walked. Else, returns false.
+	 *  @return true if successfully walked. Else, returns false.
 	 */
 	public boolean walk(WalkDirection direction, TiledMap map) {
 		boolean walked = false;
