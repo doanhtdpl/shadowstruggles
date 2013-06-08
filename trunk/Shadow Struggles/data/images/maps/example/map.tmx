@@ -2,64 +2,109 @@
 <map version="1.0" orientation="orthogonal" width="30" height="20" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="Desert" tilewidth="32" tileheight="32" spacing="1" margin="1">
   <image source="tmw_desert_spacing.png" width="512" height="256"/>
+  <tile id="0">
+   <properties>
+    <property name="obstacle" value=""/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="obstacle" value=""/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="obstacle" value=""/>
+   </properties>
+  </tile>
+  <tile id="15">
+   <properties>
+    <property name="obstacle" value=""/>
+   </properties>
+  </tile>
+  <tile id="16">
+   <properties>
+    <property name="obstacle" value=""/>
+   </properties>
+  </tile>
+  <tile id="17">
+   <properties>
+    <property name="obstacle" value=""/>
+   </properties>
+  </tile>
+  <tile id="30">
+   <properties>
+    <property name="obstacle" value=""/>
+   </properties>
+  </tile>
+  <tile id="31">
+   <properties>
+    <property name="obstacle" value=""/>
+   </properties>
+  </tile>
+  <tile id="32">
+   <properties>
+    <property name="obstacle" value=""/>
+   </properties>
+  </tile>
   <tile id="51">
    <properties>
-    <property name="obstacle" value="true"/>
+    <property name="obstacle" value=""/>
    </properties>
   </tile>
   <tile id="52">
    <properties>
-    <property name="obstacle" value="true"/>
+    <property name="obstacle" value=""/>
    </properties>
   </tile>
   <tile id="63">
    <properties>
-    <property name="obstacle" value="true"/>
+    <property name="obstacle" value=""/>
    </properties>
   </tile>
   <tile id="64">
    <properties>
-    <property name="obstacle" value="true"/>
+    <property name="obstacle" value=""/>
    </properties>
   </tile>
   <tile id="65">
    <properties>
-    <property name="obstacle" value="true"/>
+    <property name="obstacle" value=""/>
    </properties>
   </tile>
   <tile id="66">
    <properties>
-    <property name="obstacle" value="true"/>
+    <property name="obstacle" value=""/>
    </properties>
   </tile>
   <tile id="67">
    <properties>
-    <property name="obstacle" value="true"/>
+    <property name="obstacle" value=""/>
    </properties>
   </tile>
   <tile id="78">
    <properties>
-    <property name="obstacle" value="true"/>
+    <property name="obstacle" value=""/>
    </properties>
   </tile>
   <tile id="79">
    <properties>
-    <property name="obstacle" value="true"/>
+    <property name="obstacle" value=""/>
    </properties>
   </tile>
   <tile id="80">
    <properties>
-    <property name="obstacle" value="true"/>
+    <property name="obstacle" value=""/>
    </properties>
   </tile>
   <tile id="81">
    <properties>
-    <property name="obstacle" value="true"/>
+    <property name="obstacle" value=""/>
    </properties>
   </tile>
   <tile id="82">
    <properties>
-    <property name="obstacle" value="true"/>
+    <property name="obstacle" value=""/>
    </properties>
   </tile>
  </tileset>
@@ -69,32 +114,19 @@
   </data>
  </layer>
  <objectgroup name="Camada de Objetos 1" width="30" height="20">
-  <object x="482" y="223" width="31" height="30"/>
+  <object x="814" y="434" width="31" height="30"/>
   <object x="506" y="246" height="3"/>
-  <object x="349" y="61" width="36" height="34"/>
-  <object x="511" y="34" width="31" height="24"/>
-  <object x="644" y="290" width="25" height="27"/>
-  <object x="679" y="290" width="22" height="29"/>
-  <object x="835" y="256" width="24" height="26"/>
-  <object x="867" y="319" width="26" height="30"/>
-  <object x="109" y="425" width="41" height="43"/>
-  <object x="263" y="422" width="49" height="47"/>
-  <object x="491" y="427" width="42" height="41"/>
-  <object x="495" y="526" width="33" height="36"/>
-  <object x="268" y="521" width="39" height="43"/>
-  <object x="107" y="523" width="40" height="39"/>
-  <object x="655" y="427" width="38" height="40"/>
-  <object x="814" y="429" width="38" height="40"/>
-  <object x="815" y="524" width="37" height="40"/>
-  <object x="654" y="523" width="40" height="39"/>
-  <object x="450" y="260" width="23" height="32"/>
-  <object x="451" y="319" width="22" height="28"/>
-  <object x="545" y="128" width="30" height="27"/>
-  <object x="419" y="33" width="32" height="27"/>
-  <object x="451" y="99" width="25" height="23"/>
-  <object x="283" y="129" width="33" height="26"/>
-  <object x="288" y="291" width="28" height="36"/>
-  <object x="195" y="316" width="23" height="34"/>
-  <object x="94" y="320" width="30" height="28"/>
+  <object x="494" y="430" width="36" height="34"/>
+  <object x="115" y="434" width="31" height="24"/>
+  <object x="653" y="432" width="32" height="27">
+   <properties>
+    <property name="collidable" value=""/>
+   </properties>
+  </object>
+  <object x="276" y="435" width="33" height="26">
+   <properties>
+    <property name="collidable" value=""/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
