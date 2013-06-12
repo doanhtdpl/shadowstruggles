@@ -149,6 +149,16 @@ public class StartScreen extends BaseScreen {
 	}
 
 	private void initSaveStates() {
+		// A hack to contour what seems to be a bug in LibGDX: if you click the
+		// button fast enough, the states are not rendered correctly. Therefore,
+		// we must allow the player to click a second time, deleting the
+		// previous attempt of showing the states.
+		if (this.scrollStates != null) {
+			this.scrollStates = null;
+			for (TextButton button : this.states)
+				button.remove();
+		}
+
 		if (this.scrollStates == null) {
 			Table table = new Table();
 			table.defaults().width(400).height(200);
