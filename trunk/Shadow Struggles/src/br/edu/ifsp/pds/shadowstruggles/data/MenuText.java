@@ -41,7 +41,7 @@ public class MenuText implements Serializable {
 	public String exit = "";
 	public String checkCards = "";
 
-	// ConfigurationScreen
+	// SettingsScreen
 	public String volume = "";
 
 	// defeatScreen
