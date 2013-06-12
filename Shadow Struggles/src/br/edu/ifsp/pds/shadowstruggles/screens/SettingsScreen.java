@@ -2,6 +2,7 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
 import br.edu.ifsp.pds.shadowstruggles.data.SceneDAO;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
@@ -10,13 +11,14 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectMap.Entry;
 
-public class ConfigurationScreen extends BaseScreen {
+public class SettingsScreen extends BaseScreen {
 	private Image background;
 	private Image volumePlus;
 	private Image volumeMinus;
@@ -26,19 +28,19 @@ public class ConfigurationScreen extends BaseScreen {
 	private Image soundOnOff;
 	private Array<TextButton> languages;
 	private BaseScreen previousScreen;
-	private static ConfigurationScreen instance;
+	private static SettingsScreen instance;
 
-	public static ConfigurationScreen getInstance(ShadowStruggles game,
+	public static SettingsScreen getInstance(ShadowStruggles game,
 			Controller controller, BaseScreen screen) {
 		if (instance != null)
 			return instance;
 		else {
-			instance = new ConfigurationScreen(game, controller, screen);
+			instance = new SettingsScreen(game, controller, screen);
 			return instance;
 		}
 	}
 
-	private ConfigurationScreen(ShadowStruggles game, Controller controller,
+	private SettingsScreen(ShadowStruggles game, Controller controller,
 			BaseScreen screen) {
 		super(game, controller);
 		this.previousScreen = screen;
@@ -55,6 +57,13 @@ public class ConfigurationScreen extends BaseScreen {
 	}
 
 	private void initComponents() {
+		Table volumeTable = new Table();
+		volumeTable.defaults().width(200).height(110).padTop(10);
+		volumeTable.setY(500);
+		volumeTable.setX(130);
+		if (game.getMode() == RunMode.DEBUG)
+			volumeTable.debug();
+		
 		background = new Image(game.getAssets()
 				.get("data/images/objects/objects.atlas", TextureAtlas.class)
 				.findRegion("msbackground"));
@@ -62,10 +71,6 @@ public class ConfigurationScreen extends BaseScreen {
 		background.setScaleY(640f / 380f);
 
 		volumePlus = new Image(this.getSkin().getDrawable("plus"));
-		volumePlus.setWidth(100);
-		volumePlus.setHeight(100);
-		volumePlus.setX(290);
-		volumePlus.setY(400);
 		volumePlus.addListener(new ClickListener() {
 
 			@Override
@@ -79,10 +84,6 @@ public class ConfigurationScreen extends BaseScreen {
 		});
 
 		volumeMinus = new Image(this.getSkin().getDrawable("minus"));
-		volumeMinus.setWidth(100);
-		volumeMinus.setHeight(100);
-		volumeMinus.setX(50);
-		volumeMinus.setY(400);
 		volumeMinus.addListener(new ClickListener() {
 
 			@Override
@@ -110,28 +111,16 @@ public class ConfigurationScreen extends BaseScreen {
 		});
 
 		volume = new Label(game.getAudio().getVolumeNumber(), super.getSkin());
-		volume.setWidth(50);
-		volume.setHeight(100);
-		volume.setX(200);
-		volume.setY(400);
 		volume.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
 				Color.BLACK));
 
 		volumeLabel = new Label(
 				this.getGame().getManager().getMenuText().volume,
 				super.getSkin());
-		volumeLabel.setWidth(50);
-		volumeLabel.setHeight(100);
-		volumeLabel.setX(150);
-		volumeLabel.setY(500);
 		volumeLabel.setStyle(new LabelStyle(super.getSkin().getFont(
 				"default-font"), Color.BLACK));
 
 		soundOnOff = new Image(this.getSkin().getDrawable("mute"));
-		soundOnOff.setWidth(100);
-		soundOnOff.setHeight(100);
-		soundOnOff.setX(20);
-		soundOnOff.setY(500);
 		soundOnOff.addListener(new ClickListener() {
 
 			@Override
@@ -141,6 +130,13 @@ public class ConfigurationScreen extends BaseScreen {
 			}
 		});
 
+		Table languagesTable = new Table();
+		languagesTable.defaults().width(300).height(300).padTop(10);
+		languagesTable.setY(540);
+		languagesTable.setX(800);
+		if (game.getMode() == RunMode.DEBUG)
+			languagesTable.debug();
+		
 		this.languages = new Array<TextButton>();
 		int i = 0;
 		stage.addActor(background);
@@ -162,26 +158,38 @@ public class ConfigurationScreen extends BaseScreen {
 									.getCurrentScene().getId(),
 									game.getManager()));
 					game.getManager().writeProfile(game.getProfile());
-					game.setScreenWithTransition(new ConfigurationScreen(game,
+					game.setScreenWithTransition(new SettingsScreen(game,
 							controller, previousScreen));
 
 				}
 			});
 			this.languages.add(button);
+			languagesTable.add(button).width(300).height(80);
+			languagesTable.row();
+			
 			i++;
-			stage.addActor(button);
 		}
+		
+		volumeTable.add(soundOnOff).width(100).height(100);
+		volumeTable.add(volumeLabel).width(50).height(100);
+		volumeTable.row();
+		volumeTable.add(volumeMinus).width(100).height(100);
+		volumeTable.add(volume).width(50).height(100);
+		volumeTable.add(volumePlus).width(100).height(100);
 
+		stage.addActor(volumeTable);
+		stage.addActor(languagesTable);
 		stage.addActor(returnButton);
-		stage.addActor(volumeLabel);
-		stage.addActor(volume);
-		stage.addActor(volumeMinus);
-		stage.addActor(volumePlus);
-		stage.addActor(soundOnOff);
 	}
 
 	private void updateVolume() {
 		this.volume.setText(game.getAudio().getVolumeNumber());
+	}
+	
+	@Override
+	public void render(float delta) {
+		super.render(delta);
+		Table.drawDebug(this.getStage());
 	}
 
 }

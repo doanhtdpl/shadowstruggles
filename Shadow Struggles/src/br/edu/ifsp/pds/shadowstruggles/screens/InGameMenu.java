@@ -100,7 +100,7 @@ public class InGameMenu extends BaseScreen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_4");
-				ConfigurationScreen configurationScreen = ConfigurationScreen
+				SettingsScreen configurationScreen = SettingsScreen
 						.getInstance(game, controller, null);
 				configurationScreen.setPreviousScreen(menu);
 				game.setScreenWithTransition(configurationScreen);

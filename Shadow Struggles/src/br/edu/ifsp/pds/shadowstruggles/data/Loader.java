@@ -11,7 +11,7 @@ import com.badlogic.gdx.utils.Array;
 
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.screens.CheckCardsScreen;
-import br.edu.ifsp.pds.shadowstruggles.screens.ConfigurationScreen;
+import br.edu.ifsp.pds.shadowstruggles.screens.SettingsScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.DefeatScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.EditDeckScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.FreePlayScreen;
@@ -78,7 +78,7 @@ public class Loader {
 	 */
 	public void instantiateScreens() {
 		CheckCardsScreen.getInstance(game, game.getController(), null);
-		ConfigurationScreen.getInstance(game, game.getController(), null);
+		SettingsScreen.getInstance(game, game.getController(), null);
 		DefeatScreen.getInstance(game, game.getController(), "", null);
 		EditDeckScreen.getInstance(game, game.getController(), null);
 		FreePlayScreen.getInstance(game, game.getController());

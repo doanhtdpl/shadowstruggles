@@ -41,9 +41,8 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="br.edu.ifsp.pds.shadowstruggles.screens.ConfigurationScreen" 
-    project="ShadowStruggles" 
-    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/screens/ConfigurationScreen.java" binary="false" 
+  <class id="5" language="java" name="br.edu.ifsp.pds.shadowstruggles.screens.SettingsScreenject="ShadowStruggles" 
+    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/screens/SettingsScreen.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="279" width="331" x="2279" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
