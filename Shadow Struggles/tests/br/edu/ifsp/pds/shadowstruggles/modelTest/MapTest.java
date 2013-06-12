@@ -29,7 +29,7 @@ public class MapTest {
 		Fighter fighter = new Fighter("DR002", "DR002", 15, "", 14,
 				new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
 		fighter.setDirection(1);
-		map.addCard(fighter, 40, 1);
+		map.addCard(fighter, 35, 1);
 		assertEquals("Result:", 1, map.enemyBaseAttacked());
 	}
 
@@ -40,7 +40,7 @@ public class MapTest {
 				new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
 		fighter.setDirection(-1);
 		map.addCard(fighter, 1, 1);
-		assertEquals("Result:", 1, map.enemyBaseAttacked());
+		assertEquals("Result:", 1, map.playerBaseAttacked());
 	}
 
 	@Test
