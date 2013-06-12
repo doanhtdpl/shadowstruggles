@@ -4,10 +4,10 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.OrderedMap;
 
 /**
- * A BattleMap object is a three-dimensional Array containing the cards placed on the
- * field. A card is inside an Array of cards, which is inside a tile, which is
- * inside an Array of tiles. Thus, it is possible to have multiple cards on each
- * tile.
+ * A BattleMap object is a three-dimensional Array containing the cards placed
+ * on the field. A card is inside an Array of cards, which is inside a tile,
+ * which is inside an Array of tiles. Thus, it is possible to have multiple
+ * cards on each tile.
  */
 
 public class BattleMap {
@@ -75,19 +75,19 @@ public class BattleMap {
 	 * if it's inside the range of an enemy fighter.
 	 */
 
-	public boolean playerBaseAttacked() {
-		boolean attacked = false;
+	public int playerBaseAttacked() {
+		int lane = -1;
 		for (Array<Array<Card>> lanes : tiles) {
 			for (Array<Card> tiles : lanes) {
 				for (Card card : tiles) {
 					if (card.direction == -1)
 						if (((Fighter) card).getTile()
 								- ((Fighter) card).getRange() < 1)
-							return true;
+							lane = card.getLane();
 				}
 			}
 		}
-		return attacked;
+		return lane;
 	}
 
 	/***
@@ -210,6 +210,7 @@ public class BattleMap {
 		}
 
 		for (int l : lanes.keys()) {
+			System.out.println(lanes.keys().toArray().size);
 			if (lanes.get(l) > lanes.get(lane))
 				lane = l;
 		}
@@ -317,7 +318,9 @@ public class BattleMap {
 
 	public void addCard(Card card, int tile, int lane) {
 		tiles.get(tile).get(lane).add(card);
-		card.setMarkPosition(lane, tile);		
+		card.setMarkPosition(lane, tile);
+		card.setTile(tile);
+		card.setLane(lane);
 	}
 
 	public String getName() {
