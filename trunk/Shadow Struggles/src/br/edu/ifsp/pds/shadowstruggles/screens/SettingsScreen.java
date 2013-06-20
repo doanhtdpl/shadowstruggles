@@ -1,5 +1,7 @@
 package br.edu.ifsp.pds.shadowstruggles.screens;
 
+import javax.swing.JButton;
+
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
@@ -9,6 +11,7 @@ import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -176,10 +179,19 @@ public class SettingsScreen extends BaseScreen {
 		volumeTable.add(volumeMinus).width(100).height(100);
 		volumeTable.add(volume).width(50).height(100);
 		volumeTable.add(volumePlus).width(100).height(100);
+		
+		Table returnTable = new Table();
+		returnTable.defaults().width(200).height(100);
+		returnTable.setX(200);
+		returnTable.setY(100);
+		returnTable.add(returnButton);
+		if (game.getMode() == RunMode.DEBUG)
+			returnTable.debug();
+		
 
 		stage.addActor(volumeTable);
 		stage.addActor(languagesTable);
-		stage.addActor(returnButton);
+		stage.addActor(returnTable);
 	}
 
 	private void updateVolume() {
