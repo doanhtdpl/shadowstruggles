@@ -184,7 +184,7 @@ public class DataManager {
 
 			if (obj.getClass().isArray() || obj.getClass() == ArrayList.class) {
 				MyJson.getJson().toJson(obj, file);
-			} else if (obj.getClass() == Languages.class) {
+			} else if (obj.getClass() == Languages.class || obj.getClass() == Settings.class) {
 				ArrayList<T> currentObjects = new ArrayList<T>();
 				currentObjects.add(obj);
 				MyJson.getJson().toJson(currentObjects, file);
