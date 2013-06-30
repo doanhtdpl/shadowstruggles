@@ -2,6 +2,7 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
 import com.badlogic.gdx.Gdx;
@@ -56,8 +57,8 @@ public class InGameMenu extends BaseScreen {
 		background.setScaleX(960f / 512f);
 		background.setScaleY(640f / 380f);
 
-		returnToGame = new TextButton(
-				game.getManager().getMenuText().returnToGame, getSkin());
+		returnToGame = new TextButton(MenuTextDAO.getMenuText().returnToGame,
+				getSkin());
 		returnToGame = ScreenUtils.defineButton(returnToGame, 230, 500, 500,
 				100, super.getSkin());
 		returnToGame.addListener(new ClickListener() {
@@ -69,7 +70,7 @@ public class InGameMenu extends BaseScreen {
 
 			}
 		});
-		checkCards = new TextButton(game.getManager().getMenuText().checkCards,
+		checkCards = new TextButton(MenuTextDAO.getMenuText().checkCards,
 				getSkin());
 		checkCards = ScreenUtils.defineButton(checkCards, 230, 380, 500, 100,
 				super.getSkin());
@@ -87,7 +88,7 @@ public class InGameMenu extends BaseScreen {
 
 			}
 		});
-		config = new TextButton(game.getManager().getMenuText().configurations,
+		config = new TextButton(MenuTextDAO.getMenuText().configurations,
 				getSkin());
 		config = ScreenUtils.defineButton(config, 230, 260, 500, 100,
 				super.getSkin());
@@ -104,8 +105,7 @@ public class InGameMenu extends BaseScreen {
 			}
 		});
 
-		exitGame = new TextButton(game.getManager().getMenuText().exit,
-				getSkin());
+		exitGame = new TextButton(MenuTextDAO.getMenuText().exit, getSkin());
 		exitGame = ScreenUtils.defineButton(exitGame, 230, 80, 500, 100,
 				super.getSkin());
 		exitGame.addListener(new ClickListener() {
@@ -127,10 +127,10 @@ public class InGameMenu extends BaseScreen {
 
 	@Override
 	public void loadLanguage() {
-		checkCards.setText(game.getManager().getMenuText().checkCards);
-		config.setText(game.getManager().getMenuText().configurations);
-		exitGame.setText(game.getManager().getMenuText().exit);
-		returnToGame.setText(game.getManager().getMenuText().returnToGame);
+		checkCards.setText(MenuTextDAO.getMenuText().checkCards);
+		config.setText(MenuTextDAO.getMenuText().configurations);
+		exitGame.setText(MenuTextDAO.getMenuText().exit);
+		returnToGame.setText(MenuTextDAO.getMenuText().returnToGame);
 	}
 
 	public void setBattleScreen(BattleScreen battleScreen) {

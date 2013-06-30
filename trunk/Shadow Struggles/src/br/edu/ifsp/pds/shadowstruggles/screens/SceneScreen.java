@@ -2,7 +2,9 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
-import br.edu.ifsp.pds.shadowstruggles.data.SceneDAO;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.ProfileDAO;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.SceneDAO;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.games.Practice;
 import br.edu.ifsp.pds.shadowstruggles.model.Scene;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Arrow;
@@ -67,8 +69,8 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 			if (scene.getBackgroundImage().contains("/maps/")) {
 				background = new Image(new TextureRegion(new Texture(
 						Gdx.files.internal(scene.getBackgroundImage())),
-						settings.backgroundWidth / 2,
-						settings.backgroundHeight / 2));
+						SettingsDAO.getSettings().backgroundWidth / 2,
+						SettingsDAO.getSettings().backgroundHeight / 2));
 			} else {
 				background = new Image(new Texture(Gdx.files.internal(scene
 						.getBackgroundImage())));
@@ -164,13 +166,11 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 					public void clicked(InputEvent event, float x, float y) {
 						if (choices[j].getText().equals(scene.getChoices()[0])) {
 							game.getProfile().setCurrentScene(
-									SceneDAO.getScene(scene.getNextId(),
-											game.getManager()));
+									SceneDAO.getScene(scene.getNextId()));
 
 						} else {
 							game.getProfile().setCurrentScene(
-									SceneDAO.getScene(scene.getNextId() + 1,
-											game.getManager()));
+									SceneDAO.getScene(scene.getNextId() + 1));
 						}
 						game.getAudio().playSound("button_4");
 
@@ -244,13 +244,13 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 			Scene firstScene = Scene.FIRST_SCENE;
 			firstScene.setLanguage(game.getProfile().getLanguage());
 			game.getProfile().setCurrentScene(firstScene);
-			game.getManager().writeProfile(game.getProfile());
+			ProfileDAO.createProfile(game.getProfile());
 			game.setScreenWithTransition(MainScreen.getInstance(game,
 					controller));
 		} else {
 			game.getProfile().setCurrentScene(
-					SceneDAO.getScene(scene.getNextId(), game.getManager()));
-			game.getManager().writeProfile(game.getProfile());
+					SceneDAO.getScene(scene.getNextId()));
+			ProfileDAO.createProfile(game.getProfile());
 			game.setScreenWithTransition(new SceneScreen(game, controller));
 		}
 	}
@@ -280,8 +280,7 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int x, int y, int pointer, int button) {
-		x = (int) (x * (float) ((float) controller.getCurrentScreen()
-				.getSettings().screenWidth / (float) controller
+		x = (int) (x * (float) ((float) SettingsDAO.getSettings().mapWidth / (float) controller
 				.getCurrentScreen().getWidth()));
 
 		touched = true;
@@ -298,8 +297,7 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 	@Override
 	public boolean touchUp(int x, int y, int pointer, int button) {
 
-		x = (int) (x * (float) ((float) controller.getCurrentScreen()
-				.getSettings().screenWidth / (float) controller
+		x = (int) (x * (float) ((float) SettingsDAO.getSettings().mapWidth / (float) controller
 				.getCurrentScreen().getWidth()));
 
 		if (touched) {
@@ -314,8 +312,7 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 
 	@Override
 	public boolean touchDragged(int x, int y, int pointer) {
-		x = (int) (x * (float) ((float) controller.getCurrentScreen()
-				.getSettings().screenWidth / (float) controller
+		x = (int) (x * (float) ((float) SettingsDAO.getSettings().mapWidth / (float) controller
 				.getCurrentScreen().getWidth()));
 		if (touched) {
 

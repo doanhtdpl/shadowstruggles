@@ -2,6 +2,7 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
 import br.edu.ifsp.pds.shadowstruggles.games.Practice;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgPlatform;
@@ -87,7 +88,7 @@ public class FreePlayScreen extends BaseScreen {
 			TextButton button = new TextButton("", getSkin());
 			switch (id.intValue()) {
 			case 1:
-				button.setText(game.getManager().getMenuText().practiceBattle);
+				button.setText(MenuTextDAO.getMenuText().practiceBattle);
 				button = ScreenUtils.defineButton(button, 100, 300, 300, 100,
 						super.getSkin());
 				battle = new Practice(game, false);
@@ -111,8 +112,8 @@ public class FreePlayScreen extends BaseScreen {
 			battles.add(button);
 		}
 
-		returnButton = new TextButton(
-				game.getManager().getMenuText().returnToStart, super.getSkin());
+		returnButton = new TextButton(MenuTextDAO.getMenuText().returnToStart,
+				super.getSkin());
 		returnButton = ScreenUtils.defineButton(returnButton, 100, 100, 250,
 				100, super.getSkin());
 		returnButton.addListener(new ClickListener() {

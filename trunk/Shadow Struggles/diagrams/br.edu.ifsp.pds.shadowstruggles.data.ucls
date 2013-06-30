@@ -11,8 +11,9 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="br.edu.ifsp.pds.shadowstruggles.data.DeckDAO" project="ShadowStruggles" 
-    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/data/DeckDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="2" language="java" name="br.edu.ifsp.pds.shadowstruggles.data.dao.DeckDAOkDAO" project="ShadowStruggles" 
+    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/data/dao/DeckDAO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="117" width="210" x="555" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -20,8 +21,9 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="br.edu.ifsp.pds.shadowstruggles.data.EffectDAO" project="ShadowStruggles" 
-    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/data/EffectDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="3" languagebr.edu.ifsp.pds.shadowstruggles.data.dao.EffectDAOdata.dao.EffectDAO" project="ShadowStruggles" 
+    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/data/dao/EffectDAO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="117" width="220" x="805" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -29,8 +31,8 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="br.edu.ifsp.pds.shadowstruggles.data.FighterDAO" project="ShadowStruggles" 
-    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/data/FighterDAO.java" binary="false" 
+  <class ibr.edu.ifsp.pds.shadowstruggles.data.dao.FighterDAOdowstruggles.data.dao.FighterDAO" project="ShadowStruggles" 
+    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/data/dao/FighterDAO.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="117" width="228" x="41" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -57,8 +59,8 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="br.edu.ifsp.pds.shadowstruggles.data.ProfileDAO" project="ShadowStruggles" 
-    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/data/ProfileDAO.java" binary="false" 
+  br.edu.ifsp.pds.shadowstruggles.data.dao.ProfileDAO.pds.shadowstruggles.data.dao.ProfileDAO" project="ShadowStruggles" 
+    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/data/dao/ProfileDAO.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="135" width="222" x="1815" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -66,9 +68,9 @@
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
-  </class>  
-  <class id="8" language="java" name="br.edu.ifsp.pds.shadowstruggles.data.SceneDAO" project="ShadowStruggles" 
-    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/data/SceneDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+  </clasbr.edu.ifsp.pds.shadowstruggles.data.dao.SceneDAOr.edu.ifsp.pds.shadowstruggles.data.dao.SceneDAO" project="ShadowStruggles" 
+    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/data/dao/SceneDAO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="117" width="224" x="1333" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -93,10 +95,9 @@
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <class id="11" language="java" name="br.edu.ifsp.pds.shadowstruggles.data.TrapDAO" project="ShadowStruggles" 
-    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/data/TrapDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    </displaybr.edu.ifsp.pds.shadowstruggles.data.dao.TrapDAO="java" name="br.edu.ifsp.pds.shadowstruggles.data.dao.TrapDAO" project="ShadowStruggles" 
+    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/data/dao/TrapDAO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="117" width="206" x="309" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      

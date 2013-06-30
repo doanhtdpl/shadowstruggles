@@ -1,6 +1,7 @@
 package br.edu.ifsp.pds.shadowstruggles.object2d;
 
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 
 import com.badlogic.gdx.InputProcessor;
@@ -58,12 +59,10 @@ public class Deck2D extends FixedObject implements InputProcessor {
 	@Override
 	public boolean touchDown(int x, int y, int pointer, int button) {
 		int invertY = (int) ((game.getController().getCurrentScreen()
-				.getHeight() - y) * (float) ((float) game.getController()
-				.getCurrentScreen().getSettings().screenHeight / (float) game
+				.getHeight() - y) * (float) ((float) SettingsDAO.getSettings().mapHeight / (float) game
 				.getController().getCurrentScreen().getHeight()));
-		x = (int) (x * (float) ((float) game.getController().getCurrentScreen()
-				.getSettings().screenWidth / (float) game.getController()
-				.getCurrentScreen().getWidth()));
+		x = (int) (x * (float) ((float) SettingsDAO.getSettings().mapWidth / (float) game
+				.getController().getCurrentScreen().getWidth()));
 		int deltaCamX = (int) (game.getController().getCurrentScreen()
 				.getCamera().position.x - BaseScreen.CAMERA_INITIAL_X);
 
@@ -82,12 +81,10 @@ public class Deck2D extends FixedObject implements InputProcessor {
 	@Override
 	public boolean touchUp(int x, int y, int pointer, int button) {
 		int invertY = (int) ((game.getController().getCurrentScreen()
-				.getHeight() - y) * (float) ((float) game.getController()
-				.getCurrentScreen().getSettings().screenHeight / (float) game
+				.getHeight() - y) * (float) ((float) SettingsDAO.getSettings().mapHeight / (float) game
 				.getController().getCurrentScreen().getHeight()));
-		x = (int) (x * (float) ((float) game.getController().getCurrentScreen()
-				.getSettings().screenWidth / (float) game.getController()
-				.getCurrentScreen().getWidth()));
+		x = (int) (x * (float) ((float) SettingsDAO.getSettings().mapWidth / (float) game
+				.getController().getCurrentScreen().getWidth()));
 		int deltaCamX = (int) (game.getController().getCurrentScreen()
 				.getCamera().position.x - BaseScreen.CAMERA_INITIAL_X);
 

@@ -3,6 +3,7 @@ package br.edu.ifsp.pds.shadowstruggles.object2d;
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.data.Settings;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.Fighter;
 
 import com.badlogic.gdx.ApplicationListener;
@@ -42,7 +43,7 @@ public class Fighter2D extends Image implements ApplicationListener {
 		this.fighter = fighter;
 
 		this.game = game;
-		this.settings = game.getManager().getSettings();
+		this.settings = SettingsDAO.getSettings();
 
 		if (fighter.getSize().equals(Fighter.SIZE_SMALL)) {
 			this.setScaleY(0.8f);
@@ -87,7 +88,7 @@ public class Fighter2D extends Image implements ApplicationListener {
 		attackAnimation = new Animation(0.075f, attackFrames);
 		this.setX(settings.tileHeight * 2 + (fighter.getTile())
 				* settings.tileWidth);
-		this.setY(settings.screenHeight - settings.backgroundHeight
+		this.setY(settings.mapHeight - settings.backgroundHeight
 				+ settings.tileHeight + (this.fighter.getLane())
 				* settings.tileHeight * 3 / 2);
 	}

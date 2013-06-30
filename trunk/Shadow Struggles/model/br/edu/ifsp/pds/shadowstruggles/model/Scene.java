@@ -4,6 +4,7 @@ import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Json.Serializable;
 import com.badlogic.gdx.utils.JsonValue;
 
+// TODO: Remover classe e substituir por model.scenes.Scene
 /**
  * A Scene is an object which represents a narrative sequence within the story.
  * Each Scene has some text, written in a specified language, a background

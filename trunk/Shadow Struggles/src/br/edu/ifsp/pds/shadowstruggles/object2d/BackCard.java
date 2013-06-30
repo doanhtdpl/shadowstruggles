@@ -1,6 +1,7 @@
 package br.edu.ifsp.pds.shadowstruggles.object2d;
 
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
 
 import com.badlogic.gdx.InputProcessor;
@@ -16,7 +17,7 @@ public class BackCard extends Image implements InputProcessor {
 
 	public BackCard(float x, float y, ShadowStruggles game) {
 		super(game.getTextureRegion("back_card", "game_ui_images"));
-		this.setScaleX(game.getManager().getSettings().tileWidth
+		this.setScaleX(SettingsDAO.getSettings().tileWidth
 				/ this.getWidth());
 		this.setX(x);
 		this.setY(y);

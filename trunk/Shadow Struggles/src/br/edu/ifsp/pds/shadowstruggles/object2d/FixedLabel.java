@@ -1,5 +1,6 @@
 package br.edu.ifsp.pds.shadowstruggles.object2d;
 
+import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 
 import com.badlogic.gdx.InputProcessor;
@@ -46,9 +47,9 @@ public class FixedLabel extends Label implements InputProcessor {
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		int deltaCamX = (int) (screen.getCamera().position.x - BaseScreen.CAMERA_INITIAL_X);
-		int invertY = (int) ((screen.getHeight() - screenY) * (float) ((float) screen
-				.getSettings().screenHeight / (float) screen.getHeight()));
-		screenX = (int) (screenX * (float) ((float) screen.getSettings().screenWidth / (float) screen
+		int invertY = (int) ((screen.getHeight() - screenY) * (float) ((float) SettingsDAO
+				.getSettings().mapHeight / (float) screen.getHeight()));
+		screenX = (int) (screenX * (float) ((float) SettingsDAO.getSettings().mapWidth / (float) screen
 				.getWidth()));
 
 		if (screenX + deltaCamX >= this.getX()
@@ -68,9 +69,9 @@ public class FixedLabel extends Label implements InputProcessor {
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
 		int deltaCamX = (int) (screen.getCamera().position.x - BaseScreen.CAMERA_INITIAL_X);
-		int invertY = (int) ((screen.getHeight() - screenY) * (float) ((float) screen
-				.getSettings().screenHeight / (float) screen.getHeight()));
-		screenX = (int) (screenX * (float) ((float) screen.getSettings().screenWidth / (float) screen
+		int invertY = (int) ((screen.getHeight() - screenY) * (float) ((float) SettingsDAO
+				.getSettings().mapHeight / (float) screen.getHeight()));
+		screenX = (int) (screenX * (float) ((float) SettingsDAO.getSettings().mapWidth / (float) screen
 				.getWidth()));
 
 		if (touched) {

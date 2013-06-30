@@ -40,8 +40,8 @@ public class Settings implements Serializable {
 	public int lifeBarY = 520; // Y-coordinate of both of the life bars.
 	public int playerLifeX = 20;
 	public int enemyLifeX = 840;
-	public int screenHeight = 640;
-	public int screenWidth = 960;
+	public int mapHeight = 640;
+	public int mapWidth = 960;
 
 	@Override
 	public void write(Json json) {
@@ -70,8 +70,8 @@ public class Settings implements Serializable {
 		json.writeValue("lifeBarY", lifeBarY);
 		json.writeValue("playerLifeX", playerLifeX);
 		json.writeValue("enemyLifeX", enemyLifeX);
-		json.writeValue("mapHeigth", screenHeight);
-		json.writeValue("mapWidth", screenWidth);
+		json.writeValue("mapHeight", mapHeight);
+		json.writeValue("mapWidth", mapWidth);
 
 	}
 
@@ -109,8 +109,8 @@ public class Settings implements Serializable {
 		lifeBarY = json.readValue("lifeBarY", Integer.class, jsonData);
 		playerLifeX = json.readValue("playerLifeX", Integer.class, jsonData);
 		enemyLifeX = json.readValue("enemyLifeX", Integer.class, jsonData);
-		screenHeight = json.readValue("mapHeigth", Integer.class, jsonData);
-		screenWidth = json.readValue("mapWidth", Integer.class, jsonData);
+		mapHeight = json.readValue("mapHeight", Integer.class, jsonData);
+		mapWidth = json.readValue("mapWidth", Integer.class, jsonData);
 	}
 
 }

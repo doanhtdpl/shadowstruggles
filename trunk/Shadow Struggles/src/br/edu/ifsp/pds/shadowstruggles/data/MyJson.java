@@ -33,6 +33,7 @@ public class MyJson {
 
 			json.addClassTag("Languages", Languages.class);
 			json.addClassTag("MenuText", MenuText.class);
+			json.addClassTag("Settings", Settings.class);
 			
 			json.addClassTag("BattlePlatform", BattlePlatform.class);
 			json.addClassTag("DefaultRules", DefaultRules.class);

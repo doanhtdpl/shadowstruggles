@@ -2,6 +2,7 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -32,8 +33,8 @@ public class ErrorScreen extends BaseScreen {
 		this.errorDescription = errorDescription;
 
 		TextButton okButton = new TextButton(
-				game.getManager().getMenuText().terminate, this.getSkin());
-		okButton.setHeight(okButton.getHeight()-200);
+				MenuTextDAO.getMenuText().terminate, this.getSkin());
+		okButton.setHeight(okButton.getHeight() - 200);
 		okButton.setX(480 - okButton.getWidth() / 2);
 		okButton.addListener(new ClickListener() {
 
@@ -43,8 +44,8 @@ public class ErrorScreen extends BaseScreen {
 			}
 		});
 
-		TextButton detailsButton = new TextButton(game.getManager()
-				.getMenuText().details, this.getSkin());
+		TextButton detailsButton = new TextButton(
+				MenuTextDAO.getMenuText().details, this.getSkin());
 		detailsButton.setHeight(okButton.getHeight());
 		detailsButton.setWidth(okButton.getWidth());
 		detailsButton.setX(okButton.getX());

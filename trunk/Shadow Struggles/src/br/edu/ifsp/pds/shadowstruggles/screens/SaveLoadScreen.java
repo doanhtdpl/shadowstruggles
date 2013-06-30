@@ -2,8 +2,11 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
-import br.edu.ifsp.pds.shadowstruggles.data.ProfileDAO;
-import br.edu.ifsp.pds.shadowstruggles.data.SceneDAO;
+import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.ProfileDAO;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.SceneDAO;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.Profile;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
@@ -21,7 +24,7 @@ import com.badlogic.gdx.utils.ObjectMap;
 
 public class SaveLoadScreen extends BaseScreen implements InputProcessor {
 	private static SaveLoadScreen instance;
-	
+
 	private Image background;
 	private TextButton returnButton;
 	private Array<TextButton> slots;
@@ -39,16 +42,17 @@ public class SaveLoadScreen extends BaseScreen implements InputProcessor {
 	 */
 	private String returnScreen;
 
-	public static SaveLoadScreen getInstance(ShadowStruggles game, Controller controller,
-			String returnScreen, boolean saveMode) {
-		if(instance != null)
+	public static SaveLoadScreen getInstance(ShadowStruggles game,
+			Controller controller, String returnScreen, boolean saveMode) {
+		if (instance != null)
 			return instance;
 		else {
-			instance = new SaveLoadScreen(game, controller, returnScreen, saveMode);
+			instance = new SaveLoadScreen(game, controller, returnScreen,
+					saveMode);
 			return instance;
 		}
 	}
-	
+
 	private SaveLoadScreen(ShadowStruggles game, Controller controller,
 			String returnScreen, boolean saveMode) {
 		super(game, controller);
@@ -58,33 +62,32 @@ public class SaveLoadScreen extends BaseScreen implements InputProcessor {
 		this.slots = new Array<TextButton>();
 		this.inputSources = new InputMultiplexer();
 	}
-	
+
 	public void setReturnScreen(String returnScreen) {
 		this.returnScreen = returnScreen;
 	}
-	
+
 	public void setSaveMode(boolean saveMode) {
 		this.saveMode = saveMode;
 	}
-	
+
 	@Override
 	public void resize(int width, int height) {
 		super.resize(width, height);
 		initComponents();
-		Gdx.input.setInputProcessor(inputSources);		
+		Gdx.input.setInputProcessor(inputSources);
 	}
 
-
 	public void initComponents() {
-		
+
 		background = new Image(game.getAssets()
 				.get("data/images/objects/objects.atlas", TextureAtlas.class)
 				.findRegion("msbackground"));
 		background.setScaleX(960f / 512f);
 		background.setScaleY(640f / 380f);
 
-		returnButton = new TextButton(
-				game.getManager().getMenuText().returnToStart, super.getSkin());
+		returnButton = new TextButton(MenuTextDAO.getMenuText().returnToStart,
+				super.getSkin());
 		returnButton = ScreenUtils.defineButton(returnButton, 10, 530, 220, 90,
 				super.getSkin());
 		returnButton.addListener(new ClickListener() {
@@ -105,17 +108,17 @@ public class SaveLoadScreen extends BaseScreen implements InputProcessor {
 		});
 
 		stage.addActor(background);
-		
+
 		stage.addActor(returnButton);
 
-		if (game.getManager().profileExists()) {
-			Array<Profile> profiles = ProfileDAO.getProfiles(game.getManager());
+		if (ProfileDAO.profileExists()) {
+			Array<Profile> profiles = ProfileDAO.getProfiles();
 
 			for (Profile profile : profiles) {
 				String text = String.valueOf(profile.getId()) + " - "
 						+ profile.getCurrentScene().getName();
 				TextButton textButton = new TextButton(text, super.getSkin());
-				
+
 				textButton = ScreenUtils.defineButton(textButton, 240,
 						630 - profile.getId() * 100, text.length() * 30, 90,
 						super.getSkin());
@@ -125,26 +128,29 @@ public class SaveLoadScreen extends BaseScreen implements InputProcessor {
 					@Override
 					public void clicked(InputEvent event, float x, float y) {
 						game.getAudio().playSound("button_2");
-						
+
 						if (saveMode) {
-							TextButton tx = (TextButton) event.getListenerActor();
-							game.getProfile().setId(Character.getNumericValue(tx.getText()
-									.charAt(0)));
-							ProfileDAO.createProfile(game.getProfile(), game.getManager());
-							game.setScreenWithTransition(new SaveLoadScreen(game, controller, returnScreen, true));
+							TextButton tx = (TextButton) event
+									.getListenerActor();
+							game.getProfile().setId(
+									Character.getNumericValue(tx.getText()
+											.charAt(0)));
+							ProfileDAO.createProfile(game.getProfile());
+							game.setScreenWithTransition(new SaveLoadScreen(
+									game, controller, returnScreen, true));
 						} else {
-							TextButton tx = (TextButton) event.getListenerActor();
+							TextButton tx = (TextButton) event
+									.getListenerActor();
 							int id = Character.getNumericValue(tx.getText()
 									.charAt(0));
-							game.setProfile(ProfileDAO.getProfile(id, game.getManager()));
-							game.getManager().changeLanguage(
-									ProfileDAO.getProfile(id, game.getManager()).getLanguage());
+							game.setProfile(ProfileDAO.getProfile(id));
+							DataManager.getInstance().changeLanguage(
+									ProfileDAO.getProfile(id).getLanguage());
 							game.getProfile().setCurrentScene(
 									SceneDAO.getScene(game.getProfile()
-											.getCurrentScene().getId(),
-											game.getManager()));
-							game.setScreenWithTransition(MainScreen.getInstance(game,
-									controller));
+											.getCurrentScene().getId()));
+							game.setScreenWithTransition(MainScreen
+									.getInstance(game, controller));
 						}
 					}
 				});
@@ -173,7 +179,7 @@ public class SaveLoadScreen extends BaseScreen implements InputProcessor {
 					game.getAudio().playSound("button_2");
 
 					try {
-						Array<Profile> profiles = ProfileDAO.getProfiles(game.getManager());
+						Array<Profile> profiles = ProfileDAO.getProfiles();
 						ObjectMap<Integer, Profile> prof = new ObjectMap<Integer, Profile>();
 
 						for (Profile profile : profiles) {
@@ -187,13 +193,13 @@ public class SaveLoadScreen extends BaseScreen implements InputProcessor {
 						}
 
 						Profile newProfile = new Profile(id);
-						ProfileDAO.createProfile(newProfile, game.getManager());
+						ProfileDAO.createProfile(newProfile);
 						game.setProfile(newProfile);
 						game.setScreenWithTransition(new SaveLoadScreen(game,
 								controller, returnScreen, true));
 					} catch (Exception e) {
 						Profile newProfile = new Profile();
-						ProfileDAO.createProfile(newProfile, game.getManager());
+						ProfileDAO.createProfile(newProfile);
 						game.setProfile(newProfile);
 						game.setScreenWithTransition(new SaveLoadScreen(game,
 								controller, returnScreen, true));
@@ -210,8 +216,6 @@ public class SaveLoadScreen extends BaseScreen implements InputProcessor {
 		inputSources.addProcessor(this.stage);
 		inputSources.addProcessor(this);
 	}
-
-	
 
 	@Override
 	public void render(float delta) {
@@ -252,8 +256,7 @@ public class SaveLoadScreen extends BaseScreen implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int x, int y, int pointer, int button) {
-		x = (int) (x * (float) ((float) controller.getCurrentScreen()
-				.getSettings().screenWidth / (float) controller
+		x = (int) (x * (float) ((float) SettingsDAO.getSettings().mapWidth / (float) controller
 				.getCurrentScreen().getWidth()));
 
 		touched = true;
@@ -268,8 +271,7 @@ public class SaveLoadScreen extends BaseScreen implements InputProcessor {
 
 	@Override
 	public boolean touchUp(int x, int y, int pointer, int button) {
-		x = (int) (x * (float) ((float) controller.getCurrentScreen()
-				.getSettings().screenWidth / (float) controller
+		x = (int) (x * (float) ((float) SettingsDAO.getSettings().mapWidth / (float) controller
 				.getCurrentScreen().getWidth()));
 
 		if (touched) {
@@ -284,8 +286,7 @@ public class SaveLoadScreen extends BaseScreen implements InputProcessor {
 
 	@Override
 	public boolean touchDragged(int x, int y, int pointer) {
-		x = (int) (x * (float) ((float) controller.getCurrentScreen()
-				.getSettings().screenWidth / (float) controller
+		x = (int) (x * (float) ((float) SettingsDAO.getSettings().mapWidth / (float) controller
 				.getCurrentScreen().getWidth()));
 		if (touched) {
 
@@ -306,7 +307,7 @@ public class SaveLoadScreen extends BaseScreen implements InputProcessor {
 		return false;
 	}
 
-	//@Override
+	// @Override
 	public boolean touchMoved(int x, int y) {
 		return false;
 	}

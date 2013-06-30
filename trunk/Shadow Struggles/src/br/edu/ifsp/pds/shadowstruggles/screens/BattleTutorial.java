@@ -1,8 +1,10 @@
 package br.edu.ifsp.pds.shadowstruggles.screens;
 
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
-import br.edu.ifsp.pds.shadowstruggles.data.DeckDAO;
-import br.edu.ifsp.pds.shadowstruggles.data.TutorialDAO;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.DeckDAO;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.TutorialDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.DefaultRules;
@@ -109,14 +111,15 @@ public class BattleTutorial extends BattleScreen {
 	private Array<TutorialDialog> dialogs;
 
 	public BattleTutorial(ShadowStruggles game) {
-		super(game, game.getProfile(), game.getController(),
-				new BattlePlatform(DeckDAO.getDeck("Tutorial Deck",
-						game.getManager()), DeckDAO.getDeck(
-						"Practice Deck Enemy", game.getManager()),
-						new BattleMap("cena1"), new DefaultRules(game
-								.getManager().getSettings()),
-						new TutorialEnemy()),
-				game.getManager().getMenuText().practiceBattle, false);
+		super(
+				game,
+				game.getProfile(),
+				game.getController(),
+				new BattlePlatform(DeckDAO.getDeck("Tutorial Deck"),
+						DeckDAO.getDeck("Practice Deck Enemy"), new BattleMap(
+								"cena1"), new DefaultRules(
+								SettingsDAO.getSettings()), new TutorialEnemy()),
+				MenuTextDAO.getMenuText().practiceBattle, false);
 
 		dialogBox = new FixedImage(game.getTextureRegion("box",
 				"game_ui_images"), 150, this) {
@@ -151,12 +154,12 @@ public class BattleTutorial extends BattleScreen {
 
 	@Override
 	public void doBeforeSet() {
-		controller.getPlatform().setPlayerDeck(
-				DeckDAO.getDeck("Tutorial Deck", game.getManager()));
+		controller.getPlatform()
+				.setPlayerDeck(DeckDAO.getDeck("Tutorial Deck"));
 	}
 
 	private void loadData() {
-		dialogs = TutorialDAO.getDialogs(game.getManager());
+		dialogs = TutorialDAO.getDialogs();
 		events = new Array<TutorialEvent>();
 		for (TutorialDialog dialog : dialogs) {
 			events.add(new TutorialEvent(this, dialog.getEventType(), dialog
