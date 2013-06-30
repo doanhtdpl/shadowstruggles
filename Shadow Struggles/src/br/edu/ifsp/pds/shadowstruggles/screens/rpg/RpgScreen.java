@@ -83,7 +83,7 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		
 		batch = new SpriteBatch();
 		batch.begin();
-		batch.draw(character2d.getCurrentFrame(), character2d.getX()*32, character2d.getY()*32);
+		batch.draw(character2d.getCurrentFrame(), character2d.getX(), character2d.getY());
 		batch.end();
 
 		// shapeRenderer.begin(ShapeType.Filled);

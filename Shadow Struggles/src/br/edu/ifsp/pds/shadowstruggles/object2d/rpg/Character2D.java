@@ -5,6 +5,7 @@ import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character.WalkDirection;
 import br.edu.ifsp.pds.shadowstruggles.rpg.RpgController;
 
 import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -40,6 +41,11 @@ public class Character2D extends Image implements ApplicationListener {
 	private TextureRegion currentFrame;
 	private RpgController rpgController;
 	private int size = 64;
+	private int tileSize = 64;
+	private WalkDirection direction = WalkDirection.WALK_DOWN;
+	private boolean walking;
+	private float characterSpeed = 100.0f;
+	private float initialPosition = 0;
 
 	public Character2D(RpgController rpgController, ShadowStruggles game) {
 		super(game.getTextureRegion("char_down", "char"));
@@ -57,20 +63,30 @@ public class Character2D extends Image implements ApplicationListener {
 	 *            The direction the character will move on the map.
 	 */
 	public void move(WalkDirection direction) {
-		rpgController.moveCharacter(direction);
-		switch (direction) {
-		case WALK_UP:
-			this.setY(this.getY()+1);
-			break;
-		case WALK_DOWN:
-			this.setY(this.getY()-1);
-			break;
-		case WALK_LEFT:
-			this.setX(this.getX()-1);
-			break;
-		case WALK_RIGHT:
-			this.setX(this.getX()+1);
-			break;
+		if (!walking) {
+			rpgController.moveCharacter(direction);
+			this.direction = direction;
+			this.walking = true;
+			this.walked = 0;
+			// readyToWalk = false;
+			switch (direction) {
+			case WALK_UP:
+				initialPosition = this.getY();
+				this.setY(this.getY() + 1);
+				break;
+			case WALK_DOWN:
+				initialPosition = this.getY();
+				this.setY(this.getY() - 1);
+				break;
+			case WALK_LEFT:
+				initialPosition = this.getX();
+				this.setX(this.getX() - 1);
+				break;
+			case WALK_RIGHT:
+				initialPosition = this.getX();
+				this.setX(this.getX() + 1);
+				break;
+			}
 		}
 	}
 
@@ -113,8 +129,8 @@ public class Character2D extends Image implements ApplicationListener {
 		walkRightAnimation = new Animation(0.033f, walkRightFrames);
 		walkDownAnimation = new Animation(0.033f, walkDownFrames);
 
-		stateTime = 0;
-		
+//		stateTime = 0;
+
 		this.currentFrame = walkDownAnimation.getKeyFrame(0);
 	}
 
@@ -125,7 +141,93 @@ public class Character2D extends Image implements ApplicationListener {
 
 	@Override
 	public void render() {
-		this.currentFrame = walkDownAnimation.getKeyFrame(0);
+		// Atualizar frame da animação do personagem!
+		stateTime += Gdx.graphics.getDeltaTime();
+		float delta = Gdx.graphics.getDeltaTime();
+		switch (direction) {
+		case WALK_UP:
+			if (walking) {
+				// atualizar frame
+				this.currentFrame = walkUpAnimation
+						.getKeyFrame(stateTime, true);
+
+				// continuar andando!
+				walked += (delta * characterSpeed);
+				// checar se já andou um tile!
+				if (walked >= tileSize) {
+					this.setY(initialPosition + tileSize);
+					walking = false;
+				} else {
+					this.setY(this.getY() + (delta * characterSpeed));
+				}
+
+			} else {
+				this.currentFrame = walkUpAnimation.getKeyFrame(0, true);
+			}
+			break;
+		case WALK_DOWN:
+			if (walking) {
+				// atualizar frame
+				this.currentFrame = walkDownAnimation
+						.getKeyFrame(stateTime, true);
+
+				// continuar andando!
+				walked += (delta * characterSpeed);
+				// checar se já andou um tile!
+				if (walked >= tileSize) {
+					this.setY(initialPosition - tileSize);
+					walking = false;
+				} else {
+					this.setY(this.getY() - (delta * characterSpeed));
+				}
+
+			} else {
+				this.currentFrame = walkDownAnimation.getKeyFrame(0, true);
+			}
+			break;
+		case WALK_LEFT:
+			if (walking) {
+				// atualizar frame
+				this.currentFrame = walkLeftAnimation
+						.getKeyFrame(stateTime, true);
+
+				// continuar andando!
+				walked += (delta * characterSpeed);
+				// checar se já andou um tile!
+				if (walked >= tileSize) {
+					this.setX(initialPosition - tileSize);
+					walking = false;
+				} else {
+					this.setX(this.getX() - (delta * characterSpeed));
+				}
+
+			} else {
+				this.currentFrame = walkLeftAnimation.getKeyFrame(0, true);
+			}
+			break;
+		case WALK_RIGHT:
+			if (walking) {
+				// atualizar frame
+				this.currentFrame = walkRightAnimation
+						.getKeyFrame(stateTime, true);
+
+				// continuar andando!
+				walked += (delta * characterSpeed);
+				// checar se já andou um tile!
+				if (walked >= tileSize) {
+					this.setX(initialPosition + tileSize);
+					walking = false;
+				} else {
+					this.setX(this.getX() + (delta * characterSpeed));
+				}
+
+			} else {
+				this.currentFrame = walkRightAnimation.getKeyFrame(0, true);
+			}
+			break;
+		}
+
+		// this.currentFrame = walkDownAnimation.getKeyFrame(0, true);
 
 	}
 
@@ -143,10 +245,10 @@ public class Character2D extends Image implements ApplicationListener {
 	public void dispose() {
 
 	}
-	
+
 	public TextureRegion getCurrentFrame() {
 		return currentFrame;
-		
+
 	}
 
 }
