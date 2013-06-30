@@ -43,4 +43,10 @@ public class Container extends Event {
 		json.writeValue("money", this.money);
 	}
 
+	@Override
+	public void trigger() {
+		// TODO: Implementar método.
+		
+	}
+
 }

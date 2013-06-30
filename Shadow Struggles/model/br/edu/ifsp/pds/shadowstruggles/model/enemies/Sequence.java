@@ -19,6 +19,11 @@ public class Sequence implements Serializable {
 		this.actions = actions;
 	}
 
+	// TODO: Implementar método.
+	public boolean evaluateConditions() {
+		return false;
+	}
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public void read(Json json, JsonValue jsonData) {

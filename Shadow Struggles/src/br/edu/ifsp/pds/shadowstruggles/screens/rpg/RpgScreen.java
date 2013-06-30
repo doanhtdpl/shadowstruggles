@@ -14,9 +14,7 @@ import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.utils.Array;
 
@@ -36,11 +34,6 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 
 	private PathFinder finder;
 	private Path path;
-
-	private int selectedx = -1;
-	private int selectedy = -1;
-	private int lastFindX = -1;
-	private int lastFindY = -1;
 
 	/**
 	 * The constructor initializes the objects and defines itself as the
@@ -94,8 +87,6 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 				character2d.getY());
 		batch.end();
 
-		// TODO: ver possibilidade de usar renderização de spriteSheet ao invés
-		// de shapeRenderer
 		// shapeRenderer.begin(ShapeType.Filled);
 		// if (walked + platform.getCharacter().getWalkSpeed() >= tileSize) {
 		// readyToWalk = true;
@@ -170,54 +161,48 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		// TODO: Transformar coordenadas em tiles antes de construir o caminho.
 		path = finder.findPath(new CharacterMover(
 				CharacterMover.Type.NORMAL_CHARACTER),
 				(int) character2d.getX(), (int) character2d.getY(), screenX,
 				screenY);
 		rpgController.moveCharacter(path);
-		
+
 		return true;
 	}
 
 	@Override
 	public boolean keyDown(int keycode) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean keyUp(int keycode) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean keyTyped(char character) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean mouseMoved(int screenX, int screenY) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean scrolled(int amount) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

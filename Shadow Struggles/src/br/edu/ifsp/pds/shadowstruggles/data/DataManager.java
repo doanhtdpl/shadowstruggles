@@ -9,9 +9,7 @@ import br.edu.ifsp.pds.shadowstruggles.model.Trap;
 import br.edu.ifsp.pds.shadowstruggles.model.TutorialDialog;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.ObjectMap;

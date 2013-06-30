@@ -117,9 +117,6 @@ public class VictoryScreen extends BaseScreen {
 
 			this.getStage().addActor(continueButton);
 
-			// TODO: Perguntar ao jogador se ele gostaria de salvar ao invés de
-			// save automático.
-
 			// Moves the plot forward to the next scene.
 			game.getProfile().setCurrentScene(
 					SceneDAO.getScene(game.getProfile().getCurrentScene()

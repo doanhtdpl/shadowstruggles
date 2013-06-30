@@ -51,4 +51,9 @@ public class TeleportControl extends SceneItem {
 		json.writeValue("x", this.x);
 		json.writeValue("y", this.y);
 	}
+
+	@Override
+	public void action() {
+		// TODO: Implementar método.
+	}
 }

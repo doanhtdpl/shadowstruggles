@@ -1,9 +1,6 @@
 package br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder;
 
-
-
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.SortedIntList;
 
 
 /**
@@ -216,6 +213,7 @@ public class AStarPathFinder implements PathFinder {
 	 * 
 	 * @param node The node to add to the closed list
 	 */
+	@SuppressWarnings("unchecked")
 	protected void addToClosed(Node node) {
 		closed.add(node);
 	}
@@ -226,6 +224,7 @@ public class AStarPathFinder implements PathFinder {
 	 * @param node The node to search for
 	 * @return True if the node specified is in the closed list
 	 */
+	@SuppressWarnings("unchecked")
 	protected boolean inClosedList(Node node) {
 		return closed.contains(node, false);
 	}
@@ -235,6 +234,7 @@ public class AStarPathFinder implements PathFinder {
 	 * 
 	 * @param node The node to remove from the closed list
 	 */
+	@SuppressWarnings("unchecked")
 	protected void removeFromClosed(Node node) {
 		closed.removeValue(node,false);
 	}
@@ -318,6 +318,7 @@ public class AStarPathFinder implements PathFinder {
 		 * 
 		 * @param o The element to add
 		 */
+		@SuppressWarnings("unchecked")
 		public void add(Object o) {
 			list.add(o);
 			list.sort();
@@ -328,6 +329,7 @@ public class AStarPathFinder implements PathFinder {
 		 * 
 		 * @param o The element to remove
 		 */
+		@SuppressWarnings("unchecked")
 		public void remove(Object o) {
 			list.removeValue(o, false);
 		}
@@ -347,6 +349,7 @@ public class AStarPathFinder implements PathFinder {
 		 * @param o The element to search for
 		 * @return True if the element is in the list
 		 */
+		@SuppressWarnings("unchecked")
 		public boolean contains(Object o) {
 			return list.contains(o, false);
 		}

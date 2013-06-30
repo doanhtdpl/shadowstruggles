@@ -58,7 +58,6 @@ public class DefaultActionModel extends CardAction {
 		if (fighter.getDirection() == 1) {
 			if (fighter.getTile() >= 36 - fighter.getRange()) {
 				if (fighter.getDelay() <= 0.0f) {
-					//TODO: battle.getPlayer1().baseHpChange(-fighter.getDamage()); (after Battle implemented)
 					fighter.setDelay(fighter.getAttackDelay());
 				} else
 					fighter.setDelay(fighter.getDelay() - delta);
@@ -67,7 +66,6 @@ public class DefaultActionModel extends CardAction {
 		} else {
 			if (fighter.getTile() <= -1 + fighter.getRange()) {
 				if (fighter.getDelay() <= 0.0f) {
-					//TODO: battle.getPlayer2().baseHpChange(-fighter.getDamage()); (after Battle implemented)
 					fighter.setDelay(fighter.getAttackDelay());
 				} else
 					fighter.setDelay(fighter.getDelay() - delta);

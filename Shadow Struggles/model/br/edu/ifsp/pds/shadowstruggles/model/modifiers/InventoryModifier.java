@@ -34,4 +34,9 @@ public class InventoryModifier extends Modifier {
 		json.writeValue("items", this.items);
 		json.writeValue("operation", this.operation);
 	}
+
+	@Override
+	public void modify() {
+		// TODO: Implementar método.
+	}
 }

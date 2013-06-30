@@ -53,5 +53,10 @@ public class Decision extends SceneItem {
 	@Override
 	public void write(Json json) {
 		json.writeValue("choices", this.choices);
+	}
+
+	@Override
+	public void action() {
+		// TODO: Implementar método.
 	}	
 }

@@ -28,4 +28,9 @@ public class LayerControl extends SceneItem {
 		json.writeValue("nextLayer", this.nextLayer);
 		json.writeValue("map", this.map);
 	}
+
+	@Override
+	public void action() {
+		// TODO: Implementar método.
+	}
 }

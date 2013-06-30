@@ -1,7 +1,5 @@
 package br.edu.ifsp.pds.shadowstruggles.model.rpg.test;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 import br.edu.ifsp.pds.shadowstruggles.model.Profile;

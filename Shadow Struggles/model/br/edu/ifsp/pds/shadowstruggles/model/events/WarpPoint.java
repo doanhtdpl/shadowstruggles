@@ -39,4 +39,9 @@ public class WarpPoint extends Event {
 		json.writeValue("destination", this.destination);
 		json.writeValue("active", this.active);
 	}
+
+	@Override
+	public void trigger() {
+		// TODO: Implementar método.
+	}
 }

@@ -46,4 +46,9 @@ public class MovementControl extends SceneItem {
 		json.writeValue("direction", this.direction);
 		json.writeValue("direction", this.direction);
 	}
+
+	@Override
+	public void action() {
+		// TODO: Implementar método.
+	}
 }
