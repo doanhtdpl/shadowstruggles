@@ -60,5 +60,6 @@ public class FileMap {
 		resourcesToDirectory.put("skin", "data/images/skin/");
 
 		classToFile.put(Languages.class, "data/languages.json");
+		classToFile.put(Settings.class, "data/game_settings.json");
 	}
 }
