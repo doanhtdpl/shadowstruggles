@@ -4,20 +4,28 @@ import br.edu.ifsp.pds.shadowstruggles.screens.BattleScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.SceneScreen;
 
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 /**
- * A TransitionControl object is an arrow pointing either to the right or left,
+ * A Arrow object is an arrow pointing either to the right or left,
  * moving the camera to the specified direction in a {@link BattleScreen}. It
  * has been replaced by the A-D and arrow keys and scrolling on the
  * {@link BattleMap2D} due to usability decisions and currently is being used for
  * advancing the story in a {@link SceneScreen}.
  */
 
-public class TransitionControl extends FixedObject implements InputProcessor {
+public class Arrow extends FixedObject implements InputProcessor {
 
-	public TransitionControl(int side, Skin skin) {
+	public Arrow(int side, Skin skin) {
 		super(skin.getRegion("right"), 480 + 440 * side);
+		if(side != 1) {
+			TextureRegion copy = new TextureRegion();
+			copy.setRegion(skin.getRegion("right"));
+			copy.flip(true, false);
+			((TextureRegionDrawable) this.getDrawable()).setRegion(copy);
+		}
 //		if (side != 1)
 //			((TextureRegionDrawable) this.getDrawable()).getRegion().flip(true,
 //					false);

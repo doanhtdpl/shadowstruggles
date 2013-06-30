@@ -5,7 +5,7 @@ import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.data.SceneDAO;
 import br.edu.ifsp.pds.shadowstruggles.games.Practice;
 import br.edu.ifsp.pds.shadowstruggles.model.Scene;
-import br.edu.ifsp.pds.shadowstruggles.object2d.TransitionControl;
+import br.edu.ifsp.pds.shadowstruggles.object2d.Arrow;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
 import com.badlogic.gdx.Gdx;
@@ -112,7 +112,7 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 			}
 		});
 
-		next = new TransitionControl(1, this.getSkin());
+		next = new Arrow(1, this.getSkin());
 		next.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {

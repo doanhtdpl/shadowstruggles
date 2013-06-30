@@ -4,7 +4,7 @@ import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.Shop;
-import br.edu.ifsp.pds.shadowstruggles.object2d.TransitionControl;
+import br.edu.ifsp.pds.shadowstruggles.object2d.Arrow;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
 import com.badlogic.gdx.Gdx;
@@ -29,8 +29,8 @@ public class ShopScreen extends BaseScreen {
 	private Label name;
 	private Label description;
 	private Label moneyLabel;
-	private TransitionControl right;
-	private TransitionControl left;
+	private Arrow right;
+	private Arrow left;
 	private TextButton exit;
 	private TextButton buyButton;
 	private Card selectedCard;
@@ -47,9 +47,7 @@ public class ShopScreen extends BaseScreen {
 
 	private void initComponents() {
 		final BaseScreen menu = this.previousScreen;
-		background = new Image(game.getAssets()
-				.get("data/images/objects/objects.atlas", TextureAtlas.class)
-				.findRegion("msbackground"));
+		background = new Image(this.getSkin().getDrawable("msbackground"));
 		background.setScaleX(960f / 512f);
 		background.setScaleY((640f / 380f));
 
@@ -80,9 +78,7 @@ public class ShopScreen extends BaseScreen {
 		moneyLabel.setStyle(new LabelStyle(super.getSkin().getFont(
 				"andalus-font"), Color.BLACK));
 
-		box = new Image(game.getAssets()
-				.get("data/images/objects/objects.atlas", TextureAtlas.class)
-				.findRegion("box"));
+		box = new Image(game.getTextureRegion("box", "game_ui_images"));
 		box.setWidth(600);
 		box.setHeight(600);
 		box.setX(390);
@@ -90,12 +86,11 @@ public class ShopScreen extends BaseScreen {
 		box.setScaleX(0.9f);
 		box.setScaleY(0.76f);
 
-		right = new TransitionControl(1, this.getSkin());
+		right = new Arrow(1, this.getSkin());
 		right.setY(150);
 		right.setX(900);
 		right.setScaleY(4f);
 		right.setScaleX(1.5f);
-		right.rotate(180);
 		right.addListener(new ClickListener() {
 
 			@Override
@@ -105,7 +100,7 @@ public class ShopScreen extends BaseScreen {
 			}
 		});
 
-		left = new TransitionControl(-1, this.getSkin());
+		left = new Arrow(-1, this.getSkin());
 		left.setY(20);
 		left.setX(120);
 		left.setScaleY(4f);

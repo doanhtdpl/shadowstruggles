@@ -4,7 +4,7 @@ import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.data.DeckDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
-import br.edu.ifsp.pds.shadowstruggles.object2d.TransitionControl;
+import br.edu.ifsp.pds.shadowstruggles.object2d.Arrow;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
 import com.badlogic.gdx.Gdx;
@@ -26,8 +26,8 @@ public class CheckCardsScreen extends BaseScreen {
 	private Image background;
 	private Label name;
 	private Label description;
-	private TransitionControl right;
-	private TransitionControl left;
+	private Arrow right;
+	private Arrow left;
 	private TextButton exit;
 	private Image box;
 
@@ -81,7 +81,7 @@ public class CheckCardsScreen extends BaseScreen {
 				.findRegion("box"));
 		ScreenUtils.defineImage(box, 390, 177, 600, 600, 0.9f, 0.76f);
 
-		right = new TransitionControl(1, this.getSkin());
+		right = new Arrow(1, this.getSkin());
 		right.setY(150);
 		right.setX(900);
 		right.setScaleY(4f);
@@ -97,7 +97,7 @@ public class CheckCardsScreen extends BaseScreen {
 
 			}
 		});
-		left = new TransitionControl(-1, this.getSkin());
+		left = new Arrow(-1, this.getSkin());
 		left.setY(20);
 		left.setX(120);
 		left.setScaleY(4f);
