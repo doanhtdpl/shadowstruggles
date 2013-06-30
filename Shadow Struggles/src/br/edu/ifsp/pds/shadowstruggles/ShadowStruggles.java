@@ -1,6 +1,8 @@
 package br.edu.ifsp.pds.shadowstruggles;
 
 import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
+import br.edu.ifsp.pds.shadowstruggles.data.FileMap;
+import br.edu.ifsp.pds.shadowstruggles.data.Loader;
 import br.edu.ifsp.pds.shadowstruggles.data.SoundManager;
 import br.edu.ifsp.pds.shadowstruggles.dataTest.LoaderTest;
 import br.edu.ifsp.pds.shadowstruggles.model.Profile;
@@ -16,6 +18,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 
 /***
@@ -25,14 +28,18 @@ import com.badlogic.gdx.utils.Array;
 
 public class ShadowStruggles extends Game {
 	public static final String LOG = ShadowStruggles.class.getName();
-	public static enum RunMode { DEBUG, TESTS, RELEASE };
-	
+
+	public static enum RunMode {
+		DEBUG, TESTS, RELEASE
+	};
+
 	private Controller controller;
 	private Profile profile;
 	private DataManager manager;
 	private SoundManager audio;
 	private AssetManager assets;
 	private RunMode mode;
+	private Loader loader;
 
 	public ShadowStruggles() {
 		this(RunMode.TESTS);
@@ -49,12 +56,16 @@ public class ShadowStruggles extends Game {
 		this.controller = Controller.getInstance();
 		this.setAssets(new AssetManager());
 		
-		if(this.mode != RunMode.TESTS)
+		FileMap.initMap();
+
+		if (this.mode != RunMode.TESTS)
 			this.setScreen(new LoadingScreen(this));
 		else {
 			// Test cases go here.
 			LoaderTest loaderTest = new LoaderTest();
 			loaderTest.testStaticTextureAtlasStrategy(this);
+			loaderTest.testGetStaticRegion(this);
+
 			CharacterTest characterTest = new CharacterTest();
 			characterTest.WalkDownTest();
 			characterTest.WalkUpTest();
@@ -95,6 +106,19 @@ public class ShadowStruggles extends Game {
 		super.setScreen(transitionScreen);
 		controller.setCurrentscreen((BaseScreen) screen);
 
+	}
+
+	/**
+	 * Retrieves a TextureRegion from the file system.
+	 * 
+	 * @param regionName
+	 *            The name of the region.
+	 * @param resourceType
+	 *            The resource type (card, skin, map etc.). These names are
+	 *            specified in the {@link FileMap} class.
+	 */
+	public TextureRegion getTextureRegion(String regionName, String resourceType) {
+		return loader.getTextureRegion(regionName, resourceType);
 	}
 
 	@Override
@@ -159,8 +183,12 @@ public class ShadowStruggles extends Game {
 	public void setAssets(AssetManager assets) {
 		this.assets = assets;
 	}
-	
+
 	public RunMode getMode() {
 		return this.mode;
+	}
+
+	public void setLoader(Loader loader) {
+		this.loader = loader;
 	}
 }

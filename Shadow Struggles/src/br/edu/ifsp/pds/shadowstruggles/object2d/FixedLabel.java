@@ -6,7 +6,7 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
-public class FixedLabel extends Label implements InputProcessor{
+public class FixedLabel extends Label implements InputProcessor {
 	private int initialX;
 	private boolean draggable;
 	private boolean touched;
@@ -15,16 +15,16 @@ public class FixedLabel extends Label implements InputProcessor{
 
 	public FixedLabel(CharSequence text, int initialX, BaseScreen screen) {
 		super(text, screen.getSkin());
-		this.screen=screen;
-		this.initialX=initialX;
+		this.screen = screen;
+		this.initialX = initialX;
 	}
-	
+
 	public void move(Stage st, int cameraInitialX) {
 		if (!draggable)
 			this.setX(this.initialX + st.getCamera().position.x
 					- cameraInitialX);
 	}
-	
+
 	public void clicked() {
 	};
 
@@ -52,13 +52,13 @@ public class FixedLabel extends Label implements InputProcessor{
 				.getWidth()));
 
 		if (screenX + deltaCamX >= this.getX()
-				&& screenX + deltaCamX <= this.getX() + this.getWidth() * getScaleX()
-				&& invertY >= this.getY()
+				&& screenX + deltaCamX <= this.getX() + this.getWidth()
+						* getScaleX() && invertY >= this.getY()
 				&& invertY <= this.getY() + this.getHeight() * getScaleY()) {
-			touched = true;			
+			touched = true;
 			if (!justTouched) {
 				justTouched = true;
-			}			
+			}
 			return true;
 		}
 
@@ -68,9 +68,10 @@ public class FixedLabel extends Label implements InputProcessor{
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
 		int deltaCamX = (int) (screen.getCamera().position.x - BaseScreen.CAMERA_INITIAL_X);
-		int invertY = (int) ((screen.getHeight() - screenY) * (float) ((float) screen.getSettings().screenHeight / (float) screen.getHeight()));
-		screenX = (int) (screenX * (float) ((float) screen
-				.getSettings().screenWidth / (float) screen.getWidth()));
+		int invertY = (int) ((screen.getHeight() - screenY) * (float) ((float) screen
+				.getSettings().screenHeight / (float) screen.getHeight()));
+		screenX = (int) (screenX * (float) ((float) screen.getSettings().screenWidth / (float) screen
+				.getWidth()));
 
 		if (touched) {
 			if (screenX + deltaCamX >= this.getX()

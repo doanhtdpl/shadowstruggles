@@ -9,7 +9,9 @@ import br.edu.ifsp.pds.shadowstruggles.model.Trap;
 import br.edu.ifsp.pds.shadowstruggles.model.TutorialDialog;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.ObjectMap;
@@ -36,12 +38,12 @@ public class DataManager {
 
 	private Array<Fighter> fighterList;
 	private Array<Effect> effectList;
-	private Array<Trap> trapList;	
+	private Array<Trap> trapList;
 	private Array<Deck> decksList;
 	private Array<Scene> scenesList;
 	private Array<TutorialDialog> tutorialDialogsList;
-	
-	private Languages languages;	
+
+	private Languages languages;
 	private Settings settings;
 	private MenuText menuText;
 
@@ -84,8 +86,8 @@ public class DataManager {
 				+ ".json");
 		this.menuTextFile = Gdx.files.internal("data/menu/text_" + language
 				+ ".json");
-		this.tutorialDialogs= Gdx.files.local("data/files/tutorial_" + language
-				+ ".json");
+		this.tutorialDialogs = Gdx.files.local("data/files/tutorial_"
+				+ language + ".json");
 		this.createFighters();
 		this.createEffects();
 		this.createTraps();
@@ -131,13 +133,14 @@ public class DataManager {
 		trapList = new Array<Trap>();
 		Array<Trap> retrievedTraps = retrieveTraps();
 		for (Trap trap : retrievedTraps) {
-			/*if (trap.getName().equals("Electric Current Level 1")
-					|| trap.getName().equals("Corrente El�trica n�vel 1")) {
-
-				trap.setAction(new EletricCurrent1Action());
-			} else if (trap.getName().equals("Hacking")) {
-				trap.setAction(new HackingAction());
-			}*/
+			/*
+			 * if (trap.getName().equals("Electric Current Level 1") ||
+			 * trap.getName().equals("Corrente El�trica n�vel 1")) {
+			 * 
+			 * trap.setAction(new EletricCurrent1Action()); } else if
+			 * (trap.getName().equals("Hacking")) { trap.setAction(new
+			 * HackingAction()); }
+			 */
 			trapList.add(trap);
 		}
 	}
@@ -199,13 +202,14 @@ public class DataManager {
 		}
 
 	}
-	
-	private void createTutorialDialogs() throws SerializationException{
-		tutorialDialogsList= new Array<TutorialDialog>();
+
+	private void createTutorialDialogs() throws SerializationException {
+		tutorialDialogsList = new Array<TutorialDialog>();
 		if (!this.tutorialDialogs.exists()) {
 			tutorialDialogsList.add(new TutorialDialog());
 		} else {
-			tutorialDialogsList.addAll(json.fromJson(Array.class, this.tutorialDialogs));
+			tutorialDialogsList.addAll(json.fromJson(Array.class,
+					this.tutorialDialogs));
 		}
 	}
 
@@ -222,7 +226,7 @@ public class DataManager {
 		Array<Profile> profilesList = new Array<Profile>();
 
 		if (this.profiles.exists()) {
-			profilesList.addAll((json.fromJson(Array.class, profiles)));			
+			profilesList.addAll((json.fromJson(Array.class, profiles)));
 		} else {
 			profilesList.add(new Profile());
 			json.toJson(profilesList, this.profiles);
@@ -230,20 +234,20 @@ public class DataManager {
 
 		return profilesList;
 	}
-	
-	public Array<TutorialDialog> retrieveTutorial() throws SerializationException {
+
+	public Array<TutorialDialog> retrieveTutorial()
+			throws SerializationException {
 		Array<TutorialDialog> dialogs = new Array<TutorialDialog>();
 
 		if (this.tutorialDialogs.exists()) {
-			dialogs.addAll((json.fromJson(Array.class, tutorialDialogs)));			
+			dialogs.addAll((json.fromJson(Array.class, tutorialDialogs)));
 		} else {
-			
+
 			json.toJson(dialogs, this.profiles);
 		}
 
 		return dialogs;
 	}
-	
 
 	/**
 	 * Saves a profile to a file ("data/data_profiles.json").
@@ -267,15 +271,15 @@ public class DataManager {
 		allProfiles.add(newProfile);
 		json.toJson(allProfiles, this.profiles);
 	}
-	
-	public void writeTutorialDialog(TutorialDialog dialog){
+
+	public void writeTutorialDialog(TutorialDialog dialog) {
 		Array<TutorialDialog> dialogs;
 		try {
 			dialogs = this.retrieveTutorial();
 		} catch (Exception ew) {
 			dialogs = new Array<TutorialDialog>();
 		}
-		
+
 		dialogs.add(dialog);
 		json.toJson(dialogs, this.tutorialDialogs);
 	}
@@ -315,7 +319,7 @@ public class DataManager {
 	public boolean profileExists() {
 		return this.profiles.exists();
 	}
-	
+
 	public Array<TutorialDialog> getTutorialDialogsList() {
 		return tutorialDialogsList;
 	}

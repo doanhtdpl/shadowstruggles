@@ -6,7 +6,6 @@ import br.edu.ifsp.pds.shadowstruggles.data.Settings;
 import br.edu.ifsp.pds.shadowstruggles.model.Effect;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
@@ -29,19 +28,17 @@ public class Effect2D extends Image {
 	private Settings settings;
 
 	public Effect2D(Effect effect, ShadowStruggles game) {
-		super(game.getAssets()
-				.get("data/images/card_effects/card_effects.atlas", TextureAtlas.class)
-				.findRegion(effect.getName().toLowerCase()));
-		this.setSize(64,64);
+		super(game.getTextureRegion(effect.getName().toLowerCase(),
+				"card_effects"));
+		this.setSize(64, 64);
 		this.effect = effect;
 		this.game = game;
 		this.settings = game.getManager().getSettings();
 	}
 
 	public void create() {
-		animationSheet = game.getAssets()
-				.get("data/images/card_effects/card_effects.atlas", TextureAtlas.class)
-				.findRegion(effect.getName().toLowerCase());
+		animationSheet = game.getTextureRegion(effect.getName().toLowerCase(),
+				"card_effects");
 
 		TextureRegion[][] tmp = animationSheet.split(64, 64);
 		animationFrames = new TextureRegion[FRAME_COLS * FRAME_ROWS];
@@ -49,14 +46,14 @@ public class Effect2D extends Image {
 		for (int i = 0; i < FRAME_ROWS; i++) {
 			for (int j = 0; j < FRAME_COLS; j++) {
 				if (effect.getDirection() == -1)
-					tmp[i][j].flip(true, false);			
+					tmp[i][j].flip(true, false);
 				animationFrames[index] = tmp[i][j];
-				
+
 				index++;
 			}
 		}
-		
-		stateTime = 0f;		
+
+		stateTime = 0f;
 		this.setX(settings.tileHeight * 2 + (effect.getTile())
 				* settings.tileWidth);
 		this.setY(settings.screenHeight - settings.backgroundHeight
@@ -68,7 +65,6 @@ public class Effect2D extends Image {
 	public Animation getAnimation() {
 		return animation;
 	}
-	
 
 	public void setAnimation(Animation animation) {
 		this.animation = animation;
@@ -79,9 +75,9 @@ public class Effect2D extends Image {
 	}
 
 	public void setCurrentFrame(TextureRegion currentFrame) {
-		this.currentFrame = currentFrame;		
+		this.currentFrame = currentFrame;
 		((TextureRegionDrawable) this.getDrawable()).setRegion(currentFrame);
-		
+
 	}
 
 	public TextureRegion getAnimationSheet() {

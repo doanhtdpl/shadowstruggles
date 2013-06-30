@@ -51,7 +51,7 @@ public class RpgPlatform {
 		controller.setModel(this);
 		this.map = new RpgMap(
 				new TmxMapLoader(new InternalFileHandleResolver())
-						.load("data/images/maps/example/map.tmx"));
+						.load("data/rpg_maps/map.tmx"));
 
 		this.character = character;
 	}

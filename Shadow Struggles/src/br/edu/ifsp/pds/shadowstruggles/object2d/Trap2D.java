@@ -6,7 +6,6 @@ import br.edu.ifsp.pds.shadowstruggles.data.Settings;
 import br.edu.ifsp.pds.shadowstruggles.model.Trap;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
@@ -30,11 +29,8 @@ public class Trap2D extends Image {
 	private Settings settings;
 
 	public Trap2D(Trap trap, ShadowStruggles game) {
-		super(game
-				.getAssets()
-				.get("data/images/card_effects/card_effects.atlas",
-						TextureAtlas.class)
-				.findRegion(trap.getName().toLowerCase()));
+		super(game.getTextureRegion(trap.getName().toLowerCase(),
+				"card_effects"));
 		this.setSize(64, 64);
 		this.trap = trap;
 		this.game = game;
@@ -43,11 +39,8 @@ public class Trap2D extends Image {
 	}
 
 	public void create() {
-		animationSheet = game
-				.getAssets()
-				.get("data/images/card_effects/card_effects.atlas",
-						TextureAtlas.class)
-				.findRegion(trap.getName().toLowerCase());
+		animationSheet = game.getTextureRegion(trap.getName().toLowerCase(),
+				"card_effects");
 
 		TextureRegion[][] tmp = animationSheet.split(64, 64);
 		animationFrames = new TextureRegion[FRAME_COLS * FRAME_ROWS];
@@ -62,11 +55,8 @@ public class Trap2D extends Image {
 
 		animation = new Animation(0.075f, animationFrames);
 		stateTime = 0f;
-		animationSheet = game
-				.getAssets()
-				.get("data/images/card_effects/card_effects.atlas",
-						TextureAtlas.class)
-				.findRegion(trap.getName().toLowerCase());
+		animationSheet = game.getTextureRegion(trap.getName().toLowerCase(),
+				"card_effects");
 		tmp = animationSheet.split(64, 64);
 		animationFrames = new TextureRegion[FRAME_COLS * FRAME_ROWS];
 		index = 0;

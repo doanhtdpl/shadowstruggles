@@ -15,7 +15,6 @@ import br.edu.ifsp.pds.shadowstruggles.object2d.HandCard;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
 
 public class BattleTutorial extends BattleScreen {
@@ -57,7 +56,7 @@ public class BattleTutorial extends BattleScreen {
 		public boolean eventCompleted() {
 			boolean completed = false;
 
-			if (this.eventType == EventType.NONE || this.eventType ==null)
+			if (this.eventType == EventType.NONE || this.eventType == null)
 				completed = true;
 
 			if (this.eventType == EventType.CARD_SELECTED) {
@@ -67,30 +66,30 @@ public class BattleTutorial extends BattleScreen {
 					if (handCard.getClass().equals(HandCard.class)) {
 						HandCard castedHandCard = (HandCard) handCard;
 						if (castedHandCard.getCard().getName().equals(target)
-								&& castedHandCard.isSelected()){
+								&& castedHandCard.isSelected()) {
 							completed = true;
 							inputSources.removeProcessor(dialogBox);
 							inputSources.addProcessor(map2d);
 						}
-						
+
 					}
 				}
 			}
-			if(this.eventType==EventType.PREPARE_EVENT){				
+			if (this.eventType == EventType.PREPARE_EVENT) {
 				inputSources.addProcessor(map2d);
-				completed=true;
+				completed = true;
 			}
-			if (this.eventType == EventType.CARD_SUMMONED){
+			if (this.eventType == EventType.CARD_SUMMONED) {
 				Card card = new Card();
 				card.setName(target);
-				if(controller.getPlatform().getMap().cardOnMap(card, -1, 1)){
-					completed=true;
+				if (controller.getPlatform().getMap().cardOnMap(card, -1, 1)) {
+					completed = true;
 					inputSources.removeProcessor(map2d);
-					if(!inputSources.getProcessors().contains(dialogBox, true))
-					inputSources.addProcessor(dialogBox);
+					if (!inputSources.getProcessors().contains(dialogBox, true))
+						inputSources.addProcessor(dialogBox);
 				}
 			}
-			
+
 			return completed;
 		}
 
@@ -103,25 +102,24 @@ public class BattleTutorial extends BattleScreen {
 	private FixedLabel dialogText;
 	private FixedImage image;
 
-	
 	private Array<TutorialEvent> events;
 	private int currentIndex;
 	private int currentEventIndex;
-	
+
 	private Array<TutorialDialog> dialogs;
 
 	public BattleTutorial(ShadowStruggles game) {
 		super(game, game.getProfile(), game.getController(),
 				new BattlePlatform(DeckDAO.getDeck("Tutorial Deck",
 						game.getManager()), DeckDAO.getDeck(
-						"Practice Deck Enemy", game.getManager()), new BattleMap(
-						"cena1"), new DefaultRules(game.getManager()
-						.getSettings()), new TutorialEnemy()), game
-						.getManager().getMenuText().practiceBattle, false);
+						"Practice Deck Enemy", game.getManager()),
+						new BattleMap("cena1"), new DefaultRules(game
+								.getManager().getSettings()),
+						new TutorialEnemy()),
+				game.getManager().getMenuText().practiceBattle, false);
 
-		dialogBox = new FixedImage(game.getAssets()
-				.get("data/images/objects/objects.atlas", TextureAtlas.class)
-				.findRegion("box"), 150, this) {
+		dialogBox = new FixedImage(game.getTextureRegion("box",
+				"game_ui_images"), 150, this) {
 			@Override
 			public void clicked() {
 				boxClicked();
@@ -143,9 +141,9 @@ public class BattleTutorial extends BattleScreen {
 
 		loadData();
 
-		image = new FixedImage(game.getAssets()
-				.get("data/images/objects/objects.atlas", TextureAtlas.class)
-				.findRegion("indicator"), dialogs.get(currentIndex).getIndicatorX(), this);
+		image = new FixedImage(game.getTextureRegion("indicator",
+				"game_ui_images"), dialogs.get(currentIndex).getIndicatorX(),
+				this);
 		stage.addActor(image);
 
 		nextDialog();
@@ -158,11 +156,12 @@ public class BattleTutorial extends BattleScreen {
 	}
 
 	private void loadData() {
-		dialogs= TutorialDAO.getDialogs(game.getManager());
+		dialogs = TutorialDAO.getDialogs(game.getManager());
 		events = new Array<TutorialEvent>();
-		for(TutorialDialog dialog : dialogs){
-			events.add(new TutorialEvent(this, dialog.getEventType(), dialog.getEventTarget()));
-		}	
+		for (TutorialDialog dialog : dialogs) {
+			events.add(new TutorialEvent(this, dialog.getEventType(), dialog
+					.getEventTarget()));
+		}
 	}
 
 	private void boxClicked() {
@@ -170,14 +169,18 @@ public class BattleTutorial extends BattleScreen {
 		// method actually requires the previous event to be completed, not the
 		// current one; hence the currentEventIndex - 1.
 		TutorialEvent event = events.get(currentEventIndex - 1);
-		if (event.eventCompleted() && (event.getEventType() == EventType.NONE || event.getEventType() == EventType.PREPARE_EVENT|| event.getEventType() == null))
-			if (currentIndex < dialogs.size){
-				
-				nextDialog();}
+		if (event.eventCompleted()
+				&& (event.getEventType() == EventType.NONE
+						|| event.getEventType() == EventType.PREPARE_EVENT || event
+						.getEventType() == null))
+			if (currentIndex < dialogs.size) {
+
+				nextDialog();
+			}
 	}
 
 	private void nextDialog() {
-		
+
 		dialogText.setText(dialogs.get(currentIndex).getText());
 
 		image.setX(dialogs.get(currentIndex).getIndicatorX());
@@ -195,21 +198,22 @@ public class BattleTutorial extends BattleScreen {
 
 		currentIndex++;
 		currentEventIndex++;
-		
+
 	}
 
 	@Override
 	public void render(float delta) {
 		super.render(delta);
-		
+
 		// Updates the box as soon as the user completes some kinds of events,
 		// such as summoning cards.
-		TutorialEvent event = events.get(currentIndex-1);
+		TutorialEvent event = events.get(currentIndex - 1);
 		if (event.getEventType() == EventType.CARD_SELECTED
-				|| event.getEventType() == EventType.CARD_SUMMONED ) {
-			if (event.eventCompleted()){
-				
-				this.nextDialog();}
+				|| event.getEventType() == EventType.CARD_SUMMONED) {
+			if (event.eventCompleted()) {
+
+				this.nextDialog();
+			}
 		}
 	}
 

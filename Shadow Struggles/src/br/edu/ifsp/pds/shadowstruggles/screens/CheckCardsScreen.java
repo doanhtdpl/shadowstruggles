@@ -55,12 +55,10 @@ public class CheckCardsScreen extends BaseScreen {
 	public void setMenu(InGameMenu menu) {
 		this.menu = menu;
 	}
-	
+
 	public void initComponents() {
 		final InGameMenu menu = this.menu;
-		background = new Image(game.getAssets()
-				.get("data/images/objects/objects.atlas", TextureAtlas.class)
-				.findRegion("msbackground"));
+		background = new Image(this.getSkin().getDrawable("msbackground"));
 		background.setScale((960f / 512f), (640f / 380f));
 
 		name = new Label("", super.getSkin());

@@ -30,7 +30,8 @@ public class SoundManager {
 	 */
 	public void setMusic(String musicName) {
 		this.musicName = musicName;
-		this.music = assets.get("data/audio/" + musicName + ".ogg", Music.class);
+		this.music = assets.get(FileMap.resourcesToDirectory.get("soundtrack")
+				+ musicName + ".ogg", Music.class);
 		music.setLooping(true);
 		music.setVolume(volume);
 		music.play();
@@ -53,7 +54,9 @@ public class SoundManager {
 	 *            filename, then the expected soundName is "effect_1").
 	 */
 	public void playSound(String soundName) {
-		assets.get("data/audio/" + soundName + ".ogg", Sound.class).play(volume);
+		assets.get(
+				FileMap.resourcesToDirectory.get("sound_effects") + soundName
+						+ ".ogg", Sound.class).play(volume);
 	}
 
 	public void setVolume(float newVolume) {

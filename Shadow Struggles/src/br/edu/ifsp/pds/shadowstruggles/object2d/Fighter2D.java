@@ -7,7 +7,6 @@ import br.edu.ifsp.pds.shadowstruggles.model.Fighter;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
@@ -37,9 +36,8 @@ public class Fighter2D extends Image implements ApplicationListener {
 	private float stateTime;
 
 	public Fighter2D(Fighter fighter, ShadowStruggles game) {
-		super(game.getAssets()
-				.get("data/images/card_walking/card_walking.atlas", TextureAtlas.class)
-				.findRegion(fighter.getName().toLowerCase()));
+		super(game.getTextureRegion(fighter.getName().toLowerCase(),
+				"card_walking"));
 		this.setSize(64, 64);
 		this.fighter = fighter;
 
@@ -47,7 +45,7 @@ public class Fighter2D extends Image implements ApplicationListener {
 		this.settings = game.getManager().getSettings();
 
 		if (fighter.getSize().equals(Fighter.SIZE_SMALL)) {
-			this.setScaleY( 0.8f);
+			this.setScaleY(0.8f);
 		} else if (fighter.getSize().equals(Fighter.SIZE_MEDIUM)) {
 			this.setScaleY(1.0f);
 		} else if (fighter.getSize().equals(Fighter.SIZE_LARGE)) {
@@ -57,9 +55,8 @@ public class Fighter2D extends Image implements ApplicationListener {
 
 	@Override
 	public void create() {
-		walkSheet = game.getAssets()
-				.get("data/images/card_walking/card_walking.atlas", TextureAtlas.class)
-				.findRegion(fighter.getName().toLowerCase());
+		walkSheet = game.getTextureRegion(fighter.getName().toLowerCase(),
+				"card_walking");
 
 		TextureRegion[][] tmp = walkSheet.split(64, 64);
 		walkFrames = new Array<TextureRegion>();
@@ -71,15 +68,14 @@ public class Fighter2D extends Image implements ApplicationListener {
 			}
 		}
 		walkAnimation = new Animation(0.075f, walkFrames);
-		
+
 		stateTime = 0f;
-		
-		attackSheet = game.getAssets()
-				.get("data/images/card_attacking/card_attacking.atlas", TextureAtlas.class)
-				.findRegion(fighter.getName().toLowerCase());
+
+		attackSheet = game.getTextureRegion(fighter.getName().toLowerCase(),
+				"card_attacking");
 		tmp = attackSheet.split(64, 64);
 		attackFrames = new Array<TextureRegion>();
-		
+
 		for (int i = 0; i < FRAME_ROWS; i++) {
 			for (int j = 0; j < FRAME_COLS; j++) {
 				if (fighter.getDirection() == -1)
@@ -87,11 +83,11 @@ public class Fighter2D extends Image implements ApplicationListener {
 				attackFrames.add(tmp[i][j]);
 			}
 		}
-		
+
 		attackAnimation = new Animation(0.075f, attackFrames);
 		this.setX(settings.tileHeight * 2 + (fighter.getTile())
 				* settings.tileWidth);
-		this.setY( settings.screenHeight - settings.backgroundHeight
+		this.setY(settings.screenHeight - settings.backgroundHeight
 				+ settings.tileHeight + (this.fighter.getLane())
 				* settings.tileHeight * 3 / 2);
 	}
@@ -158,7 +154,7 @@ public class Fighter2D extends Image implements ApplicationListener {
 
 	public TextureRegion getCurrentFrame() {
 		return currentFrame;
-		
+
 	}
 
 	public void setCurrentFrame(TextureRegion currentFrame) {
@@ -205,8 +201,6 @@ public class Fighter2D extends Image implements ApplicationListener {
 	public void setStateTime(float stateTime) {
 		this.stateTime = stateTime;
 	}
-
-	
 
 	public static int getFrameCols() {
 		return FRAME_COLS;

@@ -1,6 +1,7 @@
 package br.edu.ifsp.pds.shadowstruggles.screens;
 
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.data.FileMap;
 import br.edu.ifsp.pds.shadowstruggles.data.Loader;
 import br.edu.ifsp.pds.shadowstruggles.data.Loader.ManagementStrategy;
 import br.edu.ifsp.pds.shadowstruggles.data.SoundManager;
@@ -9,7 +10,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
@@ -27,8 +27,8 @@ public class LoadingScreen extends BaseScreen {
 
 		public LoadingBar() {
 			super(new TextureRegion(new Texture(
-					"data/images/objects/loading_bar.png"), 0, 0,
-					BAR_MAX_WIDTH, 32));
+					FileMap.resourcesToDirectory.get("game_ui_images")
+							+ "loading_bar.png"), 0, 0, BAR_MAX_WIDTH, 32));
 			this.setScaleX(0.8f);
 			this.setScaleY(1.9f);
 		}
@@ -50,10 +50,6 @@ public class LoadingScreen extends BaseScreen {
 					.getFont("andalus-font"), Color.WHITE));
 			this.getStage().addActor(percentageLbl);
 		}
-
-		public float getPercentage() {
-			return this.percentage;
-		}
 	}
 
 	private static int BAR_MAX_WIDTH = 1024; // The width of the progress bar.
@@ -66,8 +62,7 @@ public class LoadingScreen extends BaseScreen {
 
 	public LoadingScreen(ShadowStruggles game) {
 		super(game);
-		loader = new Loader(game, ManagementStrategy.STATIC_TEXTURE_ATLAS,
-				null, null);
+		loader = new Loader(game, ManagementStrategy.STATIC_TEXTURE_ATLAS, null);
 		loader.loadAssets();
 		this.game = game;
 	}
@@ -81,12 +76,10 @@ public class LoadingScreen extends BaseScreen {
 	public void initComponents() {
 		stage.clear();
 
-		background = new Image(
-				new TextureRegion(
-						new Texture(
-								Gdx.files
-										.internal("data/images/objects/logo_shadow_struggles.png")),
-						512, 512));
+		background = new Image(new TextureRegion(new Texture(
+				Gdx.files.internal(FileMap.resourcesToDirectory
+						.get("game_ui_images") + "logo_shadow_struggles.png")),
+				512, 512));
 		background.setScaleX(960f / 512f);
 		background.setScaleY(640f / 512f);
 		background.setY(background.getImageY() + 100);
@@ -107,11 +100,12 @@ public class LoadingScreen extends BaseScreen {
 			game.setAudio(new SoundManager(game.getAssets()));
 			game.getAudio().setMusic("intro");
 			loader.instantiateScreens();
+			game.setLoader(loader);
 			game.setScreenWithTransition(StartScreen.getInstance(game,
 					game.getController()));
 		} else {
 			percent += 0.005f;
-			if(game.getAssets().getProgress() - percent > 0.0f)
+			if (game.getAssets().getProgress() - percent > 0.0f)
 				percent += (game.getAssets().getProgress() - percent) * 0.9f;
 			bar.update(percent);
 			bar.drawLabel(super.getSkin());

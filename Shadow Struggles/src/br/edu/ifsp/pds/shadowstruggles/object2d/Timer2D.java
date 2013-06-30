@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
-
 /***
  * A visual representation of the remaining time of the current match.
  */
@@ -18,7 +17,7 @@ public class Timer2D extends Label {
 	private int initialX;
 
 	public Timer2D(BaseScreen screen, int initialX) {
-		super("",screen.getSkin());
+		super("", screen.getSkin());
 
 		this.initialX = initialX;
 		this.setX(initialX);

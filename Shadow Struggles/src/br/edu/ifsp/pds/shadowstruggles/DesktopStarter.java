@@ -4,7 +4,6 @@ import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
-import com.badlogic.gdx.tools.imagepacker.TexturePacker2;
 
 public class DesktopStarter {
 
@@ -12,8 +11,8 @@ public class DesktopStarter {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-//		TexturePacker2.process("data/images/controls", "data/images/controls", "skin");
-//		TexturePacker2.process("data/images/objects", "data/images/objects", "objects");
+//		TexturePacker2.process("data/images/skin", "data/images/skin", "skin");
+//		TexturePacker2.process("data/images/game_ui_images", "data/images/game_ui_images", "game_ui_images");
 //        TexturePacker2.process("data/images/card_attacking", "data/images/card_attacking", "card_attacking");
 //        TexturePacker2.process("data/images/card_effects", "data/images/card_effects", "card_effects");
 //        TexturePacker2.process("data/images/card_images", "data/images/card_images", "card_images");

@@ -5,7 +5,6 @@ import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 /***
  * The pause button.
@@ -19,9 +18,7 @@ public class MenuButton extends FixedObject implements InputProcessor {
 	private ShadowStruggles game;
 
 	public MenuButton(Controller c, final ShadowStruggles game) {
-		super(game.getAssets()
-				.get("data/images/objects/objects.atlas", TextureAtlas.class)
-				.findRegion("pause"), 10);
+		super(game.getTextureRegion("pause", "game_ui_images"), 10);
 		this.setY(560);
 		this.game = game;
 		this.controller = c;
