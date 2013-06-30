@@ -3,6 +3,7 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
+import br.edu.ifsp.pds.shadowstruggles.data.FileMap;
 import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.Deck;
@@ -109,7 +110,7 @@ public class BattleScreen extends BaseScreen {
 		controller.setPlatform(battlePlatform);
 
 		this.battlePlatform = battlePlatform;
-		String mapPath = "data/images/maps/"
+		String mapPath = FileMap.resourcesToDirectory.get("battle_maps")
 				+ battlePlatform.getMap().getName() + ".png";
 		TextureRegion mapImage = new TextureRegion(new Texture(
 				Gdx.files.internal(mapPath)), settings.backgroundWidth / 2,

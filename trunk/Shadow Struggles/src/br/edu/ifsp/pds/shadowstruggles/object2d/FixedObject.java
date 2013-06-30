@@ -65,7 +65,8 @@ public abstract class FixedObject extends Image {
 
 	public void move(Stage st, int cameraInitialX) {
 		if (!draggable)
-			this.setX( this.initialX + st.getCamera().position.x - cameraInitialX);
+			this.setX(this.initialX + st.getCamera().position.x
+					- cameraInitialX);
 	}
 
 	public int getInitialX() {

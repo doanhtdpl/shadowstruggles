@@ -5,7 +5,6 @@ import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
@@ -56,9 +55,7 @@ public class MainScreen extends BaseScreen {
 		if (game.getMode() == RunMode.DEBUG)
 			table.debug();
 
-		background = new Image(game.getAssets()
-				.get("data/images/objects/objects.atlas", TextureAtlas.class)
-				.findRegion("msbackground"));
+		background = new Image(this.getSkin().getDrawable("msbackground"));
 		background.setScaleX(960f / 512f);
 		background.setScaleY(640f / 380f);
 

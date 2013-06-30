@@ -9,7 +9,6 @@ import br.edu.ifsp.pds.shadowstruggles.rpg.RpgController;
 import br.edu.ifsp.pds.shadowstruggles.screens.rpg.RpgScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -77,9 +76,7 @@ public class FreePlayScreen extends BaseScreen {
 	}
 
 	public void initComponents() {
-		background = new Image(game.getAssets()
-				.get("data/images/objects/objects.atlas", TextureAtlas.class)
-				.findRegion("msbackground"));
+		background = new Image(this.getSkin().getDrawable("msbackground"));
 		background.setScaleX(960f / 512f);
 		background.setScaleY(640f / 380f);
 		stage.addActor(background);

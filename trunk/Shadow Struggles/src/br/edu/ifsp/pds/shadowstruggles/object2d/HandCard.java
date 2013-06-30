@@ -6,7 +6,6 @@ import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.BattleScreen;
 
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -35,14 +34,12 @@ public class HandCard extends FixedObject implements InputProcessor {
 	private TextureRegion illustration;
 
 	public HandCard(ShadowStruggles game, String name, int initialX, Card card) {
-		super(game.getAssets()
-				.get("data/images/cards/cards.atlas", TextureAtlas.class)
-				.findRegion(name.toLowerCase()), initialX, true);
+		super(game.getTextureRegion(name.toLowerCase(), "cards"),
+				initialX, true);
 		this.setSize(360, 480);
 
-		this.illustration = game.getAssets()
-				.get("data/images/cards/cards.atlas", TextureAtlas.class)
-				.findRegion(name.toLowerCase());
+		this.illustration = game.getTextureRegion(name.toLowerCase(),
+				"cards");
 		((TextureRegionDrawable) super.getDrawable()).setRegion(illustration);
 
 		this.card = card;
@@ -178,7 +175,7 @@ public class HandCard extends FixedObject implements InputProcessor {
 						isSelected = false;
 
 					if (isSelected) {
-						
+
 						clicked();
 						startBlink();
 					} else {
@@ -198,13 +195,12 @@ public class HandCard extends FixedObject implements InputProcessor {
 
 		return false;
 	}
-	
-	public void clicked(){
-		game.getController().handCardClicked(getCard(),
-				isSelected);
+
+	public void clicked() {
+		game.getController().handCardClicked(getCard(), isSelected);
 	}
-	
-	public void unSelect(){
+
+	public void unSelect() {
 		resetPosition();
 		game.getController().getPlatform().setSelectedCard(null);
 		((BattleScreen) (game.getController().getCurrentScreen()))

@@ -2,13 +2,10 @@ package br.edu.ifsp.pds.shadowstruggles.object2d.rpg;
 
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character.WalkDirection;
-import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgPlatform;
 import br.edu.ifsp.pds.shadowstruggles.rpg.RpgController;
-import br.edu.ifsp.pds.shadowstruggles.screens.rpg.RpgScreen;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Array;
@@ -45,9 +42,7 @@ public class Character2D extends Image implements ApplicationListener {
 	private int size = 64;
 
 	public Character2D(RpgController rpgController, ShadowStruggles game) {
-		super(game.getAssets()
-				.get("data/images/char/char.atlas", TextureAtlas.class)
-				.findRegion("char_down"));
+		super(game.getTextureRegion("char_down", "char"));
 		this.game = game;
 		this.setSize(size, size);
 		this.setScale(1.0f, 1.0f);
@@ -75,18 +70,10 @@ public class Character2D extends Image implements ApplicationListener {
 
 	@Override
 	public void create() {
-		walkSheet_left = game.getAssets()
-				.get("data/images/char/char.atlas", TextureAtlas.class)
-				.findRegion("char_left");
-		walkSheet_up = game.getAssets()
-				.get("data/images/char/char.atlas", TextureAtlas.class)
-				.findRegion("char_up");
-		walkSheet_right = game.getAssets()
-				.get("data/images/char/char.atlas", TextureAtlas.class)
-				.findRegion("char_right");
-		walkSheet_down = game.getAssets()
-				.get("data/images/char/char.atlas", TextureAtlas.class)
-				.findRegion("char_down");
+		walkSheet_left = game.getTextureRegion("char_left", "char");
+		walkSheet_up = game.getTextureRegion("char_up", "char");
+		walkSheet_right = game.getTextureRegion("char_right", "char");
+		walkSheet_down = game.getTextureRegion("char_down", "char");
 
 		TextureRegion[][] aux_left = walkSheet_left.split(size, size);
 		TextureRegion[][] aux_up = walkSheet_up.split(size, size);

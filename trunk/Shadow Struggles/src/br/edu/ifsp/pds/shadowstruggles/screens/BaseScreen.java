@@ -2,6 +2,7 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.data.FileMap;
 import br.edu.ifsp.pds.shadowstruggles.data.Settings;
 
 import com.badlogic.gdx.Gdx;
@@ -23,7 +24,7 @@ public abstract class BaseScreen implements Screen {
 	private SpriteBatch batch;
 	private Skin skin;
 	private TextureAtlas atlas;
-	
+
 	protected final ShadowStruggles game;
 	protected final MyStage stage;
 	protected BitmapFont font;
@@ -67,8 +68,9 @@ public abstract class BaseScreen implements Screen {
 	public Skin getSkin() {
 		if (skin == null) {
 			skin = new Skin(Gdx.files.internal("data/files/skin.json"),
-					new TextureAtlas(Gdx.files
-							.internal("data/images/controls/skin.atlas")));
+					new TextureAtlas(
+							Gdx.files.internal(FileMap.resourcesToDirectory
+									.get("skin") + "skin.atlas")));
 		}
 
 		return skin;
@@ -95,7 +97,7 @@ public abstract class BaseScreen implements Screen {
 		}
 		return atlas;
 	}
-	
+
 	protected String getName() {
 		return getClass().getSimpleName();
 	}

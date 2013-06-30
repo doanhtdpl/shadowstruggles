@@ -2,7 +2,6 @@ package br.edu.ifsp.pds.shadowstruggles.object2d;
 
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 /**
@@ -12,11 +11,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 public class Hexagram extends Image {
 
 	public Hexagram(float x, float y, ShadowStruggles game) {
-		super(game.getAssets()
-				.get("data/images/objects/objects.atlas", TextureAtlas.class)
-				.findRegion("hexagram"));
-		this.setScaleX (((float) game.getManager().getSettings().tileWidth*2 / (float) 128));
-		this.setScaleY( ((float) game.getManager().getSettings().tileHeight / (float) 128));
+		super(game.getTextureRegion("hexagram", "game_ui_images"));
+		this.setScaleX(((float) game.getManager().getSettings().tileWidth * 2 / (float) 128));
+		this.setScaleY(((float) game.getManager().getSettings().tileHeight / (float) 128));
 		this.setX(x);
 		this.setY(y);
 		this.setVisible(false);

@@ -4,7 +4,6 @@ import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
 
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 /**
@@ -16,10 +15,9 @@ public class BackCard extends Image implements InputProcessor {
 	private Card card;
 
 	public BackCard(float x, float y, ShadowStruggles game) {
-		super(game.getAssets()
-				.get("data/images/objects/objects.atlas", TextureAtlas.class)
-				.findRegion("back_card"));
-		this.setScaleX( game.getManager().getSettings().tileWidth / this.getWidth());
+		super(game.getTextureRegion("back_card", "game_ui_images"));
+		this.setScaleX(game.getManager().getSettings().tileWidth
+				/ this.getWidth());
 		this.setX(x);
 		this.setY(y);
 		this.setVisible(false);
@@ -48,34 +46,33 @@ public class BackCard extends Image implements InputProcessor {
 		return false;
 	}
 
-
 	@Override
 	public boolean keyDown(int keycode) {
-		
+
 		return false;
 	}
 
 	@Override
 	public boolean keyUp(int keycode) {
-		
+
 		return false;
 	}
 
 	@Override
 	public boolean keyTyped(char character) {
-		
+
 		return false;
 	}
 
 	@Override
 	public boolean mouseMoved(int screenX, int screenY) {
-		
+
 		return false;
 	}
 
 	@Override
 	public boolean scrolled(int amount) {
-		
+
 		return false;
 	}
 }

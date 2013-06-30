@@ -5,7 +5,6 @@ import br.edu.ifsp.pds.shadowstruggles.screens.SceneScreen;
 
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 /**
  * A TransitionControl object is an arrow pointing either to the right or left,

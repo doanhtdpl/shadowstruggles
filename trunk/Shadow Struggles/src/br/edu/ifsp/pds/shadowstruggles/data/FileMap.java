@@ -49,10 +49,12 @@ public class FileMap {
 		classToFile.put(TutorialDialog.class, "data/files/tutorial.json");
 		
 		resourcesToDirectory.put("battle_maps", "data/images/battle_maps/");
+		resourcesToDirectory.put("char", "data/images/char/");
 		resourcesToDirectory.put("card_attacking", "data/images/card_attacking/");
 		resourcesToDirectory.put("card_effects", "data/images/card_effects/");
 		resourcesToDirectory.put("card_images", "data/images/card_images/");
 		resourcesToDirectory.put("card_walking", "data/images/card_walking/");
+		resourcesToDirectory.put("cards", "data/images/cards/");
 		resourcesToDirectory.put("game_ui_images", "data/images/game_ui_images/");
 		resourcesToDirectory.put("novel_images", "data/images/novel_images/");
 		resourcesToDirectory.put("rpg_maps", "data/images/rpg_maps/");

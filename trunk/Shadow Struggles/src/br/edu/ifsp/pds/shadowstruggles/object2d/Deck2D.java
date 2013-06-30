@@ -4,7 +4,6 @@ import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
@@ -20,9 +19,7 @@ public class Deck2D extends FixedObject implements InputProcessor {
 	private ShadowStruggles game;
 
 	public Deck2D(ShadowStruggles game, int initialX) {
-		super(game.getAssets()
-				.get("data/images/objects/objects.atlas", TextureAtlas.class)
-				.findRegion("deck"), initialX);
+		super(game.getTextureRegion("deck", "game_ui_images"), initialX);
 
 		this.setScaleX(SCALE_X);
 		this.setScaleY(SCALE_Y);
@@ -44,17 +41,13 @@ public class Deck2D extends FixedObject implements InputProcessor {
 		this.ready = ready;
 
 		if (ready) {
-			this.setDrawable(new TextureRegionDrawable(game
-					.getAssets()
-					.get("data/images/objects/objects.atlas",
-							TextureAtlas.class).findRegion("deck")));
+			this.setDrawable(new TextureRegionDrawable(game.getTextureRegion(
+					"deck", "game_ui_images")));
 			startBlink();
 		}
 		if (!ready) {
-			this.setDrawable(new TextureRegionDrawable(game
-					.getAssets()
-					.get("data/images/objects/objects.atlas",
-							TextureAtlas.class).findRegion("deckNotReady")));
+			this.setDrawable(new TextureRegionDrawable(game.getTextureRegion(
+					"deckNotReady", "game_ui_images")));
 		}
 	}
 
