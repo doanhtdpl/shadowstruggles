@@ -3,7 +3,11 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
-import br.edu.ifsp.pds.shadowstruggles.data.SceneDAO;
+import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.LanguagesDAO;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.ProfileDAO;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.SceneDAO;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
 import com.badlogic.gdx.graphics.Color;
@@ -46,7 +50,7 @@ public class SettingsScreen extends BaseScreen {
 		super(game, controller);
 		this.previousScreen = screen;
 	}
-	
+
 	public void setPreviousScreen(BaseScreen previousScreen) {
 		this.previousScreen = previousScreen;
 	}
@@ -64,7 +68,7 @@ public class SettingsScreen extends BaseScreen {
 		volumeTable.setX(130);
 		if (game.getMode() == RunMode.DEBUG)
 			volumeTable.debug();
-		
+
 		background = new Image(game.getAssets()
 				.get("data/images/objects/objects.atlas", TextureAtlas.class)
 				.findRegion("msbackground"));
@@ -101,8 +105,8 @@ public class SettingsScreen extends BaseScreen {
 			}
 		});
 
-		returnButton = new TextButton(
-				game.getManager().getMenuText().returnToStart, super.getSkin());
+		returnButton = new TextButton(MenuTextDAO.getMenuText().returnToStart,
+				super.getSkin());
 		returnButton = ScreenUtils.defineButton(returnButton, 100, 100, 300,
 				100, super.getSkin());
 		returnButton.addListener(new ClickListener() {
@@ -120,8 +124,7 @@ public class SettingsScreen extends BaseScreen {
 		volume.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
 				Color.BLACK));
 
-		volumeLabel = new Label(
-				this.getGame().getManager().getMenuText().volume,
+		volumeLabel = new Label(MenuTextDAO.getMenuText().volume,
 				super.getSkin());
 		volumeLabel.setStyle(new LabelStyle(super.getSkin().getFont(
 				"default-font"), Color.BLACK));
@@ -142,11 +145,11 @@ public class SettingsScreen extends BaseScreen {
 		languagesTable.setX(800);
 		if (game.getMode() == RunMode.DEBUG)
 			languagesTable.debug();
-		
+
 		this.languages = new Array<TextButton>();
 		int i = 0;
 		stage.addActor(background);
-		for (Entry<String, String> language : game.getManager().getLanguages()
+		for (Entry<String, String> language : LanguagesDAO.getLanguages()
 				.entries()) {
 			final String lang = language.value;
 			TextButton button = new TextButton(language.key, super.getSkin());
@@ -157,13 +160,12 @@ public class SettingsScreen extends BaseScreen {
 				@Override
 				public void clicked(InputEvent event, float x, float y) {
 					game.getAudio().playSound("button_7");
-					game.getManager().changeLanguage(lang);
+					DataManager.getInstance().changeLanguage(lang);
 					game.getProfile().setLanguage(lang);
 					game.getProfile().setCurrentScene(
 							SceneDAO.getScene(game.getProfile()
-									.getCurrentScene().getId(),
-									game.getManager()));
-					game.getManager().writeProfile(game.getProfile());
+									.getCurrentScene().getId()));
+					ProfileDAO.createProfile(game.getProfile());
 					game.setScreenWithTransition(new SettingsScreen(game,
 							controller, previousScreen));
 
@@ -172,10 +174,10 @@ public class SettingsScreen extends BaseScreen {
 			this.languages.add(button);
 			languagesTable.add(button).width(300).height(80);
 			languagesTable.row();
-			
+
 			i++;
 		}
-		
+
 		volumeTable.add(settingsLabel);
 		volumeTable.row();
 		volumeTable.add(soundOnOff).width(100).height(100);
@@ -184,7 +186,7 @@ public class SettingsScreen extends BaseScreen {
 		volumeTable.add(volumeMinus).width(100).height(100);
 		volumeTable.add(volume).width(50).height(100);
 		volumeTable.add(volumePlus).width(100).height(100);
-		
+
 		Table returnTable = new Table();
 		returnTable.defaults().width(200).height(100);
 		returnTable.setX(200);
@@ -192,7 +194,6 @@ public class SettingsScreen extends BaseScreen {
 		returnTable.add(returnButton);
 		if (game.getMode() == RunMode.DEBUG)
 			returnTable.debug();
-		
 
 		stage.addActor(volumeTable);
 		stage.addActor(languagesTable);
@@ -202,7 +203,7 @@ public class SettingsScreen extends BaseScreen {
 	private void updateVolume() {
 		this.volume.setText(game.getAudio().getVolumeNumber());
 	}
-	
+
 	@Override
 	public void render(float delta) {
 		super.render(delta);

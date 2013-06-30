@@ -2,7 +2,8 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
-import br.edu.ifsp.pds.shadowstruggles.data.SceneDAO;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.SceneDAO;
 import br.edu.ifsp.pds.shadowstruggles.games.Practice;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
@@ -51,7 +52,7 @@ public class VictoryScreen extends BaseScreen {
 		this.battleScreen = battleScreen;
 		this.message = message;
 	}
-	
+
 	public void setMessage(String message) {
 		this.message = message;
 	}
@@ -59,11 +60,11 @@ public class VictoryScreen extends BaseScreen {
 	public void setBattleScreen(BattleScreen battleScreen) {
 		this.battleScreen = battleScreen;
 	}
-	
+
 	public void setIsInCampaign(boolean isInCampaign) {
 		this.isInCampaign = isInCampaign;
 	}
-	
+
 	public void initComponents() {
 		background = new Image(game.getAssets()
 				.get("data/images/objects/objects.atlas", TextureAtlas.class)
@@ -71,10 +72,10 @@ public class VictoryScreen extends BaseScreen {
 		background.setScaleX(960f / 512f);
 		background.setScaleY(640f / 380f);
 
-		mainMenu = new TextButton(
-				game.getManager().getMenuText().mainMenuButton, super.getSkin());
-		mainMenu = ScreenUtils.defineButton(mainMenu, 500, 100, game
-				.getManager().getMenuText().mainMenuButton.length() * 32, 100,
+		mainMenu = new TextButton(MenuTextDAO.getMenuText().mainMenuButton,
+				super.getSkin());
+		mainMenu = ScreenUtils.defineButton(mainMenu, 500, 100,
+				MenuTextDAO.getMenuText().mainMenuButton.length() * 32, 100,
 				super.getSkin());
 		mainMenu.setClip(true);
 
@@ -100,8 +101,7 @@ public class VictoryScreen extends BaseScreen {
 
 		if (isInCampaign) {
 			continueButton = new TextButton(
-					game.getManager().getMenuText().continueButton,
-					super.getSkin());
+					MenuTextDAO.getMenuText().continueButton, super.getSkin());
 			continueButton = ScreenUtils.defineButton(continueButton, 100, 100,
 					300, 100, super.getSkin());
 			continueButton.addListener(new ClickListener() {
@@ -120,14 +120,14 @@ public class VictoryScreen extends BaseScreen {
 			// Moves the plot forward to the next scene.
 			game.getProfile().setCurrentScene(
 					SceneDAO.getScene(game.getProfile().getCurrentScene()
-							.getNextId(), game.getManager()));
+							.getNextId()));
 			// ProfileDAO.createProfile(game.getProfile(), game.getManager());
 
 			// Adds the battles to the array of fought battles.
 			if (battleScreen.getClass() == Practice.class) {
 				if (!game.getProfile().getBattlesFought().contains(1f, true)) {
 					game.getProfile().getBattlesFought().add(1f);
-					// game.getManager().writeProfile(game.getProfile());
+					// MenuTextDAO.writeProfile(game.getProfile());
 				}
 			}
 		}

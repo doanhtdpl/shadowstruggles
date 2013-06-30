@@ -1,9 +1,9 @@
 package br.edu.ifsp.pds.shadowstruggles.model;
 
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
-import br.edu.ifsp.pds.shadowstruggles.data.EffectDAO;
-import br.edu.ifsp.pds.shadowstruggles.data.FighterDAO;
-import br.edu.ifsp.pds.shadowstruggles.data.TrapDAO;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.EffectDAO;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.FighterDAO;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.TrapDAO;
 
 import com.badlogic.gdx.utils.Array;
 
@@ -15,13 +15,13 @@ public class Shop {
 	public Shop(ShadowStruggles game) {
 		this.profile = game.getProfile();
 		availableCards = new Array<Card>();
-		for (Fighter fighter : FighterDAO.getFighters(game.getManager())) {
+		for (Fighter fighter : FighterDAO.getFighters()) {
 			availableCards.add(fighter);
 		}
-		for (Effect effect : EffectDAO.getEffects(game.getManager())) {
+		for (Effect effect : EffectDAO.getEffects()) {
 			availableCards.add(effect);
 		}
-		for (Trap trap : TrapDAO.getTraps(game.getManager())) {
+		for (Trap trap : TrapDAO.getTraps()) {
 			availableCards.add(trap);
 		}
 

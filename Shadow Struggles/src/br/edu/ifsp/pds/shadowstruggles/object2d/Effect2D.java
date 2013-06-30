@@ -3,6 +3,7 @@ package br.edu.ifsp.pds.shadowstruggles.object2d;
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.data.Settings;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.Effect;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -33,7 +34,7 @@ public class Effect2D extends Image {
 		this.setSize(64, 64);
 		this.effect = effect;
 		this.game = game;
-		this.settings = game.getManager().getSettings();
+		this.settings = SettingsDAO.getSettings();
 	}
 
 	public void create() {
@@ -56,7 +57,7 @@ public class Effect2D extends Image {
 		stateTime = 0f;
 		this.setX(settings.tileHeight * 2 + (effect.getTile())
 				* settings.tileWidth);
-		this.setY(settings.screenHeight - settings.backgroundHeight
+		this.setY(settings.mapHeight - settings.backgroundHeight
 				+ settings.tileHeight + (this.effect.getLane())
 				* settings.tileHeight * 3 / 2);
 		animation = new Animation(0.075f, animationFrames);

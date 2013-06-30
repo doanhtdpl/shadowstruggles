@@ -4,6 +4,7 @@ import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Json.Serializable;
 import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.ObjectMap;
+import com.badlogic.gdx.utils.ObjectMap.Entries;
 
 /**
  * This class manages the reading/writing of  a language.
@@ -23,14 +24,16 @@ public class Languages implements Serializable{
 
 	}
 
-	
-
 	public String get(String name) {
 		return language.get(name);
 	}
 
 	public ObjectMap<String, String> getLanguages() {
 		return language;
+	}
+	
+	public Entries<String, String> entries() {
+		return language.entries();
 	}
 
 	@SuppressWarnings("unchecked")

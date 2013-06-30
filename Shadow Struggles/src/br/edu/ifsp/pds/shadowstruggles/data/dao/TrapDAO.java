@@ -1,5 +1,6 @@
-package br.edu.ifsp.pds.shadowstruggles.data;
+package br.edu.ifsp.pds.shadowstruggles.data.dao;
 
+import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
 import br.edu.ifsp.pds.shadowstruggles.model.Trap;
 
 import com.badlogic.gdx.utils.Array;
@@ -10,10 +11,11 @@ import com.badlogic.gdx.utils.Array;
 
 public class TrapDAO {
 
-	public static Trap getTrap(String key, DataManager manager) {
+	public static Trap getTrap(String key) {
 		Trap trap = null;
 
-		Array<Trap> cards = manager.getTrapList();
+		@SuppressWarnings("unchecked")
+		Array<Trap> cards = DataManager.getInstance().getObjectSet(Trap.class);
 		for (Trap card : cards) {
 			if (card.getName().equals(key)) {
 				/*
@@ -30,7 +32,8 @@ public class TrapDAO {
 		return trap;
 	}
 
-	public static Array<Trap> getTraps(DataManager manager) {
-		return manager.getTrapList();
+	@SuppressWarnings("unchecked")
+	public static Array<Trap> getTraps() {
+		return DataManager.getInstance().getObjectSet(Trap.class);
 	}
 }

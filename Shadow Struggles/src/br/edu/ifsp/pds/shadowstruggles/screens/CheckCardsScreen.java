@@ -2,7 +2,7 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
-import br.edu.ifsp.pds.shadowstruggles.data.DeckDAO;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.DeckDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Arrow;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
@@ -134,11 +134,10 @@ public class CheckCardsScreen extends BaseScreen {
 		cards.add(DeckDAO
 				.getDeck(
 						menu.getController().getPlatform().getPlayerDeck()
-								.getName(), game.getManager()).getCards()
-				.get(0));
+								.getName()).getCards().get(0));
 		for (Card nextCard : DeckDAO.getDeck(
-				menu.getController().getPlatform().getPlayerDeck().getName(),
-				game.getManager()).getCards()) {
+				menu.getController().getPlatform().getPlayerDeck().getName())
+				.getCards()) {
 			boolean b = true;
 			for (Card card : cards) {
 				if (card.getName().equals(nextCard.getName())) {

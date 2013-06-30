@@ -1,5 +1,6 @@
-package br.edu.ifsp.pds.shadowstruggles.data;
+package br.edu.ifsp.pds.shadowstruggles.data.dao;
 
+import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
 import br.edu.ifsp.pds.shadowstruggles.model.Effect;
 import com.badlogic.gdx.utils.Array;
 
@@ -8,10 +9,11 @@ import com.badlogic.gdx.utils.Array;
  */
 public class EffectDAO {
 
-	public static Effect getEffect(String key, DataManager manager) {
+	public static Effect getEffect(String key) {
 		Effect card = null;
 
-		Array<Effect> cards = manager.getEffectList();
+		@SuppressWarnings("unchecked")
+		Array<Effect> cards = DataManager.getInstance().getObjectSet(Effect.class);
 		for (Effect effect : cards) {
 			if (effect.getName().equals(key)) {
 				/*
@@ -28,8 +30,9 @@ public class EffectDAO {
 		return card;
 	}
 
-	public static Array<Effect> getEffects(DataManager manager) {
-		return manager.getEffectList();
+	@SuppressWarnings("unchecked")
+	public static Array<Effect> getEffects() {
+		return DataManager.getInstance().getObjectSet(Effect.class);
 	}
 
 }

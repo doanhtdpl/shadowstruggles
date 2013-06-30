@@ -3,18 +3,20 @@ package br.edu.ifsp.pds.shadowstruggles.data;
 import java.util.HashMap;
 
 import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
-import br.edu.ifsp.pds.shadowstruggles.model.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.Deck;
+import br.edu.ifsp.pds.shadowstruggles.model.Effect;
+import br.edu.ifsp.pds.shadowstruggles.model.Fighter;
+import br.edu.ifsp.pds.shadowstruggles.model.Profile;
+import br.edu.ifsp.pds.shadowstruggles.model.Trap;
 import br.edu.ifsp.pds.shadowstruggles.model.TutorialDialog;
 import br.edu.ifsp.pds.shadowstruggles.model.enemies.Enemy;
 import br.edu.ifsp.pds.shadowstruggles.model.events.Event;
 import br.edu.ifsp.pds.shadowstruggles.model.items.Item;
 import br.edu.ifsp.pds.shadowstruggles.model.items.Pack;
 import br.edu.ifsp.pds.shadowstruggles.model.items.Shop;
-import br.edu.ifsp.pds.shadowstruggles.model.profiles.Profile;
 import br.edu.ifsp.pds.shadowstruggles.model.quests.Quest;
 import br.edu.ifsp.pds.shadowstruggles.model.scenes.Ending;
-import br.edu.ifsp.pds.shadowstruggles.model.scenes.Scene;
+import br.edu.ifsp.pds.shadowstruggles.model.Scene;
 
 /**
  * Provides an easy access to the directory structure by mapping classes and
@@ -33,19 +35,21 @@ public class FileMap {
 		resourcesToDirectory.put("sound_effects", "data/audio/sound_effects/");
 		resourcesToDirectory.put("soundtrack", "data/audio/soundtrack/");
 		
-		classToFile.put(BattlePlatform.class, "data/files/battles.json");
-		classToFile.put(Card.class, "data/files/cards.json");
+//		classToFile.put(BattlePlatform.class, "data/files/battles.json");
+		classToFile.put(Fighter.class, "data/files/fighters.json");
+		classToFile.put(Effect.class, "data/files/effects.json");
+		classToFile.put(Trap.class, "data/files/traps.json");
 		classToFile.put(Deck.class, "data/files/decks.json");
-		classToFile.put(Ending.class, "data/files/endings.json");
-		classToFile.put(Enemy.class, "data/files/enemies.json");
-		classToFile.put(Event.class, "data/files/events.json");
-		classToFile.put(Item.class, "data/files/items.json");
+//		classToFile.put(Ending.class, "data/files/endings.json");
+//		classToFile.put(Enemy.class, "data/files/enemies.json");
+//		classToFile.put(Event.class, "data/files/events.json");
+//		classToFile.put(Item.class, "data/files/items.json");
 		classToFile.put(MenuText.class, "data/files/menu_text.json");
-		classToFile.put(Pack.class, "data/files/packs.json");
+//		classToFile.put(Pack.class, "data/files/packs.json");
 		classToFile.put(Profile.class, "data/files/profiles.json");
-		classToFile.put(Quest.class, "data/files/quests.json");
+//		classToFile.put(Quest.class, "data/files/quests.json");
 		classToFile.put(Scene.class, "data/files/scenes.json");
-		classToFile.put(Shop.class, "data/files/shops.json");
+//		classToFile.put(Shop.class, "data/files/shops.json");
 		classToFile.put(TutorialDialog.class, "data/files/tutorial.json");
 		
 		resourcesToDirectory.put("battle_maps", "data/images/battle_maps/");
@@ -61,5 +65,6 @@ public class FileMap {
 		resourcesToDirectory.put("skin", "data/images/skin/");
 
 		classToFile.put(Languages.class, "data/languages.json");
+		classToFile.put(Settings.class, "data/game_settings.json");
 	}
 }

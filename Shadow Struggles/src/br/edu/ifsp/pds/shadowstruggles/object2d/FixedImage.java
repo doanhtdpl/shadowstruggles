@@ -1,5 +1,6 @@
 package br.edu.ifsp.pds.shadowstruggles.object2d;
 
+import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 
 import com.badlogic.gdx.InputProcessor;
@@ -21,44 +22,38 @@ public class FixedImage extends Image implements InputProcessor {
 		this.screen = screen;
 	}
 
-/*	*//**
-	 * Standard constructor. It assumes that the object will never be moved,
-	 * even with user interaction.
+	/*	*//**
+	 * Standard constructor. It assumes that the object will never be
+	 * moved, even with user interaction.
 	 * 
 	 * @param initialX
-	 *//*
-	public FixedImage(int initialX) {
-		this(initialX, false);
-	}
-
-	*//**
-	 * Alternative constructor for objects which the player may interact with.
+	 */
+	/*
+	 * public FixedImage(int initialX) { this(initialX, false); }
+	 *//**
+	 * Alternative constructor for objects which the player may interact
+	 * with.
 	 * 
 	 * @param draggable
 	 *            Indicates whether the object is draggable or not.
-	 *//*
-	public FixedImage(int initialX, boolean draggable) {
-		this.initialX = initialX;
-		this.draggable = draggable;
-	}
-
-	*//**
+	 */
+	/*
+	 * public FixedImage(int initialX, boolean draggable) { this.initialX =
+	 * initialX; this.draggable = draggable; }
+	 *//**
 	 * Standard constructor with TextureRegion.
-	 *//*
-	public FixedImage(TextureRegion textureRegion, int initialX) {
-		this(textureRegion, initialX, false);
-	}
-
-	*//**
+	 */
+	/*
+	 * public FixedImage(TextureRegion textureRegion, int initialX) {
+	 * this(textureRegion, initialX, false); }
+	 *//**
 	 * Alternative constructor with TextureRegion.
-	 *//*
-	public FixedImage(TextureRegion textureRegion, int initialX,
-			boolean draggable) {
-		super(textureRegion);
-		this.initialX = initialX;
-		this.setX(initialX);
-		this.draggable = draggable;
-	}*/
+	 */
+	/*
+	 * public FixedImage(TextureRegion textureRegion, int initialX, boolean
+	 * draggable) { super(textureRegion); this.initialX = initialX;
+	 * this.setX(initialX); this.draggable = draggable; }
+	 */
 
 	/***
 	 * This should be called whenever the camera is updated. The object's
@@ -97,19 +92,19 @@ public class FixedImage extends Image implements InputProcessor {
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		int deltaCamX = (int) (screen.getCamera().position.x - BaseScreen.CAMERA_INITIAL_X);
-		int invertY = (int) ((screen.getHeight() - screenY) * (float) ((float) screen
-				.getSettings().screenHeight / (float) screen.getHeight()));
-		screenX = (int) (screenX * (float) ((float) screen.getSettings().screenWidth / (float) screen
+		int invertY = (int) ((screen.getHeight() - screenY) * (float) ((float) SettingsDAO
+				.getSettings().mapHeight / (float) screen.getHeight()));
+		screenX = (int) (screenX * (float) ((float) SettingsDAO.getSettings().mapWidth / (float) screen
 				.getWidth()));
 
 		if (screenX + deltaCamX >= this.getX()
-				&& screenX + deltaCamX <= this.getX() + this.getWidth() * getScaleX()
-				&& invertY >= this.getY()
+				&& screenX + deltaCamX <= this.getX() + this.getWidth()
+						* getScaleX() && invertY >= this.getY()
 				&& invertY <= this.getY() + this.getHeight() * getScaleY()) {
-			touched = true;			
+			touched = true;
 			if (!justTouched) {
 				justTouched = true;
-			}			
+			}
 			return true;
 		}
 
@@ -119,16 +114,17 @@ public class FixedImage extends Image implements InputProcessor {
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
 		int deltaCamX = (int) (screen.getCamera().position.x - BaseScreen.CAMERA_INITIAL_X);
-		int invertY = (int) ((screen.getHeight() - screenY) * (float) ((float) screen.getSettings().screenHeight / (float) screen.getHeight()));
-		screenX = (int) (screenX * (float) ((float) screen
-				.getSettings().screenWidth / (float) screen.getWidth()));
+		int invertY = (int) ((screen.getHeight() - screenY) * (float) ((float) SettingsDAO
+				.getSettings().mapHeight / (float) screen.getHeight()));
+		screenX = (int) (screenX * (float) ((float) SettingsDAO.getSettings().mapWidth / (float) screen
+				.getWidth()));
 
 		if (touched) {
 			if (screenX + deltaCamX >= this.getX()
 					&& screenX + deltaCamX <= this.getX() + this.getWidth()
 							* getScaleX() && invertY >= this.getY()
 					&& invertY <= this.getY() + this.getHeight() * getScaleY()) {
-				
+
 				clicked();
 			}
 			touched = false;
@@ -153,7 +149,7 @@ public class FixedImage extends Image implements InputProcessor {
 	public boolean scrolled(int amount) {
 		return false;
 	}
-	
+
 	public void setInitialX(int initialX) {
 		this.initialX = initialX;
 	}

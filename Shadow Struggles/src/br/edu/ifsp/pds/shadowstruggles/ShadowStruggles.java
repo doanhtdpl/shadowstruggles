@@ -35,7 +35,6 @@ public class ShadowStruggles extends Game {
 
 	private Controller controller;
 	private Profile profile;
-	private DataManager manager;
 	private SoundManager audio;
 	private AssetManager assets;
 	private RunMode mode;
@@ -51,7 +50,6 @@ public class ShadowStruggles extends Game {
 
 	@Override
 	public void create() {
-		this.manager = new DataManager();
 		this.audio = new SoundManager(assets);
 		this.controller = Controller.getInstance();
 		this.setAssets(new AssetManager());
@@ -163,11 +161,7 @@ public class ShadowStruggles extends Game {
 	public Profile getProfile() {
 		return this.profile;
 	}
-
-	public DataManager getManager() {
-		return this.manager;
-	}
-
+	
 	public void setAudio(SoundManager audio) {
 		this.audio = audio;
 	}

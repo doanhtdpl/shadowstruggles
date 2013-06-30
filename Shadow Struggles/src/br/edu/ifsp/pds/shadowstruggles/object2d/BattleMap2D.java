@@ -2,6 +2,7 @@ package br.edu.ifsp.pds.shadowstruggles.object2d;
 
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.data.Settings;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.BattleScreen;
 
@@ -21,7 +22,7 @@ public class BattleMap2D extends Image implements InputProcessor {
 	private int touchX;
 
 	public BattleMap2D(final Controller controller, TextureRegion tRegion) {
-		super(tRegion);		
+		super(tRegion);
 		touched = false;
 		justTouched = false;
 		this.controller = controller;
@@ -29,11 +30,10 @@ public class BattleMap2D extends Image implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int x, int y, int pointer, int button) {
-		int invertY = (int) ((controller.getCurrentScreen().getHeight() - y) * (float) ((float) controller
-				.getCurrentScreen().getSettings().screenHeight / (float) controller
+		int invertY = (int) ((controller.getCurrentScreen().getHeight() - y) * (float) ((float) SettingsDAO
+				.getSettings().mapHeight / (float) controller
 				.getCurrentScreen().getHeight()));
-		x = (int) (x * (float) ((float) controller.getCurrentScreen()
-				.getSettings().screenWidth / (float) controller
+		x = (int) (x * (float) ((float) SettingsDAO.getSettings().mapWidth / (float) controller
 				.getCurrentScreen().getWidth()));
 
 		if (x >= 0 && x <= this.getWidth() && invertY >= this.getY()
@@ -53,11 +53,10 @@ public class BattleMap2D extends Image implements InputProcessor {
 
 	@Override
 	public boolean touchUp(int x, int y, int pointer, int button) {
-		int invertY = (int) ((controller.getCurrentScreen().getHeight() - y) * (float) ((float) controller
-				.getCurrentScreen().getSettings().screenHeight / (float) controller
+		int invertY = (int) ((controller.getCurrentScreen().getHeight() - y) * (float) ((float) SettingsDAO
+				.getSettings().mapHeight / (float) controller
 				.getCurrentScreen().getHeight()));
-		x = (int) (x * (float) ((float) controller.getCurrentScreen()
-				.getSettings().screenWidth / (float) controller
+		x = (int) (x * (float) ((float) SettingsDAO.getSettings().mapWidth / (float) controller
 				.getCurrentScreen().getWidth()));
 
 		if (touched) {
@@ -69,12 +68,11 @@ public class BattleMap2D extends Image implements InputProcessor {
 						- 480, invertY - 160);
 			}
 			touched = false;
-		} else 
+		} else
 
 			controller.mapClicked(x
 					+ controller.getCurrentScreen().getCamera().position.x
 					- 480, invertY - 160);
-		
 
 		justTouched = false;
 
@@ -83,36 +81,32 @@ public class BattleMap2D extends Image implements InputProcessor {
 
 	@Override
 	public boolean touchDragged(int x, int y, int pointer) {
-		int invertY = (int) ((controller.getCurrentScreen().getHeight() - y) * (float) ((float) controller
-				.getCurrentScreen().getSettings().screenHeight / (float) controller
+		int invertY = (int) ((controller.getCurrentScreen().getHeight() - y) * (float) ((float) SettingsDAO
+				.getSettings().mapHeight / (float) controller
 				.getCurrentScreen().getHeight()));
-		x = (int) (x * (float) ((float) controller.getCurrentScreen()
-				.getSettings().screenWidth / (float) controller
+		x = (int) (x * (float) ((float) SettingsDAO.getSettings().mapWidth / (float) controller
 				.getCurrentScreen().getWidth()));
 		if (touched) {
 			if (x >= 0 && x <= this.getWidth() && invertY >= this.getY()
 					&& invertY <= this.getY() + this.getHeight()) {
 
-				Settings settings = controller.getCurrentScreen().getSettings();
+				Settings settings = SettingsDAO.getSettings();
 				BaseScreen screen = controller.getCurrentScreen();
-				if (screen.getCamera().position.x
-						+ touchX - x > BaseScreen.CAMERA_INITIAL_X
-						&& screen.getCamera().position.x
-								+ touchX - x < settings.backgroundWidth
+				if (screen.getCamera().position.x + touchX - x > BaseScreen.CAMERA_INITIAL_X
+						&& screen.getCamera().position.x + touchX - x < settings.backgroundWidth
 								- BaseScreen.CAMERA_INITIAL_X) {
-					screen.getCamera().position.x += touchX
-							- x;
+					screen.getCamera().position.x += touchX - x;
 
 					// Render the screen again to avoid blinking.
 					moveFixedObjects();
 					this.touchX = x;
 				}
-				if(screen.getCamera().position.x
-								+ touchX - x > settings.backgroundWidth - settings.screenWidth/2){
-					screen.getCamera().position.x = settings.backgroundWidth - settings.screenWidth/2;
+				if (screen.getCamera().position.x + touchX - x > settings.backgroundWidth
+						- settings.mapWidth / 2) {
+					screen.getCamera().position.x = settings.backgroundWidth
+							- settings.mapWidth / 2;
 				}
-				if(screen.getCamera().position.x
-						+ touchX - x < BaseScreen.CAMERA_INITIAL_X){
+				if (screen.getCamera().position.x + touchX - x < BaseScreen.CAMERA_INITIAL_X) {
 					screen.getCamera().position.x = BaseScreen.CAMERA_INITIAL_X;
 				}
 				return true;
@@ -121,10 +115,9 @@ public class BattleMap2D extends Image implements InputProcessor {
 
 		return false;
 	}
-	
-	public void moveFixedObjects(){
-		((BattleScreen) controller.getCurrentScreen())
-		.moveFixedObjects();
+
+	public void moveFixedObjects() {
+		((BattleScreen) controller.getCurrentScreen()).moveFixedObjects();
 	}
 
 	@Override
@@ -151,7 +144,5 @@ public class BattleMap2D extends Image implements InputProcessor {
 	public boolean scrolled(int amount) {
 		return false;
 	}
-
-	
 
 }

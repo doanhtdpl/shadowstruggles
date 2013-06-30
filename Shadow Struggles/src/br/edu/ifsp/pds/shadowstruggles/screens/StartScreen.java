@@ -3,8 +3,10 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
-import br.edu.ifsp.pds.shadowstruggles.data.ProfileDAO;
-import br.edu.ifsp.pds.shadowstruggles.data.SceneDAO;
+import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.ProfileDAO;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.SceneDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.Profile;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
@@ -68,9 +70,8 @@ public class StartScreen extends BaseScreen {
 		candle = new Image(this.getSkin().getDrawable("candle"));
 		tripod = new Image(this.getSkin().getDrawable("tripod"));
 
-		continueGame = new TextButton(
-				game.getManager().getMenuText().continueGame, this.getSkin()
-						.get("blur", TextButtonStyle.class));
+		continueGame = new TextButton(MenuTextDAO.getMenuText().continueGame,
+				this.getSkin().get("blur", TextButtonStyle.class));
 		continueGame.setX(100);
 		continueGame.setY(100);
 		continueGame.addListener(new ClickListener() {
@@ -80,14 +81,13 @@ public class StartScreen extends BaseScreen {
 			}
 		});
 
-		newGame = new TextButton(game.getManager().getMenuText().newGame, this
+		newGame = new TextButton(MenuTextDAO.getMenuText().newGame, this
 				.getSkin().get("blur", TextButtonStyle.class));
 		newGame.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float arg1, float arg2) {
 				try {
-					Array<Profile> profiles = ProfileDAO.getProfiles(game
-							.getManager());
+					Array<Profile> profiles = ProfileDAO.getProfiles();
 					ObjectMap<Integer, Profile> prof = new ObjectMap<Integer, Profile>();
 
 					for (Profile profile : profiles) {
@@ -101,14 +101,14 @@ public class StartScreen extends BaseScreen {
 					}
 
 					Profile newProfile = new Profile(id);
-					ProfileDAO.createProfile(newProfile, game.getManager());
+					ProfileDAO.createProfile(newProfile);
 					game.setProfile(newProfile);
 					game.getAudio().playSound("button_4");
 					game.setScreenWithTransition(MainScreen.getInstance(game,
 							controller));
 				} catch (Exception e) {
 					Profile newProfile = new Profile();
-					ProfileDAO.createProfile(newProfile, game.getManager());
+					ProfileDAO.createProfile(newProfile);
 					game.setProfile(newProfile);
 					game.getAudio().playSound("button_4");
 					game.setScreenWithTransition(MainScreen.getInstance(game,
@@ -166,9 +166,8 @@ public class StartScreen extends BaseScreen {
 				table.debug();
 			table.setPosition(480, 280);
 
-			if (game.getManager().profileExists()) {
-				Array<Profile> profiles = ProfileDAO.getProfiles(game
-						.getManager());
+			if (ProfileDAO.profileExists()) {
+				Array<Profile> profiles = ProfileDAO.getProfiles();
 
 				for (Profile profile : profiles) {
 					String text = String.valueOf(profile.getId()) + " - "
@@ -189,16 +188,12 @@ public class StartScreen extends BaseScreen {
 									.getListenerActor();
 							int id = Character.getNumericValue(tx.getText()
 									.charAt(0));
-							game.setProfile(ProfileDAO.getProfile(id,
-									game.getManager()));
-							game.getManager().changeLanguage(
-									ProfileDAO
-											.getProfile(id, game.getManager())
-											.getLanguage());
+							game.setProfile(ProfileDAO.getProfile(id));
+							DataManager.getInstance().changeLanguage(
+									ProfileDAO.getProfile(id).getLanguage());
 							game.getProfile().setCurrentScene(
 									SceneDAO.getScene(game.getProfile()
-											.getCurrentScene().getId(),
-											game.getManager()));
+											.getCurrentScene().getId()));
 							game.setScreenWithTransition(MainScreen
 									.getInstance(game, controller));
 						}

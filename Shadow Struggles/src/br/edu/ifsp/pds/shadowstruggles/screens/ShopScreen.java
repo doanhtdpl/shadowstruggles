@@ -2,6 +2,7 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.ProfileDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.Shop;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Arrow;
@@ -123,7 +124,7 @@ public class ShopScreen extends BaseScreen {
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_6");
 				game.setScreenWithTransition(menu);
-				game.getManager().writeProfile(game.getProfile());
+				ProfileDAO.createProfile(game.getProfile());
 			}
 		});
 
@@ -152,11 +153,11 @@ public class ShopScreen extends BaseScreen {
 		stage.addActor(exit);
 		stage.addActor(right);
 		stage.addActor(moneyLabel);
-		
+
 		cards = shop.getAvailableCards();
 		int count = 0;
 		cardImages = new Array<Image>();
-		
+
 		for (Card card : cards) {
 			Image cardImage = new Image(game.getAssets()
 					.get("data/images/cards/cards.atlas", TextureAtlas.class)

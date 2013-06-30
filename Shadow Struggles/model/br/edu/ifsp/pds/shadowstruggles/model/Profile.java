@@ -1,13 +1,13 @@
 package br.edu.ifsp.pds.shadowstruggles.model;
 
-import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
-import br.edu.ifsp.pds.shadowstruggles.data.DeckDAO;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.DeckDAO;
 
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Json.Serializable;
 import com.badlogic.gdx.utils.JsonValue;
 
+// TODO: Remover classe e substituir por model.profiles.Profile.
 /**
  * A class representing the player's data. There are multiple profiles
  * available, each for a different player or playthrough.
@@ -97,8 +97,8 @@ public class Profile implements Serializable, Comparable<Object> {
 		this.battlesFought = battlesFought;
 	}
 
-	public Deck getDeck(DataManager data) {
-		return DeckDAO.getDeck(deck, data);
+	public Deck getDeck() {
+		return DeckDAO.getDeck(deck);
 	}
 
 	public int getMoney() {

@@ -3,7 +3,6 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.data.FileMap;
-import br.edu.ifsp.pds.shadowstruggles.data.Settings;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -34,13 +33,11 @@ public abstract class BaseScreen implements Screen {
 	protected int screenWidth;
 	protected int screenHeight;
 	protected OrthographicCamera camera;
-	protected Settings settings;
 
 	public BaseScreen(ShadowStruggles game, Controller controller) {
 		this.game = game;
 		this.controller = controller;
 		this.controller.setCurrentscreen(this);
-		this.settings = game.getManager().getSettings();
 		this.stage = new MyStage(0, 0, true);
 		this.camera = new OrthographicCamera(this.width, this.height);
 		this.camera.position.set(CAMERA_INITIAL_X, CAMERA_INITIAL_Y, 0);
@@ -57,7 +54,6 @@ public abstract class BaseScreen implements Screen {
 	public BaseScreen(ShadowStruggles game) {
 		this.game = game;
 		this.stage = new MyStage(0, 0, true);
-		this.settings = game.getManager().getSettings();
 		this.camera = new OrthographicCamera(this.width, this.height);
 		this.camera.position.set(CAMERA_INITIAL_X, CAMERA_INITIAL_Y, 0);
 		this.camera.zoom = ((float) 960 / (float) width);
@@ -67,7 +63,7 @@ public abstract class BaseScreen implements Screen {
 
 	public Skin getSkin() {
 		if (skin == null) {
-			skin = new Skin(Gdx.files.internal("data/files/skin.json"),
+			skin = new Skin(Gdx.files.internal("data/skin.json"),
 					new TextureAtlas(
 							Gdx.files.internal(FileMap.resourcesToDirectory
 									.get("skin") + "skin.atlas")));
@@ -184,14 +180,6 @@ public abstract class BaseScreen implements Screen {
 
 	public void addGameObject(Image f2d) {
 		stage.addActor(f2d);
-	}
-
-	public Settings getSettings() {
-		return settings;
-	}
-
-	public void setSettings(Settings settings) {
-		this.settings = settings;
 	}
 
 	public int getHeight() {

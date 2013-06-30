@@ -1,4 +1,4 @@
-{"continueGame":"Continue",
+[{class:MenuText, "continueGame":"Continue",
 "newGame":"New Game",
 "returnToStart":"Return",
 "profile":"Profile",
@@ -21,4 +21,4 @@
 "retryButton":"Retry",
 "practiceBattle":"Practice",
 "newDeck":"New Deck"
-}
+}]

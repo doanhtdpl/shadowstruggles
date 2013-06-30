@@ -1,6 +1,7 @@
 package br.edu.ifsp.pds.shadowstruggles.object2d;
 
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.BattleScreen;
@@ -34,12 +35,11 @@ public class HandCard extends FixedObject implements InputProcessor {
 	private TextureRegion illustration;
 
 	public HandCard(ShadowStruggles game, String name, int initialX, Card card) {
-		super(game.getTextureRegion(name.toLowerCase(), "cards"),
-				initialX, true);
+		super(game.getTextureRegion(name.toLowerCase(), "cards"), initialX,
+				true);
 		this.setSize(360, 480);
 
-		this.illustration = game.getTextureRegion(name.toLowerCase(),
-				"cards");
+		this.illustration = game.getTextureRegion(name.toLowerCase(), "cards");
 		((TextureRegionDrawable) super.getDrawable()).setRegion(illustration);
 
 		this.card = card;
@@ -75,7 +75,7 @@ public class HandCard extends FixedObject implements InputProcessor {
 	public void resetPosition() {
 		this.setX(getInitialX()
 				+ (int) (game.getController().getCurrentScreen().getCamera().position.x - BaseScreen.CAMERA_INITIAL_X));
-		this.setY(game.getController().getCurrentScreen().getSettings().bottomElementY);
+		this.setY(SettingsDAO.getSettings().bottomElementY);
 		this.setScaleX(SCALE_X);
 		this.setScaleY(SCALE_Y);
 	}
@@ -118,14 +118,13 @@ public class HandCard extends FixedObject implements InputProcessor {
 	// ------------------------------------------------------------
 
 	private int getInvertY(int y) {
-		return (int) ((game.getController().getCurrentScreen().getHeight() - y) * (float) ((float) game
-				.getController().getCurrentScreen().getSettings().screenHeight / (float) game
-				.getController().getCurrentScreen().getHeight()));
+		return (int) ((game.getController().getCurrentScreen().getHeight() - y) * (float) ((float) SettingsDAO
+				.getSettings().mapHeight / (float) game.getController()
+				.getCurrentScreen().getHeight()));
 	}
 
 	private int calcX(int x) {
-		return (int) (x * (float) ((float) game.getController()
-				.getCurrentScreen().getSettings().screenWidth / (float) game
+		return (int) (x * (float) ((float) SettingsDAO.getSettings().mapWidth / (float) game
 				.getController().getCurrentScreen().getWidth()));
 	}
 

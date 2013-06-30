@@ -2,6 +2,7 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -31,13 +32,13 @@ public class DefeatScreen extends BaseScreen {
 			return instance;
 		}
 	}
-	
+
 	public void setBattleScreen(BattleScreen battleScreen) {
 		this.battleScreen = battleScreen;
 	}
-	
+
 	public void setMessage(String message) {
-		if(this.text != null)
+		if (this.text != null)
 			this.text.setText(message);
 		else
 			this.message = message;
@@ -57,8 +58,8 @@ public class DefeatScreen extends BaseScreen {
 		background.setScaleX(960f / 512f);
 		background.setScaleY(640f / 380f);
 
-		retryButton = new TextButton(
-				game.getManager().getMenuText().retryButton, super.getSkin());
+		retryButton = new TextButton(MenuTextDAO.getMenuText().retryButton,
+				super.getSkin());
 		retryButton = ScreenUtils.defineButton(retryButton, 100, 100, 300, 100,
 				super.getSkin());
 		retryButton.addListener(new ClickListener() {
@@ -69,10 +70,10 @@ public class DefeatScreen extends BaseScreen {
 				game.setScreenWithTransition((battleScreen).copy());
 			}
 		});
-		mainMenu = new TextButton(
-				game.getManager().getMenuText().mainMenuButton, super.getSkin());
-		mainMenu = ScreenUtils.defineButton(mainMenu, 500, 100, game
-				.getManager().getMenuText().mainMenuButton.length() * 32, 100,
+		mainMenu = new TextButton(MenuTextDAO.getMenuText().mainMenuButton,
+				super.getSkin());
+		mainMenu = ScreenUtils.defineButton(mainMenu, 500, 100,
+				MenuTextDAO.getMenuText().mainMenuButton.length() * 32, 100,
 				super.getSkin());
 		mainMenu.setClip(true);
 		mainMenu.addListener(new ClickListener() {

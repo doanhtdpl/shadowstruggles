@@ -1,5 +1,6 @@
 package br.edu.ifsp.pds.shadowstruggles;
 
+import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.Effect;
@@ -141,7 +142,7 @@ public class Controller {
 				((BattleScreen) currentScreen).insertHandCard(card);
 				platform.addPlayerHandCard(card);
 				battleScreen
-						.setTimeDelay((float) battleScreen.getSettings().drawInterval);
+						.setTimeDelay((float) SettingsDAO.getSettings().drawInterval);
 				battleScreen.getDeck().setReady(false);
 				battleScreen.getDeck().stopBlink();
 			}
@@ -289,7 +290,7 @@ public class Controller {
 			if (actor.getClass().equals(HandCard.class))
 				if (((HandCard) actor).getImageX() != ((HandCard) actor)
 						.getInitialX()
-						|| ((HandCard) actor).getImageY() != currentScreen
+						|| ((HandCard) actor).getImageY() != SettingsDAO
 								.getSettings().bottomElementY)
 					((HandCard) actor).resetPosition();
 	}

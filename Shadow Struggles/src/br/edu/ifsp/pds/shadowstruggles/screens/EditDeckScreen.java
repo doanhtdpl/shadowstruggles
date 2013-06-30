@@ -3,6 +3,8 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
+import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.Deck;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Arrow;
@@ -61,9 +63,9 @@ public class EditDeckScreen extends BaseScreen {
 
 	public void initComponents() {
 		stage.clear();
-		
+
 		final BaseScreen menu = this.previousScreen;
-		this.selectedDeck = game.getProfile().getDeck(game.getManager());
+		this.selectedDeck = game.getProfile().getDeck();
 		this.trunk = game.getProfile().getTrunk();
 		background = new Image(this.getSkin().getDrawable("msbackground"));
 		background.setScaleX(960f / 512f);
@@ -71,40 +73,39 @@ public class EditDeckScreen extends BaseScreen {
 
 		Table menuTable = new Table();
 		menuTable.defaults().padTop(10).width(160).height(50);
-		
+
 		if (game.getMode() == RunMode.DEBUG)
 			menuTable.debug();
-		
+
 		deckName = new Label("", super.getSkin());
 		deckName.setText("Select a Deck");
-		deckName.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
-				Color.BLACK));
-		
-		newDeck = new TextButton(game.getManager().getMenuText().newDeck, super.getSkin());
-		newDeck = ScreenUtils.defineButton(newDeck, 0, 0, 0,
-				0, super.getSkin());
-		//TODO: criar método para criacao de novos decks
-		
+		deckName.setStyle(new LabelStyle(super.getSkin()
+				.getFont("andalus-font"), Color.BLACK));
+
+		newDeck = new TextButton(MenuTextDAO.getMenuText().newDeck,
+				super.getSkin());
+		newDeck = ScreenUtils
+				.defineButton(newDeck, 0, 0, 0, 0, super.getSkin());
+		// TODO: criar método para criacao de novos decks
+
 		decks = new Label("", super.getSkin());
 		decks.setText("Deck B");
 		decks.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
 				Color.BLACK));
-		
-		exit = new TextButton(game.getManager().getMenuText().returnToStart, super.getSkin());
-		exit = ScreenUtils.defineButton(exit, 0, 0, 0,
-				0, super.getSkin());
+
+		exit = new TextButton(MenuTextDAO.getMenuText().returnToStart,
+				super.getSkin());
+		exit = ScreenUtils.defineButton(exit, 0, 0, 0, 0, super.getSkin());
 		exit.addListener(new ClickListener() {
 
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_6");
 				game.setScreenWithTransition(menu);
-				game.getManager().writeProfile(game.getProfile());
+				DataManager.getInstance().writeProfile(game.getProfile());
 			}
 		});
-		
-		
-		
+
 		menuTable.add(deckName);
 		menuTable.row();
 		menuTable.add(decks).height(400);
@@ -112,9 +113,9 @@ public class EditDeckScreen extends BaseScreen {
 		menuTable.add(newDeck);
 		menuTable.row();
 		menuTable.add(exit);
-		
+
 		menuTable.setPosition(100, 300);
-		
+
 		Table deckTable = new Table();
 		if (game.getMode() == RunMode.DEBUG)
 			deckTable.debug();
@@ -122,18 +123,17 @@ public class EditDeckScreen extends BaseScreen {
 		deckTable.defaults().width(600).height(400);
 		box.setWidth(600);
 		box.setHeight(400);
-		
-		deckTable.add(box);
-		
-		deckTable.setPosition(580, 380);
 
+		deckTable.add(box);
+
+		deckTable.setPosition(580, 380);
 
 		Table leftButtonTable = new Table();
 		if (game.getMode() == RunMode.DEBUG)
 			leftButtonTable.debug();
-		
+
 		leftButtonTable.defaults().width(100).height(100);
-		
+
 		left = new Arrow(-1, this.getSkin());
 		left.addListener(new ClickListener() {
 
@@ -144,13 +144,13 @@ public class EditDeckScreen extends BaseScreen {
 
 			}
 		});
-		
+
 		Table rightButtonTable = new Table();
 		if (game.getMode() == RunMode.DEBUG)
 			rightButtonTable.debug();
-		
+
 		rightButtonTable.defaults().width(100).height(100);
-		
+
 		right = new Arrow(1, this.getSkin());
 		right.addListener(new ClickListener() {
 
@@ -162,7 +162,6 @@ public class EditDeckScreen extends BaseScreen {
 			}
 		});
 
-		
 		int count = 0;
 		cardImages = new Array<Image>();
 		for (Card card : trunk) {
@@ -187,19 +186,19 @@ public class EditDeckScreen extends BaseScreen {
 				stage.addActor(cardImage);
 			count++;
 		}
-		
+
 		leftButtonTable.add(left).left();
 		rightButtonTable.add(right);
-		
+
 		leftButtonTable.setPosition(250, 80);
 		rightButtonTable.setPosition(900, 80);
-		
+
 		stage.addActor(background);
 		stage.addActor(menuTable);
 		stage.addActor(deckTable);
 		stage.addActor(leftButtonTable);
 		stage.addActor(rightButtonTable);
-		
+
 	}
 
 	private void moveCards(int side) {

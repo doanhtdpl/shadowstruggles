@@ -4,6 +4,8 @@ import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
 import br.edu.ifsp.pds.shadowstruggles.data.FileMap;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.Deck;
@@ -113,8 +115,8 @@ public class BattleScreen extends BaseScreen {
 		String mapPath = FileMap.resourcesToDirectory.get("battle_maps")
 				+ battlePlatform.getMap().getName() + ".png";
 		TextureRegion mapImage = new TextureRegion(new Texture(
-				Gdx.files.internal(mapPath)), settings.backgroundWidth / 2,
-				settings.backgroundHeight / 2);
+				Gdx.files.internal(mapPath)), SettingsDAO.getSettings().backgroundWidth / 2,
+				SettingsDAO.getSettings().backgroundHeight / 2);
 		map2d = new BattleMap2D(controller, mapImage);
 
 		timeElapsed = 0;
@@ -181,7 +183,7 @@ public class BattleScreen extends BaseScreen {
 					null, null, false);
 			victory.setBattleScreen(this);
 			victory.setIsInCampaign(isInCampaign);
-			victory.setMessage(game.getManager().getMenuText().victory);
+			victory.setMessage(MenuTextDAO.getMenuText().victory);
 			game.setScreenWithTransition(victory);
 			victory.initComponents();
 		}
@@ -296,8 +298,8 @@ public class BattleScreen extends BaseScreen {
 	 */
 
 	private void initComponents() {
-		map2d.setWidth(settings.backgroundWidth);
-		map2d.setHeight(settings.backgroundHeight);
+		map2d.setWidth(SettingsDAO.getSettings().backgroundWidth);
+		map2d.setHeight(SettingsDAO.getSettings().backgroundHeight);
 		if (!inicializado) {
 
 			map2d.setX(0);
@@ -311,21 +313,21 @@ public class BattleScreen extends BaseScreen {
 
 			inputSources.addProcessor(menu);
 			inputSources.addProcessor(map2d);
-			deck = new Deck2D(game, settings.deckX);
-			deck.setY(settings.bottomElementY);
+			deck = new Deck2D(game, SettingsDAO.getSettings().deckX);
+			deck.setY(SettingsDAO.getSettings().bottomElementY);
 			inputSources.addProcessor(deck);
 
-			energyBar = new EnergyBar(settings.energyX - 40, game);
-			energyBar.setY(settings.bottomElementY);
+			energyBar = new EnergyBar(SettingsDAO.getSettings().energyX - 40, game);
+			energyBar.setY(SettingsDAO.getSettings().bottomElementY);
 
-			playerLife = new LifeBar(settings.playerLifeX, game);
-			playerLife.setY(settings.lifeBarY);
+			playerLife = new LifeBar(SettingsDAO.getSettings().playerLifeX, game);
+			playerLife.setY(SettingsDAO.getSettings().lifeBarY);
 
-			enemyLife = new LifeBar(settings.enemyLifeX, game);
-			enemyLife.setY(settings.lifeBarY);
+			enemyLife = new LifeBar(SettingsDAO.getSettings().enemyLifeX, game);
+			enemyLife.setY(SettingsDAO.getSettings().lifeBarY);
 
-			timer = new Timer2D(this, settings.screenWidth / 2);
-			timer.setY(settings.screenHeight - 40);
+			timer = new Timer2D(this, SettingsDAO.getSettings().mapWidth / 2);
+			timer.setY(SettingsDAO.getSettings().mapHeight - 40);
 
 			inicializado = true;
 
@@ -337,8 +339,8 @@ public class BattleScreen extends BaseScreen {
 		stage.addActor(map2d);
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 4; j++) {
-				hexagrams.add(new Hexagram(settings.tileWidth * 2
-						+ settings.tileWidth * 2 * i, BACKGROUND_Y + 60 + 72
+				hexagrams.add(new Hexagram(SettingsDAO.getSettings().tileWidth * 2
+						+ SettingsDAO.getSettings().tileWidth * 2 * i, BACKGROUND_Y + 60 + 72
 						* j, game));
 				stage.addActor(hexagrams.get(i * 4 + j));
 			}
@@ -346,8 +348,8 @@ public class BattleScreen extends BaseScreen {
 
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 4; j++) {
-				BackCard bc = new BackCard(settings.tileWidth * 2
-						+ settings.tileWidth * 2 * i + settings.tileWidth / 2,
+				BackCard bc = new BackCard(SettingsDAO.getSettings().tileWidth * 2
+						+ SettingsDAO.getSettings().tileWidth * 2 * i + SettingsDAO.getSettings().tileWidth / 2,
 						BACKGROUND_Y + 60 + 72 * j, game);
 
 				backcards.add(bc);
@@ -357,8 +359,8 @@ public class BattleScreen extends BaseScreen {
 
 		for (int i = 30; i > 25; i--) {
 			for (int j = 0; j < 4; j++) {
-				BackCard bc = new BackCard(settings.tileWidth * 2
-						+ settings.tileWidth * 2 * i + settings.tileWidth / 2,
+				BackCard bc = new BackCard(SettingsDAO.getSettings().tileWidth * 2
+						+ SettingsDAO.getSettings().tileWidth * 2 * i + SettingsDAO.getSettings().tileWidth / 2,
 						BACKGROUND_Y + 60 + 72 * j, game);
 
 				backcards.add(bc);
@@ -390,9 +392,9 @@ public class BattleScreen extends BaseScreen {
 		for (int i = 0; i < 5; i++) {
 			Card temp = battlePlatform.getPlayerDeck().draw();
 			battlePlatform.getPlayerHandCards().add(temp);
-			HandCard h = new HandCard(game, temp.getName(), settings.firstCardX
+			HandCard h = new HandCard(game, temp.getName(), SettingsDAO.getSettings().firstCardX
 					+ 130 * i, temp);
-			h.setY(settings.bottomElementY);
+			h.setY(SettingsDAO.getSettings().bottomElementY);
 			h.addListener(new ClickListener() {
 				@Override
 				public void clicked(InputEvent event, float x, float y) {
@@ -419,9 +421,9 @@ public class BattleScreen extends BaseScreen {
 
 	public void insertHandCard(Card card) {
 		HandCard handCard = new HandCard(game, card.getName(),
-				settings.firstCardX + 130
+				SettingsDAO.getSettings().firstCardX + 130
 						* (battlePlatform.getPlayerHandCards().size), card);
-		handCard.setY(settings.bottomElementY);
+		handCard.setY(SettingsDAO.getSettings().bottomElementY);
 		handCard.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -454,7 +456,7 @@ public class BattleScreen extends BaseScreen {
 	public void playerLose() {
 		DefeatScreen defeatScreen = DefeatScreen.getInstance(game, controller,
 				null, null);
-		defeatScreen.setMessage(game.getManager().getMenuText().defeat);
+		defeatScreen.setMessage(MenuTextDAO.getMenuText().defeat);
 		defeatScreen.setBattleScreen(this);
 		game.setScreenWithTransition(defeatScreen);
 	}

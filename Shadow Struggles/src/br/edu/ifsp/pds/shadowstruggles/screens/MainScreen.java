@@ -3,6 +3,7 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -59,7 +60,7 @@ public class MainScreen extends BaseScreen {
 		background.setScaleX(960f / 512f);
 		background.setScaleY(640f / 380f);
 
-		campaign = new TextButton(game.getManager().getMenuText().campaign,
+		campaign = new TextButton(MenuTextDAO.getMenuText().campaign,
 				super.getSkin());
 		campaign = ScreenUtils.defineButton(campaign, 0, 0, 0, 0,
 				super.getSkin());
@@ -74,7 +75,7 @@ public class MainScreen extends BaseScreen {
 			}
 		});
 
-		freePlay = new TextButton(game.getManager().getMenuText().freePlay,
+		freePlay = new TextButton(MenuTextDAO.getMenuText().freePlay,
 				super.getSkin());
 		freePlay = ScreenUtils.defineButton(freePlay, 0, 0, 0, 0,
 				super.getSkin());
@@ -90,7 +91,7 @@ public class MainScreen extends BaseScreen {
 			}
 		});
 
-		editDeck = new TextButton(game.getManager().getMenuText().editDeck,
+		editDeck = new TextButton(MenuTextDAO.getMenuText().editDeck,
 				super.getSkin());
 		editDeck = ScreenUtils.defineButton(editDeck, 0, 0, 0, 0,
 				super.getSkin());
@@ -109,7 +110,7 @@ public class MainScreen extends BaseScreen {
 
 		});
 
-		shop = new TextButton(game.getManager().getMenuText().shop,
+		shop = new TextButton(MenuTextDAO.getMenuText().shop,
 				super.getSkin());
 		shop = ScreenUtils.defineButton(shop, 0, 0, 0, 0,
 				super.getSkin());
@@ -125,7 +126,7 @@ public class MainScreen extends BaseScreen {
 
 		});
 
-		config = new TextButton(game.getManager().getMenuText().configurations,
+		config = new TextButton(MenuTextDAO.getMenuText().configurations,
 				super.getSkin());
 		config = ScreenUtils.defineButton(config, 0, 0, 0, 0,
 				super.getSkin());
@@ -186,11 +187,11 @@ public class MainScreen extends BaseScreen {
 
 	@Override
 	public void loadLanguage() {
-		campaign.setText(game.getManager().getMenuText().campaign);
-		freePlay.setText(game.getManager().getMenuText().freePlay);
-		editDeck.setText(game.getManager().getMenuText().editDeck);
-		shop.setText(game.getManager().getMenuText().shop);
-		config.setText(game.getManager().getMenuText().configurations);
+		campaign.setText(MenuTextDAO.getMenuText().campaign);
+		freePlay.setText(MenuTextDAO.getMenuText().freePlay);
+		editDeck.setText(MenuTextDAO.getMenuText().editDeck);
+		shop.setText(MenuTextDAO.getMenuText().shop);
+		config.setText(MenuTextDAO.getMenuText().configurations);
 
 	}
 

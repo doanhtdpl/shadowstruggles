@@ -2,6 +2,7 @@ package br.edu.ifsp.pds.shadowstruggles.object2d;
 
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 
 import com.badlogic.gdx.InputProcessor;
@@ -28,11 +29,10 @@ public class MenuButton extends FixedObject implements InputProcessor {
 	@Override
 	public boolean touchDown(int x, int y, int pointer, int button) {
 		int deltaCamX = (int) (controller.getCurrentScreen().getCamera().position.x - BaseScreen.CAMERA_INITIAL_X);
-		int invertY = (int) ((controller.getCurrentScreen().getHeight() - y) * (float) ((float) controller
-				.getCurrentScreen().getSettings().screenHeight / (float) controller
+		int invertY = (int) ((controller.getCurrentScreen().getHeight() - y) * (float) ((float) SettingsDAO
+				.getSettings().mapHeight / (float) controller
 				.getCurrentScreen().getHeight()));
-		x = (int) (x * (float) ((float) controller.getCurrentScreen()
-				.getSettings().screenWidth / (float) controller
+		x = (int) (x * (float) ((float) SettingsDAO.getSettings().mapWidth / (float) controller
 				.getCurrentScreen().getWidth()));
 
 		if (x + deltaCamX >= this.getX()
@@ -54,11 +54,10 @@ public class MenuButton extends FixedObject implements InputProcessor {
 	@Override
 	public boolean touchUp(int x, int y, int pointer, int button) {
 		int deltaCamX = (int) (controller.getCurrentScreen().getCamera().position.x - BaseScreen.CAMERA_INITIAL_X);
-		int invertY = (int) ((controller.getCurrentScreen().getHeight() - y) * (float) ((float) controller
-				.getCurrentScreen().getSettings().screenHeight / (float) controller
+		int invertY = (int) ((controller.getCurrentScreen().getHeight() - y) * (float) ((float) SettingsDAO
+				.getSettings().mapHeight / (float) controller
 				.getCurrentScreen().getHeight()));
-		x = (int) (x * (float) ((float) controller.getCurrentScreen()
-				.getSettings().screenWidth / (float) controller
+		x = (int) (x * (float) ((float) SettingsDAO.getSettings().mapWidth / (float) controller
 				.getCurrentScreen().getWidth()));
 
 		if (touched) {

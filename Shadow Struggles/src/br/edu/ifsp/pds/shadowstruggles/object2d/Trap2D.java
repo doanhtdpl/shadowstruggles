@@ -3,6 +3,7 @@ package br.edu.ifsp.pds.shadowstruggles.object2d;
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.data.Settings;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.Trap;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -34,7 +35,7 @@ public class Trap2D extends Image {
 		this.setSize(64, 64);
 		this.trap = trap;
 		this.game = game;
-		this.settings = game.getManager().getSettings();
+		this.settings = SettingsDAO.getSettings();
 		this.setVisible(false);
 	}
 
@@ -70,7 +71,7 @@ public class Trap2D extends Image {
 		animation = new Animation(0.075f, animationFrames);
 		this.setX(settings.tileHeight * 2 + (trap.getTile())
 				* settings.tileWidth);
-		this.setY(settings.screenHeight - settings.backgroundHeight
+		this.setY(settings.mapHeight - settings.backgroundHeight
 				+ settings.tileHeight + (this.trap.getLane())
 				* settings.tileHeight * 3 / 2);
 	}
