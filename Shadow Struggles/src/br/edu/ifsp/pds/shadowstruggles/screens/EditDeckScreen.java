@@ -5,7 +5,7 @@ import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.Deck;
-import br.edu.ifsp.pds.shadowstruggles.object2d.TransitionControl;
+import br.edu.ifsp.pds.shadowstruggles.object2d.Arrow;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
 import com.badlogic.gdx.graphics.Color;
@@ -28,8 +28,8 @@ public class EditDeckScreen extends BaseScreen {
 	private Label description;
 	private Label decks;
 	private Label deckName;
-	private TransitionControl right;
-	private TransitionControl left;
+	private Arrow right;
+	private Arrow left;
 	private TextButton exit;
 	private TextButton newDeck;
 	private TextButton moveCard;
@@ -65,9 +65,7 @@ public class EditDeckScreen extends BaseScreen {
 		final BaseScreen menu = this.previousScreen;
 		this.selectedDeck = game.getProfile().getDeck(game.getManager());
 		this.trunk = game.getProfile().getTrunk();
-		background = new Image(game.getAssets()
-				.get("data/images/objects/objects.atlas", TextureAtlas.class)
-				.findRegion("msbackground"));
+		background = new Image(this.getSkin().getDrawable("msbackground"));
 		background.setScaleX(960f / 512f);
 		background.setScaleY(640f / 380f);
 
@@ -120,9 +118,7 @@ public class EditDeckScreen extends BaseScreen {
 		Table deckTable = new Table();
 		if (game.getMode() == RunMode.DEBUG)
 			deckTable.debug();
-		box = new Image(game.getAssets()
-				.get("data/images/objects/objects.atlas", TextureAtlas.class)
-				.findRegion("box"));
+		box = new Image(game.getTextureRegion("box", "game_ui_images"));
 		deckTable.defaults().width(600).height(400);
 		box.setWidth(600);
 		box.setHeight(400);
@@ -138,7 +134,7 @@ public class EditDeckScreen extends BaseScreen {
 		
 		leftButtonTable.defaults().width(100).height(100);
 		
-		left = new TransitionControl(-1, this.getSkin());
+		left = new Arrow(-1, this.getSkin());
 		left.addListener(new ClickListener() {
 
 			@Override
@@ -155,7 +151,7 @@ public class EditDeckScreen extends BaseScreen {
 		
 		rightButtonTable.defaults().width(100).height(100);
 		
-		right = new TransitionControl(1, this.getSkin());
+		right = new Arrow(1, this.getSkin());
 		right.addListener(new ClickListener() {
 
 			@Override

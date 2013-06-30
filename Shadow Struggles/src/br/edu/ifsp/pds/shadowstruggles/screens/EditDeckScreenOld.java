@@ -4,7 +4,7 @@ import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.Deck;
-import br.edu.ifsp.pds.shadowstruggles.object2d.TransitionControl;
+import br.edu.ifsp.pds.shadowstruggles.object2d.Arrow;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
 import com.badlogic.gdx.graphics.Color;
@@ -26,8 +26,8 @@ public class EditDeckScreenOld extends BaseScreen{
 	private Label name;
 	private Label description;
 	private Label decks;
-	private TransitionControl right;
-	private TransitionControl left;
+	private Arrow right;
+	private Arrow left;
 	private TextButton exit;
 	private TextButton moveCard;
 	private Card selectedCard;
@@ -87,7 +87,7 @@ public class EditDeckScreenOld extends BaseScreen{
 		box.setScaleX(0.9f);
 		box.setScaleY(0.76f);
 
-		right = new TransitionControl(1, this.getSkin());
+		right = new Arrow(1, this.getSkin());
 		right.setY(150);
 		right.setX(900);
 		right.setScaleY(4f);
@@ -102,7 +102,7 @@ public class EditDeckScreenOld extends BaseScreen{
 
 			}
 		});
-		left = new TransitionControl(-1, this.getSkin());
+		left = new Arrow(-1, this.getSkin());
 		left.setY(20);
 		left.setX(120);
 		left.setScaleY(4f);
