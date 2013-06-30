@@ -19,6 +19,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectMap.Entry;
 
 public class SettingsScreen extends BaseScreen {
+	private Label settingsLabel;
 	private Image background;
 	private Image volumePlus;
 	private Image volumeMinus;
@@ -69,6 +70,11 @@ public class SettingsScreen extends BaseScreen {
 				.findRegion("msbackground"));
 		background.setScaleX(960f / 512f);
 		background.setScaleY(640f / 380f);
+		
+		settingsLabel = new Label(game.getAudio().getVolumeNumber(), super.getSkin());
+		settingsLabel.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
+				Color.BLACK));
+
 
 		volumePlus = new Image(this.getSkin().getDrawable("plus"));
 		volumePlus.addListener(new ClickListener() {
@@ -170,6 +176,8 @@ public class SettingsScreen extends BaseScreen {
 			i++;
 		}
 		
+		volumeTable.add(settingsLabel);
+		volumeTable.row();
 		volumeTable.add(soundOnOff).width(100).height(100);
 		volumeTable.add(volumeLabel).width(50).height(100);
 		volumeTable.row();
