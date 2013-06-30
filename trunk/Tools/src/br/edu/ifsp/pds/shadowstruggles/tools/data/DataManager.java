@@ -25,6 +25,7 @@ public class DataManager {
 
 	private String currentFile;
 	private Languages languages;
+	private Settings settings;
 	private String currentLanguage;
 
 	/**
@@ -33,6 +34,7 @@ public class DataManager {
 	 */
 	public void newZip(String path) throws IOException, ZipException {
 		this.currentFile = path;
+		this.settings = new Settings();
 		this.currentLanguage = "en_us";
 		this.languages = new Languages();
 		languages.put("en_us", "English");
@@ -42,7 +44,7 @@ public class DataManager {
 		for (Class<?> c : FileMap.classToFile.keySet()) {
 			ZipEntry entry;
 
-			if (c == Languages.class)
+			if (c == Languages.class || c == Settings.class)
 				entry = new ZipEntry(FileMap.classToFile.get(c));
 			else
 				entry = new ZipEntry(localizedPath(currentLanguage,
@@ -58,6 +60,7 @@ public class DataManager {
 
 		this.openZip(currentFile, true);
 		this.insertObject(this.languages, Languages.class);
+		this.insertObject(this.settings, Settings.class);
 	}
 
 	/**
@@ -93,14 +96,17 @@ public class DataManager {
 		// ZipInputStream zis = new ZipInputStream(new FileInputStream(zip));
 		// ZipEntry entry;
 
-		// First, get the Languages file and storage all entries as strings.
+		// First, get the Languages and Settings files and storage all entries
+		// as
+		// strings.
 
 		boolean hasLanguages = false;
+		boolean hasSettings = false;
 		List<?> fileHeaderList = zipFile.getFileHeaders();
+
 		for (int i = 0; i < fileHeaderList.size(); i++) {
 			FileHeader fileHeader = (FileHeader) fileHeaderList.get(i);
 			String fileName = fileHeader.getFileName();
-			System.out.println("Obtive a entrada: " + fileName);
 			retrievedEntries.add(fileName);
 
 			if (fileName.equals(FileMap.classToFile.get(Languages.class))) {
@@ -108,6 +114,9 @@ public class DataManager {
 				retrievedLanguages = (Languages) MyJson.getJson()
 						.fromJson(ArrayList.class, new File(fileName)).get(0);
 			}
+
+			if (fileName.equals(FileMap.classToFile.get(Settings.class)))
+				hasSettings = true;
 		}
 		// while ((entry = zis.getNextEntry()) != null) {
 		// retrievedEntries.add(entry.getName());
@@ -119,13 +128,12 @@ public class DataManager {
 		// }
 		// }
 
-		if (!hasLanguages)
+		if (!hasLanguages || !hasSettings)
 			return false;
 
 		// Has any required folder been deleted?
 		for (String value : FileMap.resourcesToDirectory.values()) {
 			if (!retrievedEntries.contains(value)) {
-				System.out.println("Couldn't find " + value);
 				return false;
 			}
 		}
@@ -133,10 +141,8 @@ public class DataManager {
 		// Has any required file been deleted?
 		for (Class<?> c : FileMap.classToFile.keySet()) {
 			// Check languages-independent classes first.
-			if (c == Languages.class) {
+			if (c == Languages.class || c == Settings.class) {
 				if (!retrievedEntries.contains(FileMap.classToFile.get(c))) {
-					System.out.println("Couldn't find "
-							+ FileMap.classToFile.get(c));
 					return false;
 				}
 			} else {
@@ -146,7 +152,6 @@ public class DataManager {
 					String localizedPath = localizedPath(lang,
 							FileMap.classToFile.get(c));
 					if (!retrievedEntries.contains(localizedPath)) {
-						System.out.println("Couldn't find " + localizedPath);
 						return false;
 					}
 				}
@@ -169,7 +174,7 @@ public class DataManager {
 		if (FileMap.classToFile.containsKey(c)) {
 			String path = "";
 
-			if (c != Languages.class)
+			if (c != Languages.class && c != Settings.class)
 				path += localizedPath(currentLanguage,
 						FileMap.classToFile.get(c));
 			else
@@ -280,7 +285,7 @@ public class DataManager {
 		String file = null;
 
 		if (FileMap.classToFile.containsKey(c)) {
-			if (c == Languages.class)
+			if (c == Languages.class || c == Settings.class)
 				file = FileMap.classToFile.get(c);
 			else
 				file = localizedPath(currentLanguage,
@@ -396,6 +401,10 @@ public class DataManager {
 
 	public Languages getLanguages() {
 		return languages;
+	}
+	
+	public Settings getSettings() {
+		return settings;
 	}
 
 	public String getCurrentLanguage() {
