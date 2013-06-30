@@ -1,0 +1,23 @@
+[{"class":"br.edu.ifsp.pds.shadowstruggles.model.Trap",
+"name":"Electric_Current_Level_One",
+"nameVisualization":"Corrente Elétrica nível 1",
+"energyCost":25,
+"description":"Quando um lutador inimigo passa pelo local especificado, gera-se uma diferença de potencial elétrico, criando uma corrente elétrica que dura por 5 segundos. Uma vez ativada, causa 2 unidades de dano por segundo e impede o movimento do(s) lutadore(s) inimigo(s).",
+"buyCost":0,
+"duration":5.0,
+"hasImmediateEffect":true,
+"isActivated":false,
+"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.EletricCurrent1Action"}
+},
+{"class":"br.edu.ifsp.pds.shadowstruggles.model.Trap",
+"name":"Hacking",
+"nameVisualization":"Hacking",
+"energyCost":45,
+"description":"Alterando a composição dos sistemas principais do robô, converte o próximo lutador inimigo do tipo “RD” que ativar a armadilha em aliado.",
+"buyCost":0,
+"duration":0.0,
+"hasImmediateEffect":true,
+"isActivated":false,
+"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.HackingAction"}
+}
+]
