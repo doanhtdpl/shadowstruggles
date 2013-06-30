@@ -80,11 +80,10 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		update(delta);
 		character2d.create();
 		character2d.render();
-
+		
 		batch = new SpriteBatch();
 		batch.begin();
-		batch.draw(character2d.getCurrentFrame(), character2d.getX(),
-				character2d.getY());
+		batch.draw(character2d.getCurrentFrame(), character2d.getX()*32, character2d.getY()*32);
 		batch.end();
 
 		// shapeRenderer.begin(ShapeType.Filled);
@@ -140,7 +139,7 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 
 	public void keyInput(float delta) {
 		if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-			// moveCharacter(WalkDirection.WALK_LEFT);
+//			moveCharacter(WalkDirection.WALK_LEFT);
 			character2d.move(WalkDirection.WALK_LEFT);
 		}
 		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
@@ -151,11 +150,11 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		}
 		if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
 			character2d.move(WalkDirection.WALK_DOWN);
-
+			
 		}
 		if (Gdx.input.isKeyPressed(Input.Keys.W)) {
-			// moveCharacter(WalkDirection.WALK_UP, 3);
-
+//			moveCharacter(WalkDirection.WALK_UP, 3);
+			
 		}
 	}
 
