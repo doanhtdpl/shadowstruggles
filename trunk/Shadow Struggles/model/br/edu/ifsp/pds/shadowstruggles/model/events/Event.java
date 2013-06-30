@@ -41,6 +41,11 @@ public abstract class Event implements Serializable {
 		this.triggered = triggered;
 		this.sprite = sprite;
 	}
+	
+	/**
+	 * Activates the event.
+	 */
+	public abstract void trigger();
 
 	@Override
 	public void read(Json json, JsonValue jsonData) {

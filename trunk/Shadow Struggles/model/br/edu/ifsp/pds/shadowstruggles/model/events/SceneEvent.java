@@ -36,4 +36,9 @@ public class SceneEvent extends Event {
 		json.writeValue("scene", this.scene);
 	}
 
+	@Override
+	public void trigger() {
+		// TODO: Implementar método.
+	}
+
 }

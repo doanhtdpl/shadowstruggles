@@ -43,4 +43,9 @@ public class QuestModifier extends Modifier {
 		json.writeValue("requirement", this.requirement);
 		json.writeValue("completeQuest", this.completeQuest);
 	}
+
+	@Override
+	public void modify() {
+		// TODO: Implementar método.
+	}
 }

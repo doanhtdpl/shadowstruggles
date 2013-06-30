@@ -23,7 +23,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
-
 public class SceneScreen extends BaseScreen implements InputProcessor {
 	private Scene scene;
 	private int touchY;
@@ -36,39 +35,34 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 	private Image next;
 	private TextButton[] choices;
 	private Image box;
-	private Image nextDialog;
 	private TextButton menu;
 	private String currentText;
 	private int currentTextIndex;
-	private Object[] target;
-	
-	
-
 	private InputMultiplexer inputSources;
 
 	public SceneScreen(ShadowStruggles game, Controller controller) {
 		super(game, controller);
 		this.game = game;
 		this.scene = game.getProfile().getCurrentScene();
-		currentTextIndex=0;
+		currentTextIndex = 0;
 		inputSources = new InputMultiplexer();
 		initComponents();
 
 	}
 
 	private void initComponents() {
-		
-		currentText=splitScript()[currentTextIndex];
+
+		currentText = splitScript()[currentTextIndex];
 
 		this.text = new Label(currentText, super.getSkin());
-		
+
 		if (!scene.getBackgroundMusic().equals("")) {
 			game.getAudio().stop();
 			game.getAudio().setMusic(scene.getBackgroundMusic());
 		} else {
 			game.getAudio().stop();
 		}
-		
+
 		if (!scene.getBackgroundImage().equals("")) {
 			if (scene.getBackgroundImage().contains("/maps/")) {
 				background = new Image(new TextureRegion(new Texture(
@@ -86,7 +80,7 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 		background.setY(0);
 		background.setWidth(960);
 		background.setHeight(640);
-		
+
 		text.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
 				Color.WHITE));
 		text.setWidth(800);
@@ -94,7 +88,7 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 		text.setHeight(text.getPrefHeight());
 		text.setX(80);
 		text.setY(580 - text.getHeight() - 50);
-		text.addListener(new ClickListener(){
+		text.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				nextText();
@@ -105,12 +99,12 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 				.get("data/images/objects/objects.atlas", TextureAtlas.class)
 				.findRegion("box"));
 		box.setWidth(text.getWidth() + 50);
-		//box.setHeight(text.getHeight() + 50);
+		// box.setHeight(text.getHeight() + 50);
 		box.setHeight(500);
 		box.setX(55);
-		//box.setY(text.getY() - 25);
+		// box.setY(text.getY() - 25);
 		box.setY(50);
-		box.addListener(new ClickListener(){
+		box.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				nextText();
@@ -119,9 +113,9 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 		});
 
 		next = new TransitionControl(1, this.getSkin());
-		next.addListener(new ClickListener(){
+		next.addListener(new ClickListener() {
 			@Override
-			public void clicked(InputEvent event, float x, float y) {				
+			public void clicked(InputEvent event, float x, float y) {
 				nextText();
 				super.clicked(event, x, y);
 				game.getAudio().playSound("button_7");
@@ -129,17 +123,18 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 		});
 
 		next.setScaleY(6.0f);
-		//TODO: adicionar botão nextDialog para avançar os dialogos
-		nextDialog= new Image();
+		new Image();
 
 		menu = new TextButton("M", getSkin());
-		menu = ScreenUtils.defineButton(menu, next.getX() - 15, 70, 50, 50, super.getSkin());
+		menu = ScreenUtils.defineButton(menu, next.getX() - 15, 70, 50, 50,
+				super.getSkin());
 		menu.addListener(new ClickListener() {
 
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_6");
-				game.setScreenWithTransition(MainScreen.getInstance(game, controller));
+				game.setScreenWithTransition(MainScreen.getInstance(game,
+						controller));
 			}
 
 		});
@@ -160,8 +155,9 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 				choices[i] = new TextButton(scene.getChoices()[i],
 						super.getSkin());
 
-				choices[i] = ScreenUtils.defineButton(choices[i], box.getX()
-						+ (i * 220), box.getY() - 100, 200, 80, super.getSkin());
+				choices[i] = ScreenUtils
+						.defineButton(choices[i], box.getX() + (i * 220),
+								box.getY() - 100, 200, 80, super.getSkin());
 				choices[i].addListener(new ClickListener() {
 
 					@Override
@@ -185,56 +181,57 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 		} else
 			stage.addActor(next);
 	}
-	
-	private void nextText(){
-		currentTextIndex++;		
+
+	private void nextText() {
+		currentTextIndex++;
 		updateText();
 	}
-	
-	private void updateText(){
-		if(currentTextIndex < splitScript().length){
-			currentText=splitScript()[currentTextIndex];
+
+	private void updateText() {
+		if (currentTextIndex < splitScript().length) {
+			currentText = splitScript()[currentTextIndex];
 			System.out.println(currentText.length());
-			if(currentText.length()>2){
-				if((splitScript()[currentTextIndex]+ 
-						splitScript()[currentTextIndex-1]).length()<=500)
-					text.setText((splitScript()[currentTextIndex-1]+ 
-							splitScript()[currentTextIndex]));
+			if (currentText.length() > 2) {
+				if ((splitScript()[currentTextIndex] + splitScript()[currentTextIndex - 1])
+						.length() <= 500)
+					text.setText((splitScript()[currentTextIndex - 1] + splitScript()[currentTextIndex]));
 				else
-			text.setText(currentText);
-			text.setHeight(text.getPrefHeight());
-			text.setY(580 - text.getHeight() - 50);
-			}else {
+					text.setText(currentText);
+				text.setHeight(text.getPrefHeight());
+				text.setY(580 - text.getHeight() - 50);
+			} else {
 				nextText();
 			}
-			
-		}else {
-			if(scene.getChoices().length<2)
+
+		} else {
+			if (scene.getChoices().length < 2)
 				nextScreen();
-			else showChoices();
+			else
+				showChoices();
 		}
 	}
-	
-	
-	private void showChoices(){
-		TextButton choice1 = new TextButton(scene.getChoices()[0], this.getSkin());
-		TextButton choice2 = new TextButton(scene.getChoices()[1], this.getSkin());
-		choice1.addListener(new ClickListener(){
+
+	private void showChoices() {
+		TextButton choice1 = new TextButton(scene.getChoices()[0],
+				this.getSkin());
+		TextButton choice2 = new TextButton(scene.getChoices()[1],
+				this.getSkin());
+		choice1.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				//TODO: verificar target[0] e mandar para próxima tela de acordo com a classe do target 
 				super.clicked(event, x, y);
 			}
 		});
-		choice2.addListener(new ClickListener(){
+		choice2.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				//TODO: verificar target[1] e mandar para próxima tela de acordo com a classe do target 
 				super.clicked(event, x, y);
 			}
 		});
-		choice1= ScreenUtils.defineButton(choice1, 50, 400, 700, 200, this.getSkin());
-		choice2= ScreenUtils.defineButton(choice1, 50, 100, 700, 200, this.getSkin());
+		choice1 = ScreenUtils.defineButton(choice1, 50, 400, 700, 200,
+				this.getSkin());
+		choice2 = ScreenUtils.defineButton(choice1, 50, 100, 700, 200,
+				this.getSkin());
 		text.remove();
 		stage.addActor(choice1);
 		stage.addActor(choice2);
@@ -248,7 +245,8 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 			firstScene.setLanguage(game.getProfile().getLanguage());
 			game.getProfile().setCurrentScene(firstScene);
 			game.getManager().writeProfile(game.getProfile());
-			game.setScreenWithTransition(MainScreen.getInstance(game, controller));
+			game.setScreenWithTransition(MainScreen.getInstance(game,
+					controller));
 		} else {
 			game.getProfile().setCurrentScene(
 					SceneDAO.getScene(scene.getNextId(), game.getManager()));
@@ -256,11 +254,11 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 			game.setScreenWithTransition(new SceneScreen(game, controller));
 		}
 	}
-	
-	private String[] splitScript(){
-		
+
+	private String[] splitScript() {
+
 		return scene.getScript().split("/:/");
-		
+
 	}
 
 	@Override
@@ -340,10 +338,10 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 
 	@Override
 	public boolean keyDown(int keycode) {
-		if(keycode == Keys.DOWN) {
+		if (keycode == Keys.DOWN) {
 			if (controller.getCurrentScreen().camera.position.y - 4 < CAMERA_INITIAL_Y
-					&& controller.getCurrentScreen().camera.position.y
-							- 4 > +640 - text.getHeight()) {
+					&& controller.getCurrentScreen().camera.position.y - 4 > +640
+							- text.getHeight()) {
 				controller.getCurrentScreen().camera.position.y -= 4;
 
 				// Render the screen again to avoid blinking.
@@ -352,11 +350,11 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 			}
 			return true;
 		}
-		
-		if(keycode == Keys.UP) {
+
+		if (keycode == Keys.UP) {
 			if (controller.getCurrentScreen().camera.position.y + 4 < CAMERA_INITIAL_Y
-					&& controller.getCurrentScreen().camera.position.y
-							+ 4 > +640 - text.getHeight()) {
+					&& controller.getCurrentScreen().camera.position.y + 4 > +640
+							- text.getHeight()) {
 				controller.getCurrentScreen().camera.position.y += 4;
 
 				// Render the screen again to avoid blinking.

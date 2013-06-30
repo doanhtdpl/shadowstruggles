@@ -201,7 +201,6 @@ public class MainScreen extends BaseScreen {
 	
 	@Override
 	public void render(float delta) {
-		// TODO Auto-generated method stub
 		super.render(delta);
 		Table.drawDebug(stage);
 	}

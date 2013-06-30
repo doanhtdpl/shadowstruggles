@@ -47,4 +47,9 @@ public class AmountModifier extends Modifier {
 		json.writeValue("attribute", this.attribute);
 		json.writeValue("text", this.text);
 	}
+
+	@Override
+	public void modify() {
+		// TODO: Implementar método.
+	}
 }

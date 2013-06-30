@@ -28,4 +28,9 @@ public class UnlockModifier extends Modifier {
 	public void write(Json json) {
 		json.writeValue("items", this.items);
 	}
+
+	@Override
+	public void modify() {
+		// TODO: Implementar método.
+	}
 }

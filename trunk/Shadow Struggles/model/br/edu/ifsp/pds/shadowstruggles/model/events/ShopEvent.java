@@ -31,4 +31,9 @@ public class ShopEvent extends Event {
 		
 		json.writeValue("shop", this.shop);
 	}
+
+	@Override
+	public void trigger() {
+		// TODO: Implementar método.
+	}
 }

@@ -35,4 +35,9 @@ public class ComplexEvent extends Event {
 		
 		json.writeValue("events", this.events);
 	}
+
+	@Override
+	public void trigger() {
+		// TODO: Implementar método.
+	}
 }

@@ -25,4 +25,9 @@ public class BattleControl extends SceneItem {
 	public void write(Json json) {
 		json.writeValue("nextBattle", this.nextBattle);
 	}
+
+	@Override
+	public void action() {
+		// TODO Implementar método.
+	}
 }

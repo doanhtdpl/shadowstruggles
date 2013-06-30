@@ -12,4 +12,9 @@ public class SavePoint extends Event {
 			Quest quest, boolean triggered, String sprite) {
 		super(id, x, y, map, layer, quest, triggered, sprite);
 	}
+
+	@Override
+	public void trigger() {
+		// TODO: Implementar método.
+	}
 }

@@ -72,10 +72,6 @@ public class RpgPlatform {
 		for (Step step : path.getSteps()) {
 			Character.WalkDirection direction = null;
 
-			// TODO: É provável que o algoritmo de pathfinding precise ser
-			// ajustado para lidar com tiles ao invés de pixels, uma vez que o
-			// movimento do personagem pode não seguir o caminho estabelecido.
-
 			if (step.getX() == character.getTileX()
 					&& step.getY() < character.getTileY())
 				direction = Character.WalkDirection.WALK_UP;

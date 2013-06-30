@@ -23,4 +23,9 @@ public class SceneControl extends SceneItem {
 	public void write(Json json) {
 		json.writeValue("nextScene", this.nextScene);
 	}
+
+	@Override
+	public void action() {
+		// TODO: Implementar método.
+	}
 }

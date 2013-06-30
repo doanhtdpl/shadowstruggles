@@ -31,4 +31,9 @@ public class ProfileControl extends SceneItem {
 		json.writeValue("modifier", this.modifier);
 		json.writeValue("profile", this.profile);
 	}
+
+	@Override
+	public void action() {
+		// TODO: Implementar método.
+	}
 }

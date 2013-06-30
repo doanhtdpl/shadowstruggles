@@ -35,4 +35,9 @@ public class Dialogue extends SceneItem {
 		json.writeValue("characterName", this.characterName);
 		json.writeValue("characterImage", this.characterImage);
 	}
+
+	@Override
+	public void action() {
+		// TODO: Implementar método.
+	}
 }

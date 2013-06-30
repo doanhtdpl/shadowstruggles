@@ -39,4 +39,9 @@ public class EventControl extends SceneItem {
 		json.writeValue("newLayer", this.newLayer);
 		json.writeValue("newSprite", this.newSprite);
 	}
+
+	@Override
+	public void action() {
+		// TODO: Implementar método.
+	}
 }
