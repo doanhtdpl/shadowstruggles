@@ -58,6 +58,20 @@ public class Character2D extends Image implements ApplicationListener {
 	 */
 	public void move(WalkDirection direction) {
 		rpgController.moveCharacter(direction);
+		switch (direction) {
+		case WALK_UP:
+			this.setY(this.getY()+1);
+			break;
+		case WALK_DOWN:
+			this.setY(this.getY()-1);
+			break;
+		case WALK_LEFT:
+			this.setX(this.getX()-1);
+			break;
+		case WALK_RIGHT:
+			this.setX(this.getX()+1);
+			break;
+		}
 	}
 
 	public float getWalked() {
@@ -111,6 +125,7 @@ public class Character2D extends Image implements ApplicationListener {
 
 	@Override
 	public void render() {
+		this.currentFrame = walkDownAnimation.getKeyFrame(0);
 
 	}
 
