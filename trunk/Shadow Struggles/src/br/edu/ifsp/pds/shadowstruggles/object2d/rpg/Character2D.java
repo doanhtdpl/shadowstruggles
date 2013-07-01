@@ -41,7 +41,7 @@ public class Character2D extends Image implements ApplicationListener {
 	private TextureRegion currentFrame;
 	private RpgController rpgController;
 	private int size = 64;
-	private int tileSize = 64;
+	private int tileSize = 32;
 	private WalkDirection direction = WalkDirection.WALK_DOWN;
 	private boolean walking;
 	private float characterSpeed = 100.0f;
@@ -64,11 +64,13 @@ public class Character2D extends Image implements ApplicationListener {
 	 */
 	public void move(WalkDirection direction) {
 		if (!walking) {
-			rpgController.moveCharacter(direction);
 			this.direction = direction;
 			this.walking = true;
 			this.walked = 0;
-			// readyToWalk = false;
+
+			// The model can't move during the walking animation.
+			rpgController.lockCharacterModel();
+
 			switch (direction) {
 			case WALK_UP:
 				initialPosition = this.getY();
@@ -129,7 +131,7 @@ public class Character2D extends Image implements ApplicationListener {
 		walkRightAnimation = new Animation(0.033f, walkRightFrames);
 		walkDownAnimation = new Animation(0.033f, walkDownFrames);
 
-//		stateTime = 0;
+		// stateTime = 0;
 
 		this.currentFrame = walkDownAnimation.getKeyFrame(0);
 	}
@@ -157,6 +159,7 @@ public class Character2D extends Image implements ApplicationListener {
 				if (walked >= tileSize) {
 					this.setY(initialPosition + tileSize);
 					walking = false;
+					rpgController.unlockCharacterModel();
 				} else {
 					this.setY(this.getY() + (delta * characterSpeed));
 				}
@@ -168,8 +171,8 @@ public class Character2D extends Image implements ApplicationListener {
 		case WALK_DOWN:
 			if (walking) {
 				// atualizar frame
-				this.currentFrame = walkDownAnimation
-						.getKeyFrame(stateTime, true);
+				this.currentFrame = walkDownAnimation.getKeyFrame(stateTime,
+						true);
 
 				// continuar andando!
 				walked += (delta * characterSpeed);
@@ -177,6 +180,7 @@ public class Character2D extends Image implements ApplicationListener {
 				if (walked >= tileSize) {
 					this.setY(initialPosition - tileSize);
 					walking = false;
+					rpgController.unlockCharacterModel();
 				} else {
 					this.setY(this.getY() - (delta * characterSpeed));
 				}
@@ -188,8 +192,8 @@ public class Character2D extends Image implements ApplicationListener {
 		case WALK_LEFT:
 			if (walking) {
 				// atualizar frame
-				this.currentFrame = walkLeftAnimation
-						.getKeyFrame(stateTime, true);
+				this.currentFrame = walkLeftAnimation.getKeyFrame(stateTime,
+						true);
 
 				// continuar andando!
 				walked += (delta * characterSpeed);
@@ -197,6 +201,7 @@ public class Character2D extends Image implements ApplicationListener {
 				if (walked >= tileSize) {
 					this.setX(initialPosition - tileSize);
 					walking = false;
+					rpgController.unlockCharacterModel();
 				} else {
 					this.setX(this.getX() - (delta * characterSpeed));
 				}
@@ -208,8 +213,8 @@ public class Character2D extends Image implements ApplicationListener {
 		case WALK_RIGHT:
 			if (walking) {
 				// atualizar frame
-				this.currentFrame = walkRightAnimation
-						.getKeyFrame(stateTime, true);
+				this.currentFrame = walkRightAnimation.getKeyFrame(stateTime,
+						true);
 
 				// continuar andando!
 				walked += (delta * characterSpeed);
@@ -217,6 +222,7 @@ public class Character2D extends Image implements ApplicationListener {
 				if (walked >= tileSize) {
 					this.setX(initialPosition + tileSize);
 					walking = false;
+					rpgController.unlockCharacterModel();
 				} else {
 					this.setX(this.getX() + (delta * characterSpeed));
 				}

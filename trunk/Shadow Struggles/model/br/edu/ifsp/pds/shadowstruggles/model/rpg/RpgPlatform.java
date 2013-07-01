@@ -1,5 +1,6 @@
 package br.edu.ifsp.pds.shadowstruggles.model.rpg;
 
+import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character.WalkDirection;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.Path;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.Path.Step;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.TileBasedMap;
@@ -16,6 +17,7 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 public class RpgPlatform {
 	private RpgMap map;
 	private Character character;
+	private RpgController controller;
 
 	/**
 	 * The constructor loads the map according to the stage name.
@@ -49,6 +51,7 @@ public class RpgPlatform {
 	public RpgPlatform(RpgController controller, String stageName,
 			String mapLayer, Character character) {
 		controller.setModel(this);
+		this.controller = controller;
 		this.map = new RpgMap(
 				new TmxMapLoader(new InternalFileHandleResolver())
 						.load("data/rpg_maps/map.tmx"));
@@ -68,8 +71,15 @@ public class RpgPlatform {
 		return this.map;
 	}
 
+	/**
+	 * Moves the character towards a specified path, step by step.
+	 */
 	public void moveCharacter(Path path) {
 		for (Step step : path.getSteps()) {
+			if (step.getX() == character.getTileX()
+					&& step.getY() == character.getTileY())
+				continue;
+
 			Character.WalkDirection direction = null;
 
 			if (step.getX() == character.getTileX()
@@ -79,14 +89,33 @@ public class RpgPlatform {
 					&& step.getY() > character.getTileY())
 				direction = Character.WalkDirection.WALK_DOWN;
 			if (step.getY() == character.getTileY()
-					&& step.getX() < character.getTileY())
+					&& step.getX() < character.getTileX())
 				direction = Character.WalkDirection.WALK_LEFT;
 			if (step.getY() == character.getTileY()
-					&& step.getX() > character.getTileY())
+					&& step.getX() > character.getTileX())
 				direction = Character.WalkDirection.WALK_RIGHT;
 
-			character.walk(direction, map.getMap());
+			this.moveCharacter(direction, true);
 		}
+
+	}
+
+	/**
+	 * Moves the character in one tile in the specified direction and notifies
+	 * the RpgController.
+	 */
+	public boolean moveCharacter(WalkDirection direction) {
+		return this.moveCharacter(direction, false);
+	}
+
+	public boolean moveCharacter(WalkDirection direction, boolean inPath) {
+		if (direction != null) {
+			if (character.walk(direction, map.getMap(), inPath)) {
+				controller.characterMoved(direction);
+				return true;
+			}
+		}
+		return false;
 	}
 
 }
