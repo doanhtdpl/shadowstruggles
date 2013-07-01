@@ -16,21 +16,19 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.utils.Array;
 
+/**
+ * The main screen of the RPG World. It gets the user input and sends the
+ * command to the RPG Controller. Also, renders all the visual elements.
+ */
 public class RpgScreen extends BaseScreen implements InputProcessor {
 
-	/**
-	 * The main screen of the RPG World. It gets the user input and sends the
-	 * command to the RPG Controller. Also, renders all the visual elements.
-	 */
 	public final static int TILE_SIZE = 32;
+
 	// private ShapeRenderer shapeRenderer;
 	private SpriteBatch batch;
 	private RpgController rpgController;
 	private Character2D character2d;
-
-	private Array<WalkDirection> directionBuffer = new Array<WalkDirection>();
 
 	private PathFinder finder;
 	private Path path;
@@ -71,6 +69,8 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		super.render(delta);
 		// Gdx.gl.glClearColor(1, 1, 1, 1);
 		// Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		Gdx.input.setInputProcessor(this);
+
 		float unitScale = 1 / 256f;
 		OrthogonalTiledMapRenderer renderer = new OrthogonalTiledMapRenderer(
 				rpgController.getMap(), unitScale);
@@ -80,10 +80,11 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		update(delta);
 		character2d.create();
 		character2d.render();
-		
+
 		batch = new SpriteBatch();
 		batch.begin();
-		batch.draw(character2d.getCurrentFrame(), character2d.getX(), character2d.getY());
+		batch.draw(character2d.getCurrentFrame(), character2d.getX(),
+				character2d.getY());
 		batch.end();
 
 		// shapeRenderer.begin(ShapeType.Filled);
@@ -134,40 +135,61 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	}
 
 	public void update(float delta) {
+		rpgController.updateModel();
 		keyInput(delta);
 	}
 
 	public void keyInput(float delta) {
 		if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-//			moveCharacter(WalkDirection.WALK_LEFT);
-			character2d.move(WalkDirection.WALK_LEFT);
+			rpgController.moveCharacter(WalkDirection.WALK_LEFT);
 		}
 		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-			character2d.move(WalkDirection.WALK_RIGHT);
+			rpgController.moveCharacter(WalkDirection.WALK_RIGHT);
 		}
 		if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-			character2d.move(WalkDirection.WALK_UP);
+			rpgController.moveCharacter(WalkDirection.WALK_UP);
 		}
 		if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-			character2d.move(WalkDirection.WALK_DOWN);
-			
+			rpgController.moveCharacter(WalkDirection.WALK_DOWN);
 		}
 		if (Gdx.input.isKeyPressed(Input.Keys.W)) {
-//			moveCharacter(WalkDirection.WALK_UP, 3);
-			
+			System.out.println("Character in: "
+					+ rpgController.getModel().getCharacter().getTileX() + ","
+					+ rpgController.getModel().getCharacter().getTileY());
 		}
+	}
+
+	/**
+	 * Method called by the Controller to update the character's visual
+	 * representation.
+	 */
+	public void moveCharacter2D(WalkDirection direction) {
+		character2d.move(direction);
 	}
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		// TODO: Transformar coordenadas em tiles antes de construir o caminho.
+		int[] currentPos = pixelsToTile((int) character2d.getX(),
+				Gdx.graphics.getHeight() - (int) character2d.getY() - 1);
+		int[] destinationPos = pixelsToTile(screenX, screenY);
+
 		path = finder.findPath(new CharacterMover(
-				CharacterMover.Type.NORMAL_CHARACTER),
-				(int) character2d.getX(), (int) character2d.getY(), screenX,
-				screenY);
-		rpgController.moveCharacter(path);
+				CharacterMover.Type.NORMAL_CHARACTER), currentPos[0],
+				currentPos[1], destinationPos[0], destinationPos[1]);
+
+		if (path != null)
+			rpgController.moveCharacter(path);
 
 		return true;
+	}
+
+	private int[] pixelsToTile(int x, int y) {
+		int[] tile = { 0, 0 };
+
+		tile[0] = x / TILE_SIZE;
+		tile[1] = y / TILE_SIZE;
+
+		return tile;
 	}
 
 	@Override
