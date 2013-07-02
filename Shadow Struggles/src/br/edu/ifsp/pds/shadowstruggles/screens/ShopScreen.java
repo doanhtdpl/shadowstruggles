@@ -67,11 +67,8 @@ public class ShopScreen extends BaseScreen {
 				"andalus-font"), Color.BLACK));
 
 		moneyLabel = new Label("", super.getSkin());
-		moneyLabel.setText("Money: $ " + String.valueOf(shop.getPlayerMoney()));// TODO:
-																				// string
-																				// Money
-																				// para
-																				// arquivo
+		moneyLabel.setText("Money: $ " + String.valueOf(shop.getPlayerMoney()));
+		// TODO: string Money para arquivo
 		moneyLabel.setX(30);
 		moneyLabel.setY(590);
 		moneyLabel.setWidth(200);
