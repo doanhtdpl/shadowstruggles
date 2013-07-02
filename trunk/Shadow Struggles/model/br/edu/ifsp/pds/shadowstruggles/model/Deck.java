@@ -16,6 +16,9 @@ public class Deck implements Serializable{
 	private String deckImage;
 	private String name;
 	private int totalCardPoints;
+	//Decks do Usuário (editDeckScreen) serão carregados caso o Id
+	//do Profile seja o mesmo do OwnerId 
+	private int profileOwnerId;
 	
 	
 	public Deck() {
@@ -41,7 +44,7 @@ public class Deck implements Serializable{
 		this.maxCapacity = maxCapacity;
 		this.cards = cards;
 		this.deckImage = deckImage;
-		//TODO: carregar imagem de acordo com a String recebida
+		//TODO: carregar imagem do deck de acordo com a String recebida
 		shuffle();
 	}
 

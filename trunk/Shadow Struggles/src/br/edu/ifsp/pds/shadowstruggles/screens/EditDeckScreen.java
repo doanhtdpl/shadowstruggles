@@ -39,6 +39,7 @@ public class EditDeckScreen extends BaseScreen {
 	private Deck selectedDeck;
 	private Array<Image> cardImages;
 	private Array<Card> trunk;
+	private Array<Deck> playerDecks;
 	private static EditDeckScreen instance;
 
 	public static EditDeckScreen getInstance(ShadowStruggles game,
@@ -86,13 +87,16 @@ public class EditDeckScreen extends BaseScreen {
 				super.getSkin());
 		newDeck = ScreenUtils
 				.defineButton(newDeck, 0, 0, 0, 0, super.getSkin());
-		// TODO: criar método para criacao de novos decks
+		newDeck.addListener(new ClickListener(){@Override
+		public void clicked(InputEvent event, float x, float y) {
+			createDeck();
+		}});
 
 		decks = new Label("", super.getSkin());
-		decks.setText("Deck B");
+		decks.setText("Deck A");
 		decks.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
 				Color.BLACK));
-
+		addDecks();
 		exit = new TextButton(MenuTextDAO.getMenuText().returnToStart,
 				super.getSkin());
 		exit = ScreenUtils.defineButton(exit, 0, 0, 0, 0, super.getSkin());
@@ -198,6 +202,20 @@ public class EditDeckScreen extends BaseScreen {
 		stage.addActor(deckTable);
 		stage.addActor(leftButtonTable);
 		stage.addActor(rightButtonTable);
+
+	}
+	
+	private void createDeck() {
+		Deck newDeck=new Deck();
+		//TODO: implementar criação de deck
+		// (criar deck com a letra seguinte e mostrar na lista)
+	}
+	
+	private void addDecks() {
+		
+		// TODO adicionar decks do usuário na lista da esquerda
+		//(pegar a Array de decks do profile e listar na lista da esquerda)
+		//(carregar Decks em que o Owner Id seja o mesmo que o Id do profile)
 
 	}
 
