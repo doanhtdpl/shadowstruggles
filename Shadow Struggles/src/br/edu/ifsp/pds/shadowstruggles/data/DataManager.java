@@ -92,7 +92,8 @@ public class DataManager {
 		recordSet.put(Profile.class, currentProfiles);
 
 		// Then, rewrite the file.
-		String path = FileMap.classToFile.get(Profile.class);
+		String path = localizedPath(currentLanguage,
+				FileMap.classToFile.get(Profile.class));
 		FileHandle handle = Gdx.files.local(path);
 
 		try {
