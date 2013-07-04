@@ -22,11 +22,6 @@
     <property name="obstacle" value=""/>
    </properties>
   </tile>
-  <tile id="16">
-   <properties>
-    <property name="obstacle" value=""/>
-   </properties>
-  </tile>
   <tile id="17">
    <properties>
     <property name="obstacle" value=""/>
@@ -57,16 +52,6 @@
     <property name="obstacle" value=""/>
    </properties>
   </tile>
-  <tile id="63">
-   <properties>
-    <property name="obstacle" value=""/>
-   </properties>
-  </tile>
-  <tile id="64">
-   <properties>
-    <property name="obstacle" value=""/>
-   </properties>
-  </tile>
   <tile id="65">
    <properties>
     <property name="obstacle" value=""/>
@@ -78,16 +63,6 @@
    </properties>
   </tile>
   <tile id="67">
-   <properties>
-    <property name="obstacle" value=""/>
-   </properties>
-  </tile>
-  <tile id="78">
-   <properties>
-    <property name="obstacle" value=""/>
-   </properties>
-  </tile>
-  <tile id="79">
    <properties>
     <property name="obstacle" value=""/>
    </properties>
@@ -110,22 +85,21 @@
  </tileset>
  <layer name="Camada de Tiles 1" width="30" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjZGBgYMKDmYHYmAisB8T6RGIDIBYAYkE8WAiLHSZIbGcobQvEdkRiexLtdcLjX1rai4xN6WBvIIG4DaSjf+kZzs5UtFceiBXwYEU8diGnMx8g9iUS+xEZhthwMInq0dMhte1wxhIf+PIfujwh9xFK44T8TEr5Ri0MKidJSYfUwvZo9joAsSOaGmxipKpHF0O31x+IA9D0YBMjVT26GLq9o+E8/MKZlHKVWhhUPgMABo6AYg==
+   eJxjZGBgYMKDmYHYmAisB8T6RGIDIBYAYkE8WAiLHSZIbGcobQvEdkRiexLtdcLjX1rai4xN6WBvIIG4DaSjf+kZzs5UtFceiBXwYEU8diGnMx8g9iUS+xEZhtTA6OmQGBxMglpnLPGBL/+hyxNyH6E0TsjPpJRv1MKgcpKUdEgtbI9mrwMQO6KpwSZGqnp0MXR7/YE4AE0PNjFS1aOLods7Gs7DL5xJKVephUHlMwBZf4BC
   </data>
  </layer>
  <objectgroup name="Camada de Objetos 1" width="30" height="20">
-  <object x="814" y="434" width="31" height="30"/>
-  <object x="506" y="246" height="3"/>
-  <object x="494" y="430" width="36" height="34"/>
-  <object x="115" y="434" width="31" height="24"/>
-  <object x="653" y="432" width="32" height="27">
+  <object x="114" y="426" width="31" height="36">
    <properties>
     <property name="collidable" value=""/>
+    <property name="height" value="1"/>
+    <property name="width" value="1"/>
    </properties>
   </object>
-  <object x="276" y="435" width="33" height="26">
+  <object x="264" y="429" width="54" height="51">
    <properties>
-    <property name="collidable" value=""/>
+    <property name="height" value="1"/>
+    <property name="width" value="2"/>
    </properties>
   </object>
  </objectgroup>

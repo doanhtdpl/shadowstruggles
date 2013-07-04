@@ -1,6 +1,7 @@
 package br.edu.ifsp.pds.shadowstruggles.object2d.rpg;
 
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character.WalkDirection;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character;
 
@@ -39,7 +40,7 @@ public class Character2D extends Image implements ApplicationListener {
 	private TextureRegion currentFrame;
 	private Character charModel;
 	private int size = 64;
-	private int tileSize = 32;
+	private int tileSize;
 	private WalkDirection direction = WalkDirection.WALK_DOWN;
 	private boolean walking;
 	private float characterSpeed = 100.0f;
@@ -52,6 +53,8 @@ public class Character2D extends Image implements ApplicationListener {
 		this.setSize(size, size);
 		this.setScale(1.0f, 1.0f);
 		this.setPosition(0, 0);
+		
+		this.tileSize = SettingsDAO.getSettings().tileSize;
 	}
 
 	/**

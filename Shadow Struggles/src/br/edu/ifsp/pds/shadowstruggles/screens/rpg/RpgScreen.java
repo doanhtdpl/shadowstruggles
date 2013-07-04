@@ -2,6 +2,7 @@ package br.edu.ifsp.pds.shadowstruggles.screens.rpg;
 
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character.WalkDirection;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.CharacterMover;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.AStarPathFinder;
@@ -22,10 +23,6 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
  * command to the RPG Controller. Also, renders all the visual elements.
  */
 public class RpgScreen extends BaseScreen implements InputProcessor {
-
-	public final static int TILE_SIZE = 32;
-
-	// private ShapeRenderer shapeRenderer;
 	private SpriteBatch batch;
 	private RpgController rpgController;
 	private Character2D character2d;
@@ -49,7 +46,6 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		super(game, controller);
 		rpgController.setViewer(this);
 		this.rpgController = rpgController;
-		// shapeRenderer = new ShapeRenderer();
 		character2d = new Character2D(rpgController.getModel().getCharacter(),
 				game);
 
@@ -68,8 +64,6 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	@Override
 	public void render(float delta) {
 		super.render(delta);
-		// Gdx.gl.glClearColor(1, 1, 1, 1);
-		// Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		Gdx.input.setInputProcessor(this);
 
 		float unitScale = 1 / 256f;
@@ -87,52 +81,6 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		batch.draw(character2d.getCurrentFrame(), character2d.getX(),
 				character2d.getY());
 		batch.end();
-
-		// shapeRenderer.begin(ShapeType.Filled);
-		// if (walked + platform.getCharacter().getWalkSpeed() >= tileSize) {
-		// readyToWalk = true;
-		// walked = 0;
-		// direction = null;
-		// }
-		//
-		// if (readyToWalk && directionBuffer.size() > 0) {
-		// moveCharacter(directionBuffer.get(0));
-		// directionBuffer.remove(0);
-		// }
-		//
-		// if (readyToWalk) {
-		// shapeRenderer.rect(character.getTileX() * tileSize,
-		// character.getTileY() * tileSize, tileSize, tileSize);
-		// } else {
-		//
-		// walked = walked + character.getWalkSpeed();
-		//
-		// switch (direction) {
-		// case WALK_UP:
-		// shapeRenderer.rect(character.getTileX() * tileSize,
-		// character.getTileY() * tileSize + walked - tileSize,
-		// tileSize, tileSize);
-		// break;
-		// case WALK_DOWN:
-		// shapeRenderer.rect(character.getTileX() * tileSize,
-		// character.getTileY() * tileSize - walked + tileSize,
-		// tileSize, tileSize);
-		// break;
-		// case WALK_LEFT:
-		// shapeRenderer.rect(character.getTileX() * tileSize - walked
-		// + tileSize, character.getTileY() * tileSize, tileSize,
-		// tileSize);
-		// break;
-		// case WALK_RIGHT:
-		// shapeRenderer.rect(character.getTileX() * tileSize + walked
-		// - tileSize, character.getTileY() * tileSize, tileSize,
-		// tileSize);
-		// break;
-		// default:
-		// break;
-		// }
-		// }
-		// shapeRenderer.end();
 	}
 
 	public void update(float delta) {
@@ -186,9 +134,10 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 
 	private int[] pixelsToTile(int x, int y) {
 		int[] tile = { 0, 0 };
+		int tileSize = SettingsDAO.getSettings().tileSize;
 
-		tile[0] = x / TILE_SIZE;
-		tile[1] = y / TILE_SIZE;
+		tile[0] = x / tileSize;
+		tile[1] = y / tileSize;
 
 		return tile;
 	}

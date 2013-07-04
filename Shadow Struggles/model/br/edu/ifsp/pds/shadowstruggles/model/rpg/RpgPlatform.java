@@ -3,7 +3,6 @@ package br.edu.ifsp.pds.shadowstruggles.model.rpg;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character.WalkDirection;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.Path;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.Path.Step;
-import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.TileBasedMap;
 import br.edu.ifsp.pds.shadowstruggles.rpg.RpgController;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -67,7 +66,7 @@ public class RpgPlatform {
 		return map.getMap();
 	}
 
-	public TileBasedMap getRpgMap() {
+	public RpgMap getRpgMap() {
 		return this.map;
 	}
 
@@ -75,26 +74,33 @@ public class RpgPlatform {
 	 * Moves the character towards a specified path, step by step.
 	 */
 	public void moveCharacter(Path path) {
-		for (Step step : path.getSteps()) {
-			if (step.getX() == character.getTileX()
-					&& step.getY() == character.getTileY())
-				continue;
 
+		// Since these directions are being buffered, the character is not
+		// updated immediately, so we deal with an imaginary character in x-y
+		// coordinates updated in real time.
+		int currentX = character.getTileX();
+		int currentY = character.getTileY();
+
+		for (Step step : path.getSteps()) {
 			Character.WalkDirection direction = null;
 
-			if (step.getX() == character.getTileX()
-					&& step.getY() < character.getTileY())
+			if (step.getX() == currentX && step.getY() < currentY) {
 				direction = Character.WalkDirection.WALK_UP;
-			if (step.getX() == character.getTileX()
-					&& step.getY() > character.getTileY())
+				currentY--;
+			}
+			if (step.getX() == currentX && step.getY() > currentY) {
 				direction = Character.WalkDirection.WALK_DOWN;
-			if (step.getY() == character.getTileY()
-					&& step.getX() < character.getTileX())
+				currentY++;
+			}
+			if (step.getY() == currentY && step.getX() < currentX) {
 				direction = Character.WalkDirection.WALK_LEFT;
-			if (step.getY() == character.getTileY()
-					&& step.getX() > character.getTileX())
+				currentX--;
+			}
+			if (step.getY() == currentY && step.getX() > currentX) {
 				direction = Character.WalkDirection.WALK_RIGHT;
-
+				currentX++;
+			}
+			
 			this.moveCharacter(direction, true);
 		}
 
@@ -110,7 +116,7 @@ public class RpgPlatform {
 
 	public boolean moveCharacter(WalkDirection direction, boolean inPath) {
 		if (direction != null) {
-			if (character.walk(direction, map.getMap(), inPath)) {
+			if (character.walk(direction, map, inPath)) {
 				controller.characterMoved(direction);
 				return true;
 			}
