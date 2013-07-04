@@ -67,6 +67,7 @@ public class FreePlayScreen extends BaseScreen {
 				@SuppressWarnings("unused")
 				RpgPlatform platform = new RpgPlatform(rpgController,
 						"example", new Character(game.getProfile(), 0, 19));
+
 				game.setScreenWithTransition(new RpgScreen(game, controller,
 						rpgController));
 			}

@@ -50,7 +50,8 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		rpgController.setViewer(this);
 		this.rpgController = rpgController;
 		// shapeRenderer = new ShapeRenderer();
-		character2d = new Character2D(rpgController, game);
+		character2d = new Character2D(rpgController.getModel().getCharacter(),
+				game);
 
 		finder = new AStarPathFinder(rpgController.getModel().getRpgMap(), 500,
 				false, new ManhattanHeuristic(1));
