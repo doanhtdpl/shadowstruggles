@@ -121,6 +121,10 @@ public class Character {
 		return walked;
 	}
 
+	/**
+	 * Notifies the Character to check for buffered movements and perform them
+	 * in order.
+	 */
 	public WalkDirection update() {
 		WalkDirection direction = null;
 
@@ -132,6 +136,10 @@ public class Character {
 		}
 
 		return direction;
+	}
+	
+	public void clearMovementBuffer() {
+		this.movementBuffer.clear();
 	}
 
 	public boolean isReadyToWalk() {
