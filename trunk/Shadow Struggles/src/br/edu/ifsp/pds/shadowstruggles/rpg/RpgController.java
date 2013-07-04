@@ -42,20 +42,6 @@ public class RpgController {
 	}
 
 	/**
-	 * Method called by Character2D to lock the model's movement.
-	 */
-	public void lockCharacterModel() {
-		model.getCharacter().setReadyToWalk(false);
-	}
-
-	/**
-	 * Method called by Character2D to unlock the model's movement.
-	 */
-	public void unlockCharacterModel() {
-		model.getCharacter().setReadyToWalk(true);
-	}
-
-	/**
 	 * Method called by the Viewer to update the model (e.g., try clearing the
 	 * character's movement buffer).
 	 */

@@ -2,7 +2,7 @@ package br.edu.ifsp.pds.shadowstruggles.object2d.rpg;
 
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character.WalkDirection;
-import br.edu.ifsp.pds.shadowstruggles.rpg.RpgController;
+import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
@@ -17,8 +17,6 @@ import com.badlogic.gdx.utils.Array;
 public class Character2D extends Image implements ApplicationListener {
 	private static final int FRAME_COLS = 3;
 	private static final int FRAME_ROWS = 3;
-
-	private TextureRegion stoppedFrame;
 
 	private Animation walkLeftAnimation;
 	private Animation walkUpAnimation;
@@ -39,7 +37,7 @@ public class Character2D extends Image implements ApplicationListener {
 	private float stateTime;
 	private ShadowStruggles game;
 	private TextureRegion currentFrame;
-	private RpgController rpgController;
+	private Character charModel;
 	private int size = 64;
 	private int tileSize = 32;
 	private WalkDirection direction = WalkDirection.WALK_DOWN;
@@ -47,12 +45,12 @@ public class Character2D extends Image implements ApplicationListener {
 	private float characterSpeed = 100.0f;
 	private float initialPosition = 0;
 
-	public Character2D(RpgController rpgController, ShadowStruggles game) {
+	public Character2D(Character charModel, ShadowStruggles game) {
 		super(game.getTextureRegion("char_down", "char"));
+		this.charModel = charModel;
 		this.game = game;
 		this.setSize(size, size);
 		this.setScale(1.0f, 1.0f);
-		this.rpgController = rpgController;
 		this.setPosition(0, 0);
 	}
 
@@ -69,7 +67,7 @@ public class Character2D extends Image implements ApplicationListener {
 			this.walked = 0;
 
 			// The model can't move during the walking animation.
-			rpgController.lockCharacterModel();
+			charModel.setReadyToWalk(false);
 
 			switch (direction) {
 			case WALK_UP:
@@ -159,7 +157,7 @@ public class Character2D extends Image implements ApplicationListener {
 				if (walked >= tileSize) {
 					this.setY(initialPosition + tileSize);
 					walking = false;
-					rpgController.unlockCharacterModel();
+					charModel.setReadyToWalk(true);
 				} else {
 					this.setY(this.getY() + (delta * characterSpeed));
 				}
@@ -180,7 +178,7 @@ public class Character2D extends Image implements ApplicationListener {
 				if (walked >= tileSize) {
 					this.setY(initialPosition - tileSize);
 					walking = false;
-					rpgController.unlockCharacterModel();
+					charModel.setReadyToWalk(true);
 				} else {
 					this.setY(this.getY() - (delta * characterSpeed));
 				}
@@ -201,7 +199,7 @@ public class Character2D extends Image implements ApplicationListener {
 				if (walked >= tileSize) {
 					this.setX(initialPosition - tileSize);
 					walking = false;
-					rpgController.unlockCharacterModel();
+					charModel.setReadyToWalk(true);
 				} else {
 					this.setX(this.getX() - (delta * characterSpeed));
 				}
@@ -222,7 +220,7 @@ public class Character2D extends Image implements ApplicationListener {
 				if (walked >= tileSize) {
 					this.setX(initialPosition + tileSize);
 					walking = false;
-					rpgController.unlockCharacterModel();
+					charModel.setReadyToWalk(true);
 				} else {
 					this.setX(this.getX() + (delta * characterSpeed));
 				}
