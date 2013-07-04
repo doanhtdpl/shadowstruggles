@@ -1,5 +1,6 @@
 package br.edu.ifsp.pds.shadowstruggles.model.rpg;
 
+import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.Mover;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.TileBasedMap;
 
@@ -58,41 +59,60 @@ public class RpgMap implements TileBasedMap {
 	// TODO: Corrigir verificação de bloqueio.
 	@Override
 	public boolean blocked(Mover mover, int x, int y) {
-		return false;
-//		if (mover.getClass() == CharacterMover.class) {
-//			CharacterMover cMover = (CharacterMover) mover;
-//
-//			if (cMover.getType() == CharacterMover.Type.NORMAL_CHARACTER) {
-//
-//				// Check for collidable objects.
-//				MapObjects objects = this.currentLayer.getObjects();
-//				for (MapObject object : objects) {
-//					int objX = (Integer) object.getProperties().get("x");
-//					int objY = (Integer) object.getProperties().get("y");
-//					boolean passable = object.getProperties().containsKey(
-//							"collidable");
-//
-//					if (objX == x && objY == y && !passable)
-//						System.out
-//								.println("Um objeto te bloqueia! "
-//										+ object.getName() + " - " + objX
-//										+ ", " + objY);
-//					return (objX == x && objY == y && !passable);
-//				}
-//
-//				// Check for tile obstacles.
-//				TiledMapTile tile = this.currentLayer.getCell(x, y).getTile();
-//				boolean obstacle = tile.getProperties().containsKey("obstacle");
-//				if (obstacle)
-//					System.out.println("Propriedade obstacle encontrada em: "
-//							+ x + "," + y);
-//				return obstacle;
-//			} else {
-//				throw new UnsupportedOperationException("Invalid Mover type");
-//			}
-//		} else {
-//			throw new UnsupportedOperationException("Invalid Mover object");
-//		}
+		// Maps from Tiled are interpreted with the traditional Cartesian
+		// coordinate system (y increases upwards); thus, the y parameter must
+		// be inverted. Also, y ranges from 0 to height - 1, thus the
+		// subtraction.
+		int invertY = this.getHeightInTiles() - y - 1;
+
+		if (mover.getClass() == CharacterMover.class) {
+			CharacterMover cMover = (CharacterMover) mover;
+
+			if (cMover.getType() == CharacterMover.Type.NORMAL_CHARACTER) {
+
+				// Basic validation: check if the coordinates are within the
+				// valid
+				// bounds.
+				if (x < 0 || x >= this.getWidthInTiles() || y < 0
+						|| y >= this.getHeightInTiles())
+					return true;
+
+				// Check for collidable objects.
+				MapObjects objects = this.map.getLayers()
+						.get("Camada de Objetos 1").getObjects();
+
+				for (MapObject object : objects) {
+					int tileSize = SettingsDAO.getSettings().tileSize;
+
+					int objX = (Integer) object.getProperties().get("x")
+							/ tileSize;
+					int objY = (Integer) object.getProperties().get("y")
+							/ tileSize;
+					int width = Integer.parseInt((String) object
+							.getProperties().get("width"));
+					int height = Integer.parseInt((String) object
+							.getProperties().get("height"));
+
+					boolean collidable = object.getProperties().containsKey(
+							"collidable");
+					if ((x >= objX && x <= objX + width)
+							&& (invertY >= objY && invertY <= objY + height)
+							&& collidable)
+						return true;
+				}
+
+				// Check for tile obstacles.
+				TiledMapTile tile = this.currentLayer.getCell(x, invertY)
+						.getTile();
+				boolean obstacle = tile.getProperties().containsKey("obstacle");
+				return obstacle;
+			} else {
+				throw new UnsupportedOperationException(
+						"Invalid CharacterMover type");
+			}
+		} else {
+			throw new UnsupportedOperationException("Invalid Mover object");
+		}
 	}
 
 	@Override

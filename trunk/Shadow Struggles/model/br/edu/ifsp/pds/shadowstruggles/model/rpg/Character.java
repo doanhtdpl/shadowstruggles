@@ -1,7 +1,5 @@
 package br.edu.ifsp.pds.shadowstruggles.model.rpg;
 
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.utils.Array;
 
 import br.edu.ifsp.pds.shadowstruggles.model.Profile;
@@ -23,7 +21,8 @@ public class Character {
 
 	private boolean readyToWalk = true;
 	private WalkDirection direction = null;
-	private TiledMap currentMap;
+	private CharacterMover mover;
+	private RpgMap currentMap;
 
 	/**
 	 * Stores the steps, in order, which must be performed before doing anything
@@ -46,6 +45,7 @@ public class Character {
 		this.tileX = tileX;
 		this.tileY = tileY;
 
+		this.mover = new CharacterMover(CharacterMover.Type.NORMAL_CHARACTER);
 		this.movementBuffer = new Array<WalkDirection>();
 	}
 
@@ -60,7 +60,7 @@ public class Character {
 	 *            The map where the character is.
 	 * @return true if successfully walked. Else, returns false.
 	 */
-	public boolean walk(WalkDirection direction, TiledMap map) {
+	public boolean walk(WalkDirection direction, RpgMap map) {
 		return walk(direction, map, false);
 	}
 
@@ -79,7 +79,7 @@ public class Character {
 	 *            movement can't be performed immediately.
 	 * @return true if successfully walked. Else, returns false.
 	 */
-	public boolean walk(WalkDirection direction, TiledMap map, boolean inPath) {
+	public boolean walk(WalkDirection direction, RpgMap map, boolean inPath) {
 		if (!readyToWalk) {
 			if (inPath)
 				movementBuffer.add(direction);
@@ -88,50 +88,31 @@ public class Character {
 
 		this.currentMap = map;
 		boolean walked = false;
-		TiledMapTileLayer tileLayer = (TiledMapTileLayer) map.getLayers()
-				.get(0);
 
 		switch (direction) {
-		// TODO: Corrigir verificação de bloqueio.
 		case WALK_UP:
-			tileY--;
-			walked = true;
-			// if (tileY > 0
-			// && !tileLayer.getCell(tileX, tileY - 1).getTile()
-			// .getProperties().containsKey("obstacle")) {
-			// tileY--;
-			// walked = true;
-			// }
+			if (!map.blocked(this.mover, tileX, tileY - 1)) {
+				tileY--;
+				walked = true;
+			}
 			break;
 		case WALK_DOWN:
-			tileY++;
-			walked = true;
-			// if (tileY < tileLayer.getHeight() - 1
-			// && !tileLayer.getCell(tileX, tileY + -1).getTile()
-			// .getProperties().containsKey("obstacle")) {
-			// tileY++;
-			// walked = true;
-			// }
+			if (!map.blocked(this.mover, tileX, tileY + 1)) {
+				tileY++;
+				walked = true;
+			}
 			break;
 		case WALK_LEFT:
-			tileX--;
-			walked = true;
-			// if (tileX > 0
-			// && !tileLayer.getCell(tileX - 1, tileY).getTile()
-			// .getProperties().containsKey("obstacle")) {
-			// tileX--;
-			// walked = true;
-			// }
+			if (!map.blocked(this.mover, tileX - 1, tileY)) {
+				tileX--;
+				walked = true;
+			}
 			break;
 		case WALK_RIGHT:
-			tileX++;
-			walked = true;
-			// if (tileX < tileLayer.getWidth() - 1
-			// && !tileLayer.getCell(tileX + 1, tileY).getTile()
-			// .getProperties().containsKey("obstacle")) {
-			// tileX++;
-			// walked = true;
-			// }
+			if (!map.blocked(this.mover, tileX + 1, tileY)) {
+				tileX++;
+				walked = true;
+			}
 			break;
 		default:
 			break;
@@ -183,5 +164,9 @@ public class Character {
 
 	public void setWalkSpeed(int walkSpeed) {
 		this.walkSpeed = walkSpeed;
+	}
+
+	public CharacterMover getMover() {
+		return this.mover;
 	}
 }

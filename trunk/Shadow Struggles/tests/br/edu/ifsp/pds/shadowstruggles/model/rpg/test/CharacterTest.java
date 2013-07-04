@@ -5,6 +5,7 @@ import org.junit.Test;
 import br.edu.ifsp.pds.shadowstruggles.model.Profile;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character;
 
+import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgMap;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgPlatform;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character.WalkDirection;
 import br.edu.ifsp.pds.shadowstruggles.rpg.RpgController;
@@ -21,7 +22,8 @@ public class CharacterTest {
 				initialTileY);
 		RpgPlatform platform = new RpgPlatform(new RpgController(), "example",
 				character);
-		platform.getCharacter().walk(WalkDirection.WALK_UP, platform.getMap());
+		platform.getCharacter().walk(WalkDirection.WALK_UP,
+				platform.getRpgMap());
 		boolean walkedUp = false;
 		if (platform.getCharacter().getTileY() == initialTileY + 1)
 			walkedUp = true;
@@ -39,8 +41,8 @@ public class CharacterTest {
 				initialTileY);
 		RpgPlatform platform = new RpgPlatform(new RpgController(), "example",
 				character);
-		platform.getCharacter()
-				.walk(WalkDirection.WALK_DOWN, platform.getMap());
+		platform.getCharacter().walk(WalkDirection.WALK_DOWN,
+				platform.getRpgMap());
 		boolean walkedDown = false;
 		if (platform.getCharacter().getTileY() == initialTileY - 1)
 			walkedDown = true;
@@ -58,8 +60,8 @@ public class CharacterTest {
 				initialTileY);
 		RpgPlatform platform = new RpgPlatform(new RpgController(), "example",
 				character);
-		platform.getCharacter()
-				.walk(WalkDirection.WALK_LEFT, platform.getMap());
+		platform.getCharacter().walk(WalkDirection.WALK_LEFT,
+				platform.getRpgMap());
 		boolean walkedLeft = false;
 		if (platform.getCharacter().getTileX() == initialTileX - 1)
 			walkedLeft = true;
@@ -78,7 +80,7 @@ public class CharacterTest {
 		RpgPlatform platform = new RpgPlatform(new RpgController(), "example",
 				character);
 		platform.getCharacter().walk(WalkDirection.WALK_RIGHT,
-				platform.getMap());
+				platform.getRpgMap());
 		boolean walkedRight = false;
 		if (platform.getCharacter().getTileX() == initialTileX + 1)
 			walkedRight = true;

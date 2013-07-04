@@ -42,6 +42,9 @@ public class Settings implements Serializable {
 	public int enemyLifeX = 840;
 	public int mapHeight = 640;
 	public int mapWidth = 960;
+	
+	// RPG settings.
+	public int tileSize = 32;
 
 	@Override
 	public void write(Json json) {
@@ -72,6 +75,8 @@ public class Settings implements Serializable {
 		json.writeValue("enemyLifeX", enemyLifeX);
 		json.writeValue("mapHeight", mapHeight);
 		json.writeValue("mapWidth", mapWidth);
+		
+		json.writeValue("tileSize", tileSize);
 
 	}
 
@@ -111,6 +116,8 @@ public class Settings implements Serializable {
 		enemyLifeX = json.readValue("enemyLifeX", Integer.class, jsonData);
 		mapHeight = json.readValue("mapHeight", Integer.class, jsonData);
 		mapWidth = json.readValue("mapWidth", Integer.class, jsonData);
+		
+		tileSize = json.readValue("tileSize", Integer.class, jsonData);
 	}
 
 }
