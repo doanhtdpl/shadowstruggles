@@ -75,6 +75,9 @@ public class RpgPlatform {
 	 */
 	public void moveCharacter(Path path) {
 
+		// Stop any ongoing path to start another one.
+		this.getCharacter().clearMovementBuffer();
+
 		// Since these directions are being buffered, the character is not
 		// updated immediately, so we deal with an imaginary character in x-y
 		// coordinates updated in real time.
@@ -100,7 +103,7 @@ public class RpgPlatform {
 				direction = Character.WalkDirection.WALK_RIGHT;
 				currentX++;
 			}
-			
+
 			this.moveCharacter(direction, true);
 		}
 
