@@ -194,32 +194,59 @@ public class DataManagerTest {
 			BattlePlatform bp = new BattlePlatform();
 			bp.id = new Random().nextInt();
 			manager.insertObject(bp, BattlePlatform.class);
-			ArrayList<BattlePlatform> previousList = manager.searchAllObjects(BattlePlatform.class);
+			ArrayList<BattlePlatform> previousList = manager
+					.searchAllObjects(BattlePlatform.class);
 
 			manager.deleteObject(bp.id, BattlePlatform.class);
 
-			ArrayList<BattlePlatform> list = manager.searchAllObjects(BattlePlatform.class);
+			ArrayList<BattlePlatform> list = manager
+					.searchAllObjects(BattlePlatform.class);
 			assertTrue(list.size() == 0 && previousList.size() > 0);
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail("");
 		}
 	}
-	
+
 	@Test
 	public void testSaveToZip() {
 		FileMap.initMap();
 		DataManager manager = new DataManager();
-		
+
 		try {
 			manager.newZip("test.zip");
 			BattlePlatform bp = new BattlePlatform();
 			manager.insertObject(bp, BattlePlatform.class);
 			manager.saveToZip();
 			manager.deleteDirectory("data");
-			
+
 			assertFalse(new File("data").exists());
-		} catch(Exception e) {
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail("");
+		}
+	}
+
+	@Test
+	public void testCopyData() {
+		FileMap.initMap();
+		DataManager manager = new DataManager();
+
+		try {
+			manager.newZip("test.zip");
+
+			BattlePlatform bp = new BattlePlatform();
+			bp.id = new Random().nextInt();
+			manager.insertObject(bp, BattlePlatform.class);
+
+			manager.insertLanguage("pt_br", "Português");
+			manager.copyData("en_us", "pt_br");
+			manager.setCurrentLanguage("pt_br");
+			int retrievedId = ((BattlePlatform) manager.searchObject(bp.id,
+					BattlePlatform.class)).id;
+			
+			assertEquals(bp.id, retrievedId);
+		} catch (Exception e) {
 			e.printStackTrace();
 			fail("");
 		}
