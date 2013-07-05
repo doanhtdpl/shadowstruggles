@@ -65,23 +65,23 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 			game.getAudio().stop();
 		}
 
-		if (!scene.getBackgroundImage().equals("")) {
-			if (scene.getBackgroundImage().contains("/maps/")) {
-				background = new Image(new TextureRegion(new Texture(
-						Gdx.files.internal(scene.getBackgroundImage())),
-						SettingsDAO.getSettings().backgroundWidth / 2,
-						SettingsDAO.getSettings().backgroundHeight / 2));
-			} else {
-				background = new Image(new Texture(Gdx.files.internal(scene
-						.getBackgroundImage())));
-			}
-		} else
-			background = new Image();
+//		if (!scene.getBackgroundImage().equals("")) {
+//			if (scene.getBackgroundImage().contains("/maps/")) {
+//				background = new Image(new TextureRegion(new Texture(
+//						Gdx.files.internal(scene.getBackgroundImage())),
+//						SettingsDAO.getSettings().backgroundWidth / 2,
+//						SettingsDAO.getSettings().backgroundHeight / 2));
+//			} else {
+//				background = new Image(new Texture(Gdx.files.internal(scene
+//						.getBackgroundImage())));
+//			}
+//		} else
+//			background = new Image();
 
-		background.setX(0);
-		background.setY(0);
-		background.setWidth(960);
-		background.setHeight(640);
+//		background.setX(0);
+//		background.setY(0);
+//		background.setWidth(960);
+//		background.setHeight(640);
 
 		text.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
 				Color.WHITE));
@@ -97,9 +97,7 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 				super.clicked(event, x, y);
 			}
 		});
-		box = new Image(game.getAssets()
-				.get("data/images/objects/objects.atlas", TextureAtlas.class)
-				.findRegion("box"));
+		box = new Image(game.getTextureRegion("box", "game_ui_images"));
 		box.setWidth(text.getWidth() + 50);
 		// box.setHeight(text.getHeight() + 50);
 		box.setHeight(500);
@@ -144,7 +142,7 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 		inputSources.addProcessor(this.stage);
 		inputSources.addProcessor(this);
 
-		stage.addActor(background);
+//		stage.addActor(background);
 		stage.addActor(box);
 		stage.addActor(text);
 		stage.addActor(next);
@@ -273,7 +271,7 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 	@Override
 	public void render(float delta) {
 		super.render(delta);
-		background.setY(this.camera.position.y - CAMERA_INITIAL_Y);
+//		background.setY(this.camera.position.y - CAMERA_INITIAL_Y);
 		next.setY(this.camera.position.y - CAMERA_INITIAL_Y + 320);
 		menu.setY(this.camera.position.y - CAMERA_INITIAL_Y + 20);
 	}
