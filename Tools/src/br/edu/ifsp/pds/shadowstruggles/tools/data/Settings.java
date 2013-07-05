@@ -38,8 +38,11 @@ public class Settings implements Serializable {
 	public int lifeBarY = 520; // Y-coordinate of both of the life bars.
 	public int playerLifeX = 20;
 	public int enemyLifeX = 840;
-	public int screenHeight = 640;
-	public int screenWidth = 960;
+	public int mapHeight = 640;
+	public int mapWidth = 960;
+	
+	// RPG settings.
+	public int tileSize = 32;
 
 	@Override
 	public void read(Json arg0, JsonValue arg1) {
