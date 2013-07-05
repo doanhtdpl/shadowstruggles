@@ -93,12 +93,8 @@ public class DataManager {
 		Languages retrievedLanguages = null;
 		ZipFile zipFile = new ZipFile(zip);
 
-		// ZipInputStream zis = new ZipInputStream(new FileInputStream(zip));
-		// ZipEntry entry;
-
 		// First, get the Languages and Settings files and storage all entries
-		// as
-		// strings.
+		// as strings.
 
 		boolean hasLanguages = false;
 		boolean hasSettings = false;
@@ -118,15 +114,6 @@ public class DataManager {
 			if (fileName.equals(FileMap.classToFile.get(Settings.class)))
 				hasSettings = true;
 		}
-		// while ((entry = zis.getNextEntry()) != null) {
-		// retrievedEntries.add(entry.getName());
-		//
-		// if (entry.getName() == FileMap.classToFile.get(Languages.class)) {
-		// hasLanguages = true;
-		// retrievedLanguages = MyJson.getJson().fromJson(Languages.class,
-		// new File(entry.getName()));
-		// }
-		// }
 
 		if (!hasLanguages || !hasSettings)
 			return false;
@@ -148,7 +135,7 @@ public class DataManager {
 			} else {
 				// This class is languages-dependent, therefore, it must be
 				// localized first according to each retrieved languages.
-				for (String lang : retrievedLanguages.languages.keySet()) {
+				for (String lang : retrievedLanguages.keySet()) {
 					String localizedPath = localizedPath(lang,
 							FileMap.classToFile.get(c));
 					if (!retrievedEntries.contains(localizedPath)) {
@@ -157,8 +144,6 @@ public class DataManager {
 				}
 			}
 		}
-
-		// zis.close();
 
 		return check;
 	}
@@ -184,7 +169,8 @@ public class DataManager {
 
 			if (obj.getClass().isArray() || obj.getClass() == ArrayList.class) {
 				MyJson.getJson().toJson(obj, file);
-			} else if (obj.getClass() == Languages.class || obj.getClass() == Settings.class) {
+			} else if (obj.getClass() == Languages.class
+					|| obj.getClass() == Settings.class) {
 				ArrayList<T> currentObjects = new ArrayList<T>();
 				currentObjects.add(obj);
 				MyJson.getJson().toJson(currentObjects, file);
@@ -196,29 +182,28 @@ public class DataManager {
 				MyJson.getJson().toJson(currentObjects, file);
 			}
 
-			if (c == Languages.class) {
-				// Add additional directory for the language.
-				this.createLangDirectory((Languages) obj);
-			}
+			if (c == Languages.class)
+				createLanguagesDirectory();
 		}
 	}
 
-	private void createLangDirectory(Languages languages) throws IOException {
-		File directory = new File("data");
-		ArrayList<String> folders = new ArrayList<String>(
-				Arrays.asList(directory.list()));
+	/**
+	 * If there's any language in the languages field which doesn't have its
+	 * directory structure yet, create it.
+	 */
+	private void createLanguagesDirectory() throws IOException {
+		for (String language : this.languages.keySet()) {
+			if (!Files.exists(Paths.get("data/" + language),
+					LinkOption.NOFOLLOW_LINKS)) {
+				Files.createDirectory(Paths.get("data/" + language));
+				Files.createDirectory(Paths.get("data/" + language + "/files"));
 
-		for (String lang : languages.keySet()) {
-			if (!folders.contains(lang)) {
-				ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(
-						currentFile));
-
-				for (Class<?> cl : FileMap.classToFile.keySet()) {
-					ZipEntry entry = null;
-					if (cl != Languages.class)
-						entry = new ZipEntry(lang + "/"
-								+ FileMap.classToFile.get(cl));
-					zos.putNextEntry(entry);
+				for (Class<?> c : FileMap.classToFile.keySet()) {
+					if (c != Languages.class && c != Settings.class) {
+						String localizedPath = localizedPath(language,
+								FileMap.classToFile.get(c));
+						Files.createFile(Paths.get(localizedPath));
+					}
 				}
 			}
 		}
@@ -395,6 +380,57 @@ public class DataManager {
 		zip.addFolder(f, parameters);
 	}
 
+	/**
+	 * Inserts a new entry in the languages field and updates the languages
+	 * file.
+	 */
+	public void insertLanguage(String code, String lang) throws IOException {
+		this.languages.put(code, lang);
+		this.insertObject(this.languages, Languages.class);
+	}
+
+	/**
+	 * Removes an entry in the languages field and updates the languages file.
+	 */
+	public void removeLanguage(String code) throws IOException {
+		if (this.languages.containsKey(code)) {
+			this.languages.remove(code);
+			this.insertObject(this.languages, Languages.class);
+		}
+	}
+
+	/**
+	 * Updates an entry in the languages field and the languages file.
+	 */
+	public void updateLanguage(String code, String modifiedLang)
+			throws IOException {
+		if (this.languages.containsKey(code)) {
+			this.languages.put(code, modifiedLang);
+			this.insertObject(this.languages, Languages.class);
+		}
+	}
+
+	/**
+	 * Duplicates the localized data from one language to another, to make
+	 * string localization easier. All data from the destiny language is
+	 * deleted.
+	 */
+	public void copyData(String originLanguage, String destinyLanguage)
+			throws IOException {
+		if (languages.containsKey(originLanguage)
+				&& languages.containsKey(destinyLanguage)) {
+			for (Class<?> c : FileMap.classToFile.keySet()) {
+				if (c != Languages.class && c != Settings.class) {
+					Path source = Paths.get(localizedPath(originLanguage,
+							FileMap.classToFile.get(c)));
+					Path target = Paths.get(localizedPath(destinyLanguage,
+							FileMap.classToFile.get(c)));
+					Files.copy(source, target, StandardCopyOption.REPLACE_EXISTING);
+				}
+			}
+		}
+	}
+
 	public String getCurrentFile() {
 		return currentFile;
 	}
@@ -402,13 +438,18 @@ public class DataManager {
 	public Languages getLanguages() {
 		return languages;
 	}
-	
+
 	public Settings getSettings() {
 		return settings;
 	}
 
 	public String getCurrentLanguage() {
 		return currentLanguage;
+	}
+
+	public void setCurrentLanguage(String lang) {
+		if (this.languages.containsKey(lang))
+			this.currentLanguage = lang;
 	}
 
 	private static String localizedPath(String currentLanguage, String path) {

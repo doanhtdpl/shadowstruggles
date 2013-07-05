@@ -11,7 +11,7 @@ import com.esotericsoftware.jsonbeans.JsonValue;
 
 public class Languages implements Serializable {
 
-	public HashMap<String, String> languages;
+	private HashMap<String, String> languages;
 
 	public Languages() {
 		this.languages = new HashMap<String, String>();
@@ -29,6 +29,14 @@ public class Languages implements Serializable {
 		this.languages.put(key, value);
 	}
 
+	public boolean containsKey(String key) {
+		return this.languages.containsKey(key);
+	}
+	
+	public void remove(String key) {
+		this.languages.remove(key);
+	}
+	
 	public void read(Json arg0, JsonValue arg1) {
 		try {
 			SerializationHelper.read(this, arg0, arg1, new ArrayList<String>());
