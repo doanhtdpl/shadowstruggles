@@ -85,7 +85,7 @@ public class ShopScreen extends BaseScreen {
 		box.setScaleY(0.76f);
 
 		right = new Arrow(1, this.getSkin());
-		right.setY(150);
+		right.setY(20);
 		right.setX(900);
 		right.setScaleY(4f);
 		right.setScaleX(1.5f);
