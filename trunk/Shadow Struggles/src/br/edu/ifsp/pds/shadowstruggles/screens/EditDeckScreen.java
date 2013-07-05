@@ -84,7 +84,7 @@ public class EditDeckScreen extends BaseScreen {
 				.getFont("andalus-font"), Color.WHITE));
 
 		newDeck = new TextButton(MenuTextDAO.getMenuText().newDeck,
-				super.getSkin(), "drawer");
+				super.getSkin());
 		newDeck = ScreenUtils
 				.defineButton(newDeck, 0, 0, 0, 0, super.getSkin());
 		newDeck.addListener(new ClickListener(){@Override
@@ -98,7 +98,7 @@ public class EditDeckScreen extends BaseScreen {
 				Color.WHITE));
 		addDecks();
 		exit = new TextButton(MenuTextDAO.getMenuText().returnToStart,
-				super.getSkin(), "drawer");
+				super.getSkin());
 		exit = ScreenUtils.defineButton(exit, 0, 0, 0, 0, super.getSkin());
 		exit.addListener(new ClickListener() {
 
