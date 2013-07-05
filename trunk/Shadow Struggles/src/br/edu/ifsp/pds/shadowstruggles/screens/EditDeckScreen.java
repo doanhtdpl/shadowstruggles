@@ -68,9 +68,9 @@ public class EditDeckScreen extends BaseScreen {
 		final BaseScreen menu = this.previousScreen;
 		this.selectedDeck = game.getProfile().getDeck();
 		this.trunk = game.getProfile().getTrunk();
-		background = new Image(this.getSkin().getDrawable("msbackground"));
-		background.setScaleX(960f / 512f);
-		background.setScaleY(640f / 380f);
+//		background = new Image(this.getSkin().getDrawable("msbackground"));
+//		background.setScaleX(960f / 512f);
+//		background.setScaleY(640f / 380f);
 
 		Table menuTable = new Table();
 		menuTable.defaults().padTop(10).width(160).height(50);
@@ -81,10 +81,10 @@ public class EditDeckScreen extends BaseScreen {
 		deckName = new Label("", super.getSkin());
 		deckName.setText("Select a Deck");
 		deckName.setStyle(new LabelStyle(super.getSkin()
-				.getFont("andalus-font"), Color.BLACK));
+				.getFont("andalus-font"), Color.WHITE));
 
 		newDeck = new TextButton(MenuTextDAO.getMenuText().newDeck,
-				super.getSkin());
+				super.getSkin(), "drawer");
 		newDeck = ScreenUtils
 				.defineButton(newDeck, 0, 0, 0, 0, super.getSkin());
 		newDeck.addListener(new ClickListener(){@Override
@@ -95,10 +95,10 @@ public class EditDeckScreen extends BaseScreen {
 		decks = new Label("", super.getSkin());
 		decks.setText("Deck A");
 		decks.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
-				Color.BLACK));
+				Color.WHITE));
 		addDecks();
 		exit = new TextButton(MenuTextDAO.getMenuText().returnToStart,
-				super.getSkin());
+				super.getSkin(), "drawer");
 		exit = ScreenUtils.defineButton(exit, 0, 0, 0, 0, super.getSkin());
 		exit.addListener(new ClickListener() {
 
@@ -197,7 +197,7 @@ public class EditDeckScreen extends BaseScreen {
 		leftButtonTable.setPosition(250, 80);
 		rightButtonTable.setPosition(900, 80);
 
-		stage.addActor(background);
+//		stage.addActor(background);
 		stage.addActor(menuTable);
 		stage.addActor(deckTable);
 		stage.addActor(leftButtonTable);
