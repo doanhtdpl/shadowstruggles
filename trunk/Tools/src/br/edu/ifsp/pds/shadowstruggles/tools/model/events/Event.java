@@ -22,6 +22,7 @@ public abstract class Event implements Serializable {
 	public Quest quest;
 	public boolean triggered;
 	public String sprite;
+	public TriggerType triggerType;
 
 	public Event() {
 		this.id = 1;
@@ -32,10 +33,12 @@ public abstract class Event implements Serializable {
 		this.quest = new Quest();
 		this.triggered = false;
 		this.sprite = "";
+		this.triggerType = TriggerType.TOUCH;
 	}
 
 	public Event(int id, float x, float y, String map, String layer,
-			Quest quest, boolean triggered, String sprite) {
+			Quest quest, boolean triggered, String sprite,
+			TriggerType triggerType) {
 		this.id = id;
 		this.x = x;
 		this.y = y;
@@ -44,8 +47,9 @@ public abstract class Event implements Serializable {
 		this.quest = quest;
 		this.triggered = triggered;
 		this.sprite = sprite;
+		this.triggerType = triggerType;
 	}
-
+	
 	@Override
 	public void read(Json arg0, JsonValue arg1) {
 		try {

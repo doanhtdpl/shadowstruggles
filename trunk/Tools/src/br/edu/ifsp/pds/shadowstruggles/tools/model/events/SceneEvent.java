@@ -13,8 +13,9 @@ public class SceneEvent extends Event {
 	}
 
 	public SceneEvent(int id, float x, float y, String map, String layer,
-			Quest quest, boolean triggered, String sprite, Scene scene) {
-		super(id, x, y, map, layer, quest, triggered, sprite);
+			Quest quest, boolean triggered, String sprite,
+			TriggerType triggerType, Scene scene) {
+		super(id, x, y, map, layer, quest, triggered, sprite, triggerType);
 
 		this.scene = scene;
 	}
