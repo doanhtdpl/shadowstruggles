@@ -27,11 +27,9 @@ public class DesktopStarter {
 		// "data/images/card_walking", "card_walking");
 		// TexturePacker2.process("data/images/cards", "data/images/cards",
 		// "cards");
-		// TexturePacker2.process("data/images/char", "data/images/char",
-		// "char");
-		// TexturePacker2.process("data/images/char", "data/images/char",
-		// "char");
-		// System.out.println("Finish!");
+//		TexturePacker2.process("data/images/sprites", "data/images/sprites",
+//				"sprites");
+//		System.out.println("Finish!");
 
 		ApplicationListener listener = new ShadowStruggles(RunMode.DEBUG);
 		String title = "Shadow Struggles";

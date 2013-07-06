@@ -17,7 +17,7 @@ import com.badlogic.gdx.utils.Array;
  */
 public class Character2D extends Image implements ApplicationListener {
 	private static final int FRAME_COLS = 3;
-	private static final int FRAME_ROWS = 3;
+	private static final int FRAME_ROWS = 4;
 
 	private Animation walkLeftAnimation;
 	private Animation walkUpAnimation;
@@ -29,10 +29,7 @@ public class Character2D extends Image implements ApplicationListener {
 	private Array<TextureRegion> walkRightFrames;
 	private Array<TextureRegion> walkDownFrames;
 
-	private TextureRegion walkSheet_left;
-	private TextureRegion walkSheet_right;
-	private TextureRegion walkSheet_up;
-	private TextureRegion walkSheet_down;
+	private static float FRAME_DURATION = 0.11f;
 
 	private float walked = 0;
 	private float stateTime;
@@ -41,19 +38,19 @@ public class Character2D extends Image implements ApplicationListener {
 	private Character charModel;
 	private int size = 64;
 	private int tileSize;
-	private WalkDirection direction = WalkDirection.WALK_DOWN;
+	private WalkDirection direction = WalkDirection.WALK_UP;
 	private boolean walking;
 	private float characterSpeed = 100.0f;
 	private float initialPosition = 0;
 
 	public Character2D(Character charModel, ShadowStruggles game) {
-		super(game.getTextureRegion("char_down", "char"));
+		super(game.getTextureRegion("char", "sprites"));
 		this.charModel = charModel;
 		this.game = game;
 		this.setSize(size, size);
 		this.setScale(1.0f, 1.0f);
 		this.setPosition(0, 0);
-		
+
 		this.tileSize = SettingsDAO.getSettings().tileSize;
 	}
 
@@ -103,38 +100,38 @@ public class Character2D extends Image implements ApplicationListener {
 
 	@Override
 	public void create() {
-		walkSheet_left = game.getTextureRegion("char_left", "char");
-		walkSheet_up = game.getTextureRegion("char_up", "char");
-		walkSheet_right = game.getTextureRegion("char_right", "char");
-		walkSheet_down = game.getTextureRegion("char_down", "char");
+		TextureRegion walksheet = game.getTextureRegion("char", "sprites");
 
-		TextureRegion[][] aux_left = walkSheet_left.split(size, size);
-		TextureRegion[][] aux_up = walkSheet_up.split(size, size);
-		TextureRegion[][] aux_right = walkSheet_right.split(size, size);
-		TextureRegion[][] aux_down = walkSheet_down.split(size, size);
+		TextureRegion[][] aux = walksheet.split(size, size);
+		TextureRegion[] aux_down = aux[0];
+		TextureRegion[] aux_left = aux[1];
+		TextureRegion[] aux_right = aux[2];
+		TextureRegion[] aux_up = aux[3];
 
-		walkLeftFrames = new Array<TextureRegion>();
-		walkUpFrames = new Array<TextureRegion>();
-		walkRightFrames = new Array<TextureRegion>();
 		walkDownFrames = new Array<TextureRegion>();
+		walkLeftFrames = new Array<TextureRegion>();
+		walkRightFrames = new Array<TextureRegion>();
+		walkUpFrames = new Array<TextureRegion>();
 
 		for (int i = 0; i < FRAME_ROWS; i++) {
 			for (int j = 0; j < FRAME_COLS; j++) {
-				walkLeftFrames.add(aux_left[i][j]);
-				walkUpFrames.add(aux_up[i][j]);
-				walkRightFrames.add(aux_right[i][j]);
-				walkDownFrames.add(aux_down[i][j]);
+				if (i == 0)
+					walkDownFrames.add(aux_down[j]);
+				if (i == 1)
+					walkLeftFrames.add(aux_left[j]);
+				if (i == 2)
+					walkRightFrames.add(aux_right[j]);
+				if (i == 3)
+					walkUpFrames.add(aux_up[j]);
 			}
 		}
 
-		walkLeftAnimation = new Animation(0.033f, walkLeftFrames);
-		walkUpAnimation = new Animation(0.033f, walkUpFrames);
-		walkRightAnimation = new Animation(0.033f, walkRightFrames);
-		walkDownAnimation = new Animation(0.033f, walkDownFrames);
+		walkDownAnimation = new Animation(FRAME_DURATION, walkDownFrames);
+		walkLeftAnimation = new Animation(FRAME_DURATION, walkLeftFrames);
+		walkRightAnimation = new Animation(FRAME_DURATION, walkRightFrames);
+		walkUpAnimation = new Animation(FRAME_DURATION, walkUpFrames);
 
-		// stateTime = 0;
-
-		this.currentFrame = walkDownAnimation.getKeyFrame(0);
+		this.currentFrame = walkUpAnimation.getKeyFrame(FRAME_DURATION);
 	}
 
 	@Override
@@ -144,19 +141,18 @@ public class Character2D extends Image implements ApplicationListener {
 
 	@Override
 	public void render() {
-		// Atualizar frame da animação do personagem!
 		stateTime += Gdx.graphics.getDeltaTime();
 		float delta = Gdx.graphics.getDeltaTime();
 		switch (direction) {
 		case WALK_UP:
 			if (walking) {
-				// atualizar frame
+				// Update frame
 				this.currentFrame = walkUpAnimation
 						.getKeyFrame(stateTime, true);
 
-				// continuar andando!
+				// Keep walking!
 				walked += (delta * characterSpeed);
-				// checar se já andou um tile!
+				// Check if already moved past one tile!
 				if (walked >= tileSize) {
 					this.setY(initialPosition + tileSize);
 					walking = false;
@@ -166,18 +162,19 @@ public class Character2D extends Image implements ApplicationListener {
 				}
 
 			} else {
-				this.currentFrame = walkUpAnimation.getKeyFrame(0, true);
+				this.currentFrame = walkUpAnimation.getKeyFrame(FRAME_DURATION,
+						true);
 			}
 			break;
 		case WALK_DOWN:
 			if (walking) {
-				// atualizar frame
+				// Update frame
 				this.currentFrame = walkDownAnimation.getKeyFrame(stateTime,
 						true);
 
-				// continuar andando!
+				// Keep walking!
 				walked += (delta * characterSpeed);
-				// checar se já andou um tile!
+				// Check if already moved past one tile!
 				if (walked >= tileSize) {
 					this.setY(initialPosition - tileSize);
 					walking = false;
@@ -187,18 +184,19 @@ public class Character2D extends Image implements ApplicationListener {
 				}
 
 			} else {
-				this.currentFrame = walkDownAnimation.getKeyFrame(0, true);
+				this.currentFrame = walkDownAnimation.getKeyFrame(
+						FRAME_DURATION, true);
 			}
 			break;
 		case WALK_LEFT:
 			if (walking) {
-				// atualizar frame
+				// Update frame
 				this.currentFrame = walkLeftAnimation.getKeyFrame(stateTime,
 						true);
 
-				// continuar andando!
+				// Keep walking!
 				walked += (delta * characterSpeed);
-				// checar se já andou um tile!
+				// Check if already moved past one tile!
 				if (walked >= tileSize) {
 					this.setX(initialPosition - tileSize);
 					walking = false;
@@ -208,18 +206,19 @@ public class Character2D extends Image implements ApplicationListener {
 				}
 
 			} else {
-				this.currentFrame = walkLeftAnimation.getKeyFrame(0, true);
+				this.currentFrame = walkLeftAnimation.getKeyFrame(
+						FRAME_DURATION, true);
 			}
 			break;
 		case WALK_RIGHT:
 			if (walking) {
-				// atualizar frame
+				// Update frame
 				this.currentFrame = walkRightAnimation.getKeyFrame(stateTime,
 						true);
 
-				// continuar andando!
+				// Keep walking!
 				walked += (delta * characterSpeed);
-				// checar se já andou um tile!
+				// Check if already moved past one tile!
 				if (walked >= tileSize) {
 					this.setX(initialPosition + tileSize);
 					walking = false;
@@ -229,12 +228,11 @@ public class Character2D extends Image implements ApplicationListener {
 				}
 
 			} else {
-				this.currentFrame = walkRightAnimation.getKeyFrame(0, true);
+				this.currentFrame = walkRightAnimation.getKeyFrame(
+						FRAME_DURATION, true);
 			}
 			break;
 		}
-
-		// this.currentFrame = walkDownAnimation.getKeyFrame(0, true);
 
 	}
 
