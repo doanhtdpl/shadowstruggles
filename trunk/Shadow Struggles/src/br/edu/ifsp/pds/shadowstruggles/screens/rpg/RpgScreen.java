@@ -101,19 +101,23 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
 			rpgController.moveCharacter(WalkDirection.WALK_DOWN);
 		}
-		if (Gdx.input.isKeyPressed(Input.Keys.W)) {
-			System.out.println("Character in: "
-					+ rpgController.getModel().getCharacter().getTileX() + ","
-					+ rpgController.getModel().getCharacter().getTileY());
-		}
 	}
 
 	/**
 	 * Method called by the Controller to update the character's visual
-	 * representation.
+	 * representation (walking event).
 	 */
-	public void moveCharacter2D(WalkDirection direction) {
+	public void moveCharacter2d(WalkDirection direction) {
 		character2d.move(direction);
+	}
+	
+	/**
+	 * Method called by the Controller to update the character's visual
+	 * representation (direction change event).
+	 */
+	public void turnCharacter2d(WalkDirection direction) {
+		character2d.setWalking(false);
+		character2d.setDirection(direction);
 	}
 
 	@Override
@@ -142,6 +146,10 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		return tile;
 	}
 
+	public Character2D getCharacter2d() {
+		return this.character2d;
+	}
+	
 	@Override
 	public boolean keyDown(int keycode) {
 		return false;
@@ -176,18 +184,5 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	public boolean scrolled(int amount) {
 		return false;
 	}
-
-	// public void moveCharacter(WalkDirection direction) {
-	// if (readyToWalk && character.walk(direction, map)) {
-	// readyToWalk = false;
-	// this.direction = direction;
-	// }
-	// }
-
-	// public void moveCharacter(WalkDirection direction, int times) {
-	// for (int i = 0; i < times; i++)
-	// if (readyToWalk) // Remover condição
-	// directionBuffer.add(direction);
-	// }
 
 }

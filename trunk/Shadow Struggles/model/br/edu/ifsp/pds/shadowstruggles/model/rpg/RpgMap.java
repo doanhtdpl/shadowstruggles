@@ -9,6 +9,9 @@ import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
 
 /**
  * The map representation used by the pathfinder algorithm. It serves as a
@@ -71,11 +74,16 @@ public class RpgMap implements TileBasedMap {
 			if (cMover.getType() == CharacterMover.Type.NORMAL_CHARACTER) {
 
 				// Basic validation: check if the coordinates are within the
-				// valid
-				// bounds.
+				// valid bounds.
 				if (x < 0 || x >= this.getWidthInTiles() || y < 0
 						|| y >= this.getHeightInTiles())
 					return true;
+
+				// Project the character into the desired location to calculate
+				// possible collisions.
+				Rectangle projectedCharacter = new Rectangle(x, invertY, cMover
+						.getRectangle().getWidth(), cMover.getRectangle()
+						.getHeight());
 
 				// Check for collidable objects.
 				MapObjects objects = this.map.getLayers()
@@ -88,24 +96,44 @@ public class RpgMap implements TileBasedMap {
 							/ tileSize;
 					int objY = (Integer) object.getProperties().get("y")
 							/ tileSize;
-					int width = Integer.parseInt((String) object
+					float width = Float.parseFloat((String) object
 							.getProperties().get("width"));
-					int height = Integer.parseInt((String) object
+					float height = Float.parseFloat((String) object
 							.getProperties().get("height"));
+					Rectangle rect = new Rectangle(objX, objY, width, height);
 
 					boolean collidable = object.getProperties().containsKey(
 							"collidable");
-					if ((x >= objX && x <= objX + width)
-							&& (invertY >= objY && invertY <= objY + height)
-							&& collidable)
+					if (collidable && rect.overlaps(projectedCharacter))
 						return true;
 				}
 
-				// Check for tile obstacles.
-				TiledMapTile tile = this.currentLayer.getCell(x, invertY)
-						.getTile();
-				boolean obstacle = tile.getProperties().containsKey("obstacle");
-				return obstacle;
+				// Check for tile obstacles in the tile itself and its adjacent
+				// spots in 4 directions.
+				Array<Vector2> adjacentTiles = new Array<Vector2>();
+				adjacentTiles.add(new Vector2(x, invertY));
+				if (x < this.getWidthInTiles())
+					adjacentTiles.add(new Vector2(x + 1, invertY));
+				if (x > 0)
+					adjacentTiles.add(new Vector2(x - 1, invertY));
+				if (invertY < this.getHeightInTiles() - 1)
+					adjacentTiles.add(new Vector2(x, invertY + 1));
+				if (invertY > 0)
+					adjacentTiles.add(new Vector2(x, invertY - 1));
+
+				for (Vector2 tilePos : adjacentTiles) {
+					TiledMapTile tile = this.currentLayer.getCell(
+							(int) tilePos.x, (int) tilePos.y).getTile();
+
+					if (tile.getProperties().containsKey("obstacle")) {
+						Rectangle tileRect = new Rectangle(tilePos.x,
+								tilePos.y, 1, 1);
+						if (tileRect.overlaps(projectedCharacter))
+							return true;
+					}
+				}
+
+				return false;
 			} else {
 				throw new UnsupportedOperationException(
 						"Invalid CharacterMover type");

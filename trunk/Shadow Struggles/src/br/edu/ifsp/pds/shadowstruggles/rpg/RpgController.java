@@ -38,17 +38,22 @@ public class RpgController {
 	 * update the character sprite as the model's character moves.
 	 */
 	public void characterMoved(WalkDirection direction) {
-		viewer.moveCharacter2D(direction);
+		viewer.moveCharacter2d(direction);
 	}
 
 	/**
 	 * Method called by the Viewer to update the model (e.g., try clearing the
-	 * character's movement buffer).
+	 * character's movement buffer). It also checks for changes in direction.
 	 */
 	public void updateModel() {
+		if (model.getCharacter().getDirection() != viewer.getCharacter2d()
+				.getDirection() && model.getCharacter().getDirection() != null) {
+			viewer.turnCharacter2d(model.getCharacter().getDirection());
+		}
+
 		WalkDirection direction = model.getCharacter().update();
 		if (direction != null)
-			viewer.moveCharacter2D(direction);
+			viewer.moveCharacter2d(direction);
 	}
 
 	public RpgScreen getViewer() {
