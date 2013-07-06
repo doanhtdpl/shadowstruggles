@@ -36,7 +36,7 @@ public class Character2D extends Image implements ApplicationListener {
 	private ShadowStruggles game;
 	private TextureRegion currentFrame;
 	private Character charModel;
-	private int size = 64;
+	private int size;
 	private int tileSize;
 	private WalkDirection direction = WalkDirection.WALK_UP;
 	private boolean walking;
@@ -47,6 +47,7 @@ public class Character2D extends Image implements ApplicationListener {
 		super(game.getTextureRegion("char", "sprites"));
 		this.charModel = charModel;
 		this.game = game;
+		this.size = (int) (charModel.getSize() * 32);
 		this.setSize(size, size);
 		this.setScale(1.0f, 1.0f);
 		this.setPosition(0, 0);
@@ -253,7 +254,17 @@ public class Character2D extends Image implements ApplicationListener {
 
 	public TextureRegion getCurrentFrame() {
 		return currentFrame;
-
+	}
+	
+	public void setWalking(boolean walking) {
+		this.walking = walking;
+	}
+	
+	public void setDirection(WalkDirection direction) {
+		this.direction = direction;
 	}
 
+	public WalkDirection getDirection() {
+		return this.direction;
+	}
 }

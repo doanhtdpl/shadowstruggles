@@ -1,5 +1,6 @@
 package br.edu.ifsp.pds.shadowstruggles.model.rpg;
 
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 
 import br.edu.ifsp.pds.shadowstruggles.model.Profile;
@@ -17,6 +18,7 @@ public class Character {
 	private Profile profile;
 	private int tileX;
 	private int tileY;
+	private int size = 2;
 	private float walkSpeed = 5;
 
 	private boolean readyToWalk = true;
@@ -46,6 +48,7 @@ public class Character {
 		this.tileY = tileY;
 
 		this.mover = new CharacterMover(CharacterMover.Type.NORMAL_CHARACTER);
+		this.mover.setRectangle(new Rectangle(tileX, tileY, size, size/2));
 		this.movementBuffer = new Array<WalkDirection>();
 	}
 
@@ -67,7 +70,7 @@ public class Character {
 	/**
 	 * Tries to walk a step into the TiledMap. If possible to walk in the
 	 * specified direction (no obstacle), remove the character from current tile
-	 * and adds in next tile.
+	 * and adds in next tile. Else, change direction to face the obstacle.
 	 * 
 	 * @param direction
 	 *            The direction intended to step.
@@ -86,6 +89,7 @@ public class Character {
 			return false;
 		}
 
+		this.direction = direction;
 		this.currentMap = map;
 		boolean walked = false;
 
@@ -117,7 +121,9 @@ public class Character {
 		default:
 			break;
 		}
-
+		
+		mover.setRectanglePos(tileX, tileY);
+		
 		return walked;
 	}
 
@@ -176,5 +182,9 @@ public class Character {
 
 	public CharacterMover getMover() {
 		return this.mover;
+	}
+	
+	public float getSize() {
+		return this.size;
 	}
 }
