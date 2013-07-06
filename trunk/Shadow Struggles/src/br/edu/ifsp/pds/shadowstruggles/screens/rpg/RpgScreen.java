@@ -4,7 +4,6 @@ import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character.WalkDirection;
-import br.edu.ifsp.pds.shadowstruggles.model.rpg.CharacterMover;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.AStarPathFinder;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.ManhattanHeuristic;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.Path;
@@ -26,7 +25,8 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	private SpriteBatch batch;
 	private RpgController rpgController;
 	private Character2D character2d;
-
+	private OrthogonalTiledMapRenderer renderer;
+	
 	private PathFinder finder;
 	private Path path;
 
@@ -53,6 +53,9 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 				false, new ManhattanHeuristic(1));
 
 		batch = new SpriteBatch();
+		float unitScale = 1 / 256f;
+		renderer = new OrthogonalTiledMapRenderer(
+				rpgController.getMap(), unitScale);
 
 		// testes com character2d
 		this.stage.addActor(character2d);
@@ -68,9 +71,6 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		super.render(delta);
 		Gdx.input.setInputProcessor(this);
 
-		float unitScale = 1 / 256f;
-		OrthogonalTiledMapRenderer renderer = new OrthogonalTiledMapRenderer(
-				rpgController.getMap(), unitScale);
 		renderer.setView(camera);
 		camera.setToOrtho(false, 3.75f, 2.5f);
 		renderer.render();
