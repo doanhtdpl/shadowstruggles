@@ -52,6 +52,8 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		finder = new AStarPathFinder(rpgController.getModel().getRpgMap(), 500,
 				false, new ManhattanHeuristic(1));
 
+		batch = new SpriteBatch();
+
 		// testes com character2d
 		this.stage.addActor(character2d);
 
@@ -76,11 +78,17 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		character2d.create();
 		character2d.render();
 
-		batch = new SpriteBatch();
 		batch.begin();
 		batch.draw(character2d.getCurrentFrame(), character2d.getX(),
 				character2d.getY());
 		batch.end();
+	}
+
+	@Override
+	public void dispose() {
+		super.dispose();
+		batch.dispose();
+		character2d.dispose();
 	}
 
 	public void update(float delta) {
@@ -110,7 +118,7 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	public void moveCharacter2d(WalkDirection direction) {
 		character2d.move(direction);
 	}
-	
+
 	/**
 	 * Method called by the Controller to update the character's visual
 	 * representation (direction change event).
@@ -125,10 +133,10 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		int[] currentPos = pixelsToTile((int) character2d.getX(),
 				Gdx.graphics.getHeight() - (int) character2d.getY() - 1);
 		int[] destinationPos = pixelsToTile(screenX, screenY);
-
-		path = finder.findPath(new CharacterMover(
-				CharacterMover.Type.NORMAL_CHARACTER), currentPos[0],
-				currentPos[1], destinationPos[0], destinationPos[1]);
+		
+		path = finder.findPath(rpgController.getModel().getCharacter()
+				.getMover(), currentPos[0], currentPos[1], destinationPos[0],
+				destinationPos[1]);
 
 		if (path != null)
 			rpgController.moveCharacter(path);
@@ -149,7 +157,7 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	public Character2D getCharacter2d() {
 		return this.character2d;
 	}
-	
+
 	@Override
 	public boolean keyDown(int keycode) {
 		return false;

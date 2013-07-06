@@ -59,7 +59,6 @@ public class RpgMap implements TileBasedMap {
 			visited = new boolean[getWidthInTiles()][getHeightInTiles()];
 	}
 
-	// TODO: Corrigir verificação de bloqueio.
 	@Override
 	public boolean blocked(Mover mover, int x, int y) {
 		// Maps from Tiled are interpreted with the traditional Cartesian
@@ -122,14 +121,21 @@ public class RpgMap implements TileBasedMap {
 					adjacentTiles.add(new Vector2(x, invertY - 1));
 
 				for (Vector2 tilePos : adjacentTiles) {
-					TiledMapTile tile = this.currentLayer.getCell(
-							(int) tilePos.x, (int) tilePos.y).getTile();
+					TiledMapTile tile = null;
+					if (this.currentLayer.getCell((int) tilePos.x,
+							(int) tilePos.y) != null) {
+						tile = this.currentLayer.getCell((int) tilePos.x,
+								(int) tilePos.y).getTile();
+					} else {
+						return true;
+					}
 
 					if (tile.getProperties().containsKey("obstacle")) {
 						Rectangle tileRect = new Rectangle(tilePos.x,
 								tilePos.y, 1, 1);
-						if (tileRect.overlaps(projectedCharacter))
+						if (tileRect.overlaps(projectedCharacter)) {
 							return true;
+						}
 					}
 				}
 
