@@ -110,7 +110,9 @@ public class EditDeckScreen extends BaseScreen {
 
 		menuTable.add(deckName);
 		menuTable.row();
-		menuTable.add(decks).height(400);
+		menuTable.add(decks);
+		menuTable.row().height(380);
+		menuTable.add();
 		menuTable.row();
 		menuTable.add(newDeck);
 		menuTable.row();
