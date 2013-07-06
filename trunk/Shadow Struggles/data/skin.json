@@ -30,6 +30,6 @@
         default: { font: andalus-font, fontColor: white }
 	},
 	com.badlogic.gdx.scenes.scene2d.ui.SelectBox$SelectBoxStyle: {
-	default: { listBackground: rect, listSelection: selector, font: default-font, fontColor: white, background: rect}
+		default: { listBackground: rect, listSelection: rect, font: default-font, fontColor: white, background: selector }
 	}
 }
