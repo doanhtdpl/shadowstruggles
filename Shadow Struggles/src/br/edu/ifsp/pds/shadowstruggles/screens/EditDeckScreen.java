@@ -4,6 +4,7 @@ import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
 import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.DeckDAO;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.Deck;
@@ -15,6 +16,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -28,7 +30,7 @@ public class EditDeckScreen extends BaseScreen {
 	private Image box;
 	private Label name;
 	private Label description;
-	private Label decks;
+//	private Label decks;
 	private Label deckName;
 	private Arrow right;
 	private Arrow left;
@@ -41,6 +43,7 @@ public class EditDeckScreen extends BaseScreen {
 	private Array<Card> trunk;
 	private Array<Deck> playerDecks;
 	private static EditDeckScreen instance;
+	private SelectBox decks;
 
 	public static EditDeckScreen getInstance(ShadowStruggles game,
 			Controller controller, BaseScreen previousScreen) {
@@ -68,9 +71,6 @@ public class EditDeckScreen extends BaseScreen {
 		final BaseScreen menu = this.previousScreen;
 		this.selectedDeck = game.getProfile().getDeck();
 		this.trunk = game.getProfile().getTrunk();
-//		background = new Image(this.getSkin().getDrawable("msbackground"));
-//		background.setScaleX(960f / 512f);
-//		background.setScaleY(640f / 380f);
 
 		Table menuTable = new Table();
 		menuTable.defaults().padTop(10).width(160).height(50);
@@ -91,12 +91,10 @@ public class EditDeckScreen extends BaseScreen {
 		public void clicked(InputEvent event, float x, float y) {
 			createDeck();
 		}});
-
-		decks = new Label("", super.getSkin());
-		decks.setText("Deck A");
-		decks.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
-				Color.WHITE));
+		
+		
 		addDecks();
+		decks = new SelectBox(playerDecks.items, super.getSkin());
 		exit = new TextButton(MenuTextDAO.getMenuText().returnToStart,
 				super.getSkin());
 		exit = ScreenUtils.defineButton(exit, 0, 0, 0, 0, super.getSkin());
