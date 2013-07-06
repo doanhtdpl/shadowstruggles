@@ -94,7 +94,7 @@ public class EditDeckScreen extends BaseScreen {
 		
 		
 		addDecks();
-		decks = new SelectBox(playerDecks.items, super.getSkin());
+		decks = new SelectBox(new String[]{"Deck A", "Deck B", "Deck C"}, super.getSkin());
 		exit = new TextButton(MenuTextDAO.getMenuText().returnToStart,
 				super.getSkin());
 		exit = ScreenUtils.defineButton(exit, 0, 0, 0, 0, super.getSkin());
