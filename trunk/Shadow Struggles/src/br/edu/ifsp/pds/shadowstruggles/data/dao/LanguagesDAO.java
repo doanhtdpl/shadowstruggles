@@ -10,7 +10,7 @@ public class LanguagesDAO {
 
 		languages = (Languages) DataManager.getInstance()
 				.getObjectSet(Languages.class).get(0);
-
+		
 		return languages;
 	}
 

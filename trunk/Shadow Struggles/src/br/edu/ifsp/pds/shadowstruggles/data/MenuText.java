@@ -28,8 +28,8 @@ public class MenuText implements Serializable {
 	public String freePlay = "";
 	public String configurations = "";
 	public String changeProfile = "";
-	public String editDeck="";
-	public String shop="";
+	public String editDeck = "";
+	public String shop = "";
 
 	// VictoryScreen
 	public String victory = "";
@@ -43,6 +43,10 @@ public class MenuText implements Serializable {
 
 	// SettingsScreen
 	public String volume = "";
+	public String music = "";
+	public String on = "";
+	public String off = "";
+	public String languageSelection = "";
 
 	// defeatScreen
 	public String defeat = "";
@@ -50,10 +54,10 @@ public class MenuText implements Serializable {
 
 	// FreePlayScreen
 	public String practiceBattle = "";
-	
-	//EditDeckScreen
+
+	// EditDeckScreen
 	public String newDeck = "";
-	
+
 	@Override
 	public void write(Json json) {
 		json.writeValue("continueGame", continueGame);
@@ -74,7 +78,11 @@ public class MenuText implements Serializable {
 		json.writeValue("returnToGame", returnToGame);
 		json.writeValue("exit", exit);
 		json.writeValue("checkCards", checkCards);
-		json.writeValue("volume:", volume);
+		json.writeValue("volume", volume);
+		json.writeValue("music", music);
+		json.writeValue("on", on);
+		json.writeValue("off", off);
+		json.writeValue("languageSelection", languageSelection);
 		json.writeValue("retryButton", retryButton);
 		json.writeValue("defeat", defeat);
 		json.writeValue("practiceBattle", practiceBattle);
@@ -105,12 +113,15 @@ public class MenuText implements Serializable {
 		exit = json.readValue("exit", String.class, jsonData);
 		checkCards = json.readValue("checkCards", String.class, jsonData);
 		volume = json.readValue("volume", String.class, jsonData);
+		music = json.readValue("music", String.class, jsonData);
+		on = json.readValue("on", String.class, jsonData);
+		off = json.readValue("off", String.class, jsonData);
+		languageSelection = json.readValue("languageSelection", String.class, jsonData);
 		defeat = json.readValue("defeat", String.class, jsonData);
 		retryButton = json.readValue("retryButton", String.class, jsonData);
 		practiceBattle = json.readValue("practiceBattle", String.class,
 				jsonData);
-		newDeck = json.readValue("newDeck", String.class,
-				jsonData);
+		newDeck = json.readValue("newDeck", String.class, jsonData);
 	}
 
 }

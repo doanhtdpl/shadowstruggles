@@ -46,7 +46,6 @@ public class SoundManager {
 	 * Stops the current background music.
 	 */
 	public void stop() {
-		this.musicName = "";
 		music.stop();
 	}
 
@@ -77,8 +76,10 @@ public class SoundManager {
 
 	public void setMusicOn(boolean musicOn) {
 		this.musicOn = musicOn;
-		if(!musicOn)
+		if (!musicOn)
 			this.stop();
+		else
+			this.setMusic(this.musicName);
 	}
 
 	public float getVolume() {

@@ -30,6 +30,12 @@
         default: { font: andalus-font, fontColor: white }
 	},
 	com.badlogic.gdx.scenes.scene2d.ui.SelectBox$SelectBoxStyle: {
-		default: { listBackground: rect, listSelection: rect, font: default-font, fontColor: white, background: selector }
+		default: { listBackground: rect, listSelection: rect, font: andalus-font, fontColor: black, background: selector }
+	},
+	com.badlogic.gdx.scenes.scene2d.ui.CheckBox$CheckBoxStyle: {
+		default: { checkboxOn: checkbox-on, checkboxOff: checkbox, font: andalus-font, fontColor: white }
+	},
+	com.badlogic.gdx.scenes.scene2d.ui.Slider$SliderStyle: {
+		default-horizontal: { background: slider, knob: slider-knob }
 	}
 }

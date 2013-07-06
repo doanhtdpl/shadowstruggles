@@ -12,34 +12,33 @@ import com.badlogic.gdx.utils.ObjectMap.Entries;
 
 public class Languages implements Serializable{
 
-	private ObjectMap<String, String> language;
+	private ObjectMap<String, String> languages;
 
 	public Languages() {
-		this.language = new ObjectMap<String, String>();
+		this.languages = new ObjectMap<String, String>();
 	}
 
 	@Override
 	public void write(Json json) {
-		json.writeValue("language", this.language);
+		json.writeValue("languages", this.languages);
 
 	}
 
 	public String get(String name) {
-		return language.get(name);
+		return languages.get(name);
 	}
 
 	public ObjectMap<String, String> getLanguages() {
-		return language;
+		return languages;
 	}
 	
 	public Entries<String, String> entries() {
-		return language.entries();
+		return languages.entries();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public void read(Json json, JsonValue jsonData) {
-		language = json.readValue("language", ObjectMap.class, jsonData);
-		
+		languages = json.readValue("languages", ObjectMap.class, jsonData);
 	}
 }

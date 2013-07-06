@@ -18,6 +18,10 @@
 "exit":"Exit to Title",
 "checkCards": "Check Cards",
 "volume":"Volume",
+"music":"Music",
+"on":"On",
+"off":"Off",
+"languageSelection": "Select your language",
 "retryButton":"Retry",
 "practiceBattle":"Practice",
 "newDeck":"New Deck"
