@@ -14,10 +14,12 @@ public class SoundManager {
 	private float volume; // Goes from 0 to 1.
 	private String musicName;
 	private AssetManager assets;
+	private boolean musicOn;
 
 	public SoundManager(AssetManager assets) {
-		this.volume = 0.3f;
 		this.assets = assets;
+		this.volume = 0.3f;
+		this.musicOn = true;
 	}
 
 	/**
@@ -29,12 +31,15 @@ public class SoundManager {
 	 *            expected musicName is "music_1").
 	 */
 	public void setMusic(String musicName) {
-		this.musicName = musicName;
-		this.music = assets.get(FileMap.resourcesToDirectory.get("soundtrack")
-				+ musicName + ".ogg", Music.class);
-		music.setLooping(true);
-		music.setVolume(volume);
-		music.play();
+		if (musicOn) {
+			this.musicName = musicName;
+			this.music = assets.get(
+					FileMap.resourcesToDirectory.get("soundtrack") + musicName
+							+ ".ogg", Music.class);
+			music.setLooping(true);
+			music.setVolume(volume);
+			music.play();
+		}
 	}
 
 	/**
@@ -70,6 +75,12 @@ public class SoundManager {
 		music.setVolume(volume);
 	}
 
+	public void setMusicOn(boolean musicOn) {
+		this.musicOn = musicOn;
+		if(!musicOn)
+			this.stop();
+	}
+
 	public float getVolume() {
 		return volume;
 
@@ -90,6 +101,10 @@ public class SoundManager {
 
 	public String getMusicName() {
 		return musicName;
+	}
+
+	public boolean isMusicOn() {
+		return this.musicOn;
 	}
 
 }
