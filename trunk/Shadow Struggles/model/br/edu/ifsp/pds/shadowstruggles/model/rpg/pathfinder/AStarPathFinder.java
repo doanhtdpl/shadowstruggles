@@ -75,7 +75,7 @@ public class AStarPathFinder implements PathFinder {
 		// If the destination is blocked, try going to the adjacent spots
 		// instead.
 		boolean destinyBlocked = map.blocked(mover, tx, ty);
-
+		
 		if (destinyBlocked) {
 			if (!map.blocked(mover, tx + 1, ty)) {
 				// Is the mover approaching from the left? Try the left spot
