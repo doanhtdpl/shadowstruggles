@@ -15,8 +15,9 @@ public class ComplexEvent extends Event {
 	}
 
 	public ComplexEvent(int id, float x, float y, String map, String layer,
-			Quest quest, boolean triggered, String sprite, Array<Event> events) {
-		super(id, x, y, map, layer, quest, triggered, sprite);
+			Quest quest, boolean triggered, String sprite,
+			TriggerType triggerType, Array<Event> events) {
+		super(id, x, y, map, layer, quest, triggered, sprite, triggerType);
 
 		this.events = events;
 	}
@@ -25,14 +26,14 @@ public class ComplexEvent extends Event {
 	@Override
 	public void read(Json json, JsonValue jsonData) {
 		super.read(json, jsonData);
-		
+
 		this.events = json.readValue("events", Array.class, jsonData);
 	}
 
 	@Override
 	public void write(Json json) {
 		super.write(json);
-		
+
 		json.writeValue("events", this.events);
 	}
 

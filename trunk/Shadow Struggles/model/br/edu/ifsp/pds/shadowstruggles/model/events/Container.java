@@ -10,27 +10,28 @@ import br.edu.ifsp.pds.shadowstruggles.model.quests.Quest;
 public class Container extends Event {
 	public Array<Item> items;
 	public int money;
-	
+
 	public Container() {
 		super();
-		
+
 		this.items = new Array<Item>();
 		this.money = 0;
 	}
-	
+
 	public Container(int id, float x, float y, String map, String layer,
-			Quest quest, boolean triggered, String sprite, Array<Item> items, int money) {
-		super(id, x, money, map, layer, quest, triggered, sprite);
-		
+			Quest quest, boolean triggered, String sprite,
+			TriggerType triggerType, Array<Item> items, int money) {
+		super(id, x, money, map, layer, quest, triggered, sprite, triggerType);
+
 		this.items = items;
 		this.money = money;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public void read(Json json, JsonValue jsonData) {
 		super.read(json, jsonData);
-		
+
 		this.items = json.readValue("items", Array.class, jsonData);
 		this.money = json.readValue("money", Integer.class, jsonData);
 	}
@@ -38,7 +39,7 @@ public class Container extends Event {
 	@Override
 	public void write(Json json) {
 		super.write(json);
-		
+
 		json.writeValue("items", this.items);
 		json.writeValue("money", this.money);
 	}
@@ -46,7 +47,7 @@ public class Container extends Event {
 	@Override
 	public void trigger() {
 		// TODO: Implementar método.
-		
+
 	}
 
 }
