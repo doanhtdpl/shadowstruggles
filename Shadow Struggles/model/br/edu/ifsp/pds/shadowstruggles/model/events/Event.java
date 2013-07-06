@@ -18,6 +18,7 @@ public abstract class Event implements Serializable {
 	private Quest quest;
 	private boolean triggered;
 	private String sprite;
+	private TriggerType triggerType;
 
 	public Event() {
 		this.id = 1;
@@ -28,10 +29,12 @@ public abstract class Event implements Serializable {
 		this.quest = new Quest();
 		this.triggered = false;
 		this.sprite = "";
+		this.triggerType = TriggerType.TOUCH;
 	}
 
 	public Event(int id, float x, float y, String map, String layer,
-			Quest quest, boolean triggered, String sprite) {
+			Quest quest, boolean triggered, String sprite,
+			TriggerType triggerType) {
 		this.id = id;
 		this.x = x;
 		this.y = y;
@@ -40,8 +43,9 @@ public abstract class Event implements Serializable {
 		this.quest = quest;
 		this.triggered = triggered;
 		this.sprite = sprite;
+		this.triggerType = triggerType;
 	}
-	
+
 	/**
 	 * Activates the event.
 	 */
@@ -56,6 +60,7 @@ public abstract class Event implements Serializable {
 		this.layer = json.readValue("layer", String.class, jsonData);
 		this.triggered = json.readValue("triggered", Boolean.class, jsonData);
 		this.sprite = json.readValue("sprite", String.class, jsonData);
+		this.triggerType = json.readValue("triggerType", TriggerType.class, jsonData);
 	}
 
 	@Override
@@ -67,6 +72,7 @@ public abstract class Event implements Serializable {
 		json.writeValue("layer", this.layer);
 		json.writeValue("triggered", this.triggered);
 		json.writeValue("sprite", this.sprite);
+		json.writeValue("triggerType", this.triggerType);
 	}
 
 	public int getId() {
@@ -132,6 +138,12 @@ public abstract class Event implements Serializable {
 	public void setSprite(String sprite) {
 		this.sprite = sprite;
 	}
-	
-	
+
+	public TriggerType getTriggerType() {
+		return triggerType;
+	}
+
+	public void setTriggerType(TriggerType triggerType) {
+		this.triggerType = triggerType;
+	}
 }

@@ -11,31 +11,33 @@ public class WarpPoint extends Event {
 
 	public WarpPoint() {
 		super();
-		
+
 		this.destination = this;
 		this.active = false;
 	}
 
 	public WarpPoint(int id, float x, float y, String map, String layer,
-			Quest quest, boolean triggered, String sprite, WarpPoint destination, boolean active) {
-		super(id, x, y, map, layer, quest, triggered, sprite);
-		
+			Quest quest, boolean triggered, String sprite,
+			TriggerType triggerType, WarpPoint destination, boolean active) {
+		super(id, x, y, map, layer, quest, triggered, sprite, triggerType);
+
 		this.destination = destination;
 		this.active = active;
 	}
-	
+
 	@Override
 	public void read(Json json, JsonValue jsonData) {
 		super.read(json, jsonData);
-		
-		this.destination = json.readValue("destination", WarpPoint.class, jsonData);
+
+		this.destination = json.readValue("destination", WarpPoint.class,
+				jsonData);
 		this.active = json.readValue("active", Boolean.class, jsonData);
 	}
 
 	@Override
 	public void write(Json json) {
 		super.write(json);
-		
+
 		json.writeValue("destination", this.destination);
 		json.writeValue("active", this.active);
 	}
