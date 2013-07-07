@@ -1,5 +1,6 @@
 package br.edu.ifsp.pds.shadowstruggles.tools;
 
+import br.edu.ifsp.pds.shadowstruggles.tools.data.DataManager;
 import br.edu.ifsp.pds.shadowstruggles.tools.data.FileMap;
 import br.edu.ifsp.pds.shadowstruggles.tools.utils.MyLogger;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.Window;
@@ -14,7 +15,7 @@ public class Main {
 		}
 
 		FileMap.initMap();
-
+		
 		new Window();
 	}
 
