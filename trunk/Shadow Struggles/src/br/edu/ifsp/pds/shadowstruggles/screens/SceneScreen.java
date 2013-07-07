@@ -77,11 +77,13 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 //			}
 //		} else
 //			background = new Image();
+		
+		background = new Image(this.getSkin().getDrawable("msbackground"));
 
-//		background.setX(0);
-//		background.setY(0);
-//		background.setWidth(960);
-//		background.setHeight(640);
+		background.setX(0);
+		background.setY(0);
+		background.setWidth(960);
+		background.setHeight(640);
 
 		text.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
 				Color.WHITE));
@@ -142,7 +144,7 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 		inputSources.addProcessor(this.stage);
 		inputSources.addProcessor(this);
 
-//		stage.addActor(background);
+		stage.addActor(background);
 		stage.addActor(box);
 		stage.addActor(text);
 		stage.addActor(next);
@@ -271,7 +273,7 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 	@Override
 	public void render(float delta) {
 		super.render(delta);
-//		background.setY(this.camera.position.y - CAMERA_INITIAL_Y);
+		background.setY(this.camera.position.y - CAMERA_INITIAL_Y);
 		next.setY(this.camera.position.y - CAMERA_INITIAL_Y + 320);
 		menu.setY(this.camera.position.y - CAMERA_INITIAL_Y + 20);
 	}
