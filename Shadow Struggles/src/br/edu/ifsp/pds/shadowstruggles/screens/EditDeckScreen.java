@@ -30,8 +30,8 @@ public class EditDeckScreen extends BaseScreen {
 	private Image box;
 	private Label name;
 	private Label description;
-//	private Label decks;
 	private Label deckName;
+	private Label availableCards;
 	private Arrow right;
 	private Arrow left;
 	private TextButton exit;
@@ -95,6 +95,7 @@ public class EditDeckScreen extends BaseScreen {
 		
 		addDecks();
 		decks = new SelectBox(new String[]{"Deck A", "Deck B", "Deck C"}, super.getSkin());
+		
 		exit = new TextButton(MenuTextDAO.getMenuText().returnToStart,
 				super.getSkin());
 		exit = ScreenUtils.defineButton(exit, 0, 0, 0, 0, super.getSkin());
@@ -111,8 +112,8 @@ public class EditDeckScreen extends BaseScreen {
 		menuTable.add(deckName);
 		menuTable.row();
 		menuTable.add(decks);
-		menuTable.row().height(380);
-		menuTable.add();
+		menuTable.row();
+		menuTable.add().height(320);
 		menuTable.row();
 		menuTable.add(newDeck);
 		menuTable.row();
@@ -138,6 +139,11 @@ public class EditDeckScreen extends BaseScreen {
 
 		leftButtonTable.defaults().width(100).height(100);
 
+		availableCards = new Label("", super.getSkin());
+		availableCards.setText("Available Cards:");
+		availableCards.setStyle(new LabelStyle(super.getSkin()
+				.getFont("andalus-font"), Color.WHITE));
+		
 		left = new Arrow(-1, this.getSkin());
 		left.addListener(new ClickListener() {
 
@@ -191,13 +197,14 @@ public class EditDeckScreen extends BaseScreen {
 			count++;
 		}
 
+		leftButtonTable.add(availableCards).height(50);
+		leftButtonTable.row();
 		leftButtonTable.add(left).left();
 		rightButtonTable.add(right);
 
-		leftButtonTable.setPosition(250, 80);
+		leftButtonTable.setPosition(250, 105);
 		rightButtonTable.setPosition(900, 80);
 
-//		stage.addActor(background);
 		stage.addActor(menuTable);
 		stage.addActor(deckTable);
 		stage.addActor(leftButtonTable);
@@ -207,13 +214,13 @@ public class EditDeckScreen extends BaseScreen {
 	
 	private void createDeck() {
 		Deck newDeck=new Deck();
-		//TODO: implementar criação de deck
+		//TODO: implementar criacao de deck
 		// (criar deck com a letra seguinte e mostrar na lista)
 	}
 	
 	private void addDecks() {
 		
-		// TODO adicionar decks do usuário na lista da esquerda
+		// TODO adicionar decks do usuario na lista da esquerda
 		//(pegar a Array de decks do profile e listar na lista da esquerda)
 		//(carregar Decks em que o Owner Id seja o mesmo que o Id do profile)
 

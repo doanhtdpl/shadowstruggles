@@ -80,9 +80,7 @@ public class SaveLoadScreen extends BaseScreen implements InputProcessor {
 
 	public void initComponents() {
 
-		background = new Image(game.getAssets()
-				.get("data/images/objects/objects.atlas", TextureAtlas.class)
-				.findRegion("msbackground"));
+		background = new Image(this.getSkin().getDrawable("msbackground"));
 		background.setScaleX(960f / 512f);
 		background.setScaleY(640f / 380f);
 

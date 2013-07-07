@@ -76,9 +76,7 @@ public class CheckCardsScreen extends BaseScreen {
 		description.setStyle(new LabelStyle(super.getSkin().getFont(
 				"andalus-font"), Color.BLACK));
 
-		box = new Image(game.getAssets()
-				.get("data/images/objects/objects.atlas", TextureAtlas.class)
-				.findRegion("box"));
+		box = new Image(game.getTextureRegion("box", "game_ui_images"));
 		ScreenUtils.defineImage(box, 390, 177, 600, 600, 0.9f, 0.76f);
 
 		right = new Arrow(1, this.getSkin());
