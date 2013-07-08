@@ -26,12 +26,10 @@ public class MainScreen extends BaseScreen {
 
 	public static MainScreen getInstance(ShadowStruggles game,
 			Controller controller) {
-		if (instance != null)
-			return instance;
-		else {
+		if (instance == null)
 			instance = new MainScreen(game, controller);
-			return instance;
-		}
+
+		return instance;
 	}
 
 	private MainScreen(ShadowStruggles game, Controller controller) {
@@ -140,9 +138,8 @@ public class MainScreen extends BaseScreen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_4");
-				SettingsScreen configurationScreen = SettingsScreen
-						.getInstance(game, controller, null);
-				configurationScreen.setPreviousScreen(screen);
+				SettingsScreen configurationScreen = new SettingsScreen(game,
+						controller, screen);
 				game.setScreenWithTransition(configurationScreen);
 			}
 
@@ -159,10 +156,10 @@ public class MainScreen extends BaseScreen {
 
 		Table menuTable = new Table();
 		menuTable.defaults().width(480).height(110).padTop(10);
-		if(game.getMode() == RunMode.DEBUG)
+		if (game.getMode() == RunMode.DEBUG)
 			menuTable.debug();
 		menuTable.defaults();
-		
+
 		menuTable.add(campaign);
 		menuTable.row();
 		menuTable.add(freePlay);
@@ -171,13 +168,13 @@ public class MainScreen extends BaseScreen {
 		menuTable.row();
 		menuTable.add(editDeck);
 		menuTable.setPosition(480, 330);
-		
+
 		Table configTable = new Table();
-		if(game.getMode() == RunMode.DEBUG)
+		if (game.getMode() == RunMode.DEBUG)
 			configTable.debug();
 		configTable.add(config);
 		configTable.setPosition(900, 80);
-		
+
 		stage.addActor(background);
 		stage.addActor(changeTable);
 		stage.addActor(menuTable);

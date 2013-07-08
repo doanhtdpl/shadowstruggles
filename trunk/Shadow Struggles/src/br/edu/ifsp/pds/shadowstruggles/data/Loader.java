@@ -75,7 +75,6 @@ public class Loader {
 	 */
 	public void instantiateScreens() {
 		CheckCardsScreen.getInstance(game, game.getController(), null);
-		SettingsScreen.getInstance(game, game.getController(), null);
 		DefeatScreen.getInstance(game, game.getController(), "", null);
 		EditDeckScreen.getInstance(game, game.getController(), null);
 		FreePlayScreen.getInstance(game, game.getController());

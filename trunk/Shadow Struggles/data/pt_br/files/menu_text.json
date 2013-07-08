@@ -1,4 +1,4 @@
-{"continueGame":"Continuar",
+[{class:MenuText, "continueGame":"Continuar",
 "newGame":"Novo Jogo",
 "returnToStart":"Retornar",
 "profile":"Perfil",
@@ -17,8 +17,12 @@
 "exit":"Sair do Jogo",
 "checkCards": "Ver Cartas",
 "volume":"Volume",
+"music":"Música",
+"on":"Ligada",
+"off":"Desligada",
+"languageSelection": "Selecione seu idioma",
 "retryButton":"Reiniciar",
 "defeat":"Você perdeu, tente novamente!",
 "practiceBattle":"Treino",
 "newDeck":"Novo Deck"
-}
+}]

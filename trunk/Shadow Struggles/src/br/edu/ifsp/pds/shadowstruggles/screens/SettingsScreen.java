@@ -6,6 +6,8 @@ import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
 import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.LanguagesDAO;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
+
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -14,9 +16,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Slider;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.ObjectMap.Entry;
 
 public class SettingsScreen extends BaseScreen {
 
@@ -33,8 +34,6 @@ public class SettingsScreen extends BaseScreen {
 		}
 	}
 
-	private static SettingsScreen instance;
-
 	private Label titleLabel;
 	private Image bar;
 	private Label musicLabel;
@@ -42,6 +41,7 @@ public class SettingsScreen extends BaseScreen {
 	private Label volumeLabel;
 	private Slider volumeSlider;
 	private Label languagesLabel;
+	private SelectBox languagesBox;
 	private ImageButton confirmButton;
 	private ImageButton cancelButton;
 
@@ -49,24 +49,22 @@ public class SettingsScreen extends BaseScreen {
 	private PreviousSettings previousSettings;
 	private static boolean musicOn;
 
-	public static SettingsScreen getInstance(ShadowStruggles game,
-			Controller controller, BaseScreen screen) {
-		if (instance != null)
-			return instance;
-		else {
-			instance = new SettingsScreen(game, controller, screen);
-			return instance;
-		}
+	public SettingsScreen(ShadowStruggles game, Controller controller,
+			BaseScreen screen) {
+		this(game, controller, screen, null);
 	}
 
-	private SettingsScreen(ShadowStruggles game, Controller controller,
-			BaseScreen screen) {
+	public SettingsScreen(ShadowStruggles game, Controller controller,
+			BaseScreen screen, PreviousSettings previousSettings) {
 		super(game, controller);
 
 		this.previousScreen = screen;
-		this.previousSettings = new PreviousSettings(game.getAudio()
-				.getVolume(), game.getAudio().isMusicOn(), DataManager
-				.getInstance().getCurrentLanguage());
+
+		if (previousSettings == null)
+			previousSettings = new PreviousSettings(
+					game.getAudio().getVolume(), game.getAudio().isMusicOn(),
+					DataManager.getInstance().getCurrentLanguage());
+		this.previousSettings = previousSettings;
 	}
 
 	public void setPreviousScreen(BaseScreen previousScreen) {
@@ -83,20 +81,24 @@ public class SettingsScreen extends BaseScreen {
 		// Images.
 
 		bar = new Image(this.getSkin().getDrawable("blur_line"));
-		bar.setPosition(70, 580);
-		bar.setHeight(800);
+		bar.setPosition(70, 570);
+		bar.setHeight(750);
 		bar.rotate(270);
 
 		// Labels.
 
 		titleLabel = new Label(MenuTextDAO.getMenuText().configurations,
 				super.getSkin());
+		titleLabel.setFontScale(2.5f);
 		musicLabel = new Label(MenuTextDAO.getMenuText().music + ":",
 				super.getSkin());
+		musicLabel.setFontScale(1.5f);
 		volumeLabel = new Label(MenuTextDAO.getMenuText().volume + ":",
 				super.getSkin());
+		volumeLabel.setFontScale(1.5f);
 		languagesLabel = new Label(MenuTextDAO.getMenuText().languageSelection
 				+ ":", super.getSkin());
+		languagesLabel.setFontScale(1.5f);
 
 		// Image Buttons.
 
@@ -129,14 +131,16 @@ public class SettingsScreen extends BaseScreen {
 		// Other elements.
 
 		musicOn = game.getAudio().isMusicOn();
-		if(musicOn) {
-			musicBox = new CheckBox(MenuTextDAO.getMenuText().on, super.getSkin());
+		if (musicOn) {
+			musicBox = new CheckBox(MenuTextDAO.getMenuText().on,
+					super.getSkin());
 			musicBox.setChecked(true);
 		} else {
-			musicBox = new CheckBox(MenuTextDAO.getMenuText().on, super.getSkin());
+			musicBox = new CheckBox(MenuTextDAO.getMenuText().off,
+					super.getSkin());
 			musicBox.setChecked(false);
 		}
-		
+
 		musicBox.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -145,41 +149,58 @@ public class SettingsScreen extends BaseScreen {
 			}
 		});
 
-		// TODO: Implementar listener do slider.
 		volumeSlider = new Slider(0, 1, 0.1f, false, super.getSkin());
 		volumeSlider.setValue(game.getAudio().getVolume());
+		volumeSlider.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				game.getAudio().setVolume(volumeSlider.getValue());
+			}
+		});
 
-		// Languages.
-		Array<String> languages = new Array<String>();
-		for (Entry<String, String> entry : LanguagesDAO.getLanguages()
-				.entries()) {
-			String language = entry.value;
-			languages.add(language);
-		}
-		SelectBox languagesBox = new SelectBox(languages.toArray(),
-				super.getSkin());
-		// TODO: Adicionar listener da caixa de seleção.
+		languagesBox = new SelectBox(LanguagesDAO.getLanguages().values()
+				.toArray().toArray(), super.getSkin());
+		languagesBox.setSelection(LanguagesDAO.getLanguages().get(
+				game.getProfile().getLanguage()));
+		languagesBox.addListener(new ChangeListener() {
+
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				int selected = languagesBox.getSelectionIndex();
+				if (selected >= 0) {
+					String language = LanguagesDAO.getLanguages().keys()
+							.toArray().get(selected);
+					if (!DataManager.getInstance().getCurrentLanguage()
+							.equals(language)) {
+						DataManager.getInstance().changeLanguage(language);
+						game.getProfile().setLanguage(language);
+						game.setScreenWithTransition(new SettingsScreen(game,
+								controller, previousScreen, previousSettings));
+					}
+				}
+			}
+		});
 
 		// Tables.
 
 		Table settingsTable = new Table();
-		settingsTable.setPosition(400, 570);
-		settingsTable.addActor(titleLabel);
+		settingsTable.setPosition(460, 590);
+		settingsTable.add(titleLabel);
 		if (game.getMode() == RunMode.DEBUG)
 			settingsTable.debug();
 
 		Table soundTable = new Table();
-		soundTable.setPosition(240, 480);
+		soundTable.setPosition(260, 430);
 		soundTable.add(musicLabel).left().padRight(20);
 		soundTable.add(musicBox).left();
-		soundTable.row();
+		soundTable.row().padTop(50);
 		soundTable.add(volumeLabel).left().padRight(20);
 		soundTable.add(volumeSlider).width(300);
 		if (game.getMode() == RunMode.DEBUG)
 			soundTable.debug();
 
 		Table languagesTable = new Table();
-		languagesTable.setPosition(700, 480);
+		languagesTable.setPosition(750, 460);
 		languagesTable.add(languagesLabel);
 		languagesTable.row();
 		languagesTable.add(languagesBox).fillX();
@@ -205,5 +226,4 @@ public class SettingsScreen extends BaseScreen {
 		super.render(delta);
 		Table.drawDebug(this.getStage());
 	}
-
 }

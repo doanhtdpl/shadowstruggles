@@ -5,12 +5,14 @@ import com.badlogic.gdx.utils.Json.Serializable;
 import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.ObjectMap.Entries;
+import com.badlogic.gdx.utils.ObjectMap.Keys;
+import com.badlogic.gdx.utils.ObjectMap.Values;
 
 /**
- * This class manages the reading/writing of  a language.
+ * This class manages the reading/writing of a language.
  */
 
-public class Languages implements Serializable{
+public class Languages implements Serializable {
 
 	private ObjectMap<String, String> languages;
 
@@ -31,9 +33,17 @@ public class Languages implements Serializable{
 	public ObjectMap<String, String> getLanguages() {
 		return languages;
 	}
-	
+
 	public Entries<String, String> entries() {
 		return languages.entries();
+	}
+
+	public Keys<String> keys() {
+		return this.languages.keys();
+	}
+
+	public Values<String> values() {
+		return this.languages.values();
 	}
 
 	@SuppressWarnings("unchecked")
