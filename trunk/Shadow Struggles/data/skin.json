@@ -37,5 +37,8 @@
 	},
 	com.badlogic.gdx.scenes.scene2d.ui.Slider$SliderStyle: {
 		default-horizontal: { background: slider, knob: slider-knob }
+	},
+	com.badlogic.gdx.scenes.scene2d.ui.Window$WindowStyle: {
+		default: { titleFont: default-font, background: default-window, titleFontColor: white }
 	}
 }

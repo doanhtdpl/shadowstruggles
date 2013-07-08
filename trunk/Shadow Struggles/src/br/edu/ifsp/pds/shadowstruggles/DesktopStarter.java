@@ -13,8 +13,8 @@ public class DesktopStarter {
 	 */
 
 	public static void main(String[] args) {
-		// TexturePacker2.process("data/images/skin", "data/images/skin",
-		// "skin");
+//		 TexturePacker2.process("data/images/skin", "data/images/skin",
+//		 "skin");
 		// TexturePacker2.process("data/images/game_ui_images",
 		// "data/images/game_ui_images", "game_ui_images");
 		// TexturePacker2.process("data/images/card_attacking",
