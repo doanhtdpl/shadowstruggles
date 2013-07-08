@@ -23,12 +23,10 @@ public class InGameMenu extends BaseScreen {
 
 	public static InGameMenu getInstance(ShadowStruggles game,
 			Controller controller, BattleScreen battleScreen) {
-		if (instance != null) {
-			return instance;
-		} else {
+		if (instance == null)
 			instance = new InGameMenu(game, controller, battleScreen);
-			return instance;
-		}
+
+		return instance;
 	}
 
 	private InGameMenu(ShadowStruggles game, Controller controller,
@@ -98,9 +96,8 @@ public class InGameMenu extends BaseScreen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_4");
-				SettingsScreen configurationScreen = SettingsScreen
-						.getInstance(game, controller, null);
-				configurationScreen.setPreviousScreen(menu);
+				SettingsScreen configurationScreen = new SettingsScreen(game,
+						controller, menu);
 				game.setScreenWithTransition(configurationScreen);
 			}
 		});

@@ -64,7 +64,7 @@ public class SoundManager {
 	}
 
 	public void setVolume(float newVolume) {
-		this.volume += newVolume;
+		this.volume = newVolume;
 
 		if (volume > 1)
 			volume = 1;
