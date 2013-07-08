@@ -14,12 +14,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 
@@ -144,10 +146,17 @@ public class ShopScreen extends BaseScreen {
 		Array<Card> cards = shop.getAvailableCards();
 		// Auxiliary variable for adding rows in the table as necessary.
 		int aux = 0;
-		for (Card card : cards) {
+		for (final Card card : cards) {
 			Image cardImage = new Image(game.getTextureRegion(card.getName()
 					.toLowerCase(), "cards"));
 			ImageButton cardImgButton = new ImageButton(cardImage.getDrawable());
+			cardImgButton.addListener(new ClickListener() {
+				@Override
+				public void clicked(InputEvent event, float x, float y) {
+					new CardDialog(game, card, card.getNameVisualization(),
+							getSkin()).show(stage);
+				}
+			});
 
 			Label name = new Label(card.getNameVisualization(), super.getSkin());
 			name.setWrap(true);
