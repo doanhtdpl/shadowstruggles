@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
+import br.edu.ifsp.pds.shadowstruggles.tools.Controller;
+
 import net.lingala.zip4j.core.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
 import net.lingala.zip4j.model.FileHeader;
@@ -27,6 +29,7 @@ public class DataManager {
 	private Languages languages;
 	private Settings settings;
 	private String currentLanguage;
+	private Controller controller;
 
 	/**
 	 * Creates a new zip file in the specified path and establishes the initial
@@ -455,4 +458,10 @@ public class DataManager {
 	private static String localizedPath(String currentLanguage, String path) {
 		return path.replace("data/", "data/" + currentLanguage + "/");
 	}
+	
+	public void setController(Controller controller) {
+		this.controller = controller;
+	}
+	
+	
 }

@@ -15,8 +15,9 @@ public class Main {
 		}
 
 		FileMap.initMap();
-		
-		new Window();
+		DataManager dataManager = new DataManager();
+		Window window = new Window();
+		Controller controller = new Controller(window, dataManager);
 	}
 
 }
