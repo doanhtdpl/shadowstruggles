@@ -138,25 +138,22 @@ public class Window {
 		tabbedPane.addTab("Traps", null, panel_2, null);
 		
 		JPanel panel_3 = new JPanel();
-		tabbedPane.addTab("Card Actions", null, panel_3, null);
+		tabbedPane.addTab("Decks", null, panel_3, null);
 		
 		JPanel panel_4 = new JPanel();
-		tabbedPane.addTab("Decks", null, panel_4, null);
-		
-		JPanel panel_5 = new JPanel();
-		tabbedPane.addTab("Enemies", null, panel_5, null);
-		
-		JPanel panel_6 = new JPanel();
-		tabbedPane.addTab("Rules", null, panel_6, null);
+		tabbedPane.addTab("Enemies", null, panel_4, null);
 		
 		
-		Panel panel_7 = new Panel();
-		panel_7.setBackground(SystemColor.control);
-		tabbedPane.addTab("Battles", null, panel_7, null);
+		Panel panel_5 = new Panel();
+		panel_5.setBackground(SystemColor.control);
+		tabbedPane.addTab("Battles", null, panel_5, null);
 		
-		Panel panel_8 = new Panel();
-		panel_8.setBackground(SystemColor.control);
-		tabbedPane.addTab("Events", null, panel_8, null);
+		Panel panel_6 = new Panel();
+		panel_6.setBackground(SystemColor.control);
+		tabbedPane.addTab("Events", null, panel_6, null);
+		
+		JPanel panel_7 = new JPanel();
+		tabbedPane.addTab("Scenes", null, panel_7, null);
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 735, 21);
