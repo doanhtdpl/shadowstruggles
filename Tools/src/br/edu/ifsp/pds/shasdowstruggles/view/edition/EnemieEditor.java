@@ -49,8 +49,9 @@ public class EnemieEditor extends JFrame {
 	 * Create the frame.
 	 */
 	public EnemieEditor() {
+		setVisible(true);
 		setTitle("Enemie Editor");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 361);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

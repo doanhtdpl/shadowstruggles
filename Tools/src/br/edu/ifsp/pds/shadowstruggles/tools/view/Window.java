@@ -21,6 +21,15 @@ import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 
 import br.edu.ifsp.pds.shadowstruggles.tools.Controller;
+import br.edu.ifsp.pds.shasdowstruggles.view.edition.ActionEditor;
+import br.edu.ifsp.pds.shasdowstruggles.view.edition.BattleEditor;
+import br.edu.ifsp.pds.shasdowstruggles.view.edition.DeckEditor;
+import br.edu.ifsp.pds.shasdowstruggles.view.edition.EffectEditor;
+import br.edu.ifsp.pds.shasdowstruggles.view.edition.EnemieEditor;
+import br.edu.ifsp.pds.shasdowstruggles.view.edition.EventEditor;
+import br.edu.ifsp.pds.shasdowstruggles.view.edition.FighterEditor;
+import br.edu.ifsp.pds.shasdowstruggles.view.edition.SceneEditor;
+import br.edu.ifsp.pds.shasdowstruggles.view.edition.TrapEditor;
 
 public class Window {
 
@@ -36,7 +45,9 @@ public class Window {
 	/**
 	 * Create the application.
 	 */
-	public Window() {
+	public Window(Controller controller) {
+		this.controller=controller;
+		controller.setViewer(this);
 		initialize();
 		frmTitle.setVisible(true);
 	}
@@ -55,7 +66,7 @@ public class Window {
 		tabbedPane.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent arg0) {
 				String selectedTab = tabbedPane.getTitleAt(tabbedPane.getSelectedIndex());
-				if(selectedTab.equals("Fighter")) controller.updateTableToFighter();
+				if(selectedTab.equals("Fighters")) controller.updateTableToFighter();
 				if(selectedTab.equals("Traps"))controller.updateTableToTraps();
 				if(selectedTab.equals("Effects"))controller.updateTableToEffects();
 				if(selectedTab.equals("Card Actions"))controller.updateTableToActions();
@@ -64,6 +75,7 @@ public class Window {
 				if(selectedTab.equals("Rules"))controller.updateTableToRules();
 				if(selectedTab.equals("Battles"))controller.updateTableToBattles();
 				if(selectedTab.equals("Events"))controller.updateTableToEvents();
+				if(selectedTab.equals("Scenes"))controller.updateTableToScenes();
 				
 			}
 		});
@@ -79,7 +91,16 @@ public class Window {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				String selectedTab = tabbedPane.getTitleAt(tabbedPane.getSelectedIndex());
-				//TODO: decidir qual Editor abrir (editor sem argumentos);
+				if(selectedTab.equals("Fighters")) new FighterEditor();
+				if(selectedTab.equals("Traps"))new TrapEditor();
+				if(selectedTab.equals("Effects"))new EffectEditor();
+				if(selectedTab.equals("Card Actions"))new ActionEditor();
+				if(selectedTab.equals("Decks"))new DeckEditor();
+				if(selectedTab.equals("Enemies"))new EnemieEditor();				
+				if(selectedTab.equals("Battles"))new BattleEditor();
+				if(selectedTab.equals("Events"))new EventEditor();
+				if(selectedTab.equals("Scenes"))new SceneEditor();	
+				
 			}
 		});
 		btnNewButton.setVisible(false);
@@ -91,7 +112,16 @@ public class Window {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				String selectedTab = tabbedPane.getTitleAt(tabbedPane.getSelectedIndex());
-				//TODO: decidir qual Editor abrir (objeto selecionado da tabela como argumento);
+				if(selectedTab.equals("Fighters")) new FighterEditor();
+				if(selectedTab.equals("Traps"))new TrapEditor();
+				if(selectedTab.equals("Effects"))new EffectEditor();
+				if(selectedTab.equals("Card Actions"))new ActionEditor();
+				if(selectedTab.equals("Decks"))new DeckEditor();
+				if(selectedTab.equals("Enemies"))new EnemieEditor();				
+				if(selectedTab.equals("Battles"))new BattleEditor();
+				if(selectedTab.equals("Events"))new EventEditor();
+				if(selectedTab.equals("Scenes"))new SceneEditor();	
+				//TODO: (objeto selecionado da tabela como argumento);
 			}
 		});
 		btnEditButton.setVisible(false);
@@ -214,6 +244,7 @@ public class Window {
 		btnOpenButton.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnOpenButton.setBounds(172, 200, 361, 62);
 		frmTitle.getContentPane().add(btnOpenButton);
+		tabbedPane.setSelectedIndex(0);
 	}
 	private void showElements(){
 		tabbedPane.setVisible(true);
