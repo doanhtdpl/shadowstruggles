@@ -7,10 +7,10 @@ public class Controller {
 	private Window viewer;
 	private DataManager model;
 	
-	public Controller(Window viewer, DataManager model) {
-		this.viewer= viewer;
+	public Controller(DataManager model) {
+		
 		this.model=model;
-		this.viewer.setController(this);
+		
 		this.model.setController(this);
 	}
 	public void newZipClicked(){}
@@ -35,6 +35,10 @@ public class Controller {
 	public void updateTableToRules(){}
 	public void updateTableToBattles(){}
 	public void updateTableToEvents(){}
-	
+	public void updateTableToScenes(){}
+	public void setViewer(Window viewer) {
+		this.viewer = viewer;
+	}
 	
 }
+
