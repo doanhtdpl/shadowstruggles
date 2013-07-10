@@ -1,23 +1,26 @@
 package br.edu.ifsp.pds.shadowstruggles.tools.view;
 
-import javax.swing.JFrame;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JMenu;
+import java.awt.Font;
+import java.awt.Panel;
+import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.JLabel;
-import java.awt.Font;
+
 import javax.swing.JButton;
-import javax.swing.JTabbedPane;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.JList;
-import javax.swing.JCheckBox;
-import java.awt.Panel;
-import java.awt.Color;
-import java.awt.SystemColor;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
+
+import br.edu.ifsp.pds.shadowstruggles.tools.Controller;
 
 public class Window {
 
@@ -28,6 +31,7 @@ public class Window {
 	private JButton btnDeleteButton;
 	private JTabbedPane tabbedPane;
 	private JButton btnOpenButton;
+	private Controller controller;
 
 	/**
 	 * Create the application.
@@ -48,6 +52,21 @@ public class Window {
 		frmTitle.getContentPane().setLayout(null);
 		
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent arg0) {
+				String selectedTab = tabbedPane.getTitleAt(tabbedPane.getSelectedIndex());
+				if(selectedTab.equals("Fighter")) controller.updateTableToFighter();
+				if(selectedTab.equals("Traps"))controller.updateTableToTraps();
+				if(selectedTab.equals("Effects"))controller.updateTableToEffects();
+				if(selectedTab.equals("Card Actions"))controller.updateTableToActions();
+				if(selectedTab.equals("Decks"))controller.updateTableToDecks();
+				if(selectedTab.equals("Enemies"))controller.updateTableToEnemies();
+				if(selectedTab.equals("Rules"))controller.updateTableToRules();
+				if(selectedTab.equals("Battles"))controller.updateTableToBattles();
+				if(selectedTab.equals("Events"))controller.updateTableToEvents();
+				
+			}
+		});
 		tabbedPane.setVisible(false);
 		
 		table = new JTable();
@@ -56,16 +75,40 @@ public class Window {
 		frmTitle.getContentPane().add(table);
 		
 		btnNewButton = new JButton("New");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				String selectedTab = tabbedPane.getTitleAt(tabbedPane.getSelectedIndex());
+				//TODO: decidir qual Editor abrir (editor sem argumentos);
+			}
+		});
 		btnNewButton.setVisible(false);
 		btnNewButton.setBounds(30, 80, 89, 23);
 		frmTitle.getContentPane().add(btnNewButton);
 		
 		btnEditButton = new JButton("Edit");
+		btnEditButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String selectedTab = tabbedPane.getTitleAt(tabbedPane.getSelectedIndex());
+				//TODO: decidir qual Editor abrir (objeto selecionado da tabela como argumento);
+			}
+		});
 		btnEditButton.setVisible(false);
 		btnEditButton.setBounds(30, 110, 89, 23);
 		frmTitle.getContentPane().add(btnEditButton);
 		
 		btnDeleteButton = new JButton("Delete");
+		btnDeleteButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int answer = JOptionPane.showConfirmDialog(frmTitle, "Do you really want to delete this element?");
+				if (answer==0){
+					String selectedTab = tabbedPane.getTitleAt(tabbedPane.getSelectedIndex());
+					//TODO: decidir qual método "delete" da controller chamar
+				}
+			}
+		});
 		btnDeleteButton.setVisible(false);
 		btnDeleteButton.setBounds(30, 140, 89, 23);
 		frmTitle.getContentPane().add(btnDeleteButton);
@@ -73,10 +116,22 @@ public class Window {
 		frmTitle.getContentPane().add(tabbedPane);
 		
 		JPanel panel = new JPanel();
+		panel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				btnNewButton.setEnabled(false);
+			}
+		});
 		tabbedPane.addTab("Fighters", null, panel, null);
 		panel.setLayout(null);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				btnNewButton.setEnabled(true);
+			}
+		});
 		tabbedPane.addTab("Effects", null, panel_1, null);
 		
 		JPanel panel_2 = new JPanel();
@@ -127,6 +182,11 @@ public class Window {
 		menuBar.add(mnResources);
 		
 		JMenuItem mntmEditResources = new JMenuItem("Edit Resources");
+		mntmEditResources.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new ResourceEditor();
+			}
+		});
 		mnResources.add(mntmEditResources);
 		
 		JMenuItem mntmClearResources = new JMenuItem("Clear Resources");
@@ -136,12 +196,12 @@ public class Window {
 		menuBar.add(mnLanguages);
 		
 		JMenuItem mntmEditLanguages = new JMenuItem("Select Language");
-		mntmEditLanguages.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				new LanguageSelection().setVisible(true);
+		mntmEditLanguages.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new LanguageSelection();
 			}
 		});
+		
 		mnLanguages.add(mntmEditLanguages);
 		
 		btnOpenButton = new JButton("Please select a file");
@@ -165,5 +225,9 @@ public class Window {
 		btnDeleteButton.setVisible(true);
 		table.setVisible(true);
 		btnOpenButton.setVisible(false);
+	}
+	
+	public void setController(Controller controller) {
+		this.controller = controller;
 	}
 }
