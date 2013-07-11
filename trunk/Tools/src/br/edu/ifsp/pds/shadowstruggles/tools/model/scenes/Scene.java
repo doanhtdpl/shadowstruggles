@@ -1,6 +1,5 @@
 package br.edu.ifsp.pds.shadowstruggles.tools.model.scenes;
 
-
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
@@ -15,19 +14,23 @@ public class Scene implements Serializable {
 	public Ending ending;
 	public String name;
 	public String description;
-	
+	public ArrayList<SceneItem> items;
+
 	public Scene() {
 		this.id = 1;
 		this.ending = new Ending();
 		this.name = "";
 		this.description = "";
+		this.items = new ArrayList<SceneItem>();
 	}
-	
-	public Scene(int id, Ending ending, String name, String description) {
+
+	public Scene(int id, Ending ending, String name, String description,
+			ArrayList<SceneItem> items) {
 		this.id = id;
 		this.ending = ending;
 		this.name = name;
 		this.description = description;
+		this.items = items;
 	}
 
 	@Override
@@ -42,11 +45,12 @@ public class Scene implements Serializable {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Override
 	public void write(Json arg0) {
 		try {
-			SerializationHelper.writeToJson(this, arg0, new ArrayList<String>());
+			SerializationHelper
+					.writeToJson(this, arg0, new ArrayList<String>());
 		} catch (IllegalArgumentException e) {
 			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
 			e.printStackTrace();
