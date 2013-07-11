@@ -1,5 +1,6 @@
 package br.edu.ifsp.pds.shadowstruggles.tools.model.scenes;
 
+import java.util.ArrayList;
 
 import com.esotericsoftware.jsonbeans.Json;
 import com.esotericsoftware.jsonbeans.JsonValue;
@@ -7,17 +8,18 @@ import com.esotericsoftware.jsonbeans.JsonValue;
 public class NovelScene extends Scene {
 	public String text;
 	public String background;
-	
+
 	public NovelScene() {
 		super();
-		
+
 		this.text = "";
 		this.background = "";
 	}
-	
-	public NovelScene(int id, Ending ending, String name, String description, String text, String background) {
-		super(id, ending, name, description);
-		
+
+	public NovelScene(int id, Ending ending, String name, String description,
+			ArrayList<SceneItem> items, String text, String background) {
+		super(id, ending, name, description, items);
+
 		this.text = text;
 		this.background = background;
 	}
@@ -26,7 +28,7 @@ public class NovelScene extends Scene {
 	public void read(Json arg0, JsonValue arg1) {
 		super.read(arg0, arg1);
 	}
-	
+
 	@Override
 	public void write(Json arg0) {
 		super.write(arg0);
