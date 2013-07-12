@@ -14,8 +14,8 @@ public class Controller {
 		this.model.setController(this);
 	}
 	public void newZipClicked(){}
-	public void openZipClicked(){}
-	public void saveZipClicked(){}
+	public void openZip(String filePath){}
+	public void saveZip(){}
 	public void closeZipClicked(){}
 	
 	public void createCard(){} 

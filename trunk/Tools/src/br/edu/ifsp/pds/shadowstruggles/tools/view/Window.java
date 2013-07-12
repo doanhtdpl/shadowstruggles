@@ -7,6 +7,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -17,8 +18,13 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.File;
+import java.nio.file.FileAlreadyExistsException;
+import java.nio.file.Paths;
+
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import br.edu.ifsp.pds.shadowstruggles.tools.Controller;
 import br.edu.ifsp.pds.shasdowstruggles.view.edition.ActionEditor;
@@ -41,6 +47,7 @@ public class Window {
 	private JTabbedPane tabbedPane;
 	private JButton btnOpenButton;
 	private Controller controller;
+	private JMenuBar menuBar;
 
 	/**
 	 * Create the application.
@@ -185,7 +192,8 @@ public class Window {
 		JPanel panel_7 = new JPanel();
 		tabbedPane.addTab("Scenes", null, panel_7, null);
 		
-		JMenuBar menuBar = new JMenuBar();
+		menuBar = new JMenuBar();
+		menuBar.setVisible(false);
 		menuBar.setBounds(0, 0, 735, 21);
 		frmTitle.getContentPane().add(menuBar);
 		
@@ -197,9 +205,19 @@ public class Window {
 		mnNewMenu.add(mntmNewFile);
 		
 		JMenuItem mntmOpen = new JMenuItem("Open File");
+		mntmOpen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				openZipDialog();
+			}
+		});
 		mnNewMenu.add(mntmOpen);
 		
 		JMenuItem mntmSave = new JMenuItem("Save File");
+		mntmSave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.saveZip();
+			}
+		});
 		mnNewMenu.add(mntmSave);
 		
 		JMenuItem mntmClose = new JMenuItem("Close File");
@@ -236,7 +254,7 @@ public class Window {
 		btnOpenButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {				
-				showElements();
+				openZipDialog();
 				
 			}
 		});
@@ -257,5 +275,24 @@ public class Window {
 	
 	public void setController(Controller controller) {
 		this.controller = controller;
+	}
+	
+	private void openZipDialog(){		
+		JFileChooser chooser = new JFileChooser();
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("ZIP Files", "zip");  
+		chooser.setCurrentDirectory(Paths.get("data").toFile());
+		chooser.addChoosableFileFilter(filter);
+		chooser.setAcceptAllFileFilterUsed(false);
+		chooser.setFileFilter(filter);
+		int returnValue = chooser.showOpenDialog(frmTitle);
+		if(returnValue==JFileChooser.APPROVE_OPTION){
+			File file = chooser.getSelectedFile();
+			String log = "Opening "+file.getName()+"\n";				
+			controller.openZip(file.toString());
+			menuBar.setVisible(true);
+			showElements();
+		}else{
+			String log = "Open command cancelled by user\n";
+		}
 	}
 }
