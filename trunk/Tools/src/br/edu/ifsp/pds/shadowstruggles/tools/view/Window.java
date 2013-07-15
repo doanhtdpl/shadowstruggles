@@ -19,12 +19,16 @@ import javax.swing.JTable;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Paths;
 
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import net.lingala.zip4j.exception.ZipException;
 
 import br.edu.ifsp.pds.shadowstruggles.tools.Controller;
 import br.edu.ifsp.pds.shasdowstruggles.view.edition.ActionEditor;
@@ -279,16 +283,24 @@ public class Window {
 	
 	private void openZipDialog(){		
 		JFileChooser chooser = new JFileChooser();
-		FileNameExtensionFilter filter = new FileNameExtensionFilter("ZIP Files", "zip");  
-		chooser.setCurrentDirectory(Paths.get("data").toFile());
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("ZIP Files", "zip");  		
 		chooser.addChoosableFileFilter(filter);
 		chooser.setAcceptAllFileFilterUsed(false);
 		chooser.setFileFilter(filter);
+		chooser.setCurrentDirectory(Paths.get(".").toFile());		
 		int returnValue = chooser.showOpenDialog(frmTitle);
 		if(returnValue==JFileChooser.APPROVE_OPTION){
 			File file = chooser.getSelectedFile();
 			String log = "Opening "+file.getName()+"\n";				
-			controller.openZip(file.toString());
+			try {
+				controller.openZip(file.toString());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ZipException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			menuBar.setVisible(true);
 			showElements();
 		}else{

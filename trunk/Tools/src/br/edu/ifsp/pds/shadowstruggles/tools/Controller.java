@@ -1,5 +1,8 @@
 package br.edu.ifsp.pds.shadowstruggles.tools;
 
+import java.io.IOException;
+
+import net.lingala.zip4j.exception.ZipException;
 import br.edu.ifsp.pds.shadowstruggles.tools.data.DataManager;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.Window;
 
@@ -14,7 +17,9 @@ public class Controller {
 		this.model.setController(this);
 	}
 	public void newZipClicked(){}
-	public void openZip(String filePath){}
+	public void openZip(String filePath) throws IOException, ZipException{
+		model.openZip(filePath, true);
+	}
 	public void saveZip(){}
 	public void closeZipClicked(){}
 	
