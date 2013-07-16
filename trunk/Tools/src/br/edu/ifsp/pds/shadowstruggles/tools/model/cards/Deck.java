@@ -57,5 +57,8 @@ public class Deck extends Item {
 			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
 			e.printStackTrace();
 		}
+		
 	}
+	
+	
 }
