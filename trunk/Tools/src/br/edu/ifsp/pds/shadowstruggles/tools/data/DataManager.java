@@ -83,18 +83,14 @@ public class DataManager {
 		zip.extractAll(currentRelativePath.toAbsolutePath().toString());
 		try {
 			this.languages=searchObject(Languages.class);
-			System.out.println();
+			
 		} catch (NoSuchFieldException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
+		} catch (SecurityException e) {		
 			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
+		} catch (IllegalArgumentException e) {		
 			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
+		} catch (IllegalAccessException e) {			
 			e.printStackTrace();
 		}
 		return true;

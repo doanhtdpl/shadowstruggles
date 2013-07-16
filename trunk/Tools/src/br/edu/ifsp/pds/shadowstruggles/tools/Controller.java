@@ -25,8 +25,11 @@ public class Controller {
 	}
 	public void newZipClicked(){}
 	public void openZip(String filePath) throws IOException, ZipException{
-		this.model.setCurrentLanguage("en_us");
+		
+		
+		
 		model.openZip(filePath, false);		
+		this.model.setCurrentLanguage("en_us");
 	}
 	public void saveZip(){}
 	public void closeZipClicked(){}
