@@ -81,7 +81,22 @@ public class DataManager {
 				path);
 		Path currentRelativePath = Paths.get("");
 		zip.extractAll(currentRelativePath.toAbsolutePath().toString());
-
+		try {
+			this.languages=searchObject(Languages.class);
+			System.out.println();
+		} catch (NoSuchFieldException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return true;
 	}
 
@@ -278,6 +293,7 @@ public class DataManager {
 			else
 				file = localizedPath(currentLanguage,
 						FileMap.classToFile.get(c));
+			System.out.println(file);
 		} else if (FileMap.resourcesToDirectory.containsKey(resourceType)) {
 			file = FileMap.resourcesToDirectory.get(resourceType) + name;
 		}
@@ -298,7 +314,7 @@ public class DataManager {
 
 		if (FileMap.classToFile.containsKey(c)) {
 			String path = FileMap.classToFile.get(c);
-
+			System.out.println(searchFile(path, null, c));
 			File file = new File(searchFile(path, null, c));
 			list = MyJson.getJson().fromJson(ArrayList.class, file);
 		}

@@ -96,7 +96,7 @@ public class Window {
 		table.setVisible(false);
 		table.setBounds(150, 80, 550, 386);
 		frmTitle.getContentPane().add(table);
-		
+
 		btnNewButton = new JButton("New");
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -266,7 +266,7 @@ public class Window {
 		btnOpenButton.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnOpenButton.setBounds(172, 200, 361, 62);
 		frmTitle.getContentPane().add(btnOpenButton);
-		tabbedPane.setSelectedIndex(3);
+		
 	}
 	private void showElements(){
 		tabbedPane.setVisible(true);
@@ -276,7 +276,7 @@ public class Window {
 		table.setVisible(true);
 		btnOpenButton.setVisible(false);	
 		controller.updateTableToDecks();
-		
+		tabbedPane.setSelectedIndex(3);
 	}
 	
 	

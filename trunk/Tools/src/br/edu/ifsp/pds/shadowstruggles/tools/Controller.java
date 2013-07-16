@@ -21,9 +21,11 @@ public class Controller {
 		this.model=model;
 		
 		this.model.setController(this);
+		
 	}
 	public void newZipClicked(){}
 	public void openZip(String filePath) throws IOException, ZipException{
+		this.model.setCurrentLanguage("en_us");
 		model.openZip(filePath, false);		
 	}
 	public void saveZip(){}
@@ -50,7 +52,7 @@ public class Controller {
 	public void updateTableToActions(){}
 	public void updateTableToDecks(){
 		try {
-			ArrayList<Deck> decks=model.searchAllObjects(Deck.class.getClass());
+			ArrayList<Deck> decks=model.searchAllObjects(Deck.class);
 			int i =0;
 			Object[][] deckAttributes= new Object[decks.size()][2];
 			for(Deck deck:decks){
