@@ -297,7 +297,10 @@ public class Window {
 			File file = chooser.getSelectedFile();
 			String log = "Opening "+file.getName()+"\n";				
 			try {
+				System.out.println("Opened");
 				controller.openZip(file.toString());
+				
+				
 			} catch (IOException e) {				
 				e.printStackTrace();
 			} catch (ZipException e) {				
