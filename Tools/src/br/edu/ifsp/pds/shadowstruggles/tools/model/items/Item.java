@@ -70,4 +70,78 @@ public class Item implements Serializable {
 			e.printStackTrace();
 		}
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public int getBuyCost() {
+		return buyCost;
+	}
+
+	public void setBuyCost(int buyCost) {
+		this.buyCost = buyCost;
+	}
+
+	public int getSellCost() {
+		return sellCost;
+	}
+
+	public void setSellCost(int sellCost) {
+		this.sellCost = sellCost;
+	}
+
+	public boolean isSellable() {
+		return sellable;
+	}
+
+	public void setSellable(boolean sellable) {
+		this.sellable = sellable;
+	}
+
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
+
+	public boolean isAvailableInMainShop() {
+		return availableInMainShop;
+	}
+
+	public void setAvailableInMainShop(boolean availableInMainShop) {
+		this.availableInMainShop = availableInMainShop;
+	}
+
+	public boolean isConsumable() {
+		return consumable;
+	}
+
+	public void setConsumable(boolean consumable) {
+		this.consumable = consumable;
+	}
+	
+	
 }

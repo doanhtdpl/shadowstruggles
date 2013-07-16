@@ -266,7 +266,7 @@ public class Window {
 		btnOpenButton.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnOpenButton.setBounds(172, 200, 361, 62);
 		frmTitle.getContentPane().add(btnOpenButton);
-		tabbedPane.setSelectedIndex(0);
+		tabbedPane.setSelectedIndex(3);
 	}
 	private void showElements(){
 		tabbedPane.setVisible(true);
@@ -274,8 +274,12 @@ public class Window {
 		btnEditButton.setVisible(true);
 		btnDeleteButton.setVisible(true);
 		table.setVisible(true);
-		btnOpenButton.setVisible(false);
+		btnOpenButton.setVisible(false);	
+		controller.updateTableToDecks();
+		
 	}
+	
+	
 	
 	public void setController(Controller controller) {
 		this.controller = controller;
@@ -294,11 +298,9 @@ public class Window {
 			String log = "Opening "+file.getName()+"\n";				
 			try {
 				controller.openZip(file.toString());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
+			} catch (IOException e) {				
 				e.printStackTrace();
-			} catch (ZipException e) {
-				// TODO Auto-generated catch block
+			} catch (ZipException e) {				
 				e.printStackTrace();
 			}
 			menuBar.setVisible(true);
@@ -306,5 +308,8 @@ public class Window {
 		}else{
 			String log = "Open command cancelled by user\n";
 		}
+	}
+	public JTable getTable() {
+		return table;
 	}
 }
