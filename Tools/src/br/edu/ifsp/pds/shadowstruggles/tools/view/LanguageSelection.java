@@ -18,8 +18,12 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Map;
+
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
+
+import br.edu.ifsp.pds.shadowstruggles.tools.Controller;
 
 public class LanguageSelection extends JFrame {
 
@@ -32,6 +36,7 @@ public class LanguageSelection extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JFrame frame;
+	private Controller controller;
 
 	/**
 	 * Launch the application.
@@ -40,7 +45,7 @@ public class LanguageSelection extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LanguageSelection frame = new LanguageSelection();
+					LanguageSelection frame = new LanguageSelection(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -52,8 +57,9 @@ public class LanguageSelection extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public LanguageSelection() {
+	public LanguageSelection(Controller controller) {
 		frame=this;
+		this.controller=controller;
 		setTitle("Languages");
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -63,9 +69,16 @@ public class LanguageSelection extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		comboBox = new JComboBox();
+		String[] lang = new String[controller.getLanguages().size()];
+		int i =0;
+		for(Map.Entry<String, String> entry : controller.getLanguages().entrySet()){
+			lang[i] = entry.getKey()+" - "+entry.getValue();
+			i++;
+		}
+		comboBox = new JComboBox(lang);
 		comboBox.setBounds(197, 27, 216, 20);
 		contentPane.add(comboBox);
+		
 		
 		rdbtnSelectTheLanguage = new JRadioButton("Select the Language:");
 		rdbtnSelectTheLanguage.addChangeListener(new ChangeListener() {
