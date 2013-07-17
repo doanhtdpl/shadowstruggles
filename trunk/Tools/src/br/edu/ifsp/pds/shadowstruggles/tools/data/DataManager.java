@@ -170,12 +170,13 @@ public class DataManager {
 			File file = new File(searchFile(path, null, c));
 			
 
-			if (c.isArray() || c == ArrayList.class) {
+			if (obj.getClass().isArray() || obj.getClass() == ArrayList.class) {
 				MyJson.getJson().toJson(obj, file);
-			} else if (c == Languages.class
-					|| c == Settings.class) {
+			} else if (obj.getClass() == Languages.class
+					|| obj.getClass() == Settings.class) {
 				ArrayList<T> currentObjects = new ArrayList<T>();
 				currentObjects.add(obj);
+				System.out.println(currentObjects);
 				MyJson.getJson().toJson(currentObjects, file);
 			} else {
 				ArrayList<T> currentObjects = searchAllObjects(c);
@@ -391,7 +392,6 @@ public class DataManager {
 	public void insertLanguage(String code, String lang) throws IOException {
 		this.languages.put(code, lang);
 		this.insertObject(this.languages, Languages.class);
-		System.out.println("Language inserted");
 	}
 
 	/**
