@@ -170,10 +170,10 @@ public class DataManager {
 			File file = new File(searchFile(path, null, c));
 			
 
-			if (obj.getClass().isArray() || obj.getClass() == ArrayList.class) {
+			if (c.isArray() || c == ArrayList.class) {
 				MyJson.getJson().toJson(obj, file);
-			} else if (obj.getClass() == Languages.class
-					|| obj.getClass() == Settings.class) {
+			} else if (c == Languages.class
+					|| c == Settings.class) {
 				ArrayList<T> currentObjects = new ArrayList<T>();
 				currentObjects.add(obj);
 				MyJson.getJson().toJson(currentObjects, file);
