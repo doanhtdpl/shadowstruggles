@@ -40,6 +40,9 @@ import br.edu.ifsp.pds.shasdowstruggles.view.edition.EventEditor;
 import br.edu.ifsp.pds.shasdowstruggles.view.edition.FighterEditor;
 import br.edu.ifsp.pds.shasdowstruggles.view.edition.SceneEditor;
 import br.edu.ifsp.pds.shasdowstruggles.view.edition.TrapEditor;
+import javax.swing.JLabel;
+import java.awt.Rectangle;
+import java.awt.Component;
 
 public class Window {
 
@@ -52,6 +55,8 @@ public class Window {
 	private JButton btnOpenButton;
 	private Controller controller;
 	private JMenuBar menuBar;
+	private JLabel lblOr;
+	private JButton btnCreateZIP;
 
 	/**
 	 * Create the application.
@@ -267,14 +272,33 @@ public class Window {
 		btnOpenButton.setBounds(172, 200, 361, 62);
 		frmTitle.getContentPane().add(btnOpenButton);
 		
+		lblOr = new JLabel("Or");
+		lblOr.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblOr.setBounds(300, 300, 46, 14);
+		frmTitle.getContentPane().add(lblOr);
+		
+		btnCreateZIP = new JButton("Create a ZIP");
+		btnCreateZIP.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				controller.newZipClicked();
+			}
+		});
+		btnCreateZIP.setBounds(new Rectangle(100, 400, 0, 0));
+		btnCreateZIP.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnCreateZIP.setBounds(200, 400, 305, 64);
+		frmTitle.getContentPane().add(btnCreateZIP);
+		
 	}
-	private void showElements(){
+	public void showElements(){
 		tabbedPane.setVisible(true);
 		btnNewButton.setVisible(true);
 		btnEditButton.setVisible(true);
 		btnDeleteButton.setVisible(true);
 		table.setVisible(true);
 		btnOpenButton.setVisible(false);	
+		lblOr.setVisible(false);
+		btnCreateZIP.setVisible(false);
 		controller.updateTableToDecks();
 		tabbedPane.setSelectedIndex(3);
 	}
