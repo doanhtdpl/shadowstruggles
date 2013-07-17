@@ -80,19 +80,7 @@ public class DataManager {
 		net.lingala.zip4j.core.ZipFile zip = new net.lingala.zip4j.core.ZipFile(
 				path);
 		Path currentRelativePath = Paths.get("");
-		zip.extractAll(currentRelativePath.toAbsolutePath().toString());
-		try {
-			this.languages=searchObject(Languages.class);
-			
-		} catch (NoSuchFieldException e) {
-			e.printStackTrace();
-		} catch (SecurityException e) {		
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {		
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {			
-			e.printStackTrace();
-		}
+		zip.extractAll(currentRelativePath.toAbsolutePath().toString());		
 		return true;
 	}
 
@@ -180,6 +168,7 @@ public class DataManager {
 				path += FileMap.classToFile.get(c);
 
 			File file = new File(searchFile(path, null, c));
+			
 
 			if (obj.getClass().isArray() || obj.getClass() == ArrayList.class) {
 				MyJson.getJson().toJson(obj, file);
@@ -289,7 +278,7 @@ public class DataManager {
 			else
 				file = localizedPath(currentLanguage,
 						FileMap.classToFile.get(c));
-			System.out.println(file);
+			
 		} else if (FileMap.resourcesToDirectory.containsKey(resourceType)) {
 			file = FileMap.resourcesToDirectory.get(resourceType) + name;
 		}
@@ -310,7 +299,7 @@ public class DataManager {
 
 		if (FileMap.classToFile.containsKey(c)) {
 			String path = FileMap.classToFile.get(c);
-			System.out.println(searchFile(path, null, c));
+			
 			File file = new File(searchFile(path, null, c));
 			list = MyJson.getJson().fromJson(ArrayList.class, file);
 		}
@@ -402,6 +391,7 @@ public class DataManager {
 	public void insertLanguage(String code, String lang) throws IOException {
 		this.languages.put(code, lang);
 		this.insertObject(this.languages, Languages.class);
+		System.out.println("Language inserted");
 	}
 
 	/**
