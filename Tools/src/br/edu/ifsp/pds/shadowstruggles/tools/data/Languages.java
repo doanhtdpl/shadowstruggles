@@ -11,7 +11,7 @@ import com.esotericsoftware.jsonbeans.JsonValue;
 
 public class Languages implements Serializable {
 
-	private HashMap<String, String> languages;
+	public HashMap<String, String> languages;
 
 	public Languages() {
 		this.languages = new HashMap<String, String>();
