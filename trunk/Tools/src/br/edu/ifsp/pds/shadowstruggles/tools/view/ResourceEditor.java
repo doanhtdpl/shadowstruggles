@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JTabbedPane;
+import javax.swing.JTree;
+import javax.swing.JList;
 
 public class ResourceEditor extends JFrame {
 
@@ -34,11 +37,30 @@ public class ResourceEditor extends JFrame {
 		setTitle("Resource Edition");
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 494, 512);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBounds(31, 34, 437, 23);
+		contentPane.add(tabbedPane);
+		
+		JPanel panel = new JPanel();
+		tabbedPane.addTab("Images", null, panel, null);
+		
+		JTree tree = new JTree();
+		tree.setBounds(31, 80, 187, 100);
+		tree.setVisible(false);
+		contentPane.add(tree);
+		
+		SimpleTree folderTree = new SimpleTree();
+		folderTree.setBounds(31, 80, 220, 200);
+		contentPane.add(folderTree);
+		
+		JList list = new JList();
+		list.setBounds(264, 80, 182, 100);
+		contentPane.add(list);
 	}
-
 }

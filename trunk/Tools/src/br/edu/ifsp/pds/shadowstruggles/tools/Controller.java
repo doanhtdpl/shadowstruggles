@@ -3,12 +3,14 @@ package br.edu.ifsp.pds.shadowstruggles.tools;
 import java.awt.HeadlessException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import net.lingala.zip4j.exception.ZipException;
 import br.edu.ifsp.pds.shadowstruggles.tools.data.DataManager;
+import br.edu.ifsp.pds.shadowstruggles.tools.data.Languages;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Card;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.Window;
@@ -32,11 +34,7 @@ public class Controller {
 			String name = JOptionPane
 					.showInputDialog("Please, inform the ZIP name");
 
-			model.newZip(name + ".zip");
-			model.insertLanguage("en_us", "English");
-			model.insertLanguage("pt_br", "Portugues");
-			model.insertLanguage("jp_jp", "Japoronga");
-			//model.saveToZip();
+			model.newZip(name + ".zip");			
 			viewer.showElements();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -52,6 +50,13 @@ public class Controller {
 	}
 
 	public void saveZip() {
+		try {
+			model.saveToZip();
+		} catch (ZipException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void closeZipClicked() {
@@ -94,6 +99,10 @@ public class Controller {
 	}
 
 	public void updateTableToActions() {
+	}
+	
+	public HashMap<String, String> getLanguages(){
+		return model.getLanguages().languages;
 	}
 
 	public void updateTableToDecks() {

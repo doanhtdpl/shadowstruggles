@@ -252,7 +252,7 @@ public class Window {
 		JMenuItem mntmEditLanguages = new JMenuItem("Select Language");
 		mntmEditLanguages.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new LanguageSelection();
+				new LanguageSelection(controller);
 			}
 		});
 		
@@ -292,6 +292,7 @@ public class Window {
 	}
 	public void showElements(){
 		tabbedPane.setVisible(true);
+		menuBar.setVisible(true);
 		btnNewButton.setVisible(true);
 		btnEditButton.setVisible(true);
 		btnDeleteButton.setVisible(true);
@@ -299,8 +300,7 @@ public class Window {
 		btnOpenButton.setVisible(false);	
 		lblOr.setVisible(false);
 		btnCreateZIP.setVisible(false);
-		controller.updateTableToDecks();
-		tabbedPane.setSelectedIndex(3);
+		controller.updateTableToDecks();		
 	}
 	
 	
@@ -320,11 +320,8 @@ public class Window {
 		if(returnValue==JFileChooser.APPROVE_OPTION){
 			File file = chooser.getSelectedFile();
 			String log = "Opening "+file.getName()+"\n";				
-			try {
-				System.out.println("Opened");
-				controller.openZip(file.toString());
-				
-				
+			try {				
+				controller.openZip(file.toString());				
 			} catch (IOException e) {				
 				e.printStackTrace();
 			} catch (ZipException e) {				
