@@ -131,15 +131,11 @@ public class SettingsScreen extends BaseScreen {
 		// Other elements.
 
 		musicOn = game.getAudio().isMusicOn();
-		if (musicOn) {
-			musicBox = new CheckBox(MenuTextDAO.getMenuText().on,
-					super.getSkin());
+		musicBox = new CheckBox(MenuTextDAO.getMenuText().on, super.getSkin());
+		if (musicOn)
 			musicBox.setChecked(true);
-		} else {
-			musicBox = new CheckBox(MenuTextDAO.getMenuText().off,
-					super.getSkin());
+		else
 			musicBox.setChecked(false);
-		}
 
 		musicBox.addListener(new ClickListener() {
 			@Override
