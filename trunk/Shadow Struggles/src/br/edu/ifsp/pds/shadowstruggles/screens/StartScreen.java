@@ -206,6 +206,7 @@ public class StartScreen extends BaseScreen {
 
 				scrollStates = new ScrollPane(table, this.getSkin());
 				scrollStates.setBounds(480, 100, 400, 400);
+				scrollStates.setFadeScrollBars(false);
 				stage.addActor(scrollStates);
 			}
 		}
