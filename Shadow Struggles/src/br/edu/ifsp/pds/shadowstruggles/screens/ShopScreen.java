@@ -14,14 +14,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 
@@ -48,7 +46,7 @@ public class ShopScreen extends BaseScreen {
 	private TextButton buySellButton;
 
 	private Mode currentMode;
-	
+
 	private Table tmpTable;
 
 	public ShopScreen(ShadowStruggles game, Controller controller,
@@ -141,8 +139,8 @@ public class ShopScreen extends BaseScreen {
 		stage.addActor(menuTable);
 
 		Table cardsTable = new Table();
-//		if (game.getMode() == RunMode.DEBUG)
-//			cardsTable.debug();
+		// if (game.getMode() == RunMode.DEBUG)
+		// cardsTable.debug();
 		cardsTable.setPosition(570, 200);
 
 		Array<Card> cards = shop.getAvailableCards();
@@ -158,10 +156,10 @@ public class ShopScreen extends BaseScreen {
 					tmpTable = new Table();
 					if (game.getMode() == RunMode.DEBUG)
 						tmpTable.debug();
-					
+
 					tmpTable.setPosition(450, 340);
-					tmpTable.add(new CardDialog(game, card, card.getNameVisualization(),
-							getSkin())).width(500).height(500);
+					tmpTable.add(new CardDialog(game, card, getSkin()))
+							.width(600).height(500);
 					stage.addActor(tmpTable);
 				}
 			});
@@ -177,8 +175,8 @@ public class ShopScreen extends BaseScreen {
 
 			Table cardTable = new Table();
 			cardTable.defaults().width(150).height(120);
-//			if (game.getMode() == RunMode.DEBUG)
-//				cardTable.debug();
+			// if (game.getMode() == RunMode.DEBUG)
+			// cardTable.debug();
 			cardTable.add(cardImgButton);
 			cardTable.row().height(40);
 			cardTable.add(name);
