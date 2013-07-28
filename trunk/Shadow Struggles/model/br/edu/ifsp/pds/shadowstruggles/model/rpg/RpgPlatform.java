@@ -74,7 +74,6 @@ public class RpgPlatform {
 	 * Moves the character towards a specified path, step by step.
 	 */
 	public void moveCharacter(Path path) {
-
 		// Stop any ongoing path to start another one.
 		this.getCharacter().clearMovementBuffer();
 
@@ -85,22 +84,22 @@ public class RpgPlatform {
 		int currentY = character.getTileY();
 
 		for (Step step : path.getSteps()) {
-			Character.WalkDirection direction = null;
+			WalkDirection direction = null;
 
 			if (step.getX() == currentX && step.getY() < currentY) {
-				direction = Character.WalkDirection.WALK_UP;
+				direction = WalkDirection.WALK_UP;
 				currentY--;
 			}
 			if (step.getX() == currentX && step.getY() > currentY) {
-				direction = Character.WalkDirection.WALK_DOWN;
+				direction = WalkDirection.WALK_DOWN;
 				currentY++;
 			}
 			if (step.getY() == currentY && step.getX() < currentX) {
-				direction = Character.WalkDirection.WALK_LEFT;
+				direction = WalkDirection.WALK_LEFT;
 				currentX--;
 			}
 			if (step.getY() == currentY && step.getX() > currentX) {
-				direction = Character.WalkDirection.WALK_RIGHT;
+				direction = WalkDirection.WALK_RIGHT;
 				currentX++;
 			}
 
@@ -125,6 +124,25 @@ public class RpgPlatform {
 			}
 		}
 		return false;
+	}
+
+	/**
+	 * Triggers the event immediately in front of the character, if possible.
+	 */
+	public void triggerEvent() {
+		int tileX = character.getTileX();
+		int tileY = character.getTileY();
+
+		if (character.getDirection() == WalkDirection.WALK_DOWN)
+			tileY++;
+		if (character.getDirection() == WalkDirection.WALK_LEFT)
+			tileX--;
+		if (character.getDirection() == WalkDirection.WALK_RIGHT)
+			tileX++;
+		if (character.getDirection() == WalkDirection.WALK_UP)
+			tileY--;
+
+		this.map.triggerEvent(tileX, tileY, character.getMover());
 	}
 
 }

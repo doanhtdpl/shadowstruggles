@@ -19,7 +19,7 @@ public class RpgController {
 
 	/**
 	 * Method called only from the Viewer. Sends the move command from input to
-	 * the Model and checks if there's an event to trigger.
+	 * the Model.
 	 */
 	public void moveCharacter(WalkDirection direction) {
 		model.moveCharacter(direction);
@@ -27,10 +27,17 @@ public class RpgController {
 
 	/**
 	 * Method called only from the Viewer. Sends the move command (in a
-	 * designated path) from input to the Model.
+	 * designated path) from input to the Model and triggers an interactive
+	 * event, if possible.
+	 * 
+	 * @param destinationPos
+	 *            The destiny, in tiles (destinationPos[0] = x,
+	 *            destinationPos[1] = y).
 	 */
-	public void moveCharacter(Path path) {
+	public void moveCharacter(Path path, int[] destinationPos) {
 		model.moveCharacter(path);
+		model.getRpgMap().triggerEvent(destinationPos[0], destinationPos[1],
+				model.getCharacter().getMover());
 	}
 
 	/**
@@ -54,6 +61,13 @@ public class RpgController {
 	 */
 	public void runAutomaticEvents() {
 		model.getRpgMap().runAutomaticEvents();
+	}
+
+	/**
+	 * Method called by the Viewer to send the trigger command to the model.
+	 */
+	public void triggerEvent() {
+		model.triggerEvent();
 	}
 
 	/**

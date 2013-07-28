@@ -94,10 +94,9 @@ public class Character {
 		boolean walked = false;
 
 		// If the movement buffer is empty, that means it's the end of the path
-		// or it's not part of a path, so events may be triggered. Else, wait
-		// until the movement is over.
-		boolean emptyBuffer = !inPath
-				|| (inPath && this.movementBuffer.size == 0);
+		// or it's not part of a path, so touch events may be triggered. Else,
+		// wait until the movement is over.
+		boolean emptyBuffer = this.movementBuffer.size == 0;
 
 		switch (direction) {
 		case WALK_UP:
@@ -142,7 +141,7 @@ public class Character {
 
 		if (movementBuffer.size > 0 && currentMap != null) {
 			direction = movementBuffer.first();
-			if (walk(direction, currentMap)) {
+			if (walk(direction, currentMap, false)) {
 				movementBuffer.removeIndex(0);
 			}
 		}
