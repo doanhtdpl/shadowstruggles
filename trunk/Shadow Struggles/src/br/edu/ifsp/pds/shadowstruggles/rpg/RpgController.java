@@ -19,7 +19,7 @@ public class RpgController {
 
 	/**
 	 * Method called only from the Viewer. Sends the move command from input to
-	 * the Model.
+	 * the Model and checks if there's an event to trigger.
 	 */
 	public void moveCharacter(WalkDirection direction) {
 		model.moveCharacter(direction);
@@ -47,7 +47,7 @@ public class RpgController {
 		if (direction != null)
 			viewer.moveCharacter2d(direction);
 	}
-	
+
 	/**
 	 * Method called by the Viewer to execute the automatic events of the map in
 	 * the current object layer.
@@ -55,7 +55,7 @@ public class RpgController {
 	public void runAutomaticEvents() {
 		model.getRpgMap().runAutomaticEvents();
 	}
-	
+
 	/**
 	 * Method called only from the Model. It sends a command to the Viewer to
 	 * update the character sprite as the model's character moves.

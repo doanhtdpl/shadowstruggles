@@ -85,6 +85,14 @@ public class RpgMap implements TileBasedMap {
 
 	@Override
 	public boolean blocked(Mover mover, int x, int y) {
+		return this.blocked(mover, x, y, false);
+	}
+
+	/**
+	 * Checks if the given location is blocked; if it is blocked by a touch
+	 * event and the parameter triggerEvents is true, trigger it.
+	 */
+	public boolean blocked(Mover mover, int x, int y, boolean triggerEvents) {
 		// Maps from Tiled are interpreted with the traditional Cartesian
 		// coordinate system (y increases upwards); thus, the y parameter must
 		// be inverted. Also, y ranges from 0 to height - 1, thus the
@@ -127,8 +135,21 @@ public class RpgMap implements TileBasedMap {
 
 					boolean collidable = object.getProperties().containsKey(
 							"collidable");
-					if (collidable && rect.overlaps(projectedCharacter))
-						return true;
+
+					if (rect.overlaps(projectedCharacter)) {
+						if (triggerEvents) {
+							int id = Integer.parseInt((String) object
+									.getProperties().get("id"));
+							Event event = EventDAO.getEvent(id);
+							if (event.getTriggerType() == Event.TriggerType.TOUCH) {
+								event.trigger();
+								EventDAO.editEvent(id, event);
+							}
+						}
+
+						if (collidable)
+							return true;
+					}
 				}
 
 				// Check for tile obstacles in the tile itself and its adjacent

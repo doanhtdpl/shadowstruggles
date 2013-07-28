@@ -48,7 +48,7 @@ public class Character {
 		this.tileY = tileY;
 
 		this.mover = new CharacterMover(CharacterMover.Type.NORMAL_CHARACTER);
-		this.mover.setRectangle(new Rectangle(tileX, tileY, size, size/2));
+		this.mover.setRectangle(new Rectangle(tileX, tileY, size, size / 2));
 		this.movementBuffer = new Array<WalkDirection>();
 	}
 
@@ -93,27 +93,33 @@ public class Character {
 		this.currentMap = map;
 		boolean walked = false;
 
+		// If the movement buffer is empty, that means it's the end of the path
+		// or it's not part of a path, so events may be triggered. Else, wait
+		// until the movement is over.
+		boolean emptyBuffer = !inPath
+				|| (inPath && this.movementBuffer.size == 0);
+
 		switch (direction) {
 		case WALK_UP:
-			if (!map.blocked(this.mover, tileX, tileY - 1)) {
+			if (!map.blocked(this.mover, tileX, tileY - 1, emptyBuffer)) {
 				tileY--;
 				walked = true;
 			}
 			break;
 		case WALK_DOWN:
-			if (!map.blocked(this.mover, tileX, tileY + 1)) {
+			if (!map.blocked(this.mover, tileX, tileY + 1, emptyBuffer)) {
 				tileY++;
 				walked = true;
 			}
 			break;
 		case WALK_LEFT:
-			if (!map.blocked(this.mover, tileX - 1, tileY)) {
+			if (!map.blocked(this.mover, tileX - 1, tileY, emptyBuffer)) {
 				tileX--;
 				walked = true;
 			}
 			break;
 		case WALK_RIGHT:
-			if (!map.blocked(this.mover, tileX + 1, tileY)) {
+			if (!map.blocked(this.mover, tileX + 1, tileY, emptyBuffer)) {
 				tileX++;
 				walked = true;
 			}
@@ -121,9 +127,9 @@ public class Character {
 		default:
 			break;
 		}
-		
+
 		mover.setRectanglePos(tileX, tileY);
-		
+
 		return walked;
 	}
 
@@ -143,7 +149,7 @@ public class Character {
 
 		return direction;
 	}
-	
+
 	public void clearMovementBuffer() {
 		this.movementBuffer.clear();
 	}
@@ -183,7 +189,7 @@ public class Character {
 	public CharacterMover getMover() {
 		return this.mover;
 	}
-	
+
 	public float getSize() {
 		return this.size;
 	}
