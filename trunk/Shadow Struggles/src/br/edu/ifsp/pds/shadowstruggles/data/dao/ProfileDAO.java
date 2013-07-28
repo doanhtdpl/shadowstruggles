@@ -34,8 +34,7 @@ public class ProfileDAO {
 		return orderedProfiles;
 	}
 
-	public static void createProfile(Profile profile)
-			throws SerializationException {
+	public static void createProfile(Profile profile) {
 		DataManager.getInstance().writeProfile(profile);
 	}
 

@@ -1,6 +1,7 @@
 package br.edu.ifsp.pds.shadowstruggles.data;
 
 import br.edu.ifsp.pds.shadowstruggles.model.Profile;
+import br.edu.ifsp.pds.shadowstruggles.model.events.Event;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
@@ -85,7 +86,7 @@ public class DataManager {
 	}
 
 	public void writeProfile(Profile profile) {
-		// First, update record set.
+		// First, update the record set.
 		@SuppressWarnings("unchecked")
 		Array<Profile> currentProfiles = recordSet.get(Profile.class);
 		currentProfiles.add(profile);
@@ -98,6 +99,30 @@ public class DataManager {
 
 		try {
 			MyJson.getJson().toJson(currentProfiles, handle);
+		} catch (SerializationException ex) {
+			ex.printStackTrace(); // TODO: Logging.
+		}
+	}
+
+	public void editEvent(int id, Event modifiedEvent) {
+		// First, update the record set.
+		@SuppressWarnings("unchecked")
+		Array<Event> currentEvents = recordSet.get(Event.class);
+		
+		Event previousEvent = new Event();
+		previousEvent.setId(id);
+		int index = currentEvents.indexOf(previousEvent, false);
+		
+		currentEvents.set(index, modifiedEvent);
+		recordSet.put(Event.class, currentEvents);
+
+		// Then, rewrite the file.
+		String path = localizedPath(currentLanguage,
+				FileMap.classToFile.get(Event.class));
+		FileHandle handle = Gdx.files.local(path);
+
+		try {
+			MyJson.getJson().toJson(currentEvents, handle);
 		} catch (SerializationException ex) {
 			ex.printStackTrace(); // TODO: Logging.
 		}

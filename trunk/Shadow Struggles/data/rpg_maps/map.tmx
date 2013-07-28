@@ -98,12 +98,14 @@
    <properties>
     <property name="collidable" value=""/>
     <property name="height" value="1"/>
+    <property name="id" value="10"/>
     <property name="width" value="1"/>
    </properties>
   </object>
   <object x="264" y="429" width="54" height="51">
    <properties>
     <property name="height" value="1"/>
+    <property name="id" value="20"/>
     <property name="width" value="2"/>
    </properties>
   </object>

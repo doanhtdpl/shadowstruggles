@@ -31,35 +31,37 @@ public class FileMap {
 	public static void initMap() {
 		classToFile = new HashMap<Class<?>, String>();
 		resourcesToDirectory = new HashMap<String, String>();
-		
+
 		resourcesToDirectory.put("sound_effects", "data/audio/sound_effects/");
 		resourcesToDirectory.put("soundtrack", "data/audio/soundtrack/");
-		
-//		classToFile.put(BattlePlatform.class, "data/files/battles.json");
+
+		// classToFile.put(BattlePlatform.class, "data/files/battles.json");
 		classToFile.put(Fighter.class, "data/files/fighters.json");
 		classToFile.put(Effect.class, "data/files/effects.json");
 		classToFile.put(Trap.class, "data/files/traps.json");
 		classToFile.put(Deck.class, "data/files/decks.json");
-//		classToFile.put(Ending.class, "data/files/endings.json");
-//		classToFile.put(Enemy.class, "data/files/enemies.json");
-//		classToFile.put(Event.class, "data/files/events.json");
-//		classToFile.put(Item.class, "data/files/items.json");
+		// classToFile.put(Ending.class, "data/files/endings.json");
+		// classToFile.put(Enemy.class, "data/files/enemies.json");
+		classToFile.put(Event.class, "data/files/events.json");
+		// classToFile.put(Item.class, "data/files/items.json");
 		classToFile.put(MenuText.class, "data/files/menu_text.json");
-//		classToFile.put(Pack.class, "data/files/packs.json");
+		// classToFile.put(Pack.class, "data/files/packs.json");
 		classToFile.put(Profile.class, "data/files/profiles.json");
-//		classToFile.put(Quest.class, "data/files/quests.json");
+		// classToFile.put(Quest.class, "data/files/quests.json");
 		classToFile.put(Scene.class, "data/files/scenes.json");
-//		classToFile.put(Shop.class, "data/files/shops.json");
+		// classToFile.put(Shop.class, "data/files/shops.json");
 		classToFile.put(TutorialDialog.class, "data/files/tutorial.json");
-		
+
 		resourcesToDirectory.put("battle_maps", "data/images/battle_maps/");
 		resourcesToDirectory.put("sprites", "data/images/sprites/");
-		resourcesToDirectory.put("card_attacking", "data/images/card_attacking/");
+		resourcesToDirectory.put("card_attacking",
+				"data/images/card_attacking/");
 		resourcesToDirectory.put("card_effects", "data/images/card_effects/");
 		resourcesToDirectory.put("card_images", "data/images/card_images/");
 		resourcesToDirectory.put("card_walking", "data/images/card_walking/");
 		resourcesToDirectory.put("cards", "data/images/cards/");
-		resourcesToDirectory.put("game_ui_images", "data/images/game_ui_images/");
+		resourcesToDirectory.put("game_ui_images",
+				"data/images/game_ui_images/");
 		resourcesToDirectory.put("novel_images", "data/images/novel_images/");
 		resourcesToDirectory.put("rpg_maps", "data/images/rpg_maps/");
 		resourcesToDirectory.put("skin", "data/images/skin/");
