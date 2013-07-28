@@ -1,6 +1,8 @@
 package br.edu.ifsp.pds.shadowstruggles.model.rpg;
 
+import br.edu.ifsp.pds.shadowstruggles.data.dao.EventDAO;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
+import br.edu.ifsp.pds.shadowstruggles.model.events.Event;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.Mover;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.TileBasedMap;
 
@@ -57,6 +59,28 @@ public class RpgMap implements TileBasedMap {
 	public void pathFinderVisited(int x, int y) {
 		if (visited == null)
 			visited = new boolean[getWidthInTiles()][getHeightInTiles()];
+	}
+
+	/**
+	 * Executes the automatic events of the map in the current object layer and
+	 * updates them.
+	 */
+	public void runAutomaticEvents() {
+		MapObjects objects = this.map.getLayers().get("Camada de Objetos 1")
+				.getObjects();
+
+		for (MapObject object : objects) {
+			int id = Integer
+					.parseInt((String) object.getProperties().get("id"));
+
+			Event event = EventDAO.getEvent(id);
+			if (event != null) {
+				if (event.getTriggerType() == Event.TriggerType.AUTOMATIC) {
+					event.trigger();
+					EventDAO.editEvent(event.getId(), event);
+				}
+			}
+		}
 	}
 
 	@Override

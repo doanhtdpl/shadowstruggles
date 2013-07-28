@@ -34,14 +34,6 @@ public class RpgController {
 	}
 
 	/**
-	 * Method called only from the Model. It sends a command to the Viewer to
-	 * update the character sprite as the model's character moves.
-	 */
-	public void characterMoved(WalkDirection direction) {
-		viewer.moveCharacter2d(direction);
-	}
-
-	/**
 	 * Method called by the Viewer to update the model (e.g., try clearing the
 	 * character's movement buffer). It also checks for changes in direction.
 	 */
@@ -54,6 +46,22 @@ public class RpgController {
 		WalkDirection direction = model.getCharacter().update();
 		if (direction != null)
 			viewer.moveCharacter2d(direction);
+	}
+	
+	/**
+	 * Method called by the Viewer to execute the automatic events of the map in
+	 * the current object layer.
+	 */
+	public void runAutomaticEvents() {
+		model.getRpgMap().runAutomaticEvents();
+	}
+	
+	/**
+	 * Method called only from the Model. It sends a command to the Viewer to
+	 * update the character sprite as the model's character moves.
+	 */
+	public void characterMoved(WalkDirection direction) {
+		viewer.moveCharacter2d(direction);
 	}
 
 	public RpgScreen getViewer() {
@@ -75,5 +83,4 @@ public class RpgController {
 	public TiledMap getMap() {
 		return model.getMap();
 	}
-
 }

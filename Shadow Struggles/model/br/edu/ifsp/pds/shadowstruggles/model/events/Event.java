@@ -67,7 +67,11 @@ public class Event implements Serializable {
 	 * Activates the event.
 	 */
 	public void trigger() {
-		// TODO: Implementar método.
+		this.triggered = true;
+
+		for (EventAction action : currentActions) {
+			action.act();
+		}
 	}
 
 	@SuppressWarnings("unchecked")
@@ -103,6 +107,15 @@ public class Event implements Serializable {
 		json.writeValue("triggerType", this.triggerType);
 		json.writeValue("actions", this.actions);
 		json.writeValue("currentActions", this.currentActions);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj.getClass() != Event.class)
+			return false;
+
+		Event event = (Event) obj;
+		return event.getId() == this.id;
 	}
 
 	public int getId() {

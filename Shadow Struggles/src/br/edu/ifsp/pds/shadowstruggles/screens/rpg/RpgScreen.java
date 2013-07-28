@@ -57,9 +57,9 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		renderer = new OrthogonalTiledMapRenderer(
 				rpgController.getMap(), unitScale);
 
-		// testes com character2d
 		this.stage.addActor(character2d);
-
+		
+		this.rpgController.runAutomaticEvents();
 	}
 
 	/**

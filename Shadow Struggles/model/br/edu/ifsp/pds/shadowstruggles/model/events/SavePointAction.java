@@ -8,6 +8,7 @@ public class SavePointAction extends EventAction {
 	@Override
 	public void act() {
 		// TODO Auto-generated method stub
+		System.out.println("Save Point activated!");
 	}
 	
 	@Override
