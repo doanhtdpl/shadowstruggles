@@ -49,13 +49,12 @@ public class MyJson {
 			json.addClassTag("Enemy", Enemy.class);
 			json.addClassTag("Sequence", Sequence.class);
 
-			json.addClassTag("ComplexEvent", ComplexEvent.class);
-			json.addClassTag("Container", Container.class);
 			json.addClassTag("Event", Event.class);
-			json.addClassTag("SavePoint", SavePoint.class);
-			json.addClassTag("SceneEvent", SceneEvent.class);
-			json.addClassTag("ShopEvent", ShopEvent.class);
-			json.addClassTag("WarpPoint", WarpPoint.class);
+			json.addClassTag("EventAction", EventAction.class);
+			json.addClassTag("SavePointAction", SavePointAction.class);
+			json.addClassTag("SceneAction", SceneAction.class);
+			json.addClassTag("ShopAction", ShopAction.class);
+			json.addClassTag("WarpAction", WarpAction.class);
 
 			json.addClassTag("Item", Item.class);
 			json.addClassTag("ModifierItem", ModifierItem.class);
