@@ -6,7 +6,6 @@ import com.badlogic.gdx.utils.Json.Serializable;
 import com.badlogic.gdx.utils.JsonValue;
 
 import br.edu.ifsp.pds.shadowstruggles.model.Deck;
-import br.edu.ifsp.pds.shadowstruggles.model.events.SavePoint;
 import br.edu.ifsp.pds.shadowstruggles.model.items.Item;
 import br.edu.ifsp.pds.shadowstruggles.model.quests.Quest;
 import br.edu.ifsp.pds.shadowstruggles.model.scenes.Ending;
@@ -15,7 +14,6 @@ public class Profile implements Serializable {
 	public int id;
 	public Player player;
 	public String language;
-	public SavePoint savePoint;
 	public int storyPoints;
 	public String path;
 	public int money;
@@ -39,7 +37,6 @@ public class Profile implements Serializable {
 		this.id = 1;
 		this.player = new Player();
 		this.language = "";
-		this.savePoint = new SavePoint();
 		this.storyPoints = 0;
 		this.path = "";
 		this.money = 0;
@@ -60,8 +57,8 @@ public class Profile implements Serializable {
 		this.experienceNextLevelFormula = null;
 	}
 
-	public Profile(int id, Player player, String language, SavePoint savePoint,
-			int storyPoints, String path, int money, int experience, int level,
+	public Profile(int id, Player player, String language, int storyPoints,
+			String path, int money, int experience, int level,
 			int distributionPoints, int experienceNextLevel,
 			Array<Item> inventory, Array<Deck> deck, Array<Item> unlockedItems,
 			Array<Quest> quests, Array<EnemyDefeat> defeatedEnemies,
@@ -72,7 +69,6 @@ public class Profile implements Serializable {
 		this.id = id;
 		this.player = player;
 		this.language = language;
-		this.savePoint = savePoint;
 		this.storyPoints = storyPoints;
 		this.path = path;
 		this.money = money;
@@ -99,7 +95,6 @@ public class Profile implements Serializable {
 		this.id = json.readValue("id", Integer.class, jsonData);
 		this.player = json.readValue("player", Player.class, jsonData);
 		this.language = json.readValue("language", String.class, jsonData);
-		this.savePoint = json.readValue("savePoint", SavePoint.class, jsonData);
 		this.storyPoints = json.readValue("storyPoints", Integer.class,
 				jsonData);
 		this.path = json.readValue("path", String.class, jsonData);
@@ -135,7 +130,6 @@ public class Profile implements Serializable {
 		json.writeValue("id", this.id);
 		json.writeValue("player", this.player);
 		json.writeValue("language", this.language);
-		json.writeValue("savePoint", this.savePoint);
 		json.writeValue("storyPoints", this.storyPoints);
 		json.writeValue("path", this.path);
 		json.writeValue("money", this.money);
