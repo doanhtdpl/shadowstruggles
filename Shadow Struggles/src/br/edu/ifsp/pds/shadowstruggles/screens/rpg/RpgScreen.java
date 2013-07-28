@@ -26,7 +26,7 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	private RpgController rpgController;
 	private Character2D character2d;
 	private OrthogonalTiledMapRenderer renderer;
-	
+
 	private PathFinder finder;
 	private Path path;
 
@@ -54,11 +54,11 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 
 		batch = new SpriteBatch();
 		float unitScale = 1 / 256f;
-		renderer = new OrthogonalTiledMapRenderer(
-				rpgController.getMap(), unitScale);
+		renderer = new OrthogonalTiledMapRenderer(rpgController.getMap(),
+				unitScale);
 
 		this.stage.addActor(character2d);
-		
+
 		this.rpgController.runAutomaticEvents();
 	}
 
@@ -109,6 +109,11 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
 			rpgController.moveCharacter(WalkDirection.WALK_DOWN);
 		}
+		if (Gdx.input.isKeyPressed(Input.Keys.Z)
+				|| Gdx.input.isKeyPressed(Input.Keys.ENTER)
+				|| Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
+			rpgController.triggerEvent();
+		}
 	}
 
 	/**
@@ -133,13 +138,13 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		int[] currentPos = pixelsToTile((int) character2d.getX(),
 				Gdx.graphics.getHeight() - (int) character2d.getY() - 1);
 		int[] destinationPos = pixelsToTile(screenX, screenY);
-		
+
 		path = finder.findPath(rpgController.getModel().getCharacter()
 				.getMover(), currentPos[0], currentPos[1], destinationPos[0],
 				destinationPos[1]);
 
 		if (path != null)
-			rpgController.moveCharacter(path);
+			rpgController.moveCharacter(path, destinationPos);
 
 		return true;
 	}

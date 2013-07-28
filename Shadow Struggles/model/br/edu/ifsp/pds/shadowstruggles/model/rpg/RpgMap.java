@@ -6,6 +6,7 @@ import br.edu.ifsp.pds.shadowstruggles.model.events.Event;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.Mover;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.TileBasedMap;
 
+import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -20,31 +21,35 @@ import com.badlogic.gdx.utils.Array;
  * wrapper for the tiled map itself.
  */
 public class RpgMap implements TileBasedMap {
-	private TiledMapTileLayer currentLayer = null;
 	private boolean[][] visited = null;
 	private TiledMap map;
 
+	/**
+	 * The current object layer.
+	 */
+	private MapLayer currentLayer = null;
+
 	public RpgMap(TiledMap map) {
-		this(map, (TiledMapTileLayer) map.getLayers().get(0));
+		this(map, "default-objects");
 	}
 
 	public RpgMap(TiledMap map, String currentLayer) {
-		this(map, (TiledMapTileLayer) map.getLayers().get(currentLayer));
+		this(map, map.getLayers().get(currentLayer));
 	}
 
-	public RpgMap(TiledMap map, TiledMapTileLayer currentLayer) {
+	public RpgMap(TiledMap map, MapLayer currentLayer) {
 		this.map = map;
 		this.currentLayer = currentLayer;
 	}
 
 	@Override
 	public int getWidthInTiles() {
-		return this.currentLayer.getWidth();
+		return ((TiledMapTileLayer) map.getLayers().get("tiles")).getWidth();
 	}
 
 	@Override
 	public int getHeightInTiles() {
-		return this.currentLayer.getHeight();
+		return ((TiledMapTileLayer) map.getLayers().get("tiles")).getHeight();
 	}
 
 	public void clearVisited() {
@@ -66,8 +71,7 @@ public class RpgMap implements TileBasedMap {
 	 * updates them.
 	 */
 	public void runAutomaticEvents() {
-		MapObjects objects = this.map.getLayers().get("Camada de Objetos 1")
-				.getObjects();
+		MapObjects objects = currentLayer.getObjects();
 
 		for (MapObject object : objects) {
 			int id = Integer
@@ -90,9 +94,12 @@ public class RpgMap implements TileBasedMap {
 
 	/**
 	 * Checks if the given location is blocked; if it is blocked by a touch
-	 * event and the parameter triggerEvents is true, trigger it.
+	 * event, it may be triggered.
+	 * 
+	 * @param triggerTouch
+	 *            Indicates if the events may be triggered by touch.
 	 */
-	public boolean blocked(Mover mover, int x, int y, boolean triggerEvents) {
+	public boolean blocked(Mover mover, int x, int y, boolean triggerTouch) {
 		// Maps from Tiled are interpreted with the traditional Cartesian
 		// coordinate system (y increases upwards); thus, the y parameter must
 		// be inverted. Also, y ranges from 0 to height - 1, thus the
@@ -117,8 +124,7 @@ public class RpgMap implements TileBasedMap {
 						.getHeight());
 
 				// Check for collidable objects.
-				MapObjects objects = this.map.getLayers()
-						.get("Camada de Objetos 1").getObjects();
+				MapObjects objects = currentLayer.getObjects();
 
 				for (MapObject object : objects) {
 					int tileSize = SettingsDAO.getSettings().tileSize;
@@ -137,14 +143,13 @@ public class RpgMap implements TileBasedMap {
 							"collidable");
 
 					if (rect.overlaps(projectedCharacter)) {
-						if (triggerEvents) {
-							int id = Integer.parseInt((String) object
-									.getProperties().get("id"));
-							Event event = EventDAO.getEvent(id);
-							if (event.getTriggerType() == Event.TriggerType.TOUCH) {
-								event.trigger();
-								EventDAO.editEvent(id, event);
-							}
+						int id = Integer.parseInt((String) object
+								.getProperties().get("id"));
+						Event event = EventDAO.getEvent(id);
+						if (triggerTouch
+								&& event.getTriggerType() == Event.TriggerType.TOUCH) {
+							event.trigger();
+							EventDAO.editEvent(id, event);
 						}
 
 						if (collidable)
@@ -154,8 +159,11 @@ public class RpgMap implements TileBasedMap {
 
 				// Check for tile obstacles in the tile itself and its adjacent
 				// spots in 4 directions.
+				TiledMapTileLayer tileLayer = (TiledMapTileLayer) map
+						.getLayers().get("tiles");
 				Array<Vector2> adjacentTiles = new Array<Vector2>();
 				adjacentTiles.add(new Vector2(x, invertY));
+
 				if (x < this.getWidthInTiles())
 					adjacentTiles.add(new Vector2(x + 1, invertY));
 				if (x > 0)
@@ -167,9 +175,8 @@ public class RpgMap implements TileBasedMap {
 
 				for (Vector2 tilePos : adjacentTiles) {
 					TiledMapTile tile = null;
-					if (this.currentLayer.getCell((int) tilePos.x,
-							(int) tilePos.y) != null) {
-						tile = this.currentLayer.getCell((int) tilePos.x,
+					if (tileLayer.getCell((int) tilePos.x, (int) tilePos.y) != null) {
+						tile = tileLayer.getCell((int) tilePos.x,
 								(int) tilePos.y).getTile();
 					} else {
 						return true;
@@ -194,12 +201,52 @@ public class RpgMap implements TileBasedMap {
 		}
 	}
 
+	/**
+	 * Tries triggering the event in the specified location with the specified
+	 * CharacterMover, returning whether the event was found or not.
+	 */
+	public boolean triggerEvent(int x, int y, CharacterMover cMover) {
+		// Maps from Tiled are interpreted with the traditional Cartesian
+		// coordinate system (y increases upwards); thus, the y parameter must
+		// be inverted. Also, y ranges from 0 to height - 1, thus the
+		// subtraction.
+		int invertY = this.getHeightInTiles() - y - 1;
+		MapObjects objects = currentLayer.getObjects();
+
+		for (MapObject object : objects) {
+			int tileSize = SettingsDAO.getSettings().tileSize;
+
+			int objX = (Integer) object.getProperties().get("x") / tileSize;
+			int objY = (Integer) object.getProperties().get("y") / tileSize;
+			float width = Float.parseFloat((String) object.getProperties().get(
+					"width"));
+			float height = Float.parseFloat((String) object.getProperties()
+					.get("height"));
+			Rectangle rect = new Rectangle(objX, objY, width, height);
+
+			if (rect.overlaps(new Rectangle(x, invertY,
+					cMover.getRectangle().width, cMover.getRectangle().height))) {
+				int id = Integer.parseInt((String) object.getProperties().get(
+						"id"));
+				Event event = EventDAO.getEvent(id);
+
+				if (event.getTriggerType() == Event.TriggerType.INTERACT) {
+					event.trigger();
+					EventDAO.editEvent(id, event);
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
 	@Override
 	public float getCost(Mover mover, int sx, int sy, int tx, int ty) {
 		return 1;
 	}
 
-	public TiledMapTileLayer getCurrentLayer() {
+	public MapLayer getCurrentLayer() {
 		return currentLayer;
 	}
 
@@ -210,8 +257,7 @@ public class RpgMap implements TileBasedMap {
 	}
 
 	public void setCurrentLayer(String currentLayer) {
-		this.currentLayer = (TiledMapTileLayer) this.map.getLayers().get(
-				currentLayer);
+		this.currentLayer = this.map.getLayers().get(currentLayer);
 	}
 
 	public TiledMap getMap() {

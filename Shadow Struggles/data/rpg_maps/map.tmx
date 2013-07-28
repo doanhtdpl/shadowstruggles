@@ -88,25 +88,39 @@
    </properties>
   </tile>
  </tileset>
- <layer name="Camada de Tiles 1" width="30" height="20">
+ <layer name="tiles" width="30" height="20">
   <data encoding="base64" compression="zlib">
    eJxjZGBgYMKDmYHYmAisB8T6RGIDIBYAYkE8WAiLHSZIbGcobQvEdkRiexLtdcLjX1rai4xN6WBvIIG4DaSjf+kZzs5UtFceiBXwYEU8diGnMx8g9iUS+xEZhtTA6OmQGBxMglpnLPGBL/+hyxNyH6E0TsjPpJRv1MKgcpKUdEgtbI9mrwMQO6KpwSZGqnp0MXR7/YE4AE0PNjFS1aOLods7Gs7DL5xJKVephUHlMwBZf4BC
   </data>
  </layer>
- <objectgroup name="Camada de Objetos 1" width="30" height="20">
+ <objectgroup name="default-objects" width="30" height="20">
   <object x="114" y="426" width="31" height="36">
    <properties>
+    <property name="X" value="3.56"/>
+    <property name="Y" value="13.3"/>
     <property name="collidable" value=""/>
-    <property name="height" value="1"/>
+    <property name="height" value="1.1"/>
     <property name="id" value="10"/>
-    <property name="width" value="1"/>
+    <property name="width" value="0.9"/>
    </properties>
   </object>
   <object x="264" y="429" width="54" height="51">
    <properties>
-    <property name="height" value="1"/>
+    <property name="X" value="8.25"/>
+    <property name="Y" value="13.406"/>
+    <property name="height" value="1.6"/>
     <property name="id" value="20"/>
-    <property name="width" value="2"/>
+    <property name="width" value="1.7"/>
+   </properties>
+  </object>
+  <object x="483" y="422" width="61" height="55">
+   <properties>
+    <property name="X" value="15.094"/>
+    <property name="Y" value="13.188"/>
+    <property name="collidable" value=""/>
+    <property name="height" value="1.7"/>
+    <property name="id" value="30"/>
+    <property name="width" value="1.9"/>
    </properties>
   </object>
  </objectgroup>
