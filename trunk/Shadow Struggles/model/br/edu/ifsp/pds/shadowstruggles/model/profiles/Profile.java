@@ -4,8 +4,11 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Json.Serializable;
 import com.badlogic.gdx.utils.JsonValue;
+import com.badlogic.gdx.utils.ObjectMap;
 
 import br.edu.ifsp.pds.shadowstruggles.model.Deck;
+import br.edu.ifsp.pds.shadowstruggles.model.events.Event;
+import br.edu.ifsp.pds.shadowstruggles.model.events.EventAction;
 import br.edu.ifsp.pds.shadowstruggles.model.items.Item;
 import br.edu.ifsp.pds.shadowstruggles.model.quests.Quest;
 import br.edu.ifsp.pds.shadowstruggles.model.scenes.Ending;
@@ -28,6 +31,10 @@ public class Profile implements Serializable {
 	public Array<Quest> quests;
 	public Array<EnemyDefeat> defeatedEnemies;
 	public Array<Ending> endings;
+	/**
+	 * Records which actions should be performed for each event.
+	 */
+	public ObjectMap<Event, Array<EventAction>> events;
 
 	public DistributionPointsFormula distributionPointsFormula;
 	public AttributePointsFormula attributePointsFormula;
@@ -51,6 +58,7 @@ public class Profile implements Serializable {
 		this.quests = new Array<Quest>();
 		this.defeatedEnemies = new Array<EnemyDefeat>();
 		this.endings = new Array<Ending>();
+		this.events = new ObjectMap<Event, Array<EventAction>>();
 
 		this.distributionPointsFormula = null;
 		this.attributePointsFormula = null;
@@ -62,7 +70,7 @@ public class Profile implements Serializable {
 			int distributionPoints, int experienceNextLevel,
 			Array<Item> inventory, Array<Deck> deck, Array<Item> unlockedItems,
 			Array<Quest> quests, Array<EnemyDefeat> defeatedEnemies,
-			Array<Ending> endings,
+			Array<Ending> endings, ObjectMap<Event, Array<EventAction>> events,
 			DistributionPointsFormula distributionPointsFormula,
 			AttributePointsFormula attributePointsFormula,
 			ExperienceNextLevelFormula experienceNextLevelFormula) {
@@ -83,6 +91,7 @@ public class Profile implements Serializable {
 		this.quests = quests;
 		this.defeatedEnemies = defeatedEnemies;
 		this.endings = endings;
+		this.events = events;
 
 		this.distributionPointsFormula = distributionPointsFormula;
 		this.attributePointsFormula = attributePointsFormula;
@@ -114,6 +123,7 @@ public class Profile implements Serializable {
 		this.defeatedEnemies = json.readValue("defeatedEnemies", Array.class,
 				jsonData);
 		this.endings = json.readValue("endings", Array.class, jsonData);
+		this.events = json.readValue("events", ObjectMap.class, jsonData);
 
 		this.distributionPointsFormula = json.readValue(
 				"distributionPointsFormula", DistributionPointsFormula.class,
@@ -144,6 +154,7 @@ public class Profile implements Serializable {
 		json.writeValue("quests", this.quests);
 		json.writeValue("defeatedEnemies", this.defeatedEnemies);
 		json.writeValue("endings", this.endings);
+		json.writeValue("events", this.events);
 
 		json.writeValue("distributionPointsFormula",
 				this.distributionPointsFormula);

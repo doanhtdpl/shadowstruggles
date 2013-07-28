@@ -85,6 +85,9 @@ public class DataManager {
 		}
 	}
 
+	/**
+	 * Creates a new profile.
+	 */
 	public void writeProfile(Profile profile) {
 		// First, update the record set.
 		@SuppressWarnings("unchecked")
@@ -104,28 +107,40 @@ public class DataManager {
 		}
 	}
 
-	public void editEvent(int id, Event modifiedEvent) {
-		// First, update the record set.
-		@SuppressWarnings("unchecked")
-		Array<Event> currentEvents = recordSet.get(Event.class);
-		
-		Event previousEvent = new Event();
-		previousEvent.setId(id);
-		int index = currentEvents.indexOf(previousEvent, false);
-		
-		currentEvents.set(index, modifiedEvent);
-		recordSet.put(Event.class, currentEvents);
-
-		// Then, rewrite the file.
-		String path = localizedPath(currentLanguage,
+	/**
+	 * Persists the changes made in profiles and events.
+	 */
+	public void save() {
+		String profilesPath = localizedPath(currentLanguage,
+				FileMap.classToFile.get(Profile.class));
+		String eventsPath = localizedPath(currentLanguage,
 				FileMap.classToFile.get(Event.class));
-		FileHandle handle = Gdx.files.local(path);
+		FileHandle profilesHandle = Gdx.files.local(profilesPath);
+		FileHandle eventsHandle = Gdx.files.local(eventsPath);
 
 		try {
-			MyJson.getJson().toJson(currentEvents, handle);
+			MyJson.getJson().toJson(recordSet.get(Profile.class),
+					profilesHandle);
+			MyJson.getJson().toJson(recordSet.get(Event.class), eventsHandle);
 		} catch (SerializationException ex) {
 			ex.printStackTrace(); // TODO: Logging.
 		}
+	}
+
+	/**
+	 * Edits an entry in the Event set. All changes are local; in order to
+	 * persist them, the profile must be saved.
+	 */
+	public void editEvent(int id, Event modifiedEvent) {
+		@SuppressWarnings("unchecked")
+		Array<Event> currentEvents = recordSet.get(Event.class);
+
+		Event previousEvent = new Event();
+		previousEvent.setId(id);
+		int index = currentEvents.indexOf(previousEvent, false);
+
+		currentEvents.set(index, modifiedEvent);
+		recordSet.put(Event.class, currentEvents);
 	}
 
 	@SuppressWarnings("rawtypes")
