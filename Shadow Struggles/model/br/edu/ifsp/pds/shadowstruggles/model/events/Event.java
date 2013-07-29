@@ -15,7 +15,6 @@ public class Event implements Serializable {
 	private float x, y, width, height;
 	private String map;
 	private String layer;
-	private boolean triggered;
 	private String sprite;
 	private TriggerType triggerType;
 
@@ -38,7 +37,6 @@ public class Event implements Serializable {
 		this.height = 0;
 		this.map = "";
 		this.layer = "";
-		this.triggered = false;
 		this.sprite = "";
 		this.triggerType = TriggerType.INTERACT;
 		this.actions = new Array<EventAction>();
@@ -56,7 +54,6 @@ public class Event implements Serializable {
 		this.height = height;
 		this.map = map;
 		this.layer = layer;
-		this.triggered = triggered;
 		this.sprite = sprite;
 		this.triggerType = triggerType;
 		this.actions = actions;
@@ -67,8 +64,6 @@ public class Event implements Serializable {
 	 * Activates the event.
 	 */
 	public void trigger() {
-		this.triggered = true;
-
 		for (EventAction action : currentActions) {
 			action.act();
 		}
@@ -84,7 +79,6 @@ public class Event implements Serializable {
 		this.height = json.readValue("height", Float.class, jsonData);
 		this.map = json.readValue("map", String.class, jsonData);
 		this.layer = json.readValue("layer", String.class, jsonData);
-		this.triggered = json.readValue("triggered", Boolean.class, jsonData);
 		this.sprite = json.readValue("sprite", String.class, jsonData);
 		this.triggerType = json.readValue("triggerType", TriggerType.class,
 				jsonData);
@@ -102,7 +96,6 @@ public class Event implements Serializable {
 		json.writeValue("height", this.height);
 		json.writeValue("map", this.map);
 		json.writeValue("layer", this.layer);
-		json.writeValue("triggered", this.triggered);
 		json.writeValue("sprite", this.sprite);
 		json.writeValue("triggerType", this.triggerType);
 		json.writeValue("actions", this.actions);
@@ -172,14 +165,6 @@ public class Event implements Serializable {
 
 	public void setLayer(String layer) {
 		this.layer = layer;
-	}
-
-	public boolean isTriggered() {
-		return triggered;
-	}
-
-	public void setTriggered(boolean triggered) {
-		this.triggered = triggered;
 	}
 
 	public String getSprite() {
