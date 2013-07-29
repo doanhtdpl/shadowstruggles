@@ -73,7 +73,7 @@ public class RpgPlatform {
 	/**
 	 * Moves the character towards a specified path, step by step.
 	 */
-	public void moveCharacter(Path path) {
+	public void moveCharacter(Path path, int[] destination) {
 		// Stop any ongoing path to start another one.
 		this.getCharacter().clearMovementBuffer();
 
@@ -103,7 +103,7 @@ public class RpgPlatform {
 				currentX++;
 			}
 
-			this.moveCharacter(direction, true);
+			this.moveCharacter(direction, true, destination);
 		}
 
 	}
@@ -113,12 +113,12 @@ public class RpgPlatform {
 	 * the RpgController.
 	 */
 	public boolean moveCharacter(WalkDirection direction) {
-		return this.moveCharacter(direction, false);
+		return this.moveCharacter(direction, false, null);
 	}
 
-	public boolean moveCharacter(WalkDirection direction, boolean inPath) {
+	public boolean moveCharacter(WalkDirection direction, boolean inPath, int[] destination) {
 		if (direction != null) {
-			if (character.walk(direction, map, inPath)) {
+			if (character.walk(direction, map, inPath, destination)) {
 				controller.characterMoved(direction);
 				return true;
 			}

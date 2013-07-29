@@ -22,6 +22,7 @@ public class Character {
 	private float walkSpeed = 5;
 
 	private boolean readyToWalk = true;
+	private boolean inPath = false;
 	private WalkDirection direction = null;
 	private CharacterMover mover;
 	private RpgMap currentMap;
@@ -31,6 +32,11 @@ public class Character {
 	 * else.
 	 */
 	private Array<WalkDirection> movementBuffer;
+	/**
+	 * If the character is moving along a path, this parameter stores the target
+	 * location (destination[0] = x, destination[1] = y).
+	 */
+	private int[] destination;
 
 	/**
 	 * The constructor loads information from saved data.
@@ -50,6 +56,7 @@ public class Character {
 		this.mover = new CharacterMover(CharacterMover.Type.NORMAL_CHARACTER);
 		this.mover.setRectangle(new Rectangle(tileX, tileY, size, size / 2));
 		this.movementBuffer = new Array<WalkDirection>();
+		this.destination = null;
 	}
 
 	/**
@@ -64,7 +71,7 @@ public class Character {
 	 * @return true if successfully walked. Else, returns false.
 	 */
 	public boolean walk(WalkDirection direction, RpgMap map) {
-		return walk(direction, map, false);
+		return walk(direction, map, false, null);
 	}
 
 	/**
@@ -80,12 +87,20 @@ public class Character {
 	 *            Indicates whether or not the designated movement is part of a
 	 *            path. If it is, then it's stored in the movement buffer it the
 	 *            movement can't be performed immediately.
+	 * @param destination
+	 *            The movement's target, if it belongs to a path (destination[0]
+	 *            = x, destination[1] = y).
 	 * @return true if successfully walked. Else, returns false.
 	 */
-	public boolean walk(WalkDirection direction, RpgMap map, boolean inPath) {
+	public boolean walk(WalkDirection direction, RpgMap map, boolean inPath,
+			int[] destination) {
+		if (destination != null)
+			this.destination = destination;
 		if (!readyToWalk) {
-			if (inPath)
+			if (inPath) {
+				this.inPath = true;
 				movementBuffer.add(direction);
+			}
 			return false;
 		}
 
@@ -93,32 +108,27 @@ public class Character {
 		this.currentMap = map;
 		boolean walked = false;
 
-		// If the movement buffer is empty, that means it's the end of the path
-		// or it's not part of a path, so touch events may be triggered. Else,
-		// wait until the movement is over.
-		boolean emptyBuffer = this.movementBuffer.size == 0;
-
 		switch (direction) {
 		case WALK_UP:
-			if (!map.blocked(this.mover, tileX, tileY - 1, emptyBuffer)) {
+			if (!map.blocked(this.mover, tileX, tileY - 1, destination == null)) {
 				tileY--;
 				walked = true;
 			}
 			break;
 		case WALK_DOWN:
-			if (!map.blocked(this.mover, tileX, tileY + 1, emptyBuffer)) {
+			if (!map.blocked(this.mover, tileX, tileY + 1, destination == null)) {
 				tileY++;
 				walked = true;
 			}
 			break;
 		case WALK_LEFT:
-			if (!map.blocked(this.mover, tileX - 1, tileY, emptyBuffer)) {
+			if (!map.blocked(this.mover, tileX - 1, tileY, destination == null)) {
 				tileX--;
 				walked = true;
 			}
 			break;
 		case WALK_RIGHT:
-			if (!map.blocked(this.mover, tileX + 1, tileY, emptyBuffer)) {
+			if (!map.blocked(this.mover, tileX + 1, tileY, destination == null)) {
 				tileX++;
 				walked = true;
 			}
@@ -128,6 +138,16 @@ public class Character {
 		}
 
 		mover.setRectanglePos(tileX, tileY);
+
+		// If the path has been completed and there is a specified target,
+		// try triggering an event.
+		if (movementBuffer.size <= 1 && this.inPath && destination != null) {
+			map.triggerEvent(destination[0], destination[1], mover);
+			map.touchEvent(destination[0], destination[1], mover);
+
+			this.destination = null;
+			this.inPath = false;
+		}
 
 		return walked;
 	}
@@ -141,7 +161,7 @@ public class Character {
 
 		if (movementBuffer.size > 0 && currentMap != null) {
 			direction = movementBuffer.first();
-			if (walk(direction, currentMap, false)) {
+			if (walk(direction, currentMap, false, this.destination)) {
 				movementBuffer.removeIndex(0);
 			}
 		}

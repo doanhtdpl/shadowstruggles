@@ -35,9 +35,7 @@ public class RpgController {
 	 *            destinationPos[1] = y).
 	 */
 	public void moveCharacter(Path path, int[] destinationPos) {
-		model.moveCharacter(path);
-		model.getRpgMap().triggerEvent(destinationPos[0], destinationPos[1],
-				model.getCharacter().getMover());
+		model.moveCharacter(path, destinationPos);
 	}
 
 	/**
