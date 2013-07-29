@@ -202,8 +202,8 @@ public class RpgMap implements TileBasedMap {
 	}
 
 	/**
-	 * Tries triggering the event in the specified location with the specified
-	 * CharacterMover, returning whether the event was found or not.
+	 * Tries triggering the interactive event in the specified location with the
+	 * specified CharacterMover, returning whether the event was found or not.
 	 */
 	public boolean triggerEvent(int x, int y, CharacterMover cMover) {
 		// Maps from Tiled are interpreted with the traditional Cartesian
@@ -231,6 +231,46 @@ public class RpgMap implements TileBasedMap {
 				Event event = EventDAO.getEvent(id);
 
 				if (event.getTriggerType() == Event.TriggerType.INTERACT) {
+					event.trigger();
+					EventDAO.editEvent(id, event);
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Tries triggering the touch event in the specified location with the
+	 * specified CharacterMover, returning whether the event was found or not.
+	 */
+	public boolean touchEvent(int x, int y, CharacterMover cMover) {
+		// Maps from Tiled are interpreted with the traditional Cartesian
+		// coordinate system (y increases upwards); thus, the y parameter must
+		// be inverted. Also, y ranges from 0 to height - 1, thus the
+		// subtraction.
+		int invertY = this.getHeightInTiles() - y - 1;
+		MapObjects objects = currentLayer.getObjects();
+
+		for (MapObject object : objects) {
+			int tileSize = SettingsDAO.getSettings().tileSize;
+
+			int objX = (Integer) object.getProperties().get("x") / tileSize;
+			int objY = (Integer) object.getProperties().get("y") / tileSize;
+			float width = Float.parseFloat((String) object.getProperties().get(
+					"width"));
+			float height = Float.parseFloat((String) object.getProperties()
+					.get("height"));
+			Rectangle rect = new Rectangle(objX, objY, width, height);
+
+			if (rect.overlaps(new Rectangle(x, invertY,
+					cMover.getRectangle().width, cMover.getRectangle().height))) {
+				int id = Integer.parseInt((String) object.getProperties().get(
+						"id"));
+				Event event = EventDAO.getEvent(id);
+
+				if (event.getTriggerType() == Event.TriggerType.TOUCH) {
 					event.trigger();
 					EventDAO.editEvent(id, event);
 					return true;
