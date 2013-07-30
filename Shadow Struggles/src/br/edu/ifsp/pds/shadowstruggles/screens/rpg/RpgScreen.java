@@ -9,6 +9,7 @@ import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.ManhattanHeuristic;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.Path;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.PathFinder;
 import br.edu.ifsp.pds.shadowstruggles.object2d.rpg.Character2D;
+import br.edu.ifsp.pds.shadowstruggles.rpg.ObjectRenderer;
 import br.edu.ifsp.pds.shadowstruggles.rpg.RpgController;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 import com.badlogic.gdx.Gdx;
@@ -26,6 +27,7 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	private RpgController rpgController;
 	private Character2D character2d;
 	private OrthogonalTiledMapRenderer renderer;
+	private ObjectRenderer objectRenderer;
 
 	private PathFinder finder;
 	private Path path;
@@ -44,10 +46,13 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	public RpgScreen(ShadowStruggles game, Controller controller,
 			RpgController rpgController) {
 		super(game, controller);
+
 		rpgController.setViewer(this);
 		this.rpgController = rpgController;
+
 		character2d = new Character2D(rpgController.getModel().getCharacter(),
 				game);
+		character2d.create();
 
 		finder = new AStarPathFinder(rpgController.getModel().getRpgMap(), 500,
 				false, new ManhattanHeuristic(1));
@@ -56,6 +61,8 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		float unitScale = 1 / 256f;
 		renderer = new OrthogonalTiledMapRenderer(rpgController.getMap(),
 				unitScale);
+		objectRenderer = new ObjectRenderer(batch, rpgController.getModel()
+				.getRpgMap(), stage, game);
 
 		this.stage.addActor(character2d);
 
@@ -74,8 +81,8 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		renderer.setView(camera);
 		camera.setToOrtho(false, 3.75f, 2.5f);
 		renderer.render();
+		objectRenderer.render();
 		update(delta);
-		character2d.create();
 		character2d.render();
 
 		batch.begin();

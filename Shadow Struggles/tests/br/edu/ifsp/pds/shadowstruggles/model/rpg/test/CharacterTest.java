@@ -2,10 +2,7 @@ package br.edu.ifsp.pds.shadowstruggles.model.rpg.test;
 
 import org.junit.Test;
 
-import br.edu.ifsp.pds.shadowstruggles.model.Profile;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character;
-
-import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgMap;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgPlatform;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character.WalkDirection;
 import br.edu.ifsp.pds.shadowstruggles.rpg.RpgController;
@@ -18,10 +15,9 @@ public class CharacterTest {
 	public void WalkUpTest() {
 		int initialTileX = MathUtils.random(29);
 		int initialTileY = MathUtils.random(19);
-		Character character = new Character(new Profile(), initialTileX,
-				initialTileY);
-		RpgPlatform platform = new RpgPlatform(new RpgController(), "example",
-				character);
+		Character character = new Character(initialTileX, initialTileY);
+		RpgPlatform platform = new RpgPlatform(new RpgController(), character,
+				character.getCurrentMap());
 		platform.getCharacter().walk(WalkDirection.WALK_UP,
 				platform.getRpgMap());
 		boolean walkedUp = false;
@@ -37,10 +33,8 @@ public class CharacterTest {
 	public void WalkDownTest() {
 		int initialTileX = MathUtils.random(29);
 		int initialTileY = MathUtils.random(19);
-		Character character = new Character(new Profile(), initialTileX,
-				initialTileY);
-		RpgPlatform platform = new RpgPlatform(new RpgController(), "example",
-				character);
+		Character character = new Character(initialTileX, initialTileY);
+		RpgPlatform platform = new RpgPlatform(new RpgController(), character);
 		platform.getCharacter().walk(WalkDirection.WALK_DOWN,
 				platform.getRpgMap());
 		boolean walkedDown = false;
@@ -56,10 +50,9 @@ public class CharacterTest {
 	public void WalkLeftTest() {
 		int initialTileX = MathUtils.random(29);
 		int initialTileY = MathUtils.random(19);
-		Character character = new Character(new Profile(), initialTileX,
-				initialTileY);
-		RpgPlatform platform = new RpgPlatform(new RpgController(), "example",
-				character);
+		Character character = new Character(initialTileX, initialTileY);
+		RpgPlatform platform = new RpgPlatform(new RpgController(), character,
+				character.getCurrentMap());
 		platform.getCharacter().walk(WalkDirection.WALK_LEFT,
 				platform.getRpgMap());
 		boolean walkedLeft = false;
@@ -75,10 +68,9 @@ public class CharacterTest {
 	public void WalkRightTest() {
 		int initialTileX = MathUtils.random(29);
 		int initialTileY = MathUtils.random(19);
-		Character character = new Character(new Profile(), initialTileX,
-				initialTileY);
-		RpgPlatform platform = new RpgPlatform(new RpgController(), "example",
-				character);
+		Character character = new Character(initialTileX, initialTileY);
+		RpgPlatform platform = new RpgPlatform(new RpgController(), character,
+				character.getCurrentMap());
 		platform.getCharacter().walk(WalkDirection.WALK_RIGHT,
 				platform.getRpgMap());
 		boolean walkedRight = false;

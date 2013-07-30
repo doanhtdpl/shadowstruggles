@@ -18,43 +18,17 @@ public class RpgPlatform {
 	private Character character;
 	private RpgController controller;
 
-	/**
-	 * The constructor loads the map according to the stage name.
-	 * 
-	 * @param controller
-	 *            The controller of the MVC scheme.
-	 * @param stageName
-	 *            Defines which attributes the stage will take.
-	 * @param character
-	 *            The player's character for this stage.
-	 * 
-	 */
-	public RpgPlatform(RpgController controller, String stageName,
-			Character character) {
-		this(controller, stageName, "", character);
+	public RpgPlatform(RpgController controller, Character character) {
+		this(controller, character,
+				new RpgMap(
+						new TmxMapLoader(new InternalFileHandleResolver())
+								.load("data/rpg_maps/map.tmx")));
 	}
 
-	/**
-	 * The constructor loads the map according to the stage name and layer.
-	 * 
-	 * @param controller
-	 *            The controller of the MVC scheme.
-	 * @param stageName
-	 *            Defines which attributes the stage will take.
-	 * @param mapLayer
-	 *            The map layer to interpret.
-	 * @param character
-	 *            The player's character for this stage.
-	 * 
-	 */
-	public RpgPlatform(RpgController controller, String stageName,
-			String mapLayer, Character character) {
+	public RpgPlatform(RpgController controller, Character character, RpgMap map) {
 		controller.setModel(this);
 		this.controller = controller;
-		this.map = new RpgMap(
-				new TmxMapLoader(new InternalFileHandleResolver())
-						.load("data/rpg_maps/map.tmx"));
-
+		this.map = map;
 		this.character = character;
 	}
 
