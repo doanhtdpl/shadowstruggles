@@ -3,6 +3,7 @@ package br.edu.ifsp.pds.shadowstruggles.model.rpg;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.EventDAO;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.events.Event;
+import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character.WalkDirection;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.Mover;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.TileBasedMap;
 
@@ -205,7 +206,8 @@ public class RpgMap implements TileBasedMap {
 	 * Tries triggering the interactive event in the specified location with the
 	 * specified CharacterMover, returning whether the event was found or not.
 	 */
-	public boolean triggerEvent(int x, int y, CharacterMover cMover) {
+	public boolean triggerEvent(int x, int y, CharacterMover cMover,
+			WalkDirection directionTurn) {
 		// Maps from Tiled are interpreted with the traditional Cartesian
 		// coordinate system (y increases upwards); thus, the y parameter must
 		// be inverted. Also, y ranges from 0 to height - 1, thus the
@@ -231,7 +233,11 @@ public class RpgMap implements TileBasedMap {
 				Event event = EventDAO.getEvent(id);
 
 				if (event.getTriggerType() == Event.TriggerType.INTERACT) {
-					event.trigger();
+					// Only attempt to change direction if object is collidable.
+					boolean collidable = object.getProperties().containsKey("collidable");
+					if(!collidable)
+						directionTurn = null;
+					event.trigger(directionTurn);
 					EventDAO.editEvent(id, event);
 					return true;
 				}
@@ -245,7 +251,8 @@ public class RpgMap implements TileBasedMap {
 	 * Tries triggering the touch event in the specified location with the
 	 * specified CharacterMover, returning whether the event was found or not.
 	 */
-	public boolean touchEvent(int x, int y, CharacterMover cMover) {
+	public boolean touchEvent(int x, int y, CharacterMover cMover,
+			WalkDirection directionTurn) {
 		// Maps from Tiled are interpreted with the traditional Cartesian
 		// coordinate system (y increases upwards); thus, the y parameter must
 		// be inverted. Also, y ranges from 0 to height - 1, thus the
@@ -271,7 +278,11 @@ public class RpgMap implements TileBasedMap {
 				Event event = EventDAO.getEvent(id);
 
 				if (event.getTriggerType() == Event.TriggerType.TOUCH) {
-					event.trigger();
+					// Only attempt to change direction if object is collidable.
+					boolean collidable = object.getProperties().containsKey("collidable");
+					if(!collidable)
+						directionTurn = null;
+					event.trigger(directionTurn);
 					EventDAO.editEvent(id, event);
 					return true;
 				}

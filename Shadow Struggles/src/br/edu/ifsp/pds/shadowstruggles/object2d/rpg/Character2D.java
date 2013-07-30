@@ -277,4 +277,10 @@ public class Character2D extends Image implements ApplicationListener {
 	public WalkDirection getDirection() {
 		return this.direction;
 	}
+
+	public Character getCharModel() {
+		return charModel;
+	}
+	
+	
 }
