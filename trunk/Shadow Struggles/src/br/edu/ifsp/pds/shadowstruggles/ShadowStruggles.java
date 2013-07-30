@@ -20,8 +20,8 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 
-/***
- * Represent the application structure, responsible for the change of screens
+/**
+ * Represents the application structure, responsible for the change of screens
  * and other general operations related to the game.
  */
 
@@ -31,6 +31,8 @@ public class ShadowStruggles extends Game {
 	public static enum RunMode {
 		DEBUG, TESTS, RELEASE
 	};
+	
+	private static ShadowStruggles instance;
 
 	private Controller controller;
 	private Profile profile;
@@ -39,11 +41,23 @@ public class ShadowStruggles extends Game {
 	private RunMode mode;
 	private Loader loader;
 
-	public ShadowStruggles() {
+	public static ShadowStruggles getInstance() {
+		if(instance == null)
+			instance = new ShadowStruggles();
+		return instance;
+	}
+	
+	public static ShadowStruggles getInstance(RunMode mode) {
+		if(instance == null)
+			instance = new ShadowStruggles(mode);
+		return instance;
+	}
+	
+	private ShadowStruggles() {
 		this(RunMode.TESTS);
 	}
 
-	public ShadowStruggles(RunMode mode) {
+	private ShadowStruggles(RunMode mode) {
 		this.mode = mode;
 	}
 
@@ -52,7 +66,7 @@ public class ShadowStruggles extends Game {
 		this.audio = new SoundManager(assets);
 		this.controller = Controller.getInstance();
 		this.setAssets(new AssetManager());
-		
+
 		FileMap.initMap();
 
 		if (this.mode != RunMode.TESTS)
@@ -159,7 +173,7 @@ public class ShadowStruggles extends Game {
 	public Profile getProfile() {
 		return this.profile;
 	}
-	
+
 	public void setAudio(SoundManager audio) {
 		this.audio = audio;
 	}
