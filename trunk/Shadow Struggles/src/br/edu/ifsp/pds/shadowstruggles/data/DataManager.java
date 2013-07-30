@@ -65,12 +65,25 @@ public class DataManager {
 	 * Stores all data from JSON files into the record set.
 	 */
 	private void retrieve() {
-		for (Class<?> c : FileMap.classToFile.keySet()) {
+		for (Class<?> c : FileMap.classToFile.keys()) {
 			Array<Object> objectList = new Array<Object>();
-			String path = FileMap.classToFile.get(c);
+			String path = localizedPath(currentLanguage,
+					FileMap.classToFile.get(c));
 
-			if (c != Languages.class && c != Settings.class)
-				path = localizedPath(currentLanguage, path);
+			FileHandle handle = Gdx.files.local(path);
+
+			try {
+				objectList.addAll(MyJson.getJson()
+						.fromJson(Array.class, handle));
+			} catch (SerializationException ex) {
+				ex.printStackTrace(); // TODO: Logging.
+			}
+
+			this.recordSet.put(c, objectList);
+		}
+		for (Class<?> c : FileMap.globalClassToFile.keys()) {
+			Array<Object> objectList = new Array<Object>();
+			String path = FileMap.globalClassToFile.get(c);
 
 			FileHandle handle = Gdx.files.local(path);
 
@@ -96,8 +109,7 @@ public class DataManager {
 		recordSet.put(Profile.class, currentProfiles);
 
 		// Then, rewrite the file.
-		String path = localizedPath(currentLanguage,
-				FileMap.classToFile.get(Profile.class));
+		String path = FileMap.globalClassToFile.get(Profile.class);
 		FileHandle handle = Gdx.files.local(path);
 
 		try {
@@ -108,20 +120,15 @@ public class DataManager {
 	}
 
 	/**
-	 * Persists the changes made in profiles and events.
+	 * Persists the changes made during the gameplay.
 	 */
 	public void save() {
-		String profilesPath = localizedPath(currentLanguage,
-				FileMap.classToFile.get(Profile.class));
-		String eventsPath = localizedPath(currentLanguage,
-				FileMap.classToFile.get(Event.class));
+		String profilesPath = FileMap.globalClassToFile.get(Profile.class);
 		FileHandle profilesHandle = Gdx.files.local(profilesPath);
-		FileHandle eventsHandle = Gdx.files.local(eventsPath);
 
 		try {
 			MyJson.getJson().toJson(recordSet.get(Profile.class),
 					profilesHandle);
-			MyJson.getJson().toJson(recordSet.get(Event.class), eventsHandle);
 		} catch (SerializationException ex) {
 			ex.printStackTrace(); // TODO: Logging.
 		}

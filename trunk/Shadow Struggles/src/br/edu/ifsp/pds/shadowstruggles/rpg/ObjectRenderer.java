@@ -86,7 +86,11 @@ public class ObjectRenderer {
 			if (event != null) {
 				Character character = new Character(objX, objY, width, height,
 						rpgMap);
-				Character2D char2d = new Character2D(character, game);
+				event.setCharacter(character);
+				EventDAO.editEvent(id, event);
+
+				Character2D char2d = new Character2D(event.getSprite(),
+						character, game);
 				char2d.create();
 				sprites.add(char2d);
 				stage.addActor(char2d);
