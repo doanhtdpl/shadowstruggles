@@ -260,6 +260,10 @@ public class Character2D extends Image implements ApplicationListener {
 		this.walking = walking;
 	}
 	
+	public boolean isWalking() {
+		return this.walking;
+	}
+	
 	public void setDirection(WalkDirection direction) {
 		this.direction = direction;
 	}

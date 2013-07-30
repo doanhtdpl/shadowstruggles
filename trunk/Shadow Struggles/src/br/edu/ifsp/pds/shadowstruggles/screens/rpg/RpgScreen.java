@@ -143,8 +143,7 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 				.getMover(), currentPos[0], currentPos[1], destinationPos[0],
 				destinationPos[1]);
 
-		if (path != null)
-			rpgController.moveCharacter(path, destinationPos);
+		rpgController.moveCharacter(path, destinationPos);
 
 		return true;
 	}

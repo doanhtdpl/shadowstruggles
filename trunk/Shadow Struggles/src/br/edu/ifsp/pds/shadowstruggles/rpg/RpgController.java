@@ -44,7 +44,9 @@ public class RpgController {
 	 */
 	public void updateModel() {
 		if (model.getCharacter().getDirection() != viewer.getCharacter2d()
-				.getDirection() && model.getCharacter().getDirection() != null) {
+				.getDirection()
+				&& model.getCharacter().getDirection() != null
+				&& !viewer.getCharacter2d().isWalking()) {
 			viewer.turnCharacter2d(model.getCharacter().getDirection());
 		}
 
