@@ -94,33 +94,27 @@
   </data>
  </layer>
  <objectgroup name="default-objects" width="30" height="20">
-  <object x="114" y="426" width="31" height="36">
+  <object x="99" y="419" width="64" height="64">
    <properties>
-    <property name="X" value="3.56"/>
-    <property name="Y" value="13.3"/>
     <property name="collidable" value=""/>
-    <property name="height" value="1.1"/>
+    <property name="height" value="2.0"/>
     <property name="id" value="10"/>
-    <property name="width" value="0.9"/>
+    <property name="width" value="2.0"/>
    </properties>
   </object>
-  <object x="264" y="429" width="54" height="51">
+  <object x="256" y="418" width="64" height="64">
    <properties>
-    <property name="X" value="8.25"/>
-    <property name="Y" value="13.406"/>
-    <property name="height" value="1.6"/>
+    <property name="height" value="2.0"/>
     <property name="id" value="20"/>
-    <property name="width" value="1.7"/>
+    <property name="width" value="2.0"/>
    </properties>
   </object>
-  <object x="483" y="422" width="61" height="55">
+  <object x="481" y="419" width="64" height="64">
    <properties>
-    <property name="X" value="15.094"/>
-    <property name="Y" value="13.188"/>
     <property name="collidable" value=""/>
-    <property name="height" value="1.7"/>
+    <property name="height" value="2.0"/>
     <property name="id" value="30"/>
-    <property name="width" value="1.9"/>
+    <property name="width" value="2.0"/>
    </properties>
   </object>
  </objectgroup>

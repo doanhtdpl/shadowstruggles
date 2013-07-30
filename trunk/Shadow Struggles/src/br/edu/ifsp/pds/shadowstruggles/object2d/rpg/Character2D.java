@@ -16,43 +16,39 @@ import com.badlogic.gdx.utils.Array;
  * This is the visual representation of the RPG Character.
  */
 public class Character2D extends Image implements ApplicationListener {
-	private static final int FRAME_COLS = 3;
-	private static final int FRAME_ROWS = 4;
+	private static int FRAME_COLS = 3;
+	private static int FRAME_ROWS = 4;
+	private static float FRAME_DURATION = 0.11f;
+	private static float CHARACTER_SPEED = 100.0f;
+
+	private Character charModel;
+	private TextureRegion currentFrame;
+	private WalkDirection direction = WalkDirection.WALK_UP;
+	private ShadowStruggles game;
 
 	private Animation walkLeftAnimation;
 	private Animation walkUpAnimation;
 	private Animation walkRightAnimation;
 	private Animation walkDownAnimation;
 
-	private Array<TextureRegion> walkLeftFrames;
-	private Array<TextureRegion> walkUpFrames;
-	private Array<TextureRegion> walkRightFrames;
-	private Array<TextureRegion> walkDownFrames;
-
-	private static float FRAME_DURATION = 0.11f;
-
 	private float walked = 0;
 	private float stateTime;
-	private ShadowStruggles game;
-	private TextureRegion currentFrame;
-	private Character charModel;
-	private int size;
-	private int tileSize;
-	private WalkDirection direction = WalkDirection.WALK_UP;
-	private boolean walking;
-	private float characterSpeed = 100.0f;
 	private float initialPosition = 0;
+	private boolean walking;
 
 	public Character2D(Character charModel, ShadowStruggles game) {
 		super(game.getTextureRegion("char", "sprites"));
 		this.charModel = charModel;
 		this.game = game;
-		this.size = (int) (charModel.getSize() * 32);
-		this.setSize(size, size);
-		this.setScale(1.0f, 1.0f);
-		this.setPosition(0, 0);
 
-		this.tileSize = SettingsDAO.getSettings().tileSize;
+		int tileSize = SettingsDAO.getSettings().tileSize;
+
+		this.setSize(charModel.getWidthInTiles() * tileSize,
+				charModel.getHeightInTiles() * tileSize);
+		this.setScale(1.0f, 1.0f);
+		this.setPosition(charModel.getTileX() * tileSize, (charModel
+				.getCurrentMap().getHeightInTiles() - charModel.getTileY() - 1)
+				* tileSize);
 	}
 
 	/**
@@ -103,16 +99,17 @@ public class Character2D extends Image implements ApplicationListener {
 	public void create() {
 		TextureRegion walksheet = game.getTextureRegion("char", "sprites");
 
-		TextureRegion[][] aux = walksheet.split(size, size);
+		TextureRegion[][] aux = walksheet.split((int) getWidth(),
+				(int) getHeight());
 		TextureRegion[] aux_down = aux[0];
 		TextureRegion[] aux_left = aux[1];
 		TextureRegion[] aux_right = aux[2];
 		TextureRegion[] aux_up = aux[3];
 
-		walkDownFrames = new Array<TextureRegion>();
-		walkLeftFrames = new Array<TextureRegion>();
-		walkRightFrames = new Array<TextureRegion>();
-		walkUpFrames = new Array<TextureRegion>();
+		Array<TextureRegion> walkDownFrames = new Array<TextureRegion>();
+		Array<TextureRegion> walkLeftFrames = new Array<TextureRegion>();
+		Array<TextureRegion> walkRightFrames = new Array<TextureRegion>();
+		Array<TextureRegion> walkUpFrames = new Array<TextureRegion>();
 
 		for (int i = 0; i < FRAME_ROWS; i++) {
 			for (int j = 0; j < FRAME_COLS; j++) {
@@ -144,6 +141,8 @@ public class Character2D extends Image implements ApplicationListener {
 	public void render() {
 		stateTime += Gdx.graphics.getDeltaTime();
 		float delta = Gdx.graphics.getDeltaTime();
+		int tileSize = SettingsDAO.getSettings().tileSize;
+		
 		switch (direction) {
 		case WALK_UP:
 			if (walking) {
@@ -152,14 +151,14 @@ public class Character2D extends Image implements ApplicationListener {
 						.getKeyFrame(stateTime, true);
 
 				// Keep walking!
-				walked += (delta * characterSpeed);
+				walked += (delta * CHARACTER_SPEED);
 				// Check if already moved past one tile!
 				if (walked >= tileSize) {
 					this.setY(initialPosition + tileSize);
 					walking = false;
 					charModel.setReadyToWalk(true);
 				} else {
-					this.setY(this.getY() + (delta * characterSpeed));
+					this.setY(this.getY() + (delta * CHARACTER_SPEED));
 				}
 
 			} else {
@@ -174,14 +173,14 @@ public class Character2D extends Image implements ApplicationListener {
 						true);
 
 				// Keep walking!
-				walked += (delta * characterSpeed);
+				walked += (delta * CHARACTER_SPEED);
 				// Check if already moved past one tile!
 				if (walked >= tileSize) {
 					this.setY(initialPosition - tileSize);
 					walking = false;
 					charModel.setReadyToWalk(true);
 				} else {
-					this.setY(this.getY() - (delta * characterSpeed));
+					this.setY(this.getY() - (delta * CHARACTER_SPEED));
 				}
 
 			} else {
@@ -196,14 +195,14 @@ public class Character2D extends Image implements ApplicationListener {
 						true);
 
 				// Keep walking!
-				walked += (delta * characterSpeed);
+				walked += (delta * CHARACTER_SPEED);
 				// Check if already moved past one tile!
 				if (walked >= tileSize) {
 					this.setX(initialPosition - tileSize);
 					walking = false;
 					charModel.setReadyToWalk(true);
 				} else {
-					this.setX(this.getX() - (delta * characterSpeed));
+					this.setX(this.getX() - (delta * CHARACTER_SPEED));
 				}
 
 			} else {
@@ -218,14 +217,14 @@ public class Character2D extends Image implements ApplicationListener {
 						true);
 
 				// Keep walking!
-				walked += (delta * characterSpeed);
+				walked += (delta * CHARACTER_SPEED);
 				// Check if already moved past one tile!
 				if (walked >= tileSize) {
 					this.setX(initialPosition + tileSize);
 					walking = false;
 					charModel.setReadyToWalk(true);
 				} else {
-					this.setX(this.getX() + (delta * characterSpeed));
+					this.setX(this.getX() + (delta * CHARACTER_SPEED));
 				}
 
 			} else {
@@ -255,15 +254,15 @@ public class Character2D extends Image implements ApplicationListener {
 	public TextureRegion getCurrentFrame() {
 		return currentFrame;
 	}
-	
+
 	public void setWalking(boolean walking) {
 		this.walking = walking;
 	}
-	
+
 	public boolean isWalking() {
 		return this.walking;
 	}
-	
+
 	public void setDirection(WalkDirection direction) {
 		this.direction = direction;
 	}

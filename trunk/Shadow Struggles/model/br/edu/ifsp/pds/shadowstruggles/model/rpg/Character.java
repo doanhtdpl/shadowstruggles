@@ -3,22 +3,19 @@ package br.edu.ifsp.pds.shadowstruggles.model.rpg;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 
-import br.edu.ifsp.pds.shadowstruggles.model.Profile;
-
 /**
  * The logical representation of the RPG main character (Model) playable. It's
  * visually represented by Character2d class in object2d.rpg package.
  */
 public class Character {
-
 	public static enum WalkDirection {
 		WALK_UP, WALK_DOWN, WALK_LEFT, WALK_RIGHT;
 	}
 
-	private Profile profile;
 	private int tileX;
 	private int tileY;
-	private int size = 2;
+	private float widthInTiles;
+	private float heightInTiles;
 	private float walkSpeed = 5;
 
 	private boolean readyToWalk = true;
@@ -38,23 +35,28 @@ public class Character {
 	 */
 	private int[] destination;
 
-	/**
-	 * The constructor loads information from saved data.
-	 * 
-	 * @param profile
-	 *            The player profile from where it loads saved data
-	 */
-	public Character(Profile profile) {
-		this(profile, 0, 0);
+	public Character() {
+		this(0, 0);
 	}
 
-	public Character(Profile profile, int tileX, int tileY) {
-		this.profile = profile;
+	public Character(int tileX, int tileY) {
+		this(0, 0, 2, 2);
+	}
+	
+	public Character(int tileX, int tileY, float widthInTiles, float heightInTiles) {
+		this(tileX, tileY, widthInTiles, heightInTiles, null);
+	}
+
+	public Character(int tileX, int tileY, float widthInTiles, float heightInTiles, RpgMap currentMap) {
 		this.tileX = tileX;
 		this.tileY = tileY;
+		this.widthInTiles = widthInTiles;
+		this.heightInTiles = heightInTiles;
+		this.currentMap = currentMap;
 
 		this.mover = new CharacterMover(CharacterMover.Type.NORMAL_CHARACTER);
-		this.mover.setRectangle(new Rectangle(tileX, tileY, size, size / 2));
+		this.mover.setRectangle(new Rectangle(tileX, tileY, widthInTiles,
+				heightInTiles));
 		this.movementBuffer = new Array<WalkDirection>();
 		this.destination = null;
 	}
@@ -217,8 +219,20 @@ public class Character {
 	public CharacterMover getMover() {
 		return this.mover;
 	}
+	
+	public float getHeightInTiles() {
+		return heightInTiles;
+	}
+	
+	public float getWidthInTiles() {
+		return widthInTiles;
+	}
 
-	public float getSize() {
-		return this.size;
+	public RpgMap getCurrentMap() {
+		return this.currentMap;
+	}
+
+	public void setCurrentMap(RpgMap currentMap) {
+		this.currentMap = currentMap;
 	}
 }
