@@ -4,10 +4,10 @@ import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
 import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
-import br.edu.ifsp.pds.shadowstruggles.data.dao.DeckDAO;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.Deck;
+import br.edu.ifsp.pds.shadowstruggles.model.items.Item;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Arrow;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
@@ -69,8 +69,13 @@ public class EditDeckScreen extends BaseScreen {
 		stage.clear();
 
 		final BaseScreen menu = this.previousScreen;
-		this.selectedDeck = game.getProfile().getDeck();
-		this.trunk = game.getProfile().getTrunk();
+		this.selectedDeck = game.getProfile().getSelectedDeck();
+		this.trunk = new Array<Card>();
+		for (Item i : game.getProfile().getInventory()) {
+			if (i instanceof Card) {
+				this.trunk.add((Card) i);
+			}
+		}
 
 		Table menuTable = new Table();
 		menuTable.defaults().padTop(10).width(160).height(50);
@@ -87,15 +92,17 @@ public class EditDeckScreen extends BaseScreen {
 				super.getSkin());
 		newDeck = ScreenUtils
 				.defineButton(newDeck, 0, 0, 0, 0, super.getSkin());
-		newDeck.addListener(new ClickListener(){@Override
-		public void clicked(InputEvent event, float x, float y) {
-			createDeck();
-		}});
-		
-		
+		newDeck.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				createDeck();
+			}
+		});
+
 		addDecks();
-		decks = new SelectBox(new String[]{"Deck A", "Deck B", "Deck C"}, super.getSkin());
-		
+		decks = new SelectBox(new String[] { "Deck A", "Deck B", "Deck C" },
+				super.getSkin());
+
 		exit = new TextButton(MenuTextDAO.getMenuText().returnToStart,
 				super.getSkin());
 		exit = ScreenUtils.defineButton(exit, 0, 0, 0, 0, super.getSkin());
@@ -141,9 +148,9 @@ public class EditDeckScreen extends BaseScreen {
 
 		availableCards = new Label("", super.getSkin());
 		availableCards.setText("Available Cards:");
-		availableCards.setStyle(new LabelStyle(super.getSkin()
-				.getFont("andalus-font"), Color.WHITE));
-		
+		availableCards.setStyle(new LabelStyle(super.getSkin().getFont(
+				"andalus-font"), Color.WHITE));
+
 		left = new Arrow(-1, this.getSkin());
 		left.addListener(new ClickListener() {
 
@@ -211,18 +218,18 @@ public class EditDeckScreen extends BaseScreen {
 		stage.addActor(rightButtonTable);
 
 	}
-	
+
 	private void createDeck() {
-		Deck newDeck=new Deck();
-		//TODO: implementar criacao de deck
+		Deck newDeck = new Deck();
+		// TODO: implementar criacao de deck
 		// (criar deck com a letra seguinte e mostrar na lista)
 	}
-	
+
 	private void addDecks() {
-		
+
 		// TODO adicionar decks do usuario na lista da esquerda
-		//(pegar a Array de decks do profile e listar na lista da esquerda)
-		//(carregar Decks em que o Owner Id seja o mesmo que o Id do profile)
+		// (pegar a Array de decks do profile e listar na lista da esquerda)
+		// (carregar Decks em que o Owner Id seja o mesmo que o Id do profile)
 
 	}
 

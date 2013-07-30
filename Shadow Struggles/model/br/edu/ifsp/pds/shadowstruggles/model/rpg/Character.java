@@ -1,11 +1,13 @@
 package br.edu.ifsp.pds.shadowstruggles.model.rpg;
 
+import br.edu.ifsp.pds.shadowstruggles.object2d.rpg.Character2D;
+
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 
 /**
- * The logical representation of the RPG main character (Model) playable. It's
- * visually represented by Character2d class in object2d.rpg package.
+ * The logical representation of an RPG character (Model) playable. It's
+ * visually represented by the {@link Character2D} class.
  */
 public class Character {
 	public static enum WalkDirection {
@@ -42,12 +44,14 @@ public class Character {
 	public Character(int tileX, int tileY) {
 		this(0, 0, 2, 2);
 	}
-	
-	public Character(int tileX, int tileY, float widthInTiles, float heightInTiles) {
+
+	public Character(int tileX, int tileY, float widthInTiles,
+			float heightInTiles) {
 		this(tileX, tileY, widthInTiles, heightInTiles, null);
 	}
 
-	public Character(int tileX, int tileY, float widthInTiles, float heightInTiles, RpgMap currentMap) {
+	public Character(int tileX, int tileY, float widthInTiles,
+			float heightInTiles, RpgMap currentMap) {
 		this.tileX = tileX;
 		this.tileY = tileY;
 		this.widthInTiles = widthInTiles;
@@ -219,11 +223,11 @@ public class Character {
 	public CharacterMover getMover() {
 		return this.mover;
 	}
-	
+
 	public float getHeightInTiles() {
 		return heightInTiles;
 	}
-	
+
 	public float getWidthInTiles() {
 		return widthInTiles;
 	}

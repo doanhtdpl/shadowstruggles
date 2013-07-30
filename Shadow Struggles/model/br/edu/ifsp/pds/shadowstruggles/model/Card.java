@@ -1,11 +1,11 @@
 package br.edu.ifsp.pds.shadowstruggles.model;
 
+import br.edu.ifsp.pds.shadowstruggles.model.items.Item;
 import br.edu.ifsp.pds.shadowstruggles.scripts.CardAction;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
-import com.badlogic.gdx.utils.Json.Serializable;
 import com.badlogic.gdx.utils.JsonValue;
 
 /***
@@ -13,7 +13,8 @@ import com.badlogic.gdx.utils.JsonValue;
  * itself with the logic aspects of the card, not data.
  */
 
-public class Card implements Serializable {
+// TODO: Alterar modelo de Card como classe-filha de Item.
+public class Card extends Item {
 
 	private int energyCost;
 	private String description;

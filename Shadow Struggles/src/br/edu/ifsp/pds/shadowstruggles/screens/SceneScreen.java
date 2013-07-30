@@ -2,10 +2,7 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
-import br.edu.ifsp.pds.shadowstruggles.data.dao.ProfileDAO;
-import br.edu.ifsp.pds.shadowstruggles.data.dao.SceneDAO;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
-import br.edu.ifsp.pds.shadowstruggles.games.Practice;
 import br.edu.ifsp.pds.shadowstruggles.model.Scene;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Arrow;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
@@ -15,15 +12,14 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+
+// TODO: Refazer classe.
 
 public class SceneScreen extends BaseScreen implements InputProcessor {
 	private Scene scene;
@@ -45,7 +41,7 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 	public SceneScreen(ShadowStruggles game, Controller controller) {
 		super(game, controller);
 		this.game = game;
-		this.scene = game.getProfile().getCurrentScene();
+//		this.scene = game.getProfile().getCurrentScene();
 		currentTextIndex = 0;
 		inputSources = new InputMultiplexer();
 		initComponents();
@@ -153,7 +149,7 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 		if (scene.getChoices().length > 1) {
 			choices = new TextButton[scene.getChoices().length];
 			for (int i = 0; i < scene.getChoices().length; i++) {
-				final int j = i;
+//				final int j = i;
 				choices[i] = new TextButton(scene.getChoices()[i],
 						super.getSkin());
 
@@ -164,15 +160,15 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 
 					@Override
 					public void clicked(InputEvent event, float x, float y) {
-						if (choices[j].getText().equals(scene.getChoices()[0])) {
-							game.getProfile().setCurrentScene(
-									SceneDAO.getScene(scene.getNextId()));
-
-						} else {
-							game.getProfile().setCurrentScene(
-									SceneDAO.getScene(scene.getNextId() + 1));
-						}
-						game.getAudio().playSound("button_4");
+//						if (choices[j].getText().equals(scene.getChoices()[0])) {
+//							game.getProfile().setCurrentScene(
+//									SceneDAO.getScene(scene.getNextId()));
+//
+//						} else {
+//							game.getProfile().setCurrentScene(
+//									SceneDAO.getScene(scene.getNextId() + 1));
+//						}
+//						game.getAudio().playSound("button_4");
 
 					}
 				});
@@ -238,21 +234,21 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 	}
 
 	public void nextScreen() {
-		if (scene.getId() == 1000) {
-			game.setScreenWithTransition(new Practice(game, true));
-		} else if (scene.getId() == 3000) {
-			Scene firstScene = Scene.FIRST_SCENE;
-			firstScene.setLanguage(game.getProfile().getLanguage());
-			game.getProfile().setCurrentScene(firstScene);
-			ProfileDAO.createProfile(game.getProfile());
-			game.setScreenWithTransition(MainScreen.getInstance(game,
-					controller));
-		} else {
-			game.getProfile().setCurrentScene(
-					SceneDAO.getScene(scene.getNextId()));
-			ProfileDAO.createProfile(game.getProfile());
-			game.setScreenWithTransition(new SceneScreen(game, controller));
-		}
+//		if (scene.getId() == 1000) {
+//			game.setScreenWithTransition(new Practice(game, true));
+//		} else if (scene.getId() == 3000) {
+//			Scene firstScene = Scene.FIRST_SCENE;
+//			firstScene.setLanguage(game.getProfile().getLanguage());
+//			game.getProfile().setCurrentScene(firstScene);
+//			ProfileDAO.createProfile(game.getProfile());
+//			game.setScreenWithTransition(MainScreen.getInstance(game,
+//					controller));
+//		} else {
+//			game.getProfile().setCurrentScene(
+//					SceneDAO.getScene(scene.getNextId()));
+//			ProfileDAO.createProfile(game.getProfile());
+//			game.setScreenWithTransition(new SceneScreen(game, controller));
+//		}
 	}
 
 	private String[] splitScript() {

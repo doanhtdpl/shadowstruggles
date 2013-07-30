@@ -4,7 +4,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.SerializationException;
 
 import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
-import br.edu.ifsp.pds.shadowstruggles.model.Profile;
+import br.edu.ifsp.pds.shadowstruggles.model.profiles.Profile;
 
 /**
  * This class manages the interpretation of a profile from the DataManager

@@ -3,11 +3,9 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
-import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.ProfileDAO;
-import br.edu.ifsp.pds.shadowstruggles.data.dao.SceneDAO;
-import br.edu.ifsp.pds.shadowstruggles.model.Profile;
+import br.edu.ifsp.pds.shadowstruggles.model.profiles.Profile;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -170,8 +168,7 @@ public class StartScreen extends BaseScreen {
 				Array<Profile> profiles = ProfileDAO.getProfiles();
 
 				for (Profile profile : profiles) {
-					String text = String.valueOf(profile.getId()) + " - "
-							+ profile.getCurrentScene().getName();
+					String text = String.valueOf(profile.getId());
 					TextButton textButton = new TextButton(text, this.getSkin()
 							.get("blur", TextButtonStyle.class));
 					textButton = ScreenUtils.defineButton(textButton, 240,
@@ -189,11 +186,11 @@ public class StartScreen extends BaseScreen {
 							int id = Character.getNumericValue(tx.getText()
 									.charAt(0));
 							game.setProfile(ProfileDAO.getProfile(id));
-							DataManager.getInstance().changeLanguage(
-									ProfileDAO.getProfile(id).getLanguage());
-							game.getProfile().setCurrentScene(
-									SceneDAO.getScene(game.getProfile()
-											.getCurrentScene().getId()));
+//							DataManager.getInstance().changeLanguage(
+//									ProfileDAO.getProfile(id).getLanguage());
+//							game.getProfile().setCurrentScene(
+//									SceneDAO.getScene(game.getProfile()
+//											.getCurrentScene().getId()));
 							game.setScreenWithTransition(MainScreen
 									.getInstance(game, controller));
 						}

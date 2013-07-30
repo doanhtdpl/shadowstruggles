@@ -1,11 +1,10 @@
 package br.edu.ifsp.pds.shadowstruggles;
 
-import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
 import br.edu.ifsp.pds.shadowstruggles.data.FileMap;
 import br.edu.ifsp.pds.shadowstruggles.data.Loader;
 import br.edu.ifsp.pds.shadowstruggles.data.SoundManager;
 import br.edu.ifsp.pds.shadowstruggles.dataTest.LoaderTest;
-import br.edu.ifsp.pds.shadowstruggles.model.Profile;
+import br.edu.ifsp.pds.shadowstruggles.model.profiles.Profile;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.test.CharacterTest;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.LoadingScreen;
