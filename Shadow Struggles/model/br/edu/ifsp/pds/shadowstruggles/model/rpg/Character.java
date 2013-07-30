@@ -140,10 +140,19 @@ public class Character {
 		mover.setRectanglePos(tileX, tileY);
 
 		// If the path has been completed and there is a specified target,
-		// try triggering an event.
+		// try triggering an event. Also, change direction to face it.
 		if (movementBuffer.size <= 1 && this.inPath && destination != null) {
 			map.triggerEvent(destination[0], destination[1], mover);
 			map.touchEvent(destination[0], destination[1], mover);
+
+			if (destination[0] == tileX && destination[1] < tileY)
+				this.direction = WalkDirection.WALK_UP;
+			if (destination[0] == tileX && destination[1] > tileY)
+				this.direction = WalkDirection.WALK_DOWN;
+			if (destination[0] < tileX && destination[1] == tileY)
+				this.direction = WalkDirection.WALK_LEFT;
+			if (destination[0] > tileX && destination[1] == tileY)
+				this.direction = WalkDirection.WALK_RIGHT;
 
 			this.destination = null;
 			this.inPath = false;

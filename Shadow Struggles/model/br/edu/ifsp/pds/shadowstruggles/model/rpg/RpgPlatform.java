@@ -83,27 +83,42 @@ public class RpgPlatform {
 		int currentX = character.getTileX();
 		int currentY = character.getTileY();
 
-		for (Step step : path.getSteps()) {
+		if (path != null) {
+			for (Step step : path.getSteps()) {
+				WalkDirection direction = null;
+
+				if (step.getX() == currentX && step.getY() < currentY) {
+					direction = WalkDirection.WALK_UP;
+					currentY--;
+				}
+				if (step.getX() == currentX && step.getY() > currentY) {
+					direction = WalkDirection.WALK_DOWN;
+					currentY++;
+				}
+				if (step.getY() == currentY && step.getX() < currentX) {
+					direction = WalkDirection.WALK_LEFT;
+					currentX--;
+				}
+				if (step.getY() == currentY && step.getX() > currentX) {
+					direction = WalkDirection.WALK_RIGHT;
+					currentX++;
+				}
+
+				this.moveCharacter(direction, true, destination);
+			}
+		} else {
+			// If the path is null, just turn the character to face the
+			// obstacle.
 			WalkDirection direction = null;
-
-			if (step.getX() == currentX && step.getY() < currentY) {
+			if (destination[0] == currentX && destination[1] < currentY)
 				direction = WalkDirection.WALK_UP;
-				currentY--;
-			}
-			if (step.getX() == currentX && step.getY() > currentY) {
+			if (destination[0] == currentX && destination[1] > currentY)
 				direction = WalkDirection.WALK_DOWN;
-				currentY++;
-			}
-			if (step.getY() == currentY && step.getX() < currentX) {
+			if (destination[0] < currentX && destination[1] == currentY)
 				direction = WalkDirection.WALK_LEFT;
-				currentX--;
-			}
-			if (step.getY() == currentY && step.getX() > currentX) {
+			if (destination[0] > currentX && destination[1] == currentY)
 				direction = WalkDirection.WALK_RIGHT;
-				currentX++;
-			}
-
-			this.moveCharacter(direction, true, destination);
+			this.character.setDirection(direction);
 		}
 
 	}
@@ -116,7 +131,8 @@ public class RpgPlatform {
 		return this.moveCharacter(direction, false, null);
 	}
 
-	public boolean moveCharacter(WalkDirection direction, boolean inPath, int[] destination) {
+	public boolean moveCharacter(WalkDirection direction, boolean inPath,
+			int[] destination) {
 		if (direction != null) {
 			if (character.walk(direction, map, inPath, destination)) {
 				controller.characterMoved(direction);

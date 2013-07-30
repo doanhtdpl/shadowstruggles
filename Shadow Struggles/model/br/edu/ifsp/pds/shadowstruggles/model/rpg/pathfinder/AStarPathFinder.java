@@ -75,8 +75,15 @@ public class AStarPathFinder implements PathFinder {
 		// If the destination is blocked, try going to the adjacent spots
 		// instead.
 		boolean destinyBlocked = map.blocked(mover, tx, ty);
-		
+
 		if (destinyBlocked) {
+			// Check if the origin is in an adjacent spot; if it is, don't move,
+			// since it will be a redundant movement (the object will simply go
+			// around the target).
+			if ((sx < tx && sy == ty) || (sx > tx && sy == ty)
+					|| (sx == tx && sy < ty) || (sx == tx && sy > ty))
+				return null;
+
 			if (!map.blocked(mover, tx + 1, ty)) {
 				// Is the mover approaching from the left? Try the left spot
 				// first.
