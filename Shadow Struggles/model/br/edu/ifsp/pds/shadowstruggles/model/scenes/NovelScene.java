@@ -14,11 +14,11 @@ public class NovelScene extends Scene {
 		this.background = "";
 	}
 	
-	public NovelScene(int id, Ending ending, String name, String description, String text, String background) {
-		super(id, ending, name, description);
+	@Override
+	public void runScene() {
+		super.runScene();
 		
-		this.text = text;
-		this.background = background;
+		// TODO: Controle visual específico para cenas de visual novel.
 	}
 
 	@Override

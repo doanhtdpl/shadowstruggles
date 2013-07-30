@@ -7,13 +7,15 @@ public class SavePointAction extends EventAction {
 
 	@Override
 	public void act() {
-		// TODO Auto-generated method stub
-		System.out.println("Save Point activated!");
+		// TODO: Abrir tela de Save (usar instância global de ShadowStruggles
+		// (ShadowStruggles.getInstance()) para mudar de tela).
 	}
-	
+
 	@Override
-	public void read(Json json, JsonValue jsonData) {}
-	
+	public void read(Json json, JsonValue jsonData) {
+	}
+
 	@Override
-	public void write(Json json) {}
+	public void write(Json json) {
+	}
 }

@@ -22,6 +22,10 @@ public class Shop implements Serializable {
 		this.items = items;
 	}
 	
+	public void show() {
+		// TODO: Implementar método.
+	}
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public void read(Json json, JsonValue jsonData) {

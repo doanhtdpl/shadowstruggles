@@ -17,7 +17,7 @@ public class SceneAction extends EventAction {
 
 	@Override
 	public void act() {
-		// TODO Auto-generated method stub
+		this.scene.runScene();
 	}
 
 	@Override
