@@ -11,11 +11,13 @@ import br.edu.ifsp.pds.shadowstruggles.model.events.Event;
 import br.edu.ifsp.pds.shadowstruggles.model.events.EventAction;
 import br.edu.ifsp.pds.shadowstruggles.model.items.Item;
 import br.edu.ifsp.pds.shadowstruggles.model.quests.Quest;
+import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character;
 import br.edu.ifsp.pds.shadowstruggles.model.scenes.Ending;
 
 public class Profile implements Serializable, Comparable<Object> {
 	private int id;
 	private Player player;
+	private Character character;
 	private String language;
 	private int storyPoints;
 	private String path;
@@ -38,7 +40,7 @@ public class Profile implements Serializable, Comparable<Object> {
 	private ObjectMap<Event, Array<EventAction>> events;
 	/**
 	 * Relates the maps to the object layer which the player character will
-	 * access upon visiting them.
+	 * access when visiting them.
 	 */
 	private ObjectMap<String, String> mapLayers;
 
@@ -49,6 +51,7 @@ public class Profile implements Serializable, Comparable<Object> {
 	public Profile() {
 		this.id = 1;
 		this.player = new Player();
+		this.character = new Character();
 		this.language = "";
 		this.storyPoints = 0;
 		this.path = "";
@@ -73,42 +76,6 @@ public class Profile implements Serializable, Comparable<Object> {
 		this.experienceNextLevelFormula = null;
 	}
 
-	public Profile(int id, Player player, String language, int storyPoints,
-			String path, Deck selectedDeck, int money, int experience, int level,
-			int distributionPoints, int experienceNextLevel,
-			Array<Item> inventory, Array<Deck> decks, Array<Item> unlockedItems,
-			Array<Quest> quests, Array<EnemyDefeat> defeatedEnemies,
-			Array<Ending> endings, ObjectMap<Event, Array<EventAction>> events,
-			ObjectMap<String, String> mapLayers,
-			DistributionPointsFormula distributionPointsFormula,
-			AttributePointsFormula attributePointsFormula,
-			ExperienceNextLevelFormula experienceNextLevelFormula) {
-		this.id = id;
-		this.player = player;
-		this.language = language;
-		this.storyPoints = storyPoints;
-		this.path = path;
-		this.selectedDeck = selectedDeck;
-		this.money = money;
-		this.experience = experience;
-		this.level = level;
-		this.distributionPoints = distributionPoints;
-		this.experienceNextLevel = experienceNextLevel;
-
-		this.inventory = inventory;
-		this.decks = decks;
-		this.unlockedItems = unlockedItems;
-		this.quests = quests;
-		this.defeatedEnemies = defeatedEnemies;
-		this.endings = endings;
-		this.events = events;
-		this.mapLayers = mapLayers;
-
-		this.distributionPointsFormula = distributionPointsFormula;
-		this.attributePointsFormula = attributePointsFormula;
-		this.experienceNextLevelFormula = experienceNextLevelFormula;
-	}
-
 	public Profile(int id) {
 		this();
 		this.setId(id);
@@ -119,6 +86,7 @@ public class Profile implements Serializable, Comparable<Object> {
 	public void read(Json json, JsonValue jsonData) {
 		this.id = json.readValue("id", Integer.class, jsonData);
 		this.player = json.readValue("player", Player.class, jsonData);
+		this.character = json.readValue("character", Character.class, jsonData);
 		this.language = json.readValue("language", String.class, jsonData);
 		this.storyPoints = json.readValue("storyPoints", Integer.class,
 				jsonData);
@@ -157,6 +125,7 @@ public class Profile implements Serializable, Comparable<Object> {
 	public void write(Json json) {
 		json.writeValue("id", this.id);
 		json.writeValue("player", this.player);
+		json.writeValue("character", this.character);
 		json.writeValue("language", this.language);
 		json.writeValue("storyPoints", this.storyPoints);
 		json.writeValue("path", this.path);

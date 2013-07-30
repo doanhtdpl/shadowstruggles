@@ -48,7 +48,16 @@ player: {
 	energyRecovery: 0,
 	doubleDraw: 0
 },
-language: "",
+character: {
+	mover: {
+		rectangle: {
+			width: 2,
+			height: 2
+		},
+		type: NORMAL_CHARACTER
+	}
+},
+language: "en_us",
 storyPoints: 0,
 path: "",
 selectedDeck: {

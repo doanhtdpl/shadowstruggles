@@ -21,6 +21,7 @@ public class Character2D extends Image implements ApplicationListener {
 	private static float FRAME_DURATION = 0.11f;
 	private static float CHARACTER_SPEED = 100.0f;
 
+	private String spriteName;
 	private Character charModel;
 	private TextureRegion currentFrame;
 	private WalkDirection direction = WalkDirection.WALK_UP;
@@ -37,7 +38,13 @@ public class Character2D extends Image implements ApplicationListener {
 	private boolean walking;
 
 	public Character2D(Character charModel, ShadowStruggles game) {
-		super(game.getTextureRegion("char", "sprites"));
+		this("char", charModel, game);
+	}
+
+	public Character2D(String spriteName, Character charModel,
+			ShadowStruggles game) {
+		super(game.getTextureRegion(spriteName, "sprites"));
+		this.spriteName = spriteName;
 		this.charModel = charModel;
 		this.game = game;
 
@@ -97,7 +104,7 @@ public class Character2D extends Image implements ApplicationListener {
 
 	@Override
 	public void create() {
-		TextureRegion walksheet = game.getTextureRegion("char", "sprites");
+		TextureRegion walksheet = game.getTextureRegion(spriteName, "sprites");
 
 		TextureRegion[][] aux = walksheet.split((int) getWidth(),
 				(int) getHeight());
@@ -142,7 +149,7 @@ public class Character2D extends Image implements ApplicationListener {
 		stateTime += Gdx.graphics.getDeltaTime();
 		float delta = Gdx.graphics.getDeltaTime();
 		int tileSize = SettingsDAO.getSettings().tileSize;
-		
+
 		switch (direction) {
 		case WALK_UP:
 			if (walking) {

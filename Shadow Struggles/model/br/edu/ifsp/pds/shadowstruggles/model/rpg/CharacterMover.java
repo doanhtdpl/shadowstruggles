@@ -11,6 +11,10 @@ public class CharacterMover implements Mover {
 	private Type type;
 	private Rectangle rectangle;
 	
+	public CharacterMover() {
+		this(Type.NORMAL_CHARACTER);
+	}
+	
 	public CharacterMover(Type type) {
 		this.type = type;
 		this.rectangle = new Rectangle();

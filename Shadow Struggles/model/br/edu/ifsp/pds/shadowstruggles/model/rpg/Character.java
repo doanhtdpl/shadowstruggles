@@ -42,7 +42,7 @@ public class Character {
 	}
 
 	public Character(int tileX, int tileY) {
-		this(0, 0, 2, 2);
+		this(tileX, tileY, 2, 2);
 	}
 
 	public Character(int tileX, int tileY, float widthInTiles,
