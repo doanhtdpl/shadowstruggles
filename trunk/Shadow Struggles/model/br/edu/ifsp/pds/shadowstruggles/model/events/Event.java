@@ -1,6 +1,7 @@
 package br.edu.ifsp.pds.shadowstruggles.model.events;
 
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character;
+import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character.WalkDirection;
 
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
@@ -42,6 +43,20 @@ public class Event implements Serializable {
 	 * Activates the event.
 	 */
 	public void trigger() {
+		trigger(null);
+	}
+
+	/**
+	 * Activates the event.
+	 * 
+	 * @param directionTurn
+	 *            The direction which the event should turn. If null, the
+	 *            direction remains the same.
+	 */
+	public void trigger(WalkDirection directionTurn) {
+		if (directionTurn != null)
+			this.character.setDirection(directionTurn);
+
 		for (EventAction action : currentActions) {
 			action.act();
 		}

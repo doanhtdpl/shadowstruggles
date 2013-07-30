@@ -123,16 +123,26 @@ public class RpgPlatform {
 		int tileX = character.getTileX();
 		int tileY = character.getTileY();
 
-		if (character.getDirection() == WalkDirection.WALK_DOWN)
-			tileY++;
-		if (character.getDirection() == WalkDirection.WALK_LEFT)
-			tileX--;
-		if (character.getDirection() == WalkDirection.WALK_RIGHT)
-			tileX++;
-		if (character.getDirection() == WalkDirection.WALK_UP)
-			tileY--;
+		WalkDirection oppositeDirection = null;
 
-		this.map.triggerEvent(tileX, tileY, character.getMover());
+		if (character.getDirection() == WalkDirection.WALK_DOWN) {
+			tileY++;
+			oppositeDirection = WalkDirection.WALK_UP;
+		}
+		if (character.getDirection() == WalkDirection.WALK_LEFT) {
+			tileX--;
+			oppositeDirection = WalkDirection.WALK_RIGHT;
+		}
+		if (character.getDirection() == WalkDirection.WALK_RIGHT) {
+			tileX++;
+			oppositeDirection = WalkDirection.WALK_LEFT;
+		}
+		if (character.getDirection() == WalkDirection.WALK_UP) {
+			tileY--;
+			oppositeDirection = WalkDirection.WALK_DOWN;
+		}
+
+		this.map.triggerEvent(tileX, tileY, character.getMover(), oppositeDirection);
 	}
 
 }

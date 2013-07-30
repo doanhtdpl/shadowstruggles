@@ -60,6 +60,14 @@ public class ObjectRenderer {
 
 		batch.begin();
 		for (Character2D char2d : sprites) {
+			// Update visual direction, if necessary and possible.
+			if (char2d.getCharModel().getDirection() != char2d.getDirection()
+					&& char2d.getCharModel().getDirection() != null
+					&& !char2d.isWalking()) {
+				char2d.setDirection(char2d.getCharModel().getDirection());
+			}
+
+			// Render character.
 			char2d.render();
 			batch.draw(char2d.getCurrentFrame(), char2d.getX(), char2d.getY());
 		}
