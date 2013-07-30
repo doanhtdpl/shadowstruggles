@@ -1,7 +1,7 @@
 package br.edu.ifsp.pds.shadowstruggles.data;
 
-import br.edu.ifsp.pds.shadowstruggles.model.Profile;
 import br.edu.ifsp.pds.shadowstruggles.model.events.Event;
+import br.edu.ifsp.pds.shadowstruggles.model.profiles.Profile;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;

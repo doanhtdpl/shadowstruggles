@@ -11,7 +11,7 @@ import br.edu.ifsp.pds.shadowstruggles.model.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.Deck;
 import br.edu.ifsp.pds.shadowstruggles.model.DefaultRules;
 import br.edu.ifsp.pds.shadowstruggles.model.Fighter;
-import br.edu.ifsp.pds.shadowstruggles.model.Profile;
+import br.edu.ifsp.pds.shadowstruggles.model.profiles.Profile;
 import br.edu.ifsp.pds.shadowstruggles.object2d.BackCard;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Deck2D;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Effect2D;
@@ -115,7 +115,8 @@ public class BattleScreen extends BaseScreen {
 		String mapPath = FileMap.resourcesToDirectory.get("battle_maps")
 				+ battlePlatform.getMap().getName() + ".png";
 		TextureRegion mapImage = new TextureRegion(new Texture(
-				Gdx.files.internal(mapPath)), SettingsDAO.getSettings().backgroundWidth / 2,
+				Gdx.files.internal(mapPath)),
+				SettingsDAO.getSettings().backgroundWidth / 2,
 				SettingsDAO.getSettings().backgroundHeight / 2);
 		map2d = new BattleMap2D(controller, mapImage);
 
@@ -317,10 +318,12 @@ public class BattleScreen extends BaseScreen {
 			deck.setY(SettingsDAO.getSettings().bottomElementY);
 			inputSources.addProcessor(deck);
 
-			energyBar = new EnergyBar(SettingsDAO.getSettings().energyX - 40, game);
+			energyBar = new EnergyBar(SettingsDAO.getSettings().energyX - 40,
+					game);
 			energyBar.setY(SettingsDAO.getSettings().bottomElementY);
 
-			playerLife = new LifeBar(SettingsDAO.getSettings().playerLifeX, game);
+			playerLife = new LifeBar(SettingsDAO.getSettings().playerLifeX,
+					game);
 			playerLife.setY(SettingsDAO.getSettings().lifeBarY);
 
 			enemyLife = new LifeBar(SettingsDAO.getSettings().enemyLifeX, game);
@@ -339,18 +342,19 @@ public class BattleScreen extends BaseScreen {
 		stage.addActor(map2d);
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 4; j++) {
-				hexagrams.add(new Hexagram(SettingsDAO.getSettings().tileWidth * 2
-						+ SettingsDAO.getSettings().tileWidth * 2 * i, BACKGROUND_Y + 60 + 72
-						* j, game));
+				hexagrams.add(new Hexagram(SettingsDAO.getSettings().tileWidth
+						* 2 + SettingsDAO.getSettings().tileWidth * 2 * i,
+						BACKGROUND_Y + 60 + 72 * j, game));
 				stage.addActor(hexagrams.get(i * 4 + j));
 			}
 		}
 
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 4; j++) {
-				BackCard bc = new BackCard(SettingsDAO.getSettings().tileWidth * 2
-						+ SettingsDAO.getSettings().tileWidth * 2 * i + SettingsDAO.getSettings().tileWidth / 2,
-						BACKGROUND_Y + 60 + 72 * j, game);
+				BackCard bc = new BackCard(SettingsDAO.getSettings().tileWidth
+						* 2 + SettingsDAO.getSettings().tileWidth * 2 * i
+						+ SettingsDAO.getSettings().tileWidth / 2, BACKGROUND_Y
+						+ 60 + 72 * j, game);
 
 				backcards.add(bc);
 				stage.addActor(backcards.get(i * 4 + j));
@@ -359,9 +363,10 @@ public class BattleScreen extends BaseScreen {
 
 		for (int i = 30; i > 25; i--) {
 			for (int j = 0; j < 4; j++) {
-				BackCard bc = new BackCard(SettingsDAO.getSettings().tileWidth * 2
-						+ SettingsDAO.getSettings().tileWidth * 2 * i + SettingsDAO.getSettings().tileWidth / 2,
-						BACKGROUND_Y + 60 + 72 * j, game);
+				BackCard bc = new BackCard(SettingsDAO.getSettings().tileWidth
+						* 2 + SettingsDAO.getSettings().tileWidth * 2 * i
+						+ SettingsDAO.getSettings().tileWidth / 2, BACKGROUND_Y
+						+ 60 + 72 * j, game);
 
 				backcards.add(bc);
 				stage.addActor(bc);
@@ -392,8 +397,8 @@ public class BattleScreen extends BaseScreen {
 		for (int i = 0; i < 5; i++) {
 			Card temp = battlePlatform.getPlayerDeck().draw();
 			battlePlatform.getPlayerHandCards().add(temp);
-			HandCard h = new HandCard(game, temp.getName(), SettingsDAO.getSettings().firstCardX
-					+ 130 * i, temp);
+			HandCard h = new HandCard(game, temp.getName(),
+					SettingsDAO.getSettings().firstCardX + 130 * i, temp);
 			h.setY(SettingsDAO.getSettings().bottomElementY);
 			h.addListener(new ClickListener() {
 				@Override

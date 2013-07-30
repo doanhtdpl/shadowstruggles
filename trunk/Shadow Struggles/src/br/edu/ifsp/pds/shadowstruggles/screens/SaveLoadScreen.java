@@ -2,25 +2,24 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
-import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.ProfileDAO;
-import br.edu.ifsp.pds.shadowstruggles.data.dao.SceneDAO;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
-import br.edu.ifsp.pds.shadowstruggles.model.Profile;
+import br.edu.ifsp.pds.shadowstruggles.model.profiles.Profile;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectMap;
+
+// TODO: Remover classe, substituindo-a pela StartScreen.
 
 public class SaveLoadScreen extends BaseScreen implements InputProcessor {
 	private static SaveLoadScreen instance;
@@ -109,54 +108,54 @@ public class SaveLoadScreen extends BaseScreen implements InputProcessor {
 
 		stage.addActor(returnButton);
 
-		if (ProfileDAO.profileExists()) {
-			Array<Profile> profiles = ProfileDAO.getProfiles();
-
-			for (Profile profile : profiles) {
-				String text = String.valueOf(profile.getId()) + " - "
-						+ profile.getCurrentScene().getName();
-				TextButton textButton = new TextButton(text, super.getSkin());
-
-				textButton = ScreenUtils.defineButton(textButton, 240,
-						630 - profile.getId() * 100, text.length() * 30, 90,
-						super.getSkin());
-				textButton.setClip(true);
-				textButton.addListener(new ClickListener() {
-
-					@Override
-					public void clicked(InputEvent event, float x, float y) {
-						game.getAudio().playSound("button_2");
-
-						if (saveMode) {
-							TextButton tx = (TextButton) event
-									.getListenerActor();
-							game.getProfile().setId(
-									Character.getNumericValue(tx.getText()
-											.charAt(0)));
-							ProfileDAO.createProfile(game.getProfile());
-							game.setScreenWithTransition(new SaveLoadScreen(
-									game, controller, returnScreen, true));
-						} else {
-							TextButton tx = (TextButton) event
-									.getListenerActor();
-							int id = Character.getNumericValue(tx.getText()
-									.charAt(0));
-							game.setProfile(ProfileDAO.getProfile(id));
-							DataManager.getInstance().changeLanguage(
-									ProfileDAO.getProfile(id).getLanguage());
-							game.getProfile().setCurrentScene(
-									SceneDAO.getScene(game.getProfile()
-											.getCurrentScene().getId()));
-							game.setScreenWithTransition(MainScreen
-									.getInstance(game, controller));
-						}
-					}
-				});
-
-				this.slots.add(textButton);
-				stage.addActor(textButton);
-			}
-		}
+//		if (ProfileDAO.profileExists()) {
+//			Array<Profile> profiles = ProfileDAO.getProfiles();
+//
+//			for (Profile profile : profiles) {
+//				String text = String.valueOf(profile.getId()) + " - "
+//						+ profile.getCurrentScene().getName();
+//				TextButton textButton = new TextButton(text, super.getSkin());
+//
+//				textButton = ScreenUtils.defineButton(textButton, 240,
+//						630 - profile.getId() * 100, text.length() * 30, 90,
+//						super.getSkin());
+//				textButton.setClip(true);
+//				textButton.addListener(new ClickListener() {
+//
+//					@Override
+//					public void clicked(InputEvent event, float x, float y) {
+//						game.getAudio().playSound("button_2");
+//
+//						if (saveMode) {
+//							TextButton tx = (TextButton) event
+//									.getListenerActor();
+//							game.getProfile().setId(
+//									Character.getNumericValue(tx.getText()
+//											.charAt(0)));
+//							ProfileDAO.createProfile(game.getProfile());
+//							game.setScreenWithTransition(new SaveLoadScreen(
+//									game, controller, returnScreen, true));
+//						} else {
+//							TextButton tx = (TextButton) event
+//									.getListenerActor();
+//							int id = Character.getNumericValue(tx.getText()
+//									.charAt(0));
+//							game.setProfile(ProfileDAO.getProfile(id));
+//							DataManager.getInstance().changeLanguage(
+//									ProfileDAO.getProfile(id).getLanguage());
+//							game.getProfile().setCurrentScene(
+//									SceneDAO.getScene(game.getProfile()
+//											.getCurrentScene().getId()));
+//							game.setScreenWithTransition(MainScreen
+//									.getInstance(game, controller));
+//						}
+//					}
+//				});
+//
+//				this.slots.add(textButton);
+//				stage.addActor(textButton);
+//			}
+//		}
 
 		if (this.saveMode) {
 			String text = "Empty slot";

@@ -49,7 +49,7 @@ public class Player implements Serializable {
 				jsonData);
 		this.maxCardPoints = json.readValue("maxCardPoints", Integer.class,
 				jsonData);
-		this.deckCapacity = json.readValue("sellable", Integer.class, jsonData);
+		this.deckCapacity = json.readValue("deckCapacity", Integer.class, jsonData);
 		this.energyRecovery = json.readValue("energyRecovery", Integer.class,
 				jsonData);
 		this.doubleDraw = json.readValue("doubleDraw", Float.class, jsonData);

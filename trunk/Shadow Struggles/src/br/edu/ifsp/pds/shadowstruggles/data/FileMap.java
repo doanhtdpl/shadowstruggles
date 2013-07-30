@@ -2,20 +2,13 @@ package br.edu.ifsp.pds.shadowstruggles.data;
 
 import java.util.HashMap;
 
-import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.model.Deck;
 import br.edu.ifsp.pds.shadowstruggles.model.Effect;
 import br.edu.ifsp.pds.shadowstruggles.model.Fighter;
-import br.edu.ifsp.pds.shadowstruggles.model.Profile;
 import br.edu.ifsp.pds.shadowstruggles.model.Trap;
 import br.edu.ifsp.pds.shadowstruggles.model.TutorialDialog;
-import br.edu.ifsp.pds.shadowstruggles.model.enemies.Enemy;
 import br.edu.ifsp.pds.shadowstruggles.model.events.Event;
-import br.edu.ifsp.pds.shadowstruggles.model.items.Item;
-import br.edu.ifsp.pds.shadowstruggles.model.items.Pack;
-import br.edu.ifsp.pds.shadowstruggles.model.items.Shop;
-import br.edu.ifsp.pds.shadowstruggles.model.quests.Quest;
-import br.edu.ifsp.pds.shadowstruggles.model.scenes.Ending;
+import br.edu.ifsp.pds.shadowstruggles.model.profiles.Profile;
 import br.edu.ifsp.pds.shadowstruggles.model.Scene;
 
 /**

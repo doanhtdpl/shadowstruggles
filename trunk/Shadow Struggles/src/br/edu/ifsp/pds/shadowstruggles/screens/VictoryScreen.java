@@ -117,19 +117,19 @@ public class VictoryScreen extends BaseScreen {
 
 			this.getStage().addActor(continueButton);
 
-			// Moves the plot forward to the next scene.
-			game.getProfile().setCurrentScene(
-					SceneDAO.getScene(game.getProfile().getCurrentScene()
-							.getNextId()));
-			// ProfileDAO.createProfile(game.getProfile(), game.getManager());
-
-			// Adds the battles to the array of fought battles.
-			if (battleScreen.getClass() == Practice.class) {
-				if (!game.getProfile().getBattlesFought().contains(1f, true)) {
-					game.getProfile().getBattlesFought().add(1f);
-					// MenuTextDAO.writeProfile(game.getProfile());
-				}
-			}
+//			// Moves the plot forward to the next scene.
+//			game.getProfile().setCurrentScene(
+//					SceneDAO.getScene(game.getProfile().getCurrentScene()
+//							.getNextId()));
+//			// ProfileDAO.createProfile(game.getProfile(), game.getManager());
+//
+//			// Adds the battles to the array of fought battles.
+//			if (battleScreen.getClass() == Practice.class) {
+//				if (!game.getProfile().getBattlesFought().contains(1f, true)) {
+//					game.getProfile().getBattlesFought().add(1f);
+//					// MenuTextDAO.writeProfile(game.getProfile());
+//				}
+//			}
 		}
 	}
 }

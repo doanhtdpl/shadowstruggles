@@ -7,13 +7,14 @@ import br.edu.ifsp.pds.shadowstruggles.data.dao.TrapDAO;
 
 import com.badlogic.gdx.utils.Array;
 
+// TODO: Substituir por model.items.Shop
 public class Shop {
 	private Array<Card> availableCards;
 	private Array<Card> lockedCards;
-	private Profile profile;
+//	private Profile profile;
 
 	public Shop(ShadowStruggles game) {
-		this.profile = game.getProfile();
+//		this.profile = game.getProfile();
 		availableCards = new Array<Card>();
 		for (Fighter fighter : FighterDAO.getFighters()) {
 			availableCards.add(fighter);
@@ -30,18 +31,18 @@ public class Shop {
 	}
 
 	public boolean buyCard(Card card) {
-		boolean suficientMoney = profile.moveMoney(-card.getBuyCost());
-		if (suficientMoney) {
-			profile.getTrunk().add(card);
-			return true;
-		} else
+//		boolean suficientMoney = profile.moveMoney(-card.getBuyCost());
+//		if (suficientMoney) {
+//			profile.getTrunk().add(card);
+//			return true;
+//		} else
 			return false;
 
 	}
 
-	public int getPlayerMoney() {
-		return profile.getMoney();
-	}
+//	public int getPlayerMoney() {
+//		return profile.getMoney();
+//	}
 
 	public Array<Card> getAvailableCards() {
 		return availableCards;

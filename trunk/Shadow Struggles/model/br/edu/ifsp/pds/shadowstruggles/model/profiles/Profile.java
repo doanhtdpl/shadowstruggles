@@ -13,37 +13,38 @@ import br.edu.ifsp.pds.shadowstruggles.model.items.Item;
 import br.edu.ifsp.pds.shadowstruggles.model.quests.Quest;
 import br.edu.ifsp.pds.shadowstruggles.model.scenes.Ending;
 
-public class Profile implements Serializable {
-	public int id;
-	public Player player;
-	public String language;
-	public int storyPoints;
-	public String path;
-	public int money;
-	public int experience;
-	public int level;
-	public int distributionPoints;
-	public int experienceNextLevel;
+public class Profile implements Serializable, Comparable<Object> {
+	private int id;
+	private Player player;
+	private String language;
+	private int storyPoints;
+	private String path;
+	private Deck selectedDeck;
+	private int money;
+	private int experience;
+	private int level;
+	private int distributionPoints;
+	private int experienceNextLevel;
 
-	public Array<Item> inventory;
-	public Array<Deck> deck;
-	public Array<Item> unlockedItems;
-	public Array<Quest> quests;
-	public Array<EnemyDefeat> defeatedEnemies;
-	public Array<Ending> endings;
+	private Array<Item> inventory;
+	private Array<Deck> decks;
+	private Array<Item> unlockedItems;
+	private Array<Quest> quests;
+	private Array<EnemyDefeat> defeatedEnemies;
+	private Array<Ending> endings;
 	/**
 	 * Records which actions should be performed for each event.
 	 */
-	public ObjectMap<Event, Array<EventAction>> events;
+	private ObjectMap<Event, Array<EventAction>> events;
 	/**
 	 * Relates the maps to the object layer which the player character will
 	 * access upon visiting them.
 	 */
-	public ObjectMap<String, String> mapLayers;
+	private ObjectMap<String, String> mapLayers;
 
-	public DistributionPointsFormula distributionPointsFormula;
-	public AttributePointsFormula attributePointsFormula;
-	public ExperienceNextLevelFormula experienceNextLevelFormula;
+	private DistributionPointsFormula distributionPointsFormula;
+	private AttributePointsFormula attributePointsFormula;
+	private ExperienceNextLevelFormula experienceNextLevelFormula;
 
 	public Profile() {
 		this.id = 1;
@@ -51,6 +52,7 @@ public class Profile implements Serializable {
 		this.language = "";
 		this.storyPoints = 0;
 		this.path = "";
+		this.selectedDeck = new Deck();
 		this.money = 0;
 		this.experience = 0;
 		this.level = 1;
@@ -58,7 +60,7 @@ public class Profile implements Serializable {
 		this.experienceNextLevel = 1;
 
 		this.inventory = new Array<Item>();
-		this.deck = new Array<Deck>();
+		this.decks = new Array<Deck>();
 		this.unlockedItems = new Array<Item>();
 		this.quests = new Array<Quest>();
 		this.defeatedEnemies = new Array<EnemyDefeat>();
@@ -72,9 +74,9 @@ public class Profile implements Serializable {
 	}
 
 	public Profile(int id, Player player, String language, int storyPoints,
-			String path, int money, int experience, int level,
+			String path, Deck selectedDeck, int money, int experience, int level,
 			int distributionPoints, int experienceNextLevel,
-			Array<Item> inventory, Array<Deck> deck, Array<Item> unlockedItems,
+			Array<Item> inventory, Array<Deck> decks, Array<Item> unlockedItems,
 			Array<Quest> quests, Array<EnemyDefeat> defeatedEnemies,
 			Array<Ending> endings, ObjectMap<Event, Array<EventAction>> events,
 			ObjectMap<String, String> mapLayers,
@@ -86,6 +88,7 @@ public class Profile implements Serializable {
 		this.language = language;
 		this.storyPoints = storyPoints;
 		this.path = path;
+		this.selectedDeck = selectedDeck;
 		this.money = money;
 		this.experience = experience;
 		this.level = level;
@@ -93,7 +96,7 @@ public class Profile implements Serializable {
 		this.experienceNextLevel = experienceNextLevel;
 
 		this.inventory = inventory;
-		this.deck = deck;
+		this.decks = decks;
 		this.unlockedItems = unlockedItems;
 		this.quests = quests;
 		this.defeatedEnemies = defeatedEnemies;
@@ -106,6 +109,11 @@ public class Profile implements Serializable {
 		this.experienceNextLevelFormula = experienceNextLevelFormula;
 	}
 
+	public Profile(int id) {
+		this();
+		this.setId(id);
+	}
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public void read(Json json, JsonValue jsonData) {
@@ -115,6 +123,7 @@ public class Profile implements Serializable {
 		this.storyPoints = json.readValue("storyPoints", Integer.class,
 				jsonData);
 		this.path = json.readValue("path", String.class, jsonData);
+		this.selectedDeck = json.readValue("selectedDeck", Deck.class, jsonData);
 		this.money = json.readValue("money", Integer.class, jsonData);
 		this.experience = json.readValue("experience", Integer.class, jsonData);
 		this.level = json.readValue("level", Integer.class, jsonData);
@@ -124,7 +133,7 @@ public class Profile implements Serializable {
 				Integer.class, jsonData);
 
 		this.inventory = json.readValue("inventory", Array.class, jsonData);
-		this.deck = json.readValue("deck", Array.class, jsonData);
+		this.decks = json.readValue("decks", Array.class, jsonData);
 		this.unlockedItems = json.readValue("unlockedItems", Array.class,
 				jsonData);
 		this.quests = json.readValue("quests", Array.class, jsonData);
@@ -151,6 +160,7 @@ public class Profile implements Serializable {
 		json.writeValue("language", this.language);
 		json.writeValue("storyPoints", this.storyPoints);
 		json.writeValue("path", this.path);
+		json.writeValue("selectedDeck", this.selectedDeck);
 		json.writeValue("money", this.money);
 		json.writeValue("experience", this.experience);
 		json.writeValue("level", this.level);
@@ -158,7 +168,7 @@ public class Profile implements Serializable {
 		json.writeValue("experienceNextLevel", this.experienceNextLevel);
 
 		json.writeValue("inventory", this.inventory);
-		json.writeValue("deck", this.deck);
+		json.writeValue("decks", this.decks);
 		json.writeValue("unlockedItems", this.unlockedItems);
 		json.writeValue("quests", this.quests);
 		json.writeValue("defeatedEnemies", this.defeatedEnemies);
@@ -173,4 +183,32 @@ public class Profile implements Serializable {
 				this.experienceNextLevelFormula);
 	}
 
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getMoney() {
+		return money;
+	}
+
+	public Array<Item> getInventory() {
+		return inventory;
+	}
+
+	public Array<Deck> getDecks() {
+		return decks;
+	}
+
+	public Deck getSelectedDeck() {
+		return selectedDeck;
+	}
+
+	@Override
+	public int compareTo(Object o) {
+		return this.id - ((Profile) o).getId();
+	}
 }

@@ -121,8 +121,6 @@ public class SettingsScreen extends BaseScreen {
 				game.getAudio().setMusicOn(previousSettings.musicOn);
 				DataManager.getInstance().changeLanguage(
 						previousSettings.previousLanguage);
-				game.getProfile()
-						.setLanguage(previousSettings.previousLanguage);
 				previousScreen.loadLanguage();
 				game.setScreenWithTransition(previousScreen);
 			}
@@ -156,8 +154,8 @@ public class SettingsScreen extends BaseScreen {
 
 		languagesBox = new SelectBox(LanguagesDAO.getLanguages().values()
 				.toArray().toArray(), super.getSkin());
-		languagesBox.setSelection(LanguagesDAO.getLanguages().get(
-				game.getProfile().getLanguage()));
+		languagesBox.setSelection(DataManager.getInstance()
+				.getCurrentLanguage());
 		languagesBox.addListener(new ChangeListener() {
 
 			@Override
@@ -169,7 +167,6 @@ public class SettingsScreen extends BaseScreen {
 					if (!DataManager.getInstance().getCurrentLanguage()
 							.equals(language)) {
 						DataManager.getInstance().changeLanguage(language);
-						game.getProfile().setLanguage(language);
 						game.setScreenWithTransition(new SettingsScreen(game,
 								controller, previousScreen, previousSettings));
 					}

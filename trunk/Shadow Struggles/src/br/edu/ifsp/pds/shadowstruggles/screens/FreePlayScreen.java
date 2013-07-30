@@ -217,33 +217,34 @@ public class FreePlayScreen extends BaseScreen {
 
 		battles = new Array<TextButton>();
 
-		for (Float id : game.getProfile().getBattlesFought()) {
-			TextButton button = new TextButton("", getSkin());
-			switch (id.intValue()) {
-			case 1:
-				button.setText(MenuTextDAO.getMenuText().practiceBattle);
-				button = ScreenUtils.defineButton(button, 100, 300, 300, 100,
-						super.getSkin());
-				battle = new Practice(game, false);
-				break;
-			}
-
-			button.addListener(new ClickListener() {
-
-				@Override
-				public void clicked(InputEvent event, float x, float y) {
-					if (!game.getAudio().getMusicName().equals("battle")) {
-						game.getAudio().stop();
-						game.getAudio().setMusic("battle");
-					}
-					game.setScreenWithTransition(battle);
-				}
-
-			});
-
-			stage.addActor(menuTable);
-			battles.add(button);
-		}
+		// TODO: Refazer rotina para obter batalhas enfrentadas.
+//		for (Float id : game.getProfile().getBattlesFought()) {
+//			TextButton button = new TextButton("", getSkin());
+//			switch (id.intValue()) {
+//			case 1:
+//				button.setText(MenuTextDAO.getMenuText().practiceBattle);
+//				button = ScreenUtils.defineButton(button, 100, 300, 300, 100,
+//						super.getSkin());
+//				battle = new Practice(game, false);
+//				break;
+//			}
+//
+//			button.addListener(new ClickListener() {
+//
+//				@Override
+//				public void clicked(InputEvent event, float x, float y) {
+//					if (!game.getAudio().getMusicName().equals("battle")) {
+//						game.getAudio().stop();
+//						game.getAudio().setMusic("battle");
+//					}
+//					game.setScreenWithTransition(battle);
+//				}
+//
+//			});
+//
+//			stage.addActor(menuTable);
+//			battles.add(button);
+//		}
 
 		stage.addActor(menuTable);
 		stage.addActor(leftButtonTable);
