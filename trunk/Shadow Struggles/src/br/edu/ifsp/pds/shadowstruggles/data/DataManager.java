@@ -15,6 +15,7 @@ import com.badlogic.gdx.utils.SerializationException;
  */
 
 public class DataManager {
+	public static final String LOG = DataManager.class.getName();
 
 	private static DataManager instance;
 
@@ -76,7 +77,9 @@ public class DataManager {
 				objectList.addAll(MyJson.getJson()
 						.fromJson(Array.class, handle));
 			} catch (SerializationException ex) {
-				ex.printStackTrace(); // TODO: Logging.
+				Gdx.app.error(LOG,
+						"Error retrieving localized JSON file from language "
+								+ currentLanguage, ex);
 			}
 
 			this.recordSet.put(c, objectList);
@@ -91,7 +94,8 @@ public class DataManager {
 				objectList.addAll(MyJson.getJson()
 						.fromJson(Array.class, handle));
 			} catch (SerializationException ex) {
-				ex.printStackTrace(); // TODO: Logging.
+				Gdx.app.error(LOG,
+						"Error retrieving language-independent JSON file", ex);
 			}
 
 			this.recordSet.put(c, objectList);
@@ -115,7 +119,8 @@ public class DataManager {
 		try {
 			MyJson.getJson().toJson(currentProfiles, handle);
 		} catch (SerializationException ex) {
-			ex.printStackTrace(); // TODO: Logging.
+			Gdx.app.error(LOG, "Error creating a new profile with ID "
+					+ profile.getId(), ex);
 		}
 	}
 
@@ -130,7 +135,7 @@ public class DataManager {
 			MyJson.getJson().toJson(recordSet.get(Profile.class),
 					profilesHandle);
 		} catch (SerializationException ex) {
-			ex.printStackTrace(); // TODO: Logging.
+			Gdx.app.error(LOG, "Error saving the game", ex);
 		}
 	}
 

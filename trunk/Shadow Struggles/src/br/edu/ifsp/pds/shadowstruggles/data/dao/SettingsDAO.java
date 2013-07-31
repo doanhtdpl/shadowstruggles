@@ -1,9 +1,12 @@
 package br.edu.ifsp.pds.shadowstruggles.data.dao;
 
+import com.badlogic.gdx.Gdx;
+
 import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
 import br.edu.ifsp.pds.shadowstruggles.data.Settings;
 
 public class SettingsDAO {
+	public static final String LOG = SettingsDAO.class.getName();
 
 	public static Settings getSettings() {
 		Settings settings = null;
@@ -12,7 +15,7 @@ public class SettingsDAO {
 			settings = (Settings) DataManager.getInstance()
 					.getObjectSet(Settings.class).get(0);
 		} catch (Exception ex) {
-			ex.printStackTrace(); // TODO: Logging.
+			Gdx.app.error(LOG, "Error getting Settings", ex);
 		}
 
 		return settings;

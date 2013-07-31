@@ -31,7 +31,7 @@ public class ShadowStruggles extends Game {
 	public static enum RunMode {
 		DEBUG, TESTS, RELEASE
 	};
-	
+
 	private static ShadowStruggles instance;
 
 	private Controller controller;
@@ -42,17 +42,17 @@ public class ShadowStruggles extends Game {
 	private Loader loader;
 
 	public static ShadowStruggles getInstance() {
-		if(instance == null)
+		if (instance == null)
 			instance = new ShadowStruggles();
 		return instance;
 	}
-	
+
 	public static ShadowStruggles getInstance(RunMode mode) {
-		if(instance == null)
+		if (instance == null)
 			instance = new ShadowStruggles(mode);
 		return instance;
 	}
-	
+
 	private ShadowStruggles() {
 		this(RunMode.TESTS);
 	}
