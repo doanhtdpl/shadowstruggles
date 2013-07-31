@@ -1,2 +1,0 @@
-31/07/2013 13:24:21 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
-FINE: br.edu.ifsp.pds.shadowstruggles.ShadowStruggles - Creating ShadowStruggles object

@@ -3,6 +3,7 @@ package br.edu.ifsp.pds.shadowstruggles;
 import br.edu.ifsp.pds.shadowstruggles.data.FileMap;
 import br.edu.ifsp.pds.shadowstruggles.data.Loader;
 import br.edu.ifsp.pds.shadowstruggles.data.SoundManager;
+import br.edu.ifsp.pds.shadowstruggles.dataTest.DataManagerTest;
 import br.edu.ifsp.pds.shadowstruggles.dataTest.LoaderTest;
 import br.edu.ifsp.pds.shadowstruggles.model.profiles.Profile;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.test.CharacterTest;
@@ -82,6 +83,10 @@ public class ShadowStruggles extends Game {
 			characterTest.WalkUpTest();
 			characterTest.WalkRightTest();
 			characterTest.WalkLeftTest();
+			
+			DataManagerTest dataManagerTest = new DataManagerTest();
+			dataManagerTest.testEncodingDecoding();
+			
 			// End of test cases.
 			Gdx.app.exit();
 		}

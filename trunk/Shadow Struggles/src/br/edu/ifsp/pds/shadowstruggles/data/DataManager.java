@@ -6,6 +6,8 @@ import br.edu.ifsp.pds.shadowstruggles.model.profiles.Profile;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Base64Coder;
+import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.SerializationException;
 
@@ -166,6 +168,16 @@ public class DataManager {
 
 	private static String localizedPath(String currentLanguage, String path) {
 		return path.replace("data/", "data/" + currentLanguage + "/");
+	}
+
+	public static String decodeFile(FileHandle fileHandle) {
+		String decodedText = fileHandle.readString();
+		return Base64Coder.decodeString(decodedText);
+	}
+
+	public static String encodeObject(Json json, Object object) {
+		String normalText = json.toJson(object);
+		return Base64Coder.encodeString(normalText);
 	}
 
 }
