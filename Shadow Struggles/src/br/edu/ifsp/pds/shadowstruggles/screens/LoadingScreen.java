@@ -62,7 +62,7 @@ public class LoadingScreen extends BaseScreen {
 
 	public LoadingScreen(ShadowStruggles game) {
 		super(game);
-		loader = new Loader(game, ManagementStrategy.STATIC_TEXTURE_ATLAS, null);
+		loader = new Loader(game, ManagementStrategy.STATIC_TEXTURE_ATLAS);
 		loader.loadAssets();
 		this.game = game;
 	}

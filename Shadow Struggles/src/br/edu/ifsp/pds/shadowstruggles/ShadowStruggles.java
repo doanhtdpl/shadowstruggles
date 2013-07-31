@@ -77,6 +77,9 @@ public class ShadowStruggles extends Game {
 			LoaderTest loaderTest = new LoaderTest();
 			loaderTest.testStaticTextureAtlasStrategy(this);
 			loaderTest.testGetStaticRegion(this);
+			loaderTest.testDynamicLoading(this);
+			loaderTest.testGetDynamicRegion(this);
+			loaderTest.testDynamicDispose(this);
 
 			CharacterTest characterTest = new CharacterTest();
 			characterTest.WalkDownTest();
