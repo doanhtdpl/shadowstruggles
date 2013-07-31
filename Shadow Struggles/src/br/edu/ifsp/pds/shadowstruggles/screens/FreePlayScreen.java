@@ -62,6 +62,15 @@ public class FreePlayScreen extends BaseScreen {
 	}
 
 	public void initTempButton() {
+		battleButton = new ImageButton(this.getSkin()
+				.getDrawable("placeholder"));
+		battleButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				game.setScreenWithTransition(new Practice(game, false));
+			}
+		});
+		
 		ImageButton tempButton = new ImageButton(this.getSkin().getDrawable(
 				"placeholder"));
 		tempButton.addListener(new ClickListener() {
@@ -97,9 +106,6 @@ public class FreePlayScreen extends BaseScreen {
 
 		if (game.getMode() == RunMode.DEBUG)
 			battleTable.debug();
-
-		battleButton = new ImageButton(this.getSkin()
-				.getDrawable("placeholder"));
 
 		Label lteste11 = new Label("Battle 1", super.getSkin());
 		lteste11.setStyle(new LabelStyle(super.getSkin()
