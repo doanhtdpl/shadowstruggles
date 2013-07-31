@@ -17,13 +17,12 @@ public class LoaderTest {
 				ManagementStrategy.STATIC_TEXTURE_ATLAS, null);
 		loader.loadAssets();
 
+		System.out.println("Loading assets...");
 		while (!game.getAssets().update()) {
-			System.out.println("Progress: " + game.getAssets().getProgress()
-					* 100 + "%");
 		}
 
 		try {
-			game.getAssets().get("data/images/objects/objects.atlas",
+			game.getAssets().get("data/images/cards/cards.atlas",
 					TextureAtlas.class);
 			System.out.println("testStaticTextureAtlasStrategy: Success");
 		} catch (Exception e) {
@@ -39,7 +38,8 @@ public class LoaderTest {
 		loader.loadAssets();
 
 		try {
-			TextureRegion region = loader.getTextureRegion("broomy", "card_attacking");
+			TextureRegion region = loader.getTextureRegion("broomy",
+					"card_attacking");
 			if (region != null)
 				System.out.println("testGetStaticRegion: Success");
 			else
@@ -49,7 +49,7 @@ public class LoaderTest {
 			ex.printStackTrace();
 		}
 	}
-	
+
 	@Test
 	public void testGetDynamicRegion(ShadowStruggles game) {
 		// TODO: Implementar teste.
