@@ -28,7 +28,7 @@ public class DesktopStarter {
 		// System.out.println("Finish!");
 
 		ApplicationListener listener = ShadowStruggles
-				.getInstance(RunMode.TESTS);
+				.getInstance(RunMode.DEBUG);
 		String title = "Shadow Struggles";
 		int width = 960, height = 640;
 		boolean useOpenGLES2 = false;
@@ -53,8 +53,8 @@ public class DesktopStarter {
 			Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
 			logger.setLevel(Level.INFO);
-			fileTxt = new FileHandler("Logging.txt");
-			fileHTML = new FileHandler("Logging.html");
+			fileTxt = new FileHandler("Logging.txt", true);
+			fileHTML = new FileHandler("Logging.html", true);
 			// Create txt Formatter
 			formatterTxt = new SimpleFormatter();
 			fileTxt.setFormatter(formatterTxt);

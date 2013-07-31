@@ -12,21 +12,22 @@ import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.MathUtils;
 
+// TODO: Usar outro mapa de teste, sem obstáculos, para não obstruir testes.
 public class CharacterTest {
 
 	@Test
 	public void WalkUpTest() {
-		int initialTileX = MathUtils.random(29);
-		int initialTileY = MathUtils.random(19);
-		Character character = new Character(initialTileX, initialTileY);
-		character
-				.setCurrentMap(new RpgMap(new TmxMapLoader(
-						new InternalFileHandleResolver())
-						.load("data/rpg_maps/map.tmx")));
+		RpgMap map = new RpgMap(new TmxMapLoader(
+				new InternalFileHandleResolver()).load("data/rpg_maps/map.tmx"));
+		int initialTileX = MathUtils.random(map.getWidthInTiles() - 1);
+		int initialTileY = MathUtils.random(1, map.getHeightInTiles() - 1);
+		Character character = new Character(initialTileX, initialTileY, 2, 2,
+				map);
+
 		RpgPlatform platform = new RpgPlatform(new RpgController(), character,
-				character.getCurrentMap());
-		platform.getCharacter().walk(WalkDirection.WALK_UP,
-				platform.getRpgMap());
+				map);
+		platform.getCharacter().walk(WalkDirection.WALK_UP, map);
+
 		boolean walkedUp = false;
 		if (platform.getCharacter().getTileY() == initialTileY - 1)
 			walkedUp = true;
@@ -38,16 +39,17 @@ public class CharacterTest {
 
 	@Test
 	public void WalkDownTest() {
-		int initialTileX = MathUtils.random(29);
-		int initialTileY = MathUtils.random(19);
-		Character character = new Character(initialTileX, initialTileY);
-		character
-				.setCurrentMap(new RpgMap(new TmxMapLoader(
-						new InternalFileHandleResolver())
-						.load("data/rpg_maps/map.tmx")));
-		RpgPlatform platform = new RpgPlatform(new RpgController(), character);
-		platform.getCharacter().walk(WalkDirection.WALK_DOWN,
-				platform.getRpgMap());
+		RpgMap map = new RpgMap(new TmxMapLoader(
+				new InternalFileHandleResolver()).load("data/rpg_maps/map.tmx"));
+		int initialTileX = MathUtils.random(map.getWidthInTiles() - 1);
+		int initialTileY = MathUtils.random(map.getHeightInTiles() - 2);
+		Character character = new Character(initialTileX, initialTileY, 2, 2,
+				map);
+
+		RpgPlatform platform = new RpgPlatform(new RpgController(), character,
+				map);
+		platform.getCharacter().walk(WalkDirection.WALK_DOWN, map);
+
 		boolean walkedDown = false;
 		if (platform.getCharacter().getTileY() == initialTileY + 1)
 			walkedDown = true;
@@ -59,17 +61,17 @@ public class CharacterTest {
 
 	@Test
 	public void WalkLeftTest() {
-		int initialTileX = MathUtils.random(29);
-		int initialTileY = MathUtils.random(19);
-		Character character = new Character(initialTileX, initialTileY);
-		character
-				.setCurrentMap(new RpgMap(new TmxMapLoader(
-						new InternalFileHandleResolver())
-						.load("data/rpg_maps/map.tmx")));
+		RpgMap map = new RpgMap(new TmxMapLoader(
+				new InternalFileHandleResolver()).load("data/rpg_maps/map.tmx"));
+		int initialTileX = MathUtils.random(1, map.getWidthInTiles() - 1);
+		int initialTileY = MathUtils.random(map.getHeightInTiles() - 1);
+		Character character = new Character(initialTileX, initialTileY, 2, 2,
+				map);
+
 		RpgPlatform platform = new RpgPlatform(new RpgController(), character,
-				character.getCurrentMap());
-		platform.getCharacter().walk(WalkDirection.WALK_LEFT,
-				platform.getRpgMap());
+				map);
+		platform.getCharacter().walk(WalkDirection.WALK_LEFT, map);
+
 		boolean walkedLeft = false;
 		if (platform.getCharacter().getTileX() == initialTileX - 1)
 			walkedLeft = true;
@@ -81,17 +83,17 @@ public class CharacterTest {
 
 	@Test
 	public void WalkRightTest() {
-		int initialTileX = MathUtils.random(29);
-		int initialTileY = MathUtils.random(19);
-		Character character = new Character(initialTileX, initialTileY);
-		character
-				.setCurrentMap(new RpgMap(new TmxMapLoader(
-						new InternalFileHandleResolver())
-						.load("data/rpg_maps/map.tmx")));
+		RpgMap map = new RpgMap(new TmxMapLoader(
+				new InternalFileHandleResolver()).load("data/rpg_maps/map.tmx"));
+		int initialTileX = MathUtils.random(map.getWidthInTiles() - 2);
+		int initialTileY = MathUtils.random(map.getHeightInTiles() - 1);
+		Character character = new Character(initialTileX, initialTileY, 2, 2,
+				map);
+
 		RpgPlatform platform = new RpgPlatform(new RpgController(), character,
-				character.getCurrentMap());
-		platform.getCharacter().walk(WalkDirection.WALK_RIGHT,
-				platform.getRpgMap());
+				map);
+		platform.getCharacter().walk(WalkDirection.WALK_RIGHT, map);
+
 		boolean walkedRight = false;
 		if (platform.getCharacter().getTileX() == initialTileX + 1)
 			walkedRight = true;
