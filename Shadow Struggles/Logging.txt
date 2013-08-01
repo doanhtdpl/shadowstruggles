@@ -1,0 +1,2 @@
+Ago 01, 2013 7:43:11 PM br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+Grave: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving language-independent JSON file - Error reading file: data/profiles.json

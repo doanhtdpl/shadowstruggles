@@ -50,12 +50,13 @@ public class CardDialog extends Dialog {
 
 	private void initComponents() {
 		Table inTable = new Table();
-		inTable.defaults().height(400).width(260);
+		inTable.defaults().height(400).width(400);
 		if (game.getMode() == RunMode.DEBUG)
 			inTable.debug();
 
 		this.cardImage = new Image(game.getTextureRegion(card.getName()
 				.toLowerCase(), "cards"));
+		
 
 		this.description = new Label(card.getDescription(), skin);
 		this.description.setColor(Color.BLACK);
@@ -76,7 +77,8 @@ public class CardDialog extends Dialog {
 		inTable.add(this.cardImage).padRight(30);
 		inTable.row();
 		inTable.add(this.okButton).height(50).colspan(2).center();
-
+		System.out.println(cardImage.getHeight());
+		System.out.println(cardImage.getWidth());
 		this.add(inTable);
 	}
 }

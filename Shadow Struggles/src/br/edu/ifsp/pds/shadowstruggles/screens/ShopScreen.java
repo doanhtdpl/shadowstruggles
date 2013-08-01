@@ -159,7 +159,7 @@ public class ShopScreen extends BaseScreen {
 
 					tmpTable.setPosition(450, 340);
 					tmpTable.add(new CardDialog(game, card, getSkin()))
-							.width(600).height(500);
+							.width(900).height(500);
 					stage.addActor(tmpTable);
 				}
 			});
