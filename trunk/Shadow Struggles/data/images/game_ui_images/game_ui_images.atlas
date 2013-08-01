@@ -26,14 +26,14 @@ box
   index: -1
 deck
   rotate: false
-  xy: 261, 283
+  xy: 261, 249
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 deckNotReady
   rotate: false
-  xy: 131, 119
+  xy: 261, 183
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
@@ -68,9 +68,16 @@ life100
   index: -1
 loading_bar
   rotate: false
-  xy: 131, 185
+  xy: 261, 315
   size: 128, 32
   orig: 128, 32
+  offset: 0, 0
+  index: -1
+magnifier
+  rotate: false
+  xy: 131, 89
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 pause
