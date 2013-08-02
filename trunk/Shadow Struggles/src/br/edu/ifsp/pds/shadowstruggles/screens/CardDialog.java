@@ -77,8 +77,8 @@ public class CardDialog extends Dialog {
 		inTable.add(this.cardImage).padRight(30);
 		inTable.row();
 		inTable.add(this.okButton).height(50).colspan(2).center();
-		System.out.println(cardImage.getHeight());
-		System.out.println(cardImage.getWidth());
+		
+		
 		this.add(inTable);
 	}
 }
