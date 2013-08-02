@@ -91,6 +91,7 @@ public class FixedImage extends Image implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		System.out.println("touchDown");
 		int deltaCamX = (int) (screen.getCamera().position.x - BaseScreen.CAMERA_INITIAL_X);
 		int invertY = (int) ((screen.getHeight() - screenY) * (float) ((float) SettingsDAO
 				.getSettings().mapHeight / (float) screen.getHeight()));
@@ -113,6 +114,7 @@ public class FixedImage extends Image implements InputProcessor {
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+		System.out.println("touchUp");
 		int deltaCamX = (int) (screen.getCamera().position.x - BaseScreen.CAMERA_INITIAL_X);
 		int invertY = (int) ((screen.getHeight() - screenY) * (float) ((float) SettingsDAO
 				.getSettings().mapHeight / (float) screen.getHeight()));

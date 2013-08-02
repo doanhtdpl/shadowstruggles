@@ -68,6 +68,7 @@ public class BattleScreen extends BaseScreen {
 	private Deck2D deck;
 	protected InputMultiplexer inputSources;
 	private Image selectedCard;
+	private FixedImage magnifier;
 
 	protected BattleMap2D map2d;
 	private HandBackground background;
@@ -230,6 +231,7 @@ public class BattleScreen extends BaseScreen {
 		playerLife.move(this.stage, CAMERA_INITIAL_X);
 		enemyLife.move(this.stage, CAMERA_INITIAL_X);
 		menu.move(this.stage, CAMERA_INITIAL_X);
+		magnifier.move(this.stage, CAMERA_INITIAL_X);
 		playerLife.update(battlePlatform.getRules().getPlayerHP(),
 				battlePlatform.getRules().getPlayerHPmax());
 		enemyLife.update(battlePlatform.getRules().getEnemyHP(), battlePlatform
@@ -308,6 +310,8 @@ public class BattleScreen extends BaseScreen {
 
 			background = new HandBackground(0, game);
 			background.setY(0);
+			
+			
 
 			menu = new MenuButton(controller, game);
 			menu.setScale(1.5f);
@@ -331,10 +335,21 @@ public class BattleScreen extends BaseScreen {
 
 			timer = new Timer2D(this, SettingsDAO.getSettings().mapWidth / 2);
 			timer.setY(SettingsDAO.getSettings().mapHeight - 40);
-
+			
+			magnifier= new FixedImage(game.getTextureRegion("magnifier", "game_ui_images"), 0, this){
+				@Override
+				public void clicked() {
+					System.out.println("clicou");
+					showCardInfo();
+				}
+			};
+			magnifier.setY(152);
+			magnifier.setScale(0.5f);
+			inputSources.addProcessor(magnifier);
 			inicializado = true;
 
 		}
+		
 
 		stage.addActor(background);
 		stage.addActor(deck);
@@ -379,7 +394,7 @@ public class BattleScreen extends BaseScreen {
 
 		stage.addActor(timer);
 		stage.addActor(menu);
-
+		stage.addActor(magnifier);
 		enemyLife.drawLife(battlePlatform.getRules().getEnemyHP(),
 				battlePlatform.getRules().getEnemyHPmax(), super.getSkin());
 		playerLife.drawLife(battlePlatform.getRules().getPlayerHP(),
@@ -467,6 +482,7 @@ public class BattleScreen extends BaseScreen {
 	}
 
 	private void showCardInfo() {
+		System.out.println("showCardInfo");
 		Card card = controller.getCardFromImage(selectedCard);
 		// FixedObject cardImage = new fixedObject(
 		Label name = new Label("", super.getSkin());
@@ -511,8 +527,8 @@ public class BattleScreen extends BaseScreen {
 	public void showResumedCardInfo() {
 		removeResumedCardInfo();
 		Card card = controller.getCardFromImage(selectedCard);
-		Label cardName = new FixedLabel(card.getNameVisualization(), 10, this);
-		cardName = ScreenUtils.defineLabel(cardName, 10, 150, 200, 70);
+		Label cardName = new FixedLabel(card.getNameVisualization(), 60, this);
+		cardName = ScreenUtils.defineLabel(cardName, 60, 150, 200, 70);
 		Label energyCost = ScreenUtils
 				.defineLabel(
 						new FixedLabel(String.valueOf(card.getEnergyCost()),
