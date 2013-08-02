@@ -26,6 +26,7 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 import javax.swing.JLabel;
 
@@ -36,6 +37,7 @@ public class ResourceEditor extends JFrame {
 	private Controller controller;
 	private JList list;
 	private JLabel lblNewLabel;
+	private JTree tree;
 
 	/**
 	 * Launch the application.
@@ -75,7 +77,7 @@ public class ResourceEditor extends JFrame {
 		JPanel panel = new JPanel();
 		tabbedPane.addTab("Images", null, panel, null);
 		
-		JTree tree = new JTree();
+		tree = new JTree();
 		tree.setBounds(31, 80, 187, 100);
 		tree.setVisible(false);
 		contentPane.add(tree);
@@ -103,7 +105,7 @@ public class ResourceEditor extends JFrame {
 				if(returnValue==JFileChooser.APPROVE_OPTION){
 					File file = chooser.getSelectedFile();
 					String log = "Opening "+file.getName()+"\n";		
-					((DefaultListModel<String>)list.getModel()).addElement(file.getName());
+					((DefaultListModel<String>)list.getModel()).addElement(file.getPath());
 					list.setSelectedIndex(list.getModel().getSize()-1);
 					updateImage(file);
 				}
@@ -111,12 +113,23 @@ public class ResourceEditor extends JFrame {
 				
 			}
 		});
-		btnAddFile.setBounds(261, 291, 89, 23);
+		btnAddFile.setBounds(357, 291, 89, 23);
 		contentPane.add(btnAddFile);
 		
 		lblNewLabel = new JLabel("New label");
 		lblNewLabel.setBounds(31, 321, 17, 14);
 		contentPane.add(lblNewLabel);
+		
+		JButton btnFileToFolder = new JButton("File to Folder <<<");
+		btnFileToFolder.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				String sourcePath=list.getSelectedValue().toString();
+				String targetPath=tree.getSelectionPath().toString();
+			}
+		});
+		btnFileToFolder.setBounds(165, 291, 149, 23);
+		contentPane.add(btnFileToFolder);
 		
 		
 	}
