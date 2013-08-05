@@ -122,7 +122,7 @@ public class RpgMap implements TileBasedMap {
 				// possible collisions.
 				Rectangle projectedCharacter = new Rectangle(x, invertY, cMover
 						.getRectangle().getWidth(), cMover.getRectangle()
-						.getHeight());
+						.getHeight()/2);
 
 				// Check for collidable objects.
 				MapObjects objects = currentLayer.getObjects();
