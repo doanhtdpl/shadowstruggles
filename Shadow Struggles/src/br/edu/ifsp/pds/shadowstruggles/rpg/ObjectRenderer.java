@@ -17,7 +17,8 @@ import com.badlogic.gdx.utils.Array;
 
 /**
  * Renders the objects of the map's current object layer according to the images
- * specified in the Event data files.
+ * specified in the Event data files. It also renders the player character, if
+ * it is present on the map.
  */
 public class ObjectRenderer {
 	private SpriteBatch batch;
@@ -26,6 +27,8 @@ public class ObjectRenderer {
 	private ShadowStruggles game;
 	private Array<Character2D> sprites;
 
+	private boolean hasPlayer;
+
 	public ObjectRenderer(SpriteBatch batch, RpgMap rpgMap, Stage stage,
 			ShadowStruggles game) {
 		this.batch = batch;
@@ -33,6 +36,20 @@ public class ObjectRenderer {
 		this.stage = stage;
 		this.game = game;
 		this.sprites = new Array<Character2D>();
+	}
+
+	public ObjectRenderer(SpriteBatch batch, RpgMap rpgMap, Stage stage,
+			ShadowStruggles game, Character2D playerChar) {
+		this.batch = batch;
+		this.rpgMap = rpgMap;
+		this.stage = stage;
+		this.game = game;
+
+		this.sprites = new Array<Character2D>();
+		if (playerChar != null) {
+			this.sprites.add(playerChar);
+			this.hasPlayer = true;
+		}
 	}
 
 	public SpriteBatch getBatch() {
@@ -55,7 +72,8 @@ public class ObjectRenderer {
 		MapLayer layer = rpgMap.getCurrentLayer();
 		MapObjects objects = layer.getObjects();
 
-		if (sprites.size == 0 && objects.getCount() > 0)
+		if ((!hasPlayer && sprites.size == 0 && objects.getCount() > 0)
+				|| (hasPlayer && sprites.size == 1 && objects.getCount() > 0))
 			prepareCharacters(objects);
 
 		batch.begin();
@@ -75,9 +93,15 @@ public class ObjectRenderer {
 	}
 
 	/**
-	 * Sets the Character2D array so that the objects may be rendered.
+	 * Sets the Character2D array so that the objects may be rendered. It
+	 * assumes that, if there is a player character on the map, it's the first
+	 * object in the array of sprites.
 	 */
 	private void prepareCharacters(MapObjects objects) {
+		if (hasPlayer) {
+			sprites.first().create();
+		}
+
 		for (MapObject object : objects) {
 			int tileSize = SettingsDAO.getSettings().tileSize;
 			int id = Integer
@@ -103,6 +127,12 @@ public class ObjectRenderer {
 				sprites.add(char2d);
 				stage.addActor(char2d);
 			}
+		}
+
+		// Put the player character in the last position so that it can be
+		// rendered on top of other events.
+		if (hasPlayer && sprites.size > 1) {
+			sprites.swap(0, sprites.size - 1);
 		}
 	}
 }

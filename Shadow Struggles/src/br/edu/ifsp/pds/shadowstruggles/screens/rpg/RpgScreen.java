@@ -52,7 +52,6 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 
 		character2d = new Character2D(rpgController.getModel().getCharacter(),
 				game);
-		character2d.create();
 
 		finder = new AStarPathFinder(rpgController.getModel().getRpgMap(), 500,
 				false, new ManhattanHeuristic(1));
@@ -62,7 +61,7 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		renderer = new OrthogonalTiledMapRenderer(rpgController.getMap(),
 				unitScale);
 		objectRenderer = new ObjectRenderer(batch, rpgController.getModel()
-				.getRpgMap(), stage, game);
+				.getRpgMap(), stage, game, character2d);
 
 		this.stage.addActor(character2d);
 
@@ -83,12 +82,6 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		renderer.render();
 		objectRenderer.render();
 		update(delta);
-		character2d.render();
-
-		batch.begin();
-		batch.draw(character2d.getCurrentFrame(), character2d.getX(),
-				character2d.getY());
-		batch.end();
 	}
 
 	@Override
