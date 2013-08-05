@@ -118,6 +118,9 @@ public class DesktopStarter {
 	public static class MyHtmlFormatter extends Formatter {
 		// This method is called for every log records
 		public String format(LogRecord rec) {
+			if(rec.getLevel() == Level.ALL)
+				return "";
+			
 			StringBuffer buf = new StringBuffer(1000);
 			// Bold any levels >= WARNING
 			buf.append("<tr>");
@@ -151,6 +154,8 @@ public class DesktopStarter {
 		// This method is called just after the handler using this
 		// formatter is created
 		public String getHead(Handler h) {
+			if(h.getLevel() == Level.ALL)
+				return "";
 			return "<HTML>\n<HEAD>\n" + (new Date())
 					+ "\n</HEAD>\n<BODY>\n<PRE>\n"
 					+ "<table width=\"100%\" border>\n  "
@@ -161,6 +166,8 @@ public class DesktopStarter {
 		// This method is called just after the handler using this
 		// formatter is closed
 		public String getTail(Handler h) {
+			if(h.getLevel() == Level.ALL)
+				return "";
 			return "</table>\n  </PRE></BODY>\n</HTML>\n";
 		}
 	}
