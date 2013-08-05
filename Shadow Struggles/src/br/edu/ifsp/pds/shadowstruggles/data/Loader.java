@@ -90,6 +90,48 @@ public class Loader {
 	}
 
 	/**
+	 * Sets the textures to load next
+	 * 
+	 * @param textures
+	 *            The TextureRegion objects to be loaded, which must be properly
+	 *            mapped in the {@link FileMap} class (resourcesToDirectory) and
+	 *            the names must contain the extension. It may be null.
+	 */
+	public void setTextures(Array<Asset> textures) {
+		if (this.strategy == ManagementStrategy.DYNAMIC_TEXTURE_ATLAS) {
+			this.textures = textures;
+		}
+	}
+
+	/**
+	 * Loads new sounds in a dynamic context, without unloading or reloading the
+	 * currently loaded ones.
+	 * 
+	 * @param sounds
+	 *            The Sound and Music objects to be loaded, which must be
+	 *            properly mapped in the {@link FileMap} class
+	 *            (resourcesToDirectory) and the names must contain the
+	 *            extension. It may be null.
+	 */
+	public void addSounds(Array<Asset> sounds) {
+		if (this.strategy == ManagementStrategy.DYNAMIC_TEXTURE_ATLAS) {
+			if (this.sounds == null)
+				this.sounds = new Array<Asset>();
+
+			for (Asset asset : sounds) {
+				this.sounds.addAll(sounds);
+				Class<?> c = Sound.class;
+				if (asset.assetType.equals("soundtrack"))
+					c = Music.class;
+
+				game.getAssets().load(
+						FileMap.resourcesToDirectory.get(asset.assetType)
+								+ asset.assetName, c);
+			}
+		}
+	}
+
+	/**
 	 * Starts loading the assets. If using the dynamic strategy,
 	 * {@link Loader#setAssetsToLoad()} must be called first.
 	 */
@@ -100,6 +142,17 @@ public class Loader {
 		loadTextureAtlas();
 		loadSound();
 		loadMaps();
+	}
+
+	/**
+	 * Starts loading the textures; it's only applicable to dynamic contexts.
+	 */
+	public void loadTextures() {
+		if (this.strategy == ManagementStrategy.DYNAMIC_TEXTURE_ATLAS) {
+			createTextureAtlas();
+			loadTextureAtlas();
+		}
+
 	}
 
 	/**
@@ -189,14 +242,13 @@ public class Loader {
 	// Disposal methods.
 
 	public void dispose() {
-		game.getAssets().dispose();
+		if (this.strategy == ManagementStrategy.STATIC_TEXTURE_ATLAS)
+			game.getAssets().dispose();
 
 		if (this.strategy == ManagementStrategy.DYNAMIC_TEXTURE_ATLAS) {
-			this.textures = null;
-			this.sounds = null;
-			this.rpgMaps = null;
-
-			Gdx.files.local("tmp").deleteDirectory();
+			disposeTextures();
+			disposeMaps();
+			disposeSounds();
 		}
 	}
 
@@ -270,7 +322,8 @@ public class Loader {
 		}
 
 		if (this.strategy == ManagementStrategy.DYNAMIC_TEXTURE_ATLAS) {
-			game.getAssets().load("tmp/tmp.atlas", TextureAtlas.class);
+			if (this.textures != null)
+				game.getAssets().load("tmp/tmp.atlas", TextureAtlas.class);
 		}
 	}
 
