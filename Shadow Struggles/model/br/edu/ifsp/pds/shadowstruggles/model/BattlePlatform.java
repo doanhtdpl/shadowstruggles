@@ -1,5 +1,7 @@
 package br.edu.ifsp.pds.shadowstruggles.model;
 
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Card;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Deck;
 import br.edu.ifsp.pds.shadowstruggles.model.enemies.Enemy;
 import br.edu.ifsp.pds.shadowstruggles.model.modifiers.Modifier;
 

@@ -1,5 +1,7 @@
-package br.edu.ifsp.pds.shadowstruggles.model;
+package br.edu.ifsp.pds.shadowstruggles.model.cards;
 
+import br.edu.ifsp.pds.shadowstruggles.model.BattleMap;
+import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.model.items.Item;
 import br.edu.ifsp.pds.shadowstruggles.scripts.CardAction;
 

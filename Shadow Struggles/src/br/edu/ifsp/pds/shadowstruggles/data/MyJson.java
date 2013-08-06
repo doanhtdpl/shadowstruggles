@@ -1,6 +1,11 @@
 package br.edu.ifsp.pds.shadowstruggles.data;
 
 import br.edu.ifsp.pds.shadowstruggles.model.*;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Card;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Deck;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Effect;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Fighter;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Trap;
 import br.edu.ifsp.pds.shadowstruggles.model.enemies.*;
 import br.edu.ifsp.pds.shadowstruggles.model.events.*;
 import br.edu.ifsp.pds.shadowstruggles.model.items.*;
@@ -8,12 +13,15 @@ import br.edu.ifsp.pds.shadowstruggles.model.items.Shop;
 import br.edu.ifsp.pds.shadowstruggles.model.modifiers.*;
 import br.edu.ifsp.pds.shadowstruggles.model.profiles.*;
 import br.edu.ifsp.pds.shadowstruggles.model.profiles.Player;
-import br.edu.ifsp.pds.shadowstruggles.model.profiles.Profile;
 import br.edu.ifsp.pds.shadowstruggles.model.quests.*;
 import br.edu.ifsp.pds.shadowstruggles.model.scenes.*;
 import br.edu.ifsp.pds.shadowstruggles.model.scenes.Scene;
 import br.edu.ifsp.pds.shadowstruggles.scripts.CardAction;
 import br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction;
+import br.edu.ifsp.pds.shadowstruggles.scripts.EletricCurrent1Action;
+import br.edu.ifsp.pds.shadowstruggles.scripts.HackingAction;
+import br.edu.ifsp.pds.shadowstruggles.scripts.MineralogyAction;
+import br.edu.ifsp.pds.shadowstruggles.scripts.RecoveryAction;
 
 import com.badlogic.gdx.utils.Json;
 
@@ -34,16 +42,25 @@ public class MyJson {
 			json.addClassTag("Languages", Languages.class);
 			json.addClassTag("MenuText", MenuText.class);
 			json.addClassTag("Settings", Settings.class);
-			
+
 			json.addClassTag("BattleMap", BattleMap.class);
 			json.addClassTag("BattlePlatform", BattlePlatform.class);
 			json.addClassTag("DefaultRules", DefaultRules.class);
 			json.addClassTag("TutorialDialog", TutorialDialog.class);
 
 			json.addClassTag("Card", Card.class);
-			json.addClassTag("CardAction", CardAction.class);
 			json.addClassTag("Deck", Deck.class);
+			json.addClassTag("Effect", Effect.class);
+			json.addClassTag("Fighter", Fighter.class);
+			json.addClassTag("Trap", Trap.class);
+
+			json.addClassTag("CardAction", CardAction.class);
 			json.addClassTag("DefaultAction", DefaultAction.class);
+			json.addClassTag("EletricCurrent1Action",
+					EletricCurrent1Action.class);
+			json.addClassTag("HackingAction", HackingAction.class);
+			json.addClassTag("MineralogyAction", MineralogyAction.class);
+			json.addClassTag("RecoveryAction", RecoveryAction.class);
 
 			json.addClassTag("Action", Action.class);
 			json.addClassTag("Condition", Condition.class);

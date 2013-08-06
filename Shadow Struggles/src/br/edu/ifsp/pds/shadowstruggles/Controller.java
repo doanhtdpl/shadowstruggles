@@ -2,10 +2,10 @@ package br.edu.ifsp.pds.shadowstruggles;
 
 import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
-import br.edu.ifsp.pds.shadowstruggles.model.Card;
-import br.edu.ifsp.pds.shadowstruggles.model.Effect;
-import br.edu.ifsp.pds.shadowstruggles.model.Fighter;
-import br.edu.ifsp.pds.shadowstruggles.model.Trap;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Effect;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Card;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Fighter;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Trap;
 import br.edu.ifsp.pds.shadowstruggles.object2d.BackCard;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Effect2D;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Fighter2D;

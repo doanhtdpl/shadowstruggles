@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import br.edu.ifsp.pds.shadowstruggles.model.BattleMap;
-import br.edu.ifsp.pds.shadowstruggles.model.Card;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Card;
 
 public class BattleMapTest {
 	

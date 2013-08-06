@@ -1,5 +1,8 @@
 package br.edu.ifsp.pds.shadowstruggles.model;
 
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Card;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Fighter;
+
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Json.Serializable;
@@ -19,7 +22,7 @@ public class BattleMap implements Serializable {
 
 	private int id;
 	private String name;
-	
+
 	private Array<Array<Array<Card>>> tiles;
 
 	public BattleMap() {
@@ -29,7 +32,7 @@ public class BattleMap implements Serializable {
 	public BattleMap(String string) {
 		this(1, string);
 	}
-	
+
 	public BattleMap(int id, String name) {
 		this.name = name;
 		this.tiles = new Array<Array<Array<Card>>>();
@@ -41,7 +44,6 @@ public class BattleMap implements Serializable {
 		}
 
 	}
-
 
 	@Override
 	public void write(Json json) {
@@ -86,7 +88,7 @@ public class BattleMap implements Serializable {
 			for (Array<Card> tiles : lanes) {
 				for (Card card : tiles) {
 					if (card.getClass().equals(Fighter.class))
-						if (card.direction == 1)
+						if (card.getDirection() == 1)
 							if (((Fighter) card).getTile()
 									+ ((Fighter) card).getRange() > 35)
 								lane = card.getLane();
@@ -106,7 +108,7 @@ public class BattleMap implements Serializable {
 		for (Array<Array<Card>> lanes : tiles) {
 			for (Array<Card> tiles : lanes) {
 				for (Card card : tiles) {
-					if (card.direction == -1)
+					if (card.getDirection() == -1)
 						if (((Fighter) card).getTile()
 								- ((Fighter) card).getRange() < 1)
 							lane = card.getLane();
@@ -126,7 +128,7 @@ public class BattleMap implements Serializable {
 		for (Array<Array<Card>> lanes : tiles) {
 			for (Array<Card> tiles : lanes) {
 				for (Card card : tiles) {
-					if (card.direction == 1)
+					if (card.getDirection() == 1)
 						cards.add(card);
 				}
 			}
@@ -144,7 +146,7 @@ public class BattleMap implements Serializable {
 		for (Array<Array<Card>> lanes : tiles) {
 			for (Array<Card> tiles : lanes) {
 				for (Card card : tiles) {
-					if (card.direction == -1)
+					if (card.getDirection() == -1)
 						cards.add(card);
 				}
 			}

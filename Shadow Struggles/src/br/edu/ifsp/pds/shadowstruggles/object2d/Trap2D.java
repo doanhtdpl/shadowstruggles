@@ -4,7 +4,7 @@ import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.data.Settings;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
-import br.edu.ifsp.pds.shadowstruggles.model.Trap;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Trap;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;

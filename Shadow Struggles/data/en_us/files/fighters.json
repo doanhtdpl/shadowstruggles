@@ -1,7 +1,7 @@
 [
 
 	
-{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
+{"class":"Fighter",
 	"name":"DR-002",
 	"nameVisualization":"DR-002",
 	"energyCost":10,
@@ -10,9 +10,9 @@
 	"speed":"FAST","range":1,
 	"hasEffect":false,"size":"MEDIUM","attackDelay":"FAST",
 	"preRequisites":[],
-	"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction"}
+	"Action":{"class":"DefaultAction"}
 	},
-	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
+	{"class":"Fighter",
 	"name":"Broomy",
 	"nameVisualization":"Broomy",
 	"energyCost":25,
@@ -21,9 +21,9 @@
 	"speed":"NORMAL","range":1,
 	"hasEffect":false,"size":"MEDIUM","attackDelay":"NORMAL",
 	"preRequisites":[],
-	"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction"}
+	"Action":{"class":"DefaultAction"}
 	},
-	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
+	{"class":"Fighter",
 	"name":"Golem",
 	"nameVisualization":"Golem",
 	"energyCost":40,
@@ -32,10 +32,10 @@
 	"speed":"SLOW","range":1,
 	"hasEffect":false,"size":"MEDIUM","attackDelay":"SLOW",
 	"preRequisites":["Mineralogy"]	,
-	"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction"}
+	"Action":{"class":"DefaultAction"}
 	},
 	
-	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
+	{"class":"Fighter",
 	"name":"scrap_boy",
 	"nameVisualization":"Scrap Boy",
 	"energyCost":35,
@@ -44,9 +44,9 @@
 	"speed":"NORMAL","range":1,
 	"hasEffect":false,"size":"MEDIUM","attackDelay":"NORMAL",
 	"preRequisites":["Mineralogy"],
-	"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction"}
+	"Action":{"class":"DefaultAction"}
 	},
-	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
+	{"class":"Fighter",
 	"name":"DR-003",
 	"nameVisualization":"DR-003",
 	"energyCost":35,
@@ -55,9 +55,9 @@
 	"speed":"NORMAL","range":3,
 	"hasEffect":false,"size":"MEDIUM","attackDelay":"NORMAL",
 	"preRequisites":[],
-	"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction"}
+	"Action":{"class":"DefaultAction"}
 	},
-{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
+{"class":"Fighter",
 	"name":"DR-004",
 	"nameVisualization":"DR-004",
 	"energyCost":45,
@@ -66,9 +66,9 @@
 	"speed":"NORMAL","range":1,
 	"hasEffect":false,"size":"LARGE","attackDelay":"NORMAL",
 	"preRequisites":[],
-	"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction"}
+	"Action":{"class":"DefaultAction"}
 	},
-	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
+	{"class":"Fighter",
 	"name":"DR-000",
 	"nameVisualization":"DR-000",
 	"energyCost":55,
@@ -77,9 +77,9 @@
 	"speed":"FAST","range":1,
 	"hasEffect":false,"size":"LARGE","attackDelay":"FAST",
 	"preRequisites":[],
-	"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction"}
+	"Action":{"class":"DefaultAction"}
 	},
-{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
+{"class":"Fighter",
 	"name":"Rock",
 	"nameVisualization":"Rock",
 	"energyCost":5,
@@ -88,7 +88,7 @@
 	"speed":0,"range":0,
 	"hasEffect":false,"size":"SMALL","attackDelay":"FAST",
 	"preRequisites":["Mineralogy"],
-	"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction"}
+	"Action":{"class":"DefaultAction"}
 	}
 	
 	

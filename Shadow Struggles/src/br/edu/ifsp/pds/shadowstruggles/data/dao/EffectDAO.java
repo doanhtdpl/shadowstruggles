@@ -1,7 +1,8 @@
 package br.edu.ifsp.pds.shadowstruggles.data.dao;
 
 import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
-import br.edu.ifsp.pds.shadowstruggles.model.Effect;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Effect;
+
 import com.badlogic.gdx.utils.Array;
 
 /**

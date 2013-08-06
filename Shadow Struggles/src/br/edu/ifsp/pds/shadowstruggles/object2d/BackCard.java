@@ -2,7 +2,7 @@ package br.edu.ifsp.pds.shadowstruggles.object2d;
 
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
-import br.edu.ifsp.pds.shadowstruggles.model.Card;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Card;
 
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;

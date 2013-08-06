@@ -1,4 +1,4 @@
-[{"class":"br.edu.ifsp.pds.shadowstruggles.model.Trap",
+[{"class":"br.edu.ifsp.pds.shadowstruggles.model.cards.Trap",
 "name":"Electric_Current_Level_One",
 "nameVisualization":"Corrente Elétrica nível 1",
 "energyCost":25,
@@ -9,7 +9,7 @@
 "isActivated":false,
 "Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.EletricCurrent1Action"}
 },
-{"class":"br.edu.ifsp.pds.shadowstruggles.model.Trap",
+{"class":"br.edu.ifsp.pds.shadowstruggles.model.cards.Trap",
 "name":"Hacking",
 "nameVisualization":"Hacking",
 "energyCost":45,

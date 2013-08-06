@@ -6,9 +6,9 @@ import org.junit.Test;
 
 import com.badlogic.gdx.utils.Array;
 
-import br.edu.ifsp.pds.shadowstruggles.model.Card;
-import br.edu.ifsp.pds.shadowstruggles.model.Fighter;
 import br.edu.ifsp.pds.shadowstruggles.model.BattleMap;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Card;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Fighter;
 import br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction;
 
 public class MapTest {

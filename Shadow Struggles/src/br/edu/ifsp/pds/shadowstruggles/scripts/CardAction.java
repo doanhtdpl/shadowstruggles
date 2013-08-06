@@ -1,7 +1,7 @@
 package br.edu.ifsp.pds.shadowstruggles.scripts;
 
 import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
-import br.edu.ifsp.pds.shadowstruggles.model.Card;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Card;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Json;

@@ -3,7 +3,7 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.DeckDAO;
-import br.edu.ifsp.pds.shadowstruggles.model.Card;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Card;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Arrow;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 

@@ -4,7 +4,7 @@ import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.data.Settings;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
-import br.edu.ifsp.pds.shadowstruggles.model.Fighter;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Fighter;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.graphics.g2d.Animation;

@@ -2,6 +2,10 @@ package br.edu.ifsp.pds.shadowstruggles.model;
 
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Card;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Effect;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Fighter;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Trap;
 
 import com.badlogic.gdx.utils.Array;
 

@@ -4,10 +4,10 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
-import br.edu.ifsp.pds.shadowstruggles.model.Card;
-import br.edu.ifsp.pds.shadowstruggles.model.Deck;
 import br.edu.ifsp.pds.shadowstruggles.model.DefaultRules;
 import br.edu.ifsp.pds.shadowstruggles.model.BattleMap;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Card;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Deck;
 
 public class BattlePlatformTest {
 	

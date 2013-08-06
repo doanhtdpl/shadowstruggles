@@ -1,4 +1,4 @@
-[{"class":"br.edu.ifsp.pds.shadowstruggles.model.Effect",
+[{"class":"Effect",
 "name":"Reconnect_Circuits",
 "nameVisualization":"Reconnect Circuits",
 "energyCost":15,
@@ -8,8 +8,8 @@
 "isImmediateEffect":true,
 "isActivated":false,
 "onFighter":false,
-"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.RecoveryAction"}},
-{"class":"br.edu.ifsp.pds.shadowstruggles.model.Effect",
+"Action":{"class":"RecoveryAction"}},
+{"class":"Effect",
 "name":"Mineralogy",
 "nameVisualization":"Mineralogy",
 "energyCost":25,
@@ -19,5 +19,5 @@
 "isImmediateEffect":true,
 "isActivated":true,
 "onFighter":false,
-"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.MineralogyAction"}}
+"Action":{"class":"MineralogyAction"}}
 ]

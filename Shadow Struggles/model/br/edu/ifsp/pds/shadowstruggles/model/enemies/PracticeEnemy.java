@@ -3,8 +3,8 @@ package br.edu.ifsp.pds.shadowstruggles.model.enemies;
 import com.badlogic.gdx.math.MathUtils;
 
 import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
-import br.edu.ifsp.pds.shadowstruggles.model.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.BattleMap;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Card;
 import br.edu.ifsp.pds.shadowstruggles.screens.BattleScreen;
 
 public class PracticeEnemy extends Enemy {
