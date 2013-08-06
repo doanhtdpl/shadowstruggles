@@ -11,12 +11,15 @@ import br.edu.ifsp.pds.shadowstruggles.object2d.Trap2D;
 import br.edu.ifsp.pds.shadowstruggles.screens.BattleScreen;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.JsonValue;
+import com.badlogic.gdx.utils.Json.Serializable;
 
 /***
  * A representation of an enemy.
  */
 // TODO: Alterar modelo do inimigo.
-public abstract class Enemy {
+public abstract class Enemy implements Serializable {
 
 	protected float delay;
 
@@ -55,5 +58,13 @@ public abstract class Enemy {
 		card.setImage(cardImage);
 		platform.getMap().addCard(card, tile, lane);
 		screen.addGameObject(cardImage);
+	}
+	
+	@Override
+	public void write(Json json) {
+	}
+	
+	@Override
+	public void read(Json json, JsonValue jsonData) {
 	}
 }

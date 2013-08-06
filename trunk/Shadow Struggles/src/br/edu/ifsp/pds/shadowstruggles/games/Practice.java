@@ -17,7 +17,7 @@ import br.edu.ifsp.pds.shadowstruggles.screens.BattleScreen;
 
 public class Practice extends BattleScreen {
 
-	public Practice(ShadowStruggles game, boolean isInCampaign) {
+	public Practice(ShadowStruggles game, BattlePlatform platform, boolean isInCampaign) {
 		super(
 				game,
 				game.getProfile(),
@@ -32,7 +32,7 @@ public class Practice extends BattleScreen {
 	}
 
 	public BaseScreen copy() {
-		return new Practice(this.game, this.isInCampaign);
+		return new Practice(this.game, this.battlePlatform, this.isInCampaign);
 	}
 
 }

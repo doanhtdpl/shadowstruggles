@@ -2,6 +2,8 @@ package br.edu.ifsp.pds.shadowstruggles.data;
 
 import com.badlogic.gdx.utils.ObjectMap;
 
+import br.edu.ifsp.pds.shadowstruggles.model.BattleMap;
+import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.model.Deck;
 import br.edu.ifsp.pds.shadowstruggles.model.Effect;
 import br.edu.ifsp.pds.shadowstruggles.model.Fighter;
@@ -34,7 +36,7 @@ public class FileMap {
 		resourcesToDirectory.put("sound_effects", "data/audio/sound_effects/");
 		resourcesToDirectory.put("soundtrack", "data/audio/soundtrack/");
 
-		// classToFile.put(BattlePlatform.class, "data/files/battles.json");
+		classToFile.put(BattleMap.class, "data/files/battle_maps.json");
 		classToFile.put(Fighter.class, "data/files/fighters.json");
 		classToFile.put(Effect.class, "data/files/effects.json");
 		classToFile.put(Trap.class, "data/files/traps.json");
@@ -67,5 +69,6 @@ public class FileMap {
 		globalClassToFile.put(Languages.class, "data/languages.json");
 		globalClassToFile.put(Settings.class, "data/game_settings.json");
 		globalClassToFile.put(Profile.class, "data/profiles.json");
+		globalClassToFile.put(BattlePlatform.class, "data/battles.json");
 	}
 }

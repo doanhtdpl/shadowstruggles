@@ -1,55 +1,119 @@
 package br.edu.ifsp.pds.shadowstruggles.model;
 
 import br.edu.ifsp.pds.shadowstruggles.model.enemies.Enemy;
+import br.edu.ifsp.pds.shadowstruggles.model.modifiers.Modifier;
 
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.Json.Serializable;
+import com.badlogic.gdx.utils.JsonValue;
 
 /**
  * A BattlePlatform object storages all the information regarding a battle: the
  * players' decks, the map and the cards placed on it, the rules being applied
  * etc.
  */
-public class BattlePlatform {
-
-	private int id;	
-	private Deck playerDeck;
-	private Deck enemyDeck;
+public class BattlePlatform implements Serializable {
+	// Persistent data.
+	private int id;
+	private Enemy enemy;
+	private Array<Modifier> rewards;
 	private BattleMap map;
 	private DefaultRules rules;
+	private boolean tutorial;
+
+	// Input data (decks from the players).
+	private Deck playerDeck;
+	private Deck enemyDeck;
+
+	// Real-time updated data for ongoing matches.
 	private Array<Card> playerDestroyedCards;
 	private Array<Card> enemyDestroyedCards;
 	private Card selectedCard;
 	private Array<Card> playerHandCards;
 	private Array<Card> enemyHandCards;
-	private Field PlayerField;
-	private Field EnemyField;
-	private Enemy enemy;
-	private boolean tutorial;
+	private Field playerField;
+	private Field enemyField;
+
+	public BattlePlatform() {
+		this(new Deck(), new Deck(), new BattleMap(), new DefaultRules());
+	}
+
+	public BattlePlatform(Deck playerDeck, Deck enemyDeck, BattleMap map,
+			DefaultRules rules) {
+		this(playerDeck, enemyDeck, map, rules, null);
+	}
 
 	public BattlePlatform(Deck playerDeck, Deck enemyDeck, BattleMap map,
 			DefaultRules rules, Enemy enemy) {
-		super();
-		this.playerDeck = playerDeck;
-		this.enemyDeck = enemyDeck;
-		this.map = map;
-		this.rules = rules;
-		this.playerHandCards = new Array<Card>();
-		this.enemyHandCards = new Array<Card>();
-		this.PlayerField = new Field();
-		this.EnemyField = new Field();
-		this.enemy = enemy;
+		this(playerDeck, enemyDeck, map, rules, enemy, 1, null, false);
 	}
+
 	public BattlePlatform(Deck playerDeck, Deck enemyDeck, BattleMap map,
-			DefaultRules rules) {
-		super();
-		this.playerDeck = playerDeck;
-		this.enemyDeck = enemyDeck;
+			DefaultRules rules, Enemy enemy, int id, Array<Modifier> rewards,
+			boolean tutorial) {
+		this.enemy = enemy;
 		this.map = map;
 		this.rules = rules;
+		this.id = id;
+		this.rewards = rewards;
+		this.tutorial = tutorial;
+
+		this.playerDeck = playerDeck;
+		this.enemyDeck = enemyDeck;
+
 		this.playerHandCards = new Array<Card>();
 		this.enemyHandCards = new Array<Card>();
-		this.PlayerField = new Field();
-		this.EnemyField = new Field();		
+		this.playerField = new Field();
+		this.enemyField = new Field();
+	}
+
+	/**
+	 * Checks for a card on the enemy hand.
+	 */
+	public boolean cardOnEnemyHand(String cardName) {
+		boolean b = false;
+		for (Card c : enemyHandCards) {
+			if (c.getName().equals(cardName)) {
+				b = true;
+			}
+		}
+		return b;
+	}
+
+	/**
+	 * Gets a card from the enemy hand.
+	 */
+	public Card getCardFromEnemy(String string) {
+		Card c = null;
+		for (Card card : enemyHandCards) {
+			if (card.getName().equals(string)) {
+				c = card;
+				break;
+			}
+		}
+		return c;
+	}
+
+	@Override
+	public void write(Json json) {
+		json.writeValue("id", this.id);
+		json.writeValue("enemy", this.enemy);
+		json.writeValue("rewards", this.rewards);
+		json.writeValue("map", this.map);
+		json.writeValue("rules", this.rules);
+		json.writeValue("tutorial", this.tutorial);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public void read(Json json, JsonValue jsonData) {
+		this.id = json.readValue("id", Integer.class, jsonData);
+		this.enemy = json.readValue("enemy", Enemy.class, jsonData);
+		this.rewards = json.readValue("rewards", Array.class, jsonData);
+		this.map = json.readValue("map", BattleMap.class, jsonData);
+		this.rules = json.readValue("rules", DefaultRules.class, jsonData);
+		this.tutorial = json.readValue("tutorial", Boolean.class, jsonData);
 	}
 
 	public void addPlayerHandCard(Card card) {
@@ -125,19 +189,19 @@ public class BattlePlatform {
 	}
 
 	public Field getPlayerField() {
-		return PlayerField;
+		return playerField;
 	}
 
 	public void setPlayerField(Field playerField) {
-		PlayerField = playerField;
+		this.playerField = playerField;
 	}
 
 	public Field getEnemyField() {
-		return EnemyField;
+		return enemyField;
 	}
 
 	public void setEnemyField(Field enemyField) {
-		EnemyField = enemyField;
+		this.enemyField = enemyField;
 	}
 
 	public void setPlayerHandCards(Array<Card> playerHandCards) {
@@ -148,35 +212,6 @@ public class BattlePlatform {
 		this.enemyHandCards = enemyHandCards;
 	}
 
-	/**
-	 * Verifies if there is any card on enemy hand
-	 * 
-	 * @param card
-	 *            Card object used to compare to enemyHandCards
-	 * @return boolean true: There is a card on enemy hand false: there is no
-	 *         card on enemy hand
-	 */
-     public boolean cardOnEnemyHand(String cardName) { 
-		boolean b = false;
-		for (Card c : enemyHandCards) {
-			if (c.getName().equals(cardName)) {
-				b = true;
-			}
-		}
-		return b;
-	}
-
-	public Card getCardFromEnemy(String string) {
-		Card c = null;
-		for (Card card : enemyHandCards) {
-			if (card.getName().equals(string)) {
-				c = card;
-				break;
-			}
-		}
-		return c;
-	}
-
 	public Enemy getEnemy() {
 		return enemy;
 	}
@@ -185,4 +220,7 @@ public class BattlePlatform {
 		this.enemy = enemy;
 	}
 
+	public int getId() {
+		return this.id;
+	}
 }

@@ -1,18 +1,21 @@
 package br.edu.ifsp.pds.shadowstruggles.model;
 
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.Json.Serializable;
+import com.badlogic.gdx.utils.JsonValue;
+
 import br.edu.ifsp.pds.shadowstruggles.data.Settings;
 
 /***
- * Basic set of rules for any match, including the rules/logic for determining victory or defeat.
- * Matches with special conditions may extend this class.
+ * Basic set of rules for any match, including the rules/logic for determining
+ * victory or defeat. Matches with special conditions may extend this class.
  */
-public class DefaultRules {
+public class DefaultRules implements Serializable {
 
 	public static final String ONGOING_GAME = "The game is still ongoing";
 	public static final String PLAYER_VICTORY = "The player has won";
 	public static final String ENEMY_VICTORY = "The enemy has won";
 
-	private float timer = 15 * 60;
 	private int playerHP;
 	private int enemyHP;
 	private int playerHPmax;
@@ -24,10 +27,12 @@ public class DefaultRules {
 	private int playerEnergyMax;
 	private int enemyEnergyMax;
 
+	private float timer = 15 * 60;
+
 	public DefaultRules() {
 		this(new Settings());
 	}
-	
+
 	public DefaultRules(Settings settings) {
 
 		this.playerHPmax = settings.playerMaxHP;
@@ -60,6 +65,41 @@ public class DefaultRules {
 		this.enemyEnergyMax = settings.enemyMaxEnergy;
 	}
 
+	@Override
+	public void write(Json json) {
+		json.writeValue("playerHP", this.playerHP);
+		json.writeValue("enemyHP", this.enemyHP);
+		json.writeValue("playerHPmax", this.playerHPmax);
+		json.writeValue("enemyHPmax", this.enemyHPmax);
+		json.writeValue("playerRemainingCards", this.playerRemainingCards);
+		json.writeValue("enemyRemainingCards", this.enemyRemainingCards);
+		json.writeValue("playerEnergy", this.playerEnergy);
+		json.writeValue("enemyEnergy", this.enemyEnergy);
+		json.writeValue("playerEnergyMax", this.playerEnergyMax);
+		json.writeValue("enemyEnergyMax", this.enemyEnergyMax);
+	}
+
+	@Override
+	public void read(Json json, JsonValue jsonData) {
+		this.playerHP = json.readValue("playerHP", Integer.class, jsonData);
+		this.enemyHP = json.readValue("enemyHP", Integer.class, jsonData);
+		this.playerHPmax = json.readValue("playerHPmax", Integer.class,
+				jsonData);
+		this.enemyHPmax = json.readValue("enemyHPmax", Integer.class, jsonData);
+		this.playerRemainingCards = json.readValue("playerRemainingCards",
+				Integer.class, jsonData);
+		this.enemyRemainingCards = json.readValue("enemyRemainingCards",
+				Integer.class, jsonData);
+		this.playerEnergy = json.readValue("playerEnergy", Integer.class,
+				jsonData);
+		this.enemyEnergy = json.readValue("enemyEnergy", Integer.class,
+				jsonData);
+		this.playerEnergyMax = json.readValue("playerEnergyMax", Integer.class,
+				jsonData);
+		this.enemyEnergyMax = json.readValue("enemyEnergyMax", Integer.class,
+				jsonData);
+	}
+
 	/**
 	 * This method should be called to update the timer whenever the interface
 	 * is updated.
@@ -77,13 +117,13 @@ public class DefaultRules {
 	}
 
 	/**
-	 * Gets the game state according to the object's parameters. The loser
-	 * of a match is the one whose life or cards are completely depleted first or
-	 * the one whose life is lesser than the opponent's when the time is over.
-	 * In case of a draw, the human player wins.
+	 * Gets the game state according to the object's parameters. The loser of a
+	 * match is the one whose life or cards are completely depleted first or the
+	 * one whose life is lesser than the opponent's when the time is over. In
+	 * case of a draw, the human player wins.
 	 * 
-	 * @return A string describing the state. Its possible values
-	 * are specified by static parameters.
+	 * @return A string describing the state. Its possible values are specified
+	 *         by static parameters.
 	 */
 
 	public String gameState() {
@@ -95,9 +135,9 @@ public class DefaultRules {
 			else if (this.enemyHP <= 0 || this.enemyRemainingCards <= 0)
 				state = PLAYER_VICTORY;
 		} else {
-			if(this.playerHP < this.enemyHP)
+			if (this.playerHP < this.enemyHP)
 				state = ENEMY_VICTORY;
-			else if(this.playerHP > this.enemyHP)
+			else if (this.playerHP > this.enemyHP)
 				state = PLAYER_VICTORY;
 			else
 				state = ONGOING_GAME;
@@ -189,5 +229,4 @@ public class DefaultRules {
 	public float getTimer() {
 		return this.timer;
 	}
-
 }
