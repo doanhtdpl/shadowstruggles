@@ -4,6 +4,7 @@ import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
 import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
+import br.edu.ifsp.pds.shadowstruggles.data.Loader.Asset;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.cards.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.cards.Deck;
@@ -217,6 +218,31 @@ public class EditDeckScreen extends BaseScreen {
 		stage.addActor(leftButtonTable);
 		stage.addActor(rightButtonTable);
 
+	}
+
+	@Override
+	public Array<Asset> texturesToLoad() {
+		Array<Asset> assets = new Array<Asset>();
+		// Array for keeping track of cards, making sure that there are no
+		// duplicates.
+		Array<String> previousCards = new Array<String>();
+
+		for (Card c : trunk) {
+			if (!previousCards.contains(c.getName(), false)) {
+				assets.add(new Asset(c.getName() + ".png", "cards"));
+				previousCards.add(c.getName());
+			}
+		}
+		for (Deck d : playerDecks) {
+			for (Card c : d.getCards()) {
+				if (!previousCards.contains(c.getName(), false)) {
+					assets.add(new Asset(c.getName() + ".png", "cards"));
+					previousCards.add(c.getName());
+				}
+			}
+		}
+
+		return assets;
 	}
 
 	private void createDeck() {

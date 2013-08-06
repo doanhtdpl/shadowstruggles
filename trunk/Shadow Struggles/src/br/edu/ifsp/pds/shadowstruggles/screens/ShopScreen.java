@@ -3,6 +3,7 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
+import br.edu.ifsp.pds.shadowstruggles.data.Loader.Asset;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.ProfileDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.Shop;
@@ -144,8 +145,9 @@ public class ShopScreen extends BaseScreen {
 		cardsTable.setPosition(570, 200);
 
 		Array<Card> cards = shop.getAvailableCards();
-		// Auxiliary variable for adding rows in the table as necessary.
-		int aux = 0;
+		// Auxiliary variables for adding rows in the table as necessary
+		// (according to the maximum amount of columns).
+		int cols = 0, maxCols = 3;
 		for (final Card card : cards) {
 			Image cardImage = new Image(game.getTextureRegion(card.getName()
 					.toLowerCase(), "cards"));
@@ -183,12 +185,12 @@ public class ShopScreen extends BaseScreen {
 			cardTable.row().height(40);
 			cardTable.add(price);
 
-			if (aux == 3) {
+			if (cols == maxCols) {
 				cardsTable.row();
-				aux = 0;
+				cols = 0;
 			}
 			cardsTable.add(cardTable);
-			aux++;
+			cols++;
 		}
 		stage.addActor(cardsTable);
 
@@ -226,6 +228,17 @@ public class ShopScreen extends BaseScreen {
 
 		stage.addActor(leftButtonTable);
 		stage.addActor(rightButtonTable);
+	}
+
+	@Override
+	public Array<Asset> texturesToLoad() {
+		Array<Asset> assets = new Array<Asset>();
+
+		for (Card card : this.shop.getAvailableCards()) {
+			assets.add(new Asset(card.getName() + ".png", "cards"));
+		}
+
+		return assets;
 	}
 
 	/**

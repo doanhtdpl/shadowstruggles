@@ -3,6 +3,7 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.data.FileMap;
+import br.edu.ifsp.pds.shadowstruggles.data.Loader.Asset;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -14,6 +15,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.utils.Array;
 
 public abstract class BaseScreen implements Screen {
 	protected static final int BACKGROUND_Y = 160;
@@ -59,6 +61,16 @@ public abstract class BaseScreen implements Screen {
 		this.camera.zoom = ((float) 960 / (float) width);
 		this.camera.position.x = CAMERA_INITIAL_X;
 		this.stage.setCamera(camera);
+	}
+
+	/**
+	 * Specifies the particular textures which must be loaded for this screen.
+	 * 
+	 * @return The default return is null.
+	 */
+	public Array<Asset> texturesToLoad() {
+		Array<Asset> assets = null;
+		return assets;
 	}
 
 	public Skin getSkin() {
