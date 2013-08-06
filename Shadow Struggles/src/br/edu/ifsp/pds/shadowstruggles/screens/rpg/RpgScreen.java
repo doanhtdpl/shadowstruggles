@@ -2,6 +2,7 @@ package br.edu.ifsp.pds.shadowstruggles.screens.rpg;
 
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.data.Loader.Asset;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character.WalkDirection;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.AStarPathFinder;
@@ -17,6 +18,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.utils.Array;
 
 /**
  * The main screen of the RPG World. It gets the user input and sends the
@@ -25,7 +27,6 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 public class RpgScreen extends BaseScreen implements InputProcessor {
 	private SpriteBatch batch;
 	private RpgController rpgController;
-	private Character2D character2d;
 	private OrthogonalTiledMapRenderer renderer;
 	private ObjectRenderer objectRenderer;
 
@@ -50,9 +51,6 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		rpgController.setViewer(this);
 		this.rpgController = rpgController;
 
-		character2d = new Character2D(rpgController.getModel().getCharacter(),
-				game);
-
 		finder = new AStarPathFinder(rpgController.getModel().getRpgMap(), 500,
 				false, new ManhattanHeuristic(1));
 
@@ -61,11 +59,19 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		renderer = new OrthogonalTiledMapRenderer(rpgController.getMap(),
 				unitScale);
 		objectRenderer = new ObjectRenderer(batch, rpgController.getModel()
-				.getRpgMap(), stage, game, character2d);
-
-		this.stage.addActor(character2d);
+				.getRpgMap(), stage, game, this.rpgController.getModel()
+				.getCharacter());
+		objectRenderer.prepareCharacters();
 
 		this.rpgController.runAutomaticEvents();
+	}
+
+	@Override
+	public Array<Asset> texturesToLoad() {
+		Array<Asset> assets = objectRenderer.texturesToLoad();
+		if (assets.size == 0)
+			return null;
+		return assets;
 	}
 
 	/**
@@ -88,7 +94,6 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	public void dispose() {
 		super.dispose();
 		batch.dispose();
-		character2d.dispose();
 	}
 
 	public void update(float delta) {
@@ -121,7 +126,7 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	 * representation (walking event).
 	 */
 	public void moveCharacter2d(WalkDirection direction) {
-		character2d.move(direction);
+		objectRenderer.getPlayerCharacter().move(direction);
 	}
 
 	/**
@@ -129,14 +134,15 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	 * representation (direction change event).
 	 */
 	public void turnCharacter2d(WalkDirection direction) {
-		character2d.setWalking(false);
-		character2d.setDirection(direction);
+		objectRenderer.getPlayerCharacter().setWalking(false);
+		objectRenderer.getPlayerCharacter().setDirection(direction);
 	}
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		int[] currentPos = pixelsToTile((int) character2d.getX(),
-				Gdx.graphics.getHeight() - (int) character2d.getY() - 1);
+		int[] currentPos = pixelsToTile((int) objectRenderer
+				.getPlayerCharacter().getX(), Gdx.graphics.getHeight()
+				- (int) objectRenderer.getPlayerCharacter().getY() - 1);
 		int[] destinationPos = pixelsToTile(screenX, screenY);
 
 		path = finder.findPath(rpgController.getModel().getCharacter()
@@ -159,7 +165,7 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	}
 
 	public Character2D getCharacter2d() {
-		return this.character2d;
+		return this.objectRenderer.getPlayerCharacter();
 	}
 
 	@Override
