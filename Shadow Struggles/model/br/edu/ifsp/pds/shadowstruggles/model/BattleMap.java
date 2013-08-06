@@ -1,6 +1,9 @@
 package br.edu.ifsp.pds.shadowstruggles.model;
 
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.Json.Serializable;
+import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.OrderedMap;
 
 /**
@@ -10,14 +13,24 @@ import com.badlogic.gdx.utils.OrderedMap;
  * cards on each tile.
  */
 
-public class BattleMap {
+public class BattleMap implements Serializable {
 	public static final int HUMAN_PLAYER = 1;
 	public static final int COMPUTER_PLAYER = -1;
 
-	private Array<Array<Array<Card>>> tiles;
+	private int id;
 	private String name;
+	
+	private Array<Array<Array<Card>>> tiles;
 
-	public BattleMap(String name) {
+	public BattleMap() {
+		this("");
+	}
+
+	public BattleMap(String string) {
+		this(1, string);
+	}
+	
+	public BattleMap(int id, String name) {
 		this.name = name;
 		this.tiles = new Array<Array<Array<Card>>>();
 		for (int i = 0; i < 50; i++) {
@@ -27,6 +40,19 @@ public class BattleMap {
 			}
 		}
 
+	}
+
+
+	@Override
+	public void write(Json json) {
+		json.writeValue("id", this.id);
+		json.writeValue("name", this.name);
+	}
+
+	@Override
+	public void read(Json json, JsonValue jsonData) {
+		this.id = json.readValue("id", Integer.class, jsonData);
+		this.name = json.readValue("name", String.class, jsonData);
 	}
 
 	/***

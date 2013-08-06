@@ -23,7 +23,7 @@ public class Battle {
 	public Battle(ShadowStruggles game, Player player1, Player player2,
 			boolean isInCampaign) {
 		this.platform = new BattlePlatform(player1.getDeck(),
-				player2.getDeck(), new BattleMap(""), new DefaultRules(
+				player2.getDeck(), new BattleMap(), new DefaultRules(
 						SettingsDAO.getSettings()));
 		this.game = game;
 		this.map = platform.getMap();

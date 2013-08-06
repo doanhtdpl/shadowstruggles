@@ -35,6 +35,7 @@ public class MyJson {
 			json.addClassTag("MenuText", MenuText.class);
 			json.addClassTag("Settings", Settings.class);
 			
+			json.addClassTag("BattleMap", BattleMap.class);
 			json.addClassTag("BattlePlatform", BattlePlatform.class);
 			json.addClassTag("DefaultRules", DefaultRules.class);
 			json.addClassTag("TutorialDialog", TutorialDialog.class);
