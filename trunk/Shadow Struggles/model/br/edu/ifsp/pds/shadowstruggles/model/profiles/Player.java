@@ -1,6 +1,6 @@
 package br.edu.ifsp.pds.shadowstruggles.model.profiles;
 
-import br.edu.ifsp.pds.shadowstruggles.model.Deck;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Deck;
 
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;

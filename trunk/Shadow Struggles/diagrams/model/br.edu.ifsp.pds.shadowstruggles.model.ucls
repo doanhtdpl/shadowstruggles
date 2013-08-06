@@ -7,18 +7,18 @@
     <position height="441" width="237" x="454" y="2025"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.Fighter" project="ShadowStruggles" 
-    file="/ShadowStruggles/model/br/edu/ifsp/pds/shadowstruggles/model/Fighter.java" binary="false" 
+  <class id="2" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.cards.Fighter" project="ShadowStruggles" 
+    file="/ShadowStruggles/model/br/edu/ifsp/pds/shadowstruggles/model/cards/Fighter.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="999" width="475" x="1183" y="986"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
   <class id="3" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.Scene" project="ShadowStruggles" 
@@ -26,8 +26,8 @@
     <position height="477" width="173" x="231" y="2025"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
   <class id="4" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.Battle" project="ShadowStruggles" 
@@ -35,17 +35,18 @@
     <position height="279" width="253" x="602" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.Trap" project="ShadowStruggles" 
-    file="/ShadowStruggles/model/br/edu/ifsp/pds/shadowstruggles/model/Trap.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="5" language="java" name="br.edubr.edu.ifsp.pds.shadowstruggles.model.cards.Trap" project="ShadowStruggles" 
+    file="/ShadowStruggles/model/br/edu/ifsp/pds/shadowstruggles/model/cards/Trap.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="315" width="341" x="1698" y="986"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
   <class id="6" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.Player" project="ShadowStruggles" 
@@ -53,8 +54,8 @@
     <position height="441" width="201" x="602" y="986"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
   <class id="7" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.TutorialDialog" project="ShadowStruggles" 
@@ -63,8 +64,8 @@
     <position height="513" width="293" x="41" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
   <class id="8" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.Shop" project="ShadowStruggles" 
@@ -72,8 +73,8 @@
     <position height="171" width="188" x="374" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
   <class id="9" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.Effect" project="ShadowStruggles" 
@@ -81,8 +82,8 @@
     <position height="351" width="344" x="2079" y="986"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
   <class id="10" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform" project="ShadowStruggles" 
@@ -91,8 +92,8 @@
     <position height="729" width="300" x="843" y="986"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
   <class id="11" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.Profile" project="ShadowStruggles" 
@@ -101,8 +102,8 @@
     <position height="549" width="310" x="231" y="986"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
   <class id="12" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.Field" project="ShadowStruggles" 
@@ -110,26 +111,28 @@
     <position height="135" width="197" x="731" y="2025"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.Card" project="ShadowStruggles" 
-    file="/ShadowStruggles/model/br/edu/ifsp/pds/shadowstruggles/model/Card.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="13" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.cards.Card" project="ShadowStruggles" 
+    file="/ShadowStruggles/model/br/edu/ifsp/pds/shadowstruggles/model/cards/Card.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="909" width="301" x="1183" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.Deck" project="ShadowStruggles" 
-    file="/ShadowStruggles/model/br/edu/ifsp/pds/shadowstruggles/model/Deck.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="14" language="java" name="br.edubr.edu.ifsp.pds.shadowstruggles.model.cards.Deck" project="ShadowStruggles" 
+    file="/ShadowStruggles/model/br/edu/ifsp/pds/shadowstruggles/model/cards/Deck.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="477" width="180" x="968" y="2025"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
   <class id="15" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.DefaultRules" project="ShadowStruggles" 
@@ -138,8 +141,8 @@
     <position height="783" width="218" x="1188" y="2025"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
   <association id="16">    
@@ -293,8 +296,8 @@
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     accessors="true" visibility="true">    
-    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
-    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
   </classifier-display>  
   <association-display labels="true" multiplicity="true"/>
 </class-diagram>

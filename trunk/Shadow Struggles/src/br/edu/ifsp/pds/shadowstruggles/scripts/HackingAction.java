@@ -1,8 +1,8 @@
 package br.edu.ifsp.pds.shadowstruggles.scripts;
 
 import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
-import br.edu.ifsp.pds.shadowstruggles.model.Card;
-import br.edu.ifsp.pds.shadowstruggles.model.Fighter;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Card;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Fighter;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Fighter2D;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Trap2D;
 

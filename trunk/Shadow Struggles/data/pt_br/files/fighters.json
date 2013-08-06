@@ -1,7 +1,7 @@
 [
 
 	
-{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
+{"class":"br.edu.ifsp.pds.shadowstruggles.model.cards.Fighter",
 	"name":"DR-002",
 	"nameVisualization":"RD-002",
 	"energyCost":10,
@@ -12,7 +12,7 @@
 	"preRequisites":[],
 	"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction"}
 	},
-	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
+	{"class":"br.edu.ifsp.pds.shadowstruggles.model.cards.Fighter",
 	"name":"Broomy",
 	"nameVisualization":"Broomy",
 	"energyCost":25,
@@ -23,7 +23,7 @@
 	"preRequisites":[],
 	"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction"}
 	},
-	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
+	{"class":"br.edu.ifsp.pds.shadowstruggles.model.cards.Fighter",
 	"name":"Golem",
 	"nameVisualization":"Golem",
 	"energyCost":40,
@@ -35,7 +35,7 @@
 	"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction"}
 	},
 	
-	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
+	{"class":"br.edu.ifsp.pds.shadowstruggles.model.cards.Fighter",
 	"name":"scrap_boy",
 	"nameVisualization":"Garoto Entulho",
 	"energyCost":35,
@@ -46,7 +46,7 @@
 	"preRequisites":["Mineralogy"],
 	"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction"}
 	},
-	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
+	{"class":"br.edu.ifsp.pds.shadowstruggles.model.cards.Fighter",
 	"name":"DR-003",
 	"nameVisualization":"RD-003",
 	"energyCost":35,
@@ -57,7 +57,7 @@
 	"preRequisites":[],
 	"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction"}
 	},
-{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
+{"class":"br.edu.ifsp.pds.shadowstruggles.model.cards.Fighter",
 	"name":"DR-004",
 	"nameVisualization":"RD-004",
 	"energyCost":45,
@@ -68,7 +68,7 @@
 	"preRequisites":[],
 	"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction"}
 	},
-	{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
+	{"class":"br.edu.ifsp.pds.shadowstruggles.model.cards.Fighter",
 	"name":"DR-000",
 	"nameVisualization":"RD-000",
 	"energyCost":55,
@@ -78,7 +78,7 @@
 	"hasEffect":false,"size":"LARGE","attackDelay":"FAST",
 	"preRequisites":[]
 	},
-{"class":"br.edu.ifsp.pds.shadowstruggles.model.Fighter",
+{"class":"br.edu.ifsp.pds.shadowstruggles.model.cards.Fighter",
 	"name":"Rock",
 	"nameVisualization":"Rocha",
 	"energyCost":5,

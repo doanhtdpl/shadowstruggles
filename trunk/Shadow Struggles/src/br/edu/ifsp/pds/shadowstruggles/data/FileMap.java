@@ -4,11 +4,11 @@ import com.badlogic.gdx.utils.ObjectMap;
 
 import br.edu.ifsp.pds.shadowstruggles.model.BattleMap;
 import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
-import br.edu.ifsp.pds.shadowstruggles.model.Deck;
-import br.edu.ifsp.pds.shadowstruggles.model.Effect;
-import br.edu.ifsp.pds.shadowstruggles.model.Fighter;
-import br.edu.ifsp.pds.shadowstruggles.model.Trap;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Effect;
 import br.edu.ifsp.pds.shadowstruggles.model.TutorialDialog;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Deck;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Fighter;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Trap;
 import br.edu.ifsp.pds.shadowstruggles.model.events.Event;
 import br.edu.ifsp.pds.shadowstruggles.model.profiles.Profile;
 import br.edu.ifsp.pds.shadowstruggles.model.Scene;

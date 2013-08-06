@@ -1,5 +1,9 @@
 package br.edu.ifsp.pds.shadowstruggles.model;
 
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Card;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Deck;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Effect;
+
 import com.badlogic.gdx.utils.Array;
 
 public class Player {

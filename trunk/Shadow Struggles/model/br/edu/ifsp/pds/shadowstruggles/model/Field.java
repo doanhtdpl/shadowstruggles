@@ -1,5 +1,7 @@
 package br.edu.ifsp.pds.shadowstruggles.model;
 
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Card;
+
 import com.badlogic.gdx.utils.Array;
 
 /**

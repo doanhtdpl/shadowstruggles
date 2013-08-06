@@ -1,6 +1,6 @@
 package br.edu.ifsp.pds.shadowstruggles.model.items;
 
-import br.edu.ifsp.pds.shadowstruggles.model.Card;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Card;
 
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
