@@ -15,14 +15,6 @@ public class Pack extends Item {
 		this.cards = new Array<Card>();
 	}
 	
-	public Pack(int id, String name, String description, int buyCost,
-			int sellCost, boolean sellable, String icon,
-			boolean availableInMainShop, boolean consumable, Array<Card> cards) {
-		super(id, name, description, buyCost, sellCost, sellable, icon, availableInMainShop, consumable);
-		
-		this.cards = cards;
-	}
-	
 	@SuppressWarnings("unchecked")
 	@Override
 	public void read(Json json, JsonValue jsonData) {

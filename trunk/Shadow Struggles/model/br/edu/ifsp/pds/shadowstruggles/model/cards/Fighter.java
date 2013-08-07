@@ -1,9 +1,7 @@
 package br.edu.ifsp.pds.shadowstruggles.model.cards;
 
-import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.scripts.CardAction;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
@@ -13,10 +11,10 @@ import com.badlogic.gdx.utils.JsonValue;
  */
 
 public class Fighter extends Card {
+	public static enum FighterSize {
+		SMALL, MEDIUM, LARGE
+	};
 
-	public static final String SIZE_SMALL = "SMALL";
-	public static final String SIZE_MEDIUM = "MEDIUM";
-	public static final String SIZE_LARGE = "LARGE";
 	public static final float ATK_DELAY_SLOW = 3F;
 	public static final float ATK_DELAY_NORMAL = 2F;
 	public static final float ATK_DELAY_FAST = 1.5F;
@@ -31,8 +29,8 @@ public class Fighter extends Card {
 	private int range;
 	private boolean hasEffect;
 	private float attackDelay;
-	private String size;
-	private float delay;
+	private FighterSize size;
+
 	private float moveTimer;
 	private boolean attacking;
 
@@ -42,39 +40,29 @@ public class Fighter extends Card {
 		this.direction = 1;
 	}
 
-	public Fighter(BattlePlatform bl, int tile, int lane, int direction,
-			String name, String nameVisualization, CardAction action,
-			Image img, String size) {
-		super(bl, tile, lane, name, nameVisualization, action, img);
-		this.direction = direction;
-		this.size = size;
-		this.attackDelay = 0;
-		this.moveTimer=0;		
-	}
-
 	public Fighter(String name, String nameVisualization, int energyCost,
 			String description, int buyCost, CardAction action, int health,
-			int damage, float speed, int range, boolean hasEffect, String size,
-			float attackDelay, Array<String> preRequisite) {
+			int damage, float speed, int range, boolean hasEffect,
+			FighterSize size, float attackDelay, Array<String> preRequisites) {
 		super(name, nameVisualization, energyCost, description, buyCost, action);
 		this.health = health;
 		this.damage = damage;
 		this.speed = speed;
 		this.range = range;
-		setPreRequisites(preRequisite);
+		this.preRequisites = preRequisites;
 		this.hasEffect = hasEffect;
 		this.size = size;
 		this.attackDelay = attackDelay;
 		this.direction = 1;
 		this.maxHealth = health;
-		this.moveTimer=0;
+		this.moveTimer = 0;
 	}
-	
-	public void move (float delta){
-		this.moveTimer+=delta*direction*speed*60;		
+
+	public void move(float delta) {
+		this.moveTimer += delta * direction * speed * 60;
 		if (direction == 1) {
 			if ((int) ((moveTimer - 96) / 48) > tile) {
-				tile ++;
+				tile++;
 			}
 		} else {
 			if ((int) ((moveTimer - 48) / 48) < tile) {
@@ -84,19 +72,18 @@ public class Fighter extends Card {
 		}
 	}
 
-	
 	@Override
 	public void write(Json json) {
 		super.write(json);
+		
 		json.writeValue("health", this.health);
 		json.writeValue("damage", this.damage);
 		json.writeValue("speed", this.speed);
 		json.writeValue("range", this.range);
 		json.writeValue("hasEffect", this.hasEffect);
 		json.writeValue("size", this.size);
-		json.writeValue("attackDelay", getAttackDelay(this.attackDelay));
+		json.writeValue("attackDelay", attackDelay);
 	}
-	
 
 	@Override
 	public void read(Json json, JsonValue jsonData) {
@@ -104,16 +91,13 @@ public class Fighter extends Card {
 
 		this.health = json.readValue("health", Integer.class, jsonData);
 		this.damage = json.readValue("damage", Integer.class, jsonData);
-		setSpeed(json.readValue("speed", String.class, jsonData));
+		this.speed = json.readValue("speed", Float.class, jsonData);
 		this.range = json.readValue("range", Integer.class, jsonData);
 		this.hasEffect = json.readValue("hasEffect", Boolean.class, jsonData);
-		this.size = json.readValue("size", String.class, jsonData);
-		setAttackDelay(json.readValue("attackDelay", String.class, jsonData));
-		this.delay = attackDelay;
-
+		this.size = json.readValue("size", FighterSize.class, jsonData);
+		this.attackDelay = json.readValue("attackDelay", Float.class, jsonData);
 	}
-	
-	
+
 	public int getHealth() {
 		return health;
 	}
@@ -157,26 +141,9 @@ public class Fighter extends Card {
 	public void setDirection(int direction) {
 		this.direction = direction;
 	}
-	
 
 	public float getAttackDelay() {
 		return attackDelay;
-	}
-
-	public void setAttackDelay(String attackDelay) {
-		if (attackDelay.equals("FAST"))
-			this.attackDelay = ATK_DELAY_FAST;
-		if (attackDelay.equals("NORMAL"))
-			this.attackDelay = ATK_DELAY_NORMAL;
-		if (attackDelay.equals("SLOW"))
-			this.attackDelay = ATK_DELAY_SLOW;
-	}
-	
-	public String getAttackDelay(float atkDelay){
-		if(atkDelay==ATK_DELAY_FAST) return "FAST";
-		if(atkDelay==ATK_DELAY_NORMAL) return "NORMAL";
-		if(atkDelay==ATK_DELAY_SLOW) return "SLOW";
-		return "SLOW";
 	}
 
 	public void setSpeed(String speed) {
@@ -187,30 +154,16 @@ public class Fighter extends Card {
 		if (speed.equals("SLOW"))
 			this.speed = MOV_SPEED_SLOW;
 	}
-	public String getSpeedValue(){
-		if(speed==MOV_SPEED_FAST) return "FAST";
-		if(speed==MOV_SPEED_NORMAL) return "NORMAL";
-		if(speed==MOV_SPEED_SLOW) return "SLOW";
+
+	public String getSpeedValue() {
+		if (speed == MOV_SPEED_FAST)
+			return "FAST";
+		if (speed == MOV_SPEED_NORMAL)
+			return "NORMAL";
+		if (speed == MOV_SPEED_SLOW)
+			return "SLOW";
 		return "SLOW";
 	}
-
-	public String getSize() {
-		return size;
-	}
-
-	public void setSize(String size) {
-		this.size = size;
-	}
-
-	public float getDelay() {
-		return delay;
-	}
-
-	public void setDelay(float delay) {
-		this.delay = delay;
-	}
-
-	
 
 	public int getMaxHealth() {
 		return maxHealth;
@@ -227,13 +180,21 @@ public class Fighter extends Card {
 	public void setAttackDelay(float attackDelay) {
 		this.attackDelay = attackDelay;
 	}
-	
+
 	public void setAttacking(boolean attacking) {
 		this.attacking = attacking;
 	}
-	
+
 	public boolean isAttacking() {
 		return attacking;
+	}
+
+	public FighterSize getSize() {
+		return this.size;
+	}
+
+	public void setSize(FighterSize medium) {
+		this.size = medium;
 	}
 
 }

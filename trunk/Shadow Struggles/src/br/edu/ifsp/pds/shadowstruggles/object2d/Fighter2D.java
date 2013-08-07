@@ -5,6 +5,7 @@ import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.data.Settings;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.cards.Fighter;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Fighter.FighterSize;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -45,11 +46,11 @@ public class Fighter2D extends Image implements ApplicationListener {
 		this.game = game;
 		this.settings = SettingsDAO.getSettings();
 
-		if (fighter.getSize().equals(Fighter.SIZE_SMALL)) {
+		if (fighter.getSize() == FighterSize.SMALL) {
 			this.setScaleY(0.8f);
-		} else if (fighter.getSize().equals(Fighter.SIZE_MEDIUM)) {
+		} else if (fighter.getSize() == FighterSize.MEDIUM) {
 			this.setScaleY(1.0f);
-		} else if (fighter.getSize().equals(Fighter.SIZE_LARGE)) {
+		} else if (fighter.getSize() == FighterSize.LARGE) {
 			this.setScaleY(1.5f);
 		}
 	}

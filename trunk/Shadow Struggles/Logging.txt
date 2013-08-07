@@ -1,6 +1,10 @@
-Ago 01, 2013 7:43:11 PM br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+01/08/2013 19:43:11 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
 Grave: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving language-independent JSON file - Error reading file: data/profiles.json
 06/08/2013 18:02:13 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
 SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving localized JSON file from language en_us - Error reading file: data/en_us/files/decks.json
 06/08/2013 18:02:15 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
 SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving localized JSON file from language en_us - Error reading file: data/en_us/files/effects.json
+06/08/2013 22:53:25 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving localized JSON file from language en_us - Error reading file: data/en_us/files/fighters.json
+06/08/2013 22:53:26 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving localized JSON file from language en_us - Error reading file: data/en_us/files/decks.json

@@ -15,22 +15,16 @@ import com.badlogic.gdx.utils.JsonValue;
  * itself with the logic aspects of the card, not data.
  */
 
-// TODO: Alterar modelo de Card como classe-filha de Item.
 public class Card extends Item {
-
 	private int energyCost;
-	private String description;
-	private int buyCost;
-	private String name;
-	private String nameVisualization;
-	private Image image;
 	private CardAction action;
+	protected Array<String> preRequisites = new Array<String>();
+
+	private Image image;
+	protected int tile;
 	private BattlePlatform platform;
 	private float markLane;
 	private float markTile;
-	protected int tile;
-
-	private Array<String> preRequisites = new Array<String>();
 
 	/***
 	 * Specifies the card's orientation and which player it belongs to. 1 - The
@@ -51,14 +45,13 @@ public class Card extends Item {
 	}
 
 	public Card(BattlePlatform platform, int tile, int lane, String name,
-			String nameVisualization, CardAction action, Image img) {
+			String nameVisualization, CardAction action) {
 		this.name = name;
 		this.nameVisualization = nameVisualization;
 		this.platform = platform;
 		this.lane = lane;
 		this.tile = tile;
 		this.action = action;
-		this.image = img;
 		this.description = "";
 	}
 
@@ -78,28 +71,22 @@ public class Card extends Item {
 
 	@Override
 	public void write(Json json) {
-		json.writeValue("name", this.name);
-		json.writeValue("nameVisualization", this.nameVisualization);
+		super.write(json);
+
 		json.writeValue("energyCost", this.energyCost);
-		json.writeValue("description", this.description);
-		json.writeValue("buyCost", this.buyCost);
 		json.writeValue("preRequisites", this.preRequisites);
-		json.writeValue("Action", this.action);
+		json.writeValue("action", this.action);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public void read(Json json, JsonValue jsonData) {
-		this.name = json.readValue("name", String.class, jsonData);
-		this.nameVisualization = json.readValue("nameVisualization",
-				String.class, jsonData);
+		super.read(json, jsonData);
+
 		this.energyCost = json.readValue("energyCost", Integer.class, jsonData);
-		this.description = json
-				.readValue("description", String.class, jsonData);
-		this.buyCost = json.readValue("buyCost", Integer.class, jsonData);
 		this.preRequisites = json.readValue("preRequisites", Array.class,
 				jsonData);
-		this.action = json.readValue("Action", CardAction.class, jsonData);
+		this.action = json.readValue("action", CardAction.class, jsonData);
 	}
 
 	public String getName() {
@@ -116,14 +103,6 @@ public class Card extends Item {
 
 	public int getBuyCost() {
 		return buyCost;
-	}
-
-	public Image getImage() {
-		return image;
-	}
-
-	public void setImage(Image image) {
-		this.image = image;
 	}
 
 	public CardAction getAction() {
@@ -199,7 +178,7 @@ public class Card extends Item {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public float getMarkLane() {
 		return markLane;
 	}
@@ -232,5 +211,13 @@ public class Card extends Item {
 
 	public void setPreRequisites(Array<String> preRequisites) {
 		this.preRequisites = preRequisites;
+	}
+
+	public Image getImage() {
+		return this.image;
+	}
+
+	public void setImage(Image cardImage) {
+		this.image = cardImage;
 	}
 }
