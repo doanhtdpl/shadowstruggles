@@ -1,10 +1,8 @@
 package br.edu.ifsp.pds.shadowstruggles.model.cards;
 
-import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.model.cards.Card;
 import br.edu.ifsp.pds.shadowstruggles.scripts.CardAction;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 
@@ -19,11 +17,6 @@ public class Effect extends Card {
 	private boolean onFighter;
 
 	public Effect() {
-	}
-
-	public Effect(BattlePlatform platform, int lane, int tile, String name,
-			String nameVisualization, CardAction action, Image img) {
-		super(platform, lane, tile, name, nameVisualization, action, img);
 	}
 
 	public Effect(String name, String nameVisualization, int energyCost,
@@ -69,7 +62,6 @@ public class Effect extends Card {
 		super.write(json);
 		json.writeValue("duration", this.duration);
 		json.writeValue("isImmediateEffect", this.isImmediateEffect);
-		json.writeValue("isActivated", this.isActivated);
 		json.writeValue("onFighter", this.onFighter);
 	}
 
@@ -79,8 +71,6 @@ public class Effect extends Card {
 		this.duration = json.readValue("duration", Float.class, jsonData);
 		this.isImmediateEffect = json.readValue("isImmediateEffect",
 				Boolean.class, jsonData);
-		this.isActivated = json.readValue("isActivated", Boolean.class,
-				jsonData);
 		this.onFighter = json.readValue("onFighter", Boolean.class, jsonData);
 	}
 }

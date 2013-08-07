@@ -22,10 +22,10 @@ public class DefaultAction extends CardAction {
 		Fighter2D fighter = (Fighter2D) image;
 		fighter.setAttacking(false);
 		if (fighter.getFighter().getHealth() > 0) {
-			attack(fighter, platform,delta);
+			attack(fighter, platform, delta);
 
 			if (!fighter.isAttacking())
-				attackBase(fighter, platform,delta);
+				attackBase(fighter, platform, delta);
 
 			if (!fighter.isAttacking())
 				move(fighter, platform, delta);
@@ -66,17 +66,16 @@ public class DefaultAction extends CardAction {
 					if (card.getClass().equals(Fighter.class)) {
 						if (((Fighter) card).getDirection() != fighter
 								.getFighter().getDirection()) {
-							if (fighter.getFighter().getDelay() <= 0.0f) {
+							if (fighter.getFighter().getAttackDelay() <= 0.0f) {
 								((Fighter) card).setHealth(((Fighter) card)
 										.getHealth()
 										- fighter.getFighter().getDamage());
-								fighter.getFighter().setDelay(
+								fighter.getFighter().setAttackDelay(
 										fighter.getFighter().getAttackDelay());
 							} else
-								fighter.getFighter()
-										.setDelay(
-												fighter.getFighter().getDelay()
-														- delta);
+								fighter.getFighter().setAttackDelay(
+										fighter.getFighter().getAttackDelay()
+												- delta);
 
 							fighter.setAttacking(true);
 							break;
@@ -97,16 +96,18 @@ public class DefaultAction extends CardAction {
 	 */
 
 	private void move(Fighter2D fighter, BattlePlatform platform, float delta) {
-		fighter.setX( fighter.getX() + fighter.getFighter().getSpeed()
-				* fighter.getFighter().getDirection()*delta*60);
+		fighter.setX(fighter.getX() + fighter.getFighter().getSpeed()
+				* fighter.getFighter().getDirection() * delta * 60);
 		if (fighter.getFighter().getDirection() == 1) {
-			if ((int) ((fighter.getX() - 96) / 48) > fighter.getFighter().getTile()) {
+			if ((int) ((fighter.getX() - 96) / 48) > fighter.getFighter()
+					.getTile()) {
 				fighter.getController().tileChanged(fighter.getFighter());
 				fighter.getFighter()
 						.setTile(fighter.getFighter().getTile() + 1);
 			}
 		} else {
-			if ((int) ((fighter.getX() - 48) / 48) < fighter.getFighter().getTile()) {
+			if ((int) ((fighter.getX() - 48) / 48) < fighter.getFighter()
+					.getTile()) {
 				fighter.getController().tileChanged(fighter.getFighter());
 				fighter.getFighter()
 						.setTile(fighter.getFighter().getTile() - 1);
@@ -128,38 +129,38 @@ public class DefaultAction extends CardAction {
 	private void attackBase(Fighter2D f, BattlePlatform platform, float delta) {
 		if (f.getFighter().getDirection() == 1) {
 			if (f.getFighter().getTile() >= 36 - f.getFighter().getRange()) {
-				if (f.getFighter().getDelay() <= 0.0f) {
+				if (f.getFighter().getAttackDelay() <= 0.0f) {
 					f.getController().enemyLifeChanged(
 							-f.getFighter().getDamage());
-					f.getFighter().setDelay(f.getFighter().getAttackDelay());
+					f.getFighter().setAttackDelay(
+							f.getFighter().getAttackDelay());
 				} else
-					f.getFighter().setDelay(
-							f.getFighter().getDelay()
-									- delta);
+					f.getFighter().setAttackDelay(
+							f.getFighter().getAttackDelay() - delta);
 
 				f.setAttacking(true);
 			}
 		} else {
 			if (f.getFighter().getTile() <= -1 + f.getFighter().getRange()) {
-				if (f.getFighter().getDelay() <= 0.0f) {
+				if (f.getFighter().getAttackDelay() <= 0.0f) {
 					f.getController().playerLifeChanged(
 							-f.getFighter().getDamage());
-					f.getFighter().setDelay(f.getFighter().getAttackDelay());
+					f.getFighter().setAttackDelay(
+							f.getFighter().getAttackDelay());
 				} else
-					f.getFighter().setDelay(
-							f.getFighter().getDelay()
-									- delta);
+					f.getFighter().setAttackDelay(
+							f.getFighter().getAttackDelay() - delta);
 
 				f.setAttacking(true);
 			}
 		}
 	}
-	
+
 	/**
-	 * Display the animation of fighting of a fighter during a fight 
+	 * Display the animation of fighting of a fighter during a fight
 	 * 
 	 * @param f1
-	 * 			The fighter Drawable
+	 *            The fighter Drawable
 	 */
 
 	public void update(Image f1) {
@@ -169,14 +170,13 @@ public class DefaultAction extends CardAction {
 					+ fighter.getStateTime());
 			fighter.setCurrentFrame(fighter.getAttackAnimation().getKeyFrame(
 					fighter.getStateTime(), true));
-			
 
 		} else {
 			fighter.setStateTime(Gdx.graphics.getDeltaTime()
 					+ fighter.getStateTime());
 			fighter.setCurrentFrame(fighter.getWalkAnimation().getKeyFrame(
 					fighter.getStateTime(), true));
-			
+
 		}
 
 	}
@@ -185,15 +185,14 @@ public class DefaultAction extends CardAction {
 	public CardAction copy() {
 		return new DefaultAction();
 	}
-	
+
 	@Override
 	public void write(Json json) {
-		
+
 	}
-	
 
 	@Override
 	public void read(Json json, JsonValue jsonData) {
-		//this.id = json.readValue("id", Integer.class, jsonData);
+		// this.id = json.readValue("id", Integer.class, jsonData);
 	}
 }

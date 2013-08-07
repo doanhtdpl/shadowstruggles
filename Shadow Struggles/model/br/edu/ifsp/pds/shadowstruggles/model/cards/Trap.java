@@ -1,9 +1,7 @@
 package br.edu.ifsp.pds.shadowstruggles.model.cards;
 
-import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.scripts.CardAction;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Json.Serializable;
 import com.badlogic.gdx.utils.JsonValue;
@@ -19,12 +17,6 @@ public class Trap extends Card implements Serializable {
 	private boolean isActivated;
 
 	public Trap() {
-		this.isActivated = false;
-	}
-
-	public Trap(BattlePlatform platform, int lane, int tile, boolean sentido,
-			String name, String nameVisualization, CardAction action, Image img) {
-		super(platform, lane, tile, name, nameVisualization, action, img);
 		this.isActivated = false;
 	}
 
@@ -64,6 +56,10 @@ public class Trap extends Card implements Serializable {
 
 	@Override
 	public void write(Json json) {
+		super.write(json);
+
+		json.writeValue("duration", this.duration);
+		json.writeValue("hasImmediateEffect", this.hasImmediateEffect);
 	}
 
 	@Override
@@ -72,8 +68,6 @@ public class Trap extends Card implements Serializable {
 		this.duration = json.readValue("duration", Float.class, jsonData);
 		this.hasImmediateEffect = json.readValue("hasImmediateEffect",
 				Boolean.class, jsonData);
-		this.isActivated = json.readValue("isActivated", Boolean.class,
-				jsonData);
 	}
 
 }

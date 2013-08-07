@@ -9,6 +9,7 @@ import com.badlogic.gdx.utils.Array;
 import br.edu.ifsp.pds.shadowstruggles.model.BattleMap;
 import br.edu.ifsp.pds.shadowstruggles.model.cards.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.cards.Fighter;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Fighter.FighterSize;
 import br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction;
 
 public class MapTest {
@@ -27,7 +28,8 @@ public class MapTest {
 	public void testEnemyBaseAttacked() {
 		BattleMap map = new BattleMap("teste");
 		Fighter fighter = new Fighter("DR002", "DR002", 15, "", 14,
-				new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
+				new DefaultAction(), 15, 15, 15.0f, 1, false,
+				FighterSize.MEDIUM, 0, null);
 		fighter.setDirection(1);
 		map.addCard(fighter, 35, 1);
 		assertEquals("Result:", 1, map.enemyBaseAttacked());
@@ -37,7 +39,8 @@ public class MapTest {
 	public void testPlayerBaseAttacked() {
 		BattleMap map = new BattleMap("teste");
 		Fighter fighter = new Fighter("DR002", "DR002", 15, "", 14,
-				new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
+				new DefaultAction(), 15, 15, 15.0f, 1, false,
+				FighterSize.MEDIUM, 0, null);
 		fighter.setDirection(-1);
 		map.addCard(fighter, 1, 1);
 		assertEquals("Result:", 1, map.playerBaseAttacked());
@@ -95,19 +98,23 @@ public class MapTest {
 	public void testLaneWithMoreEnemies() {
 		BattleMap map = new BattleMap("teste");
 		Fighter fighter1 = new Fighter("DR002", "DR002", 15, "", 14,
-				new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
+				new DefaultAction(), 15, 15, 15.0f, 1, false,
+				FighterSize.MEDIUM, 0, null);
 		fighter1.setDirection(-1);
 		map.addCard(fighter1, 1, 2);
 		Fighter fighter2 = new Fighter("DR002", "DR002", 15, "", 14,
-				new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
+				new DefaultAction(), 15, 15, 15.0f, 1, false,
+				FighterSize.MEDIUM, 0, null);
 		fighter2.setDirection(-1);
 		map.addCard(fighter2, 1, 2);
 		Fighter fighter3 = new Fighter("DR002", "DR002", 15, "", 14,
-				new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
+				new DefaultAction(), 15, 15, 15.0f, 1, false,
+				FighterSize.MEDIUM, 0, null);
 		fighter3.setDirection(-1);
 		map.addCard(fighter3, 1, 2);
 		Fighter fighter4 = new Fighter("DR002", "DR002", 15, "", 14,
-				new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
+				new DefaultAction(), 15, 15, 15.0f, 1, false,
+				FighterSize.MEDIUM, 0, null);
 		fighter4.setDirection(-1);
 		map.addCard(fighter4, 1, 2);
 		assertEquals("Result:", 2, map.laneWithMoreEnemies(1));
@@ -117,15 +124,18 @@ public class MapTest {
 	public void testLaneWithLessAllies() {
 		BattleMap map = new BattleMap("teste");
 		Fighter fighter1 = new Fighter("DR002", "DR002", 15, "", 14,
-				new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
+				new DefaultAction(), 15, 15, 15.0f, 1, false,
+				FighterSize.MEDIUM, 0, null);
 		fighter1.setDirection(1);
 		map.addCard(fighter1, 0, 0);
 		Fighter fighter2 = new Fighter("DR002", "DR002", 15, "", 14,
-				new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
+				new DefaultAction(), 15, 15, 15.0f, 1, false,
+				FighterSize.MEDIUM, 0, null);
 		fighter2.setDirection(1);
 		map.addCard(fighter2, 1, 1);
 		Fighter fighter3 = new Fighter("DR002", "DR002", 15, "", 14,
-				new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
+				new DefaultAction(), 15, 15, 15.0f, 1, false,
+				FighterSize.MEDIUM, 0, null);
 		fighter3.setDirection(1);
 		map.addCard(fighter3, 3, 3);
 		assertEquals("Result:", 2, map.laneWithLessAllies(1));
@@ -135,19 +145,23 @@ public class MapTest {
 	public void testLaneWithMoreEnemiesInvading() {
 		BattleMap map = new BattleMap("teste");
 		Fighter fighter1 = new Fighter("DR002", "DR002", 15, "", 14,
-				new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
+				new DefaultAction(), 15, 15, 15.0f, 1, false,
+				FighterSize.MEDIUM, 0, null);
 		fighter1.setDirection(1);
 		map.addCard(fighter1, 1, 2);
 		Fighter fighter2 = new Fighter("DR002", "DR002", 15, "", 14,
-				new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
+				new DefaultAction(), 15, 15, 15.0f, 1, false,
+				FighterSize.MEDIUM, 0, null);
 		fighter2.setDirection(1);
 		map.addCard(fighter2, 1, 2);
 		Fighter fighter3 = new Fighter("DR002", "DR002", 15, "", 14,
-				new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
+				new DefaultAction(), 15, 15, 15.0f, 1, false,
+				FighterSize.MEDIUM, 0, null);
 		fighter3.setDirection(1);
 		map.addCard(fighter3, 1, 2);
 		Fighter fighter4 = new Fighter("DR002", "DR002", 15, "", 14,
-				new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
+				new DefaultAction(), 15, 15, 15.0f, 1, false,
+				FighterSize.MEDIUM, 0, null);
 		fighter4.setDirection(1);
 		map.addCard(fighter4, 1, 2);
 		assertEquals("Result:", 2, map.laneWithMoreEnemiesInvading(1));
