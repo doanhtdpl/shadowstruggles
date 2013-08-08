@@ -19,4 +19,26 @@ rules: {
 	enemyEnergyMax: 100
 },
 tutorial: false
+},
+{class: BattlePlatform,
+id: 2,
+enemy: null,
+rewards: null,
+map: {
+	id: 1,
+	name: cena1
+},
+rules: {
+	playerHP: 100,
+	enemyHP: 100,
+	playerHPmax: 100,
+	enemyHPmax: 100,
+	playerRemainingCards: 30,
+	enemyRemainingCards: 30,
+	playerEnergy: 45,
+	enemyEnergy: 45,
+	playerEnergyMax: 100,
+	enemyEnergyMax: 100
+},
+tutorial: true
 }]

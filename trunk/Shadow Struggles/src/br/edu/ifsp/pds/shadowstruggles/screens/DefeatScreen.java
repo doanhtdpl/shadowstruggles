@@ -15,7 +15,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 public class DefeatScreen extends BaseScreen {
 
-	private Image background;
 	private Label text;
 	private TextButton retryButton;
 	private TextButton mainMenu;
@@ -52,11 +51,6 @@ public class DefeatScreen extends BaseScreen {
 	}
 
 	public void initComponents() {
-		background = new Image(game.getAssets()
-				.get("data/images/objects/objects.atlas", TextureAtlas.class)
-				.findRegion("msbackground"));
-		background.setScaleX(960f / 512f);
-		background.setScaleY(640f / 380f);
 
 		retryButton = new TextButton(MenuTextDAO.getMenuText().retryButton,
 				super.getSkin());
@@ -93,7 +87,6 @@ public class DefeatScreen extends BaseScreen {
 		text.setX((960 - text.getPrefWidth()) / 2);
 		text.setY(400);
 
-		this.getStage().addActor(background);
 		this.getStage().addActor(text);
 		this.getStage().addActor(retryButton);
 		this.getStage().addActor(mainMenu);

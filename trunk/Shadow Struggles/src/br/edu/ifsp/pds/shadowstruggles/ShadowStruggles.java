@@ -18,6 +18,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 
@@ -86,10 +87,10 @@ public class ShadowStruggles extends Game {
 			characterTest.WalkUpTest();
 			characterTest.WalkRightTest();
 			characterTest.WalkLeftTest();
-			
+
 			DataManagerTest dataManagerTest = new DataManagerTest();
 			dataManagerTest.testEncodingDecoding();
-			
+
 			// End of test cases.
 			Gdx.app.exit();
 		}
@@ -138,6 +139,19 @@ public class ShadowStruggles extends Game {
 	 */
 	public TextureRegion getTextureRegion(String regionName, String resourceType) {
 		return loader.getTextureRegion(regionName, resourceType);
+	}
+
+	/**
+	 * Retrieves a Texture from the file system.
+	 * 
+	 * @param textureName
+	 *            The name of the texture.
+	 * @param resourceType
+	 *            The resource type (card, skin, map etc.). These names are
+	 *            specified in the {@link FileMap} class.
+	 */
+	public Texture getTexture(String textureName, String resourceType) {
+		return loader.getTexture(textureName, resourceType);
 	}
 
 	@Override

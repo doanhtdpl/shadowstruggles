@@ -3,7 +3,6 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
-import br.edu.ifsp.pds.shadowstruggles.data.FileMap;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
@@ -34,7 +33,6 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -113,10 +111,8 @@ public class BattleScreen extends BaseScreen {
 		controller.setPlatform(battlePlatform);
 
 		this.battlePlatform = battlePlatform;
-		String mapPath = FileMap.resourcesToDirectory.get("battle_maps")
-				+ battlePlatform.getMap().getName() + ".png";
-		TextureRegion mapImage = new TextureRegion(new Texture(
-				Gdx.files.internal(mapPath)),
+		TextureRegion mapImage = new TextureRegion(game.getTexture(
+				battlePlatform.getMap().getName(), "battle_maps"),
 				SettingsDAO.getSettings().backgroundWidth / 2,
 				SettingsDAO.getSettings().backgroundHeight / 2);
 		map2d = new BattleMap2D(controller, mapImage);
@@ -310,8 +306,6 @@ public class BattleScreen extends BaseScreen {
 
 			background = new HandBackground(0, game);
 			background.setY(0);
-			
-			
 
 			menu = new MenuButton(controller, game);
 			menu.setScale(1.5f);
@@ -335,8 +329,9 @@ public class BattleScreen extends BaseScreen {
 
 			timer = new Timer2D(this, SettingsDAO.getSettings().mapWidth / 2);
 			timer.setY(SettingsDAO.getSettings().mapHeight - 40);
-			
-			magnifier= new FixedImage(game.getTextureRegion("magnifier", "game_ui_images"), 0, this){
+
+			magnifier = new FixedImage(game.getTextureRegion("magnifier",
+					"game_ui_images"), 0, this) {
 				@Override
 				public void clicked() {
 					System.out.println("clicou");
@@ -349,7 +344,6 @@ public class BattleScreen extends BaseScreen {
 			inicializado = true;
 
 		}
-		
 
 		stage.addActor(background);
 		stage.addActor(deck);

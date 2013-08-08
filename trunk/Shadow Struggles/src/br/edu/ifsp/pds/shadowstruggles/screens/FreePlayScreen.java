@@ -9,6 +9,7 @@ import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
 import br.edu.ifsp.pds.shadowstruggles.games.Practice;
 import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.model.enemies.PracticeEnemy;
+import br.edu.ifsp.pds.shadowstruggles.model.enemies.TutorialEnemy;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgMap;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgPlatform;
@@ -21,7 +22,6 @@ import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
@@ -32,7 +32,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 
 public class FreePlayScreen extends BaseScreen {
-	private Image background;
 	private ShadowStruggles game;
 	private Array<TextButton> battles;
 	private TextButton returnButton;
@@ -74,17 +73,21 @@ public class FreePlayScreen extends BaseScreen {
 				BattlePlatform platform = BattlePlatformDAO.getBattle(1);
 				platform.setPlayerDeck(DeckDAO.getDeck("Practice Deck Player"));
 				platform.setEnemyDeck(DeckDAO.getDeck("Practice Deck Enemy"));
+				platform.setEnemy(new PracticeEnemy());
 				game.setScreenWithTransition(new Practice(game, platform, false));
 			}
 		});
-		
+
 		ImageButton tempButton = new ImageButton(this.getSkin().getDrawable(
 				"placeholder"));
 		tempButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				super.clicked(event, x, y);
-				game.setScreenWithTransition(new BattleTutorial(game));
+				BattlePlatform platform = BattlePlatformDAO.getBattle(2);
+				platform.setPlayerDeck(DeckDAO.getDeck("Tutorial Deck"));
+				platform.setEnemyDeck(DeckDAO.getDeck("Practice Deck Enemy"));
+				platform.setEnemy(new TutorialEnemy());
+				game.setScreenWithTransition(new BattleTutorial(game, platform));
 
 			}
 		});
@@ -95,13 +98,15 @@ public class FreePlayScreen extends BaseScreen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				super.clicked(event, x, y);
-				
+
 				RpgController rpgController = new RpgController();
 				RpgMap rpgMap = new RpgMap(new TmxMapLoader(
 						new InternalFileHandleResolver())
 						.load("data/rpg_maps/map.tmx"));
 				Character character = new Character(0, 19, 2, 2, rpgMap);
-				RpgPlatform platform = new RpgPlatform(rpgController, character, rpgMap);
+				@SuppressWarnings("unused")
+				RpgPlatform platform = new RpgPlatform(rpgController,
+						character, rpgMap);
 
 				game.setScreenWithTransition(new RpgScreen(game, controller,
 						rpgController));
@@ -231,33 +236,33 @@ public class FreePlayScreen extends BaseScreen {
 		battles = new Array<TextButton>();
 
 		// TODO: Refazer rotina para obter batalhas enfrentadas.
-//		for (Float id : game.getProfile().getBattlesFought()) {
-//			TextButton button = new TextButton("", getSkin());
-//			switch (id.intValue()) {
-//			case 1:
-//				button.setText(MenuTextDAO.getMenuText().practiceBattle);
-//				button = ScreenUtils.defineButton(button, 100, 300, 300, 100,
-//						super.getSkin());
-//				battle = new Practice(game, false);
-//				break;
-//			}
-//
-//			button.addListener(new ClickListener() {
-//
-//				@Override
-//				public void clicked(InputEvent event, float x, float y) {
-//					if (!game.getAudio().getMusicName().equals("battle")) {
-//						game.getAudio().stop();
-//						game.getAudio().setMusic("battle");
-//					}
-//					game.setScreenWithTransition(battle);
-//				}
-//
-//			});
-//
-//			stage.addActor(menuTable);
-//			battles.add(button);
-//		}
+		// for (Float id : game.getProfile().getBattlesFought()) {
+		// TextButton button = new TextButton("", getSkin());
+		// switch (id.intValue()) {
+		// case 1:
+		// button.setText(MenuTextDAO.getMenuText().practiceBattle);
+		// button = ScreenUtils.defineButton(button, 100, 300, 300, 100,
+		// super.getSkin());
+		// battle = new Practice(game, false);
+		// break;
+		// }
+		//
+		// button.addListener(new ClickListener() {
+		//
+		// @Override
+		// public void clicked(InputEvent event, float x, float y) {
+		// if (!game.getAudio().getMusicName().equals("battle")) {
+		// game.getAudio().stop();
+		// game.getAudio().setMusic("battle");
+		// }
+		// game.setScreenWithTransition(battle);
+		// }
+		//
+		// });
+		//
+		// stage.addActor(menuTable);
+		// battles.add(button);
+		// }
 
 		stage.addActor(menuTable);
 		stage.addActor(leftButtonTable);

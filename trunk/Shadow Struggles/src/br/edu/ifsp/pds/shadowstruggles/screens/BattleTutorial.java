@@ -3,14 +3,10 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.DeckDAO;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
-import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.TutorialDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
-import br.edu.ifsp.pds.shadowstruggles.model.DefaultRules;
-import br.edu.ifsp.pds.shadowstruggles.model.BattleMap;
 import br.edu.ifsp.pds.shadowstruggles.model.TutorialDialog;
 import br.edu.ifsp.pds.shadowstruggles.model.cards.Card;
-import br.edu.ifsp.pds.shadowstruggles.model.enemies.TutorialEnemy;
 import br.edu.ifsp.pds.shadowstruggles.object2d.FixedImage;
 import br.edu.ifsp.pds.shadowstruggles.object2d.FixedLabel;
 import br.edu.ifsp.pds.shadowstruggles.object2d.HandCard;
@@ -110,15 +106,8 @@ public class BattleTutorial extends BattleScreen {
 
 	private Array<TutorialDialog> dialogs;
 
-	public BattleTutorial(ShadowStruggles game) {
-		super(
-				game,
-				game.getProfile(),
-				game.getController(),
-				new BattlePlatform(DeckDAO.getDeck("Tutorial Deck"),
-						DeckDAO.getDeck("Practice Deck Enemy"), new BattleMap(
-								"cena1"), new DefaultRules(
-								SettingsDAO.getSettings()), new TutorialEnemy()),
+	public BattleTutorial(ShadowStruggles game, BattlePlatform platform) {
+		super(game, game.getProfile(), game.getController(), platform,
 				MenuTextDAO.getMenuText().practiceBattle, false);
 
 		dialogBox = new FixedImage(game.getTextureRegion("box",
