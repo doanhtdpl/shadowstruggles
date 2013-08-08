@@ -3,14 +3,10 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
-import br.edu.ifsp.pds.shadowstruggles.data.dao.SceneDAO;
-import br.edu.ifsp.pds.shadowstruggles.games.Practice;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -19,7 +15,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 public class VictoryScreen extends BaseScreen {
 	private static VictoryScreen instance;
 
-	private Image background;
 	private Label text;
 	private TextButton continueButton;
 	private TextButton mainMenu;
@@ -66,11 +61,6 @@ public class VictoryScreen extends BaseScreen {
 	}
 
 	public void initComponents() {
-		background = new Image(game.getAssets()
-				.get("data/images/objects/objects.atlas", TextureAtlas.class)
-				.findRegion("msbackground"));
-		background.setScaleX(960f / 512f);
-		background.setScaleY(640f / 380f);
 
 		mainMenu = new TextButton(MenuTextDAO.getMenuText().mainMenuButton,
 				super.getSkin());
@@ -95,7 +85,6 @@ public class VictoryScreen extends BaseScreen {
 		text.setOriginX((960 - text.getPrefWidth()) / 2);
 		text.setOriginY(300);
 
-		this.getStage().addActor(background);
 		this.getStage().addActor(text);
 		this.getStage().addActor(mainMenu);
 

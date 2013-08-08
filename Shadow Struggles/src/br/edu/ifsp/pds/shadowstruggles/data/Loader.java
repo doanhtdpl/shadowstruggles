@@ -47,6 +47,7 @@ public class Loader {
 	private ShadowStruggles game;
 	private ManagementStrategy strategy;
 	private Array<Asset> textures;
+	private Array<Asset> textureRegions;
 	private Array<Asset> sounds;
 	private Array<Asset> rpgMaps;
 
@@ -64,7 +65,8 @@ public class Loader {
 
 	/**
 	 * Sets the assets to load next. This method is only used by the dynamic
-	 * strategy, and must precede any call to loadAssets().
+	 * strategy, and it (or the individual set methods) must precede any call to
+	 * loadAssets().
 	 * 
 	 * @param textureRegions
 	 *            The TextureRegion objects to be loaded, which must be properly
@@ -80,20 +82,35 @@ public class Loader {
 	 *            mapped in the {@link FileMap} class (resourcesToDirectory) and
 	 *            the names must contain the extension. It may be null.
 	 */
-	public void setAssetsToLoad(Array<Asset> textures, Array<Asset> sounds,
-			Array<Asset> rpgMaps) {
+	public void setAssetsToLoad(Array<Asset> textureRegions,
+			Array<Asset> sounds, Array<Asset> rpgMaps) {
 		if (this.strategy == ManagementStrategy.DYNAMIC_TEXTURE_ATLAS) {
-			this.textures = textures;
+			this.textureRegions = textureRegions;
 			this.sounds = sounds;
 			this.rpgMaps = rpgMaps;
 		}
 	}
 
 	/**
-	 * Sets the textures to load next
+	 * Sets the TextureRegion objects to load next (available on dynamic
+	 * strategy).
+	 * 
+	 * @param textureRegions
+	 *            The TextureRegion objects to be loaded, which must be properly
+	 *            mapped in the {@link FileMap} class (resourcesToDirectory) and
+	 *            the names must contain the extension. It may be null.
+	 */
+	public void setTextureRegions(Array<Asset> textureRegions) {
+		if (this.strategy == ManagementStrategy.DYNAMIC_TEXTURE_ATLAS) {
+			this.textureRegions = textureRegions;
+		}
+	}
+
+	/**
+	 * Sets the Texture objects to load next (available on dynamic strategy).
 	 * 
 	 * @param textures
-	 *            The TextureRegion objects to be loaded, which must be properly
+	 *            The Texture objects to be loaded, which must be properly
 	 *            mapped in the {@link FileMap} class (resourcesToDirectory) and
 	 *            the names must contain the extension. It may be null.
 	 */
@@ -140,17 +157,20 @@ public class Loader {
 			createTextureAtlas();
 
 		loadTextureAtlas();
+		loadTextures();
 		loadSound();
 		loadMaps();
 	}
 
 	/**
-	 * Starts loading the textures; it's only applicable to dynamic contexts.
+	 * Starts loading the Texture and TextureRegion objects; it's only
+	 * applicable to dynamic contexts.
 	 */
-	public void loadTextures() {
+	public void loadGraphics() {
 		if (this.strategy == ManagementStrategy.DYNAMIC_TEXTURE_ATLAS) {
 			createTextureAtlas();
 			loadTextureAtlas();
+			loadTextures();
 		}
 
 	}
@@ -196,7 +216,7 @@ public class Loader {
 		}
 
 		if (this.strategy == ManagementStrategy.DYNAMIC_TEXTURE_ATLAS) {
-			if (this.textures != null
+			if (this.textureRegions != null
 					&& FileMap.resourcesToDirectory.containsKey(resourceType)) {
 				TextureAtlas atlas = game.getAssets().get("tmp/tmp.atlas",
 						TextureAtlas.class);
@@ -205,6 +225,38 @@ public class Loader {
 		}
 
 		return region;
+	}
+
+	/**
+	 * Retrieves a Texture from the file system.
+	 * 
+	 * @param textureName
+	 *            The texture's short name (without extensions)
+	 * @param resourceType
+	 *            The resource type. These names are specified in the
+	 *            {@link FileMap} class.
+	 */
+	public Texture getTexture(String textureName, String resourceType) {
+		Texture texture = null;
+
+		if (this.strategy == ManagementStrategy.STATIC_TEXTURE_ATLAS) {
+			if (FileMap.resourcesToDirectory.containsKey(resourceType)) {
+				texture = game.getAssets().get(
+						FileMap.resourcesToDirectory.get(resourceType)
+								+ textureName + ".png", Texture.class);
+			}
+		}
+
+		if (this.strategy == ManagementStrategy.DYNAMIC_TEXTURE_ATLAS) {
+			if (this.textures != null
+					&& FileMap.resourcesToDirectory.containsKey(resourceType)) {
+				texture = game.getAssets().get(
+						FileMap.resourcesToDirectory.get(resourceType)
+								+ textureName + ".png", Texture.class);
+			}
+		}
+
+		return texture;
 	}
 
 	/**
@@ -221,7 +273,7 @@ public class Loader {
 
 		if (this.strategy == ManagementStrategy.STATIC_TEXTURE_ATLAS) {
 			if (FileMap.resourcesToDirectory.containsKey(resourceType)) {
-				game.getAssets().get(
+				map = game.getAssets().get(
 						FileMap.resourcesToDirectory.get(resourceType)
 								+ mapName + ".tmx", TiledMap.class);
 			}
@@ -230,7 +282,7 @@ public class Loader {
 		if (this.strategy == ManagementStrategy.DYNAMIC_TEXTURE_ATLAS) {
 			if (this.rpgMaps != null
 					&& FileMap.resourcesToDirectory.containsKey(resourceType)) {
-				game.getAssets().get(
+				map = game.getAssets().get(
 						FileMap.resourcesToDirectory.get(resourceType)
 								+ mapName + ".tmx", TiledMap.class);
 			}
@@ -253,15 +305,15 @@ public class Loader {
 	}
 
 	/**
-	 * Unloads the textures from memory and deletes the temporary directory.
-	 * It's only usable in the dynamic strategy.
+	 * Unloads the textureRegions from memory and deletes the temporary
+	 * directory. It's only usable in the dynamic strategy.
 	 */
 	public void disposeTextures() {
 		if (this.strategy == ManagementStrategy.DYNAMIC_TEXTURE_ATLAS
-				&& this.textures != null) {
+				&& this.textureRegions != null) {
 			game.getAssets().unload("tmp/tmp.atlas");
 			Gdx.files.local("tmp").deleteDirectory();
-			this.textures = null;
+			this.textureRegions = null;
 		}
 	}
 
@@ -322,8 +374,25 @@ public class Loader {
 		}
 
 		if (this.strategy == ManagementStrategy.DYNAMIC_TEXTURE_ATLAS) {
-			if (this.textures != null)
+			if (this.textureRegions != null)
 				game.getAssets().load("tmp/tmp.atlas", TextureAtlas.class);
+		}
+	}
+
+	private void loadTextures() {
+		if (this.strategy == ManagementStrategy.STATIC_TEXTURE_ATLAS) {
+			game.getAssets().load("data/images/battle_maps/cena1.png",
+					Texture.class);
+		}
+
+		if (this.strategy == ManagementStrategy.DYNAMIC_TEXTURE_ATLAS) {
+			if (this.textures != null) {
+				for (Asset asset : this.textures) {
+					game.getAssets().load(
+							FileMap.resourcesToDirectory.get(asset.assetType)
+									+ asset.assetName, Texture.class);
+				}
+			}
 		}
 	}
 
@@ -383,11 +452,11 @@ public class Loader {
 	}
 
 	/**
-	 * Dynamically creates an atlas for the textures which will be used.
+	 * Dynamically creates an atlas for the textureRegions which will be used.
 	 */
 
 	private void createTextureAtlas() {
-		if (this.textures != null) {
+		if (this.textureRegions != null) {
 			if (Gdx.files.local("tmp").exists()) {
 				if (Gdx.files.local("tmp/tmp.atlas").exists())
 					game.getAssets().unload("tmp/tmp.atlas");
@@ -397,7 +466,7 @@ public class Loader {
 			// First, copy assets to tmp folder; put them in their
 			// sub-directories according to their types to make searching
 			// easier.
-			for (Asset asset : this.textures) {
+			for (Asset asset : this.textureRegions) {
 				FileHandle originFile = Gdx.files
 						.local(FileMap.resourcesToDirectory
 								.get(asset.assetType) + asset.assetName);
