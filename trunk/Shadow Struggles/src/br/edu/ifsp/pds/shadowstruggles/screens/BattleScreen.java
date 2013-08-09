@@ -331,12 +331,27 @@ public class BattleScreen extends BaseScreen {
 			timer.setY(SettingsDAO.getSettings().mapHeight - 40);
 
 			magnifier = new FixedImage(game.getTextureRegion("magnifier",
-					"game_ui_images"), 0, this) {
-				@Override
-				public void clicked() {
-					System.out.println("clicou");
-					showCardInfo();
-				}
+					"game_ui_images"), 0, this) {@Override
+					public boolean touchUp(int screenX, int screenY,
+							int pointer, int button) {
+						int deltaCamX = (int) (getCamera().position.x - BaseScreen.CAMERA_INITIAL_X);
+						int invertY = (int) ((getHeight() - screenY) * (float) ((float) SettingsDAO
+								.getSettings().mapHeight / (float) getHeight()));
+						screenX = (int) (screenX * (float) ((float) SettingsDAO.getSettings().mapWidth / (float) getWidth()));
+
+						
+							if (screenX + deltaCamX >= magnifier.getX()
+									&& screenX + deltaCamX <= magnifier.getX() + magnifier.getWidth()
+											* magnifier.getScaleX() && invertY >= magnifier.getY()
+									&& invertY <= magnifier.getY() + magnifier.getHeight() * magnifier.getScaleY()) {
+
+								showCardInfo();
+							}
+							
+						
+						return false;
+					}
+				
 			};
 			magnifier.setY(152);
 			magnifier.setScale(0.5f);
@@ -494,10 +509,9 @@ public class BattleScreen extends BaseScreen {
 		description.setStyle(new LabelStyle(super.getSkin().getFont(
 				"andalus-font"), Color.BLACK));
 		Image box = new Image(game.getAssets()
-				.get("data/images/objects/objects.atlas", TextureAtlas.class)
+				.get("data/images/game_ui_images/game_ui_images.atlas", TextureAtlas.class)
 				.findRegion("box"));
 		ScreenUtils.defineImage(box, 390, 177, 600, 600, 0.9f, 0.76f);
-
 		Image cardImage = new Image(game.getAssets()
 				.get("data/images/cards/cards.atlas", TextureAtlas.class)
 				.findRegion(card.getName().toLowerCase()));
