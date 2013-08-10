@@ -7,6 +7,13 @@ import br.edu.ifsp.pds.shadowstruggles.model.cards.Effect;
 import br.edu.ifsp.pds.shadowstruggles.model.cards.Fighter;
 import br.edu.ifsp.pds.shadowstruggles.model.cards.Trap;
 import br.edu.ifsp.pds.shadowstruggles.model.enemies.*;
+import br.edu.ifsp.pds.shadowstruggles.model.enemies.conditions.BaseAttacked;
+import br.edu.ifsp.pds.shadowstruggles.model.enemies.conditions.CardOnHand;
+import br.edu.ifsp.pds.shadowstruggles.model.enemies.conditions.CardOnMap;
+import br.edu.ifsp.pds.shadowstruggles.model.enemies.conditions.Condition;
+import br.edu.ifsp.pds.shadowstruggles.model.enemies.conditions.EnergyCondition;
+import br.edu.ifsp.pds.shadowstruggles.model.enemies.conditions.HealthCondition;
+import br.edu.ifsp.pds.shadowstruggles.model.enemies.conditions.True;
 import br.edu.ifsp.pds.shadowstruggles.model.events.*;
 import br.edu.ifsp.pds.shadowstruggles.model.items.*;
 import br.edu.ifsp.pds.shadowstruggles.model.items.Shop;
@@ -63,9 +70,16 @@ public class MyJson {
 			json.addClassTag("RecoveryAction", RecoveryAction.class);
 
 			json.addClassTag("Action", Action.class);
-			json.addClassTag("Condition", Condition.class);
 			json.addClassTag("Enemy", Enemy.class);
 			json.addClassTag("Sequence", Sequence.class);
+
+			json.addClassTag("BaseAttacked", BaseAttacked.class);
+			json.addClassTag("CardOnHand", CardOnHand.class);
+			json.addClassTag("CardOnMap", CardOnMap.class);
+			json.addClassTag("Condition", Condition.class);
+			json.addClassTag("EnergyCondition", EnergyCondition.class);
+			json.addClassTag("HealthCondition", HealthCondition.class);
+			json.addClassTag("True", True.class);
 
 			json.addClassTag("Event", Event.class);
 			json.addClassTag("EventAction", EventAction.class);

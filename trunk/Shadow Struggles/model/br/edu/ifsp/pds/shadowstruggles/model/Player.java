@@ -1,95 +1,58 @@
 package br.edu.ifsp.pds.shadowstruggles.model;
 
-import br.edu.ifsp.pds.shadowstruggles.model.cards.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.cards.Deck;
-import br.edu.ifsp.pds.shadowstruggles.model.cards.Effect;
 
-import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.Json.Serializable;
+import com.badlogic.gdx.utils.JsonValue;
 
-public class Player {
-	private final static int FIELD_SIDE_LEFT=0;
-	private final static int FIELD_SIDE_RIGHT=1;
-	
-	private Deck deck;
-	private Array<Card> handCards;
-	private Array<Card> cardsInField;
-	private Array<Card> destroyedCards;
-	private int fieldSide;
-	private int baseHp;
-	private int maxBaseHp;
-	private int energy;
-	private int maxEnergy;	
-	private Field field;
-	
-	
-	
+public class Player implements Serializable {
+	public Deck deck;
+	public int maxHealth;
+	public int maxEnergy;
+	public int initialEnergy;
+	public int maxCardPoints;
+	public int deckCapacity;
+	public int energyRecovery;
+	public float doubleDraw;
+
 	public Player() {
-		
+		this.deck = new Deck();
+		this.maxHealth = 0;
+		this.maxEnergy = 0;
+		this.initialEnergy = 0;
+		this.maxCardPoints = 0;
+		this.deckCapacity = 0;
+		this.energyRecovery = 0;
+		this.doubleDraw = 0;
 	}
-	
-	public void baseHpChange(int amount){
-		baseHp = verifyValueChange((baseHp+amount), maxBaseHp);	
+
+	@Override
+	public void write(Json json) {
+		json.writeValue("deck", this.deck);
+		json.writeValue("maxHealth", this.maxHealth);
+		json.writeValue("maxEnergy", this.maxEnergy);
+		json.writeValue("initialEnergy", this.initialEnergy);
+		json.writeValue("maxCardPoints", this.maxCardPoints);
+		json.writeValue("deckCapacity", this.deckCapacity);
+		json.writeValue("energyRecovery", this.energyRecovery);
+		json.writeValue("doubleDraw", this.doubleDraw);
 	}
-	
-	public void energyChange(int amount) {						
-		energy = verifyValueChange((energy+amount), maxEnergy);		
+
+	@Override
+	public void read(Json json, JsonValue jsonData) {
+		this.deck = json.readValue("deck", Deck.class, jsonData);
+		this.maxHealth = json.readValue("maxHealth", Integer.class, jsonData);
+		this.maxEnergy = json.readValue("maxEnergy", Integer.class, jsonData);
+		this.initialEnergy = json.readValue("initialEnergy", Integer.class,
+				jsonData);
+		this.maxCardPoints = json.readValue("maxCardPoints", Integer.class,
+				jsonData);
+		this.deckCapacity = json.readValue("deckCapacity", Integer.class,
+				jsonData);
+		this.energyRecovery = json.readValue("energyRecovery", Integer.class,
+				jsonData);
+		this.doubleDraw = json.readValue("doubleDraw", Float.class, jsonData);
 	}
-	
-	public int verifyValueChange(int newValue, int maxValue){	
-		/*
-		 * If new value is in normal range, apply changes without correction.
-		 * If new value is less than zero, set new value to zero. If new
-		 * value is greater than maximum value, set new value to maximum
-		 * value. */		
-		if (newValue >= 0
-				&& newValue <= maxValue) {
-			return newValue;
-		} else if (newValue < 0) {
-			return 0;
-		} else if (newValue > maxValue) {
-			return maxValue;
-		}
-		return 0;
-	}
-	
-	public boolean cardOnHand(Card card){
-		boolean b = false;
-		for (Card c : handCards) {
-			if (c.getName().equals(card.getName())) {
-				b = true;
-			}
-		}
-		return b;
-	}
-	
-	public void summonCard(Battle battle, Card card, int tile, int lane) {
-		card.setPosition(lane, tile);		
-		card.setMarkPosition(lane, tile);
-		field.getTiles().get(card.getTile() / 2)
-				.set(card.getLane(), card);
-		battle.getMap().addCard(card, tile, lane);
-		handCards.removeValue(card,true);
-		if (card.getClass().equals(Effect.class)) {
-			//((Effect)card).action(?);
-		}		
-	}
-	
-	
-	public Deck getDeck() {
-		return deck;
-	}
-	public Array<Card> getCardsInField() {
-		return cardsInField;
-	}
-	public void setDeck(Deck deck) {
-		this.deck = deck;
-	}
-	
-	public void setHandCards(Array<Card> handCards) {
-		this.handCards = handCards;
-	}
-	
-	public Array<Card> getHandCards() {
-		return handCards;
-	}
+
 }

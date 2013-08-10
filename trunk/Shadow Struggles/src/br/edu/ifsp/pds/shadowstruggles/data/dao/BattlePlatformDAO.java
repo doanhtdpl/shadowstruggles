@@ -14,8 +14,11 @@ public class BattlePlatformDAO {
 		Array<BattlePlatform> battles = DataManager.getInstance().getObjectSet(
 				BattlePlatform.class);
 		for (BattlePlatform b : battles) {
-			if (b.getId() == id)
+			if (b.getId() == id) {
 				battle = b;
+				battle.getEnemy().setDeck(
+						DeckDAO.getDeck(battle.getEnemy().getDeck().getName()));
+			}
 		}
 
 		return battle;

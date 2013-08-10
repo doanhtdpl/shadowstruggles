@@ -8,8 +8,6 @@ import br.edu.ifsp.pds.shadowstruggles.data.dao.DeckDAO;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
 import br.edu.ifsp.pds.shadowstruggles.games.Practice;
 import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
-import br.edu.ifsp.pds.shadowstruggles.model.enemies.PracticeEnemy;
-import br.edu.ifsp.pds.shadowstruggles.model.enemies.TutorialEnemy;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgMap;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgPlatform;
@@ -72,8 +70,7 @@ public class FreePlayScreen extends BaseScreen {
 			public void clicked(InputEvent event, float x, float y) {
 				BattlePlatform platform = BattlePlatformDAO.getBattle(1);
 				platform.setPlayerDeck(DeckDAO.getDeck("Practice Deck Player"));
-				platform.setEnemyDeck(DeckDAO.getDeck("Practice Deck Enemy"));
-				platform.setEnemy(new PracticeEnemy());
+				platform.setEnemyDeck(platform.getEnemy().getDeck());
 				game.setScreenWithTransition(new Practice(game, platform, false));
 			}
 		});
@@ -86,7 +83,6 @@ public class FreePlayScreen extends BaseScreen {
 				BattlePlatform platform = BattlePlatformDAO.getBattle(2);
 				platform.setPlayerDeck(DeckDAO.getDeck("Tutorial Deck"));
 				platform.setEnemyDeck(DeckDAO.getDeck("Practice Deck Enemy"));
-				platform.setEnemy(new TutorialEnemy());
 				game.setScreenWithTransition(new BattleTutorial(game, platform));
 
 			}
