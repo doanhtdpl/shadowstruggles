@@ -45,7 +45,9 @@ public class FileMap {
 		// classToFile.put(Ending.class, "data/files/endings.json");
 		classToFile.put(Enemy.class, "data/files/enemies.json");
 		classToFile.put(Event.class, "data/files/events.json");
-		// classToFile.put(Item.class, "data/files/items.json");
+//		classToFile.put(ModifierItem.class, "data/files/items.json");
+//		classToFile.put(Pack.class, "data/files/items.json");
+//		classToFile.put(TextItem.class, "data/files/items.json");
 		classToFile.put(MenuText.class, "data/files/menu_text.json");
 		// classToFile.put(Pack.class, "data/files/packs.json");
 		// classToFile.put(Quest.class, "data/files/quests.json");

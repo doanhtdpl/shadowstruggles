@@ -9,23 +9,23 @@ public class Shop implements Serializable {
 	public int id;
 	public boolean mainShop;
 	public Array<Item> items;
-	
+
 	public Shop() {
 		this.id = 1;
 		this.mainShop = false;
 		this.items = new Array<Item>();
 	}
-	
+
 	public Shop(int id, boolean mainShop, Array<Item> items) {
 		this.id = id;
 		this.mainShop = mainShop;
 		this.items = items;
 	}
-	
+
 	public void show() {
 		// TODO: Implementar método.
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public void read(Json json, JsonValue jsonData) {
@@ -41,4 +41,7 @@ public class Shop implements Serializable {
 		json.writeValue("items", this.items);
 	}
 
+	public Array<Item> getItems() {
+		return this.items;
+	}
 }

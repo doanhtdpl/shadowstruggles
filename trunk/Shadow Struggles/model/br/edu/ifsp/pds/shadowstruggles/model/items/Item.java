@@ -1,20 +1,24 @@
 package br.edu.ifsp.pds.shadowstruggles.model.items;
 
+import br.edu.ifsp.pds.shadowstruggles.model.modifiers.InventoryModifier;
+import br.edu.ifsp.pds.shadowstruggles.model.modifiers.InventoryModifier.ItemOperation;
+
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.Json.Serializable;
 
 public class Item implements Serializable {
-	public int id;
-	public String name;
-	public String nameVisualization;
-	public String description;
-	public int buyCost;
-	public int sellCost;
-	public boolean sellable;
-	public String icon;
-	public boolean availableInMainShop;
-	public boolean consumable;
+	protected int id;
+	protected String name;
+	protected String nameVisualization;
+	protected String description;
+	protected int buyCost;
+	protected int sellCost;
+	protected boolean sellable;
+	protected String icon;
+	protected boolean availableInMainShop;
+	protected boolean consumable;
 
 	public Item() {
 		this.id = 1;
@@ -26,6 +30,35 @@ public class Item implements Serializable {
 		this.icon = "";
 		this.availableInMainShop = false;
 		this.consumable = false;
+	}
+
+	/**
+	 * Triggers the item's effect. By default, nothing happens; subsequent
+	 * classes should overwrite this method.
+	 */
+	public void useItem() {
+	}
+
+	/**
+	 * Removes the item from the player's inventory. Subsequent methods should
+	 * use this method after the use of consumable items.
+	 */
+	protected void consumeItem() {
+		Array<Item> items = new Array<Item>();
+		items.add(this);
+		InventoryModifier invModifier = new InventoryModifier(items,
+				ItemOperation.REMOVE);
+		invModifier.modify();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Item) {
+			Item itemObj = (Item) obj;
+			return itemObj.getId() == this.id;
+		}
+
+		return false;
 	}
 
 	@Override
@@ -59,4 +92,11 @@ public class Item implements Serializable {
 		json.writeValue("consumable", this.consumable);
 	}
 
+	public int getId() {
+		return this.id;
+	}
+
+	public void setAvailableInMainShop(boolean availableInMainShop) {
+		this.availableInMainShop = availableInMainShop;
+	}
 }

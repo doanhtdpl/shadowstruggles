@@ -30,7 +30,6 @@ public class Profile implements Serializable, Comparable<Object> {
 
 	private Array<Item> inventory;
 	private Array<Deck> decks;
-	private Array<Item> unlockedItems;
 	private Array<Quest> quests;
 	private Array<EnemyDefeat> defeatedEnemies;
 	private Array<Ending> endings;
@@ -64,7 +63,6 @@ public class Profile implements Serializable, Comparable<Object> {
 
 		this.inventory = new Array<Item>();
 		this.decks = new Array<Deck>();
-		this.unlockedItems = new Array<Item>();
 		this.quests = new Array<Quest>();
 		this.defeatedEnemies = new Array<EnemyDefeat>();
 		this.endings = new Array<Ending>();
@@ -79,6 +77,11 @@ public class Profile implements Serializable, Comparable<Object> {
 	public Profile(int id) {
 		this();
 		this.setId(id);
+	}
+	
+	@Override
+	public int compareTo(Object o) {
+		return this.id - ((Profile) o).getId();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -102,8 +105,6 @@ public class Profile implements Serializable, Comparable<Object> {
 
 		this.inventory = json.readValue("inventory", Array.class, jsonData);
 		this.decks = json.readValue("decks", Array.class, jsonData);
-		this.unlockedItems = json.readValue("unlockedItems", Array.class,
-				jsonData);
 		this.quests = json.readValue("quests", Array.class, jsonData);
 		this.defeatedEnemies = json.readValue("defeatedEnemies", Array.class,
 				jsonData);
@@ -138,7 +139,6 @@ public class Profile implements Serializable, Comparable<Object> {
 
 		json.writeValue("inventory", this.inventory);
 		json.writeValue("decks", this.decks);
-		json.writeValue("unlockedItems", this.unlockedItems);
 		json.writeValue("quests", this.quests);
 		json.writeValue("defeatedEnemies", this.defeatedEnemies);
 		json.writeValue("endings", this.endings);
@@ -151,7 +151,7 @@ public class Profile implements Serializable, Comparable<Object> {
 		json.writeValue("experienceNextLevelFormula",
 				this.experienceNextLevelFormula);
 	}
-
+	
 	public int getId() {
 		return id;
 	}
@@ -175,9 +175,68 @@ public class Profile implements Serializable, Comparable<Object> {
 	public Deck getSelectedDeck() {
 		return selectedDeck;
 	}
+	
+	public Player getPlayer() {
+		return this.player;
+	}
 
-	@Override
-	public int compareTo(Object o) {
-		return this.id - ((Profile) o).getId();
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	public int getStoryPoints() {
+		return storyPoints;
+	}
+
+	public void setStoryPoints(int storyPoints) {
+		this.storyPoints = storyPoints;
+	}
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+
+	public int getExperience() {
+		return experience;
+	}
+
+	public void setExperience(int experience) {
+		this.experience = experience;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public Array<Quest> getQuests() {
+		return quests;
+	}
+
+	public Array<EnemyDefeat> getDefeatedEnemies() {
+		return defeatedEnemies;
+	}
+
+	public ObjectMap<Event, Array<EventAction>> getEvents() {
+		return events;
+	}
+
+	public ObjectMap<String, String> getMapLayers() {
+		return mapLayers;
+	}
+
+	public void setMoney(int money) {
+		this.money = money;
 	}
 }
