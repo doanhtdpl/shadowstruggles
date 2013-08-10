@@ -97,7 +97,7 @@ public class MyJson {
 			json.addClassTag("AmountModifier", AmountModifier.class);
 			json.addClassTag("InventoryModifier", InventoryModifier.class);
 			json.addClassTag("Modifier", Modifier.class);
-			json.addClassTag("QuestModifier", QuestModifier.class);
+			json.addClassTag("PathModifier", PathModifier.class);
 			json.addClassTag("UnlockModifier", UnlockModifier.class);
 
 			json.addClassTag("AttributePointsFormula",

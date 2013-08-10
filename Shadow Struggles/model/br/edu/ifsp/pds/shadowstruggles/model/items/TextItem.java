@@ -10,6 +10,13 @@ public class TextItem extends Item {
 		super();
 		
 		this.text = "";
+		this.consumable = false;
+	}
+	
+	@Override
+	public void useItem() {
+		// TODO: Implementar método.
+		super.useItem();
 	}
 	
 	@Override
