@@ -63,8 +63,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </enumeration>  
-  <class id="7" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.enemies.Condition" project="ShadowStruggles" 
-    file="/ShadowStruggles/model/br/edu/ifsp/pds/shadowstruggles/model/enemies/Condition.java" binary="false" 
+  <class id="7" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.enemies.conditions.Conditions.Condition" 
+    project="ShadowStruggles" 
+    file="/ShadowStruggles/model/br/edu/ifsp/pds/shadowstruggles/model/enemies/conditions/Condition.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="99" width="211" x="1135" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -73,9 +74,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <enumeration id="8" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.enemies.Condition.Comparator" 
-    project="ShadowStruggles" file="/ShadowStruggles/model/br/edu/ifsp/pds/shadowstruggles/model/enemies/Condition.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
+  <enumeration ibr.edu.ifsp.pds.shadowstruggles.model.enemies.conditions.Conditionwstruggles.model.enemies.conditions.Condition.Comparator" project="ShadowStruggles" 
+    file="/ShadowStruggles/model/br/edu/ifsp/pds/shadowstruggles/model/enemies/conditions/Condition.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="171" width="258" x="1135" y="266"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      

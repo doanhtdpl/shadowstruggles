@@ -1,4 +1,4 @@
 /***
- * A package with the enemy logic of each match.
+ * Classes for building the Enemy AI.
  */
 package br.edu.ifsp.pds.shadowstruggles.model.enemies;

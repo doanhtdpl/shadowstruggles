@@ -7,14 +7,14 @@ import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.Json.Serializable;
 
 public class Player implements Serializable {
-	public Deck deck;
-	public int maxHealth;
-	public int maxEnergy;
-	public int initialEnergy;
-	public int maxCardPoints;
-	public int deckCapacity;
-	public int energyRecovery;
-	public float doubleDraw;
+	private Deck deck;
+	private int maxHealth;
+	private int maxEnergy;
+	private int initialEnergy;
+	private int maxCardPoints;
+	private int deckCapacity;
+	private int energyRecovery;
+	private float doubleDraw;
 
 	public Player() {
 		this.deck = new Deck();
@@ -67,4 +67,11 @@ public class Player implements Serializable {
 		json.writeValue("doubleDraw", this.doubleDraw);
 	}
 
+	public void setDeck(Deck deck) {
+		this.deck = deck;
+	}
+	
+	public Deck getDeck() {
+		return this.deck;
+	}
 }

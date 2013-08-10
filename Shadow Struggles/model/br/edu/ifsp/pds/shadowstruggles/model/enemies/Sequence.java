@@ -1,29 +1,48 @@
 package br.edu.ifsp.pds.shadowstruggles.model.enemies;
 
+import br.edu.ifsp.pds.shadowstruggles.model.enemies.conditions.Condition;
+
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.Json.Serializable;
 
+/**
+ * A Sequence consists of a series of conditions followed by a series of
+ * actions. The actions will be executed if and only if all of the conditions
+ * are true.
+ */
 public class Sequence implements Serializable {
-	public Array<Condition> conditions;
-	public Array<Action> actions;
+	private Array<Condition> conditions;
+	private Array<Action> actions;
 
 	public Sequence() {
 		this.conditions = new Array<Condition>();
 		this.actions = new Array<Action>();
 	}
 
-	public Sequence(Array<Condition> conditions, Array<Action> actions) {
-		this.conditions = conditions;
-		this.actions = actions;
+	/**
+	 * Evaluates the conditions for performing the actions.
+	 */
+	public boolean evaluateConditions() {
+		for (Condition condition : conditions) {
+			if ((!condition.isNot() && !condition.evaluate())
+					|| (condition.isNot() && condition.evaluate()))
+				return false;
+		}
+
+		return true;
 	}
 
-	// TODO: Implementar método.
-	public boolean evaluateConditions() {
-		return false;
+	/**
+	 * Updates the actions according to the current battle state.
+	 */
+	public void updateActions() {
+		for (Action action : actions) {
+			action.update();
+		}
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public void read(Json json, JsonValue jsonData) {
@@ -37,4 +56,15 @@ public class Sequence implements Serializable {
 		json.writeValue("actions", this.actions);
 	}
 
+	public Array<Action> getActions() {
+		return actions;
+	}
+
+	public void setConditions(Array<Condition> conditions) {
+		this.conditions = conditions;
+	}
+
+	public void setActions(Array<Action> actions) {
+		this.actions = actions;
+	}
 }
