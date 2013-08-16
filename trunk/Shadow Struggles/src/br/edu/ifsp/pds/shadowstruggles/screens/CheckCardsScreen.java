@@ -57,21 +57,26 @@ public class CheckCardsScreen extends BaseScreen {
 	}
 
 	public void initComponents() {
+		float X_SCALE = 960f / 512f;
+		float Y_SCALE = 640f / 380f;
+		int X_LABEL = 410;
+		int WIDTH_LABEL = 500;
+		
 		final InGameMenu menu = this.menu;
 		background = new Image(this.getSkin().getDrawable("msbackground"));
-		background.setScale((960f / 512f), (640f / 380f));
+		background.setScale(X_SCALE, Y_SCALE);
 
 		name = new Label("", super.getSkin());
-		name.setX(410);
-		name.setWidth(500);
+		name.setX(X_LABEL);
+		name.setWidth(WIDTH_LABEL);
 		name.setHeight(50);
 		name.setWrap(true);
 		name.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
 				Color.BLACK));
 
 		description = new Label("", super.getSkin());
-		description.setX(410);
-		description.setWidth(500);
+		description.setX(X_LABEL);
+		description.setWidth(WIDTH_LABEL);
 		description.setWrap(true);
 		description.setStyle(new LabelStyle(super.getSkin().getFont(
 				"andalus-font"), Color.BLACK));

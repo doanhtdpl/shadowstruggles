@@ -26,20 +26,15 @@ import com.badlogic.gdx.utils.Array;
 
 public class EditDeckScreen extends BaseScreen {
 	private BaseScreen previousScreen;
-
-	private Image background;
 	private Image box;
-	private Label name;
-	private Label description;
 	private Label deckName;
 	private Label availableCards;
 	private Arrow right;
 	private Arrow left;
 	private TextButton exit;
 	private TextButton newDeck;
-	private TextButton moveCard;
-	private Card selectedCard;
 	private Deck selectedDeck;
+	private Card selectedCard;
 	private Array<Image> cardImages;
 	private Array<Card> trunk;
 	private Array<Deck> playerDecks;
@@ -67,6 +62,12 @@ public class EditDeckScreen extends BaseScreen {
 	}
 
 	public void initComponents() {
+		int MENUTABLE_PADTOP = 10;
+		int MENUTABLE_WIDTH = 160;
+		int MENUTABLE_HEIGHT = 50;
+		int MENUTABLE_X = 100;
+		int MENUTABLE_Y = 300;
+		
 		stage.clear();
 
 		final BaseScreen menu = this.previousScreen;
@@ -79,7 +80,7 @@ public class EditDeckScreen extends BaseScreen {
 		}
 
 		Table menuTable = new Table();
-		menuTable.defaults().padTop(10).width(160).height(50);
+		menuTable.defaults().padTop(MENUTABLE_PADTOP).width(MENUTABLE_WIDTH).height(MENUTABLE_HEIGHT);
 
 		if (game.getMode() == RunMode.DEBUG)
 			menuTable.debug();
@@ -127,25 +128,34 @@ public class EditDeckScreen extends BaseScreen {
 		menuTable.row();
 		menuTable.add(exit);
 
-		menuTable.setPosition(100, 300);
+		menuTable.setPosition(MENUTABLE_X, MENUTABLE_Y);
+		
+		int DECKTABLE_WIDTH = 600;
+		int DECKTABLE_HEIGHT = 400;
+		int DECKTABLE_X = 580;
+		int DECKTABLE_Y = 380;
 
 		Table deckTable = new Table();
 		if (game.getMode() == RunMode.DEBUG)
 			deckTable.debug();
 		box = new Image(game.getTextureRegion("box", "game_ui_images"));
-		deckTable.defaults().width(600).height(400);
-		box.setWidth(600);
-		box.setHeight(400);
-
+		deckTable.defaults().width(DECKTABLE_WIDTH).height(DECKTABLE_HEIGHT);
+		box.setWidth(DECKTABLE_WIDTH);
+		box.setHeight(DECKTABLE_HEIGHT);
 		deckTable.add(box);
+		deckTable.setPosition(DECKTABLE_X, DECKTABLE_Y);
 
-		deckTable.setPosition(580, 380);
-
+		int BUTTON_WIDTH = 100;
+		int BUTTON_HEIGHT = 100;
+		int LEFTBUTTON_X = 250;
+		int LEFTBUTTON_Y = 105;
+		int RIGHTBUTTON_X = 900;
+		int RIGHTBUTTON_Y = 80;
+		
 		Table leftButtonTable = new Table();
 		if (game.getMode() == RunMode.DEBUG)
 			leftButtonTable.debug();
-
-		leftButtonTable.defaults().width(100).height(100);
+		leftButtonTable.defaults().width(BUTTON_WIDTH).height(BUTTON_HEIGHT);
 
 		availableCards = new Label("", super.getSkin());
 		availableCards.setText("Available Cards:");
@@ -162,12 +172,12 @@ public class EditDeckScreen extends BaseScreen {
 
 			}
 		});
-
+		
 		Table rightButtonTable = new Table();
 		if (game.getMode() == RunMode.DEBUG)
 			rightButtonTable.debug();
 
-		rightButtonTable.defaults().width(100).height(100);
+		rightButtonTable.defaults().width(BUTTON_WIDTH).height(BUTTON_HEIGHT);
 
 		right = new Arrow(1, this.getSkin());
 		right.addListener(new ClickListener() {
@@ -181,15 +191,19 @@ public class EditDeckScreen extends BaseScreen {
 		});
 
 		int count = 0;
+		int CARD_Y = 5;
+		int CARD_X = 180;
+		int CARD_JUMP = 120;
+		float CARD_SCALE = 0.3f;
 		cardImages = new Array<Image>();
 		for (Card card : trunk) {
 			Image cardImage = new Image(game.getAssets()
 					.get("data/images/cards/cards.atlas", TextureAtlas.class)
 					.findRegion(card.getName().toLowerCase()));
-			cardImage.setY(5);
-			cardImage.setX(180 + count * 120);
-			cardImage.setScaleX(0.3f);
-			cardImage.setScaleY(0.3f);
+			cardImage.setY(CARD_Y);
+			cardImage.setX(CARD_X + count * CARD_JUMP);
+			cardImage.setScaleX(CARD_SCALE);
+			cardImage.setScaleY(CARD_SCALE);
 			final Card card2 = card;
 			cardImage.addListener(new ClickListener() {
 
@@ -210,8 +224,8 @@ public class EditDeckScreen extends BaseScreen {
 		leftButtonTable.add(left).left();
 		rightButtonTable.add(right);
 
-		leftButtonTable.setPosition(250, 105);
-		rightButtonTable.setPosition(900, 80);
+		leftButtonTable.setPosition(LEFTBUTTON_X, LEFTBUTTON_Y);
+		rightButtonTable.setPosition(RIGHTBUTTON_X, RIGHTBUTTON_Y);
 
 		stage.addActor(menuTable);
 		stage.addActor(deckTable);
