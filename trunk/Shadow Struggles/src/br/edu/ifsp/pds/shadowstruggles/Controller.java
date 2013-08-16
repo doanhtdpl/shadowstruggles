@@ -1,5 +1,6 @@
 package br.edu.ifsp.pds.shadowstruggles;
 
+import br.edu.ifsp.pds.shadowstruggles.data.Settings;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.model.cards.Effect;
@@ -47,8 +48,8 @@ public class Controller {
 	// HANDLE----------------------------------------------------
 
 	public void mapClicked(float x, float y) {
-		int lane = (int) ((y - 48) / 72);
-		int tile = ((int) ((x - 96) / 48) / 2) * 2;
+		int lane = yToLane(y);
+		int tile = xToTile(x);
 
 		if (platform.getSelectedCard() != null) {
 
@@ -296,13 +297,14 @@ public class Controller {
 	}
 
 	private void rearrangeCards(float initialX) {
+		int variationX=130;
 		for (Actor actor : currentScreen.getStage().getActors()) {
 			if (actor.getClass().equals(HandCard.class)) {
 				if (((HandCard) actor).getInitialX() > initialX) {
-					actor.addAction(Actions.moveTo(actor.getX() - 130,
+					actor.addAction(Actions.moveTo(actor.getX() - variationX,
 							actor.getY(), 0.1f));
 					((HandCard) actor).setInitialX(((HandCard) actor)
-							.getInitialX() - 130);
+							.getInitialX() - variationX);
 				}
 			}
 		}
@@ -345,7 +347,7 @@ public class Controller {
 		int next = 4;
 		for (BackCard backCard : ((BattleScreen) currentScreen).getBackcards()) {
 			if (backCard.isVisible()
-					&& ((int) ((backCard.getImageY() - 48) / 72)) - 2 == lane) {
+					&& yToLane(backCard.getImageY()) - 2 == lane) {
 				next--;
 			}
 		}
@@ -366,6 +368,14 @@ public class Controller {
 			return maxValue;
 		}
 		return 0;
+	}
+	
+	public int yToLane(float y){
+		return (int) ((y - 48) / 72);
+	}
+	
+	public int xToTile(float x){
+		return ((int) ((x - 96) / 48) / 2) * 2;
 	}
 
 	// ----------------------------------------------------GETTERS/SETTERS---------------------------------------------------
