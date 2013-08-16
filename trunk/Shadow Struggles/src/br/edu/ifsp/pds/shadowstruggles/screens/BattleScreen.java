@@ -67,6 +67,8 @@ public class BattleScreen extends BaseScreen {
 	protected InputMultiplexer inputSources;
 	private Image selectedCard;
 	private FixedImage magnifier;
+	private boolean dialogActive;
+	private Array<Actor> dialogActors;
 
 	protected BattleMap2D map2d;
 	private HandBackground background;
@@ -334,18 +336,20 @@ public class BattleScreen extends BaseScreen {
 					"game_ui_images"), 0, this) {@Override
 					public boolean touchUp(int screenX, int screenY,
 							int pointer, int button) {
+						
 						int deltaCamX = (int) (getCamera().position.x - BaseScreen.CAMERA_INITIAL_X);
-						int invertY = (int) ((getHeight() - screenY) * (float) ((float) SettingsDAO
-								.getSettings().mapHeight / (float) getHeight()));
-						screenX = (int) (screenX * (float) ((float) SettingsDAO.getSettings().mapWidth / (float) getWidth()));
-
+						int invertY = (int) ((controller.getCurrentScreen().getHeight() - screenY) * (float) ((float) SettingsDAO
+								.getSettings().mapHeight / (float) controller.getCurrentScreen().getHeight()));
+						screenX = (int) (screenX * (float) ((float) SettingsDAO.getSettings().mapWidth / (float) controller.getCurrentScreen().getWidth()));
 						
 							if (screenX + deltaCamX >= magnifier.getX()
 									&& screenX + deltaCamX <= magnifier.getX() + magnifier.getWidth()
 											* magnifier.getScaleX() && invertY >= magnifier.getY()
 									&& invertY <= magnifier.getY() + magnifier.getHeight() * magnifier.getScaleY()) {
-
+								if(!dialogActive){
+									if(controller.getCardFromImage(selectedCard)!=null)
 								showCardInfo();
+								}else{closeDialog();}
 							}
 							
 						
@@ -400,7 +404,7 @@ public class BattleScreen extends BaseScreen {
 
 		stage.addActor(playerLife);
 		stage.addActor(enemyLife);
-
+		
 		stage.addActor(timer);
 		stage.addActor(menu);
 		stage.addActor(magnifier);
@@ -489,34 +493,45 @@ public class BattleScreen extends BaseScreen {
 		defeatScreen.setBattleScreen(this);
 		game.setScreenWithTransition(defeatScreen);
 	}
+	
+	private void closeDialog(){
+		for(Actor actor: dialogActors){
+			actor.remove();
+		}
+		dialogActive=false;
+	}
 
-	private void showCardInfo() {
-		System.out.println("showCardInfo");
-		Card card = controller.getCardFromImage(selectedCard);
-		// FixedObject cardImage = new fixedObject(
-		Label name = new Label("", super.getSkin());
+	private void showCardInfo() {	
+		dialogActors= new Array<Actor>();
+		
+		Card card = controller.getCardFromImage(selectedCard);		
+		//NOME
+		Label name = new Label(card.getName(), super.getSkin());
 		name.setX(410);
 		name.setWidth(500);
-		name.setHeight(50);
+		name.setHeight(1200);
 		name.setWrap(true);
 		name.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
 				Color.BLACK));
-
-		Label description = new Label("", super.getSkin());
+		//DESCRIÇÃO
+		Label description = new Label(card.getDescription(), super.getSkin());
 		description.setX(410);
 		description.setWidth(500);
+		description.setHeight(800);
 		description.setWrap(true);
 		description.setStyle(new LabelStyle(super.getSkin().getFont(
 				"andalus-font"), Color.BLACK));
+		//BOX
 		Image box = new Image(game.getAssets()
 				.get("data/images/game_ui_images/game_ui_images.atlas", TextureAtlas.class)
 				.findRegion("box"));
-		ScreenUtils.defineImage(box, 390, 177, 600, 600, 0.9f, 0.76f);
+		ScreenUtils.defineImage(box, 50, 177, 940, 600, 0.9f, 0.76f);
+		//IMAGEM
 		Image cardImage = new Image(game.getAssets()
 				.get("data/images/cards/cards.atlas", TextureAtlas.class)
 				.findRegion(card.getName().toLowerCase()));
-		ScreenUtils.defineImage(cardImage, 180, 100, cardImage.getWidth(),
-				cardImage.getHeight(), 0.3f, 0.3f);
+		ScreenUtils.defineImage(cardImage, 60, 205, cardImage.getWidth(),
+				cardImage.getHeight(), 1.5f, 1.5f);
 
 		cardImage.addListener(new ClickListener() {
 
@@ -530,9 +545,15 @@ public class BattleScreen extends BaseScreen {
 		stage.addActor(name);
 		stage.addActor(description);
 		stage.addActor(cardImage);
+		dialogActors.add(box);
+		dialogActors.add(name);
+		dialogActors.add(description);
+		dialogActors.add(cardImage);
+		dialogActive=true;
 	}
 
 	public void showResumedCardInfo() {
+		
 		removeResumedCardInfo();
 		Card card = controller.getCardFromImage(selectedCard);
 		Label cardName = new FixedLabel(card.getNameVisualization(), 60, this);
