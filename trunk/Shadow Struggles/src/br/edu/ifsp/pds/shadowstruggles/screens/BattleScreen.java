@@ -130,10 +130,7 @@ public class BattleScreen extends BaseScreen {
 		initComponents();
 	}
 
-	@Override
-	public void resize(int width, int height) {
-		super.resize(width, height);
-	}
+	
 
 	@Override
 	public void render(float delta) {
@@ -213,7 +210,7 @@ public class BattleScreen extends BaseScreen {
 		}
 
 	}
-
+	public void doBeforeSet(){}
 	public void moveFixedObjects() {
 		for (int i = 0; i < stage.getActors().size; i++) {
 			Actor a = stage.getActors().get(i);
@@ -600,8 +597,7 @@ public class BattleScreen extends BaseScreen {
 
 	}
 
-	public void doBeforeSet() {
-	}
+	
 
 	public Array<BackCard> getBackcards() {
 		return backcards;
