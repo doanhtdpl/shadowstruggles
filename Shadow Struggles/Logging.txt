@@ -12,3 +12,11 @@ SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving local
 SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving localized JSON file from language en_us - Error reading file: data/en_us/files/enemies.json
 09/08/2013 12:47:00 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
 SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving localized JSON file from language en_us - Error reading file: data/en_us/files/enemies.json
+Ago 30, 2013 4:34:29 PM br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving language-independent JSON file - Error reading file: data/profiles.json
+Ago 30, 2013 4:41:23 PM br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving language-independent JSON file - Error reading file: data/profiles.json
+Ago 30, 2013 4:45:22 PM br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving language-independent JSON file - Error reading file: data/profiles.json
+Ago 30, 2013 4:59:59 PM br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving language-independent JSON file - Error reading file: data/profiles.json

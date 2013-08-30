@@ -22,7 +22,7 @@ public class TrapDAO {
 				 * This makes a deep copy of the effect so that similar effects
 				 * don't share the same memory blocks.
 				 */
-				trap = new Trap(card.getName(), card.getNameVisualization(),
+				trap = new Trap(card.getName(), card.getLocalizedName(),
 						card.getEnergyCost(), card.getDescription(),
 						card.getBuyCost(), card.getAction(),
 						card.getDuration(), card.isHasImmediateEffect());

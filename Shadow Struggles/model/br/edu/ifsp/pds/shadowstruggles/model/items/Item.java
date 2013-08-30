@@ -11,13 +11,12 @@ import com.badlogic.gdx.utils.Json.Serializable;
 public class Item implements Serializable {
 	protected int id;
 	protected String name;
-	protected String nameVisualization;
+	protected String localizedName;
 	protected String description;
 	protected int buyCost;
 	protected int sellCost;
 	protected boolean sellable;
 	protected String icon;
-	protected boolean availableInMainShop;
 	protected boolean consumable;
 
 	public Item() {
@@ -28,7 +27,6 @@ public class Item implements Serializable {
 		this.sellCost = 0;
 		this.sellable = false;
 		this.icon = "";
-		this.availableInMainShop = false;
 		this.consumable = false;
 	}
 
@@ -65,16 +63,14 @@ public class Item implements Serializable {
 	public void read(Json json, JsonValue jsonData) {
 		this.id = json.readValue("id", Integer.class, jsonData);
 		this.name = json.readValue("name", String.class, jsonData);
-		this.nameVisualization = json.readValue("nameVisualization",
-				String.class, jsonData);
+		this.localizedName = json.readValue("localizedName", String.class,
+				jsonData);
 		this.description = json
 				.readValue("description", String.class, jsonData);
 		this.buyCost = json.readValue("buyCost", Integer.class, jsonData);
 		this.sellCost = json.readValue("sellCost", Integer.class, jsonData);
 		this.sellable = json.readValue("sellable", Boolean.class, jsonData);
 		this.icon = json.readValue("icon", String.class, jsonData);
-		this.availableInMainShop = json.readValue("availableInMainShop",
-				Boolean.class, jsonData);
 		this.consumable = json.readValue("consumable", Boolean.class, jsonData);
 	}
 
@@ -82,13 +78,12 @@ public class Item implements Serializable {
 	public void write(Json json) {
 		json.writeValue("id", this.id);
 		json.writeValue("name", this.name);
-		json.writeValue("nameVisualization", this.nameVisualization);
+		json.writeValue("localizedName", this.localizedName);
 		json.writeValue("description", this.description);
 		json.writeValue("buyCost", this.buyCost);
 		json.writeValue("sellCost", this.sellCost);
 		json.writeValue("sellable", this.sellable);
 		json.writeValue("icon", this.icon);
-		json.writeValue("availableInMainShop", this.availableInMainShop);
 		json.writeValue("consumable", this.consumable);
 	}
 
@@ -96,7 +91,19 @@ public class Item implements Serializable {
 		return this.id;
 	}
 
-	public void setAvailableInMainShop(boolean availableInMainShop) {
-		this.availableInMainShop = availableInMainShop;
+	public String getName() {
+		return name;
+	}
+
+	public String getLocalizedName() {
+		return localizedName;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public int getBuyCost() {
+		return buyCost;
 	}
 }

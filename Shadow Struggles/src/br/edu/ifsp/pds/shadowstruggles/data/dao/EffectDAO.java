@@ -14,17 +14,19 @@ public class EffectDAO {
 		Effect card = null;
 
 		@SuppressWarnings("unchecked")
-		Array<Effect> cards = DataManager.getInstance().getObjectSet(Effect.class);
+		Array<Effect> cards = DataManager.getInstance().getObjectSet(
+				Effect.class);
 		for (Effect effect : cards) {
 			if (effect.getName().equals(key)) {
 				/*
 				 * This makes a deep copy of the effect so that similar effects
 				 * don't share the same memory blocks.
 				 */
-				card = new Effect(effect.getName(), effect.getNameVisualization(),
-						effect.getEnergyCost(), effect.getDescription(), effect.getBuyCost(),
-						effect.getAction(), effect.getDuration(),
-						effect.isImmediateEffect(), effect.isOnFighter());
+				card = new Effect(effect.getName(), effect.getLocalizedName(),
+						effect.getEnergyCost(), effect.getDescription(),
+						effect.getBuyCost(), effect.getAction(),
+						effect.getDuration(), effect.isImmediateEffect(),
+						effect.isOnFighter());
 			}
 		}
 

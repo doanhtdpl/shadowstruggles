@@ -107,7 +107,7 @@ public class MainScreen extends BaseScreen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_4");
-				game.setScreenWithTransition(new ShopScreen(game, controller,
+				game.setScreenWithTransition(new ShopScreen(game, null, controller,
 						screen));
 			}
 

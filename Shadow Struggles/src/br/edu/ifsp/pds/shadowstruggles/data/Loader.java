@@ -371,6 +371,8 @@ public class Loader {
 					TextureAtlas.class);
 			game.getAssets().load("data/images/game_ui_images/energy100.png",
 					Texture.class);
+//			game.getAssets().load("data/images/item_icons/item_icons.atlas",
+//					TextureAtlas.class);
 		}
 
 		if (this.strategy == ManagementStrategy.DYNAMIC_TEXTURE_ATLAS) {

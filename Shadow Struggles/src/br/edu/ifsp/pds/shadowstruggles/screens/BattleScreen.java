@@ -130,8 +130,6 @@ public class BattleScreen extends BaseScreen {
 		initComponents();
 	}
 
-	
-
 	@Override
 	public void render(float delta) {
 		super.render(delta);
@@ -170,7 +168,7 @@ public class BattleScreen extends BaseScreen {
 	}
 
 	public void update(float delta) {
-		// Verificar vitória
+		// Verificar vitï¿½ria
 		if (this.battlePlatform.getRules().gameState()
 				.equals(DefaultRules.ENEMY_VICTORY)) {
 			playerLose();
@@ -210,7 +208,10 @@ public class BattleScreen extends BaseScreen {
 		}
 
 	}
-	public void doBeforeSet(){}
+
+	public void doBeforeSet() {
+	}
+
 	public void moveFixedObjects() {
 		for (int i = 0; i < stage.getActors().size; i++) {
 			Actor a = stage.getActors().get(i);
@@ -330,29 +331,39 @@ public class BattleScreen extends BaseScreen {
 			timer.setY(SettingsDAO.getSettings().mapHeight - 40);
 
 			magnifier = new FixedImage(game.getTextureRegion("magnifier",
-					"game_ui_images"), 0, this) {@Override
-					public boolean touchUp(int screenX, int screenY,
-							int pointer, int button) {
-						
-						int deltaCamX = (int) (getCamera().position.x - BaseScreen.CAMERA_INITIAL_X);
-						int invertY = (int) ((controller.getCurrentScreen().getHeight() - screenY) * (float) ((float) SettingsDAO
-								.getSettings().mapHeight / (float) controller.getCurrentScreen().getHeight()));
-						screenX = (int) (screenX * (float) ((float) SettingsDAO.getSettings().mapWidth / (float) controller.getCurrentScreen().getWidth()));
-						
-							if (screenX + deltaCamX >= magnifier.getX()
-									&& screenX + deltaCamX <= magnifier.getX() + magnifier.getWidth()
-											* magnifier.getScaleX() && invertY >= magnifier.getY()
-									&& invertY <= magnifier.getY() + magnifier.getHeight() * magnifier.getScaleY()) {
-								if(!dialogActive){
-									if(controller.getCardFromImage(selectedCard)!=null)
+					"game_ui_images"), 0, this) {
+				@Override
+				public boolean touchUp(int screenX, int screenY, int pointer,
+						int button) {
+
+					int deltaCamX = (int) (getCamera().position.x - BaseScreen.CAMERA_INITIAL_X);
+					int invertY = (int) ((controller.getCurrentScreen()
+							.getHeight() - screenY) * (float) ((float) SettingsDAO
+							.getSettings().mapHeight / (float) controller
+							.getCurrentScreen().getHeight()));
+					screenX = (int) (screenX * (float) ((float) SettingsDAO
+							.getSettings().mapWidth / (float) controller
+							.getCurrentScreen().getWidth()));
+
+					if (screenX + deltaCamX >= magnifier.getX()
+							&& screenX + deltaCamX <= magnifier.getX()
+									+ magnifier.getWidth()
+									* magnifier.getScaleX()
+							&& invertY >= magnifier.getY()
+							&& invertY <= magnifier.getY()
+									+ magnifier.getHeight()
+									* magnifier.getScaleY()) {
+						if (!dialogActive) {
+							if (controller.getCardFromImage(selectedCard) != null)
 								showCardInfo();
-								}else{closeDialog();}
-							}
-							
-						
-						return false;
+						} else {
+							closeDialog();
+						}
 					}
-				
+
+					return false;
+				}
+
 			};
 			magnifier.setY(152);
 			magnifier.setScale(0.5f);
@@ -401,7 +412,7 @@ public class BattleScreen extends BaseScreen {
 
 		stage.addActor(playerLife);
 		stage.addActor(enemyLife);
-		
+
 		stage.addActor(timer);
 		stage.addActor(menu);
 		stage.addActor(magnifier);
@@ -490,19 +501,19 @@ public class BattleScreen extends BaseScreen {
 		defeatScreen.setBattleScreen(this);
 		game.setScreenWithTransition(defeatScreen);
 	}
-	
-	private void closeDialog(){
-		for(Actor actor: dialogActors){
+
+	private void closeDialog() {
+		for (Actor actor : dialogActors) {
 			actor.remove();
 		}
-		dialogActive=false;
+		dialogActive = false;
 	}
 
-	private void showCardInfo() {	
-		dialogActors= new Array<Actor>();
-		
-		Card card = controller.getCardFromImage(selectedCard);		
-		//NOME
+	private void showCardInfo() {
+		dialogActors = new Array<Actor>();
+
+		Card card = controller.getCardFromImage(selectedCard);
+		// NOME
 		Label name = new Label(card.getName(), super.getSkin());
 		name.setX(410);
 		name.setWidth(500);
@@ -510,7 +521,7 @@ public class BattleScreen extends BaseScreen {
 		name.setWrap(true);
 		name.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
 				Color.BLACK));
-		//DESCRIÇÃO
+		// DESCRIï¿½ï¿½O
 		Label description = new Label(card.getDescription(), super.getSkin());
 		description.setX(410);
 		description.setWidth(500);
@@ -518,12 +529,13 @@ public class BattleScreen extends BaseScreen {
 		description.setWrap(true);
 		description.setStyle(new LabelStyle(super.getSkin().getFont(
 				"andalus-font"), Color.BLACK));
-		//BOX
-		Image box = new Image(game.getAssets()
-				.get("data/images/game_ui_images/game_ui_images.atlas", TextureAtlas.class)
-				.findRegion("box"));
+		// BOX
+		Image box = new Image(game
+				.getAssets()
+				.get("data/images/game_ui_images/game_ui_images.atlas",
+						TextureAtlas.class).findRegion("box"));
 		ScreenUtils.defineImage(box, 50, 177, 940, 600, 0.9f, 0.76f);
-		//IMAGEM
+		// IMAGEM
 		Image cardImage = new Image(game.getAssets()
 				.get("data/images/cards/cards.atlas", TextureAtlas.class)
 				.findRegion(card.getName().toLowerCase()));
@@ -546,14 +558,14 @@ public class BattleScreen extends BaseScreen {
 		dialogActors.add(name);
 		dialogActors.add(description);
 		dialogActors.add(cardImage);
-		dialogActive=true;
+		dialogActive = true;
 	}
 
 	public void showResumedCardInfo() {
-		
+
 		removeResumedCardInfo();
 		Card card = controller.getCardFromImage(selectedCard);
-		Label cardName = new FixedLabel(card.getNameVisualization(), 60, this);
+		Label cardName = new FixedLabel(card.getLocalizedName(), 60, this);
 		cardName = ScreenUtils.defineLabel(cardName, 60, 150, 200, 70);
 		Label energyCost = ScreenUtils
 				.defineLabel(
@@ -596,8 +608,6 @@ public class BattleScreen extends BaseScreen {
 		cardInfo.clear();
 
 	}
-
-	
 
 	public Array<BackCard> getBackcards() {
 		return backcards;
