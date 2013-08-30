@@ -45,9 +45,9 @@ public class Card extends Item {
 	}
 
 	public Card(BattlePlatform platform, int tile, int lane, String name,
-			String nameVisualization, CardAction action) {
+			String localizedName, CardAction action) {
 		this.name = name;
-		this.nameVisualization = nameVisualization;
+		this.localizedName = localizedName;
 		this.platform = platform;
 		this.lane = lane;
 		this.tile = tile;
@@ -55,10 +55,10 @@ public class Card extends Item {
 		this.description = "";
 	}
 
-	public Card(String name, String nameVisualization, int energyCost,
+	public Card(String name, String localizedName, int energyCost,
 			String description, int buyCost, CardAction action) {
 		this.name = name;
-		this.nameVisualization = nameVisualization;
+		this.localizedName = localizedName;
 		this.energyCost = energyCost;
 		this.description = description;
 		this.buyCost = buyCost;
@@ -89,20 +89,8 @@ public class Card extends Item {
 		this.action = json.readValue("action", CardAction.class, jsonData);
 	}
 
-	public String getName() {
-		return name;
-	}
-
 	public int getEnergyCost() {
 		return energyCost;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public int getBuyCost() {
-		return buyCost;
 	}
 
 	public CardAction getAction() {
@@ -165,14 +153,6 @@ public class Card extends Item {
 		}
 		return bool;
 
-	}
-
-	public String getNameVisualization() {
-		return nameVisualization;
-	}
-
-	public void setNameVisualization(String nameVisualization) {
-		this.nameVisualization = nameVisualization;
 	}
 
 	public void setName(String name) {

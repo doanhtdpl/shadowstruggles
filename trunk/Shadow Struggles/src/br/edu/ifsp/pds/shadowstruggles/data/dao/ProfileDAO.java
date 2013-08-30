@@ -4,6 +4,11 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.SerializationException;
 
 import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Card;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Effect;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Fighter;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Trap;
+import br.edu.ifsp.pds.shadowstruggles.model.items.Item;
 import br.edu.ifsp.pds.shadowstruggles.model.profiles.Profile;
 
 /**
@@ -19,8 +24,31 @@ public class ProfileDAO {
 		Array<Profile> profiles = DataManager.getInstance().getObjectSet(
 				Profile.class);
 		for (Profile p : profiles) {
-			if (p.getId() == id)
+			if (p.getId() == id) {
+				/**
+				 * Retrieves the cards from their respective DAOs.
+				 */
+				Array<Item> itemsCopy = new Array<Item>();
+
+				for (Item item : p.getUnlockedItems()) {
+					if (item instanceof Fighter) {
+						item = FighterDAO.getFighter(item.getName());
+						((Card) item).setAction(FighterDAO
+								.getFighter(item.getName()).getAction().copy());
+					} else if (item instanceof Effect) {
+						item = EffectDAO.getEffect(item.getName());
+						((Card) item).setAction(EffectDAO
+								.getEffect(item.getName()).getAction().copy());
+					} else if (item instanceof Trap) {
+						item = TrapDAO.getTrap(item.getName());
+						((Card) item).setAction(TrapDAO.getTrap(item.getName())
+								.getAction().copy());
+					}
+					itemsCopy.add(item);
+				}
+				p.setUnlockedItems(itemsCopy);
 				profile = p;
+			}
 		}
 
 		return profile;

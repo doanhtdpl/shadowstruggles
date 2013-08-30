@@ -33,6 +33,8 @@ public class Profile implements Serializable, Comparable<Object> {
 	private Array<Quest> quests;
 	private Array<EnemyDefeat> defeatedEnemies;
 	private Array<Ending> endings;
+	private Array<Item> unlockedItems;
+	
 	/**
 	 * Records which actions should be performed for each event.
 	 */
@@ -66,6 +68,8 @@ public class Profile implements Serializable, Comparable<Object> {
 		this.quests = new Array<Quest>();
 		this.defeatedEnemies = new Array<EnemyDefeat>();
 		this.endings = new Array<Ending>();
+		this.unlockedItems = new Array<Item>();
+		
 		this.events = new ObjectMap<Event, Array<EventAction>>();
 		this.mapLayers = new ObjectMap<String, String>();
 
@@ -109,6 +113,8 @@ public class Profile implements Serializable, Comparable<Object> {
 		this.defeatedEnemies = json.readValue("defeatedEnemies", Array.class,
 				jsonData);
 		this.endings = json.readValue("endings", Array.class, jsonData);
+		this.unlockedItems = json.readValue("unlockedItems", Array.class, jsonData);
+		
 		this.events = json.readValue("events", ObjectMap.class, jsonData);
 		this.mapLayers = json.readValue("mapLayers", ObjectMap.class, jsonData);
 
@@ -142,6 +148,8 @@ public class Profile implements Serializable, Comparable<Object> {
 		json.writeValue("quests", this.quests);
 		json.writeValue("defeatedEnemies", this.defeatedEnemies);
 		json.writeValue("endings", this.endings);
+		json.writeValue("unlockedItems", this.unlockedItems);
+		
 		json.writeValue("events", this.events);
 		json.writeValue("mapLayers", this.mapLayers);
 
@@ -235,8 +243,16 @@ public class Profile implements Serializable, Comparable<Object> {
 	public ObjectMap<String, String> getMapLayers() {
 		return mapLayers;
 	}
+	
+	public Array<Item> getUnlockedItems() {
+		return unlockedItems;
+	}
 
 	public void setMoney(int money) {
 		this.money = money;
+	}
+
+	public void setUnlockedItems(Array<Item> unlockedItems) {
+		this.unlockedItems = unlockedItems;
 	}
 }

@@ -23,7 +23,7 @@ public class FighterDAO {
 				 * This makes a deep copy of the fighter so that similar
 				 * fighters don't share the same memory blocks.
 				 */
-				fighter = new Fighter(f.getName(), f.getNameVisualization(),
+				fighter = new Fighter(f.getName(), f.getLocalizedName(),
 						f.getEnergyCost(), f.getDescription(), f.getBuyCost(),
 						f.getAction(), f.getHealth(), f.getDamage(),
 						f.getSpeed(), f.getRange(), f.isHasEffect(),

@@ -45,9 +45,9 @@ public class FileMap {
 		// classToFile.put(Ending.class, "data/files/endings.json");
 		classToFile.put(Enemy.class, "data/files/enemies.json");
 		classToFile.put(Event.class, "data/files/events.json");
-//		classToFile.put(ModifierItem.class, "data/files/items.json");
-//		classToFile.put(Pack.class, "data/files/items.json");
-//		classToFile.put(TextItem.class, "data/files/items.json");
+		// classToFile.put(ModifierItem.class, "data/files/items.json");
+		// classToFile.put(Pack.class, "data/files/items.json");
+		// classToFile.put(TextItem.class, "data/files/items.json");
 		classToFile.put(MenuText.class, "data/files/menu_text.json");
 		// classToFile.put(Pack.class, "data/files/packs.json");
 		// classToFile.put(Quest.class, "data/files/quests.json");
@@ -63,6 +63,7 @@ public class FileMap {
 		resourcesToDirectory.put("card_images", "data/images/card_images/");
 		resourcesToDirectory.put("card_walking", "data/images/card_walking/");
 		resourcesToDirectory.put("cards", "data/images/cards/");
+		resourcesToDirectory.put("item_icons", "data/images/item_icons/");
 		resourcesToDirectory.put("game_ui_images",
 				"data/images/game_ui_images/");
 		resourcesToDirectory.put("novel_images", "data/images/novel_images/");

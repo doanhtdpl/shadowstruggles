@@ -61,7 +61,7 @@ public class CheckCardsScreen extends BaseScreen {
 		float Y_SCALE = 640f / 380f;
 		int X_LABEL = 410;
 		int WIDTH_LABEL = 500;
-		
+
 		final InGameMenu menu = this.menu;
 		background = new Image(this.getSkin().getDrawable("msbackground"));
 		background.setScale(X_SCALE, Y_SCALE);
@@ -218,7 +218,7 @@ public class CheckCardsScreen extends BaseScreen {
 				.findRegion(card.getName().toLowerCase()));
 		selectedImage.setX(20);
 		selectedImage.setY(160);
-		name.setText(selectedCard.getNameVisualization());
+		name.setText(selectedCard.getLocalizedName());
 		name.setY(590);
 		stage.addActor(selectedImage);
 	}

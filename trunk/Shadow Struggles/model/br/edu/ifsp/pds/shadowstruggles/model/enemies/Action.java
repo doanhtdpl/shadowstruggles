@@ -81,7 +81,7 @@ public class Action implements Serializable {
 		if (value instanceof Fighter) {
 			Fighter f = (Fighter) value;
 			f.setAction(f.getAction().copy());
-			this.value = new Fighter(f.getName(), f.getNameVisualization(),
+			this.value = new Fighter(f.getName(), f.getLocalizedName(),
 					f.getEnergyCost(), f.getDescription(), f.getBuyCost(),
 					f.getAction(), f.getHealth(), f.getDamage(), f.getSpeed(),
 					f.getRange(), f.isHasEffect(), f.getSize(),
@@ -90,14 +90,14 @@ public class Action implements Serializable {
 			Effect effect = (Effect) value;
 			effect.setAction(effect.getAction().copy());
 			this.value = new Effect(effect.getName(),
-					effect.getNameVisualization(), effect.getEnergyCost(),
+					effect.getLocalizedName(), effect.getEnergyCost(),
 					effect.getDescription(), effect.getBuyCost(),
 					effect.getAction(), effect.getDuration(),
 					effect.isImmediateEffect(), effect.isOnFighter());
 		} else if (value instanceof Trap) {
 			Trap card = (Trap) value;
 			card.setAction(card.getAction().copy());
-			this.value = new Trap(card.getName(), card.getNameVisualization(),
+			this.value = new Trap(card.getName(), card.getLocalizedName(),
 					card.getEnergyCost(), card.getDescription(),
 					card.getBuyCost(), card.getAction(), card.getDuration(),
 					card.isHasImmediateEffect());
