@@ -15,9 +15,9 @@ import javax.swing.JButton;
 public class EventEditor extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField tfId;
+	private JTextField tfTile_x;
+	private JTextField tfTile_y;
 
 	/**
 	 * Launch the application.
@@ -88,44 +88,44 @@ public class EventEditor extends JFrame {
 		chckbxTriggered.setBounds(208, 39, 97, 23);
 		contentPane.add(chckbxTriggered);
 		
-		textField = new JTextField();
-		textField.setBounds(81, 8, 108, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		tfId = new JTextField();
+		tfId.setBounds(81, 8, 108, 20);
+		contentPane.add(tfId);
+		tfId.setColumns(10);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(91, 40, 98, 20);
-		contentPane.add(comboBox);
+		JComboBox jcbEventType = new JComboBox();
+		jcbEventType.setBounds(91, 40, 98, 20);
+		contentPane.add(jcbEventType);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(301, 8, 108, 20);
-		contentPane.add(comboBox_1);
+		JComboBox jcbTriggerType = new JComboBox();
+		jcbTriggerType.setBounds(301, 8, 108, 20);
+		contentPane.add(jcbTriggerType);
 		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setBounds(81, 77, 108, 20);
-		contentPane.add(comboBox_2);
+		JComboBox jcbMap = new JComboBox();
+		jcbMap.setBounds(81, 77, 108, 20);
+		contentPane.add(jcbMap);
 		
-		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setBounds(301, 77, 108, 20);
-		contentPane.add(comboBox_3);
+		JComboBox jcbLayer = new JComboBox();
+		jcbLayer.setBounds(301, 77, 108, 20);
+		contentPane.add(jcbLayer);
 		
-		JComboBox comboBox_4 = new JComboBox();
-		comboBox_4.setBounds(81, 106, 108, 20);
-		contentPane.add(comboBox_4);
+		JComboBox jcbQuest = new JComboBox();
+		jcbQuest.setBounds(81, 106, 108, 20);
+		contentPane.add(jcbQuest);
 		
-		JComboBox comboBox_5 = new JComboBox();
-		comboBox_5.setBounds(301, 106, 108, 20);
-		contentPane.add(comboBox_5);
+		JComboBox jcbSprite = new JComboBox();
+		jcbSprite.setBounds(301, 106, 108, 20);
+		contentPane.add(jcbSprite);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(81, 134, 108, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		tfTile_x = new JTextField();
+		tfTile_x.setBounds(81, 134, 108, 20);
+		contentPane.add(tfTile_x);
+		tfTile_x.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(301, 134, 108, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		tfTile_y = new JTextField();
+		tfTile_y.setBounds(301, 134, 108, 20);
+		contentPane.add(tfTile_y);
+		tfTile_y.setColumns(10);
 		
 		JButton btnInsert = new JButton("Insert");
 		btnInsert.setBounds(25, 183, 164, 42);
