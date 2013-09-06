@@ -14,7 +14,7 @@ import br.edu.ifsp.pds.shadowstruggles.tools.data.Languages;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Card;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.Window;
-import br.edu.ifsp.pds.shasdowstruggles.view.edition.FighterEditor;
+import br.edu.ifsp.pds.shadowstruggles.view.edition.FighterEditor;
 
 public class Controller {
 	private Window viewer;

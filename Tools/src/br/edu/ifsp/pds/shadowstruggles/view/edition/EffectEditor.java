@@ -1,4 +1,4 @@
-package br.edu.ifsp.pds.shasdowstruggles.view.edition;
+package br.edu.ifsp.pds.shadowstruggles.view.edition;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -13,7 +13,7 @@ import javax.swing.JTextArea;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
-public class TrapEditor extends JFrame {
+public class EffectEditor extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -30,7 +30,7 @@ public class TrapEditor extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TrapEditor frame = new TrapEditor();
+					EffectEditor frame = new EffectEditor();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,9 +42,9 @@ public class TrapEditor extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TrapEditor() {
+	public EffectEditor() {
 		setVisible(true);
-		setTitle("Trap Editor");
+		setTitle("Effect Editor");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 523, 441);
 		contentPane = new JPanel();
@@ -165,5 +165,9 @@ public class TrapEditor extends JFrame {
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.setBounds(310, 353, 187, 38);
 		contentPane.add(btnCancel);
+		
+		JCheckBox chckbxOnFighter = new JCheckBox("On Fighter");
+		chckbxOnFighter.setBounds(284, 222, 97, 23);
+		contentPane.add(chckbxOnFighter);
 	}
 }

@@ -1,4 +1,4 @@
-package br.edu.ifsp.pds.shasdowstruggles.view.edition;
+package br.edu.ifsp.pds.shadowstruggles.view.edition;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
