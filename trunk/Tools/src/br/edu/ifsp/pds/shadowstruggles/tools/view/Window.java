@@ -31,15 +31,15 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import net.lingala.zip4j.exception.ZipException;
 import br.edu.ifsp.pds.shadowstruggles.tools.Controller;
-import br.edu.ifsp.pds.shadowstruggles.view.edition.ActionEditor;
-import br.edu.ifsp.pds.shadowstruggles.view.edition.BattleEditor;
-import br.edu.ifsp.pds.shadowstruggles.view.edition.DeckEditor;
-import br.edu.ifsp.pds.shadowstruggles.view.edition.EffectEditor;
-import br.edu.ifsp.pds.shadowstruggles.view.edition.EnemieEditor;
-import br.edu.ifsp.pds.shadowstruggles.view.edition.EventEditor;
-import br.edu.ifsp.pds.shadowstruggles.view.edition.FighterEditor;
-import br.edu.ifsp.pds.shadowstruggles.view.edition.SceneEditor;
-import br.edu.ifsp.pds.shadowstruggles.view.edition.TrapEditor;
+import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.ActionEditor;
+import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.BattleEditor;
+import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.DeckEditor;
+import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.EffectEditor;
+import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.EnemieEditor;
+import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.EventEditor;
+import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.FighterEditor;
+import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.SceneEditor;
+import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.TrapEditor;
 
 import javax.swing.JLabel;
 
