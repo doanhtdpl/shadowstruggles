@@ -27,7 +27,6 @@ public class DataManager {
 
 	private String currentFile;
 	private Languages languages;
-	private Settings settings;
 	private String currentLanguage;
 	private Controller controller;
 
@@ -37,7 +36,6 @@ public class DataManager {
 	 */
 	public void newZip(String path) throws IOException, ZipException {
 		this.currentFile = path;
-		this.settings = new Settings();
 		this.currentLanguage = "en_us";
 		this.languages = new Languages();
 		languages.put("en_us", "English");
@@ -65,7 +63,6 @@ public class DataManager {
 
 		this.openZip(currentFile, true);
 		this.insertObject(this.languages, Languages.class);
-		this.insertObject(this.settings, Settings.class);
 	}
 
 	/**
@@ -442,10 +439,6 @@ public class DataManager {
 
 	public Languages getLanguages() {
 		return languages;
-	}
-
-	public Settings getSettings() {
-		return settings;
 	}
 
 	public String getCurrentLanguage() {
