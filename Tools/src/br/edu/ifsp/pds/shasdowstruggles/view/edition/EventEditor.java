@@ -1,6 +1,7 @@
 package br.edu.ifsp.pds.shasdowstruggles.view.edition;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -96,10 +97,22 @@ public class EventEditor extends JFrame {
 		JComboBox jcbEventType = new JComboBox();
 		jcbEventType.setBounds(91, 40, 98, 20);
 		contentPane.add(jcbEventType);
+		jcbEventType.addItem("");
+		jcbEventType.addItem("Complex Event");
+		jcbEventType.addItem("Container");
+		jcbEventType.addItem("Save Point");
+		jcbEventType.addItem("Scene Event");
+		jcbEventType.addItem("Shop Event");
+		jcbEventType.addItem("Warp Point");
+		
 		
 		JComboBox jcbTriggerType = new JComboBox();
 		jcbTriggerType.setBounds(301, 8, 108, 20);
 		contentPane.add(jcbTriggerType);
+		jcbTriggerType.addItem("");
+		jcbTriggerType.addItem("Automatic");
+		jcbTriggerType.addItem("Interact");
+		jcbTriggerType.addItem("Touch");
 		
 		JComboBox jcbMap = new JComboBox();
 		jcbMap.setBounds(81, 77, 108, 20);
