@@ -6,16 +6,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTabbedPane;
 
 public class DatabaseEditor extends JFrame {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	/**
-	 * Create the frame.
-	 */
 	public DatabaseEditor() {
 		setTitle("Database Editor");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

@@ -1,8 +1,5 @@
 package br.edu.ifsp.pds.shadowstruggles.tools.view.edition;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -12,8 +9,9 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
-public class EnemieEditor extends JFrame {
-
+public class EnemyEditor extends JFrame {
+	private static final long serialVersionUID = 1L;
+	
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
@@ -29,26 +27,7 @@ public class EnemieEditor extends JFrame {
 	private JButton btnInsert;
 	private JButton btnCancel;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					EnemieEditor frame = new EnemieEditor();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public EnemieEditor() {
+	public EnemyEditor() {
 		setVisible(true);
 		setTitle("Enemie Editor");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
