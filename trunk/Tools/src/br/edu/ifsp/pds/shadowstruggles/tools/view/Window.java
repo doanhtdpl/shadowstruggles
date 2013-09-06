@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
@@ -29,18 +30,19 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import net.lingala.zip4j.exception.ZipException;
-
 import br.edu.ifsp.pds.shadowstruggles.tools.Controller;
-import br.edu.ifsp.pds.shasdowstruggles.view.edition.ActionEditor;
-import br.edu.ifsp.pds.shasdowstruggles.view.edition.BattleEditor;
-import br.edu.ifsp.pds.shasdowstruggles.view.edition.DeckEditor;
-import br.edu.ifsp.pds.shasdowstruggles.view.edition.EffectEditor;
-import br.edu.ifsp.pds.shasdowstruggles.view.edition.EnemieEditor;
-import br.edu.ifsp.pds.shasdowstruggles.view.edition.EventEditor;
-import br.edu.ifsp.pds.shasdowstruggles.view.edition.FighterEditor;
-import br.edu.ifsp.pds.shasdowstruggles.view.edition.SceneEditor;
-import br.edu.ifsp.pds.shasdowstruggles.view.edition.TrapEditor;
+import br.edu.ifsp.pds.shadowstruggles.view.edition.ActionEditor;
+import br.edu.ifsp.pds.shadowstruggles.view.edition.BattleEditor;
+import br.edu.ifsp.pds.shadowstruggles.view.edition.DeckEditor;
+import br.edu.ifsp.pds.shadowstruggles.view.edition.EffectEditor;
+import br.edu.ifsp.pds.shadowstruggles.view.edition.EnemieEditor;
+import br.edu.ifsp.pds.shadowstruggles.view.edition.EventEditor;
+import br.edu.ifsp.pds.shadowstruggles.view.edition.FighterEditor;
+import br.edu.ifsp.pds.shadowstruggles.view.edition.SceneEditor;
+import br.edu.ifsp.pds.shadowstruggles.view.edition.TrapEditor;
+
 import javax.swing.JLabel;
+
 import java.awt.Rectangle;
 import java.awt.Component;
 
@@ -151,7 +153,7 @@ public class Window {
 				int answer = JOptionPane.showConfirmDialog(frmTitle, "Do you really want to delete this element?");
 				if (answer==0){
 					String selectedTab = tabbedPane.getTitleAt(tabbedPane.getSelectedIndex());
-					//TODO: decidir qual método "delete" da controller chamar
+					//TODO: decidir qual mï¿½todo "delete" da controller chamar
 				}
 			}
 		});
