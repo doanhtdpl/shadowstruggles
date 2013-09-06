@@ -18,7 +18,7 @@ public class SimpleTree extends JPanel {
 	  DefaultMutableTreeNode root;
 	  public SimpleTree() {
 	    root = new DefaultMutableTreeNode("root", true);
-	    getList(root, new File("./data/images"));
+	    getList(root, new File("./data/"));
 	    setLayout(new BorderLayout());
 	    tree = new JTree(root);
 	    tree.setRootVisible(false);
