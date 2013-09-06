@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true">  
-  <class id="1" language="java" name="br.edu.ifsp.pds.shadowstruggles.tools.view.Window" project="Tools" 
-    file="/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/Window.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="1" language="java" name="br.edu.ifsp.pds.shadowstruggles.tools.view.MainMenu" project="Tools" 
+    file="/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/MainMenu.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="135" width="190" x="166" y="148"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     accessors="true" visibility="true">    
-    <attributes public="true" package="true" protected="true" private="true"/>    
-    <operations public="true" package="true" protected="true" private="true"/>  
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
   </classifier-display>  
   <association-display labels="true" multiplicity="true"/>
 </class-diagram>

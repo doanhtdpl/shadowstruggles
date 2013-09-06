@@ -3,8 +3,6 @@ package br.edu.ifsp.pds.shadowstruggles.tools.model.cards;
 import java.util.ArrayList;
 
 import br.edu.ifsp.pds.shadowstruggles.tools.model.BattlePlatform;
-import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Action;
-
 import com.esotericsoftware.jsonbeans.Json.Serializable;
 
 public class Fighter extends Card implements Serializable {
@@ -18,17 +16,17 @@ public class Fighter extends Card implements Serializable {
 	public static final float MOV_SPEED_NORMAL = 0.20F;
 	public static final float MOV_SPEED_FAST = 0.3F;
 
-	private int health;
-	private int maxHealth;
-	private int damage;
-	private float speed;
-	private int range;
-	private boolean hasEffect;
-	private float attackDelay;
-	private String size;
-	private float delay;
-	private float moveTimer;
-	private boolean attacking;
+	public int health;
+	public int maxHealth;
+	public int damage;
+	public float speed;
+	public int range;
+	public boolean hasEffect;
+	public float attackDelay;
+	public String size;
+	public float delay;
+	public float moveTimer;
+	public boolean attacking;
 
 	public Fighter() {
 		super();
@@ -44,7 +42,6 @@ public class Fighter extends Card implements Serializable {
 				availableInShop, false, energyCost, action, platform,
 				illustration, preRequisites);
 
-		this.size = size;
 		this.attackDelay = 0;
 		this.moveTimer = 0;
 	}

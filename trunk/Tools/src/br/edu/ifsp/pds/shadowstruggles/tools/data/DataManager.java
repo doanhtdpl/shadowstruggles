@@ -461,6 +461,10 @@ public class DataManager {
 		return path.replace("data/", "data/" + currentLanguage + "/");
 	}
 	
+	public Controller getController() {
+		return this.controller;
+	}
+	
 	public void setController(Controller controller) {
 		this.controller = controller;
 	}
