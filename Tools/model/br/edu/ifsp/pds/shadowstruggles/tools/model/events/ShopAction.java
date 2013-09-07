@@ -2,16 +2,14 @@ package br.edu.ifsp.pds.shadowstruggles.tools.model.events;
 
 import br.edu.ifsp.pds.shadowstruggles.tools.model.items.Shop;
 
-public class ShopEvent extends Event {
+public class ShopAction extends EventAction {
 	public Shop shop;
-	
-	public ShopEvent() {
-		super();
-		
+
+	public ShopAction() {
 		this.shop = new Shop();
 	}
-	
-	public ShopEvent(Shop shop) {
+
+	public ShopAction(Shop shop) {
 		this.shop = shop;
 	}
 }

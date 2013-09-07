@@ -15,6 +15,7 @@ import java.util.zip.ZipOutputStream;
 
 import org.junit.Test;
 
+import br.edu.ifsp.pds.shadowstruggles.tools.model.BattleMap;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.BattlePlatform;
 
 public class DataManagerTest {
@@ -69,17 +70,16 @@ public class DataManagerTest {
 		DataManager manager = new DataManager();
 		try {
 			manager.newZip("test.zip");
-			BattlePlatform expected = new BattlePlatform();
-			manager.insertObject(expected, BattlePlatform.class);
+			BattleMap expected = new BattleMap(20, "Foo");
+			manager.insertObject(expected, BattleMap.class);
 
-			BattlePlatform actual = (BattlePlatform) manager.searchObject(
-					expected.id, BattlePlatform.class);
+			BattleMap actual = (BattleMap) manager.searchObject(expected.id,
+					BattleMap.class);
 			assertNotNull(actual);
-			assertTrue(expected.id == actual.id
-					&& expected.map.equals(actual.map));
+			assertEquals(expected.id, actual.id);
 		} catch (ClassCastException e) {
 			e.printStackTrace();
-			fail("search has not returned the requested object type");
+			fail("Search has not returned the requested object type");
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail("");
@@ -167,18 +167,18 @@ public class DataManagerTest {
 		DataManager manager = new DataManager();
 		try {
 			manager.newZip("test.zip");
-			BattlePlatform original = new BattlePlatform();
-			manager.insertObject(original, BattlePlatform.class);
+			BattleMap original = new BattleMap();
+			manager.insertObject(original, BattleMap.class);
 
-			BattlePlatform modified = new BattlePlatform();
+			BattleMap modified = new BattleMap();
 			String expected = "Foo";
-			modified.map = expected;
-			manager.update(original.id, BattlePlatform.class, modified);
+			modified.name = expected;
+			manager.update(original.id, BattleMap.class, modified);
 
-			BattlePlatform retrieved = (BattlePlatform) manager.searchObject(1,
-					BattlePlatform.class);
+			BattleMap retrieved = (BattleMap) manager.searchObject(original.id,
+					BattleMap.class);
 			assertNotNull(retrieved);
-			assertEquals(expected, retrieved.map);
+			assertEquals(expected, retrieved.name);
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail("");
@@ -239,12 +239,12 @@ public class DataManagerTest {
 			bp.id = new Random().nextInt();
 			manager.insertObject(bp, BattlePlatform.class);
 
-			manager.insertLanguage("pt_br", "Português");
+			manager.insertLanguage("pt_br", "Portuguï¿½s");
 			manager.copyData("en_us", "pt_br");
 			manager.setCurrentLanguage("pt_br");
 			int retrievedId = ((BattlePlatform) manager.searchObject(bp.id,
 					BattlePlatform.class)).id;
-			
+
 			assertEquals(bp.id, retrievedId);
 		} catch (Exception e) {
 			e.printStackTrace();

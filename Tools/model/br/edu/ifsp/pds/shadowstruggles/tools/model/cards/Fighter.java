@@ -1,8 +1,5 @@
 package br.edu.ifsp.pds.shadowstruggles.tools.model.cards;
 
-import java.util.ArrayList;
-
-import br.edu.ifsp.pds.shadowstruggles.tools.model.BattlePlatform;
 import com.esotericsoftware.jsonbeans.Json.Serializable;
 
 public class Fighter extends Card implements Serializable {
@@ -31,19 +28,6 @@ public class Fighter extends Card implements Serializable {
 	public Fighter() {
 		super();
 		this.attackDelay = 0;
-	}
-
-	public Fighter(int id, String name, String description, int buyCost,
-			int sellCost, boolean sellable, String icon,
-			boolean availableInShop, int energyCost, CardAction action,
-			BattlePlatform platform, String illustration,
-			ArrayList<String> preRequisites) {
-		super(id, name, description, buyCost, sellCost, sellable, icon,
-				availableInShop, false, energyCost, action, platform,
-				illustration, preRequisites);
-
-		this.attackDelay = 0;
-		this.moveTimer = 0;
 	}
 
 }

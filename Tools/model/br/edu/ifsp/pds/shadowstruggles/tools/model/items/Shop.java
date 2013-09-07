@@ -11,19 +11,11 @@ import com.esotericsoftware.jsonbeans.JsonValue;
 
 public class Shop implements Serializable {
 	public int id;
-	public boolean mainShop;
 	public ArrayList<Item> items;
-	
+
 	public Shop() {
 		this.id = 1;
-		this.mainShop = false;
 		this.items = new ArrayList<Item>();
-	}
-	
-	public Shop(int id, boolean mainShop, ArrayList<Item> items) {
-		this.id = id;
-		this.mainShop = mainShop;
-		this.items = items;
 	}
 
 	@Override
@@ -42,7 +34,8 @@ public class Shop implements Serializable {
 	@Override
 	public void write(Json arg0) {
 		try {
-			SerializationHelper.writeToJson(this, arg0, new ArrayList<String>());
+			SerializationHelper
+					.writeToJson(this, arg0, new ArrayList<String>());
 		} catch (IllegalArgumentException e) {
 			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
 			e.printStackTrace();

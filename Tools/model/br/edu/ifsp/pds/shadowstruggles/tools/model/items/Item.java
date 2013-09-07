@@ -12,6 +12,7 @@ import com.esotericsoftware.jsonbeans.JsonValue;
 public class Item implements Serializable {
 	public int id;
 	public String name;
+	public String localizedName;
 	public String description;
 	public int buyCost;
 	public int sellCost;
@@ -23,6 +24,7 @@ public class Item implements Serializable {
 	public Item() {
 		this.id = 1;
 		this.name = "";
+		this.localizedName = "";
 		this.description = "";
 		this.buyCost = 0;
 		this.sellCost = 0;
@@ -30,20 +32,6 @@ public class Item implements Serializable {
 		this.icon = "";
 		this.availableInMainShop = false;
 		this.consumable = false;
-	}
-	
-	public Item(int id, String name, String description, int buyCost,
-			int sellCost, boolean sellable, String icon,
-			boolean availableInMainShop, boolean consumable) {
-		this.id = id;
-		this.name = name;
-		this.description = description;
-		this.buyCost = buyCost;
-		this.sellCost = sellCost;
-		this.sellable = sellable;
-		this.icon = icon;
-		this.availableInMainShop = availableInMainShop;
-		this.consumable = consumable;
 	}
 
 	@Override
