@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 
 import br.edu.ifsp.pds.shadowstruggles.tools.data.SerializationHelper;
-import br.edu.ifsp.pds.shadowstruggles.tools.model.quests.Quest;
 
 import com.esotericsoftware.jsonbeans.Json;
 import com.esotericsoftware.jsonbeans.JsonValue;
@@ -16,13 +15,12 @@ public class Event implements Serializable {
 	};
 
 	public int id;
-	public float x, y;
+	public int x, y;
 	public String map;
 	public String layer;
-	public Quest quest;
-	public boolean triggered;
 	public String sprite;
 	public TriggerType triggerType;
+	public ArrayList<EventAction> actions;
 
 	public Event() {
 		this.id = 1;
@@ -30,24 +28,9 @@ public class Event implements Serializable {
 		this.y = 0;
 		this.map = "";
 		this.layer = "";
-		this.quest = new Quest();
-		this.triggered = false;
 		this.sprite = "";
 		this.triggerType = TriggerType.TOUCH;
-	}
-
-	public Event(int id, float x, float y, String map, String layer,
-			Quest quest, boolean triggered, String sprite,
-			TriggerType triggerType) {
-		this.id = id;
-		this.x = x;
-		this.y = y;
-		this.map = map;
-		this.layer = layer;
-		this.quest = quest;
-		this.triggered = triggered;
-		this.sprite = sprite;
-		this.triggerType = triggerType;
+		this.actions = new ArrayList<EventAction>();
 	}
 	
 	@Override
