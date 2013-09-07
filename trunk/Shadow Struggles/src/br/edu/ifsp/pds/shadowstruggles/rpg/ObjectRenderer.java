@@ -105,7 +105,7 @@ public class ObjectRenderer {
 		}
 
 		for (MapObject object : objects) {
-			int tileSize = SettingsDAO.getSettings().tileSize;
+			int tileSize = SettingsDAO.getSettings().rpgTileSize;
 			int id = Integer
 					.parseInt((String) object.getProperties().get("id"));
 			int objX = (Integer) object.getProperties().get("x") / tileSize;

@@ -42,9 +42,13 @@ public class Settings implements Serializable {
 	public int enemyLifeX = 840;
 	public int mapHeight = 640;
 	public int mapWidth = 960;
-	
+
 	// RPG settings.
-	public int tileSize = 32;
+	public int rpgTileSize = 32;
+	public String defaultObjLayer = "default-objects";
+	public String defaultTileLayer = "tiles";
+	public String collidableObject = "collidable";
+	public String collidableTile = "obstacle";
 
 	@Override
 	public void write(Json json) {
@@ -75,9 +79,12 @@ public class Settings implements Serializable {
 		json.writeValue("enemyLifeX", enemyLifeX);
 		json.writeValue("mapHeight", mapHeight);
 		json.writeValue("mapWidth", mapWidth);
-		
-		json.writeValue("tileSize", tileSize);
 
+		json.writeValue("rpgTileSize", rpgTileSize);
+		json.writeValue("defaultObjLayer", defaultObjLayer);
+		json.writeValue("defaultTileLayer", defaultTileLayer);
+		json.writeValue("collidableObject", collidableObject);
+		json.writeValue("collidableTile", collidableTile);
 	}
 
 	@Override
@@ -116,8 +123,16 @@ public class Settings implements Serializable {
 		enemyLifeX = json.readValue("enemyLifeX", Integer.class, jsonData);
 		mapHeight = json.readValue("mapHeight", Integer.class, jsonData);
 		mapWidth = json.readValue("mapWidth", Integer.class, jsonData);
-		
-		tileSize = json.readValue("tileSize", Integer.class, jsonData);
+
+		rpgTileSize = json.readValue("tileSize", Integer.class, jsonData);
+		defaultObjLayer = json.readValue("defaultObjLayer", String.class,
+				jsonData);
+		defaultTileLayer = json.readValue("defaultTileLayer", String.class,
+				jsonData);
+		collidableObject = json.readValue("collidableObject", String.class,
+				jsonData);
+		collidableTile = json.readValue("collidableTile", String.class,
+				jsonData);
 	}
 
 }
