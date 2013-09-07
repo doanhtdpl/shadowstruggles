@@ -8,15 +8,14 @@ import com.esotericsoftware.jsonbeans.Json.Serializable;
 import com.esotericsoftware.jsonbeans.JsonValue;
 
 public class MenuText implements Serializable {
+	// General use
+	public String returnToStart = "";
 
-	public String languageName;
-
-	// Start Screen
+	// StartScreen
 	public String continueGame = "";
 	public String newGame = "";
 
 	// Select Profile
-	public String returnToStart = "";
 	public String profile = "";
 
 	// Error Screen
@@ -26,8 +25,6 @@ public class MenuText implements Serializable {
 	// MainScreen
 	public String campaign = "";
 	public String freePlay = "";
-	public String configurations = "";
-	public String changeProfile = "";
 	public String editDeck = "";
 	public String shop = "";
 
@@ -36,20 +33,35 @@ public class MenuText implements Serializable {
 	public String continueButton = "";
 	public String mainMenuButton = "";
 
-	// InGameScreen
+	// InGameMenu
 	public String returnToGame = "";
 	public String exit = "";
 	public String checkCards = "";
 
-	// ConfigurationScreen
+	// SettingsScreen
+	public String configurations = "";
 	public String volume = "";
+	public String music = "";
+	public String on = "";
+	public String off = "";
+	public String languageSelection = "";
 
-	// defeatScreen
+	// ShopScreen
+	public String buy = "";
+	public String sell = "";
+	public String packs = "";
+	public String cards = "";
+	public String extra = "";
+
+	// DefeatScreen
 	public String defeat = "";
 	public String retryButton = "";
 
 	// FreePlayScreen
 	public String practiceBattle = "";
+
+	// EditDeckScreen
+	public String newDeck = "";
 
 	public void read(Json arg0, JsonValue arg1) {
 		try {

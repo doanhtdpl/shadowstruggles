@@ -40,9 +40,13 @@ public class Settings implements Serializable {
 	public int enemyLifeX = 840;
 	public int mapHeight = 640;
 	public int mapWidth = 960;
-	
+
 	// RPG settings.
-	public int tileSize = 32;
+	public int rpgTileSize = 32;
+	public String defaultObjLayer = "default-objects";
+	public String defaultTileLayer = "tiles";
+	public String collidableObject = "collidable";
+	public String collidableTile = "obstacle";
 
 	@Override
 	public void read(Json arg0, JsonValue arg1) {
@@ -56,7 +60,7 @@ public class Settings implements Serializable {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Override
 	public void write(Json arg0) {
 		try {

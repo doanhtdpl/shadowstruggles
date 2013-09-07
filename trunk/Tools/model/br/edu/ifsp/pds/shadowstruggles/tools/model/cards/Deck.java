@@ -20,14 +20,6 @@ public class Deck extends Item {
 		this.deckImage = "";
 		this.totalCardPoints = 0;
 	}
-
-	public Deck(int id, String name, ArrayList<Card> cards, String deckImage,
-			int totalCardPoints) {
-		super(id, name, "", 0, 0, false, "", false, false);
-		this.cards = cards;
-		this.deckImage = deckImage;
-		this.totalCardPoints = totalCardPoints;
-	}
 	
 	@Override
 	public void read(Json arg0, JsonValue arg1) {

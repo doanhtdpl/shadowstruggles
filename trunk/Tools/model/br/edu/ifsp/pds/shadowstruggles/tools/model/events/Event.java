@@ -10,7 +10,7 @@ import com.esotericsoftware.jsonbeans.Json;
 import com.esotericsoftware.jsonbeans.JsonValue;
 import com.esotericsoftware.jsonbeans.Json.Serializable;
 
-public abstract class Event implements Serializable {
+public class Event implements Serializable {
 	public static enum TriggerType {
 		TOUCH, INTERACT, AUTOMATIC
 	};

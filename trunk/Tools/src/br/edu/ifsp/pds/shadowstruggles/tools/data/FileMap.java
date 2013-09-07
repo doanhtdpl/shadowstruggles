@@ -2,6 +2,7 @@ package br.edu.ifsp.pds.shadowstruggles.tools.data;
 
 import java.util.HashMap;
 
+import br.edu.ifsp.pds.shadowstruggles.tools.model.BattleMap;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.TutorialDialog;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Card;
@@ -39,6 +40,7 @@ public class FileMap {
 		resourcesToDirectory.put("sound_effects", "data/audio/sound_effects/");
 		resourcesToDirectory.put("soundtrack", "data/audio/soundtrack/");
 
+		classToFile.put(BattleMap.class, "data/files/battle_maps.json");
 		classToFile.put(Card.class, "data/files/cards.json");
 		classToFile.put(Deck.class, "data/files/decks.json");
 		classToFile.put(Ending.class, "data/files/endings.json");

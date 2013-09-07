@@ -16,7 +16,7 @@ public class BattlePlatform implements Serializable {
 	public boolean tutorial;
 	public Enemy opponent;
 	public ArrayList<Modifier> rewards;
-	public String map;
+	public BattleMap map;
 	public DefaultRules rules;
 	
 	public BattlePlatform() {
@@ -24,12 +24,12 @@ public class BattlePlatform implements Serializable {
 		this.tutorial = false;
 		this.opponent = new Enemy();
 		this.rewards = new ArrayList<Modifier>();
-		this.map = "";
+		this.map = new BattleMap();
 		this.rules = new DefaultRules();
 	}
 	
 	public BattlePlatform(int id, boolean tutorial, Enemy opponent,
-			ArrayList<Modifier> rewards, String map, DefaultRules rules) {
+			ArrayList<Modifier> rewards, BattleMap map, DefaultRules rules) {
 		this.id = id;
 		this.tutorial = tutorial;
 		this.opponent = opponent;
