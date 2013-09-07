@@ -122,13 +122,13 @@ public class RpgMap implements TileBasedMap {
 				// possible collisions.
 				Rectangle projectedCharacter = new Rectangle(x, invertY, cMover
 						.getRectangle().getWidth(), cMover.getRectangle()
-						.getHeight()/2);
+						.getHeight() / 2);
 
 				// Check for collidable objects.
 				MapObjects objects = currentLayer.getObjects();
 
 				for (MapObject object : objects) {
-					int tileSize = SettingsDAO.getSettings().tileSize;
+					int tileSize = SettingsDAO.getSettings().rpgTileSize;
 
 					int objX = (Integer) object.getProperties().get("x")
 							/ tileSize;
@@ -141,7 +141,7 @@ public class RpgMap implements TileBasedMap {
 					Rectangle rect = new Rectangle(objX, objY, width, height);
 
 					boolean collidable = object.getProperties().containsKey(
-							"collidable");
+							SettingsDAO.getSettings().collidableObject);
 
 					if (rect.overlaps(projectedCharacter)) {
 						int id = Integer.parseInt((String) object
@@ -160,8 +160,9 @@ public class RpgMap implements TileBasedMap {
 
 				// Check for tile obstacles in the tile itself and its adjacent
 				// spots in 4 directions.
+				String defaultLayer = SettingsDAO.getSettings().defaultTileLayer;
 				TiledMapTileLayer tileLayer = (TiledMapTileLayer) map
-						.getLayers().get("tiles");
+						.getLayers().get(defaultLayer);
 				Array<Vector2> adjacentTiles = new Array<Vector2>();
 				adjacentTiles.add(new Vector2(x, invertY));
 
@@ -183,7 +184,8 @@ public class RpgMap implements TileBasedMap {
 						return true;
 					}
 
-					if (tile.getProperties().containsKey("obstacle")) {
+					if (tile.getProperties().containsKey(
+							SettingsDAO.getSettings().collidableTile)) {
 						Rectangle tileRect = new Rectangle(tilePos.x,
 								tilePos.y, 1, 1);
 						if (tileRect.overlaps(projectedCharacter)) {
@@ -216,7 +218,7 @@ public class RpgMap implements TileBasedMap {
 		MapObjects objects = currentLayer.getObjects();
 
 		for (MapObject object : objects) {
-			int tileSize = SettingsDAO.getSettings().tileSize;
+			int tileSize = SettingsDAO.getSettings().rpgTileSize;
 
 			int objX = (Integer) object.getProperties().get("x") / tileSize;
 			int objY = (Integer) object.getProperties().get("y") / tileSize;
@@ -234,8 +236,9 @@ public class RpgMap implements TileBasedMap {
 
 				if (event.getTriggerType() == Event.TriggerType.INTERACT) {
 					// Only attempt to change direction if object is collidable.
-					boolean collidable = object.getProperties().containsKey("collidable");
-					if(!collidable)
+					boolean collidable = object.getProperties().containsKey(
+							SettingsDAO.getSettings().collidableObject);
+					if (!collidable)
 						directionTurn = null;
 					event.trigger(directionTurn);
 					EventDAO.editEvent(id, event);
@@ -261,7 +264,7 @@ public class RpgMap implements TileBasedMap {
 		MapObjects objects = currentLayer.getObjects();
 
 		for (MapObject object : objects) {
-			int tileSize = SettingsDAO.getSettings().tileSize;
+			int tileSize = SettingsDAO.getSettings().rpgTileSize;
 
 			int objX = (Integer) object.getProperties().get("x") / tileSize;
 			int objY = (Integer) object.getProperties().get("y") / tileSize;
@@ -279,8 +282,9 @@ public class RpgMap implements TileBasedMap {
 
 				if (event.getTriggerType() == Event.TriggerType.TOUCH) {
 					// Only attempt to change direction if object is collidable.
-					boolean collidable = object.getProperties().containsKey("collidable");
-					if(!collidable)
+					boolean collidable = object.getProperties().containsKey(
+							SettingsDAO.getSettings().collidableObject);
+					if (!collidable)
 						directionTurn = null;
 					event.trigger(directionTurn);
 					EventDAO.editEvent(id, event);

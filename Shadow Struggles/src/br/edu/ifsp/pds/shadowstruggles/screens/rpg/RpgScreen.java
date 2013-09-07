@@ -156,7 +156,7 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 
 	private int[] pixelsToTile(int x, int y) {
 		int[] tile = { 0, 0 };
-		int tileSize = SettingsDAO.getSettings().tileSize;
+		int tileSize = SettingsDAO.getSettings().rpgTileSize;
 
 		tile[0] = x / tileSize;
 		tile[1] = y / tileSize;

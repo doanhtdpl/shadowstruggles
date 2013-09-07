@@ -48,7 +48,7 @@ public class Character2D extends Image implements ApplicationListener {
 		this.charModel = charModel;
 		this.game = game;
 
-		int tileSize = SettingsDAO.getSettings().tileSize;
+		int tileSize = SettingsDAO.getSettings().rpgTileSize;
 
 		this.setSize(charModel.getWidthInTiles() * tileSize,
 				charModel.getHeightInTiles() * tileSize);
@@ -148,7 +148,7 @@ public class Character2D extends Image implements ApplicationListener {
 	public void render() {
 		stateTime += Gdx.graphics.getDeltaTime();
 		float delta = Gdx.graphics.getDeltaTime();
-		int tileSize = SettingsDAO.getSettings().tileSize;
+		int tileSize = SettingsDAO.getSettings().rpgTileSize;
 
 		switch (direction) {
 		case WALK_UP:
