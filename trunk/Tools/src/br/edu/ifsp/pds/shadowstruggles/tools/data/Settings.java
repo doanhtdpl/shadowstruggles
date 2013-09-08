@@ -45,7 +45,6 @@ public class Settings implements Serializable {
 	public int rpgTileSize = 32;
 	public String defaultObjLayer = "default-objects";
 	public String defaultTileLayer = "tiles";
-	public String collidableObject = "collidable";
 	public String collidableTile = "obstacle";
 
 	@Override

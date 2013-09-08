@@ -16,21 +16,26 @@ public class Event implements Serializable {
 
 	public int id;
 	public int x, y;
+	public float width, height;
 	public String map;
 	public String layer;
 	public String sprite;
 	public TriggerType triggerType;
 	public ArrayList<EventAction> actions;
+	public boolean collidable;
 
 	public Event() {
 		this.id = 1;
 		this.x = 0;
 		this.y = 0;
+		this.width = 2;
+		this.height = 2;
 		this.map = "";
 		this.layer = "";
 		this.sprite = "";
 		this.triggerType = TriggerType.TOUCH;
 		this.actions = new ArrayList<EventAction>();
+		this.collidable = true;
 	}
 	
 	@Override
