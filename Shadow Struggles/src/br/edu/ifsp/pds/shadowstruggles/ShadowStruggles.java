@@ -20,6 +20,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.utils.Array;
 
 /**
@@ -152,6 +153,16 @@ public class ShadowStruggles extends Game {
 	 */
 	public Texture getTexture(String textureName, String resourceType) {
 		return loader.getTexture(textureName, resourceType);
+	}
+
+	/**
+	 * Retrieves a TiledMap from the file system.
+	 * 
+	 * @param mapName
+	 *            The name of the map.
+	 */
+	public TiledMap getTiledMap(String mapName) {
+		return loader.getTiledMap(mapName, "rpg_maps");
 	}
 
 	@Override

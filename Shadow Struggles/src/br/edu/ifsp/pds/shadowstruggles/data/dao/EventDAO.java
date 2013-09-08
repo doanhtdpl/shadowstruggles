@@ -20,9 +20,10 @@ public class EventDAO {
 
 		return event;
 	}
-	
-	public static void editEvent(int id, Event modifiedEvent) {
-		DataManager.getInstance().editEvent(id, modifiedEvent);
+
+	@SuppressWarnings("unchecked")
+	public static Array<Event> getAll() {
+		return DataManager.getInstance().getObjectSet(Event.class);
 	}
 
 }

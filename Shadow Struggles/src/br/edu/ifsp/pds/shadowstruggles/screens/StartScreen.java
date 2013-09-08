@@ -99,6 +99,7 @@ public class StartScreen extends BaseScreen {
 					}
 
 					Profile newProfile = new Profile(id);
+					newProfile.createEventsInGame(game);
 					ProfileDAO.createProfile(newProfile);
 					game.setProfile(newProfile);
 					game.getAudio().playSound("button_4");
@@ -106,6 +107,7 @@ public class StartScreen extends BaseScreen {
 							controller));
 				} catch (Exception e) {
 					Profile newProfile = new Profile();
+					newProfile.createEventsInGame(game);
 					ProfileDAO.createProfile(newProfile);
 					game.setProfile(newProfile);
 					game.getAudio().playSound("button_4");
@@ -185,7 +187,10 @@ public class StartScreen extends BaseScreen {
 									.getListenerActor();
 							int id = Character.getNumericValue(tx.getText()
 									.charAt(0));
-							game.setProfile(ProfileDAO.getProfile(id));
+							Profile profile = ProfileDAO.getProfile(id);
+							if(profile.getEvents().size == 0)
+								profile.createEventsInGame(game);
+							game.setProfile(profile);
 //							DataManager.getInstance().changeLanguage(
 //									ProfileDAO.getProfile(id).getLanguage());
 //							game.getProfile().setCurrentScene(

@@ -67,7 +67,7 @@ public class FileMap {
 		resourcesToDirectory.put("game_ui_images",
 				"data/images/game_ui_images/");
 		resourcesToDirectory.put("novel_images", "data/images/novel_images/");
-		resourcesToDirectory.put("rpg_maps", "data/images/rpg_maps/");
+		resourcesToDirectory.put("rpg_maps", "data/rpg_maps/");
 		resourcesToDirectory.put("skin", "data/images/skin/");
 
 		globalClassToFile.put(Languages.class, "data/languages.json");

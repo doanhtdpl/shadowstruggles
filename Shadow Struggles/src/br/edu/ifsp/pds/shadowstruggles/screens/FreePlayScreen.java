@@ -16,9 +16,7 @@ import br.edu.ifsp.pds.shadowstruggles.rpg.RpgController;
 import br.edu.ifsp.pds.shadowstruggles.screens.rpg.RpgScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
-import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -96,9 +94,7 @@ public class FreePlayScreen extends BaseScreen {
 				super.clicked(event, x, y);
 
 				RpgController rpgController = new RpgController();
-				RpgMap rpgMap = new RpgMap(new TmxMapLoader(
-						new InternalFileHandleResolver())
-						.load("data/rpg_maps/map.tmx"));
+				RpgMap rpgMap = new RpgMap(game, "map");
 				Character character = new Character(0, 19, 2, 2, rpgMap);
 				@SuppressWarnings("unused")
 				RpgPlatform platform = new RpgPlatform(rpgController,
