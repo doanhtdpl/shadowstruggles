@@ -2,17 +2,12 @@ package br.edu.ifsp.pds.shadowstruggles.rpg;
 
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.data.Loader.Asset;
-import br.edu.ifsp.pds.shadowstruggles.data.dao.EventDAO;
-import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
-import br.edu.ifsp.pds.shadowstruggles.model.events.Event;
+import br.edu.ifsp.pds.shadowstruggles.model.events.EventInGame;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgMap;
 import br.edu.ifsp.pds.shadowstruggles.object2d.rpg.Character2D;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.maps.MapLayer;
-import com.badlogic.gdx.maps.MapObject;
-import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 
@@ -94,9 +89,6 @@ public class ObjectRenderer {
 	 * Prepares the sprites so that they may be rendered.
 	 */
 	public void prepareCharacters() {
-		MapLayer layer = rpgMap.getCurrentLayer();
-		MapObjects objects = layer.getObjects();
-
 		if (playerCharacterModel != null) {
 			playerCharacter = new Character2D("char", playerCharacterModel,
 					game);
@@ -104,31 +96,14 @@ public class ObjectRenderer {
 			stage.addActor(playerCharacter);
 		}
 
-		for (MapObject object : objects) {
-			int tileSize = SettingsDAO.getSettings().rpgTileSize;
-			int id = Integer
-					.parseInt((String) object.getProperties().get("id"));
-			int objX = (Integer) object.getProperties().get("x") / tileSize;
-			int objY = rpgMap.getHeightInTiles()
-					- (Integer) object.getProperties().get("y") / tileSize - 1;
-			float width = Float.parseFloat((String) object.getProperties().get(
-					"width"));
-			float height = Float.parseFloat((String) object.getProperties()
-					.get("height"));
-
-			Event event = EventDAO.getEvent(id);
-			if (event != null) {
-				Character character = new Character(objX, objY, width, height,
-						rpgMap);
-				event.setCharacter(character);
-				EventDAO.editEvent(id, event);
-
-				Character2D char2d = new Character2D(event.getSprite(),
-						character, game);
-				char2d.create();
-				sprites.add(char2d);
-				stage.addActor(char2d);
-			}
+		Array<EventInGame> events = game.getProfile().getEvents(
+				rpgMap.getMapName(), rpgMap.getObjectLayer());
+		for (EventInGame event : events) {
+			Character2D char2d = new Character2D(event.getSprite(),
+					event.getCharacter(), game);
+			char2d.create();
+			sprites.add(char2d);
+			stage.addActor(char2d);
 		}
 	}
 

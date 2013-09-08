@@ -47,7 +47,6 @@ public class Settings implements Serializable {
 	public int rpgTileSize = 32;
 	public String defaultObjLayer = "default-objects";
 	public String defaultTileLayer = "tiles";
-	public String collidableObject = "collidable";
 	public String collidableTile = "obstacle";
 
 	@Override
@@ -83,7 +82,6 @@ public class Settings implements Serializable {
 		json.writeValue("rpgTileSize", rpgTileSize);
 		json.writeValue("defaultObjLayer", defaultObjLayer);
 		json.writeValue("defaultTileLayer", defaultTileLayer);
-		json.writeValue("collidableObject", collidableObject);
 		json.writeValue("collidableTile", collidableTile);
 	}
 
@@ -124,12 +122,10 @@ public class Settings implements Serializable {
 		mapHeight = json.readValue("mapHeight", Integer.class, jsonData);
 		mapWidth = json.readValue("mapWidth", Integer.class, jsonData);
 
-		rpgTileSize = json.readValue("tileSize", Integer.class, jsonData);
+		rpgTileSize = json.readValue("rpgTileSize", Integer.class, jsonData);
 		defaultObjLayer = json.readValue("defaultObjLayer", String.class,
 				jsonData);
 		defaultTileLayer = json.readValue("defaultTileLayer", String.class,
-				jsonData);
-		collidableObject = json.readValue("collidableObject", String.class,
 				jsonData);
 		collidableTile = json.readValue("collidableTile", String.class,
 				jsonData);

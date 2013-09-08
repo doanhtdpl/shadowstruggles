@@ -6,9 +6,11 @@ import com.badlogic.gdx.utils.Json.Serializable;
 import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.ObjectMap;
 
+import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.EventDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.cards.Deck;
 import br.edu.ifsp.pds.shadowstruggles.model.events.Event;
-import br.edu.ifsp.pds.shadowstruggles.model.events.EventAction;
+import br.edu.ifsp.pds.shadowstruggles.model.events.EventInGame;
 import br.edu.ifsp.pds.shadowstruggles.model.items.Item;
 import br.edu.ifsp.pds.shadowstruggles.model.quests.Quest;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character;
@@ -34,11 +36,12 @@ public class Profile implements Serializable, Comparable<Object> {
 	private Array<EnemyDefeat> defeatedEnemies;
 	private Array<Ending> endings;
 	private Array<Item> unlockedItems;
-	
+
 	/**
-	 * Records which actions should be performed for each event.
+	 * Stores the game events (grouped by map) so that they can be manipulated
+	 * dynamically.
 	 */
-	private ObjectMap<Event, Array<EventAction>> events;
+	private ObjectMap<String, Array<EventInGame>> events;
 	/**
 	 * Relates the maps to the object layer which the player character will
 	 * access when visiting them.
@@ -69,8 +72,8 @@ public class Profile implements Serializable, Comparable<Object> {
 		this.defeatedEnemies = new Array<EnemyDefeat>();
 		this.endings = new Array<Ending>();
 		this.unlockedItems = new Array<Item>();
-		
-		this.events = new ObjectMap<Event, Array<EventAction>>();
+
+		this.events = new ObjectMap<String, Array<EventInGame>>();
 		this.mapLayers = new ObjectMap<String, String>();
 
 		this.distributionPointsFormula = null;
@@ -82,7 +85,7 @@ public class Profile implements Serializable, Comparable<Object> {
 		this();
 		this.setId(id);
 	}
-	
+
 	@Override
 	public int compareTo(Object o) {
 		return this.id - ((Profile) o).getId();
@@ -98,7 +101,8 @@ public class Profile implements Serializable, Comparable<Object> {
 		this.storyPoints = json.readValue("storyPoints", Integer.class,
 				jsonData);
 		this.path = json.readValue("path", String.class, jsonData);
-		this.selectedDeck = json.readValue("selectedDeck", Deck.class, jsonData);
+		this.selectedDeck = json
+				.readValue("selectedDeck", Deck.class, jsonData);
 		this.money = json.readValue("money", Integer.class, jsonData);
 		this.experience = json.readValue("experience", Integer.class, jsonData);
 		this.level = json.readValue("level", Integer.class, jsonData);
@@ -113,8 +117,9 @@ public class Profile implements Serializable, Comparable<Object> {
 		this.defeatedEnemies = json.readValue("defeatedEnemies", Array.class,
 				jsonData);
 		this.endings = json.readValue("endings", Array.class, jsonData);
-		this.unlockedItems = json.readValue("unlockedItems", Array.class, jsonData);
-		
+		this.unlockedItems = json.readValue("unlockedItems", Array.class,
+				jsonData);
+
 		this.events = json.readValue("events", ObjectMap.class, jsonData);
 		this.mapLayers = json.readValue("mapLayers", ObjectMap.class, jsonData);
 
@@ -149,7 +154,7 @@ public class Profile implements Serializable, Comparable<Object> {
 		json.writeValue("defeatedEnemies", this.defeatedEnemies);
 		json.writeValue("endings", this.endings);
 		json.writeValue("unlockedItems", this.unlockedItems);
-		
+
 		json.writeValue("events", this.events);
 		json.writeValue("mapLayers", this.mapLayers);
 
@@ -159,11 +164,82 @@ public class Profile implements Serializable, Comparable<Object> {
 		json.writeValue("experienceNextLevelFormula",
 				this.experienceNextLevelFormula);
 	}
-	
+
+	/**
+	 * Returns the event with the specified ID, searching all the maps.
+	 */
+	public EventInGame getEvent(int id) {
+		for (String map : events.keys()) {
+			for (EventInGame event : events.get(map)) {
+				if (event.getId() == id)
+					return event;
+			}
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the event with the specified ID, searching the specified map.
+	 */
+	public EventInGame getEvent(String map, int id) {
+		for (EventInGame event : events.get(map)) {
+			if (event.getId() == id)
+				return event;
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the events on the specified object layer of the specified map.
+	 */
+	public Array<EventInGame> getEvents(String map, String layer) {
+		Array<EventInGame> layerEvents = new Array<EventInGame>();
+		for (EventInGame event : events.get(map)) {
+			if (event.getLayer().equals(layer))
+				layerEvents.add(event);
+		}
+
+		if (layerEvents.size > 0)
+			return layerEvents;
+
+		return null;
+	}
+
+	/**
+	 * Turns the Event objects into EventInGame objects and stores them.
+	 */
+	public void createEventsInGame(ShadowStruggles game) {
+		Array<Event> retrievedEvents = EventDAO.getAll();
+
+		for (Event event : retrievedEvents) {
+			EventInGame eventInGame = new EventInGame();
+			String map = event.getMap();
+
+			eventInGame.setId(event.getId());
+			eventInGame.setMap(map);
+			eventInGame.setLayer(event.getLayer());
+			eventInGame.setSprite(event.getSprite());
+			eventInGame.setActions(event.getActions());
+			eventInGame.setTriggerType(event.getConvertedTriggerType());
+			eventInGame.setCharacter(event.getCharacter(game));
+			eventInGame.setCollidable(event.isCollidable());
+
+			if (this.events.containsKey(map)) {
+				this.events.get(map).add(eventInGame);
+			} else {
+				Array<EventInGame> eventArray = new Array<EventInGame>();
+				eventArray.add(eventInGame);
+				this.events.put(map, eventArray);
+			}
+		}
+	}
+
 	public int getId() {
 		return id;
 	}
-	
+
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -183,7 +259,7 @@ public class Profile implements Serializable, Comparable<Object> {
 	public Deck getSelectedDeck() {
 		return selectedDeck;
 	}
-	
+
 	public Player getPlayer() {
 		return this.player;
 	}
@@ -236,14 +312,14 @@ public class Profile implements Serializable, Comparable<Object> {
 		return defeatedEnemies;
 	}
 
-	public ObjectMap<Event, Array<EventAction>> getEvents() {
+	public ObjectMap<String, Array<EventInGame>> getEvents() {
 		return events;
 	}
 
 	public ObjectMap<String, String> getMapLayers() {
 		return mapLayers;
 	}
-	
+
 	public Array<Item> getUnlockedItems() {
 		return unlockedItems;
 	}

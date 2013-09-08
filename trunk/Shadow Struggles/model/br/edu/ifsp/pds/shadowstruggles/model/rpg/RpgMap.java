@@ -1,15 +1,12 @@
 package br.edu.ifsp.pds.shadowstruggles.model.rpg;
 
-import br.edu.ifsp.pds.shadowstruggles.data.dao.EventDAO;
+import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
-import br.edu.ifsp.pds.shadowstruggles.model.events.Event;
+import br.edu.ifsp.pds.shadowstruggles.model.events.EventInGame;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character.WalkDirection;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.Mover;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.TileBasedMap;
 
-import com.badlogic.gdx.maps.MapLayer;
-import com.badlogic.gdx.maps.MapObject;
-import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
@@ -22,35 +19,36 @@ import com.badlogic.gdx.utils.Array;
  * wrapper for the tiled map itself.
  */
 public class RpgMap implements TileBasedMap {
-	private boolean[][] visited = null;
+	private String mapName;
 	private TiledMap map;
+	private String objectLayer;
+	private TiledMapTileLayer tileLayer = null;
+	private ShadowStruggles game;
 
-	/**
-	 * The current object layer.
-	 */
-	private MapLayer currentLayer = null;
+	private boolean visited[][] = null;
 
-	public RpgMap(TiledMap map) {
-		this(map, "default-objects");
+	public RpgMap(ShadowStruggles game, String mapName) {
+		this(game, mapName, SettingsDAO.getSettings().defaultObjLayer,
+				SettingsDAO.getSettings().defaultTileLayer);
 	}
 
-	public RpgMap(TiledMap map, String currentLayer) {
-		this(map, map.getLayers().get(currentLayer));
-	}
-
-	public RpgMap(TiledMap map, MapLayer currentLayer) {
-		this.map = map;
-		this.currentLayer = currentLayer;
+	public RpgMap(ShadowStruggles game, String mapName, String objectLayer,
+			String tileLayer) {
+		this.game = game;
+		this.mapName = mapName;
+		this.map = game.getTiledMap(mapName);
+		this.objectLayer = objectLayer;
+		this.tileLayer = (TiledMapTileLayer) map.getLayers().get(tileLayer);
 	}
 
 	@Override
 	public int getWidthInTiles() {
-		return ((TiledMapTileLayer) map.getLayers().get("tiles")).getWidth();
+		return tileLayer.getWidth();
 	}
 
 	@Override
 	public int getHeightInTiles() {
-		return ((TiledMapTileLayer) map.getLayers().get("tiles")).getHeight();
+		return tileLayer.getHeight();
 	}
 
 	public void clearVisited() {
@@ -68,23 +66,14 @@ public class RpgMap implements TileBasedMap {
 	}
 
 	/**
-	 * Executes the automatic events of the map in the current object layer and
-	 * updates them.
+	 * Executes the automatic events of the map in the current object layer.
 	 */
 	public void runAutomaticEvents() {
-		MapObjects objects = currentLayer.getObjects();
-
-		for (MapObject object : objects) {
-			int id = Integer
-					.parseInt((String) object.getProperties().get("id"));
-
-			Event event = EventDAO.getEvent(id);
-			if (event != null) {
-				if (event.getTriggerType() == Event.TriggerType.AUTOMATIC) {
-					event.trigger();
-					EventDAO.editEvent(event.getId(), event);
-				}
-			}
+		Array<EventInGame> events = game.getProfile().getEvents(mapName,
+				objectLayer);
+		for (EventInGame event : events) {
+			if (event.getTriggerType() == EventInGame.TriggerType.AUTOMATIC)
+				event.trigger();
 		}
 	}
 
@@ -101,68 +90,47 @@ public class RpgMap implements TileBasedMap {
 	 *            Indicates if the events may be triggered by touch.
 	 */
 	public boolean blocked(Mover mover, int x, int y, boolean triggerTouch) {
-		// Maps from Tiled are interpreted with the traditional Cartesian
-		// coordinate system (y increases upwards); thus, the y parameter must
-		// be inverted. Also, y ranges from 0 to height - 1, thus the
-		// subtraction.
-		int invertY = this.getHeightInTiles() - y - 1;
-
 		if (mover.getClass() == CharacterMover.class) {
 			CharacterMover cMover = (CharacterMover) mover;
 
 			if (cMover.getType() == CharacterMover.Type.NORMAL_CHARACTER) {
-
 				// Basic validation: check if the coordinates are within the
 				// valid bounds.
 				if (x < 0 || x >= this.getWidthInTiles() || y < 0
-						|| y >= this.getHeightInTiles())
+						|| y >= this.getHeightInTiles()) {
+					System.out.println("Out of bounds!");
 					return true;
+				}
 
 				// Project the character into the desired location to calculate
 				// possible collisions.
-				Rectangle projectedCharacter = new Rectangle(x, invertY, cMover
+				Rectangle projectedCharacter = new Rectangle(x, y, cMover
 						.getRectangle().getWidth(), cMover.getRectangle()
 						.getHeight() / 2);
 
-				// Check for collidable objects.
-				MapObjects objects = currentLayer.getObjects();
-
-				for (MapObject object : objects) {
-					int tileSize = SettingsDAO.getSettings().rpgTileSize;
-
-					int objX = (Integer) object.getProperties().get("x")
-							/ tileSize;
-					int objY = (Integer) object.getProperties().get("y")
-							/ tileSize;
-					float width = Float.parseFloat((String) object
-							.getProperties().get("width"));
-					float height = Float.parseFloat((String) object
-							.getProperties().get("height"));
-					Rectangle rect = new Rectangle(objX, objY, width, height);
-
-					boolean collidable = object.getProperties().containsKey(
-							SettingsDAO.getSettings().collidableObject);
-
+				// Check for collidable events, triggering them if applicable.
+				Array<EventInGame> events = game.getProfile().getEvents(
+						mapName, objectLayer);
+				for (EventInGame event : events) {
+					Rectangle rect = event.getCharacter().getMover()
+							.getRectangle();
 					if (rect.overlaps(projectedCharacter)) {
-						int id = Integer.parseInt((String) object
-								.getProperties().get("id"));
-						Event event = EventDAO.getEvent(id);
 						if (triggerTouch
-								&& event.getTriggerType() == Event.TriggerType.TOUCH) {
+								&& event.getTriggerType() == EventInGame.TriggerType.TOUCH)
 							event.trigger();
-							EventDAO.editEvent(id, event);
-						}
-
-						if (collidable)
-							return true;
+						return event.isCollidable();
 					}
 				}
 
+				// Maps from Tiled are interpreted with the traditional
+				// Cartesian coordinate system (y increases upwards); thus, the
+				// y parameter must be inverted. Also, y ranges from 0 to height
+				// - 1.
+				int invertY = this.getHeightInTiles() - y - 1;
+				projectedCharacter.y = invertY;
+
 				// Check for tile obstacles in the tile itself and its adjacent
 				// spots in 4 directions.
-				String defaultLayer = SettingsDAO.getSettings().defaultTileLayer;
-				TiledMapTileLayer tileLayer = (TiledMapTileLayer) map
-						.getLayers().get(defaultLayer);
 				Array<Vector2> adjacentTiles = new Array<Vector2>();
 				adjacentTiles.add(new Vector2(x, invertY));
 
@@ -210,40 +178,18 @@ public class RpgMap implements TileBasedMap {
 	 */
 	public boolean triggerEvent(int x, int y, CharacterMover cMover,
 			WalkDirection directionTurn) {
-		// Maps from Tiled are interpreted with the traditional Cartesian
-		// coordinate system (y increases upwards); thus, the y parameter must
-		// be inverted. Also, y ranges from 0 to height - 1, thus the
-		// subtraction.
-		int invertY = this.getHeightInTiles() - y - 1;
-		MapObjects objects = currentLayer.getObjects();
+		Array<EventInGame> events = game.getProfile().getEvents(mapName,
+				objectLayer);
+		for (EventInGame event : events) {
+			Rectangle rect = event.getCharacter().getMover().getRectangle();
 
-		for (MapObject object : objects) {
-			int tileSize = SettingsDAO.getSettings().rpgTileSize;
-
-			int objX = (Integer) object.getProperties().get("x") / tileSize;
-			int objY = (Integer) object.getProperties().get("y") / tileSize;
-			float width = Float.parseFloat((String) object.getProperties().get(
-					"width"));
-			float height = Float.parseFloat((String) object.getProperties()
-					.get("height"));
-			Rectangle rect = new Rectangle(objX, objY, width, height);
-
-			if (rect.overlaps(new Rectangle(x, invertY,
-					cMover.getRectangle().width, cMover.getRectangle().height))) {
-				int id = Integer.parseInt((String) object.getProperties().get(
-						"id"));
-				Event event = EventDAO.getEvent(id);
-
-				if (event.getTriggerType() == Event.TriggerType.INTERACT) {
-					// Only attempt to change direction if object is collidable.
-					boolean collidable = object.getProperties().containsKey(
-							SettingsDAO.getSettings().collidableObject);
-					if (!collidable)
-						directionTurn = null;
-					event.trigger(directionTurn);
-					EventDAO.editEvent(id, event);
-					return true;
-				}
+			if (rect.overlaps(new Rectangle(x, y, cMover.getRectangle().width,
+					cMover.getRectangle().height))
+					&& event.getTriggerType() == EventInGame.TriggerType.INTERACT) {
+				if (!event.isCollidable())
+					directionTurn = null;
+				event.trigger(directionTurn);
+				return true;
 			}
 		}
 
@@ -256,40 +202,18 @@ public class RpgMap implements TileBasedMap {
 	 */
 	public boolean touchEvent(int x, int y, CharacterMover cMover,
 			WalkDirection directionTurn) {
-		// Maps from Tiled are interpreted with the traditional Cartesian
-		// coordinate system (y increases upwards); thus, the y parameter must
-		// be inverted. Also, y ranges from 0 to height - 1, thus the
-		// subtraction.
-		int invertY = this.getHeightInTiles() - y - 1;
-		MapObjects objects = currentLayer.getObjects();
+		Array<EventInGame> events = game.getProfile().getEvents(mapName,
+				objectLayer);
+		for (EventInGame event : events) {
+			Rectangle rect = event.getCharacter().getMover().getRectangle();
 
-		for (MapObject object : objects) {
-			int tileSize = SettingsDAO.getSettings().rpgTileSize;
-
-			int objX = (Integer) object.getProperties().get("x") / tileSize;
-			int objY = (Integer) object.getProperties().get("y") / tileSize;
-			float width = Float.parseFloat((String) object.getProperties().get(
-					"width"));
-			float height = Float.parseFloat((String) object.getProperties()
-					.get("height"));
-			Rectangle rect = new Rectangle(objX, objY, width, height);
-
-			if (rect.overlaps(new Rectangle(x, invertY,
-					cMover.getRectangle().width, cMover.getRectangle().height))) {
-				int id = Integer.parseInt((String) object.getProperties().get(
-						"id"));
-				Event event = EventDAO.getEvent(id);
-
-				if (event.getTriggerType() == Event.TriggerType.TOUCH) {
-					// Only attempt to change direction if object is collidable.
-					boolean collidable = object.getProperties().containsKey(
-							SettingsDAO.getSettings().collidableObject);
-					if (!collidable)
-						directionTurn = null;
-					event.trigger(directionTurn);
-					EventDAO.editEvent(id, event);
-					return true;
-				}
+			if (rect.overlaps(new Rectangle(x, y, cMover.getRectangle().width,
+					cMover.getRectangle().height))
+					&& event.getTriggerType() == EventInGame.TriggerType.TOUCH) {
+				if (!event.isCollidable())
+					directionTurn = null;
+				event.trigger(directionTurn);
+				return true;
 			}
 		}
 
@@ -301,21 +225,21 @@ public class RpgMap implements TileBasedMap {
 		return 1;
 	}
 
-	public MapLayer getCurrentLayer() {
-		return currentLayer;
-	}
-
 	public boolean visited(int x, int y) {
 		if (visited == null)
 			visited = new boolean[getWidthInTiles()][getHeightInTiles()];
 		return visited[x][y];
 	}
 
-	public void setCurrentLayer(String currentLayer) {
-		this.currentLayer = this.map.getLayers().get(currentLayer);
-	}
-
 	public TiledMap getMap() {
 		return this.map;
+	}
+
+	public String getMapName() {
+		return this.mapName;
+	}
+
+	public String getObjectLayer() {
+		return this.objectLayer;
 	}
 }

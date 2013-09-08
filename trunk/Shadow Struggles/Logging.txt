@@ -20,3 +20,7 @@ Ago 30, 2013 4:45:22 PM br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplica
 SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving language-independent JSON file - Error reading file: data/profiles.json
 Ago 30, 2013 4:59:59 PM br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
 SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving language-independent JSON file - Error reading file: data/profiles.json
+Set 08, 2013 4:19:14 PM br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving language-independent JSON file - Error reading file: data/game_settings.json
+Set 08, 2013 4:21:10 PM br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+SEVERE: br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO: Error getting Settings - 0

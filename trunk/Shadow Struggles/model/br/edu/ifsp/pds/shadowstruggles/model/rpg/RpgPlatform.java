@@ -1,12 +1,12 @@
 package br.edu.ifsp.pds.shadowstruggles.model.rpg;
 
+import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character.WalkDirection;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.Path;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.Path.Step;
 import br.edu.ifsp.pds.shadowstruggles.rpg.RpgController;
-import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
+
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 
 /**
  * This is the main core of the RPG exploring mechanic. It handles the
@@ -18,11 +18,9 @@ public class RpgPlatform {
 	private Character character;
 	private RpgController controller;
 
-	public RpgPlatform(RpgController controller, Character character) {
-		this(controller, character,
-				new RpgMap(
-						new TmxMapLoader(new InternalFileHandleResolver())
-								.load("data/rpg_maps/map.tmx")));
+	public RpgPlatform(RpgController controller, Character character,
+			ShadowStruggles game) {
+		this(controller, character, new RpgMap(game, "map"));
 	}
 
 	public RpgPlatform(RpgController controller, Character character, RpgMap map) {
@@ -142,7 +140,8 @@ public class RpgPlatform {
 			oppositeDirection = WalkDirection.WALK_DOWN;
 		}
 
-		this.map.triggerEvent(tileX, tileY, character.getMover(), oppositeDirection);
+		this.map.triggerEvent(tileX, tileY, character.getMover(),
+				oppositeDirection);
 	}
 
 }

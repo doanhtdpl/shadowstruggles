@@ -18,7 +18,6 @@ public class ControllerTest {
 	@Test
 	public void testBackCardClicked() {
 		fail("Not yet implemented"); //TODO: Implementar teste.
-		Card card = new Card("Teste", "CartaTeste", 10, "Descrição", 0, null);
 		
 	}
 
