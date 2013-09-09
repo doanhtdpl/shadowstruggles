@@ -88,6 +88,7 @@ public class Controller {
 
 	public void updateTableToFighter() {
 		try {
+			if(model.searchAllObjects(Card.class.getClass())!=null)
 			model.searchAllObjects(Card.class.getClass());
 		} catch (IOException e) {
 			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());

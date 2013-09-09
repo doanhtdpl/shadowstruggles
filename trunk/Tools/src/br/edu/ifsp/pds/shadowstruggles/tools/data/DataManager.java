@@ -294,10 +294,12 @@ public class DataManager {
 		if (FileMap.classToFile.containsKey(c))
 			path = FileMap.classToFile.get(c);
 
+		if(searchFile(path, null, c)!=null){
 		File file = new File(searchFile(path, null, c));
 		list = MyJson.getJson().fromJson(ArrayList.class, file);
 
 		return list;
+		}else return null;
 	}
 
 	public ArrayList<String> searchAllFiles(String resourceType) {
