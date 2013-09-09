@@ -1,84 +1,119 @@
 package br.edu.ifsp.pds.shadowstruggles.tools.view;
-
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.io.File;
+import java.util.Collections;
+import java.util.Vector;
 
-import javax.swing.JButton;
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.TreePath;
 
+/**
+ * Display a file system in a JTree view
+ * 
+ * @version $Id: FileTree.java,v 1.9 2004/02/23 03:39:22 ian Exp $
+ * @author Ian Darwin
+ */
 public class SimpleTree extends JPanel {
-	private static final long serialVersionUID = 1L;
+	private TreePath selectedTreePath;
+  /** Construct a FileTree */
+  public SimpleTree(File dir) {
+    setLayout(new BorderLayout());
 
-	JTree tree;
-	DefaultMutableTreeNode root;
+    // Make a tree list with all the nodes, and make it a JTree
+    JTree tree = new JTree(addNodes(null, dir));
 
-	public SimpleTree() {
-		root = new DefaultMutableTreeNode("root", true);
-		getList(root, new File("./data/"));
-		setLayout(new BorderLayout());
-		tree = new JTree(root);
-		tree.setRootVisible(false);
-		add(new JScrollPane((JTree) tree), "Center");
-	}
+    // Add a listener
+    tree.addTreeSelectionListener(new TreeSelectionListener() {
+      public void valueChanged(TreeSelectionEvent e) {
+        DefaultMutableTreeNode node = (DefaultMutableTreeNode) e
+            .getPath().getLastPathComponent();
+        selectedTreePath=e.getPath();
+      }
+    });
 
-	public Dimension getPreferredSize() {
-		return new Dimension(200, 120);
-	}
+    // Lastly, put the JTree into a JScrollPane.
+    JScrollPane scrollpane = new JScrollPane();
+    scrollpane.getViewport().add(tree);
+    add(BorderLayout.CENTER, scrollpane);
+  }
 
-	public void getList(DefaultMutableTreeNode node, File f) {
-		if (!f.isDirectory()) {
-			// We keep only JAVA source file for display in this HowTo
-			if (f.getName().endsWith("java")) {
-				System.out.println("FILE  -  " + f.getName());
-				DefaultMutableTreeNode child = new DefaultMutableTreeNode(f);
-				node.add(child);
-			}
-		} else {
-			System.out.println("DIRECTORY  -  " + f.getName());
-			DefaultMutableTreeNode child = new DefaultMutableTreeNode(f);
-			node.add(child);
-			File fList[] = f.listFiles();
-			for (int i = 0; i < fList.length; i++)
-				getList(child, fList[i]);
-		}
-	}
+  /** Add nodes from under "dir" into curTop. Highly recursive. */
+  DefaultMutableTreeNode addNodes(DefaultMutableTreeNode curTop, File dir) {
+    String curPath = dir.getPath();
+    DefaultMutableTreeNode curDir = new DefaultMutableTreeNode(curPath);
+    if (curTop != null) { // should only be null at root
+      curTop.add(curDir);
+    }
+    Vector ol = new Vector();
+    String[] tmp = dir.list();
+    for (int i = 0; i < tmp.length; i++)
+      ol.addElement(tmp[i]);
+    Collections.sort(ol, String.CASE_INSENSITIVE_ORDER);
+    File f;
+    Vector files = new Vector();
+    // Make two passes, one for Dirs and one for Files. This is #1.
+    for (int i = 0; i < ol.size(); i++) {
+      String thisObject = (String) ol.elementAt(i);
+      String newPath;
+      if (curPath.equals("."))
+        newPath = thisObject;
+      else
+        newPath = curPath + File.separator + thisObject;
+      if ((f = new File(newPath)).isDirectory())
+        addNodes(curDir, f);
+      else
+        files.addElement(thisObject);
+    }
+    // Pass two: for files.
+    for (int fnum = 0; fnum < files.size(); fnum++)
+      curDir.add(new DefaultMutableTreeNode(files.elementAt(fnum)));
+    return curDir;
+  }
 
-	public static void main(String s[]) {
-		MyJFrame frame = new MyJFrame("Directory explorer");
-	}
+  public Dimension getMinimumSize() {
+    return new Dimension(200, 400);
+  }
+
+  public Dimension getPreferredSize() {
+    return new Dimension(200, 400);
+  }
+  
+  public void setSelectedTreePath(TreePath selectedTreePath) {
+	this.selectedTreePath = selectedTreePath;
+}
+  
+  public TreePath getSelectedTreePath() {
+	return selectedTreePath;
 }
 
-class WindowCloser extends WindowAdapter {
-	public void windowClosing(WindowEvent e) {
-		java.awt.Window win = e.getWindow();
-		win.setVisible(false);
-		System.exit(0);
-	}
-}
+  /** Main: make a Frame, add a FileTree */
+  public static void main(String[] av) {
 
-class MyJFrame extends JFrame {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	JButton b1, b2, b3;
-	SimpleTree panel;
+    JFrame frame = new JFrame("FileTree");
+    frame.setForeground(Color.black);
+    frame.setBackground(Color.lightGray);
+    Container cp = frame.getContentPane();
 
-	MyJFrame(String s) {
-		super(s);
-		panel = new SimpleTree();
-		getContentPane().add(panel, "Center");
-		setSize(300, 300);
-		setVisible(true);
-		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		addWindowListener(new WindowCloser());
-	}
+    if (av.length == 0) {
+      cp.add(new SimpleTree(new File(".")));
+    } else {
+      cp.setLayout(new BoxLayout(cp, BoxLayout.X_AXIS));
+      for (int i = 0; i < av.length; i++)
+        cp.add(new SimpleTree(new File(av[i])));
+    }
 
+    frame.pack();
+    frame.setVisible(true);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+  }
 }
