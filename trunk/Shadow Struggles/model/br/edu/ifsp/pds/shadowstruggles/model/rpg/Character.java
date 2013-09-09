@@ -221,8 +221,23 @@ public class Character {
 		return tileX;
 	}
 
+	public void setTileX(int tileX) {
+		this.tileX = tileX;
+		this.mover.getRectangle().setX(tileX);
+	}
+
 	public int getTileY() {
 		return tileY;
+	}
+
+	public void setTileY(int tileY) {
+		this.tileY = tileY;
+		this.mover.getRectangle().setY(tileY);
+	}
+
+	public void setPosition(int tileX, int tileY) {
+		this.setTileX(tileX);
+		this.setTileY(tileY);
 	}
 
 	public float getWalkSpeed() {

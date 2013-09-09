@@ -99,6 +99,15 @@ public class ObjectRenderer {
 		Array<EventInGame> events = game.getProfile().getEvents(
 				rpgMap.getMapName(), rpgMap.getObjectLayer());
 		for (EventInGame event : events) {
+			RpgMap eventMap = event.getCharacter().getCurrentMap();
+			if (!eventMap.getMapName().equals(rpgMap.getMapName())
+					|| !eventMap.getObjectLayer().equals(
+							rpgMap.getObjectLayer())) {
+				// If the event character's RpgMap attribute doesn't match the
+				// current map, update it.
+				event.getCharacter().setCurrentMap(new RpgMap(rpgMap));
+			}
+
 			Character2D char2d = new Character2D(event.getSprite(),
 					event.getCharacter(), game);
 			char2d.create();

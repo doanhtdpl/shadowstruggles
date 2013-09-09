@@ -33,12 +33,13 @@ public class StartScreen extends BaseScreen {
 
 	public static StartScreen getInstance(ShadowStruggles game,
 			Controller controller) {
-		if (instance != null)
-			return instance;
-		else {
+		if (instance == null)
 			instance = new StartScreen(game, controller);
-			return instance;
-		}
+		return instance;
+	}
+
+	public static StartScreen getInstance() {
+		return instance;
 	}
 
 	private StartScreen(ShadowStruggles game, Controller controller) {
@@ -188,14 +189,14 @@ public class StartScreen extends BaseScreen {
 							int id = Character.getNumericValue(tx.getText()
 									.charAt(0));
 							Profile profile = ProfileDAO.getProfile(id);
-							if(profile.getEvents().size == 0)
+							if (profile.getEvents().size == 0)
 								profile.createEventsInGame(game);
 							game.setProfile(profile);
-//							DataManager.getInstance().changeLanguage(
-//									ProfileDAO.getProfile(id).getLanguage());
-//							game.getProfile().setCurrentScene(
-//									SceneDAO.getScene(game.getProfile()
-//											.getCurrentScene().getId()));
+							// DataManager.getInstance().changeLanguage(
+							// ProfileDAO.getProfile(id).getLanguage());
+							// game.getProfile().setCurrentScene(
+							// SceneDAO.getScene(game.getProfile()
+							// .getCurrentScene().getId()));
 							game.setScreenWithTransition(MainScreen
 									.getInstance(game, controller));
 						}
