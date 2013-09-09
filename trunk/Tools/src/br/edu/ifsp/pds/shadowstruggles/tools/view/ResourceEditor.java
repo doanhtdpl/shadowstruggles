@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.tree.TreePath;
 import javax.swing.DefaultListModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -40,7 +41,9 @@ public class ResourceEditor extends JFrame {
 	private JList<String> list;
 	private JLabel lblNewLabel;
 	private JTree tree;
+	private SimpleTree simpleTree;
 	private HashMap<String, File> fileMap;
+	
 
 	public ResourceEditor(Controller controller) {
 		this.frame = this;
@@ -61,15 +64,27 @@ public class ResourceEditor extends JFrame {
 
 		JPanel panel = new JPanel();
 		tabbedPane.addTab("Images", null, panel, null);
-
+		simpleTree = new SimpleTree(new File("./data/"));
+		simpleTree.setBounds(31, 80, 220, 200);
+		
 		tree = new JTree();
 		tree.setBounds(31, 80, 187, 100);
 		tree.setVisible(false);
+		tree.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				/*TreePath tp = tree.getPathForLocation(e.getX(), e.getY());
+				
+			    if (tp != null) {
+			    	simpleTree.setSelectedTreePath(tp);
+			    }*/
+			}
+		});
 		contentPane.add(tree);
 
-		SimpleTree folderTree = new SimpleTree();
-		folderTree.setBounds(31, 80, 220, 200);
-		contentPane.add(folderTree);
+		
+		
+		contentPane.add(simpleTree);
 
 		list = new JList<String>();
 		list.setModel(new DefaultListModel<String>());
@@ -117,17 +132,18 @@ public class ResourceEditor extends JFrame {
 
 				if (list.getSelectedValuesList().size() != 0) {
 					System.out.println(list.getSelectedValuesList().size());
-					// System.out.println(tree.getSelectionPath().toString());
+					
+					
 					for (Object obj : list.getSelectedValuesList()) {
 
 						try {
 							Path orig = fileMap.get(obj.toString()).toPath();
-							Path dest = new File("./data/images/"
+							Path dest = new File(simpleTree.getSelectedTreePath().getLastPathComponent()+"/"
 									+ obj.toString()).toPath();
 							Files.copy(orig, dest);
 						} catch (IOException e) {
 							Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
-							e.printStackTrace();
+						//	e.printStackTrace();
 						}
 
 					}
