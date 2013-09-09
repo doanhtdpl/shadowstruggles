@@ -118,30 +118,22 @@ public class RpgPlatform {
 	 * Triggers the event immediately in front of the character, if possible.
 	 */
 	public void triggerEvent() {
-		int tileX = character.getTileX();
-		int tileY = character.getTileY();
-
 		WalkDirection oppositeDirection = null;
 
 		if (character.getDirection() == WalkDirection.WALK_DOWN) {
-			tileY++;
 			oppositeDirection = WalkDirection.WALK_UP;
 		}
 		if (character.getDirection() == WalkDirection.WALK_LEFT) {
-			tileX--;
 			oppositeDirection = WalkDirection.WALK_RIGHT;
 		}
 		if (character.getDirection() == WalkDirection.WALK_RIGHT) {
-			tileX++;
 			oppositeDirection = WalkDirection.WALK_LEFT;
 		}
 		if (character.getDirection() == WalkDirection.WALK_UP) {
-			tileY--;
 			oppositeDirection = WalkDirection.WALK_DOWN;
 		}
 
-		this.map.triggerEvent(tileX, tileY, character.getMover(),
-				oppositeDirection);
+		this.map.triggerEvent(character.getMover(), oppositeDirection);
 	}
 
 }
