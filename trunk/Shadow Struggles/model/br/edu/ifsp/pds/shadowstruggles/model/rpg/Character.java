@@ -168,10 +168,8 @@ public class Character {
 				oppositeDirection = WalkDirection.WALK_LEFT;
 			}
 
-			map.triggerEvent(destination[0], destination[1], mover,
-					oppositeDirection);
-			map.touchEvent(destination[0], destination[1], mover,
-					oppositeDirection);
+			map.triggerEvent(mover, oppositeDirection);
+			map.touchEvent(mover, oppositeDirection);
 
 			this.destination = null;
 			this.inPath = false;

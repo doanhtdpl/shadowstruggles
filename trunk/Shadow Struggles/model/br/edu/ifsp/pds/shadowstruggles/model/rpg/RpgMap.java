@@ -15,8 +15,9 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
 /**
- * The map representation used by the pathfinder algorithm. It serves as a
- * wrapper for the tiled map itself.
+ * The map representation used by the pathfinder algorithm and other classes
+ * which manipulate the map in some way. It serves as a wrapper for the tiled
+ * map itself.
  */
 public class RpgMap implements TileBasedMap {
 	private String mapName;
@@ -50,27 +51,98 @@ public class RpgMap implements TileBasedMap {
 	}
 
 	@Override
-	public int getWidthInTiles() {
-		return tileLayer.getWidth();
+	public boolean blocked(Mover mover, int x, int y) {
+		return this.blocked(mover, x, y, false);
 	}
 
-	@Override
-	public int getHeightInTiles() {
-		return tileLayer.getHeight();
-	}
+	/**
+	 * Checks if the given location is blocked.
+	 * 
+	 * @param triggerTouch
+	 *            Indicates if touch events may be triggered if they block the
+	 *            mover's path.
+	 */
+	public boolean blocked(Mover mover, int x, int y, boolean triggerTouch) {
+		if (mover.getClass() == CharacterMover.class) {
+			CharacterMover cMover = (CharacterMover) mover;
 
-	public void clearVisited() {
-		for (int x = 0; x < getWidthInTiles(); x++) {
-			for (int y = 0; y < getHeightInTiles(); y++) {
-				visited[x][y] = false;
+			if (cMover.getType() == CharacterMover.Type.NORMAL_CHARACTER) {
+				// Basic validation: check if the coordinates are within the
+				// valid bounds.
+				if (x < 0 || x >= this.getWidthInTiles() || y < 0
+						|| y >= this.getHeightInTiles()) {
+					return true;
+				}
+
+				// Project the character into the desired location to calculate
+				// possible collisions.
+				Rectangle projectedCharacter = new Rectangle(x, y, cMover
+						.getRectangle().getWidth(), cMover.getRectangle()
+						.getHeight() / 2);
+
+				// Check if there's an event touching the projected character,
+				// triggering it if applicable.
+				EventInGame touchedEvent = getTouchingEvent(projectedCharacter);
+				if (triggerTouch
+						&& touchedEvent.getTriggerType() == EventInGame.TriggerType.TOUCH)
+					touchedEvent.trigger();
+				if (touchedEvent.isCollidable())
+					return true;
+
+				// The final check is against tile obstacles.
+				return checkTileCollision(projectedCharacter);
+			} else {
+				throw new UnsupportedOperationException(
+						"Invalid CharacterMover type");
 			}
+		} else {
+			throw new UnsupportedOperationException("Invalid Mover object");
 		}
 	}
 
-	@Override
-	public void pathFinderVisited(int x, int y) {
-		if (visited == null)
-			visited = new boolean[getWidthInTiles()][getHeightInTiles()];
+	/**
+	 * Tries triggering an interactive event with the specified CharacterMover,
+	 * returning whether the event was found or not.
+	 * 
+	 * @param directionTurn
+	 *            The direction which the event should face when triggered. If
+	 *            null, the event won't change its direction. This is only
+	 *            applicable for collidable events.
+	 */
+	public boolean triggerEvent(CharacterMover cMover,
+			WalkDirection directionTurn) {
+		EventInGame touchedEvent = getTouchingEvent(cMover.getRectangle());
+
+		if (touchedEvent.getTriggerType() == EventInGame.TriggerType.INTERACT) {
+			if (!touchedEvent.isCollidable())
+				directionTurn = null;
+			touchedEvent.trigger(directionTurn);
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Tries triggering a touch event with the specified CharacterMover,
+	 * returning whether the event was found or not.
+	 * 
+	 * @param directionTurn
+	 *            The direction which the event should face when triggered. If
+	 *            null, the event won't change its direction. This is only
+	 *            applicable for collidable events.
+	 */
+	public boolean touchEvent(CharacterMover cMover, WalkDirection directionTurn) {
+		EventInGame touchedEvent = getTouchingEvent(cMover.getRectangle());
+
+		if (touchedEvent.getTriggerType() == EventInGame.TriggerType.TOUCH) {
+			if (!touchedEvent.isCollidable())
+				directionTurn = null;
+			touchedEvent.trigger(directionTurn);
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
@@ -85,143 +157,72 @@ public class RpgMap implements TileBasedMap {
 		}
 	}
 
-	@Override
-	public boolean blocked(Mover mover, int x, int y) {
-		return this.blocked(mover, x, y, false);
+	/**
+	 * Returns an event touching the character specified by the charRect
+	 * Rectangle object.
+	 * 
+	 * @param charRect
+	 *            The character's rectangle to be checked against possible
+	 *            events.
+	 */
+	public EventInGame getTouchingEvent(Rectangle charRect) {
+		Array<EventInGame> events = game.getProfile().getEvents(mapName,
+				objectLayer);
+
+		for (EventInGame event : events) {
+			Rectangle rect = event.getCharacter().getMover().getRectangle();
+			if (rect.overlaps(charRect)) {
+				return event;
+			}
+		}
+
+		return null;
 	}
 
 	/**
-	 * Checks if the given location is blocked; if it is blocked by a touch
-	 * event, it may be triggered.
+	 * Checks if a given character is colliding with a tile obstacle on the
+	 * current tile layer.
 	 * 
-	 * @param triggerTouch
-	 *            Indicates if the events may be triggered by touch.
+	 * @param charRect
+	 *            The character's rectangle to be checked against possible
+	 *            obstacles.
 	 */
-	public boolean blocked(Mover mover, int x, int y, boolean triggerTouch) {
-		if (mover.getClass() == CharacterMover.class) {
-			CharacterMover cMover = (CharacterMover) mover;
+	public boolean checkTileCollision(Rectangle charRect) {
+		int x = (int) charRect.x;
+		// Maps from Tiled are interpreted with the traditional
+		// Cartesian coordinate system (y increases upwards); thus, the
+		// y parameter must be inverted.
+		int y = (int) (this.getHeightInTiles() - charRect.y - 1);
 
-			if (cMover.getType() == CharacterMover.Type.NORMAL_CHARACTER) {
-				// Basic validation: check if the coordinates are within the
-				// valid bounds.
-				if (x < 0 || x >= this.getWidthInTiles() || y < 0
-						|| y >= this.getHeightInTiles()) {
-					System.out.println("Out of bounds!");
+		// Check for tile obstacles in the tile itself and its adjacent
+		// spots in 4 directions.
+		Array<Vector2> adjacentTiles = new Array<Vector2>();
+		adjacentTiles.add(new Vector2(x, y));
+
+		if (x < this.getWidthInTiles())
+			adjacentTiles.add(new Vector2(x + 1, y));
+		if (x > 0)
+			adjacentTiles.add(new Vector2(x - 1, y));
+		if (y < this.getHeightInTiles() - 1)
+			adjacentTiles.add(new Vector2(x, y + 1));
+		if (y > 0)
+			adjacentTiles.add(new Vector2(x, y - 1));
+
+		for (Vector2 tilePos : adjacentTiles) {
+			TiledMapTile tile = null;
+			if (tileLayer.getCell((int) tilePos.x, (int) tilePos.y) != null) {
+				tile = tileLayer.getCell((int) tilePos.x, (int) tilePos.y)
+						.getTile();
+			} else {
+				return true;
+			}
+
+			if (tile.getProperties().containsKey(
+					SettingsDAO.getSettings().collidableTile)) {
+				Rectangle tileRect = new Rectangle(tilePos.x, tilePos.y, 1, 1);
+				if (tileRect.overlaps(charRect)) {
 					return true;
 				}
-
-				// Project the character into the desired location to calculate
-				// possible collisions.
-				Rectangle projectedCharacter = new Rectangle(x, y, cMover
-						.getRectangle().getWidth(), cMover.getRectangle()
-						.getHeight() / 2);
-
-				// Check for collidable events, triggering them if applicable.
-				Array<EventInGame> events = game.getProfile().getEvents(
-						mapName, objectLayer);
-				for (EventInGame event : events) {
-					Rectangle rect = event.getCharacter().getMover()
-							.getRectangle();
-					if (rect.overlaps(projectedCharacter)) {
-						if (triggerTouch
-								&& event.getTriggerType() == EventInGame.TriggerType.TOUCH)
-							event.trigger();
-						return event.isCollidable();
-					}
-				}
-
-				// Maps from Tiled are interpreted with the traditional
-				// Cartesian coordinate system (y increases upwards); thus, the
-				// y parameter must be inverted. Also, y ranges from 0 to height
-				// - 1.
-				int invertY = this.getHeightInTiles() - y - 1;
-				projectedCharacter.y = invertY;
-
-				// Check for tile obstacles in the tile itself and its adjacent
-				// spots in 4 directions.
-				Array<Vector2> adjacentTiles = new Array<Vector2>();
-				adjacentTiles.add(new Vector2(x, invertY));
-
-				if (x < this.getWidthInTiles())
-					adjacentTiles.add(new Vector2(x + 1, invertY));
-				if (x > 0)
-					adjacentTiles.add(new Vector2(x - 1, invertY));
-				if (invertY < this.getHeightInTiles() - 1)
-					adjacentTiles.add(new Vector2(x, invertY + 1));
-				if (invertY > 0)
-					adjacentTiles.add(new Vector2(x, invertY - 1));
-
-				for (Vector2 tilePos : adjacentTiles) {
-					TiledMapTile tile = null;
-					if (tileLayer.getCell((int) tilePos.x, (int) tilePos.y) != null) {
-						tile = tileLayer.getCell((int) tilePos.x,
-								(int) tilePos.y).getTile();
-					} else {
-						return true;
-					}
-
-					if (tile.getProperties().containsKey(
-							SettingsDAO.getSettings().collidableTile)) {
-						Rectangle tileRect = new Rectangle(tilePos.x,
-								tilePos.y, 1, 1);
-						if (tileRect.overlaps(projectedCharacter)) {
-							return true;
-						}
-					}
-				}
-
-				return false;
-			} else {
-				throw new UnsupportedOperationException(
-						"Invalid CharacterMover type");
-			}
-		} else {
-			throw new UnsupportedOperationException("Invalid Mover object");
-		}
-	}
-
-	/**
-	 * Tries triggering the interactive event in the specified location with the
-	 * specified CharacterMover, returning whether the event was found or not.
-	 */
-	public boolean triggerEvent(int x, int y, CharacterMover cMover,
-			WalkDirection directionTurn) {
-		Array<EventInGame> events = game.getProfile().getEvents(mapName,
-				objectLayer);
-		for (EventInGame event : events) {
-			Rectangle rect = event.getCharacter().getMover().getRectangle();
-
-			if (rect.overlaps(new Rectangle(x, y, cMover.getRectangle().width,
-					cMover.getRectangle().height))
-					&& event.getTriggerType() == EventInGame.TriggerType.INTERACT) {
-				if (!event.isCollidable())
-					directionTurn = null;
-				event.trigger(directionTurn);
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-	/**
-	 * Tries triggering the touch event in the specified location with the
-	 * specified CharacterMover, returning whether the event was found or not.
-	 */
-	public boolean touchEvent(int x, int y, CharacterMover cMover,
-			WalkDirection directionTurn) {
-		Array<EventInGame> events = game.getProfile().getEvents(mapName,
-				objectLayer);
-		for (EventInGame event : events) {
-			Rectangle rect = event.getCharacter().getMover().getRectangle();
-
-			if (rect.overlaps(new Rectangle(x, y, cMover.getRectangle().width,
-					cMover.getRectangle().height))
-					&& event.getTriggerType() == EventInGame.TriggerType.TOUCH) {
-				if (!event.isCollidable())
-					directionTurn = null;
-				event.trigger(directionTurn);
-				return true;
 			}
 		}
 
@@ -233,10 +234,20 @@ public class RpgMap implements TileBasedMap {
 		return 1;
 	}
 
-	public boolean visited(int x, int y) {
+	@Override
+	public int getWidthInTiles() {
+		return tileLayer.getWidth();
+	}
+
+	@Override
+	public int getHeightInTiles() {
+		return tileLayer.getHeight();
+	}
+
+	@Override
+	public void pathFinderVisited(int x, int y) {
 		if (visited == null)
 			visited = new boolean[getWidthInTiles()][getHeightInTiles()];
-		return visited[x][y];
 	}
 
 	public TiledMap getMap() {
