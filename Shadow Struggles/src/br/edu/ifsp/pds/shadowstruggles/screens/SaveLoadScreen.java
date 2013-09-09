@@ -51,6 +51,10 @@ public class SaveLoadScreen extends BaseScreen implements InputProcessor {
 			return instance;
 		}
 	}
+	
+	public static SaveLoadScreen getInstance() {
+		return instance;
+	}
 
 	private SaveLoadScreen(ShadowStruggles game, Controller controller,
 			String returnScreen, boolean saveMode) {

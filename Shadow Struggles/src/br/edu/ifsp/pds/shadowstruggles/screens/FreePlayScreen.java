@@ -96,6 +96,7 @@ public class FreePlayScreen extends BaseScreen {
 				RpgController rpgController = new RpgController();
 				RpgMap rpgMap = new RpgMap(game, "map");
 				Character character = new Character(0, 19, 2, 2, rpgMap);
+				game.getProfile().setCharacter(character);
 				@SuppressWarnings("unused")
 				RpgPlatform platform = new RpgPlatform(rpgController,
 						character, rpgMap);

@@ -331,4 +331,12 @@ public class Profile implements Serializable, Comparable<Object> {
 	public void setUnlockedItems(Array<Item> unlockedItems) {
 		this.unlockedItems = unlockedItems;
 	}
+
+	public Character getCharacter() {
+		return character;
+	}
+
+	public void setCharacter(Character character) {
+		this.character = character;
+	}
 }

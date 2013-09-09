@@ -41,6 +41,14 @@ public class RpgMap implements TileBasedMap {
 		this.tileLayer = (TiledMapTileLayer) map.getLayers().get(tileLayer);
 	}
 
+	public RpgMap(RpgMap rpgMap) {
+		this.game = rpgMap.getGame();
+		this.mapName = rpgMap.getMapName();
+		this.map = rpgMap.getMap();
+		this.objectLayer = rpgMap.getObjectLayer();
+		this.tileLayer = rpgMap.getTileLayer();
+	}
+
 	@Override
 	public int getWidthInTiles() {
 		return tileLayer.getWidth();
@@ -241,5 +249,13 @@ public class RpgMap implements TileBasedMap {
 
 	public String getObjectLayer() {
 		return this.objectLayer;
+	}
+
+	public TiledMapTileLayer getTileLayer() {
+		return this.tileLayer;
+	}
+
+	private ShadowStruggles getGame() {
+		return this.game;
 	}
 }

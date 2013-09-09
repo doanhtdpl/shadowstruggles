@@ -203,4 +203,8 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		return false;
 	}
 
+	public RpgController getRpgController() {
+		return this.rpgController;
+	}
+
 }

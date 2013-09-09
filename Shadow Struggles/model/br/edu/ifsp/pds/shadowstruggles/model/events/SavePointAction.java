@@ -1,14 +1,20 @@
 package br.edu.ifsp.pds.shadowstruggles.model.events;
 
+import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.screens.SaveLoadScreen;
+
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 
+/**
+ * Shows a save screen.
+ */
 public class SavePointAction extends EventAction {
 
 	@Override
 	public void act() {
-		// TODO: Abrir tela de Save (usar instância global de ShadowStruggles
-		// (ShadowStruggles.getInstance()) para mudar de tela).
+		ShadowStruggles.getInstance().setScreenWithTransition(
+				SaveLoadScreen.getInstance());
 	}
 
 	@Override
