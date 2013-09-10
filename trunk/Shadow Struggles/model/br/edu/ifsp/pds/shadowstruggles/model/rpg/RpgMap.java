@@ -83,11 +83,13 @@ public class RpgMap implements TileBasedMap {
 				// Check if there's an event touching the projected character,
 				// triggering it if applicable.
 				EventInGame touchedEvent = getTouchingEvent(projectedCharacter);
-				if (triggerTouch
-						&& touchedEvent.getTriggerType() == EventInGame.TriggerType.TOUCH)
-					touchedEvent.trigger();
-				if (touchedEvent.isCollidable())
-					return true;
+				if (touchedEvent != null) {
+					if (triggerTouch
+							&& touchedEvent.getTriggerType() == EventInGame.TriggerType.TOUCH)
+						touchedEvent.trigger();
+					if (touchedEvent.isCollidable())
+						return true;
+				}
 
 				// The final check is against tile obstacles.
 				return checkTileCollision(projectedCharacter);
@@ -101,23 +103,24 @@ public class RpgMap implements TileBasedMap {
 	}
 
 	/**
-	 * Tries triggering an interactive event with the specified CharacterMover,
-	 * returning whether the event was found or not.
+	 * Tries triggering an interactive event with the specified Rectangle,
+	 * returning whether an event was found or not.
 	 * 
 	 * @param directionTurn
 	 *            The direction which the event should face when triggered. If
 	 *            null, the event won't change its direction. This is only
 	 *            applicable for collidable events.
 	 */
-	public boolean triggerEvent(CharacterMover cMover,
-			WalkDirection directionTurn) {
-		EventInGame touchedEvent = getTouchingEvent(cMover.getRectangle());
+	public boolean triggerEvent(Rectangle charRect, WalkDirection directionTurn) {
+		EventInGame touchedEvent = getTouchingEvent(charRect);
 
-		if (touchedEvent.getTriggerType() == EventInGame.TriggerType.INTERACT) {
-			if (!touchedEvent.isCollidable())
-				directionTurn = null;
-			touchedEvent.trigger(directionTurn);
-			return true;
+		if (touchedEvent != null) {
+			if (touchedEvent.getTriggerType() == EventInGame.TriggerType.INTERACT) {
+				if (!touchedEvent.isCollidable())
+					directionTurn = null;
+				touchedEvent.trigger(directionTurn);
+				return true;
+			}
 		}
 
 		return false;
@@ -132,14 +135,16 @@ public class RpgMap implements TileBasedMap {
 	 *            null, the event won't change its direction. This is only
 	 *            applicable for collidable events.
 	 */
-	public boolean touchEvent(CharacterMover cMover, WalkDirection directionTurn) {
-		EventInGame touchedEvent = getTouchingEvent(cMover.getRectangle());
+	public boolean touchEvent(Rectangle charRect, WalkDirection directionTurn) {
+		EventInGame touchedEvent = getTouchingEvent(charRect);
 
-		if (touchedEvent.getTriggerType() == EventInGame.TriggerType.TOUCH) {
-			if (!touchedEvent.isCollidable())
-				directionTurn = null;
-			touchedEvent.trigger(directionTurn);
-			return true;
+		if (touchedEvent != null) {
+			if (touchedEvent.getTriggerType() == EventInGame.TriggerType.TOUCH) {
+				if (!touchedEvent.isCollidable())
+					directionTurn = null;
+				touchedEvent.trigger(directionTurn);
+				return true;
+			}
 		}
 
 		return false;

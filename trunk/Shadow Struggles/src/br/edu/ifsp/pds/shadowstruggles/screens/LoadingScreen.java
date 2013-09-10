@@ -1,10 +1,12 @@
 package br.edu.ifsp.pds.shadowstruggles.screens;
 
+import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.data.FileMap;
 import br.edu.ifsp.pds.shadowstruggles.data.Loader;
 import br.edu.ifsp.pds.shadowstruggles.data.Loader.ManagementStrategy;
 import br.edu.ifsp.pds.shadowstruggles.data.SoundManager;
+import br.edu.ifsp.pds.shadowstruggles.screens.SaveLoadScreen.Mode;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -60,10 +62,12 @@ public class LoadingScreen extends BaseScreen {
 	private Loader loader;
 	private float percent;
 
-	public LoadingScreen(ShadowStruggles game) {
-		super(game);
+	public LoadingScreen(ShadowStruggles game, Controller controller) {
+		super(game, controller);
 		loader = new Loader(game, ManagementStrategy.STATIC_TEXTURE_ATLAS);
 		loader.loadAssets();
+		// The game attribute must be set again, otherwise it's not initialized
+		// properly.
 		this.game = game;
 	}
 
@@ -101,8 +105,8 @@ public class LoadingScreen extends BaseScreen {
 			game.getAudio().setMusic("intro");
 			loader.instantiateScreens();
 			game.setLoader(loader);
-			game.setScreenWithTransition(StartScreen.getInstance(game,
-					game.getController()));
+			game.setScreenWithTransition(new SaveLoadScreen(game, controller,
+					Mode.START, null));
 		} else {
 			percent += 0.005f;
 			if (game.getAssets().getProgress() - percent > 0.0f)
@@ -110,7 +114,5 @@ public class LoadingScreen extends BaseScreen {
 			bar.update(percent);
 			bar.drawLabel(super.getSkin());
 		}
-
 	}
-
 }

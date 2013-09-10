@@ -23,6 +23,9 @@ public class ProfileDAO {
 		@SuppressWarnings("unchecked")
 		Array<Profile> profiles = DataManager.getInstance().getObjectSet(
 				Profile.class);
+		if (!profiles.contains(new Profile(id), false))
+			return null;
+
 		for (Profile p : profiles) {
 			if (p.getId() == id) {
 				/**
@@ -58,7 +61,6 @@ public class ProfileDAO {
 		@SuppressWarnings("unchecked")
 		Array<Profile> orderedProfiles = DataManager.getInstance()
 				.getObjectSet(Profile.class);
-		orderedProfiles.sort();
 		return orderedProfiles;
 	}
 
@@ -79,5 +81,17 @@ public class ProfileDAO {
 		} catch (Exception ex) {
 			return false;
 		}
+	}
+
+	/**
+	 * Updates the profile on DataManager's record set for objects. Changes are
+	 * not persistent.
+	 */
+	@SuppressWarnings("unchecked")
+	public static void updateProfile(int id, Profile profile) {
+		Profile oldProfile = getProfile(id);
+		Array<Profile> allProfiles = DataManager.getInstance().getObjectSet(
+				Profile.class);
+		allProfiles.set(allProfiles.indexOf(oldProfile, true), profile);
 	}
 }

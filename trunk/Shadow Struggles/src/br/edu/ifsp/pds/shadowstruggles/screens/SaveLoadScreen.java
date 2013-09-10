@@ -2,335 +2,269 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
+import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.ProfileDAO;
-import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.profiles.Profile;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.ObjectMap;
 
-// TODO: Remover classe, substituindo-a pela StartScreen.
+public class SaveLoadScreen extends BaseScreen {
+	/**
+	 * The mode dictates how some components of this must operate. START - This
+	 * screens acts as the start menu. SAVE - This screen acts as a save menu.
+	 * LOAD - This screen acts as a loading menu.
+	 */
+	public static enum Mode {
+		START, SAVE, LOAD
+	};
 
-public class SaveLoadScreen extends BaseScreen implements InputProcessor {
-	private static SaveLoadScreen instance;
+	private Mode mode;
+	private BaseScreen previousScreen;
 
-	private Image background;
-	private TextButton returnButton;
-	private Array<TextButton> slots;
-
-	private int touchY;
-	private boolean touched;
-	private boolean justTouched;
-
-	private InputMultiplexer inputSources;
-	private boolean saveMode;
+	private TextButton firstButton;
+	private TextButton secondButton;
+	private Image tableTexture;
+	private Image book;
+	private Image beaker;
+	private Image candle;
+	private Image tripod;
+	private ScrollPane scrollStates;
+	private Array<TextButton> states;
 
 	/**
-	 * Indicates which screen the return button should reference: "start" - A
-	 * StartScreen; "main" - A MainScreen; "scene" - A SceneScreen.
+	 * The constructor.
+	 * 
+	 * @param previousScreen
+	 *            The previous screen. Can be null in START mode.
 	 */
-	private String returnScreen;
-
-	public static SaveLoadScreen getInstance(ShadowStruggles game,
-			Controller controller, String returnScreen, boolean saveMode) {
-		if (instance != null)
-			return instance;
-		else {
-			instance = new SaveLoadScreen(game, controller, returnScreen,
-					saveMode);
-			return instance;
-		}
-	}
-	
-	public static SaveLoadScreen getInstance() {
-		return instance;
-	}
-
-	private SaveLoadScreen(ShadowStruggles game, Controller controller,
-			String returnScreen, boolean saveMode) {
+	public SaveLoadScreen(ShadowStruggles game, Controller controller, Mode mode,
+			BaseScreen previousScreen) {
 		super(game, controller);
-
-		this.returnScreen = returnScreen;
-		this.saveMode = saveMode;
-		this.slots = new Array<TextButton>();
-		this.inputSources = new InputMultiplexer();
-	}
-
-	public void setReturnScreen(String returnScreen) {
-		this.returnScreen = returnScreen;
-	}
-
-	public void setSaveMode(boolean saveMode) {
-		this.saveMode = saveMode;
+		this.states = new Array<TextButton>();
+		this.mode = mode;
+		this.previousScreen = previousScreen;
 	}
 
 	@Override
 	public void resize(int width, int height) {
 		super.resize(width, height);
-		initComponents();
-		Gdx.input.setInputProcessor(inputSources);
 	}
 
 	public void initComponents() {
+		stage.clear();
+	}
 
-		background = new Image(this.getSkin().getDrawable("msbackground"));
-		background.setScaleX(960f / 512f);
-		background.setScaleY(640f / 380f);
+	@Override
+	public void show() {
+		super.show();
 
-		returnButton = new TextButton(MenuTextDAO.getMenuText().returnToStart,
-				super.getSkin());
-		returnButton = ScreenUtils.defineButton(returnButton, 10, 530, 220, 90,
-				super.getSkin());
-		returnButton.addListener(new ClickListener() {
+		tableTexture = new Image(this.getSkin().getDrawable("table_texture"));
+		book = new Image(this.getSkin().getDrawable("book"));
+		book.setScale(0.9f);
+		book.setX(book.getX() + 50);
+		book.setY(book.getY() + 10);
+		beaker = new Image(this.getSkin().getDrawable("beaker"));
+		candle = new Image(this.getSkin().getDrawable("candle"));
+		tripod = new Image(this.getSkin().getDrawable("tripod"));
 
+		if (mode == Mode.SAVE)
+			firstButton = new TextButton(MenuTextDAO.getMenuText().newGame,
+					this.getSkin().get("blur", TextButtonStyle.class));
+		else if (mode == Mode.LOAD)
+			firstButton = new TextButton(
+					MenuTextDAO.getMenuText().returnToStart, this.getSkin()
+							.get("blur", TextButtonStyle.class));
+		else
+			firstButton = new TextButton(
+					MenuTextDAO.getMenuText().continueGame, this.getSkin().get(
+							"blur", TextButtonStyle.class));
+		firstButton.setX(100);
+		firstButton.setY(100);
+		firstButton.addListener(new ClickListener() {
 			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				game.getAudio().playSound("button_6");
-				if (returnScreen.toLowerCase().equals("start"))
-					game.setScreenWithTransition(StartScreen.getInstance(game,
-							controller));
-				else if (returnScreen.toLowerCase().equals("main"))
-					game.setScreenWithTransition(MainScreen.getInstance(game,
-							controller));
-				else if (returnScreen.toLowerCase().equals("scene"))
-					game.setScreenWithTransition(new SceneScreen(game,
-							controller));
+			public void clicked(InputEvent event, float arg1, float arg2) {
+				if (mode == Mode.START)
+					showProfiles();
+				if (mode == Mode.LOAD)
+					game.setScreenWithTransition(previousScreen);
+				if (mode == Mode.SAVE)
+					newProfile();
 			}
 		});
 
-		stage.addActor(background);
-
-		stage.addActor(returnButton);
-
-//		if (ProfileDAO.profileExists()) {
-//			Array<Profile> profiles = ProfileDAO.getProfiles();
-//
-//			for (Profile profile : profiles) {
-//				String text = String.valueOf(profile.getId()) + " - "
-//						+ profile.getCurrentScene().getName();
-//				TextButton textButton = new TextButton(text, super.getSkin());
-//
-//				textButton = ScreenUtils.defineButton(textButton, 240,
-//						630 - profile.getId() * 100, text.length() * 30, 90,
-//						super.getSkin());
-//				textButton.setClip(true);
-//				textButton.addListener(new ClickListener() {
-//
-//					@Override
-//					public void clicked(InputEvent event, float x, float y) {
-//						game.getAudio().playSound("button_2");
-//
-//						if (saveMode) {
-//							TextButton tx = (TextButton) event
-//									.getListenerActor();
-//							game.getProfile().setId(
-//									Character.getNumericValue(tx.getText()
-//											.charAt(0)));
-//							ProfileDAO.createProfile(game.getProfile());
-//							game.setScreenWithTransition(new SaveLoadScreen(
-//									game, controller, returnScreen, true));
-//						} else {
-//							TextButton tx = (TextButton) event
-//									.getListenerActor();
-//							int id = Character.getNumericValue(tx.getText()
-//									.charAt(0));
-//							game.setProfile(ProfileDAO.getProfile(id));
-//							DataManager.getInstance().changeLanguage(
-//									ProfileDAO.getProfile(id).getLanguage());
-//							game.getProfile().setCurrentScene(
-//									SceneDAO.getScene(game.getProfile()
-//											.getCurrentScene().getId()));
-//							game.setScreenWithTransition(MainScreen
-//									.getInstance(game, controller));
-//						}
-//					}
-//				});
-//
-//				this.slots.add(textButton);
-//				stage.addActor(textButton);
-//			}
-//		}
-
-		if (this.saveMode) {
-			String text = "Empty slot";
-			TextButton textButton = new TextButton(text, super.getSkin());
-
-			float lastY = 530;
-			if (slots.size > 0)
-				lastY = slots.peek().getY();
-			textButton = ScreenUtils.defineButton(textButton, 240, lastY - 100,
-					text.length() * 30, 90, super.getSkin());
-
-			textButton.setClip(true);
-
-			textButton.addListener(new ClickListener() {
-
+		if (mode == Mode.SAVE)
+			secondButton = new TextButton(
+					MenuTextDAO.getMenuText().returnToStart, this.getSkin()
+							.get("blur", TextButtonStyle.class));
+		else if (mode == Mode.START)
+			secondButton = new TextButton(MenuTextDAO.getMenuText().newGame,
+					this.getSkin().get("blur", TextButtonStyle.class));
+		if (mode != Mode.LOAD) {
+			secondButton.addListener(new ClickListener() {
 				@Override
-				public void clicked(InputEvent event, float x, float y) {
-					game.getAudio().playSound("button_2");
-
-					try {
-						Array<Profile> profiles = ProfileDAO.getProfiles();
-						ObjectMap<Integer, Profile> prof = new ObjectMap<Integer, Profile>();
-
-						for (Profile profile : profiles) {
-							prof.put(profile.getId(), profile);
-						}
-
-						int id;
-						for (id = 1; id < 100; id++) {
-							if (prof.get(id) == null)
-								break;
-						}
-
-						Profile newProfile = new Profile(id);
-						ProfileDAO.createProfile(newProfile);
-						game.setProfile(newProfile);
-						game.setScreenWithTransition(new SaveLoadScreen(game,
-								controller, returnScreen, true));
-					} catch (Exception e) {
-						Profile newProfile = new Profile();
-						ProfileDAO.createProfile(newProfile);
-						game.setProfile(newProfile);
-						game.setScreenWithTransition(new SaveLoadScreen(game,
-								controller, returnScreen, true));
-					}
-
+				public void clicked(InputEvent event, float arg1, float arg2) {
+					if (mode == Mode.START)
+						newProfile();
+					else if (mode == Mode.SAVE)
+						game.setScreenWithTransition(previousScreen);
 				}
-
 			});
-
-			this.slots.add(textButton);
-			stage.addActor(textButton);
 		}
 
-		inputSources.addProcessor(this.stage);
-		inputSources.addProcessor(this);
+		Table table = new Table();
+		table.defaults().padTop(30).width(150).height(130);
+
+		if (game.getMode() == RunMode.DEBUG)
+			table.debug();
+
+		table.add(beaker).left().padRight(270);
+		table.add(candle).width(190);
+		table.add(tripod).padLeft(250);
+		table.row();
+
+		Table menu = new Table();
+		menu.defaults().width(250).height(200);
+
+		if (game.getMode() == RunMode.DEBUG)
+			menu.debug();
+
+		menu.add(firstButton);
+		menu.row();
+		if (mode != Mode.LOAD)
+			menu.add(secondButton);
+
+		table.setPosition(500, 600);
+		menu.setPosition(270, 280);
+
+		stage.addActor(tableTexture);
+		stage.addActor(book);
+		stage.addActor(table);
+		stage.addActor(menu);
+
+		if (mode == Mode.SAVE || mode == Mode.LOAD)
+			showProfiles();
+	}
+
+	private void newProfile() {
+		try {
+			int id = 1;
+
+			if (mode == Mode.START) {
+				// Generate the next sequential ID for the profile.
+				for (id = 1; id < 100; id++) {
+					if (ProfileDAO.getProfile(id) == null)
+						break;
+				}
+			} else if (mode == Mode.SAVE)
+				id = game.getProfile().getId();
+
+			Profile newProfile = new Profile(id);
+			newProfile.createEventsInGame(game);
+			ProfileDAO.createProfile(newProfile);
+			game.setProfile(newProfile);
+			game.getAudio().playSound("button_4");
+
+			if (mode == Mode.START)
+				game.setScreenWithTransition(MainScreen.getInstance(game,
+						controller));
+			else if (mode == Mode.SAVE)
+				showProfiles();
+		} catch (Exception e) {
+			Profile newProfile = new Profile();
+			newProfile.createEventsInGame(game);
+			ProfileDAO.createProfile(newProfile);
+			game.setProfile(newProfile);
+			game.getAudio().playSound("button_4");
+			game.setScreenWithTransition(MainScreen.getInstance(game,
+					controller));
+		}
+	}
+
+	/**
+	 * Displays and updates the profiles list shown on the right side of the
+	 * screen.
+	 */
+	private void showProfiles() {
+		if (this.scrollStates != null) {
+			this.scrollStates = null;
+			for (TextButton button : this.states)
+				button.remove();
+		}
+
+		Table table = new Table();
+		table.defaults().width(400).height(200);
+		if (game.getMode() == RunMode.DEBUG)
+			table.debug();
+		table.setPosition(480, 280);
+
+		if (ProfileDAO.profileExists()) {
+			Array<Profile> profiles = ProfileDAO.getProfiles();
+
+			for (final Profile profile : profiles) {
+				String text = String.valueOf(profile.getId());
+				TextButton textButton = new TextButton(text, this.getSkin()
+						.get("blur", TextButtonStyle.class));
+				textButton = ScreenUtils.defineButton(textButton, 240,
+						480 - profile.getId() * 100, text.length() * 30, 90,
+						this.getSkin());
+				textButton.setClip(true);
+				textButton.addListener(new ClickListener() {
+
+					@Override
+					public void clicked(InputEvent event, float x, float y) {
+						createProfileButton(profile, event);
+					}
+				});
+
+				this.states.add(textButton);
+				table.add(textButton);
+				table.row();
+			}
+
+			scrollStates = new ScrollPane(table, this.getSkin());
+			scrollStates.setBounds(480, 100, 400, 400);
+			scrollStates.setFadeScrollBars(false);
+			stage.addActor(scrollStates);
+		}
+	}
+
+	private void createProfileButton(Profile profile, InputEvent event) {
+		game.getAudio().playSound("button_2");
+
+		TextButton tx = (TextButton) event.getListenerActor();
+		int id = Character.getNumericValue(tx.getText().charAt(0));
+		profile = ProfileDAO.getProfile(id);
+
+		if (mode == Mode.START || mode == Mode.LOAD) {
+			if (profile.getEvents().size == 0)
+				profile.createEventsInGame(game);
+			game.setProfile(profile);
+
+			if (mode == Mode.START)
+				game.setScreenWithTransition(MainScreen.getInstance(game,
+						controller));
+			else
+				game.setScreenWithTransition(previousScreen);
+		} else if (mode == Mode.SAVE) {
+			ProfileDAO.updateProfile(id, game.getProfile());
+			DataManager.getInstance().save();
+			showProfiles();
+		}
 	}
 
 	@Override
 	public void render(float delta) {
 		super.render(delta);
-		background.setY(this.camera.position.y - CAMERA_INITIAL_Y);
-		returnButton.setY(this.camera.position.y - CAMERA_INITIAL_Y + 530);
+		Table.drawDebug(stage);
 	}
-
-	@Override
-	public boolean keyDown(int keycode) {
-		if (keycode == Keys.DOWN) {
-			if (controller.getCurrentScreen().camera.position.y - 4 < CAMERA_INITIAL_Y
-					&& controller.getCurrentScreen().camera.position.y - 4 > slots
-							.peek().getHeight()) {
-				controller.getCurrentScreen().camera.position.y -= 4;
-
-				// Render the screen again to avoid blinking.
-				this.render(1 / 60);
-
-			}
-			return true;
-		}
-
-		if (keycode == Keys.UP) {
-			if (controller.getCurrentScreen().camera.position.y + 4 < CAMERA_INITIAL_Y
-					&& controller.getCurrentScreen().camera.position.y + 4 > slots
-							.peek().getHeight()) {
-				controller.getCurrentScreen().camera.position.y += 4;
-
-				// Render the screen again to avoid blinking.
-				this.render(1 / 60);
-
-			}
-			return true;
-		}
-		return false;
-	}
-
-	@Override
-	public boolean touchDown(int x, int y, int pointer, int button) {
-		x = (int) (x * (float) ((float) SettingsDAO.getSettings().mapWidth / (float) controller
-				.getCurrentScreen().getWidth()));
-
-		touched = true;
-
-		if (!justTouched) {
-			justTouched = true;
-			touchY = y;
-		}
-
-		return true;
-	}
-
-	@Override
-	public boolean touchUp(int x, int y, int pointer, int button) {
-		x = (int) (x * (float) ((float) SettingsDAO.getSettings().mapWidth / (float) controller
-				.getCurrentScreen().getWidth()));
-
-		if (touched) {
-
-			touched = false;
-		}
-
-		justTouched = false;
-
-		return false;
-	}
-
-	@Override
-	public boolean touchDragged(int x, int y, int pointer) {
-		x = (int) (x * (float) ((float) SettingsDAO.getSettings().mapWidth / (float) controller
-				.getCurrentScreen().getWidth()));
-		if (touched) {
-
-			if (controller.getCurrentScreen().camera.position.y - touchY + y < CAMERA_INITIAL_Y
-					&& controller.getCurrentScreen().camera.position.y - touchY
-							+ y > slots.peek().getHeight()) {
-				controller.getCurrentScreen().camera.position.y -= touchY - y;
-
-				// Render the screen again to avoid blinking.
-				this.render(1 / 60);
-
-			}
-			this.touchY = y;
-			return true;
-
-		}
-
-		return false;
-	}
-
-	// @Override
-	public boolean touchMoved(int x, int y) {
-		return false;
-	}
-
-	@Override
-	public boolean scrolled(int amount) {
-		return false;
-	}
-
-	@Override
-	public boolean keyUp(int keycode) {
-		return false;
-	}
-
-	@Override
-	public boolean keyTyped(char character) {
-		return false;
-	}
-
-	@Override
-	public boolean mouseMoved(int screenX, int screenY) {
-		return false;
-	}
-
 }
