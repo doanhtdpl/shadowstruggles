@@ -7,6 +7,7 @@ import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.Path.Step;
 import br.edu.ifsp.pds.shadowstruggles.rpg.RpgController;
 
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.math.Rectangle;
 
 /**
  * This is the main core of the RPG exploring mechanic. It handles the
@@ -119,21 +120,30 @@ public class RpgPlatform {
 	 */
 	public void triggerEvent() {
 		WalkDirection oppositeDirection = null;
+		int x = character.getTileX();
+		int y = character.getTileY();
 
 		if (character.getDirection() == WalkDirection.WALK_DOWN) {
 			oppositeDirection = WalkDirection.WALK_UP;
+			y++;
 		}
 		if (character.getDirection() == WalkDirection.WALK_LEFT) {
 			oppositeDirection = WalkDirection.WALK_RIGHT;
+			x--;
 		}
 		if (character.getDirection() == WalkDirection.WALK_RIGHT) {
 			oppositeDirection = WalkDirection.WALK_LEFT;
+			x++;
 		}
 		if (character.getDirection() == WalkDirection.WALK_UP) {
 			oppositeDirection = WalkDirection.WALK_DOWN;
+			y--;
 		}
 
-		this.map.triggerEvent(character.getMover(), oppositeDirection);
+		Rectangle charRect = character.getMover().getRectangle();
+		charRect.setX(x);
+		charRect.setY(y);
+		this.map.triggerEvent(charRect, oppositeDirection);
 	}
 
 }

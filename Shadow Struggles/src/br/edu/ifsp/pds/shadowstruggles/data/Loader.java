@@ -20,8 +20,6 @@ import br.edu.ifsp.pds.shadowstruggles.screens.EditDeckScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.FreePlayScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.InGameMenu;
 import br.edu.ifsp.pds.shadowstruggles.screens.MainScreen;
-import br.edu.ifsp.pds.shadowstruggles.screens.SaveLoadScreen;
-import br.edu.ifsp.pds.shadowstruggles.screens.StartScreen;
 
 /**
  * Class for dealing with general memory management. It allows the use of
@@ -187,8 +185,6 @@ public class Loader {
 		FreePlayScreen.getInstance(game, game.getController());
 		MainScreen.getInstance(game, game.getController());
 		InGameMenu.getInstance(game, game.getController(), null);
-		SaveLoadScreen.getInstance(game, game.getController(), "", false);
-		StartScreen.getInstance(game, game.getController());
 	}
 
 	// Retrieval methods.

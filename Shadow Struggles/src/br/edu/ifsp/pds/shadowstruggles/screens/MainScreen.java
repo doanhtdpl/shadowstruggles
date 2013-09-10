@@ -4,6 +4,7 @@ import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
+import br.edu.ifsp.pds.shadowstruggles.screens.SaveLoadScreen.Mode;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -29,6 +30,10 @@ public class MainScreen extends BaseScreen {
 		if (instance == null)
 			instance = new MainScreen(game, controller);
 
+		return instance;
+	}
+
+	public static MainScreen getInstance() {
 		return instance;
 	}
 
@@ -107,8 +112,8 @@ public class MainScreen extends BaseScreen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_4");
-				game.setScreenWithTransition(new ShopScreen(game, null, controller,
-						screen));
+				game.setScreenWithTransition(new ShopScreen(game, null,
+						controller, screen));
 			}
 
 		});
@@ -122,12 +127,9 @@ public class MainScreen extends BaseScreen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_4");
-				SaveLoadScreen saveLoad = SaveLoadScreen.getInstance(game,
-						controller, "main", false);
-				saveLoad.setReturnScreen("main");
-				saveLoad.setSaveMode(false);
+				SaveLoadScreen saveLoad = new SaveLoadScreen(game, controller,
+						Mode.LOAD, screen);
 				game.setScreenWithTransition(saveLoad);
-				saveLoad.initComponents();
 			}
 
 		});

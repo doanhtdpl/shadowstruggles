@@ -73,7 +73,7 @@ public class ShadowStruggles extends Game {
 		FileMap.initMap();
 
 		if (this.mode != RunMode.TESTS)
-			this.setScreen(new LoadingScreen(this));
+			this.setScreen(new LoadingScreen(this, controller));
 		else {
 			// Test cases go here.
 			LoaderTest loaderTest = new LoaderTest();
@@ -95,13 +95,6 @@ public class ShadowStruggles extends Game {
 			// End of test cases.
 			Gdx.app.exit();
 		}
-		// try {
-		// if (mode == RunMode.DEBUG)
-		// MyLogger.setup();
-		// } catch (IOException e) {
-		// e.printStackTrace();
-		// throw new RuntimeException("Problems with creating the log files");
-		// }
 	}
 
 	public void setScreen(Screen screen) {

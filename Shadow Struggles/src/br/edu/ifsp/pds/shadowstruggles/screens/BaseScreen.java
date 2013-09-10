@@ -49,21 +49,6 @@ public abstract class BaseScreen implements Screen {
 	}
 
 	/**
-	 * A minimal constructor used by screens without much complexity, such as
-	 * {@LoadScreen}.
-	 */
-
-	public BaseScreen(ShadowStruggles game) {
-		this.game = game;
-		this.stage = new MyStage(0, 0, true);
-		this.camera = new OrthographicCamera(this.width, this.height);
-		this.camera.position.set(CAMERA_INITIAL_X, CAMERA_INITIAL_Y, 0);
-		this.camera.zoom = ((float) 960 / (float) width);
-		this.camera.position.x = CAMERA_INITIAL_X;
-		this.stage.setCamera(camera);
-	}
-
-	/**
 	 * Specifies the particular textures which must be loaded for this screen.
 	 * 
 	 * @return The default return is null.

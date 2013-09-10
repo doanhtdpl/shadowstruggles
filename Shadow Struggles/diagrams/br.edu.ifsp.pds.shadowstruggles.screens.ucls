@@ -111,8 +111,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="br.edu.ifsp.pds.shadowstruggles.screens.StartScreen" project="ShadowStruggles" 
-    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/screens/StartScreen.java" binary="false" 
+  <class id="12" language="java" name="br.edu.ifsp.pds.shadowstruggles.screens.SaveLoadScreen" project="ShadowStruggles" 
+    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/screens/SaveLoadScreen.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="351" width="287" x="2434" y="878"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 

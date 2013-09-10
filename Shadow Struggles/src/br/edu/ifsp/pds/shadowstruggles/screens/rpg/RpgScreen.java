@@ -33,6 +33,8 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	private PathFinder finder;
 	private Path path;
 
+	private boolean firstRender = true;
+
 	/**
 	 * The constructor initializes the objects and defines itself as the
 	 * controller's viewer.
@@ -63,7 +65,7 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 				.getCharacter());
 		objectRenderer.prepareCharacters();
 
-		this.rpgController.runAutomaticEvents();
+		// this.rpgController.runAutomaticEvents();
 	}
 
 	@Override
@@ -81,6 +83,7 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	@Override
 	public void render(float delta) {
 		super.render(delta);
+
 		Gdx.input.setInputProcessor(this);
 
 		renderer.setView(camera);
@@ -88,6 +91,11 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		renderer.render();
 		objectRenderer.render();
 		update(delta);
+
+		if (firstRender) {
+			this.rpgController.runAutomaticEvents();
+			firstRender = false;
+		}
 	}
 
 	@Override

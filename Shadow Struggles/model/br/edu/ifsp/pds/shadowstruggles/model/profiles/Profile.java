@@ -87,6 +87,13 @@ public class Profile implements Serializable, Comparable<Object> {
 	}
 
 	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Profile)
+			return ((Profile) obj).getId() == this.id;
+		return false;
+	}
+
+	@Override
 	public int compareTo(Object o) {
 		return this.id - ((Profile) o).getId();
 	}
