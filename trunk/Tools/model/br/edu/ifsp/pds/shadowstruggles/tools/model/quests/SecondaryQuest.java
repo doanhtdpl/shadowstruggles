@@ -8,9 +8,4 @@ public class SecondaryQuest extends Requirement {
 		
 		this.quest = new Quest();
 	}
-	
-	public SecondaryQuest(String name, String description, Quest quest) {
-		super(name, description);
-		this.quest = quest;
-	}
 }

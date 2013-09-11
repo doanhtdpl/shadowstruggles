@@ -13,11 +13,4 @@ public class ItemRequirement extends Requirement {
 		this.items = new ArrayList<Item>();
 	}
 
-	public ItemRequirement(String name, String description,
-			ArrayList<Item> items) {
-		super(name, description);
-
-		this.items = items;
-	}
-
 }
