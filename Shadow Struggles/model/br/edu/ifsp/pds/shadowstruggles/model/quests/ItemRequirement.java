@@ -7,18 +7,12 @@ import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 
 public class ItemRequirement extends Requirement {
-	public Array<Item> items;
+	private Array<Item> items;
 
 	public ItemRequirement() {
 		super();
 
 		this.items = new Array<Item>();
-	}
-
-	public ItemRequirement(String name, String description, Array<Item> items) {
-		super(name, description);
-
-		this.items = items;
 	}
 
 	@SuppressWarnings("unchecked")

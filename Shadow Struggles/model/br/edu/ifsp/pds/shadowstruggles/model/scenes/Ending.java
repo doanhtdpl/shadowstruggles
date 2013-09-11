@@ -22,6 +22,13 @@ public class Ending implements Serializable {
 	}
 
 	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Ending)
+			return ((Ending) obj).getId() == this.id;
+		return false;
+	}
+
+	@Override
 	public void read(Json json, JsonValue jsonData) {
 		this.id = json.readValue("id", Integer.class, jsonData);
 		this.name = json.readValue("name", String.class, jsonData);
@@ -33,5 +40,9 @@ public class Ending implements Serializable {
 		json.writeValue("id", this.id);
 		json.writeValue("name", this.name);
 		json.writeValue("path", this.path);
+	}
+
+	public int getId() {
+		return this.id;
 	}
 }

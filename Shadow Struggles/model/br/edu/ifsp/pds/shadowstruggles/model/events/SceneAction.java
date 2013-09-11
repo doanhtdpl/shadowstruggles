@@ -22,11 +22,15 @@ public class SceneAction extends EventAction {
 
 	@Override
 	public void read(Json json, JsonValue jsonData) {
+		super.read(json, jsonData);
+		
 		this.scene = json.readValue("scene", Scene.class, jsonData);
 	}
 	
 	@Override
 	public void write(Json json) {
+		super.write(json);
+		
 		json.writeValue("scene", this.scene);
 	}
 

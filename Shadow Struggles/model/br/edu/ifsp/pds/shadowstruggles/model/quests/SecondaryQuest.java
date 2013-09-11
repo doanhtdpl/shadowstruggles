@@ -4,17 +4,12 @@ import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 
 public class SecondaryQuest extends Requirement {
-	public Quest quest;
+	private Quest quest;
 	
 	public SecondaryQuest() {
 		super();
 		
 		this.quest = new Quest();
-	}
-	
-	public SecondaryQuest(String name, String description, Quest quest) {
-		super(name, description);
-		this.quest = quest;
 	}
 	
 	@Override

@@ -19,6 +19,7 @@ import br.edu.ifsp.pds.shadowstruggles.model.items.*;
 import br.edu.ifsp.pds.shadowstruggles.model.items.Shop;
 import br.edu.ifsp.pds.shadowstruggles.model.modifiers.*;
 import br.edu.ifsp.pds.shadowstruggles.model.profiles.*;
+import br.edu.ifsp.pds.shadowstruggles.model.profiles.conditions.*;
 import br.edu.ifsp.pds.shadowstruggles.model.profiles.Player;
 import br.edu.ifsp.pds.shadowstruggles.model.quests.*;
 import br.edu.ifsp.pds.shadowstruggles.model.scenes.*;
@@ -98,6 +99,7 @@ public class MyJson {
 			json.addClassTag("InventoryModifier", InventoryModifier.class);
 			json.addClassTag("Modifier", Modifier.class);
 			json.addClassTag("PathModifier", PathModifier.class);
+			json.addClassTag("QuestModifier", QuestModifier.class);
 			json.addClassTag("UnlockModifier", UnlockModifier.class);
 
 			json.addClassTag("AttributePointsFormula",
@@ -109,6 +111,12 @@ public class MyJson {
 					ExperienceNextLevelFormula.class);
 			json.addClassTag("Player", Player.class);
 			json.addClassTag("Profile", Profile.class);
+
+			json.addClassTag("BattleCondition", BattleCondition.class);
+			json.addClassTag("ItemCondition", ItemCondition.class);
+			json.addClassTag("ProfileCondition", ProfileCondition.class);
+			json.addClassTag("QuestCondition", QuestCondition.class);
+			json.addClassTag("StoryCondition", StoryCondition.class);
 
 			json.addClassTag("EnemyDefeatRequirement",
 					EnemyDefeatRequirement.class);

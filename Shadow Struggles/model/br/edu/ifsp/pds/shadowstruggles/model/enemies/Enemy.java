@@ -149,6 +149,13 @@ public class Enemy extends Player {
 		json.writeValue("strategy", this.strategy);
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Enemy)
+			return ((Enemy) obj).getId() == this.id;
+		return false;
+	}
+
 	public int getId() {
 		return id;
 	}

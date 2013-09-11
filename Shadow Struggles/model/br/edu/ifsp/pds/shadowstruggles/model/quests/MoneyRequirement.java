@@ -4,18 +4,12 @@ import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 
 public class MoneyRequirement extends Requirement {
-	public int money;
+	private int money;
 	
 	public MoneyRequirement() {
 		super();
 		
 		this.money = 0;
-	}
-	
-	public MoneyRequirement(String name, String description, int money) {
-		super(name, description);
-		
-		this.money = money;
 	}
 	
 	@Override

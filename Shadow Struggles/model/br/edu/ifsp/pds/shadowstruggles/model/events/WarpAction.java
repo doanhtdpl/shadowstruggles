@@ -85,6 +85,8 @@ public class WarpAction extends EventAction {
 
 	@Override
 	public void read(Json json, JsonValue jsonData) {
+		super.read(json, jsonData);
+		
 		this.destinyX = json.readValue("destinyX", Integer.class, jsonData);
 		this.destinyY = json.readValue("destinyY", Integer.class, jsonData);
 		this.destinyMap = json.readValue("destinyMap", String.class, jsonData);
@@ -95,6 +97,8 @@ public class WarpAction extends EventAction {
 
 	@Override
 	public void write(Json json) {
+		super.write(json);
+		
 		json.writeValue("destinyX", this.destinyX);
 		json.writeValue("destinyY", this.destinyY);
 		json.writeValue("destinyMap", this.destinyMap);
