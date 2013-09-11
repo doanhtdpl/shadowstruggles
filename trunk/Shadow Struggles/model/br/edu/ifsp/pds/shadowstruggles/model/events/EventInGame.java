@@ -45,7 +45,8 @@ public class EventInGame implements Serializable {
 			this.character.setDirection(directionTurn);
 
 		for (EventAction action : actions) {
-			action.act();
+			if (action.conditionsFulfilled())
+				action.act();
 		}
 	}
 

@@ -21,6 +21,14 @@ public class EnemyDefeat implements Serializable {
 	}
 
 	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof EnemyDefeat)
+			return ((EnemyDefeat) obj).getEnemy().equals(this.enemy)
+					&& ((EnemyDefeat) obj).getTimesDefeated() == this.timesDefeated;
+		return false;
+	}
+
+	@Override
 	public void read(Json json, JsonValue jsonData) {
 		this.enemy = json.readValue("enemy", Enemy.class, jsonData);
 		this.timesDefeated = json.readValue("timesDefeated", Integer.class,
@@ -31,5 +39,13 @@ public class EnemyDefeat implements Serializable {
 	public void write(Json json) {
 		json.writeValue("enemy", this.enemy);
 		json.writeValue("timesDefeated", this.timesDefeated);
+	}
+
+	public Enemy getEnemy() {
+		return enemy;
+	}
+
+	public int getTimesDefeated() {
+		return timesDefeated;
 	}
 }

@@ -15,8 +15,6 @@ public class SavePointAction extends EventAction {
 
 	@Override
 	public void act() {
-		// TODO: Consertar (tela não está sendo exibida em automático, e trigger
-		// por interact não localiza o evento).
 		ShadowStruggles game = ShadowStruggles.getInstance();
 		game.setScreenWithTransition(new SaveLoadScreen(game, game
 				.getController(), Mode.SAVE, (BaseScreen) game.getScreen()));
@@ -24,9 +22,11 @@ public class SavePointAction extends EventAction {
 
 	@Override
 	public void read(Json json, JsonValue jsonData) {
+		super.read(json, jsonData);
 	}
 
 	@Override
 	public void write(Json json) {
+		super.write(json);
 	}
 }

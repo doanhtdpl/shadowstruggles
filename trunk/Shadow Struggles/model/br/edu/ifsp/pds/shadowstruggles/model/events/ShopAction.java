@@ -28,11 +28,15 @@ public class ShopAction extends EventAction {
 
 	@Override
 	public void read(Json json, JsonValue jsonData) {
+		super.read(json, jsonData);
+		
 		this.shop = json.readValue("shop", Shop.class, jsonData);
 	}
 
 	@Override
 	public void write(Json json) {
+		super.write(json);
+		
 		json.writeValue("shop", this.shop);
 	}
 }

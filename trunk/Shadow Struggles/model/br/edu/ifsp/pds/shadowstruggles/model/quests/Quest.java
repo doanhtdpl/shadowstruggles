@@ -12,12 +12,12 @@ public class Quest implements Serializable {
 		NOT_ACCEPTED, ONGOING, REQUIREMENTS_COMPLETED, QUEST_COMPLETED
 	};
 
-	public int id;
-	public String name;
-	public String description;
-	public Array<Requirement> requirements;
-	public Array<Modifier> rewards;
-	public QuestStatus status;
+	private int id;
+	private String name;
+	private String description;
+	private Array<Requirement> requirements;
+	private Array<Modifier> rewards;
+	private QuestStatus status;
 
 	public Quest() {
 		this.id = 1;
@@ -37,6 +37,13 @@ public class Quest implements Serializable {
 		this.requirements = requirements;
 		this.rewards = rewards;
 		this.status = status;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Quest)
+			return ((Quest) obj).getId() == this.id;
+		return false;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -62,4 +69,19 @@ public class Quest implements Serializable {
 		json.writeValue("status", this.status);
 	}
 
+	public int getId() {
+		return this.id;
+	}
+
+	public Array<Requirement> getRequirements() {
+		return requirements;
+	}
+
+	public QuestStatus getStatus() {
+		return this.status;
+	}
+
+	public void setStatus(QuestStatus status) {
+		this.status = status;
+	}
 }

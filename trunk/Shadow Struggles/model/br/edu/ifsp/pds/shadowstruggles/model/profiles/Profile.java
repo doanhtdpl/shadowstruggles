@@ -346,4 +346,8 @@ public class Profile implements Serializable, Comparable<Object> {
 	public void setCharacter(Character character) {
 		this.character = character;
 	}
+
+	public Array<Ending> getEndings() {
+		return endings;
+	}
 }
