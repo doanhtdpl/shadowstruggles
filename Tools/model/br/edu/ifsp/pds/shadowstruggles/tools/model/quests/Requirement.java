@@ -12,15 +12,12 @@ import com.esotericsoftware.jsonbeans.JsonValue;
 public abstract class Requirement implements Serializable {
 	public String name;
 	public String description;
+	public boolean fulfilled;
 
 	public Requirement() {
 		this.name = "";
 		this.description = "";
-	}
-	
-	public Requirement(String name, String description) {
-		this.name = name;
-		this.description = description;
+		this.fulfilled = false;
 	}
 
 	@Override

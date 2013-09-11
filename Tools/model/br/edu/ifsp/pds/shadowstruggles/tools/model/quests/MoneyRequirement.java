@@ -8,10 +8,4 @@ public class MoneyRequirement extends Requirement {
 		
 		this.money = 0;
 	}
-	
-	public MoneyRequirement(String name, String description, int money) {
-		super(name, description);
-		
-		this.money = money;
-	}
 }
