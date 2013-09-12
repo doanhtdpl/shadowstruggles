@@ -12,6 +12,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTree;
 import javax.swing.JList;
@@ -31,6 +32,8 @@ import java.util.HashMap;
 import java.util.logging.Logger;
 
 import javax.swing.JLabel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ResourceEditor extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -51,7 +54,7 @@ public class ResourceEditor extends JFrame {
 		this.controller = controller;
 		setTitle("Resource Edition");
 		setVisible(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 600, 512);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -98,7 +101,10 @@ public class ResourceEditor extends JFrame {
 				JFileChooser chooser = new JFileChooser();
 				FileNameExtensionFilter filter = new FileNameExtensionFilter(
 						"Image Files", "jpg", "png");
+				FileNameExtensionFilter audioFilter = new FileNameExtensionFilter(
+						"Audio Files", "ogg");
 				chooser.addChoosableFileFilter(filter);
+				chooser.addChoosableFileFilter(audioFilter);
 				chooser.setAcceptAllFileFilterUsed(false);
 				chooser.setFileFilter(filter);
 				chooser.setCurrentDirectory(Paths.get("").toFile());
@@ -154,6 +160,22 @@ public class ResourceEditor extends JFrame {
 		});
 		btnFileToFolder.setBounds(165, 291, 149, 23);
 		contentPane.add(btnFileToFolder);
+		
+		JButton btnNewFolder = new JButton("New Folder");
+		btnNewFolder.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(simpleTree.getSelectedTreePath()!=null){
+					String folderName = JOptionPane.showInputDialog("Dentro da pasta selecionada, será criada uma pasta com o seguinte nome:");
+					String folderPath= simpleTree.getSelectedTreePath().getLastPathComponent()+"/"+folderName;					
+					System.out.println(new File(folderPath).mkdir());
+					tree.updateUI();
+					simpleTree.updateUI();
+					
+				}
+			}
+		});
+		btnNewFolder.setBounds(31, 291, 89, 23);
+		contentPane.add(btnNewFolder);
 
 	}
 
