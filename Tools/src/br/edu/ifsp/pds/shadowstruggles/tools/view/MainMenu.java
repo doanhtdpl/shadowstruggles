@@ -267,7 +267,7 @@ public class MainMenu {
 		JMenuItem mntmEditResources = new JMenuItem("Edit Resources");
 		mntmEditResources.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new ResourceEditor(controller);
+				new ResourceEditor();
 			}
 		});
 		mnResources.add(mntmEditResources);

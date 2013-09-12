@@ -32,15 +32,22 @@ public class Controller {
 		try {
 			String name = JOptionPane
 					.showInputDialog("Please, inform the ZIP name");
-
+			if(name!=null || name.length()>0 ){
 			model.newZip(name + ".zip");
+			
 			viewer.showElements();
+			}else {
+				JOptionPane.showMessageDialog(null, "Escolhe um nome pro arquivo, seu vagabundo!");
+			}
 		} catch (IOException e) {
 			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
 			e.printStackTrace();
 		} catch (ZipException e) {
 			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
 			e.printStackTrace();
+		}catch(NullPointerException e){
+			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
+			//e.printStackTrace();
 		}
 	}
 
