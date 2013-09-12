@@ -24,22 +24,19 @@ import javax.swing.JTree;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-
-
 public class ResourceEditor extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private JPanel contentPane;
-	private ResourceEditor frame;	
+	private ResourceEditor frame;
 	private JList<String> list;
 	private JTree tree;
 	private SimpleTree simpleTree;
 	private HashMap<String, File> fileMap;
-	
 
 	public ResourceEditor() {
 		this.frame = this;
-		this.fileMap = new HashMap<String, File>();		
+		this.fileMap = new HashMap<String, File>();
 		setTitle("Resource Edition");
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -57,11 +54,11 @@ public class ResourceEditor extends JFrame {
 		tabbedPane.addTab("Images and Audio", null, panel, null);
 		simpleTree = new SimpleTree(new File("./data/"));
 		simpleTree.setBounds(31, 80, 283, 200);
-		
+
 		tree = new JTree();
 		tree.setBounds(31, 80, 187, 100);
-		tree.setVisible(false);		
-		contentPane.add(tree);		
+		tree.setVisible(false);
+		contentPane.add(tree);
 		contentPane.add(simpleTree);
 
 		list = new JList<String>();
@@ -74,7 +71,7 @@ public class ResourceEditor extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				JFileChooser chooser = new JFileChooser();
-				
+
 				FileNameExtensionFilter filter = new FileNameExtensionFilter(
 						"Image Files", "jpg", "png");
 				FileNameExtensionFilter audioFilter = new FileNameExtensionFilter(
@@ -93,13 +90,13 @@ public class ResourceEditor extends JFrame {
 						((DefaultListModel<String>) list.getModel())
 								.addElement(file.getName());
 						fileMap.put(file.getName(), file);
-						list.setSelectedIndex(list.getModel().getSize() - 1);					
+						list.setSelectedIndex(list.getModel().getSize() - 1);
 					}
 				}
 
 			}
 		});
-		btnAddFile.setBounds(357, 291, 89, 23);
+		btnAddFile.setBounds(524, 291, 89, 23);
 		contentPane.add(btnAddFile);
 
 		JButton btnFileToFolder = new JButton("File to Folder <<<");
@@ -107,18 +104,21 @@ public class ResourceEditor extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 
-				if (list.getSelectedValuesList().size() != 0) {					
-					
+				if (list.getSelectedValuesList().size() != 0) {
+
 					for (Object obj : list.getSelectedValuesList()) {
 
 						try {
 							Path orig = fileMap.get(obj.toString()).toPath();
-							Path dest = new File(simpleTree.getSelectedTreePath().getLastPathComponent()+"/"
-									+ obj.toString()).toPath();
+							Path dest = new File(simpleTree
+									.getSelectedTreePath()
+									.getLastPathComponent()
+									+ "/" + obj.toString()).toPath();
 							Files.copy(orig, dest);
 							updateTree();
 						} catch (IOException e) {
-							Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
+							Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(
+									e.toString());
 							e.printStackTrace();
 						}
 
@@ -128,38 +128,122 @@ public class ResourceEditor extends JFrame {
 
 			}
 		});
-		btnFileToFolder.setBounds(165, 291, 149, 23);
+		btnFileToFolder.setBounds(350, 291, 149, 23);
 		contentPane.add(btnFileToFolder);
-		
+
 		JButton btnNewFolder = new JButton("New Folder");
 		btnNewFolder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(simpleTree.getSelectedTreePath()!=null){
-					String folderName = JOptionPane.showInputDialog("Dentro da pasta selecionada, será criada uma pasta com o seguinte nome:");
-					String folderPath= simpleTree.getSelectedTreePath().getLastPathComponent()+"/"+folderName;					
+				if (simpleTree.getSelectedTreePath() != null) {
+					String folderName = JOptionPane
+							.showInputDialog("Dentro da pasta selecionada, será criada uma pasta com o seguinte nome:");
+					String folderPath = simpleTree.getSelectedTreePath()
+							.getLastPathComponent() + "/" + folderName;
 					new File(folderPath).mkdir();
-					updateTree();					
+					updateTree();
 				}
 			}
 		});
 		btnNewFolder.setBounds(31, 291, 124, 23);
 		contentPane.add(btnNewFolder);
 
+		JButton btnRemove = new JButton("Remove");
+		btnRemove.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				if (simpleTree.getSelectedTreePath() != null) {
+					String folderPath = simpleTree.getSelectedTreePath()
+							.getLastPathComponent().toString();
+					int reply = JOptionPane.showConfirmDialog(null,
+							"Tem certeza que quer deletar o arquivo "
+									+ folderPath + "?", "Deletar Arquivo?",
+							JOptionPane.YES_NO_OPTION);
+
+					if (reply == JOptionPane.YES_OPTION) {
+
+						File file = new File(simpleTree.getSelectedTreePath()
+								.getLastPathComponent().toString());
+						if (file.isDirectory()) {
+							String pas = JOptionPane
+									.showInputDialog("Você está prestes a deletar uma pasta. Digite a senha para confirmar essa ação.");
+							if (pas.equals("folderdelete")) {
+								try {
+									delete(file);
+									updateTree();
+								} catch (IOException e) {
+									e.printStackTrace();
+								}
+							}
+						} else {
+							try {
+								delete(file);
+								updateTree();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+							
+						}
+					}
+				}
+			}
+		});
+		btnRemove.setBounds(205, 291, 109, 23);
+		contentPane.add(btnRemove);
+
 	}
-	
-	private void updateTree(){
+
+	public static void delete(File file) throws IOException {
+
+		if (file.isDirectory()) {
+
+			// directory is empty, then delete it
+			if (file.list().length == 0) {
+
+				file.delete();
+				System.out.println("Directory is deleted : "
+						+ file.getAbsolutePath());
+
+			} else {
+
+				// list all the directory contents
+				String files[] = file.list();
+
+				for (String temp : files) {
+					// construct the file structure
+					File fileDelete = new File(file, temp);
+
+					// recursive delete
+					delete(fileDelete);
+				}
+
+				// check the directory again, if empty then delete it
+				if (file.list().length == 0) {
+					file.delete();
+					System.out.println("Directory is deleted : "
+							+ file.getAbsolutePath());
+				}
+			}
+
+		} else {
+			// if file, then delete it
+			file.delete();
+			System.out.println("File is deleted : " + file.getAbsolutePath());
+		}
+	}
+
+	private void updateTree() {
 		contentPane.remove(simpleTree);
 		contentPane.remove(tree);
 		simpleTree = new SimpleTree(new File("./data/"));
 		simpleTree.setBounds(31, 80, 220, 200);
-		
+
 		tree = new JTree();
 		tree.setBounds(31, 80, 187, 100);
-		tree.setVisible(false);		
-		contentPane.add(tree);		
+		tree.setVisible(false);
+		contentPane.add(tree);
 		contentPane.add(simpleTree);
 		frame.invalidate();
 		frame.validate();
 		frame.repaint();
-	}	
+	}
 }
