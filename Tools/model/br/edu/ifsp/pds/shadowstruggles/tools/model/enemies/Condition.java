@@ -1,43 +1,35 @@
 package br.edu.ifsp.pds.shadowstruggles.tools.model.enemies;
 
-import java.util.ArrayList;
-import java.util.logging.Logger;
-
-import br.edu.ifsp.pds.shadowstruggles.tools.data.SerializationHelper;
 
 import com.esotericsoftware.jsonbeans.Json;
 import com.esotericsoftware.jsonbeans.JsonValue;
 import com.esotericsoftware.jsonbeans.Json.Serializable;
 
-
+/**
+ * A Condition evaluates a specific circumstance in battles in order to help the
+ * AI in making decisions.
+ */
 public abstract class Condition implements Serializable {
+	/**
+	 * Symbols for logical operators used in numeric comparisons.
+	 */
 	public static enum Comparator {
-		EQUALS_TO, GREATER_THAN, LESS_THAN, GREATER_THAN_OR_EQUALS_TO, LESS_THAN_OR_EQUALS_TO
+		EQUAL_TO, GREATER_THAN, LESS_THAN, GREATER_THAN_OR_EQUAL_TO, LESS_THAN_OR_EQUAL_TO
 	};
-	
+
+	/**
+	 * Indicates that the condition is fulfilled when the opposite of the target
+	 * fact is verified (e.g., the enemy's health is NOT less than 10).
+	 */
+	public boolean not;
+
 	@Override
-	public void read(Json arg0, JsonValue arg1) {
-		try {
-			SerializationHelper.read(this, arg0, arg1, new ArrayList<String>());
-		} catch (IllegalArgumentException e) {
-			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
-			e.printStackTrace();
-		}
+	public void read(Json json, JsonValue jsonValue) {
+		this.not = json.readValue("not", Boolean.class, jsonValue);
 	}
-	
+
 	@Override
-	public void write(Json arg0) {
-		try {
-			SerializationHelper.writeToJson(this, arg0, new ArrayList<String>());
-		} catch (IllegalArgumentException e) {
-			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
-			e.printStackTrace();
-		}
+	public void write(Json json) {
+		json.writeValue("not", this.not);
 	}
 }
