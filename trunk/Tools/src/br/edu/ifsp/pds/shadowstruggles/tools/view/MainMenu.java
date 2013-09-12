@@ -39,6 +39,7 @@ import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.EventEditor;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.FighterEditor;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.SceneEditor;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.TrapEditor;
+import br.edu.ifsp.pds.shadowstruggles.tools.view.enemie.EnemyGUIFrame;
 
 import javax.swing.JLabel;
 
@@ -127,7 +128,7 @@ public class MainMenu {
 				if (selectedTab.equals("Decks"))
 					new DeckEditor();
 				if (selectedTab.equals("Enemies"))
-					new EnemyEditor();
+					new EnemyGUIFrame().setVisible(true);
 				if (selectedTab.equals("Battles"))
 					new BattleEditor();
 				if (selectedTab.equals("Events"))

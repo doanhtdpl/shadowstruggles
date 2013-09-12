@@ -11,11 +11,17 @@ public class Enemy extends Player {
 	public ArrayList<Sequence> strategy;
 
 	public Enemy() {
-		super();
-		
+		super();		
 		this.id = 1;
 		this.name = "";
 		this.strategy = new ArrayList<Sequence>();
+	}
+	
+	public Enemy(int id, String name, ArrayList<Sequence> strategy){
+		super();		
+		this.id = id;
+		this.name = name;
+		this.strategy = strategy;
 	}
 
 	public Enemy(Deck deck, int maxHealth, int maxEnergy, int initialEnergy,

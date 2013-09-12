@@ -22,4 +22,8 @@ public class Card extends Item implements Serializable {
 		this.illustration = "";
 		this.preRequisites = new ArrayList<String>();
 	}
+	
+	public Card(String name) {
+		this.name = name;
+	}
 }
