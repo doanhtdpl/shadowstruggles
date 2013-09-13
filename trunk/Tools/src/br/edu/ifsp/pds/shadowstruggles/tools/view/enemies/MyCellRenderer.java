@@ -1,4 +1,4 @@
-package br.edu.ifsp.pds.shadowstruggles.tools.view.enemie;
+package br.edu.ifsp.pds.shadowstruggles.tools.view.enemies;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

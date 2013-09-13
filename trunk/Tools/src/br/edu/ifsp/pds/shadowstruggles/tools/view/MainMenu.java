@@ -39,7 +39,7 @@ import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.EventEditor;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.FighterEditor;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.SceneEditor;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.TrapEditor;
-import br.edu.ifsp.pds.shadowstruggles.tools.view.enemie.EnemyGUIFrame;
+import br.edu.ifsp.pds.shadowstruggles.tools.view.enemies.EnemyGUIFrame;
 
 import javax.swing.JLabel;
 
