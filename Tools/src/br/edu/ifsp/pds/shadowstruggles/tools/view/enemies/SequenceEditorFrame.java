@@ -1,4 +1,4 @@
-package br.edu.ifsp.pds.shadowstruggles.tools.view.enemie;
+package br.edu.ifsp.pds.shadowstruggles.tools.view.enemies;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
@@ -20,7 +20,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
