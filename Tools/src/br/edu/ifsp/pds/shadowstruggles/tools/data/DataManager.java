@@ -147,27 +147,26 @@ public class DataManager {
 	/**
 	 * Inserts the object or list of objects into its respective JSON class
 	 * file. If a list of objects is passed as argument, the method overwrites
-	 * the file content. The file is also overwritten if the object is a
-	 * Languages instance. Regardless of the object type, the JSON output will
-	 * always be a list.
+	 * the file content. The file is also overwritten if the object has a single
+	 * instance on a file (e.g., Languages). Regardless of the object type, the
+	 * JSON output will always be a list.
 	 */
 	public <T> void insertObject(T obj, Class<?> c) throws IOException {
 		String path = "";
-		boolean globalClass = false;
 
 		if (FileMap.classToFile.containsKey(c))
 			path = FileMap.classToFile.get(c);
 
 		if (FileMap.globalClassToFile.containsKey(c)) {
 			path = FileMap.globalClassToFile.get(c);
-			globalClass = true;
 		}
 
 		File file = new File(searchFile(path, null, c));
 
 		if (obj.getClass().isArray() || obj.getClass() == ArrayList.class) {
 			MyJson.getJson().toJson(obj, file);
-		} else if (globalClass) {
+		} else if (c == Languages.class || c == Settings.class
+				|| c == MenuText.class) {
 			ArrayList<T> currentObjects = new ArrayList<T>();
 			currentObjects.add(obj);
 			MyJson.getJson().toJson(currentObjects, file);
@@ -294,12 +293,13 @@ public class DataManager {
 		if (FileMap.classToFile.containsKey(c))
 			path = FileMap.classToFile.get(c);
 
-		if(searchFile(path, null, c)!=null){
-		File file = new File(searchFile(path, null, c));
-		list = MyJson.getJson().fromJson(ArrayList.class, file);
+		if (searchFile(path, null, c) != null) {
+			File file = new File(searchFile(path, null, c));
+			list = MyJson.getJson().fromJson(ArrayList.class, file);
 
-		return list;
-		}else return null;
+			return list;
+		} else
+			return null;
 	}
 
 	public ArrayList<String> searchAllFiles(String resourceType) {
