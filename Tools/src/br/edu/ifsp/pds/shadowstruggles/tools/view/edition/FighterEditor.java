@@ -11,6 +11,15 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.DefaultComboBoxModel;
 
+import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.CardAction;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 public class FighterEditor extends JFrame {
 	private static final long serialVersionUID = 1L;
 
@@ -99,7 +108,7 @@ public class FighterEditor extends JFrame {
 		textField.setBounds(64, 21, 86, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
-
+		
 		textField_1 = new JTextField();
 		textField_1.setBounds(266, 21, 147, 20);
 		contentPane.add(textField_1);
@@ -108,7 +117,7 @@ public class FighterEditor extends JFrame {
 		textArea = new JTextArea();
 		textArea.setBounds(98, 217, 315, 33);
 		contentPane.add(textArea);
-
+		
 		textField_2 = new JTextField();
 		textField_2.setBounds(317, 266, 86, 20);
 		contentPane.add(textField_2);
@@ -134,14 +143,6 @@ public class FighterEditor extends JFrame {
 		textArea_1 = new JTextArea();
 		textArea_1.setBounds(114, 450, 232, 51);
 		contentPane.add(textArea_1);
-
-		btnInsert = new JButton("Insert");
-		btnInsert.setBounds(27, 528, 89, 23);
-		contentPane.add(btnInsert);
-
-		btnCancel = new JButton("Cancel");
-		btnCancel.setBounds(257, 528, 89, 23);
-		contentPane.add(btnCancel);
 
 		JLabel lblAttack = new JLabel("Damage");
 		lblAttack.setBounds(32, 84, 72, 14);
@@ -212,5 +213,74 @@ public class FighterEditor extends JFrame {
 		chckbxHasEffect = new JCheckBox("Has Effect");
 		chckbxHasEffect.setBounds(32, 182, 97, 23);
 		contentPane.add(chckbxHasEffect);
+		
+		btnInsert = new JButton("Insert");
+		btnInsert.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				
+				
+				Fighter fighter = new Fighter();
+				fighter.energyCost = Integer.parseInt(textField_3.getText());
+				fighter.action = (CardAction) comboBox_1.getSelectedItem();
+				fighter.illustration = comboBox_2.getSelectedItem().toString();
+//				fighter.preRequisites = 
+				
+				fighter.maxHealth = Integer.parseInt(textField_6.getText());
+				fighter.damage = Integer.parseInt(textField_4.getText());
+				switch (comboBox_4.getSelectedItem().toString()) {
+				case "SLOW":
+					fighter.speed = fighter.MOV_SPEED_SLOW;
+					break;
+				case "NORMAL":
+					fighter.speed = fighter.MOV_SPEED_NORMAL;
+					break;
+				case "FAST":
+					fighter.speed = fighter.MOV_SPEED_FAST;
+					break;
+				default:
+					break;
+				}
+				
+				fighter.range = Integer.parseInt(textField_7.getText());
+				fighter.hasEffect = chckbxHasEffect.isSelected();
+				
+				switch (comboBox_3.getSelectedItem().toString()) {
+				case "SLOW":
+					fighter.attackDelay = fighter.ATK_DELAY_SLOW;
+					break;
+				case "NORMAL":
+					fighter.attackDelay = fighter.ATK_DELAY_NORMAL;
+					break;
+				case "FAST":
+					fighter.attackDelay = fighter.ATK_DELAY_FAST;
+					break;
+				default:
+					break;
+				}
+				
+				switch (comboBox_5.getSelectedItem().toString()) {
+				case "SMALL":
+					fighter.size = fighter.SIZE_SMALL;
+					break;
+				case "MEDIUM":
+					fighter.size = fighter.SIZE_MEDIUM;
+					break;
+				case "LARGE":
+					fighter.size = fighter.SIZE_LARGE;
+					break;
+				default:
+					break;
+				}
+				
+				
+			}
+		});
+		btnInsert.setBounds(27, 528, 89, 23);
+		contentPane.add(btnInsert);
+
+		btnCancel = new JButton("Cancel");
+		btnCancel.setBounds(257, 528, 89, 23);
+		contentPane.add(btnCancel);
 	}
 }
