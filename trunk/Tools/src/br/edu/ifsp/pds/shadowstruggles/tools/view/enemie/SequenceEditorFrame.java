@@ -8,7 +8,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTabbedPane;
 import javax.swing.JList;
 
-
 import javax.swing.JButton;
 
 import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Action;
@@ -19,8 +18,11 @@ import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Sequence;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class SequenceEditorFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -29,20 +31,82 @@ public class SequenceEditorFrame extends JFrame {
 	private JList<Action> actionsList;
 
 	private Sequence sequence;
+	public JButton btnAddStrategy;
 
 	public SequenceEditorFrame(Sequence seq) {
 		this.sequence = seq;
 
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 337);
+		setBounds(100, 100, 450, 393);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(12, 12, 424, 290);
+		tabbedPane.setBounds(12, 12, 424, 301);
 		contentPane.add(tabbedPane);
+
+		JPanel actionsPanel = new JPanel();
+		tabbedPane.addTab("Actions", null, actionsPanel, null);
+		actionsPanel.setLayout(null);
+
+		actionsList = new JList<Action>();
+		actionsList.setBounds(12, 12, 395, 195);
+		JScrollPane actionsScrollPane = new JScrollPane(actionsList);
+		actionsScrollPane.setBounds(actionsList.getBounds());
+		actionsPanel.add(actionsScrollPane);
+
+		JButton btnEditAction = new JButton("Edit");
+		btnEditAction.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Action selected = actionsList.getSelectedValue();
+				if (selected != null) {
+					ActionFrame frame = new ActionFrame(selected);
+					frame.setVisible(true);
+					frame.addWindowListener(new WindowAdapter() {
+						@Override
+						public void windowClosed(WindowEvent e) {
+							updateSequence();
+						}
+					});
+				}
+			}
+		});
+		btnEditAction.setBounds(12, 219, 84, 25);
+		actionsPanel.add(btnEditAction);
+
+		JButton btnRemoveAction = new JButton("Remove");
+		btnRemoveAction.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!actionsList.isSelectionEmpty()) {
+					sequence.actions.remove(actionsList.getSelectedValue());
+					updateSequence();
+				}
+			}
+		});
+		btnRemoveAction.setBounds(167, 219, 97, 25);
+		actionsPanel.add(btnRemoveAction);
+
+		JButton btnNewAction = new JButton("New");
+		btnNewAction.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				final ActionFrame frame = new ActionFrame(null);
+				frame.setVisible(true);
+				frame.addWindowListener(new WindowAdapter() {
+					@Override
+					public void windowClosed(WindowEvent e) {
+						if (frame.getAction() != null) {
+							sequence.actions.add(frame.getAction());
+							updateSequence();
+						}
+					}
+				});
+			}
+		});
+		btnNewAction.setBounds(329, 219, 78, 25);
+		actionsPanel.add(btnNewAction);
+		final SequenceEditorFrame frame = this;
 
 		JPanel conditionsPanel = new JPanel();
 		tabbedPane.addTab("Conditions", null, conditionsPanel, null);
@@ -64,34 +128,10 @@ public class SequenceEditorFrame extends JFrame {
 						NumericConditionFrame frame = new NumericConditionFrame(
 								selected);
 						frame.setVisible(true);
-						frame.addWindowListener(new WindowListener() {
-							@Override
-							public void windowOpened(WindowEvent e) {
-							}
-
-							@Override
-							public void windowIconified(WindowEvent e) {
-							}
-
-							@Override
-							public void windowDeiconified(WindowEvent e) {
-							}
-
-							@Override
-							public void windowDeactivated(WindowEvent e) {
-							}
-
-							@Override
-							public void windowClosing(WindowEvent e) {
-							}
-
+						frame.addWindowListener(new WindowAdapter() {
 							@Override
 							public void windowClosed(WindowEvent e) {
 								updateSequence();
-							}
-
-							@Override
-							public void windowActivated(WindowEvent e) {
 							}
 						});
 					}
@@ -119,26 +159,8 @@ public class SequenceEditorFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				final ConditionSelectionFrame frame = new ConditionSelectionFrame();
 				frame.setVisible(true);
-				frame.addWindowListener(new WindowListener() {
-					@Override
-					public void windowOpened(WindowEvent e) {
-					}
 
-					@Override
-					public void windowIconified(WindowEvent e) {
-					}
-
-					@Override
-					public void windowDeiconified(WindowEvent e) {
-					}
-
-					@Override
-					public void windowDeactivated(WindowEvent e) {
-					}
-
-					@Override
-					public void windowClosing(WindowEvent e) {
-					}
+				frame.addWindowListener(new WindowAdapter() {
 
 					@Override
 					public void windowClosed(WindowEvent e) {
@@ -147,123 +169,29 @@ public class SequenceEditorFrame extends JFrame {
 							updateSequence();
 						}
 					}
-
-					@Override
-					public void windowActivated(WindowEvent e) {
-					}
 				});
 			}
 		});
+
 		btnNewCondition.setBounds(319, 219, 88, 25);
 		conditionsPanel.add(btnNewCondition);
-
-		JPanel actionsPanel = new JPanel();
-		tabbedPane.addTab("Actions", null, actionsPanel, null);
-		actionsPanel.setLayout(null);
-
-		actionsList = new JList<Action>();
-		actionsList.setBounds(12, 12, 395, 195);
-		JScrollPane actionsScrollPane = new JScrollPane(actionsList);
-		actionsScrollPane.setBounds(actionsList.getBounds());
-		actionsPanel.add(actionsScrollPane);
-
-		JButton btnEditAction = new JButton("Edit");
-		btnEditAction.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Action selected = actionsList.getSelectedValue();
-				if (selected != null) {
-					ActionFrame frame = new ActionFrame(selected);
-					frame.setVisible(true);
-					frame.addWindowListener(new WindowListener() {
-						@Override
-						public void windowOpened(WindowEvent e) {
-						}
-
-						@Override
-						public void windowIconified(WindowEvent e) {
-						}
-
-						@Override
-						public void windowDeiconified(WindowEvent e) {
-						}
-
-						@Override
-						public void windowDeactivated(WindowEvent e) {
-						}
-
-						@Override
-						public void windowClosing(WindowEvent e) {
-						}
-
-						@Override
-						public void windowClosed(WindowEvent e) {
-							updateSequence();
-						}
-
-						@Override
-						public void windowActivated(WindowEvent e) {
-						}
-					});
-				}
+		
+		btnAddStrategy = new JButton("Add strategy");
+		btnAddStrategy.setBounds(22, 332, 123, 23);
+		contentPane.add(btnAddStrategy);
+		JButton btnCancel = new JButton("Cancel");
+		btnCancel.setBounds(335, 332, 89, 23);
+		contentPane.add(btnCancel);
+		btnCancel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.dispose();
 			}
 		});
-		btnEditAction.setBounds(12, 219, 84, 25);
-		actionsPanel.add(btnEditAction);
 
-		JButton btnRemoveAction = new JButton("Remove");
-		btnRemoveAction.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (!actionsList.isSelectionEmpty()) {
-					sequence.actions.remove(actionsList.getSelectedValue());
-					updateSequence();
-				}
-			}
-		});
-		btnRemoveAction.setBounds(167, 219, 97, 25);
-		actionsPanel.add(btnRemoveAction);
+		
 
-		JButton btnNewAction = new JButton("New");
-		btnNewAction.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				final ActionFrame frame = new ActionFrame(null);
-				frame.setVisible(true);
-				frame.addWindowListener(new WindowListener() {
-					@Override
-					public void windowOpened(WindowEvent e) {
-					}
-
-					@Override
-					public void windowIconified(WindowEvent e) {
-					}
-
-					@Override
-					public void windowDeiconified(WindowEvent e) {
-					}
-
-					@Override
-					public void windowDeactivated(WindowEvent e) {
-					}
-
-					@Override
-					public void windowClosing(WindowEvent e) {
-					}
-
-					@Override
-					public void windowClosed(WindowEvent e) {
-						if (frame.getAction() != null) {
-							sequence.actions.add(frame.getAction());
-							updateSequence();
-						}
-					}
-
-					@Override
-					public void windowActivated(WindowEvent e) {
-					}
-				});
-			}
-		});
-		btnNewAction.setBounds(329, 219, 78, 25);
-		actionsPanel.add(btnNewAction);
+		
 
 		if (sequence == null)
 			sequence = new Sequence();

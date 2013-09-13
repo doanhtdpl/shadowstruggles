@@ -1,38 +1,30 @@
 package br.edu.ifsp.pds.shadowstruggles.tools.view.enemie;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import javax.swing.JList;
 import javax.swing.ListSelectionModel;
-import javax.swing.JButton;
+import javax.swing.border.EmptyBorder;
 
-import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Card;
-import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Action;
-import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Action.Attribute;
-import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Action.DynamicValue;
-import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Condition.Comparator;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Enemy;
-import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.EnergyCondition;
-import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.HealthCondition;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Sequence;
 
 import com.esotericsoftware.jsonbeans.Json;
-
-
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.util.ArrayList;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 public class EnemyGUIFrame extends JFrame {
 
@@ -42,10 +34,12 @@ public class EnemyGUIFrame extends JFrame {
 	private JTextField nameTextField;
 	private JList<Sequence> list;
 	private Enemy enemy;
+	private JButton btnAddEnemy;
 
 	public EnemyGUIFrame() {
+		enemy= new Enemy();
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 550);
+		setBounds(100, 100, 600, 550);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -59,7 +53,11 @@ public class EnemyGUIFrame extends JFrame {
 		idTextField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent arg0) {
+				try{
 				enemy.id = Integer.parseInt(idTextField.getText());
+				}catch(NumberFormatException e){
+					//e.printStackTrace();
+				}
 			}
 		});
 		idTextField.setBounds(102, 25, 47, 19);
@@ -79,51 +77,16 @@ public class EnemyGUIFrame extends JFrame {
 		lblStrategy.setBounds(184, 65, 70, 15);
 		contentPane.add(lblStrategy);
 
-		list = new JList<Sequence>();
-		list.setCellRenderer(new MyCellRenderer());
-		list.setToolTipText("");
-		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		list.setBounds(57, 88, 337, 275);
-		JScrollPane scrollPane = new JScrollPane(list);
-		scrollPane.setBounds(57, 88, 337, 275);
-		contentPane.add(scrollPane);
-
 		JButton btnEditSequence = new JButton("Edit");
 		btnEditSequence.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SequenceEditorFrame frame = new SequenceEditorFrame(list
 						.getSelectedValue());
 				frame.setVisible(true);
-				frame.addWindowListener(new WindowListener() {
-
-					@Override
-					public void windowOpened(WindowEvent e) {
-					}
-
-					@Override
-					public void windowIconified(WindowEvent e) {
-					}
-
-					@Override
-					public void windowDeiconified(WindowEvent e) {
-					}
-
-					@Override
-					public void windowDeactivated(WindowEvent e) {
-					}
-
-					@Override
-					public void windowClosing(WindowEvent e) {
-					}
-
-					@Override
-					public void windowClosed(WindowEvent e) {
-						updateEnemy();
-					}
-
-					@Override
-					public void windowActivated(WindowEvent e) {
-					}
+				frame.addWindowListener(new WindowAdapter() {@Override
+				public void windowClosed(WindowEvent e) {					
+					updateEnemy();
+				}
 				});
 			}
 		});
@@ -147,38 +110,20 @@ public class EnemyGUIFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				final SequenceEditorFrame frame = new SequenceEditorFrame(null);
 				frame.setVisible(true);
-				frame.addWindowListener(new WindowListener() {
-
-					@Override
-					public void windowOpened(WindowEvent e) {
-					}
-
-					@Override
-					public void windowIconified(WindowEvent e) {
-					}
-
-					@Override
-					public void windowDeiconified(WindowEvent e) {
-					}
-
-					@Override
-					public void windowDeactivated(WindowEvent e) {
-					}
-
-					@Override
-					public void windowClosing(WindowEvent e) {
-					}
-
+				frame.addWindowListener(new WindowAdapter() {
 					@Override
 					public void windowClosed(WindowEvent e) {
-						if (frame.getSequence() != null) {
-							enemy.strategy.add(frame.getSequence());
+						if (frame.getSequence() != null) {				
+							
 							updateEnemy();
 						}
 					}
-
+				});
+				frame.btnAddStrategy.addMouseListener(new MouseAdapter() {
 					@Override
-					public void windowActivated(WindowEvent e) {
+					public void mouseClicked(MouseEvent e) {
+						enemy.strategy.add(frame.getSequence());
+						frame.dispose();
 					}
 				});
 			}
@@ -192,21 +137,47 @@ public class EnemyGUIFrame extends JFrame {
 				generateJson();
 			}
 		});
-		btnGenerateJson.setBounds(32, 447, 139, 25);
+		btnGenerateJson.setBounds(135, 476, 139, 25);
 		contentPane.add(btnGenerateJson);
-
-		JButton btnExample = new JButton("Example");
-		btnExample.addActionListener(new ActionListener() {
+		
+		JButton btnCancel = new JButton("Cancel");
+		final EnemyGUIFrame frame = this;
+		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				generateExample();
+				frame.dispose();
 			}
 		});
-		btnExample.setBounds(295, 447, 117, 25);
-		contentPane.add(btnExample);
+		btnCancel.setBounds(271, 422, 89, 23);
+		contentPane.add(btnCancel);
+		
+		btnAddEnemy = new JButton("Add Enemy");
+		btnAddEnemy.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				System.out.println(enemy.id);
+				System.out.println(enemy.name);
+				enemy.name=nameTextField.getText();
+				System.out.println(enemy.strategy);
+			}
+		});
+		btnAddEnemy.setBounds(91, 422, 114, 23);
+		contentPane.add(btnAddEnemy);
+		
+				list = new JList<Sequence>();
+				contentPane.add(list);
+				list.setCellRenderer(new MyCellRenderer());
+				list.setToolTipText("");
+				list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+				list.setBounds(22, 91, 518, 273);
+				JScrollPane scrollPane = new JScrollPane();
+				scrollPane.setBounds(10, 88, 548, 275);
+				contentPane.add(scrollPane);
 
 		if (enemy != null)
 			updateEnemy();
 	}
+	
+	
 
 	private void updateEnemy() {
 		idTextField.setText(Integer.toString(enemy.id));
@@ -228,24 +199,5 @@ public class EnemyGUIFrame extends JFrame {
 					new Json().prettyPrint(enemy));
 			System.out.println(new Json().prettyPrint(enemy));
 		}
-	}
-
-	private void generateExample() {
-		enemy = new Enemy(20, "Enemy", new ArrayList<Sequence>());
-
-		Sequence sequence = new Sequence();
-		sequence.conditions.add(new EnergyCondition(
-				Comparator.GREATER_THAN_OR_EQUAL_TO, 20));
-		sequence.conditions.add(new HealthCondition(
-				Comparator.LESS_THAN_OR_EQUAL_TO, 90));
-		sequence.actions.add(new Action(Attribute.LANE, null,
-				DynamicValue.RANDOM_LANE));
-		sequence.actions.add(new Action(Attribute.COLUMN, null,
-				DynamicValue.RANDOM_COLUMN));
-		sequence.actions.add(new Action(Attribute.CARD, new Card("DR-002"),
-				null));
-
-		enemy.strategy.add(sequence);
-		updateEnemy();
 	}
 }
