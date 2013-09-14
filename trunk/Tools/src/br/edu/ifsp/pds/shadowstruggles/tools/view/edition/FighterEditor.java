@@ -49,6 +49,7 @@ public class FighterEditor extends JFrame {
 	private JLabel lblSize;
 	private JComboBox<String> comboBox_5;
 	private JCheckBox chckbxHasEffect;
+	private JCheckBox chckbxAvailableInShop;
 
 	public FighterEditor() {
 		setVisible(true);
@@ -80,7 +81,7 @@ public class FighterEditor extends JFrame {
 		chckbxSellable.setBounds(149, 265, 97, 23);
 		contentPane.add(chckbxSellable);
 
-		JCheckBox chckbxAvailableInShop = new JCheckBox("Available in Shop");
+		chckbxAvailableInShop = new JCheckBox("Available in Shop");
 		chckbxAvailableInShop.setBounds(32, 265, 138, 23);
 		contentPane.add(chckbxAvailableInShop);
 
@@ -218,9 +219,18 @@ public class FighterEditor extends JFrame {
 		btnInsert.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				
-				
 				Fighter fighter = new Fighter();
+				
+				fighter.id = Integer.parseInt(textField.getText());
+				fighter.name = textField_1.getText();
+				fighter.localizedName = textField_5.getText();
+				fighter.description = textArea.getText();
+				fighter.buyCost = Integer.parseInt(textField_2.getText());
+				fighter.sellable = chckbxSellable.isSelected();
+				fighter.icon = comboBox.getSelectedItem().toString();
+				fighter.availableInMainShop = chckbxAvailableInShop.isSelected();
+				
+				
 				fighter.energyCost = Integer.parseInt(textField_3.getText());
 				fighter.action = (CardAction) comboBox_1.getSelectedItem();
 				fighter.illustration = comboBox_2.getSelectedItem().toString();
@@ -272,14 +282,21 @@ public class FighterEditor extends JFrame {
 				default:
 					break;
 				}
-				
-				
+			
+				fighter.write(null);
 			}
 		});
 		btnInsert.setBounds(27, 528, 89, 23);
 		contentPane.add(btnInsert);
 
 		btnCancel = new JButton("Cancel");
+		btnCancel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+				super.mouseClicked(e);
+			}
+		});
 		btnCancel.setBounds(257, 528, 89, 23);
 		contentPane.add(btnCancel);
 	}
