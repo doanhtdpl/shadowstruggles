@@ -1,2 +1,4 @@
 Set 12, 2013 8:00:19 PM br.edu.ifsp.pds.shadowstruggles.tools.Controller newZipClicked
 Grave: java.lang.NullPointerException
+Set 15, 2013 5:19:36 PM br.edu.ifsp.pds.shadowstruggles.tools.Controller newZipClicked
+SEVERE: java.lang.NullPointerException
