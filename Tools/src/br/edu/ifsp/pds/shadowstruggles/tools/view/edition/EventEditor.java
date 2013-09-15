@@ -14,6 +14,8 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
+import br.edu.ifsp.pds.shadowstruggles.tools.model.events.SceneAction;
+
 public class EventEditor extends JFrame {
 	private static final long serialVersionUID = 1L;
 
@@ -165,18 +167,23 @@ public class EventEditor extends JFrame {
 		switch(jcbEventType.getSelectedItem().toString()){
 		case "Modifier Event":
 			System.out.println("Mod");
+			//Criar novo ModifierAction
 			break;
 		case "Save Event":
 			System.out.println("Sav");
+			//Criar novo SaveAction
 			break;
 		case "Scene Event":
 			System.out.println("Sce");
+			//Criar novo SceneAction			
 			break;
 		case "Shop Event":
 			System.out.println("Sho");
+			//Criar novo ShopAction
 			break;
 		case "Warp Event":
 			System.out.println("War");
+			//Criar novo WarpAction
 			break;
 		default:
 			JOptionPane.showMessageDialog(this, "Escolha um tipo de evento!");
