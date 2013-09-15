@@ -1,5 +1,8 @@
 package br.edu.ifsp.pds.shadowstruggles.tools.view.edition;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -81,7 +84,7 @@ public class EventEditor extends JFrame {
 		jcbEventType.addItem("Save Point");
 		jcbEventType.addItem("Scene Event");
 		jcbEventType.addItem("Shop Event");
-		jcbEventType.addItem("Warp Point");
+		jcbEventType.addItem("Warp Action");
 
 		JComboBox<String> jcbTriggerType = new JComboBox<String>();
 		jcbTriggerType.setBounds(301, 8, 108, 20);
@@ -120,10 +123,20 @@ public class EventEditor extends JFrame {
 		JButton btnInsert = new JButton("Insert");
 		btnInsert.setBounds(25, 183, 164, 42);
 		contentPane.add(btnInsert);
+		btnInsert.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent arg0) {
+				Insert();
+			}
+		});
 
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.setBounds(218, 183, 191, 42);
 		contentPane.add(btnCancel);
+		btnCancel.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent arg0) {
+				dispose();
+			}
+		});
 	}
 
 }
