@@ -44,6 +44,7 @@ import br.edu.ifsp.pds.shadowstruggles.tools.view.enemies.EnemyGUIFrame;
 import javax.swing.JLabel;
 
 import java.awt.Rectangle;
+import javax.swing.JScrollPane;
 
 public class MainMenu {
 
@@ -58,6 +59,7 @@ public class MainMenu {
 	private JMenuBar menuBar;
 	private JLabel lblOr;
 	private JButton btnCreateZIP;
+	
 
 	public MainMenu(Controller controller) {
 		this.controller = controller;
@@ -106,10 +108,9 @@ public class MainMenu {
 		});
 		tabbedPane.setVisible(false);
 
-		table = new JTable();
-		table.setVisible(false);
-		table.setBounds(150, 80, 550, 386);
-		frmTitle.getContentPane().add(table);
+		
+		
+		
 
 		btnNewButton = new JButton("New");
 		btnNewButton.addMouseListener(new MouseAdapter() {
@@ -138,7 +139,14 @@ public class MainMenu {
 
 			}
 		});
+
 		btnNewButton.setVisible(false);
+		
+		table = new JTable();
+		table.setVisible(false);
+		table.setBounds(150, 80, 550, 386);
+		frmTitle.getContentPane().add(table);
+		
 		btnNewButton.setBounds(30, 80, 89, 23);
 		frmTitle.getContentPane().add(btnNewButton);
 
@@ -332,6 +340,7 @@ public class MainMenu {
 		lblOr.setVisible(false);
 		btnCreateZIP.setVisible(false);
 		controller.updateTableToDecks();
+		
 	}
 
 	public void setController(Controller controller) {
