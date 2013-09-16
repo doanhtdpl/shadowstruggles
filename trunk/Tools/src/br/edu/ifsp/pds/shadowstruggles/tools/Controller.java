@@ -8,11 +8,13 @@ import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 import net.lingala.zip4j.exception.ZipException;
 import br.edu.ifsp.pds.shadowstruggles.tools.data.DataManager;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Card;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.MainMenu;
 
 public class Controller {
@@ -94,14 +96,29 @@ public class Controller {
 	}
 
 	public void updateTableToFighter() {
+		System.out.println("updating Fighters");
+		ArrayList<Fighter> fighters= new ArrayList<Fighter>();;
 		try {
-			if(model.searchAllObjects(Card.class.getClass())!=null)
-			model.searchAllObjects(Card.class.getClass());
+			if(model.searchAllObjects(Fighter.class.getClass())!=null)
+			fighters=model.searchAllObjects(Card.class.getClass());
+			Fighter f = new Fighter();
+			f.id= 2;
+			f.name="oiiii";
+			fighters.add(f);
 		} catch (IOException e) {
 			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
-			e.printStackTrace();
+			e.printStackTrace();			
 		}
-		// viewer.getTable().se
+		String[] columnNames={"ID","Name"};
+		Object[][] tableData = new Object[fighters.size()][10];
+		int i = 0;
+		for(Fighter fighter : fighters){			
+			tableData[i][0]=fighter.id;
+			tableData[i][1]=fighter.name;
+		}
+		DefaultTableModel dataModel = new DefaultTableModel(tableData, columnNames);
+		viewer.getTable().setModel(dataModel);		
+		dataModel.fireTableDataChanged();
 	}
 
 	public void updateTableToTraps() {
