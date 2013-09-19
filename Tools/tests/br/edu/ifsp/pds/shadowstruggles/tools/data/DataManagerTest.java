@@ -218,9 +218,10 @@ public class DataManagerTest {
 			BattlePlatform bp = new BattlePlatform();
 			manager.insertObject(bp, BattlePlatform.class);
 			manager.saveToZip();
-			manager.deleteDirectory("data");
-
-			assertFalse(new File("data").exists());
+			DataManager.deleteDirectory("data");
+			
+			assertTrue(!new File("data").exists()
+					&& manager.openZip("test.zip", false));
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail("");
