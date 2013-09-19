@@ -95,7 +95,6 @@ public class DataManager {
 		ZipFile zipFile = new ZipFile(zip);
 
 		List<?> fileHeaderList = zipFile.getFileHeaders();
-		boolean hasLanguages = false;
 
 		// Storage all entries and retrieve the languages.
 		for (int i = 0; i < fileHeaderList.size(); i++) {
@@ -104,13 +103,21 @@ public class DataManager {
 			retrievedEntries.add(fileName);
 
 			if (fileName.equals(FileMap.globalClassToFile.get(Languages.class))) {
-				hasLanguages = true;
+				// Extract the file to access its contents.
+				Path currentRelativePath = Paths.get("");
+				zipFile.extractFile(fileHeader, currentRelativePath
+						.toAbsolutePath().toString());
+
+				// Retrieve Languages object.
 				retrievedLanguages = (Languages) MyJson.getJson()
 						.fromJson(ArrayList.class, new File(fileName)).get(0);
+
+				// Delete temporary file.
+				deleteFile(fileName);
 			}
 		}
 
-		if (!hasLanguages)
+		if (retrievedLanguages == null)
 			return false;
 
 		// Has any required folder been deleted?
@@ -351,11 +358,11 @@ public class DataManager {
 		insertObject(objects, c);
 	}
 
-	public void deleteFile(String path) throws IOException {
+	public static void deleteFile(String path) throws IOException {
 		Files.delete(Paths.get(path));
 	}
 
-	public void deleteDirectory(String dir) throws IOException {
+	public static void deleteDirectory(String dir) throws IOException {
 		File directory = new File(dir);
 		File[] files = directory.listFiles();
 
