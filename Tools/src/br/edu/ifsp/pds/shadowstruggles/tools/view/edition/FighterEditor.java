@@ -11,6 +11,7 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.DefaultComboBoxModel;
 
+import br.edu.ifsp.pds.shadowstruggles.tools.Controller;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.CardAction;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter;
 
@@ -50,8 +51,10 @@ public class FighterEditor extends JFrame {
 	private JComboBox<String> comboBox_5;
 	private JCheckBox chckbxHasEffect;
 	private JCheckBox chckbxAvailableInShop;
+	private Controller controller;
 
-	public FighterEditor() {
+	public FighterEditor(Controller controller) {
+		this.controller=controller;
 		setVisible(true);
 		setTitle("Fighter Editor");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -130,14 +133,17 @@ public class FighterEditor extends JFrame {
 		textField_3.setColumns(10);
 
 		comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"a", "b", "c"}));
 		comboBox.setBounds(114, 347, 193, 20);
 		contentPane.add(comboBox);
 
 		comboBox_1 = new JComboBox();
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"a", "b", "c"}));
 		comboBox_1.setBounds(114, 378, 193, 20);
 		contentPane.add(comboBox_1);
 
 		comboBox_2 = new JComboBox();
+		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"a", "b", "c"}));
 		comboBox_2.setBounds(114, 406, 193, 20);
 		contentPane.add(comboBox_2);
 
@@ -232,7 +238,9 @@ public class FighterEditor extends JFrame {
 				
 				
 				fighter.energyCost = Integer.parseInt(textField_3.getText());
+				try{
 				fighter.action = (CardAction) comboBox_1.getSelectedItem();
+				}catch(Exception e){fighter.action =null;}
 				fighter.illustration = comboBox_2.getSelectedItem().toString();
 //				fighter.preRequisites = 
 				
@@ -282,8 +290,8 @@ public class FighterEditor extends JFrame {
 				default:
 					break;
 				}
-			
-				fighter.write(null);
+				saveFighter(fighter);
+				
 			}
 		});
 		btnInsert.setBounds(27, 528, 89, 23);
@@ -299,5 +307,10 @@ public class FighterEditor extends JFrame {
 		});
 		btnCancel.setBounds(257, 528, 89, 23);
 		contentPane.add(btnCancel);
+	}
+	
+	public void saveFighter(Fighter fighter){
+		controller.createFighter(fighter);
+		this.dispose();
 	}
 }
