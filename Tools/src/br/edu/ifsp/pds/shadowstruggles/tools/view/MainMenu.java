@@ -66,7 +66,7 @@ public class MainMenu {
 		controller.setViewer(this);
 		initialize();
 		frmTitle.setVisible(true);
-	//	controller.setLanguage("en_us");
+		controller.setLanguage("en_us");
 	}
 
 	/**
