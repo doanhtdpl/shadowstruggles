@@ -66,6 +66,7 @@ public class MainMenu {
 		controller.setViewer(this);
 		initialize();
 		frmTitle.setVisible(true);
+	//	controller.setLanguage("en_us");
 	}
 
 	/**
@@ -81,6 +82,7 @@ public class MainMenu {
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent arg0) {
+				try{
 				String selectedTab = tabbedPane.getTitleAt(tabbedPane
 						.getSelectedIndex());
 				if (selectedTab.equals("Fighters"))
@@ -103,6 +105,7 @@ public class MainMenu {
 					controller.updateTableToEvents();
 				if (selectedTab.equals("Scenes"))
 					controller.updateTableToScenes();
+				}catch(Exception e){}
 
 			}
 		});
@@ -119,7 +122,7 @@ public class MainMenu {
 				String selectedTab = tabbedPane.getTitleAt(tabbedPane
 						.getSelectedIndex());
 				if (selectedTab.equals("Fighters"))
-					new FighterEditor();
+					new FighterEditor(controller);
 				if (selectedTab.equals("Traps"))
 					new TrapEditor();
 				if (selectedTab.equals("Effects"))
@@ -157,7 +160,7 @@ public class MainMenu {
 				String selectedTab = tabbedPane.getTitleAt(tabbedPane
 						.getSelectedIndex());
 				if (selectedTab.equals("Fighters"))
-					new FighterEditor();
+					new FighterEditor(controller);
 				if (selectedTab.equals("Traps"))
 					new TrapEditor();
 				if (selectedTab.equals("Effects"))

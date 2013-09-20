@@ -92,33 +92,39 @@ public class Controller {
 	public void createDeck() {
 	}
 
-	public void createEnemie() {
+	public void createEnemy() {
+	}
+	
+	public void createFighter(Fighter fighter){
+		try {
+			model.insertObject(fighter, Fighter.class);
+			} catch (IOException e) {			
+			e.printStackTrace();
+		}
 	}
 
 	public void updateTableToFighter() {
-		System.out.println("updating Fighters");
-		ArrayList<Fighter> fighters= new ArrayList<Fighter>();;
 		try {
-			if(model.searchAllObjects(Fighter.class.getClass())!=null)
-			fighters=model.searchAllObjects(Card.class.getClass());
-			Fighter f = new Fighter();
-			f.id= 2;
-			f.name="oiiii";
-			fighters.add(f);
+			ArrayList<Fighter> fighters = model.searchAllObjects(Fighter.class);
+			//System.out.println(fighters.size());
+			if (fighters != null) {
+				int i = 0;
+				Object[][] fighterAttributes = new Object[fighters.size()][2];
+				for (Iterator<Fighter> iterator = fighters.iterator(); iterator
+						.hasNext();) {
+					fighterAttributes[i][0] = fighters.get(i).getId();
+					fighterAttributes[i][1] = fighters.get(i).getName();
+				}
+				Object[] columnNames = { "ID", "Name" };
+				viewer.getTable().setModel(
+						new DefaultTableModel(fighterAttributes, columnNames));
+				viewer.getTable().updateUI();
+			}
+
 		} catch (IOException e) {
 			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
-			e.printStackTrace();			
+			e.printStackTrace();
 		}
-		String[] columnNames={"ID","Name"};
-		Object[][] tableData = new Object[fighters.size()][10];
-		int i = 0;
-		for(Fighter fighter : fighters){			
-			tableData[i][0]=fighter.id;
-			tableData[i][1]=fighter.name;
-		}
-		DefaultTableModel dataModel = new DefaultTableModel(tableData, columnNames);
-		viewer.getTable().setModel(dataModel);		
-		dataModel.fireTableDataChanged();
 	}
 
 	public void updateTableToTraps() {
@@ -132,6 +138,10 @@ public class Controller {
 
 	public HashMap<String, String> getLanguages() {
 		return model.getLanguages().languages;
+	}
+	
+	public void setLanguage(String language){
+		model.setCurrentLanguage(language);
 	}
 
 	public void updateTableToDecks() {

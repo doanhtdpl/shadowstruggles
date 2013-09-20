@@ -167,7 +167,7 @@ public class DataManager {
 		if (FileMap.globalClassToFile.containsKey(c)) {
 			path = FileMap.globalClassToFile.get(c);
 		}
-
+		
 		File file = new File(searchFile(path, null, c));
 
 		if (obj.getClass().isArray() || obj.getClass() == ArrayList.class) {
@@ -279,8 +279,7 @@ public class DataManager {
 			file = FileMap.resourcesToDirectory.get(resourceType) + name;
 
 		if (file != null)
-			if (!Files.exists(Paths.get(file), LinkOption.NOFOLLOW_LINKS)) {
-				System.out.println("Teste");
+			if (!Files.exists(Paths.get(file), LinkOption.NOFOLLOW_LINKS)) {				
 				file = null;
 			}
 
