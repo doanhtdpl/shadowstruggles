@@ -42,6 +42,24 @@ public class EventEditor extends JFrame {
 	JButton btnInsert;
 	JButton btnCancel;
 
+	private String id;
+
+	private String triggerType;
+
+	private Boolean triggered;
+
+	private String map;
+
+	private String quest;
+
+	private String layer;
+
+	private String sprite;
+
+	private int tile_x;
+
+	private int tile_y;
+
 	
 	public EventEditor() {
 		setVisible(true);
@@ -118,18 +136,22 @@ public class EventEditor extends JFrame {
 
 		jcbMap = new JComboBox();
 		jcbMap.setBounds(81, 77, 108, 20);
+		jcbMap.addItem("");
 		contentPane.add(jcbMap);
 
 		jcbLayer = new JComboBox();
 		jcbLayer.setBounds(301, 77, 108, 20);
+		jcbLayer.addItem("");
 		contentPane.add(jcbLayer);
 
 		jcbQuest = new JComboBox();
 		jcbQuest.setBounds(81, 106, 108, 20);
+		jcbQuest.addItem("");
 		contentPane.add(jcbQuest);
 
 		jcbSprite = new JComboBox();
 		jcbSprite.setBounds(301, 106, 108, 20);
+		jcbSprite.addItem("");
 		contentPane.add(jcbSprite);
 
 		tfTile_x = new JTextField();
@@ -164,6 +186,8 @@ public class EventEditor extends JFrame {
 	public void Insert() {
 		// TODO insert event
 		
+		readViewerComponents();
+		printEventData();
 		switch(jcbEventType.getSelectedItem().toString()){
 		case "Modifier Event":
 			System.out.println("Mod");
@@ -189,6 +213,32 @@ public class EventEditor extends JFrame {
 			JOptionPane.showMessageDialog(this, "Escolha um tipo de evento!");
 			break;
 		}
+	}
+
+	private void printEventData() {
+		// TODO Auto-generated method stub
+		System.out.print("\nEvent data:\n\n");
+		System.out.println("Id: \t\t"+id);
+		System.out.println("Trigger Type: \t"+triggerType);
+		System.out.println("Triggered: \t"+triggered.toString());
+		System.out.println("Map: \t\t"+map);
+		System.out.println("Quest: \t\t"+quest);
+		System.out.println("Layer: \t\t"+layer);
+		System.out.println("Sprite: \t"+sprite);
+		System.out.println("Tile X: \t"+tile_x);
+		System.out.println("Tile Y: \t"+tile_y);
+	}
+
+	private void readViewerComponents() {
+		id = tfId.getText();
+		triggerType = jcbTriggerType.getSelectedItem().toString();
+		triggered = chckbxTriggered.isSelected();
+		map = jcbMap.getSelectedItem().toString();
+		quest = jcbQuest.getSelectedItem().toString();
+		layer = jcbLayer.getSelectedItem().toString();
+		sprite = jcbLayer.getSelectedItem().toString();
+		tile_x = Integer.parseInt(tfTile_x.getText());
+		tile_y = Integer.parseInt(tfTile_y.getText());
 	}
 
 }
