@@ -270,14 +270,14 @@ public class DataManager {
 	public String searchFile(String name, String resourceType, Class<?> c)
 			throws IOException {
 		String file = null;
-
+		
 		if (FileMap.globalClassToFile.containsKey(c))
 			file = FileMap.globalClassToFile.get(c);
 		else if (FileMap.classToFile.containsKey(c))
 			file = localizedPath(currentLanguage, FileMap.classToFile.get(c));
 		else if (FileMap.resourcesToDirectory.containsKey(resourceType))
 			file = FileMap.resourcesToDirectory.get(resourceType) + name;
-
+		System.out.println("searchFile: "+file);
 		if (file != null)
 			if (!Files.exists(Paths.get(file), LinkOption.NOFOLLOW_LINKS)) {				
 				file = null;
@@ -302,9 +302,10 @@ public class DataManager {
 		if (searchFile(path, null, c) != null) {
 			File file = new File(searchFile(path, null, c));
 			list = MyJson.getJson().fromJson(ArrayList.class, file);
-
+			System.out.println("SearchAllObjects: searchFile searching: "+file);
 			return list;
 		} else
+			System.out.println("SearchAllObjects: searchFile retornando null");
 			return null;
 	}
 
@@ -454,8 +455,12 @@ public class DataManager {
 	}
 
 	public void setCurrentLanguage(String lang) {
+		if(languages==null){
+			languages= new Languages();
+			languages.put("en_us", "en_us");
+		}		
 		if (this.languages.containsKey(lang))
-			this.currentLanguage = lang;
+			this.currentLanguage = lang;		
 	}
 
 	public Controller getController() {

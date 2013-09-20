@@ -4,3 +4,5 @@ Set 15, 2013 5:19:36 PM br.edu.ifsp.pds.shadowstruggles.tools.Controller newZipC
 SEVERE: java.lang.NullPointerException
 Set 19, 2013 8:19:26 PM br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item read
 Grave: java.lang.IllegalAccessException: Can not set static final java.lang.String field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.SIZE_SMALL to java.lang.String
+Set 19, 2013 9:19:48 PM br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item read
+Grave: java.lang.IllegalAccessException: Can not set static final java.lang.String field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.SIZE_SMALL to java.lang.String

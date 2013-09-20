@@ -106,7 +106,7 @@ public class Controller {
 	public void updateTableToFighter() {
 		try {
 			ArrayList<Fighter> fighters = model.searchAllObjects(Fighter.class);
-			//System.out.println(fighters.size());
+			System.out.println(fighters.size());
 			if (fighters != null) {
 				int i = 0;
 				Object[][] fighterAttributes = new Object[fighters.size()][2];
@@ -125,6 +125,26 @@ public class Controller {
 			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
 			e.printStackTrace();
 		}
+		/*System.out.println("updating Fighters");
+		ArrayList<Fighter> fighters= new ArrayList<Fighter>();;
+		try {
+			if(model.searchAllObjects(Fighter.class.getClass())!=null)
+			fighters=model.searchAllObjects(Card.class.getClass());
+			
+		} catch (IOException e) {
+			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
+			e.printStackTrace();			
+		}
+		String[] columnNames={"ID","Name"};
+		Object[][] tableData = new Object[fighters.size()][10];
+		int i = 0;
+		for(Fighter fighter : fighters){			
+			tableData[i][0]=fighter.id;
+			tableData[i][1]=fighter.name;
+		}
+		DefaultTableModel dataModel = new DefaultTableModel(tableData, columnNames);
+		viewer.getTable().setModel(dataModel);		
+		dataModel.fireTableDataChanged();*/
 	}
 
 	public void updateTableToTraps() {
