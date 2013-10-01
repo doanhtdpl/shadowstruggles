@@ -27,4 +27,9 @@ public class PathModifier extends Modifier {
 		Profile profile = ShadowStruggles.getInstance().getProfile();
 		profile.setPath(path);
 	}
+	
+	@Override
+	public String getMessage() {
+		return null;
+	}
 }

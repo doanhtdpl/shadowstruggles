@@ -84,6 +84,8 @@ public class MyJson {
 
 			json.addClassTag("Event", Event.class);
 			json.addClassTag("EventAction", EventAction.class);
+			json.addClassTag("EventInGame", EventInGame.class);
+			json.addClassTag("ModifierAction", ModifierAction.class);
 			json.addClassTag("SavePointAction", SavePointAction.class);
 			json.addClassTag("SceneAction", SceneAction.class);
 			json.addClassTag("ShopAction", ShopAction.class);

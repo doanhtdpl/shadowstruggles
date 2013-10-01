@@ -19,17 +19,6 @@ public class DefeatScreen extends BaseScreen {
 	private TextButton mainMenu;
 	private BattleScreen battleScreen;
 	private String message;
-	private static DefeatScreen instance;
-
-	public static DefeatScreen getInstance(ShadowStruggles game,
-			Controller controller, String message, BattleScreen battleScreen) {
-		if (instance != null)
-			return instance;
-		else {
-			instance = new DefeatScreen(game, controller, message, battleScreen);
-			return instance;
-		}
-	}
 
 	public void setBattleScreen(BattleScreen battleScreen) {
 		this.battleScreen = battleScreen;
@@ -42,15 +31,15 @@ public class DefeatScreen extends BaseScreen {
 			this.message = message;
 	}
 
-	private DefeatScreen(ShadowStruggles game, Controller controller,
+	public DefeatScreen(ShadowStruggles game, Controller controller,
 			String message, BattleScreen battleScreen) {
 		super(game, controller);
 		this.battleScreen = battleScreen;
 		this.message = message;
+		initComponents();
 	}
 
 	public void initComponents() {
-
 		retryButton = new TextButton(MenuTextDAO.getMenuText().retryButton,
 				super.getSkin());
 		retryButton = ScreenUtils.defineButton(retryButton, 100, 100, 300, 100,
@@ -74,8 +63,7 @@ public class DefeatScreen extends BaseScreen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_4");
-				game.setScreenWithTransition(MainScreen.getInstance(game,
-						controller));
+				game.setScreenWithTransition(new MainScreen(game, controller));
 			}
 
 		});

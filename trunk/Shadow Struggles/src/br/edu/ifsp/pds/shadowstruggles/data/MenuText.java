@@ -10,7 +10,7 @@ import com.badlogic.gdx.utils.JsonValue;
 public class MenuText implements Serializable {
 	// General use
 	public String returnToStart = "";
-	
+
 	// StartScreen
 	public String continueGame = "";
 	public String newGame = "";
@@ -52,7 +52,7 @@ public class MenuText implements Serializable {
 	public String packs = "";
 	public String cards = "";
 	public String extra = "";
-	
+
 	// DefeatScreen
 	public String defeat = "";
 	public String retryButton = "";
@@ -63,82 +63,41 @@ public class MenuText implements Serializable {
 	// EditDeckScreen
 	public String newDeck = "";
 
-	@Override
-	public void write(Json json) {
-		// General use
-		json.writeValue("returnToStart", returnToStart);
-		
-		// StartScreen
-		json.writeValue("continueGame", continueGame);
-		json.writeValue("newGame", newGame);
-		
-		// Select Profile
-		json.writeValue("profile", profile);
-		
-		// ErrorScreen
-		json.writeValue("terminate", terminate);
-		json.writeValue("details", details);
-		
-		// MainScreen
-		json.writeValue("campaign", campaign);
-		json.writeValue("freePlay", freePlay);
-		json.writeValue("editDeck", editDeck);
-		json.writeValue("shop", shop);
-		
-		// VictoryScreen
-		json.writeValue("victory", victory);
-		json.writeValue("continueButton", continueButton);
-		json.writeValue("mainMenuButton", mainMenuButton);
-		
-		// InGameMenu
-		json.writeValue("returnToGame", returnToGame);
-		json.writeValue("exit", exit);
-		json.writeValue("checkCards", checkCards);
-		
-		// SettingsScreen
-		json.writeValue("configurations", configurations);
-		json.writeValue("volume", volume);
-		json.writeValue("music", music);
-		json.writeValue("on", on);
-		json.writeValue("off", off);
-		json.writeValue("languageSelection", languageSelection);
-		
-		// ShopScreen
-		json.writeValue("buy", buy);
-		json.writeValue("sell", sell);
-		json.writeValue("packs", packs);
-		json.writeValue("cards", cards);
-		json.writeValue("extra", extra);
-		
-		// DefeatScreen
-		json.writeValue("retryButton", retryButton);
-		json.writeValue("defeat", defeat);
-		
-		// FreePlayScreen
-		json.writeValue("practiceBattle", practiceBattle);
-		
-		// EditDeckScreen
-		json.writeValue("newDeck", newDeck);
-	}
+	// Modifiers
+	public String unlocked = "";
+	public String newMaxEnergy = "";
+	public String newInitialEnergy = "";
+	public String newMaxHealth = "";
+	public String newMaxCardPoints = "";
+	public String newDoubleDraw = "";
+	public String newMoney = "";
+	public String newLevel = "";
+	public String newExperience = "";
+	public String newEnergyRecovery = "";
+	public String newDeckCapacity = "";
+	public String acquired = "";
+	public String removedItem = "";
+	public String addedQuest = "";
+	public String questCompleted = "";
 
 	@Override
 	public void read(Json json, JsonValue jsonData) {
 		// General use
 		returnToStart = json.readValue("returnToStart", String.class, jsonData);
-		
+
 		// StartScreen
 		continueGame = json.readValue("continueGame", String.class, jsonData);
 		newGame = json.readValue("newGame", String.class, jsonData);
-		
+
 		// Select Profile
 		profile = json.readValue("profile", String.class, jsonData);
-		
+
 		// MainScreen
 		campaign = json.readValue("campaign", String.class, jsonData);
 		freePlay = json.readValue("freePlay", String.class, jsonData);
 		editDeck = json.readValue("editDeck", String.class, jsonData);
 		shop = json.readValue("shop", String.class, jsonData);
-		
+
 		// ErrorScreen
 		terminate = json.readValue("terminate", String.class, jsonData);
 		details = json.readValue("details", String.class, jsonData);
@@ -149,12 +108,12 @@ public class MenuText implements Serializable {
 				jsonData);
 		mainMenuButton = json.readValue("mainMenuButton", String.class,
 				jsonData);
-		
+
 		// InGameMenu
 		returnToGame = json.readValue("returnToGame", String.class, jsonData);
 		exit = json.readValue("exit", String.class, jsonData);
 		checkCards = json.readValue("checkCards", String.class, jsonData);
-		
+
 		// SettingsScreen
 		configurations = json.readValue("configurations", String.class,
 				jsonData);
@@ -162,25 +121,51 @@ public class MenuText implements Serializable {
 		music = json.readValue("music", String.class, jsonData);
 		on = json.readValue("on", String.class, jsonData);
 		off = json.readValue("off", String.class, jsonData);
-		languageSelection = json.readValue("languageSelection", String.class, jsonData);
-		
+		languageSelection = json.readValue("languageSelection", String.class,
+				jsonData);
+
 		// ShopScreen
 		buy = json.readValue("buy", String.class, jsonData);
 		sell = json.readValue("sell", String.class, jsonData);
 		packs = json.readValue("packs", String.class, jsonData);
 		cards = json.readValue("cards", String.class, jsonData);
 		extra = json.readValue("extra", String.class, jsonData);
-		
+
 		// DefeatScreen
 		defeat = json.readValue("defeat", String.class, jsonData);
 		retryButton = json.readValue("retryButton", String.class, jsonData);
-		
+
 		// FreePlayScreen
 		practiceBattle = json.readValue("practiceBattle", String.class,
 				jsonData);
-		
+
 		// EditDeckScreen
 		newDeck = json.readValue("newDeck", String.class, jsonData);
+
+		// Modifiers
+		unlocked = json.readValue("unlocked", String.class, jsonData);
+		newMaxEnergy = json.readValue("newMaxEnergy", String.class, jsonData);
+		newInitialEnergy = json.readValue("newInitialEnergy", String.class,
+				jsonData);
+		newMaxHealth = json.readValue("newMaxHealth", String.class, jsonData);
+		newMaxCardPoints = json.readValue("newMaxCardPoints", String.class,
+				jsonData);
+		newDoubleDraw = json.readValue("newDoubleDraw", String.class, jsonData);
+		newMoney = json.readValue("newMoney", String.class, jsonData);
+		newLevel = json.readValue("newLevel", String.class, jsonData);
+		newExperience = json.readValue("newExperience", String.class, jsonData);
+		newEnergyRecovery = json.readValue("newEnergyRecovery", String.class,
+				jsonData);
+		newDeckCapacity = json.readValue("newDeckCapacity", String.class,
+				jsonData);
+		acquired = json.readValue("acquired", String.class, jsonData);
+		removedItem = json.readValue("removedItem", String.class, jsonData);
+		addedQuest = json.readValue("addedQuest", String.class, jsonData);
+		questCompleted = json.readValue("questCompleted", String.class,
+				jsonData);
 	}
 
+	@Override
+	public void write(Json json) {
+	}
 }

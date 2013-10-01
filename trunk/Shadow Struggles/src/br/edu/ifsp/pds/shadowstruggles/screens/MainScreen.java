@@ -23,21 +23,8 @@ public class MainScreen extends BaseScreen {
 	private TextButton editDeck;
 	private ImageButton changeProfile;
 	private ImageButton config;
-	private static MainScreen instance;
 
-	public static MainScreen getInstance(ShadowStruggles game,
-			Controller controller) {
-		if (instance == null)
-			instance = new MainScreen(game, controller);
-
-		return instance;
-	}
-
-	public static MainScreen getInstance() {
-		return instance;
-	}
-
-	private MainScreen(ShadowStruggles game, Controller controller) {
+	public MainScreen(ShadowStruggles game, Controller controller) {
 		super(game, controller);
 		initComponents();
 	}
@@ -48,7 +35,7 @@ public class MainScreen extends BaseScreen {
 
 	}
 
-	private void initComponents() {
+	public void initComponents() {
 		if (!game.getAudio().getMusicName().equals("intro")) {
 			game.getAudio().stop();
 			game.getAudio().setMusic("intro");
@@ -82,10 +69,9 @@ public class MainScreen extends BaseScreen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_4");
-				FreePlayScreen freePlay = FreePlayScreen.getInstance(game,
-						game.getController());
+				FreePlayScreen freePlay = new FreePlayScreen(game, game
+						.getController());
 				game.setScreenWithTransition(freePlay);
-				freePlay.initComponents();
 			}
 		});
 
@@ -96,11 +82,10 @@ public class MainScreen extends BaseScreen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_4");
-				EditDeckScreen editScreen = EditDeckScreen.getInstance(game,
+				EditDeckScreen editScreen = new EditDeckScreen(game,
 						controller, null);
 				editScreen.setPreviousScreen(screen);
-				editScreen.initComponents();
-				game.setScreenWithTransition(editScreen);
+				game.setScreenWithTransition(new LoadingScreen(game, editScreen));
 			}
 
 		});
@@ -112,8 +97,9 @@ public class MainScreen extends BaseScreen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_4");
-				game.setScreenWithTransition(new ShopScreen(game, null,
-						controller, screen));
+				ShopScreen nextScreen = new ShopScreen(game, null, controller,
+						screen);
+				game.setScreenWithTransition(new LoadingScreen(game, nextScreen));
 			}
 
 		});

@@ -16,6 +16,11 @@ public class Practice extends BattleScreen {
 			boolean isInCampaign) {
 		super(game, game.getProfile(), game.getController(), platform,
 				MenuTextDAO.getMenuText().practiceBattle, isInCampaign);
+	}
+
+	@Override
+	public void initComponents() {
+		super.initComponents();
 		game.getAudio().stop();
 		game.getAudio().setMusic("battle");
 	}

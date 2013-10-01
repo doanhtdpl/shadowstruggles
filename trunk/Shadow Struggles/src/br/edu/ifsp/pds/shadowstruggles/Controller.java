@@ -150,8 +150,7 @@ public class Controller {
 	}
 
 	public void menuButtonClicked(ShadowStruggles game) {
-		InGameMenu menu = InGameMenu.getInstance(game, game.getController(),
-				null);
+		InGameMenu menu = new InGameMenu(game, game.getController(), null);
 		menu.setBattleScreen((BattleScreen) game.getScreen());
 		game.setScreenWithTransition(menu);
 	}
@@ -296,7 +295,7 @@ public class Controller {
 	}
 
 	private void rearrangeCards(float initialX) {
-		int variationX=130;
+		int variationX = 130;
 		for (Actor actor : currentScreen.getStage().getActors()) {
 			if (actor.getClass().equals(HandCard.class)) {
 				if (((HandCard) actor).getInitialX() > initialX) {
@@ -368,12 +367,12 @@ public class Controller {
 		}
 		return 0;
 	}
-	
-	public int yToLane(float y){
+
+	public int yToLane(float y) {
 		return (int) ((y - 48) / 72);
 	}
-	
-	public int xToTile(float x){
+
+	public int xToTile(float x) {
 		return ((int) ((x - 96) / 48) / 2) * 2;
 	}
 

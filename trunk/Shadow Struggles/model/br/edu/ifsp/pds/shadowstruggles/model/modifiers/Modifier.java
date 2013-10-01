@@ -12,4 +12,10 @@ public abstract class Modifier implements Serializable {
 	 * Activate the modifier's effect.
 	 */
 	public abstract void modify();
+
+	/**
+	 * Returns a text describing the modifier's effect (e.g., 'You have won 10
+	 * experience points!').
+	 */
+	public abstract String getMessage();
 }

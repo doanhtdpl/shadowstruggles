@@ -1,6 +1,7 @@
 package br.edu.ifsp.pds.shadowstruggles.model.modifiers;
 
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.items.Item;
 import br.edu.ifsp.pds.shadowstruggles.model.profiles.Profile;
 
@@ -29,6 +30,24 @@ public class UnlockModifier extends Modifier {
 			if (!profile.getUnlockedItems().contains(item, false))
 				profile.getUnlockedItems().add(item);
 		}
+	}
+
+	@Override
+	public String getMessage() {
+		String message = MenuTextDAO.getMenuText().unlocked + " ";
+
+		for (int i = 0; i < items.size; i++) {
+			Item item = items.get(i);
+			message += item.getLocalizedName();
+			if (i < items.size - 2) // More than one item left.
+				message += ", ";
+			if (i == items.size - 2) // One item left.
+				message += " and ";
+			if (i == items.size - 1) // This is the final item.
+				message += "!";
+		}
+
+		return message;
 	}
 
 	@SuppressWarnings("unchecked")

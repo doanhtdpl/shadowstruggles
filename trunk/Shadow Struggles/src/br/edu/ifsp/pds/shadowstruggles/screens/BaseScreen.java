@@ -2,7 +2,6 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
-import br.edu.ifsp.pds.shadowstruggles.data.FileMap;
 import br.edu.ifsp.pds.shadowstruggles.data.Loader.Asset;
 
 import com.badlogic.gdx.Gdx;
@@ -11,7 +10,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -22,12 +20,8 @@ public abstract class BaseScreen implements Screen {
 	public static final int CAMERA_INITIAL_X = 480;
 	public static final int CAMERA_INITIAL_Y = 320;
 
-	private SpriteBatch batch;
-	private Skin skin;
-	private TextureAtlas atlas;
-
 	protected final ShadowStruggles game;
-	protected final MyStage stage;
+	protected MyStage stage;
 	protected BitmapFont font;
 	protected Controller controller;
 	protected int height;
@@ -40,7 +34,17 @@ public abstract class BaseScreen implements Screen {
 		this.game = game;
 		this.controller = controller;
 		this.controller.setCurrentscreen(this);
-		this.stage = new MyStage(0, 0, true);
+		this.stage = new MyStage(0, 0, true, game.getBatch());
+		this.camera = new OrthographicCamera(this.width, this.height);
+		this.camera.position.set(CAMERA_INITIAL_X, CAMERA_INITIAL_Y, 0);
+		this.camera.zoom = ((float) 960 / (float) width);
+		this.camera.position.x = CAMERA_INITIAL_X;
+		this.stage.setCamera(camera);
+	}
+
+	public BaseScreen(ShadowStruggles game) {
+		this.game = game;
+		this.stage = new MyStage(0, 0, true, game.getBatch());
 		this.camera = new OrthographicCamera(this.width, this.height);
 		this.camera.position.set(CAMERA_INITIAL_X, CAMERA_INITIAL_Y, 0);
 		this.camera.zoom = ((float) 960 / (float) width);
@@ -49,31 +53,54 @@ public abstract class BaseScreen implements Screen {
 	}
 
 	/**
+	 * Initialize the graphic components of this screen.
+	 */
+	public void initComponents() {
+
+	}
+
+	/**
+	 * Specifies the particular texture regions which must be loaded for this screen.
+	 * It returns null by default.
+	 */
+	public Array<Asset> textureRegionsToLoad() {
+		Array<Asset> assets = null;
+		return assets;
+	}
+	
+	/**
 	 * Specifies the particular textures which must be loaded for this screen.
-	 * 
-	 * @return The default return is null.
+	 * It returns null by default.
 	 */
 	public Array<Asset> texturesToLoad() {
 		Array<Asset> assets = null;
 		return assets;
 	}
+	
+	/**
+	 * Specifies the particular sounds which must be loaded for this screen.
+	 * It returns null by default.
+	 */
+	public Array<Asset> soundsToLoad() {
+		Array<Asset> assets = null;
+		return assets;
+	}
+	
+	/**
+	 * Specifies the particular maps which must be loaded for this screen.
+	 * It returns null by default.
+	 */
+	public Array<Asset> mapsToLoad() {
+		Array<Asset> assets = null;
+		return assets;
+	}
 
 	public Skin getSkin() {
-		if (skin == null) {
-			skin = new Skin(Gdx.files.internal("data/skin.json"),
-					new TextureAtlas(
-							Gdx.files.internal(FileMap.resourcesToDirectory
-									.get("skin") + "skin.atlas")));
-		}
-
-		return skin;
+		return game.getSkin();
 	}
 
 	public SpriteBatch getBatch() {
-		if (batch == null) {
-			batch = new SpriteBatch();
-		}
-		return batch;
+		return game.getBatch();
 	}
 
 	public BitmapFont getFont() {
@@ -81,14 +108,6 @@ public abstract class BaseScreen implements Screen {
 			font = new BitmapFont();
 		}
 		return font;
-	}
-
-	public TextureAtlas getAtlas() {
-		if (atlas == null) {
-			atlas = new TextureAtlas(
-					Gdx.files.internal("image-atlases/pages-info"));
-		}
-		return atlas;
 	}
 
 	protected String getName() {
@@ -100,12 +119,6 @@ public abstract class BaseScreen implements Screen {
 		stage.dispose();
 		if (font != null)
 			font.dispose();
-		if (batch != null)
-			batch.dispose();
-		if (skin != null)
-			skin.dispose();
-		if (atlas != null)
-			atlas.dispose();
 	}
 
 	@Override

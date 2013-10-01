@@ -47,8 +47,8 @@ public class SaveLoadScreen extends BaseScreen {
 	 * @param previousScreen
 	 *            The previous screen. Can be null in START mode.
 	 */
-	public SaveLoadScreen(ShadowStruggles game, Controller controller, Mode mode,
-			BaseScreen previousScreen) {
+	public SaveLoadScreen(ShadowStruggles game, Controller controller,
+			Mode mode, BaseScreen previousScreen) {
 		super(game, controller);
 		this.states = new Array<TextButton>();
 		this.mode = mode;
@@ -175,8 +175,7 @@ public class SaveLoadScreen extends BaseScreen {
 			game.getAudio().playSound("button_4");
 
 			if (mode == Mode.START)
-				game.setScreenWithTransition(MainScreen.getInstance(game,
-						controller));
+				game.setScreenWithTransition(new MainScreen(game, controller));
 			else if (mode == Mode.SAVE)
 				showProfiles();
 		} catch (Exception e) {
@@ -185,8 +184,7 @@ public class SaveLoadScreen extends BaseScreen {
 			ProfileDAO.createProfile(newProfile);
 			game.setProfile(newProfile);
 			game.getAudio().playSound("button_4");
-			game.setScreenWithTransition(MainScreen.getInstance(game,
-					controller));
+			game.setScreenWithTransition(new MainScreen(game, controller));
 		}
 	}
 
@@ -251,8 +249,7 @@ public class SaveLoadScreen extends BaseScreen {
 			game.setProfile(profile);
 
 			if (mode == Mode.START)
-				game.setScreenWithTransition(MainScreen.getInstance(game,
-						controller));
+				game.setScreenWithTransition(new MainScreen(game, controller));
 			else
 				game.setScreenWithTransition(previousScreen);
 		} else if (mode == Mode.SAVE) {
