@@ -48,6 +48,11 @@ public class SoundManager {
 	public void stop() {
 		music.stop();
 	}
+	
+	public void dispose() {
+		if(music != null)
+			music.dispose();
+	}
 
 	/**
 	 * Plays a sound effect.

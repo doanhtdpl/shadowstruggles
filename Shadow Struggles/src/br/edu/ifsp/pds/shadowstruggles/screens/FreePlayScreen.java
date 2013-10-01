@@ -31,7 +31,6 @@ public class FreePlayScreen extends BaseScreen {
 	private ShadowStruggles game;
 	private Array<TextButton> battles;
 	private TextButton returnButton;
-	private static FreePlayScreen instance;
 	private Label chapterSelect;
 	private SelectBox chapterBox;
 	private Arrow right;
@@ -39,19 +38,10 @@ public class FreePlayScreen extends BaseScreen {
 	BattleScreen battle;
 	private ImageButton battleButton;
 
-	public static FreePlayScreen getInstance(ShadowStruggles game,
-			Controller controller) {
-		if (instance != null)
-			return instance;
-		else {
-			instance = new FreePlayScreen(game, controller);
-			return instance;
-		}
-	}
-
-	private FreePlayScreen(ShadowStruggles game, Controller controller) {
+	public FreePlayScreen(ShadowStruggles game, Controller controller) {
 		super(game, controller);
 		this.game = game;
+		initComponents();
 	}
 
 	@Override
@@ -69,7 +59,8 @@ public class FreePlayScreen extends BaseScreen {
 				BattlePlatform platform = BattlePlatformDAO.getBattle(1);
 				platform.setPlayerDeck(DeckDAO.getDeck("Practice Deck Player"));
 				platform.setEnemyDeck(platform.getEnemy().getDeck());
-				game.setScreenWithTransition(new Practice(game, platform, false));
+				Practice nextScreen = new Practice(game, platform, false);
+				game.setScreenWithTransition(new LoadingScreen(game, nextScreen));
 			}
 		});
 
@@ -81,8 +72,8 @@ public class FreePlayScreen extends BaseScreen {
 				BattlePlatform platform = BattlePlatformDAO.getBattle(2);
 				platform.setPlayerDeck(DeckDAO.getDeck("Tutorial Deck"));
 				platform.setEnemyDeck(DeckDAO.getDeck("Practice Deck Enemy"));
-				game.setScreenWithTransition(new BattleTutorial(game, platform));
-
+				BattleTutorial nextScreen = new BattleTutorial(game, platform);
+				game.setScreenWithTransition(new LoadingScreen(game, nextScreen));
 			}
 		});
 
@@ -101,8 +92,9 @@ public class FreePlayScreen extends BaseScreen {
 				RpgPlatform platform = new RpgPlatform(rpgController,
 						character, rpgMap);
 
-				game.setScreenWithTransition(new RpgScreen(game, controller,
-						rpgController));
+				RpgScreen nextScreen = new RpgScreen(game, controller,
+						rpgController);
+				game.setScreenWithTransition(new LoadingScreen(game, nextScreen));
 			}
 		});
 
@@ -169,8 +161,7 @@ public class FreePlayScreen extends BaseScreen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_6");
-				game.setScreenWithTransition(MainScreen.getInstance(game,
-						controller));
+				game.setScreenWithTransition(new MainScreen(game, controller));
 
 			}
 		});

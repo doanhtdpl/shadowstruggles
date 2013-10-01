@@ -1,6 +1,8 @@
 package br.edu.ifsp.pds.shadowstruggles.model.modifiers;
 
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.data.MenuText;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.profiles.Profile;
 import br.edu.ifsp.pds.shadowstruggles.model.quests.Quest;
 import br.edu.ifsp.pds.shadowstruggles.model.quests.Quest.QuestStatus;
@@ -49,6 +51,20 @@ public class QuestModifier extends Modifier {
 					playerQuest.getRequirements().indexOf(requirement, false));
 			playerRequirement.setFulfilled(requirementFulfilled);
 		}
+	}
+
+	@Override
+	public String getMessage() {
+		MenuText text = MenuTextDAO.getMenuText();
+
+		if (operation == OperationType.ADD_QUEST)
+			return text.addedQuest;
+		if (operation == OperationType.CHANGE_QUEST_STATUS) {
+			if (questStatus == QuestStatus.QUEST_COMPLETED)
+				return text.questCompleted;
+		}
+
+		return null;
 	}
 
 	@Override

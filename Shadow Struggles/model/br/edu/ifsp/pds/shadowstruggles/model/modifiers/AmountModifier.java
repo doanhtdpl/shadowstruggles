@@ -1,6 +1,8 @@
 package br.edu.ifsp.pds.shadowstruggles.model.modifiers;
 
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.data.MenuText;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.profiles.Profile;
 
 import com.badlogic.gdx.utils.Json;
@@ -133,5 +135,66 @@ public class AmountModifier extends Modifier {
 				profile.getPlayer().setDeckCapacity(
 						profile.getPlayer().getDeckCapacity() + (int) amount);
 		}
+	}
+
+	@Override
+	public String getMessage() {
+		MenuText text = MenuTextDAO.getMenuText();
+		Profile profile = ShadowStruggles.getInstance().getProfile();
+
+		if (attribute == ModifiedAttribute.MAX_ENERGY) {
+			return text.newMaxEnergy.replace("%d",
+					Integer.toString(profile.getPlayer().getMaxEnergy()));
+		}
+
+		if (attribute == ModifiedAttribute.INITIAL_ENERGY) {
+			return text.newInitialEnergy.replace("%d",
+					Integer.toString(profile.getPlayer().getInitialEnergy()));
+		}
+
+		if (attribute == ModifiedAttribute.MAX_HEALTH) {
+			return text.newMaxHealth.replace("%d",
+					Integer.toString(profile.getPlayer().getMaxHealth()));
+		}
+
+		if (attribute == ModifiedAttribute.MAX_CARD_POINTS) {
+			return text.newMaxCardPoints.replace("%d",
+					Integer.toString(profile.getPlayer().getMaxCardPoints()));
+		}
+
+		if (attribute == ModifiedAttribute.STORY_POINTS)
+			return null;
+
+		if (attribute == ModifiedAttribute.MONEY) {
+			return text.newMoney.replace("%d",
+					Integer.toString(profile.getMoney()));
+		}
+
+		if (attribute == ModifiedAttribute.DOUBLE_DRAW) {
+			return text.newDoubleDraw.replace("%f",
+					Float.toString(profile.getPlayer().getDoubleDraw() * 100));
+		}
+
+		if (attribute == ModifiedAttribute.LEVEL) {
+			return text.newLevel.replace("%d",
+					Integer.toString(profile.getLevel()));
+		}
+
+		if (attribute == ModifiedAttribute.EXPERIENCE) {
+			return text.newExperience.replace("%d",
+					Integer.toString(profile.getExperience()));
+		}
+
+		if (attribute == ModifiedAttribute.ENERGY_RECOVERY) {
+			return text.newEnergyRecovery.replace("%d",
+					Integer.toString(profile.getPlayer().getEnergyRecovery()));
+		}
+
+		if (attribute == ModifiedAttribute.DECK_CAPACITY) {
+			return text.newDeckCapacity.replace("%d",
+					Integer.toString(profile.getPlayer().getDeckCapacity()));
+		}
+
+		return null;
 	}
 }

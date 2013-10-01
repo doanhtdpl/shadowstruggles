@@ -10,14 +10,14 @@ import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.ManhattanHeuristic;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.Path;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.PathFinder;
 import br.edu.ifsp.pds.shadowstruggles.object2d.rpg.Character2D;
-import br.edu.ifsp.pds.shadowstruggles.rpg.ObjectRenderer;
+import br.edu.ifsp.pds.shadowstruggles.rpg.MyOrthogonalTiledMapRenderer;
 import br.edu.ifsp.pds.shadowstruggles.rpg.RpgController;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.utils.Array;
 
 /**
@@ -25,15 +25,14 @@ import com.badlogic.gdx.utils.Array;
  * command to the RPG Controller. Also, renders all the visual elements.
  */
 public class RpgScreen extends BaseScreen implements InputProcessor {
-	private SpriteBatch batch;
 	private RpgController rpgController;
-	private OrthogonalTiledMapRenderer renderer;
-	private ObjectRenderer objectRenderer;
+	private MyOrthogonalTiledMapRenderer renderer;
 
 	private PathFinder finder;
 	private Path path;
 
 	private boolean firstRender = true;
+	private float unitScale = 1 / 256f;
 
 	/**
 	 * The constructor initializes the objects and defines itself as the
@@ -52,28 +51,42 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 
 		rpgController.setViewer(this);
 		this.rpgController = rpgController;
-
-		finder = new AStarPathFinder(rpgController.getModel().getRpgMap(), 500,
-				false, new ManhattanHeuristic(1));
-
-		batch = new SpriteBatch();
-		float unitScale = 1 / 256f;
-		renderer = new OrthogonalTiledMapRenderer(rpgController.getMap(),
-				unitScale);
-		objectRenderer = new ObjectRenderer(batch, rpgController.getModel()
-				.getRpgMap(), stage, game, this.rpgController.getModel()
-				.getCharacter());
-		objectRenderer.prepareCharacters();
-
-		// this.rpgController.runAutomaticEvents();
+		renderer = new MyOrthogonalTiledMapRenderer(rpgController.getModel()
+				.getRpgMap(), unitScale, getBatch(), game, rpgController
+				.getModel().getCharacter());
 	}
 
 	@Override
-	public Array<Asset> texturesToLoad() {
-		Array<Asset> assets = objectRenderer.texturesToLoad();
+	public Array<Asset> textureRegionsToLoad() {
+		Array<Asset> assets = renderer.textureRegionsToLoad();
 		if (assets.size == 0)
 			return null;
 		return assets;
+	}
+
+	@Override
+	public Array<Asset> mapsToLoad() {
+		Array<Asset> assets = new Array<Asset>();
+		assets.add(new Asset(rpgController.getModel().getRpgMap().getMapName()
+				+ ".tmx", "rpg_maps"));
+		return assets;
+	}
+
+	@Override
+	public void initComponents() {
+		rpgController.getModel().getRpgMap().loadMap();
+		renderer.setMap(rpgController.getMap());
+		finder = new AStarPathFinder(rpgController.getModel().getRpgMap(), 500,
+				false, new ManhattanHeuristic(1));
+
+		renderer.prepareCharacters();
+	}
+
+	@Override
+	public void resize(int width, int height) {
+		super.resize(width, height);
+
+		renderer.resizeObjects(width, height);
 	}
 
 	/**
@@ -82,17 +95,26 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	 */
 	@Override
 	public void render(float delta) {
-		super.render(delta);
-
+		Gdx.gl.glClearColor(0, 0, 0, 1f);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		Gdx.input.setInputProcessor(this);
 
+		// Make adjustments to camera and sprite batch for tile rendering.
+		camera.setToOrtho(false, width * unitScale, height * unitScale);
 		renderer.setView(camera);
-		camera.setToOrtho(false, 3.75f, 2.5f);
 		renderer.render();
-		objectRenderer.render();
+
+		// Revert the adjustments before rendering game and stage objects.
+		camera.setToOrtho(false, width, height);
+		getBatch().getProjectionMatrix().setToOrtho2D(0, 0, width, height);
+
+		renderer.renderGameObjects();
+		stage.act(delta);
+		stage.draw();
+
 		update(delta);
 
-		if (firstRender) {
+		if (firstRender && game.getScreen() == this) {
 			this.rpgController.runAutomaticEvents();
 			firstRender = false;
 		}
@@ -101,7 +123,8 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	@Override
 	public void dispose() {
 		super.dispose();
-		batch.dispose();
+		game.getLoader().disposeAtlas();
+		game.getLoader().disposeMaps();
 	}
 
 	public void update(float delta) {
@@ -134,7 +157,7 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	 * representation (walking event).
 	 */
 	public void moveCharacter2d(WalkDirection direction) {
-		objectRenderer.getPlayerCharacter().move(direction);
+		renderer.getPlayerCharacter().move(direction);
 	}
 
 	/**
@@ -142,15 +165,15 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	 * representation (direction change event).
 	 */
 	public void turnCharacter2d(WalkDirection direction) {
-		objectRenderer.getPlayerCharacter().setWalking(false);
-		objectRenderer.getPlayerCharacter().setDirection(direction);
+		renderer.getPlayerCharacter().setWalking(false);
+		renderer.getPlayerCharacter().setDirection(direction);
 	}
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		int[] currentPos = pixelsToTile((int) objectRenderer
-				.getPlayerCharacter().getX(), Gdx.graphics.getHeight()
-				- (int) objectRenderer.getPlayerCharacter().getY() - 1);
+		int[] currentPos = pixelsToTile((int) renderer.getPlayerCharacter()
+				.getX(), Gdx.graphics.getHeight()
+				- (int) renderer.getPlayerCharacter().getY() - 1);
 		int[] destinationPos = pixelsToTile(screenX, screenY);
 
 		path = finder.findPath(rpgController.getModel().getCharacter()
@@ -173,7 +196,7 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	}
 
 	public Character2D getCharacter2d() {
-		return this.objectRenderer.getPlayerCharacter();
+		return this.renderer.getPlayerCharacter();
 	}
 
 	@Override

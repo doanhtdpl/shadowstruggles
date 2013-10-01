@@ -1,6 +1,7 @@
 package br.edu.ifsp.pds.shadowstruggles.screens;
 
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.data.Loader.Asset;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.DeckDAO;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.TutorialDAO;
@@ -109,6 +110,18 @@ public class BattleTutorial extends BattleScreen {
 	public BattleTutorial(ShadowStruggles game, BattlePlatform platform) {
 		super(game, game.getProfile(), game.getController(), platform,
 				MenuTextDAO.getMenuText().practiceBattle, false);
+	}
+
+	@Override
+	public Array<Asset> textureRegionsToLoad() {
+		Array<Asset> assets = super.textureRegionsToLoad();
+		assets.addAll(new Asset[] { new Asset("indicator.png", "game_ui_images") });
+		return assets;
+	}
+
+	@Override
+	public void initComponents() {
+		super.initComponents();
 
 		dialogBox = new FixedImage(game.getTextureRegion("box",
 				"game_ui_images"), 150, this) {

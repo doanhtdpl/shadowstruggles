@@ -3,8 +3,8 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
+import br.edu.ifsp.pds.shadowstruggles.data.Loader.Asset;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
-import br.edu.ifsp.pds.shadowstruggles.data.dao.ProfileDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.items.Item;
 import br.edu.ifsp.pds.shadowstruggles.model.items.Pack;
 import br.edu.ifsp.pds.shadowstruggles.model.items.Shop;
@@ -80,11 +80,9 @@ public class ShopScreen extends BaseScreen {
 		this.currentCategory = Category.CARD;
 		if (shop == null)
 			this.mainShop = true;
-
-		initComponents();
 	}
 
-	private void initComponents() {
+	public void initComponents() {
 		final BaseScreen menu = this.previousScreen;
 
 		Table menuTable = new Table();
@@ -144,7 +142,6 @@ public class ShopScreen extends BaseScreen {
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_6");
 				game.setScreenWithTransition(menu);
-				ProfileDAO.createProfile(game.getProfile());
 			}
 		});
 
@@ -331,5 +328,49 @@ public class ShopScreen extends BaseScreen {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		stage.draw();
 		Table.drawDebug(stage);
+	}
+
+	@Override
+	public Array<Asset> textureRegionsToLoad() {
+		Array<Asset> assets = new Array<Asset>();
+		// Array for keeping track of items, making sure that there are no
+		// duplicates.
+		Array<String> previousItems = new Array<String>();
+
+		Array<Item> shopItems = null;
+		if (this.mainShop)
+			shopItems = game.getProfile().getUnlockedItems();
+		else
+			shopItems = shop.getItems();
+
+		for (Item i : shopItems) {
+			String itemName = i.getName().toLowerCase();
+			if (!previousItems.contains(itemName, false)) {
+				if (i instanceof Card)
+					assets.add(new Asset(itemName + ".png", "cards"));
+				else
+					assets.add(new Asset(itemName + ".png", "item_icons"));
+				previousItems.add(itemName);
+			}
+		}
+
+		for (Item i : game.getProfile().getInventory()) {
+			String itemName = i.getName().toLowerCase();
+			if (!previousItems.contains(itemName, false)) {
+				if (i instanceof Card)
+					assets.add(new Asset(itemName + ".png", "cards"));
+				else
+					assets.add(new Asset(itemName + ".png", "item_icons"));
+				previousItems.add(i.getName());
+			}
+		}
+
+		return assets;
+	}
+
+	@Override
+	public void dispose() {
+		super.dispose();
+		game.getLoader().disposeAtlas();
 	}
 }

@@ -23,6 +23,7 @@ public class RpgMap implements TileBasedMap {
 	private String mapName;
 	private TiledMap map;
 	private String objectLayer;
+	private String tileLayerString;
 	private TiledMapTileLayer tileLayer = null;
 	private ShadowStruggles game;
 
@@ -39,7 +40,9 @@ public class RpgMap implements TileBasedMap {
 		this.mapName = mapName;
 		this.map = game.getTiledMap(mapName);
 		this.objectLayer = objectLayer;
-		this.tileLayer = (TiledMapTileLayer) map.getLayers().get(tileLayer);
+		this.tileLayerString = tileLayer;
+		if (map != null)
+			this.tileLayer = (TiledMapTileLayer) map.getLayers().get(tileLayer);
 	}
 
 	public RpgMap(RpgMap rpgMap) {
@@ -157,8 +160,9 @@ public class RpgMap implements TileBasedMap {
 		Array<EventInGame> events = game.getProfile().getEvents(mapName,
 				objectLayer);
 		for (EventInGame event : events) {
-			if (event.getTriggerType() == EventInGame.TriggerType.AUTOMATIC)
+			if (event.getTriggerType() == EventInGame.TriggerType.AUTOMATIC) {
 				event.trigger();
+			}
 		}
 	}
 
@@ -273,5 +277,15 @@ public class RpgMap implements TileBasedMap {
 
 	private ShadowStruggles getGame() {
 		return this.game;
+	}
+
+	/**
+	 * Retrieves the TiledMap and the current layer using the mapName and
+	 * tileLayer attributes.
+	 */
+	public void loadMap() {
+		this.map = game.getTiledMap(mapName);
+		this.tileLayer = (TiledMapTileLayer) map.getLayers().get(
+				tileLayerString);
 	}
 }

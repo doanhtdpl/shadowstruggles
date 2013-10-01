@@ -3,13 +3,16 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
+import br.edu.ifsp.pds.shadowstruggles.data.Loader.Asset;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.model.DefaultRules;
 import br.edu.ifsp.pds.shadowstruggles.model.cards.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.cards.Deck;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Effect;
 import br.edu.ifsp.pds.shadowstruggles.model.cards.Fighter;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Trap;
 import br.edu.ifsp.pds.shadowstruggles.model.profiles.Profile;
 import br.edu.ifsp.pds.shadowstruggles.object2d.BackCard;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Deck2D;
@@ -72,7 +75,7 @@ public class BattleScreen extends BaseScreen {
 
 	protected BattleMap2D map2d;
 	private HandBackground background;
-	private boolean inicializado = false;
+	private boolean initialized = false;
 	private Array<Hexagram> hexagrams;
 	private Array<BackCard> backcards;
 	private Array<FixedLabel> cardInfo;
@@ -113,11 +116,6 @@ public class BattleScreen extends BaseScreen {
 		controller.setPlatform(battlePlatform);
 
 		this.battlePlatform = battlePlatform;
-		TextureRegion mapImage = new TextureRegion(game.getTexture(
-				battlePlatform.getMap().getName(), "battle_maps"),
-				SettingsDAO.getSettings().backgroundWidth / 2,
-				SettingsDAO.getSettings().backgroundHeight / 2);
-		map2d = new BattleMap2D(controller, mapImage);
 
 		timeElapsed = 0;
 		timeDelay = 0;
@@ -127,7 +125,68 @@ public class BattleScreen extends BaseScreen {
 		hexagrams = new Array<Hexagram>();
 		backcards = new Array<BackCard>();
 		fixedImages = new Array<FixedImage>();
-		initComponents();
+	}
+
+	@Override
+	public Array<Asset> textureRegionsToLoad() {
+		Array<Asset> assets = new Array<Asset>(new Asset[] {
+				new Asset("magnifier.png", "game_ui_images"),
+				new Asset("back_card.png", "game_ui_images"),
+				new Asset("deck.png", "game_ui_images"),
+				new Asset("energy100.png", "game_ui_images"),
+				new Asset("background.png", "game_ui_images"),
+				new Asset("hexagram.png", "game_ui_images"),
+				new Asset("life100.png", "game_ui_images"),
+				new Asset("pause.png", "game_ui_images"),
+				new Asset("box.png", "game_ui_images") });
+		Array<String> previousCards = new Array<String>();
+
+		for (Card card : battlePlatform.getPlayerDeck().getCards()) {
+			String cardName = card.getName().toLowerCase();
+			if (!previousCards.contains(cardName, false)) {
+				assets.add(new Asset(cardName + ".png", "cards"));
+
+				if (card instanceof Fighter) {
+					assets.add(new Asset(cardName + ".png", "card_walking"));
+					assets.add(new Asset(cardName + ".png", "card_attacking"));
+				}
+				if (card instanceof Effect || card instanceof Trap)
+					assets.add(new Asset(cardName + ".png", "card_effects"));
+				previousCards.add(cardName);
+			}
+		}
+		for (Card card : battlePlatform.getEnemyDeck().getCards()) {
+			String cardName = card.getName().toLowerCase();
+			if (!previousCards.contains(cardName, false)) {
+				assets.add(new Asset(cardName + ".png", "cards"));
+
+				if (card instanceof Fighter) {
+					assets.add(new Asset(cardName + ".png", "card_walking"));
+					assets.add(new Asset(cardName + ".png", "card_attacking"));
+				}
+				if (card instanceof Effect || card instanceof Trap)
+					assets.add(new Asset(cardName + ".png", "card_effects"));
+				previousCards.add(cardName);
+			}
+		}
+
+		return assets;
+	}
+
+	@Override
+	public Array<Asset> texturesToLoad() {
+		Array<Asset> assets = new Array<Asset>(new Asset[] {
+				new Asset(battlePlatform.getMap().getName() + ".png",
+						"battle_maps"),
+				new Asset("energy100.png", "game_ui_images") });
+		return assets;
+	}
+
+	@Override
+	public Array<Asset> soundsToLoad() {
+		Array<Asset> assets = new Array<Asset>(new Asset[] { new Asset(
+				"battle.ogg", "soundtrack") });
+		return assets;
 	}
 
 	@Override
@@ -167,6 +226,16 @@ public class BattleScreen extends BaseScreen {
 		}
 	}
 
+	@Override
+	public void dispose() {
+		super.dispose();
+		game.getLoader().disposeAtlas();
+		game.getLoader().disposeTextures();
+		game.getLoader().unloadSounds(
+				new Array<Asset>(new Asset[] { new Asset("battle.ogg",
+						"soundtrack") }));
+	}
+
 	public void update(float delta) {
 		// Verificar vit�ria
 		if (this.battlePlatform.getRules().gameState()
@@ -174,13 +243,12 @@ public class BattleScreen extends BaseScreen {
 			playerLose();
 		} else if (this.battlePlatform.getRules().gameState()
 				.equals(DefaultRules.PLAYER_VICTORY)) {
-			VictoryScreen victory = VictoryScreen.getInstance(game, controller,
-					null, null, false);
+			VictoryScreen victory = new VictoryScreen(game, controller, null,
+					null, false);
 			victory.setBattleScreen(this);
 			victory.setIsInCampaign(isInCampaign);
 			victory.setMessage(MenuTextDAO.getMenuText().victory);
 			game.setScreenWithTransition(victory);
-			victory.initComponents();
 		}
 		keyInput(delta);
 
@@ -296,11 +364,15 @@ public class BattleScreen extends BaseScreen {
 	 * disposition on the screen and adds the actors to the stage.
 	 */
 
-	private void initComponents() {
-		map2d.setWidth(SettingsDAO.getSettings().backgroundWidth);
-		map2d.setHeight(SettingsDAO.getSettings().backgroundHeight);
-		if (!inicializado) {
-
+	public void initComponents() {
+		if (!initialized) {
+			TextureRegion mapImage = new TextureRegion(game.getTexture(
+					battlePlatform.getMap().getName(), "battle_maps"),
+					SettingsDAO.getSettings().backgroundWidth / 2,
+					SettingsDAO.getSettings().backgroundHeight / 2);
+			map2d = new BattleMap2D(controller, mapImage);
+			map2d.setWidth(SettingsDAO.getSettings().backgroundWidth);
+			map2d.setHeight(SettingsDAO.getSettings().backgroundHeight);
 			map2d.setX(0);
 			map2d.setY(BACKGROUND_Y);
 
@@ -368,7 +440,7 @@ public class BattleScreen extends BaseScreen {
 			magnifier.setY(152);
 			magnifier.setScale(0.5f);
 			inputSources.addProcessor(magnifier);
-			inicializado = true;
+			initialized = true;
 
 		}
 
@@ -495,8 +567,8 @@ public class BattleScreen extends BaseScreen {
 	}
 
 	public void playerLose() {
-		DefeatScreen defeatScreen = DefeatScreen.getInstance(game, controller,
-				null, null);
+		DefeatScreen defeatScreen = new DefeatScreen(game, controller, null,
+				null);
 		defeatScreen.setMessage(MenuTextDAO.getMenuText().defeat);
 		defeatScreen.setBattleScreen(this);
 		game.setScreenWithTransition(defeatScreen);

@@ -28,11 +28,7 @@ public class ObjectRenderer {
 
 	public ObjectRenderer(SpriteBatch batch, RpgMap rpgMap, Stage stage,
 			ShadowStruggles game) {
-		this.batch = batch;
-		this.rpgMap = rpgMap;
-		this.stage = stage;
-		this.game = game;
-		this.sprites = new Array<Character2D>();
+		this(batch, rpgMap, stage, game, null);
 	}
 
 	public ObjectRenderer(SpriteBatch batch, RpgMap rpgMap, Stage stage,

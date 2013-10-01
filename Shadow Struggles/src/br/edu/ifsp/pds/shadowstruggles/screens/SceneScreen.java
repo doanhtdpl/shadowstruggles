@@ -41,14 +41,14 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 	public SceneScreen(ShadowStruggles game, Controller controller) {
 		super(game, controller);
 		this.game = game;
-//		this.scene = game.getProfile().getCurrentScene();
+		// this.scene = game.getProfile().getCurrentScene();
 		currentTextIndex = 0;
 		inputSources = new InputMultiplexer();
 		initComponents();
 
 	}
 
-	private void initComponents() {
+	public void initComponents() {
 
 		currentText = splitScript()[currentTextIndex];
 
@@ -61,19 +61,19 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 			game.getAudio().stop();
 		}
 
-//		if (!scene.getBackgroundImage().equals("")) {
-//			if (scene.getBackgroundImage().contains("/maps/")) {
-//				background = new Image(new TextureRegion(new Texture(
-//						Gdx.files.internal(scene.getBackgroundImage())),
-//						SettingsDAO.getSettings().backgroundWidth / 2,
-//						SettingsDAO.getSettings().backgroundHeight / 2));
-//			} else {
-//				background = new Image(new Texture(Gdx.files.internal(scene
-//						.getBackgroundImage())));
-//			}
-//		} else
-//			background = new Image();
-		
+		// if (!scene.getBackgroundImage().equals("")) {
+		// if (scene.getBackgroundImage().contains("/maps/")) {
+		// background = new Image(new TextureRegion(new Texture(
+		// Gdx.files.internal(scene.getBackgroundImage())),
+		// SettingsDAO.getSettings().backgroundWidth / 2,
+		// SettingsDAO.getSettings().backgroundHeight / 2));
+		// } else {
+		// background = new Image(new Texture(Gdx.files.internal(scene
+		// .getBackgroundImage())));
+		// }
+		// } else
+		// background = new Image();
+
 		background = new Image(this.getSkin().getDrawable("msbackground"));
 
 		background.setX(0);
@@ -131,8 +131,7 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_6");
-				game.setScreenWithTransition(MainScreen.getInstance(game,
-						controller));
+				game.setScreenWithTransition(new MainScreen(game, controller));
 			}
 
 		});
@@ -149,7 +148,7 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 		if (scene.getChoices().length > 1) {
 			choices = new TextButton[scene.getChoices().length];
 			for (int i = 0; i < scene.getChoices().length; i++) {
-//				final int j = i;
+				// final int j = i;
 				choices[i] = new TextButton(scene.getChoices()[i],
 						super.getSkin());
 
@@ -160,15 +159,17 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 
 					@Override
 					public void clicked(InputEvent event, float x, float y) {
-//						if (choices[j].getText().equals(scene.getChoices()[0])) {
-//							game.getProfile().setCurrentScene(
-//									SceneDAO.getScene(scene.getNextId()));
-//
-//						} else {
-//							game.getProfile().setCurrentScene(
-//									SceneDAO.getScene(scene.getNextId() + 1));
-//						}
-//						game.getAudio().playSound("button_4");
+						// if
+						// (choices[j].getText().equals(scene.getChoices()[0]))
+						// {
+						// game.getProfile().setCurrentScene(
+						// SceneDAO.getScene(scene.getNextId()));
+						//
+						// } else {
+						// game.getProfile().setCurrentScene(
+						// SceneDAO.getScene(scene.getNextId() + 1));
+						// }
+						// game.getAudio().playSound("button_4");
 
 					}
 				});
@@ -234,21 +235,21 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 	}
 
 	public void nextScreen() {
-//		if (scene.getId() == 1000) {
-//			game.setScreenWithTransition(new Practice(game, true));
-//		} else if (scene.getId() == 3000) {
-//			Scene firstScene = Scene.FIRST_SCENE;
-//			firstScene.setLanguage(game.getProfile().getLanguage());
-//			game.getProfile().setCurrentScene(firstScene);
-//			ProfileDAO.createProfile(game.getProfile());
-//			game.setScreenWithTransition(MainScreen.getInstance(game,
-//					controller));
-//		} else {
-//			game.getProfile().setCurrentScene(
-//					SceneDAO.getScene(scene.getNextId()));
-//			ProfileDAO.createProfile(game.getProfile());
-//			game.setScreenWithTransition(new SceneScreen(game, controller));
-//		}
+		// if (scene.getId() == 1000) {
+		// game.setScreenWithTransition(new Practice(game, true));
+		// } else if (scene.getId() == 3000) {
+		// Scene firstScene = Scene.FIRST_SCENE;
+		// firstScene.setLanguage(game.getProfile().getLanguage());
+		// game.getProfile().setCurrentScene(firstScene);
+		// ProfileDAO.createProfile(game.getProfile());
+		// game.setScreenWithTransition(MainScreen.getInstance(game,
+		// controller));
+		// } else {
+		// game.getProfile().setCurrentScene(
+		// SceneDAO.getScene(scene.getNextId()));
+		// ProfileDAO.createProfile(game.getProfile());
+		// game.setScreenWithTransition(new SceneScreen(game, controller));
+		// }
 	}
 
 	private String[] splitScript() {

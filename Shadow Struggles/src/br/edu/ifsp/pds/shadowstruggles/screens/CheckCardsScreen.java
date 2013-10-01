@@ -10,7 +10,6 @@ import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -34,22 +33,12 @@ public class CheckCardsScreen extends BaseScreen {
 	private Card selectedCard;
 	private Array<Card> cards;
 	private Array<Image> cardImages;
-	private static CheckCardsScreen instance;
 
-	public static CheckCardsScreen getInstance(ShadowStruggles game,
-			Controller controller, InGameMenu menu) {
-		if (instance != null)
-			return instance;
-		else {
-			instance = new CheckCardsScreen(game, controller, menu);
-			return instance;
-		}
-	}
-
-	private CheckCardsScreen(ShadowStruggles game, Controller controller,
+	public CheckCardsScreen(ShadowStruggles game, Controller controller,
 			InGameMenu menu) {
 		super(game, controller);
 		this.menu = menu;
+		initComponents();
 	}
 
 	public void setMenu(InGameMenu menu) {
@@ -154,9 +143,8 @@ public class CheckCardsScreen extends BaseScreen {
 		int count = 0;
 		cardImages = new Array<Image>();
 		for (Card card : cards) {
-			Image cardImage = new Image(game.getAssets()
-					.get("data/images/cards/cards.atlas", TextureAtlas.class)
-					.findRegion(card.getName().toLowerCase()));
+			Image cardImage = new Image(game.getTextureRegion(card.getName()
+					.toLowerCase(), "cards"));
 			ScreenUtils.defineImage(cardImage, 180 + count * 120, 5,
 					cardImage.getWidth(), cardImage.getHeight(), 0.6f, 0.6f);
 
@@ -213,9 +201,8 @@ public class CheckCardsScreen extends BaseScreen {
 			stage.removeActor(selectedImage);
 		} catch (Exception e) {
 		}
-		selectedImage = new Image(game.getAssets()
-				.get("data/images/cards/cards.atlas", TextureAtlas.class)
-				.findRegion(card.getName().toLowerCase()));
+		selectedImage = new Image(game.getTextureRegion(card.getName()
+				.toLowerCase(), "cards"));
 		selectedImage.setX(20);
 		selectedImage.setY(160);
 		name.setText(selectedCard.getLocalizedName());

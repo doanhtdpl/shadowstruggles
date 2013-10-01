@@ -13,7 +13,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 public class VictoryScreen extends BaseScreen {
-	private static VictoryScreen instance;
 
 	private Label text;
 	private TextButton continueButton;
@@ -28,19 +27,7 @@ public class VictoryScreen extends BaseScreen {
 	 */
 	private boolean isInCampaign;
 
-	public static VictoryScreen getInstance(ShadowStruggles game,
-			Controller controller, String message, BattleScreen battleScreen,
-			boolean isInCampaign) {
-		if (instance != null)
-			return instance;
-		else {
-			instance = new VictoryScreen(game, controller, message,
-					battleScreen, false);
-			return instance;
-		}
-	}
-
-	private VictoryScreen(ShadowStruggles game, Controller controller,
+	public VictoryScreen(ShadowStruggles game, Controller controller,
 			String message, BattleScreen battleScreen, boolean isInCampaign) {
 		super(game, controller);
 		this.isInCampaign = isInCampaign;
@@ -74,8 +61,7 @@ public class VictoryScreen extends BaseScreen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_4");
-				game.setScreenWithTransition(MainScreen.getInstance(game,
-						controller));
+				game.setScreenWithTransition(new MainScreen(game, controller));
 			}
 
 		});
@@ -106,19 +92,20 @@ public class VictoryScreen extends BaseScreen {
 
 			this.getStage().addActor(continueButton);
 
-//			// Moves the plot forward to the next scene.
-//			game.getProfile().setCurrentScene(
-//					SceneDAO.getScene(game.getProfile().getCurrentScene()
-//							.getNextId()));
-//			// ProfileDAO.createProfile(game.getProfile(), game.getManager());
-//
-//			// Adds the battles to the array of fought battles.
-//			if (battleScreen.getClass() == Practice.class) {
-//				if (!game.getProfile().getBattlesFought().contains(1f, true)) {
-//					game.getProfile().getBattlesFought().add(1f);
-//					// MenuTextDAO.writeProfile(game.getProfile());
-//				}
-//			}
+			// // Moves the plot forward to the next scene.
+			// game.getProfile().setCurrentScene(
+			// SceneDAO.getScene(game.getProfile().getCurrentScene()
+			// .getNextId()));
+			// // ProfileDAO.createProfile(game.getProfile(),
+			// game.getManager());
+			//
+			// // Adds the battles to the array of fought battles.
+			// if (battleScreen.getClass() == Practice.class) {
+			// if (!game.getProfile().getBattlesFought().contains(1f, true)) {
+			// game.getProfile().getBattlesFought().add(1f);
+			// // MenuTextDAO.writeProfile(game.getProfile());
+			// }
+			// }
 		}
 	}
 }

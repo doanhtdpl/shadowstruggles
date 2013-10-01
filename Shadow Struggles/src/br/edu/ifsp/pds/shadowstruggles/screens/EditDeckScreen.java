@@ -37,24 +37,21 @@ public class EditDeckScreen extends BaseScreen {
 	private Card selectedCard;
 	private Array<Image> cardImages;
 	private Array<Card> trunk;
-	private Array<Deck> playerDecks;
-	private static EditDeckScreen instance;
 	private SelectBox decks;
 
-	public static EditDeckScreen getInstance(ShadowStruggles game,
-			Controller controller, BaseScreen previousScreen) {
-		if (instance != null)
-			return instance;
-		else {
-			instance = new EditDeckScreen(game, controller, previousScreen);
-			return instance;
-		}
-	}
-
-	private EditDeckScreen(ShadowStruggles game, Controller controller,
+	public EditDeckScreen(ShadowStruggles game, Controller controller,
 			BaseScreen previousScreen) {
 		super(game, controller);
 		this.previousScreen = previousScreen;
+		
+		this.trunk = new Array<Card>();
+		for (Item i : game.getProfile().getInventory()) {
+			if (i instanceof Card) {
+				this.trunk.add((Card) i);
+			}
+		}
+		
+		this.selectedDeck = game.getProfile().getSelectedDeck();
 	}
 
 	public void setPreviousScreen(BaseScreen previousScreen) {
@@ -71,14 +68,7 @@ public class EditDeckScreen extends BaseScreen {
 		stage.clear();
 
 		final BaseScreen menu = this.previousScreen;
-		this.selectedDeck = game.getProfile().getSelectedDeck();
-		this.trunk = new Array<Card>();
-		for (Item i : game.getProfile().getInventory()) {
-			if (i instanceof Card) {
-				this.trunk.add((Card) i);
-			}
-		}
-
+		
 		Table menuTable = new Table();
 		menuTable.defaults().padTop(MENUTABLE_PADTOP).width(MENUTABLE_WIDTH).height(MENUTABLE_HEIGHT);
 
@@ -235,7 +225,7 @@ public class EditDeckScreen extends BaseScreen {
 	}
 
 	@Override
-	public Array<Asset> texturesToLoad() {
+	public Array<Asset> textureRegionsToLoad() {
 		Array<Asset> assets = new Array<Asset>();
 		// Array for keeping track of cards, making sure that there are no
 		// duplicates.
@@ -247,7 +237,7 @@ public class EditDeckScreen extends BaseScreen {
 				previousCards.add(c.getName());
 			}
 		}
-		for (Deck d : playerDecks) {
+		for (Deck d : game.getProfile().getDecks()) {
 			for (Card c : d.getCards()) {
 				if (!previousCards.contains(c.getName(), false)) {
 					assets.add(new Asset(c.getName() + ".png", "cards"));
@@ -307,5 +297,11 @@ public class EditDeckScreen extends BaseScreen {
 	public void render(float delta) {
 		super.render(delta);
 		Table.drawDebug(stage);
+	}
+	
+	@Override
+	public void dispose() {
+		super.dispose();
+		game.getLoader().disposeAtlas();
 	}
 }

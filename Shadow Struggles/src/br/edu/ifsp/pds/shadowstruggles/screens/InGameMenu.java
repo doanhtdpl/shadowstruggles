@@ -19,22 +19,12 @@ public class InGameMenu extends BaseScreen {
 	private TextButton config;
 	private TextButton checkCards;
 	private BattleScreen battleScreen;
-	private static InGameMenu instance;
 
-	public static InGameMenu getInstance(ShadowStruggles game,
-			Controller controller, BattleScreen battleScreen) {
-		if (instance == null)
-			instance = new InGameMenu(game, controller, battleScreen);
-
-		return instance;
-	}
-
-	private InGameMenu(ShadowStruggles game, Controller controller,
+	public InGameMenu(ShadowStruggles game, Controller controller,
 			BattleScreen battleScreen) {
 		super(game, controller);
 		this.battleScreen = battleScreen;
 		initComponents();
-
 	}
 
 	@Override
@@ -50,7 +40,7 @@ public class InGameMenu extends BaseScreen {
 		super.resize(width, height);
 	}
 
-	private void initComponents() {
+	public void initComponents() {
 		background = new Image(this.getSkin().getDrawable("msbackground"));
 		background.setScaleX(960f / 512f);
 		background.setScaleY(640f / 380f);
@@ -78,10 +68,9 @@ public class InGameMenu extends BaseScreen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_4");
-				CheckCardsScreen cardsScreen = CheckCardsScreen.getInstance(
-						game, controller, menu);
+				CheckCardsScreen cardsScreen = new CheckCardsScreen(game,
+						controller, menu);
 				cardsScreen.setMenu(menu);
-				cardsScreen.initComponents();
 				game.setScreenWithTransition(cardsScreen);
 
 			}
@@ -110,8 +99,7 @@ public class InGameMenu extends BaseScreen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_4");
-				game.setScreenWithTransition(MainScreen.getInstance(game,
-						controller));
+				game.setScreenWithTransition(new MainScreen(game, controller));
 			}
 
 		});

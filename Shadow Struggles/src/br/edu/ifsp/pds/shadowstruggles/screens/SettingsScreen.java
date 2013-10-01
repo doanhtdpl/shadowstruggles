@@ -77,7 +77,7 @@ public class SettingsScreen extends BaseScreen {
 		initComponents();
 	}
 
-	private void initComponents() {
+	public void initComponents() {
 		// Images.
 
 		bar = new Image(this.getSkin().getDrawable("blur_line"));

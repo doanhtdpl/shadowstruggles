@@ -1,12 +1,8 @@
 package br.edu.ifsp.pds.shadowstruggles.screens;
 
-import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.data.FileMap;
-import br.edu.ifsp.pds.shadowstruggles.data.Loader;
-import br.edu.ifsp.pds.shadowstruggles.data.Loader.ManagementStrategy;
 import br.edu.ifsp.pds.shadowstruggles.data.SoundManager;
-import br.edu.ifsp.pds.shadowstruggles.screens.SaveLoadScreen.Mode;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -18,8 +14,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 /**
- * The game assets are loaded in this screen, which shows a progress bar to the
- * player indicating how much of the resources have been loaded.
+ * The game assets are loaded during this screen, which shows a progress bar to
+ * the player indicating how much of the resources have been loaded.
  */
 public class LoadingScreen extends BaseScreen {
 
@@ -50,25 +46,32 @@ public class LoadingScreen extends BaseScreen {
 			this.percentageLbl.setY(this.getY() + 20);
 			this.percentageLbl.setStyle(new LabelStyle(skin
 					.getFont("andalus-font"), Color.WHITE));
-			this.getStage().addActor(percentageLbl);
+			if(this.getStage() != null)
+				this.getStage().addActor(percentageLbl);
 		}
 	}
 
 	private static int BAR_MAX_WIDTH = 1024; // The width of the progress bar.
 
-	private Image background;
 	private ShadowStruggles game;
+	private BaseScreen nextScreen;
+	private boolean initialized;
+
+	private Image background;
 	private LoadingBar bar;
-	private Loader loader;
 	private float percent;
 
-	public LoadingScreen(ShadowStruggles game, Controller controller) {
-		super(game, controller);
-		loader = new Loader(game, ManagementStrategy.STATIC_TEXTURE_ATLAS);
-		loader.loadAssets();
+	public LoadingScreen(ShadowStruggles game, BaseScreen nextScreen) {
+		super(game);
+		this.nextScreen = nextScreen;
 		// The game attribute must be set again, otherwise it's not initialized
 		// properly.
 		this.game = game;
+
+		game.getLoader().setAssetsToLoad(nextScreen.textureRegionsToLoad(),
+				nextScreen.texturesToLoad(), nextScreen.soundsToLoad(),
+				nextScreen.mapsToLoad());
+		game.getLoader().loadAssets();
 	}
 
 	@Override
@@ -88,12 +91,7 @@ public class LoadingScreen extends BaseScreen {
 		background.setScaleY(640f / 512f);
 		background.setY(background.getImageY() + 100);
 
-		bar = new LoadingBar();
-		bar.setX(80);
-		bar.setY(50);
-
 		stage.addActor(background);
-		stage.addActor(bar);
 	}
 
 	@Override
@@ -101,13 +99,24 @@ public class LoadingScreen extends BaseScreen {
 		super.render(delta);
 
 		if (game.getAssets().update()) {
-			game.setAudio(new SoundManager(game.getAssets()));
-			game.getAudio().setMusic("intro");
-			loader.instantiateScreens();
-			game.setLoader(loader);
-			game.setScreenWithTransition(new SaveLoadScreen(game, controller,
-					Mode.START, null));
-		} else {
+			game.setScreenWithTransition(nextScreen);
+
+			if (nextScreen instanceof SaveLoadScreen) {
+				game.setAudio(new SoundManager(game.getAssets()));
+				game.getAudio().setMusic("intro");
+			}
+
+			nextScreen.initComponents();
+		} else if (game.getAssets().isLoaded(
+				FileMap.resourcesToDirectory.get("skin") + "skin.atlas")) {
+			if (!initialized) {
+				bar = new LoadingBar();
+				bar.setX(80);
+				bar.setY(50);
+				stage.addActor(bar);
+				initialized = true;
+			}
+			
 			percent += 0.005f;
 			if (game.getAssets().getProgress() - percent > 0.0f)
 				percent += (game.getAssets().getProgress() - percent) * 0.9f;
