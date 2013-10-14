@@ -3,6 +3,7 @@
 	<name>ShadowStrugglesAndroid</name>
 	<comment></comment>
 	<projects>
+		<project>ShadowStruggles</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
