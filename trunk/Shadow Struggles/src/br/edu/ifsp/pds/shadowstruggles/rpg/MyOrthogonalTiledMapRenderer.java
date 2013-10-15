@@ -21,8 +21,8 @@ import static com.badlogic.gdx.graphics.g2d.SpriteBatch.Y2;
 import static com.badlogic.gdx.graphics.g2d.SpriteBatch.Y3;
 import static com.badlogic.gdx.graphics.g2d.SpriteBatch.Y4;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
 import br.edu.ifsp.pds.shadowstruggles.data.Loader.Asset;
-import br.edu.ifsp.pds.shadowstruggles.data.Settings;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.events.EventInGame;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character;
@@ -32,6 +32,8 @@ import br.edu.ifsp.pds.shadowstruggles.object2d.rpg.Character2D;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
@@ -40,6 +42,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.maps.tiled.renderers.BatchTiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.tiles.AnimatedTiledMapTile;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 
 /**
@@ -50,18 +53,13 @@ import com.badlogic.gdx.utils.Array;
  */
 public class MyOrthogonalTiledMapRenderer extends BatchTiledMapRenderer {
 	private float[] vertices = new float[20];
+	private ShapeRenderer debugRenderer;
 
 	private ShadowStruggles game;
 	private RpgMap rpgMap;
 	private Array<Character2D> sprites;
 	private Character2D playerCharacter;
 	private Character playerCharacterModel;
-
-	// Auxiliary variables for dealing with resizing.
-	private float scaleX;
-	private float scaleY;
-	private float offsetX;
-	private float offsetY;
 
 	public MyOrthogonalTiledMapRenderer(RpgMap rpgMap, float unitScale,
 			SpriteBatch spriteBatch, ShadowStruggles game) {
@@ -76,8 +74,10 @@ public class MyOrthogonalTiledMapRenderer extends BatchTiledMapRenderer {
 		this.rpgMap = rpgMap;
 		this.game = game;
 		this.playerCharacterModel = playerCharacterModel;
-
 		this.sprites = new Array<Character2D>();
+
+		if (game.getMode() == RunMode.DEBUG)
+			debugRenderer = new ShapeRenderer();
 	}
 
 	/**
@@ -88,7 +88,6 @@ public class MyOrthogonalTiledMapRenderer extends BatchTiledMapRenderer {
 			playerCharacter = new Character2D("char", playerCharacterModel,
 					game);
 			playerCharacter.create();
-			// stage.addActor(playerCharacter);
 		}
 
 		Array<EventInGame> events = game.getProfile().getEvents(
@@ -165,12 +164,8 @@ public class MyOrthogonalTiledMapRenderer extends BatchTiledMapRenderer {
 
 			// Render character.
 			char2d.render();
-			spriteBatch.draw(char2d.getCurrentFrame(), char2d.getX() + offsetX,
-					char2d.getY() + offsetY, char2d.getOriginX() - offsetX,
-					char2d.getOriginY() - offsetY, char2d.getWidth(),
-					char2d.getHeight(), scaleX, scaleY, char2d.getRotation());
-			// spriteBatch.draw(char2d.getCurrentFrame(), char2d.getX(),
-			// char2d.getY());
+			spriteBatch.draw(char2d.getCurrentFrame(), char2d.getX(),
+					char2d.getY());
 		}
 
 		if (playerCharacterModel != null) {
@@ -181,15 +176,65 @@ public class MyOrthogonalTiledMapRenderer extends BatchTiledMapRenderer {
 		spriteBatch.end();
 	}
 
-	public void resizeObjects(int screenWidth, int screenHeight) {
-		Settings settings = SettingsDAO.getSettings();
-		float standardWidth = settings.mapWidth;
-		float standardHeight = settings.mapHeight;
+	/**
+	 * Renders debug lines for the objects' collision boxes.
+	 */
+	public void renderGameObjectsDebug() {
+		debugRenderer.setProjectionMatrix(spriteBatch.getProjectionMatrix());
+		debugRenderer.begin(ShapeType.Line);
+		debugRenderer.setColor(Color.RED);
 
-		scaleX = (float) screenWidth / standardWidth;
-		scaleY = (float) screenHeight / standardHeight;
-		offsetX = screenWidth - standardWidth;
-		offsetY = screenHeight - standardHeight;
+		int tileSize = SettingsDAO.getSettings().rpgTileSize;
+
+		for (Character2D char2d : sprites) {
+			Character model = char2d.getCharModel();
+			Rectangle rect = model.getMover().getRectangle();
+			debugRenderer.rect(rect.x * tileSize, rect.y * tileSize, rect.width
+					* tileSize, rect.height * tileSize);
+		}
+
+		if (playerCharacterModel != null) {
+			Rectangle rect = playerCharacterModel.getMover().getRectangle();
+			debugRenderer.rect(rect.x * tileSize, rect.y * tileSize, rect.width
+					* tileSize, rect.height * tileSize);
+		}
+
+		debugRenderer.end();
+	}
+
+	/**
+	 * Renders debug lines for the tiles' collision boxes.
+	 */
+	public void renderTilesDebug() {
+		debugRenderer.setProjectionMatrix(spriteBatch.getProjectionMatrix());
+		debugRenderer.begin(ShapeType.Line);
+		debugRenderer.setColor(Color.BLUE);
+		for (MapLayer layer : map.getLayers()) {
+			if (layer.isVisible()) {
+				if (layer instanceof TiledMapTileLayer) {
+					renderTileLayerDebug((TiledMapTileLayer) layer);
+				}
+			}
+		}
+		debugRenderer.end();
+	}
+
+	private void renderTileLayerDebug(TiledMapTileLayer layer) {
+		float width = rpgMap.getWidthInTiles();
+		float height = rpgMap.getHeightInTiles();
+		int tileSize = SettingsDAO.getSettings().rpgTileSize;
+
+		for (int i = 0; i < width; i++) {
+			for (int j = 0; j < height; j++) {
+				TiledMapTile tile = layer.getCell(i, j).getTile();
+				if (tile.getProperties().containsKey(
+						SettingsDAO.getSettings().collidableTile)) {
+					Rectangle rect = new Rectangle(i * tileSize, j * tileSize,
+							tileSize, tileSize);
+					debugRenderer.rect(rect.x, rect.y, rect.width, rect.height);
+				}
+			}
+		}
 	}
 
 	@Override
