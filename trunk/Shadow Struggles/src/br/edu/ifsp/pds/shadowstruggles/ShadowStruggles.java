@@ -66,7 +66,7 @@ public class ShadowStruggles extends Game {
 	}
 
 	private ShadowStruggles() {
-		this(RunMode.TESTS);
+		this(RunMode.DEBUG);
 	}
 
 	private ShadowStruggles(RunMode mode) {
