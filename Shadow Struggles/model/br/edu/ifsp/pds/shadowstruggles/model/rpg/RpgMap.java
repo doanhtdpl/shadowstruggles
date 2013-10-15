@@ -81,7 +81,7 @@ public class RpgMap implements TileBasedMap {
 				// possible collisions.
 				Rectangle projectedCharacter = new Rectangle(x, y, cMover
 						.getRectangle().getWidth(), cMover.getRectangle()
-						.getHeight() / 2);
+						.getHeight());
 
 				// Check if there's an event touching the projected character,
 				// triggering it if applicable.
@@ -198,10 +198,7 @@ public class RpgMap implements TileBasedMap {
 	 */
 	public boolean checkTileCollision(Rectangle charRect) {
 		int x = (int) charRect.x;
-		// Maps from Tiled are interpreted with the traditional
-		// Cartesian coordinate system (y increases upwards); thus, the
-		// y parameter must be inverted.
-		int y = (int) (this.getHeightInTiles() - charRect.y - 1);
+		int y = (int) charRect.y;
 
 		// Check for tile obstacles in the tile itself and its adjacent
 		// spots in 4 directions.

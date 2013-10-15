@@ -116,14 +116,14 @@ public class Character {
 
 		switch (direction) {
 		case WALK_UP:
-			if (!map.blocked(this.mover, tileX, tileY - 1, destination == null)) {
-				tileY--;
+			if (!map.blocked(this.mover, tileX, tileY + 1, destination == null)) {
+				tileY++;
 				walked = true;
 			}
 			break;
 		case WALK_DOWN:
-			if (!map.blocked(this.mover, tileX, tileY + 1, destination == null)) {
-				tileY++;
+			if (!map.blocked(this.mover, tileX, tileY - 1, destination == null)) {
+				tileY--;
 				walked = true;
 			}
 			break;
@@ -152,12 +152,12 @@ public class Character {
 			WalkDirection oppositeDirection = null;
 
 			if (destination[0] == tileX && destination[1] < tileY) {
-				this.direction = WalkDirection.WALK_UP;
-				oppositeDirection = WalkDirection.WALK_DOWN;
-			}
-			if (destination[0] == tileX && destination[1] > tileY) {
 				this.direction = WalkDirection.WALK_DOWN;
 				oppositeDirection = WalkDirection.WALK_UP;
+			}
+			if (destination[0] == tileX && destination[1] > tileY) {
+				this.direction = WalkDirection.WALK_UP;
+				oppositeDirection = WalkDirection.WALK_DOWN;
 			}
 			if (destination[0] < tileX && destination[1] == tileY) {
 				this.direction = WalkDirection.WALK_LEFT;

@@ -2,6 +2,7 @@ package br.edu.ifsp.pds.shadowstruggles.screens.rpg;
 
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
 import br.edu.ifsp.pds.shadowstruggles.data.Loader.Asset;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character.WalkDirection;
@@ -18,6 +19,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.Array;
 
 /**
@@ -25,6 +27,12 @@ import com.badlogic.gdx.utils.Array;
  * command to the RPG Controller. Also, renders all the visual elements.
  */
 public class RpgScreen extends BaseScreen implements InputProcessor {
+	// The maximum range for the map region shown on screen. This is done so
+	// that large screens can't see huge portions of the map at once, which
+	// could be bad for certain level designs such as mazes.
+	private static final int maxWidthRange = 960;
+	private static final int maxHeightRange = 640;
+
 	private RpgController rpgController;
 	private MyOrthogonalTiledMapRenderer renderer;
 
@@ -32,7 +40,7 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	private Path path;
 
 	private boolean firstRender = true;
-	private float unitScale = 1 / 256f;
+	private float unitScale = 1f;
 
 	/**
 	 * The constructor initializes the objects and defines itself as the
@@ -48,6 +56,11 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	public RpgScreen(ShadowStruggles game, Controller controller,
 			RpgController rpgController) {
 		super(game, controller);
+
+		// The super constructor does some nasty stuff with the camera which we
+		// don't want for RpgScreen, so let's create a new one.
+		this.camera = new OrthographicCamera(this.width, this.height);
+		this.camera.position.set(CAMERA_INITIAL_X, CAMERA_INITIAL_Y, 0);
 
 		rpgController.setViewer(this);
 		this.rpgController = rpgController;
@@ -84,9 +97,17 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 
 	@Override
 	public void resize(int width, int height) {
-		super.resize(width, height);
+		this.width = width;
+		this.height = height;
 
-		renderer.resizeObjects(width, height);
+		float viewportWidth = width * unitScale;
+		float viewportHeight = height * unitScale;
+		if (width >= maxWidthRange)
+			viewportWidth = maxWidthRange * unitScale;
+		if (height >= maxHeightRange)
+			viewportHeight = maxHeightRange * unitScale;
+
+		camera.setToOrtho(false, viewportWidth, viewportHeight);
 	}
 
 	/**
@@ -99,16 +120,15 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		Gdx.input.setInputProcessor(this);
 
-		// Make adjustments to camera and sprite batch for tile rendering.
-		camera.setToOrtho(false, width * unitScale, height * unitScale);
+		camera.update();
+
 		renderer.setView(camera);
 		renderer.render();
-
-		// Revert the adjustments before rendering game and stage objects.
-		camera.setToOrtho(false, width, height);
-		getBatch().getProjectionMatrix().setToOrtho2D(0, 0, width, height);
-
 		renderer.renderGameObjects();
+		if (game.getMode() == RunMode.DEBUG) {
+			renderer.renderGameObjectsDebug();
+			renderer.renderTilesDebug();
+		}
 		stage.act(delta);
 		stage.draw();
 

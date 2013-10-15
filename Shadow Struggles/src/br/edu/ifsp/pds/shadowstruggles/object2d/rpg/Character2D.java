@@ -53,8 +53,7 @@ public class Character2D extends Image implements ApplicationListener {
 		this.setSize(charModel.getWidthInTiles() * tileSize,
 				charModel.getHeightInTiles() * tileSize);
 		this.setScale(1.0f, 1.0f);
-		this.setPosition(charModel.getTileX() * tileSize, (charModel
-				.getCurrentMap().getHeightInTiles() - charModel.getTileY() - 1)
+		this.setPosition(charModel.getTileX() * tileSize, charModel.getTileY()
 				* tileSize);
 	}
 
@@ -281,6 +280,5 @@ public class Character2D extends Image implements ApplicationListener {
 	public Character getCharModel() {
 		return charModel;
 	}
-	
-	
+
 }
