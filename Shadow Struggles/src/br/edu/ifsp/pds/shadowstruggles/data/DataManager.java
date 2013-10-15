@@ -73,7 +73,7 @@ public class DataManager {
 			String path = localizedPath(currentLanguage,
 					FileMap.classToFile.get(c));
 
-			FileHandle handle = Gdx.files.local(path);
+			FileHandle handle = Gdx.files.internal(path);
 
 			try {
 				objectList.addAll(MyJson.getJson()
@@ -90,7 +90,7 @@ public class DataManager {
 			Array<Object> objectList = new Array<Object>();
 			String path = FileMap.globalClassToFile.get(c);
 
-			FileHandle handle = Gdx.files.local(path);
+			FileHandle handle = Gdx.files.internal(path);
 
 			try {
 				objectList.addAll(MyJson.getJson()
@@ -116,6 +116,10 @@ public class DataManager {
 
 		// Then, rewrite the file.
 		String path = FileMap.globalClassToFile.get(Profile.class);
+		// For Android, it may be necessary to create the file in the local
+		// storage first.
+		if (!Gdx.files.local(path).exists())
+			Gdx.files.local(path).mkdirs();
 		FileHandle handle = Gdx.files.local(path);
 
 		try {
@@ -131,6 +135,10 @@ public class DataManager {
 	 */
 	public void save() {
 		String profilesPath = FileMap.globalClassToFile.get(Profile.class);
+		// For Android, it may be necessary to create the file in the local
+		// storage first.
+		if (!Gdx.files.local(profilesPath).exists())
+			Gdx.files.local(profilesPath).mkdirs();
 		FileHandle profilesHandle = Gdx.files.local(profilesPath);
 
 		try {

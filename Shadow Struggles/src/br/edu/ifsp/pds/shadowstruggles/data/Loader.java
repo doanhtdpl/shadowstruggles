@@ -308,7 +308,7 @@ public class Loader {
 			// easier.
 			for (Asset asset : this.textureRegions) {
 				FileHandle originFile = Gdx.files
-						.local(FileMap.resourcesToDirectory
+						.internal(FileMap.resourcesToDirectory
 								.get(asset.assetType) + asset.assetName);
 				FileHandle destiny = Gdx.files.local("tmp/" + asset.assetType);
 				destiny.mkdirs();
