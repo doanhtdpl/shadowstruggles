@@ -138,8 +138,9 @@ public class ShadowStruggles extends Game {
 	public void setScreen(Screen screen) {
 		if (this.getScreen() != null) {
 			if (!(this.getScreen() instanceof BattleScreen)
-					&& !(screen instanceof InGameMenu))
+					&& !(screen instanceof InGameMenu)) {
 				this.getScreen().dispose();
+			}
 		}
 		super.setScreen(screen);
 		controller.setCurrentscreen((BaseScreen) screen);

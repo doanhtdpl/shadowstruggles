@@ -142,6 +142,7 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 
 	@Override
 	public void dispose() {
+		System.out.println("RpgScreen: disposeAssets");
 		super.dispose();
 		game.getLoader().disposeAtlas();
 		game.getLoader().disposeMaps();
@@ -153,22 +154,24 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	}
 
 	public void keyInput(float delta) {
-		if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-			rpgController.moveCharacter(WalkDirection.WALK_LEFT);
-		}
-		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-			rpgController.moveCharacter(WalkDirection.WALK_RIGHT);
-		}
-		if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-			rpgController.moveCharacter(WalkDirection.WALK_UP);
-		}
-		if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-			rpgController.moveCharacter(WalkDirection.WALK_DOWN);
-		}
-		if (Gdx.input.isKeyPressed(Input.Keys.Z)
-				|| Gdx.input.isKeyPressed(Input.Keys.ENTER)
-				|| Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
-			rpgController.triggerEvent();
+		if (renderer.getPlayerCharacter() != null) {
+			if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+				rpgController.moveCharacter(WalkDirection.WALK_LEFT);
+			}
+			if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+				rpgController.moveCharacter(WalkDirection.WALK_RIGHT);
+			}
+			if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+				rpgController.moveCharacter(WalkDirection.WALK_UP);
+			}
+			if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+				rpgController.moveCharacter(WalkDirection.WALK_DOWN);
+			}
+			if (Gdx.input.isKeyPressed(Input.Keys.Z)
+					|| Gdx.input.isKeyPressed(Input.Keys.ENTER)
+					|| Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
+				rpgController.triggerEvent();
+			}
 		}
 	}
 
@@ -177,7 +180,8 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	 * representation (walking event).
 	 */
 	public void moveCharacter2d(WalkDirection direction) {
-		renderer.getPlayerCharacter().move(direction);
+		if(renderer.getPlayerCharacter() != null)
+			renderer.getPlayerCharacter().move(direction);
 	}
 
 	/**

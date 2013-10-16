@@ -43,16 +43,18 @@ public class RpgController {
 	 * character's movement buffer). It also checks for changes in direction.
 	 */
 	public void updateModel() {
-		if (model.getCharacter().getDirection() != viewer.getCharacter2d()
-				.getDirection()
-				&& model.getCharacter().getDirection() != null
-				&& !viewer.getCharacter2d().isWalking()) {
-			viewer.turnCharacter2d(model.getCharacter().getDirection());
-		}
+		if (viewer.getCharacter2d() != null) {
+			if (model.getCharacter().getDirection() != viewer.getCharacter2d()
+					.getDirection()
+					&& model.getCharacter().getDirection() != null
+					&& !viewer.getCharacter2d().isWalking()) {
+				viewer.turnCharacter2d(model.getCharacter().getDirection());
+			}
 
-		WalkDirection direction = model.getCharacter().update();
-		if (direction != null)
-			viewer.moveCharacter2d(direction);
+			WalkDirection direction = model.getCharacter().update();
+			if (direction != null)
+				viewer.moveCharacter2d(direction);
+		}
 	}
 
 	/**

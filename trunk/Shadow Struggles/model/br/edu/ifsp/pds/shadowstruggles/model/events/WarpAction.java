@@ -6,6 +6,7 @@ import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgMap;
 import br.edu.ifsp.pds.shadowstruggles.rpg.RpgController;
+import br.edu.ifsp.pds.shadowstruggles.screens.LoadingScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.rpg.RpgScreen;
 
 import com.badlogic.gdx.utils.Json;
@@ -31,31 +32,29 @@ public class WarpAction extends EventAction {
 
 	@Override
 	public void act() {
+		ShadowStruggles game = ShadowStruggles.getInstance();
 		if (target != null) {
-			EventInGame eventInGame = ShadowStruggles.getInstance()
-					.getProfile().getEvent(target.getId());
+			EventInGame eventInGame = game.getProfile()
+					.getEvent(target.getId());
 			eventInGame.setMap(destinyMap);
 			eventInGame.setLayer(destinyLayer);
 			eventInGame.getCharacter().setPosition(destinyX, destinyY);
 		} else {
-			Character playerChar = ShadowStruggles.getInstance().getProfile()
-					.getCharacter();
-			RpgMap newMap = new RpgMap(ShadowStruggles.getInstance(),
-					destinyMap, destinyLayer,
+			Character playerChar = game.getProfile().getCharacter();
+			RpgMap newMap = new RpgMap(game, destinyMap, destinyLayer,
 					SettingsDAO.getSettings().defaultTileLayer);
 			playerChar.setPosition(destinyX, destinyY);
 			playerChar.setCurrentMap(newMap);
 		}
 
 		if (this.update()) {
-			RpgScreen currentScreen = (RpgScreen) ShadowStruggles.getInstance()
-					.getScreen();
-			ShadowStruggles game = currentScreen.getGame();
+			RpgScreen currentScreen = (RpgScreen) game.getScreen();
 			Controller controller = currentScreen.getController();
 			RpgController rpgController = currentScreen.getRpgController();
 
-			ShadowStruggles.getInstance().setScreenWithTransition(
-					new RpgScreen(game, controller, rpgController));
+			RpgScreen nextScreen = new RpgScreen(game, controller,
+					rpgController);
+			game.setScreenWithTransition(new LoadingScreen(game, nextScreen));
 		}
 	}
 
@@ -86,7 +85,7 @@ public class WarpAction extends EventAction {
 	@Override
 	public void read(Json json, JsonValue jsonData) {
 		super.read(json, jsonData);
-		
+
 		this.destinyX = json.readValue("destinyX", Integer.class, jsonData);
 		this.destinyY = json.readValue("destinyY", Integer.class, jsonData);
 		this.destinyMap = json.readValue("destinyMap", String.class, jsonData);
@@ -98,7 +97,7 @@ public class WarpAction extends EventAction {
 	@Override
 	public void write(Json json) {
 		super.write(json);
-		
+
 		json.writeValue("destinyX", this.destinyX);
 		json.writeValue("destinyY", this.destinyY);
 		json.writeValue("destinyMap", this.destinyMap);
