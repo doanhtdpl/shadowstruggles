@@ -46,7 +46,7 @@ public class LoadingScreen extends BaseScreen {
 			this.percentageLbl.setY(this.getY() + 20);
 			this.percentageLbl.setStyle(new LabelStyle(skin
 					.getFont("andalus-font"), Color.WHITE));
-			if(this.getStage() != null)
+			if (this.getStage() != null)
 				this.getStage().addActor(percentageLbl);
 		}
 	}
@@ -67,11 +67,6 @@ public class LoadingScreen extends BaseScreen {
 		// The game attribute must be set again, otherwise it's not initialized
 		// properly.
 		this.game = game;
-
-		game.getLoader().setAssetsToLoad(nextScreen.textureRegionsToLoad(),
-				nextScreen.texturesToLoad(), nextScreen.soundsToLoad(),
-				nextScreen.mapsToLoad());
-		game.getLoader().loadAssets();
 	}
 
 	@Override
@@ -98,6 +93,14 @@ public class LoadingScreen extends BaseScreen {
 	public void render(float delta) {
 		super.render(delta);
 
+		if (!initialized) {
+			System.out.println("LoadingScreen: loadAssets");
+			game.getLoader().setAssetsToLoad(nextScreen.textureRegionsToLoad(),
+					nextScreen.texturesToLoad(), nextScreen.soundsToLoad(),
+					nextScreen.mapsToLoad());
+			game.getLoader().loadAssets();
+		}
+
 		if (game.getAssets().update()) {
 			game.setScreenWithTransition(nextScreen);
 
@@ -116,7 +119,7 @@ public class LoadingScreen extends BaseScreen {
 				stage.addActor(bar);
 				initialized = true;
 			}
-			
+
 			percent += 0.005f;
 			if (game.getAssets().getProgress() - percent > 0.0f)
 				percent += (game.getAssets().getProgress() - percent) * 0.9f;

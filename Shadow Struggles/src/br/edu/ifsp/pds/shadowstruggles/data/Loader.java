@@ -207,9 +207,10 @@ public class Loader {
 	public void disposeMaps() {
 		if (this.rpgMaps != null) {
 			for (Asset asset : this.rpgMaps) {
-				game.getAssets().unload(
-						FileMap.resourcesToDirectory.get(asset.assetType)
-								+ asset.assetName);
+				String fileName = FileMap.resourcesToDirectory
+						.get(asset.assetType) + asset.assetName;
+				game.getAssets().unload(fileName);
+				System.out.println("disposeMaps (Loader): Map is unloaded");
 			}
 
 			this.rpgMaps = null;
@@ -288,6 +289,8 @@ public class Loader {
 				if (!game.getAssets().isLoaded(fileName, TiledMap.class))
 					game.getAssets().load(fileName, TiledMap.class);
 			}
+		} else {
+			System.out.println("Loader: rpgMaps is null .-.");
 		}
 	}
 
