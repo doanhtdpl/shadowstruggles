@@ -142,7 +142,6 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 
 	@Override
 	public void dispose() {
-		System.out.println("RpgScreen: disposeAssets");
 		super.dispose();
 		game.getLoader().disposeAtlas();
 		game.getLoader().disposeMaps();

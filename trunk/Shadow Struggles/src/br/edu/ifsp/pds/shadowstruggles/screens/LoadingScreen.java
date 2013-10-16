@@ -94,7 +94,6 @@ public class LoadingScreen extends BaseScreen {
 		super.render(delta);
 
 		if (!initialized) {
-			System.out.println("LoadingScreen: loadAssets");
 			game.getLoader().setAssetsToLoad(nextScreen.textureRegionsToLoad(),
 					nextScreen.texturesToLoad(), nextScreen.soundsToLoad(),
 					nextScreen.mapsToLoad());
