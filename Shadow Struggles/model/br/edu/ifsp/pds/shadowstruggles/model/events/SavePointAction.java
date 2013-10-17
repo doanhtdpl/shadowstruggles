@@ -16,8 +16,9 @@ public class SavePointAction extends EventAction {
 	@Override
 	public void act() {
 		ShadowStruggles game = ShadowStruggles.getInstance();
+		BaseScreen currentScreen = (BaseScreen) game.getScreen();
 		game.setScreenWithTransition(new SaveLoadScreen(game, game
-				.getController(), Mode.SAVE, (BaseScreen) game.getScreen()));
+				.getController(), Mode.SAVE, currentScreen));
 	}
 
 	@Override

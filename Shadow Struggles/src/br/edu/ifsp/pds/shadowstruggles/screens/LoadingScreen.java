@@ -56,6 +56,7 @@ public class LoadingScreen extends BaseScreen {
 	private ShadowStruggles game;
 	private BaseScreen nextScreen;
 	private boolean initialized;
+	private boolean barLoaded;
 
 	private Image background;
 	private LoadingBar bar;
@@ -98,6 +99,7 @@ public class LoadingScreen extends BaseScreen {
 					nextScreen.texturesToLoad(), nextScreen.soundsToLoad(),
 					nextScreen.mapsToLoad());
 			game.getLoader().loadAssets();
+			initialized = true;
 		}
 
 		if (game.getAssets().update()) {
@@ -111,12 +113,12 @@ public class LoadingScreen extends BaseScreen {
 			nextScreen.initComponents();
 		} else if (game.getAssets().isLoaded(
 				FileMap.resourcesToDirectory.get("skin") + "skin.atlas")) {
-			if (!initialized) {
+			if (!barLoaded) {
 				bar = new LoadingBar();
 				bar.setX(80);
 				bar.setY(50);
 				stage.addActor(bar);
-				initialized = true;
+				barLoaded = true;
 			}
 
 			percent += 0.005f;

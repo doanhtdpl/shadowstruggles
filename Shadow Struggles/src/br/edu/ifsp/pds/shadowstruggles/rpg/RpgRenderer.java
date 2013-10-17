@@ -46,12 +46,12 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 
 /**
- * This class is a substitute for {@link OrthogonalTiledMapRenderer}, including
- * a sprite batch previously created, instead of having to instantiate its own,
- * and rendering the objects of the current layer (including the player
- * character) as well;
+ * This class is a more robust substitute for {@link OrthogonalTiledMapRenderer}
+ * , including a sprite batch previously created (instead of having to
+ * instantiate its own) and rendering the objects of the current layer
+ * (including the player character) as well;
  */
-public class MyOrthogonalTiledMapRenderer extends BatchTiledMapRenderer {
+public class RpgRenderer extends BatchTiledMapRenderer {
 	private float[] vertices = new float[20];
 	private ShapeRenderer debugRenderer;
 
@@ -61,12 +61,12 @@ public class MyOrthogonalTiledMapRenderer extends BatchTiledMapRenderer {
 	private Character2D playerCharacter;
 	private Character playerCharacterModel;
 
-	public MyOrthogonalTiledMapRenderer(RpgMap rpgMap, float unitScale,
+	public RpgRenderer(RpgMap rpgMap, float unitScale,
 			SpriteBatch spriteBatch, ShadowStruggles game) {
 		this(rpgMap, unitScale, spriteBatch, game, null);
 	}
 
-	public MyOrthogonalTiledMapRenderer(RpgMap rpgMap, float unitScale,
+	public RpgRenderer(RpgMap rpgMap, float unitScale,
 			SpriteBatch spriteBatch, ShadowStruggles game,
 			Character playerCharacterModel) {
 		super(rpgMap.getMap(), unitScale, spriteBatch);
@@ -106,7 +106,6 @@ public class MyOrthogonalTiledMapRenderer extends BatchTiledMapRenderer {
 			Character2D char2d = new Character2D(event.getSprite(),
 					event.getCharacter(), game);
 			char2d.create();
-			// stage.addActor(char2d);
 			sprites.add(char2d);
 		}
 	}
@@ -126,7 +125,8 @@ public class MyOrthogonalTiledMapRenderer extends BatchTiledMapRenderer {
 		}
 
 		for (Character2D char2d : sprites) {
-			if (!previousSprites.contains(char2d.getName(), false)) {
+			if (!previousSprites.contains(char2d.getName(), false)
+					&& char2d.getName() != null) {
 				assets.add(new Asset(char2d.getName() + ".png", "sprites"));
 				previousSprites.add(char2d.getName());
 			}
