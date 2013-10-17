@@ -7,6 +7,8 @@ import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.ProfileDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.profiles.Profile;
+import br.edu.ifsp.pds.shadowstruggles.rpg.RpgController;
+import br.edu.ifsp.pds.shadowstruggles.screens.rpg.RpgScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -115,8 +117,19 @@ public class SaveLoadScreen extends BaseScreen {
 				public void clicked(InputEvent event, float arg1, float arg2) {
 					if (mode == Mode.START)
 						newProfile();
-					else if (mode == Mode.SAVE)
-						game.setScreenWithTransition(previousScreen);
+					else if (mode == Mode.SAVE) {
+						if (previousScreen instanceof RpgScreen) {
+							RpgScreen previousRpgScreen = (RpgScreen) previousScreen;
+							Controller controller = previousRpgScreen.getController();
+							RpgController rpgController = previousRpgScreen.getRpgController();
+
+							RpgScreen nextScreen = new RpgScreen(game, controller,
+									rpgController);
+							game.setScreenWithTransition(new LoadingScreen(
+									game, nextScreen));
+						} else
+							game.setScreenWithTransition(previousScreen);
+					}
 				}
 			});
 		}

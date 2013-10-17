@@ -11,7 +11,7 @@ import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.ManhattanHeuristic;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.Path;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.PathFinder;
 import br.edu.ifsp.pds.shadowstruggles.object2d.rpg.Character2D;
-import br.edu.ifsp.pds.shadowstruggles.rpg.MyOrthogonalTiledMapRenderer;
+import br.edu.ifsp.pds.shadowstruggles.rpg.RpgRenderer;
 import br.edu.ifsp.pds.shadowstruggles.rpg.RpgController;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 
@@ -34,7 +34,7 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	private static final int maxHeightRange = 640;
 
 	private RpgController rpgController;
-	private MyOrthogonalTiledMapRenderer renderer;
+	private RpgRenderer renderer;
 
 	private PathFinder finder;
 	private Path path;
@@ -64,9 +64,9 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 
 		rpgController.setViewer(this);
 		this.rpgController = rpgController;
-		renderer = new MyOrthogonalTiledMapRenderer(rpgController.getModel()
-				.getRpgMap(), unitScale, getBatch(), game, rpgController
-				.getModel().getCharacter());
+		renderer = new RpgRenderer(rpgController.getModel().getRpgMap(),
+				unitScale, getBatch(), game, rpgController.getModel()
+						.getCharacter());
 	}
 
 	@Override
@@ -74,6 +74,8 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		Array<Asset> assets = renderer.textureRegionsToLoad();
 		if (assets.size == 0)
 			return null;
+		for (Asset asset : assets)
+			System.out.println(asset.assetName + " - " + asset.assetType);
 		return assets;
 	}
 
@@ -153,7 +155,10 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	}
 
 	public void keyInput(float delta) {
-		if (renderer.getPlayerCharacter() != null) {
+		// Key input can sometimes be detected during intervals between screen
+		// transitions, so we need to make sure that the conditions are valid
+		// before processing it.
+		if (renderer.getPlayerCharacter() != null && game.getScreen() == this) {
 			if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
 				rpgController.moveCharacter(WalkDirection.WALK_LEFT);
 			}
@@ -179,7 +184,7 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	 * representation (walking event).
 	 */
 	public void moveCharacter2d(WalkDirection direction) {
-		if(renderer.getPlayerCharacter() != null)
+		if (renderer.getPlayerCharacter() != null)
 			renderer.getPlayerCharacter().move(direction);
 	}
 
@@ -195,9 +200,8 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		int[] currentPos = pixelsToTile((int) renderer.getPlayerCharacter()
-				.getX(), Gdx.graphics.getHeight()
-				- (int) renderer.getPlayerCharacter().getY() - 1);
-		int[] destinationPos = pixelsToTile(screenX, screenY);
+				.getX(), (int) renderer.getPlayerCharacter().getY());
+		int[] destinationPos = pixelsToTile(screenX, height - screenY);
 
 		path = finder.findPath(rpgController.getModel().getCharacter()
 				.getMover(), currentPos[0], currentPos[1], destinationPos[0],
