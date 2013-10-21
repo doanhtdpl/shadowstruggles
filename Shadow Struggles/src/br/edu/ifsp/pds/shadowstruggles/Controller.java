@@ -81,7 +81,7 @@ public class Controller {
 		Card handCard = platform.getSelectedCard();
 		if (handCard.getClass().equals(Effect.class)
 				&& ((Effect) handCard).isOnFighter()) {
-			activateEffect(handCard, lane, tile);
+			playCard(handCard, lane, tile);
 			platform.setSelectedCard(null);
 			((BattleScreen) currentScreen).changeHexagram(false);
 		} else
@@ -94,13 +94,13 @@ public class Controller {
 		this.playerEnergyChanged(-handCard.getEnergyCost());
 		battleScreen.changeHexagram(false);
 		if (handCard.getClass().equals(Fighter.class)) {
-			summonFighter(handCard, lane, tile);
+			playCard(handCard, lane, tile);
 
 		} else if (handCard.getClass().equals(Effect.class)
 				&& !((Effect) handCard).isOnFighter()) {
-			activateEffect(handCard, lane, tile);
+			playCard(handCard, lane, tile);
 		} else if (handCard.getClass().equals(Trap.class)) {
-			putTrap(handCard, lane, tile);
+			playCard(handCard, lane, tile);
 		}
 		platform.setSelectedCard(null);
 		battleScreen.removeResumedCardInfo();
@@ -272,18 +272,7 @@ public class Controller {
 		currentScreen.getGame().getAudio().playSound("button_7");
 	}
 
-	private void activateEffect(Card handCard, int lane, int tile) {
-		playCard(handCard, lane, tile);
-	}
-
-	public void summonFighter(Card handCard, int lane, int tile) {
-		playCard(handCard, lane, tile);
-	}
-
-	private void putTrap(Card handCard, int lane, int tile) {
-		playCard(handCard, lane, tile);
-	}
-
+	
 	private void returnHandCard() {
 		for (Actor actor : currentScreen.getStage().getActors())
 			if (actor.getClass().equals(HandCard.class))
