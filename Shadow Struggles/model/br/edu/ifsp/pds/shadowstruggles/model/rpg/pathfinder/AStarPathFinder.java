@@ -1,5 +1,8 @@
 package br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder;
 
+import br.edu.ifsp.pds.shadowstruggles.model.rpg.CharacterMover;
+
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 
 /**
@@ -85,24 +88,29 @@ public class AStarPathFinder implements PathFinder {
 					|| (sx == tx && sy < ty) || (sx == tx && sy > ty))
 				return null;
 
+			// We need to consider the mover's dimensions in order to make an
+			// accurate check of adjacent spots.
+			Rectangle rect = ((CharacterMover) mover).getRectangle();
+
 			if (!map.blocked(mover, tx + 1, ty)) {
 				// Is the mover approaching from the left? Try the left spot
 				// first.
-				if (sx < tx && !map.blocked(mover, tx - 1, ty))
-					tx--;
+				if (sx < tx && !map.blocked(mover, (int) (tx - rect.width), ty))
+					tx -= rect.width;
 				else
 					tx++;
-			} else if (!map.blocked(mover, tx - 1, ty)) {
-				tx--;
+			} else if (!map.blocked(mover, (int) (tx - rect.width), ty)) {
+				tx -= rect.width;
 			} else if (!map.blocked(mover, tx, ty - 1)) {
-				// Is the mover approaching from the bottom? Try the bottom spot
+				// Is the mover approaching from above? Try the above spot
 				// first.
-				if (sy > ty && !map.blocked(mover, tx, ty + 1))
-					ty++;
+				if (sy < ty
+						&& !map.blocked(mover, tx, (int) (ty + rect.height)))
+					ty += rect.height;
 				else
 					ty--;
-			} else if (!map.blocked(mover, tx, ty + 1))
-				ty++;
+			} else if (!map.blocked(mover, tx, (int) (ty + rect.height)))
+				ty += rect.height;
 			else
 				return null;
 		}

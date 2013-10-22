@@ -28,7 +28,7 @@ import com.badlogic.gdx.utils.Array;
  */
 public class RpgScreen extends BaseScreen implements InputProcessor {
 	// The maximum range for the map region shown on screen. This is done so
-	// that large screens can't see huge portions of the map at once, which
+	// that larger screens can't see huge portions of the map at once, which
 	// could be bad for certain level designs such as mazes.
 	private static final int maxWidthRange = 960;
 	private static final int maxHeightRange = 640;
@@ -74,8 +74,6 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		Array<Asset> assets = renderer.textureRegionsToLoad();
 		if (assets.size == 0)
 			return null;
-		for (Asset asset : assets)
-			System.out.println(asset.assetName + " - " + asset.assetType);
 		return assets;
 	}
 
@@ -128,8 +126,8 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		renderer.render();
 		renderer.renderGameObjects();
 		if (game.getMode() == RunMode.DEBUG) {
+			renderer.renderTilesDebug(false);
 			renderer.renderGameObjectsDebug();
-			renderer.renderTilesDebug();
 		}
 		stage.act(delta);
 		stage.draw();
@@ -212,7 +210,7 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		return true;
 	}
 
-	private int[] pixelsToTile(int x, int y) {
+	private static int[] pixelsToTile(int x, int y) {
 		int[] tile = { 0, 0 };
 		int tileSize = SettingsDAO.getSettings().rpgTileSize;
 

@@ -96,6 +96,15 @@ public class Path {
 		return steps.contains(new Step(x,y), false);
 	}
 	
+	@Override
+	public String toString() {
+		String stepsStr = "";
+		for(Step step : steps) {
+			stepsStr += "(" + step.getX() + "," + step.getY() + "), ";
+		}
+		return stepsStr;
+	}
+	
 	/**
 	 * A single step within the path
 	 * 

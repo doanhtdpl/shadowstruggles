@@ -82,8 +82,8 @@ public class Character {
 
 	/**
 	 * Tries to walk a step into the TiledMap. If possible to walk in the
-	 * specified direction (no obstacle), remove the character from current tile
-	 * and adds in next tile. Else, change direction to face the obstacle.
+	 * specified direction (there are no obstacles), update tile position. Else,
+	 * change direction to face the obstacle.
 	 * 
 	 * @param direction
 	 *            The direction intended to step.
@@ -149,27 +149,32 @@ public class Character {
 		// try triggering an event. Also, change directions of the character and
 		// the target to face each other.
 		if (movementBuffer.size <= 1 && this.inPath && destination != null) {
+			Rectangle rect = mover.getRectangle();
 			WalkDirection oppositeDirection = null;
 
 			if (destination[0] == tileX && destination[1] < tileY) {
 				this.direction = WalkDirection.WALK_DOWN;
+				rect.y -= 1;
 				oppositeDirection = WalkDirection.WALK_UP;
 			}
 			if (destination[0] == tileX && destination[1] > tileY) {
 				this.direction = WalkDirection.WALK_UP;
+				rect.y += 1;
 				oppositeDirection = WalkDirection.WALK_DOWN;
 			}
 			if (destination[0] < tileX && destination[1] == tileY) {
 				this.direction = WalkDirection.WALK_LEFT;
+				rect.x -= 1;
 				oppositeDirection = WalkDirection.WALK_RIGHT;
 			}
 			if (destination[0] > tileX && destination[1] == tileY) {
 				this.direction = WalkDirection.WALK_RIGHT;
+				rect.x += 1;
 				oppositeDirection = WalkDirection.WALK_LEFT;
 			}
 
-			map.triggerEvent(mover.getRectangle(), oppositeDirection);
-			map.touchEvent(mover.getRectangle(), oppositeDirection);
+			map.triggerEvent(rect, oppositeDirection);
+			map.touchEvent(rect, oppositeDirection);
 
 			this.destination = null;
 			this.inPath = false;
