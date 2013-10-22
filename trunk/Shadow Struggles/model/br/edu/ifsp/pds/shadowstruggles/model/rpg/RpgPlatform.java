@@ -61,11 +61,11 @@ public class RpgPlatform {
 				WalkDirection direction = null;
 
 				if (step.getX() == currentX && step.getY() < currentY) {
-					direction = WalkDirection.WALK_UP;
+					direction = WalkDirection.WALK_DOWN;
 					currentY--;
 				}
 				if (step.getX() == currentX && step.getY() > currentY) {
-					direction = WalkDirection.WALK_DOWN;
+					direction = WalkDirection.WALK_UP;
 					currentY++;
 				}
 				if (step.getY() == currentY && step.getX() < currentX) {
@@ -84,9 +84,9 @@ public class RpgPlatform {
 			// obstacle.
 			WalkDirection direction = null;
 			if (destination[0] == currentX && destination[1] < currentY)
-				direction = WalkDirection.WALK_UP;
-			if (destination[0] == currentX && destination[1] > currentY)
 				direction = WalkDirection.WALK_DOWN;
+			if (destination[0] == currentX && destination[1] > currentY)
+				direction = WalkDirection.WALK_UP;
 			if (destination[0] < currentX && destination[1] == currentY)
 				direction = WalkDirection.WALK_LEFT;
 			if (destination[0] > currentX && destination[1] == currentY)

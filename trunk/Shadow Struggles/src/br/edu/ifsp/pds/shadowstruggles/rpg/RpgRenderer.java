@@ -61,14 +61,13 @@ public class RpgRenderer extends BatchTiledMapRenderer {
 	private Character2D playerCharacter;
 	private Character playerCharacterModel;
 
-	public RpgRenderer(RpgMap rpgMap, float unitScale,
-			SpriteBatch spriteBatch, ShadowStruggles game) {
+	public RpgRenderer(RpgMap rpgMap, float unitScale, SpriteBatch spriteBatch,
+			ShadowStruggles game) {
 		this(rpgMap, unitScale, spriteBatch, game, null);
 	}
 
-	public RpgRenderer(RpgMap rpgMap, float unitScale,
-			SpriteBatch spriteBatch, ShadowStruggles game,
-			Character playerCharacterModel) {
+	public RpgRenderer(RpgMap rpgMap, float unitScale, SpriteBatch spriteBatch,
+			ShadowStruggles game, Character playerCharacterModel) {
 		super(rpgMap.getMap(), unitScale, spriteBatch);
 
 		this.rpgMap = rpgMap;
@@ -204,22 +203,27 @@ public class RpgRenderer extends BatchTiledMapRenderer {
 
 	/**
 	 * Renders debug lines for the tiles' collision boxes.
+	 * 
+	 * @param collidableOnly
+	 *            Show the lines for collidable tiles only.
 	 */
-	public void renderTilesDebug() {
+	public void renderTilesDebug(boolean collidableOnly) {
 		debugRenderer.setProjectionMatrix(spriteBatch.getProjectionMatrix());
 		debugRenderer.begin(ShapeType.Line);
 		debugRenderer.setColor(Color.BLUE);
 		for (MapLayer layer : map.getLayers()) {
 			if (layer.isVisible()) {
 				if (layer instanceof TiledMapTileLayer) {
-					renderTileLayerDebug((TiledMapTileLayer) layer);
+					renderTileLayerDebug((TiledMapTileLayer) layer,
+							collidableOnly);
 				}
 			}
 		}
 		debugRenderer.end();
 	}
 
-	private void renderTileLayerDebug(TiledMapTileLayer layer) {
+	private void renderTileLayerDebug(TiledMapTileLayer layer,
+			boolean collidableOnly) {
 		float width = rpgMap.getWidthInTiles();
 		float height = rpgMap.getHeightInTiles();
 		int tileSize = SettingsDAO.getSettings().rpgTileSize;
@@ -227,12 +231,12 @@ public class RpgRenderer extends BatchTiledMapRenderer {
 		for (int i = 0; i < width; i++) {
 			for (int j = 0; j < height; j++) {
 				TiledMapTile tile = layer.getCell(i, j).getTile();
+				Rectangle rect = new Rectangle(i * tileSize, j * tileSize,
+						tileSize, tileSize);
 				if (tile.getProperties().containsKey(
-						SettingsDAO.getSettings().collidableTile)) {
-					Rectangle rect = new Rectangle(i * tileSize, j * tileSize,
-							tileSize, tileSize);
+						SettingsDAO.getSettings().collidableTile)
+						|| !collidableOnly)
 					debugRenderer.rect(rect.x, rect.y, rect.width, rect.height);
-				}
 			}
 		}
 	}
