@@ -4,7 +4,12 @@ import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
+import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character;
+import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgMap;
+import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgPlatform;
+import br.edu.ifsp.pds.shadowstruggles.rpg.RpgController;
 import br.edu.ifsp.pds.shadowstruggles.screens.SaveLoadScreen.Mode;
+import br.edu.ifsp.pds.shadowstruggles.screens.rpg.RpgScreen;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -56,8 +61,16 @@ public class MainScreen extends BaseScreen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_4");
-				game.setScreenWithTransition(new SceneScreen(game, game
-						.getController()));
+				RpgController rpgController = new RpgController();
+				RpgMap rpgMap = new RpgMap(game, "map");
+				Character character = new Character(0, 0, 2, 2, rpgMap);
+				game.getProfile().setCharacter(character);
+				@SuppressWarnings("unused")
+				RpgPlatform platform = new RpgPlatform(rpgController,
+						character, rpgMap);
+				RpgScreen nextScreen = new RpgScreen(game, controller,
+						rpgController);
+				game.setScreenWithTransition(new LoadingScreen(game, nextScreen));
 
 			}
 		});

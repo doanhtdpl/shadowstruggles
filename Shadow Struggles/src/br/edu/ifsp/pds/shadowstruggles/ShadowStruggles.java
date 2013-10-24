@@ -1,5 +1,6 @@
 package br.edu.ifsp.pds.shadowstruggles;
 
+import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
 import br.edu.ifsp.pds.shadowstruggles.data.FileMap;
 import br.edu.ifsp.pds.shadowstruggles.data.Loader;
 import br.edu.ifsp.pds.shadowstruggles.data.Loader.Asset;
@@ -9,6 +10,7 @@ import br.edu.ifsp.pds.shadowstruggles.dataTest.LoaderTest;
 import br.edu.ifsp.pds.shadowstruggles.model.profiles.Profile;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.test.CharacterTest;
 import br.edu.ifsp.pds.shadowstruggles.modelTest.DeckTest;
+import br.edu.ifsp.pds.shadowstruggles.modelTest.ProfileTest;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.BattleScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.InGameMenu;
@@ -93,9 +95,10 @@ public class ShadowStruggles extends Game {
 			loaderTest.testLoading(this);
 			loaderTest.testGetRegion(this);
 			DeckTest.testDeckRead();
-			DeckTest.testDraw();
+			DeckTest.testDraw();			
+			ProfileTest.testUpdateProfile();		
 			loaderTest.testDispose(this);
-
+			
 			/*CharacterTest characterTest = new CharacterTest();
 			characterTest.WalkDownTest();
 			characterTest.WalkUpTest();
