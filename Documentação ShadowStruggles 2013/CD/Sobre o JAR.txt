@@ -1,0 +1,2 @@
+No momento, por motivos desconhecidos, estão ocorrendo erros na geração do executável JAR.
+Mas a aplicação pode ser executada através de uma IDE.
