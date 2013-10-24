@@ -8,6 +8,7 @@ import br.edu.ifsp.pds.shadowstruggles.dataTest.DataManagerTest;
 import br.edu.ifsp.pds.shadowstruggles.dataTest.LoaderTest;
 import br.edu.ifsp.pds.shadowstruggles.model.profiles.Profile;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.test.CharacterTest;
+import br.edu.ifsp.pds.shadowstruggles.modelTest.DeckTest;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.BattleScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.InGameMenu;
@@ -91,16 +92,18 @@ public class ShadowStruggles extends Game {
 			LoaderTest loaderTest = new LoaderTest();
 			loaderTest.testLoading(this);
 			loaderTest.testGetRegion(this);
+			DeckTest.testDeckRead();
+			DeckTest.testDraw();
 			loaderTest.testDispose(this);
 
-			CharacterTest characterTest = new CharacterTest();
+			/*CharacterTest characterTest = new CharacterTest();
 			characterTest.WalkDownTest();
 			characterTest.WalkUpTest();
 			characterTest.WalkRightTest();
 			characterTest.WalkLeftTest();
 
 			DataManagerTest dataManagerTest = new DataManagerTest();
-			dataManagerTest.testEncodingDecoding();
+			dataManagerTest.testEncodingDecoding();*/
 
 			// End of test cases.
 			Gdx.app.exit();

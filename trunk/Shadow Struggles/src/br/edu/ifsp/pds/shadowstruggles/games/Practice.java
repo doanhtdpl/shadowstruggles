@@ -20,9 +20,12 @@ public class Practice extends BattleScreen {
 
 	@Override
 	public void initComponents() {
+		if(!initialized){
 		super.initComponents();
 		game.getAudio().stop();
 		game.getAudio().setMusic("battle");
+		initialized=true;
+	}
 	}
 
 	public BaseScreen copy() {

@@ -4,7 +4,7 @@
   <class id="1" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.enemies.Sequence" project="ShadowStruggles" 
     file="/ShadowStruggles/model/br/edu/ifsp/pds/shadowstruggles/model/enemies/Sequence.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="243" width="211" x="355" y="-53"/>    
+    <position height="-1" width="-1" x="967" y="97"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -14,7 +14,7 @@
   <class id="2" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.enemies.Action" project="ShadowStruggles" 
     file="/ShadowStruggles/model/br/edu/ifsp/pds/shadowstruggles/model/enemies/Action.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="207" width="211" x="606" y="-53"/>    
+    <position height="-1" width="-1" x="739" y="78"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -24,7 +24,7 @@
   <class id="3" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.enemies.Enemy" project="ShadowStruggles" 
     file="/ShadowStruggles/model/br/edu/ifsp/pds/shadowstruggles/model/enemies/Enemy.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="333" width="315" x="857" y="-53"/>    
+    <position height="-1" width="-1" x="438" y="121"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -44,35 +44,36 @@
   <enumeration id="5" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.enemies.Action.Attribute" 
     project="ShadowStruggles" file="/ShadowStruggles/model/br/edu/ifsp/pds/shadowstruggles/model/enemies/Action.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="135" width="211" x="481" y="320"/>    
+    <position height="-1" width="-1" x="606" y="413"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </enumeration>  
-  <association id="6">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="7" name="dynamicType"/>      
-      <multiplicity id="8" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <nesting id="9">    
+  <nesting id="6">    
     <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="4"/>  
   </nesting>  
+  <association id="7">    
+    <bendpoint x="646" y="256"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="8" name="type"/>      
+      <multiplicity id="9" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <nesting id="10">    
     <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="5"/>  
   </nesting>  
   <association id="11">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="12" name="type"/>      
+      <attribute id="12" name="dynamicType"/>      
       <multiplicity id="13" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
+    <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

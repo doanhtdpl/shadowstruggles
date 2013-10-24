@@ -27,7 +27,7 @@ public class Deck implements Serializable{
 		shuffle();
 	}
 	
-	public Card draw(){
+	public Card draw()throws ArrayIndexOutOfBoundsException{
 		return cards.pop();
 	}
 	
