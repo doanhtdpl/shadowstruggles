@@ -4,7 +4,7 @@
   <class id="1" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.events.Event" project="ShadowStruggles" 
     file="/ShadowStruggles/model/br/edu/ifsp/pds/shadowstruggles/model/events/Event.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="585" width="286" x="1158" y="37"/>    
+    <position height="-1" width="-1" x="782" y="334"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -14,7 +14,7 @@
   <enumeration id="2" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.events.Event.TriggerType" 
     project="ShadowStruggles" file="/ShadowStruggles/model/br/edu/ifsp/pds/shadowstruggles/model/events/Event.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="135" width="205" x="1158" y="662"/>    
+    <position height="-1" width="-1" x="1047" y="338"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      

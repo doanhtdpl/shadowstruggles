@@ -41,6 +41,7 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 
 	private boolean firstRender = true;
 	private float unitScale = 1f;
+	
 
 	/**
 	 * The constructor initializes the objects and defines itself as the

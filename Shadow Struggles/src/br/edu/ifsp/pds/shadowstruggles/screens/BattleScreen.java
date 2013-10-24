@@ -75,7 +75,7 @@ public class BattleScreen extends BaseScreen {
 
 	protected BattleMap2D map2d;
 	private HandBackground background;
-	private boolean initialized = false;
+	protected boolean initialized = false;
 	private Array<Hexagram> hexagrams;
 	private Array<BackCard> backcards;
 	private Array<FixedLabel> cardInfo;
@@ -365,6 +365,7 @@ public class BattleScreen extends BaseScreen {
 	 */
 
 	public void initComponents() {
+		
 		if (!initialized) {
 			TextureRegion mapImage = new TextureRegion(game.getTexture(
 					battlePlatform.getMap().getName(), "battle_maps"),
@@ -501,7 +502,7 @@ public class BattleScreen extends BaseScreen {
 		enemyLife.update(battlePlatform.getRules().getEnemyHP(), battlePlatform
 				.getRules().getEnemyHPmax());
 		energyBar.update();
-
+		
 		for (int i = 0; i < 5; i++) {
 			Card temp = battlePlatform.getPlayerDeck().draw();
 			battlePlatform.getPlayerHandCards().add(temp);

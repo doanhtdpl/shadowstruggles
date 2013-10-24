@@ -121,6 +121,7 @@ public class BattleTutorial extends BattleScreen {
 
 	@Override
 	public void initComponents() {
+		if(!initialized){
 		super.initComponents();
 
 		dialogBox = new FixedImage(game.getTextureRegion("box",
@@ -152,6 +153,8 @@ public class BattleTutorial extends BattleScreen {
 		stage.addActor(image);
 
 		nextDialog();
+		initialized=true;
+		}
 	}
 
 	@Override

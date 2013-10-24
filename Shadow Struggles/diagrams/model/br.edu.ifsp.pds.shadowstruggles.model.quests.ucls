@@ -4,7 +4,7 @@
   <enumeration id="1" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.quests.Quest.QuestStatus" 
     project="ShadowStruggles" file="/ShadowStruggles/model/br/edu/ifsp/pds/shadowstruggles/model/quests/Quest.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="153" width="235" x="559" y="706"/>    
+    <position height="-1" width="-1" x="283" y="506"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -26,7 +26,7 @@
     project="ShadowStruggles" 
     file="/ShadowStruggles/model/br/edu/ifsp/pds/shadowstruggles/model/quests/MoneyRequirement.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="153" width="204" x="41" y="248"/>    
+    <position height="-1" width="-1" x="268" y="92"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -36,7 +36,7 @@
   <class id="4" language="java" name="br.edu.ifsp.pds.shadowstruggles.model.quests.Quest" project="ShadowStruggles" 
     file="/ShadowStruggles/model/br/edu/ifsp/pds/shadowstruggles/model/quests/Quest.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="225" width="383" x="559" y="441"/>    
+    <position height="-1" width="-1" x="700" y="529"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -47,7 +47,7 @@
     project="ShadowStruggles" 
     file="/ShadowStruggles/model/br/edu/ifsp/pds/shadowstruggles/model/quests/ItemRequirement.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="153" width="234" x="285" y="248"/>    
+    <position height="-1" width="-1" x="260" y="291"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -58,7 +58,7 @@
     project="ShadowStruggles" 
     file="/ShadowStruggles/model/br/edu/ifsp/pds/shadowstruggles/model/quests/SecondaryQuest.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="135" width="207" x="559" y="248"/>    
+    <position height="-1" width="-1" x="794" y="278"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -69,49 +69,49 @@
     project="ShadowStruggles" 
     file="/ShadowStruggles/model/br/edu/ifsp/pds/shadowstruggles/model/quests/EnemyDefeatRequirement.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="135" width="204" x="806" y="248"/>    
+    <position height="-1" width="-1" x="797" y="124"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <generalization id="8">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
-  <nesting id="9">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="1"/>  
-  </nesting>  
-  <association id="10">    
+  <association id="8">    
     <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="11" name="quest"/>      
-      <multiplicity id="12" minimum="0" maximum="1"/>    
+      <attribute id="9" name="quest"/>      
+      <multiplicity id="10" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <generalization id="11">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <nesting id="12">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="1"/>  
+  </nesting>  
   <generalization id="13">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <generalization id="14">    
     <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="2"/>  
   </generalization>  
-  <association id="14">    
+  <generalization id="15">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <association id="16">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="15" name="status"/>      
-      <multiplicity id="16" minimum="0" maximum="1"/>    
+      <attribute id="17" name="status"/>      
+      <multiplicity id="18" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="17">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
-  <generalization id="18">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
