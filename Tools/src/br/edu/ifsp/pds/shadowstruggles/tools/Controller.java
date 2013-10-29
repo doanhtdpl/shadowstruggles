@@ -1,5 +1,6 @@
 package br.edu.ifsp.pds.shadowstruggles.tools;
 
+import java.awt.Color;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -139,7 +140,8 @@ public class Controller {
 			tableData[i][1]=fighter.name;
 		}
 		DefaultTableModel dataModel = new DefaultTableModel(tableData, columnNames);
-		viewer.getTable().setModel(dataModel);		
+		viewer.getTable().setModel(dataModel);			
+		
 		dataModel.fireTableDataChanged();
 	}
 
