@@ -66,6 +66,7 @@ public class ProfileDAO {
 
 	public static void createProfile(Profile profile) {
 		DataManager.getInstance().writeProfile(profile);
+		System.out.println("Created Profile File!");
 	}
 
 	/**

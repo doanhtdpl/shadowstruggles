@@ -56,7 +56,7 @@ public class Profile implements Serializable, Comparable<Object> {
 		this.id = 1;
 		this.player = new Player();
 		this.character = new Character();
-		this.language = "";
+		this.language = "en_us";
 		this.storyPoints = 0;
 		this.path = "";
 		this.selectedDeck = new Deck();

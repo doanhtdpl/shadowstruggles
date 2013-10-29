@@ -260,7 +260,7 @@ public class SaveLoadScreen extends BaseScreen {
 			if (profile.getEvents().size == 0)
 				profile.createEventsInGame(game);
 			game.setProfile(profile);
-
+			DataManager.getInstance().changeLanguage(profile.getLanguage());
 			if (mode == Mode.START)
 				game.setScreenWithTransition(new MainScreen(game, controller));
 			else
