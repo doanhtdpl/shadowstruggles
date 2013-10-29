@@ -312,6 +312,7 @@ public class FighterEditor extends JFrame {
 	public void saveFighter(Fighter fighter){
 		try{
 		controller.createFighter(fighter);
+		controller.updateTableToFighter();
 		this.dispose();
 		}catch(IOException e){e.printStackTrace();}
 	}

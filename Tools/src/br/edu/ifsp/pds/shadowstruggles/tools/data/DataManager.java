@@ -79,8 +79,11 @@ public class DataManager {
 		net.lingala.zip4j.core.ZipFile zip = new net.lingala.zip4j.core.ZipFile(
 				path);
 		Path currentRelativePath = Paths.get("");
+		
 		zip.extractAll(currentRelativePath.toAbsolutePath().toString());
 		this.currentLanguage="en_us";
+		File file = new File(searchFile(FileMap.globalClassToFile.get(Languages.class), null,Languages.class ));
+		this.languages=(Languages)MyJson.getJson().fromJson(ArrayList.class,file).get(0);
 		return true;
 	}
 

@@ -161,6 +161,10 @@ public class Controller {
 	public void setLanguage(String language){
 		model.setCurrentLanguage(language);
 	}
+	
+	public void createLanguage(String code, String name) throws IOException{
+		model.insertLanguage(code, name);
+	}
 
 	public void updateTableToDecks() {
 		try {
@@ -199,6 +203,8 @@ public class Controller {
 
 	public void updateTableToScenes() {
 	}
+	
+	
 
 	public void setViewer(MainMenu viewer) {
 		this.viewer = viewer;
