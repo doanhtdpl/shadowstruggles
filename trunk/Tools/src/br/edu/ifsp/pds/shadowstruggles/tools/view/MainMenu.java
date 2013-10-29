@@ -354,7 +354,7 @@ public class MainMenu {
 		btnOpenButton.setVisible(false);
 		lblOr.setVisible(false);
 		btnCreateZIP.setVisible(false);
-		controller.updateTableToDecks();
+		controller.updateTableToFighter();
 		
 	}
 

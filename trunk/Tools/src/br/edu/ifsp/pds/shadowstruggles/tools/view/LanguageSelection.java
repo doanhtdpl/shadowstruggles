@@ -6,12 +6,15 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.util.Map;
 
 import javax.swing.event.ChangeListener;
@@ -50,10 +53,11 @@ public class LanguageSelection extends JFrame {
 		int i = 0;
 		for (Map.Entry<String, String> entry : controller.getLanguages()
 				.entrySet()) {
-			lang[i] = entry.getKey() + " - " + entry.getValue();
+			lang[i] = entry.getKey();
 			i++;
 		}
-		comboBox = new JComboBox<String>(lang);
+		comboBox = new JComboBox<String>();
+		comboBox.setModel(new DefaultComboBoxModel<>(lang));
 		comboBox.setBounds(197, 27, 216, 20);
 		contentPane.add(comboBox);
 
@@ -124,7 +128,25 @@ public class LanguageSelection extends JFrame {
 		btnOk.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-
+				if(rdbtnNewLanguage.isSelected()){
+					String code = textField.getText();
+					String name = textField_1.getText();
+					try {
+						getController().createLanguage(code, name);
+						getController().setLanguage(code);
+						getController().updateTableToFighter();
+						getThis().dispose();
+					} catch (IOException e1) {					
+						e1.printStackTrace();
+					}
+				}else{
+					String code = comboBox.getSelectedItem().toString();
+					getController().setLanguage(code);
+					getController().updateTableToFighter();
+					getThis().dispose();
+					
+				}
+				
 			}
 		});
 		btnOk.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -142,4 +164,12 @@ public class LanguageSelection extends JFrame {
 		btnNewButton.setBounds(265, 206, 148, 33);
 		contentPane.add(btnNewButton);
 	}
+	
+	public Controller getController() {
+		return controller;
+	}
+	
+	public LanguageSelection getThis(){return this;}
+	
+	
 }
