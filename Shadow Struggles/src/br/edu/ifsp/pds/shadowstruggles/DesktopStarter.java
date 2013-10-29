@@ -23,7 +23,7 @@ public class DesktopStarter {
 		// System.out.println("Finish!");
 
 		ApplicationListener listener = ShadowStruggles
-				.getInstance(RunMode.TESTS);
+				.getInstance(RunMode.DEBUG);
 		String title = "Shadow Struggles";
 		int width = 960, height = 640;
 		boolean useOpenGLES2 = false;

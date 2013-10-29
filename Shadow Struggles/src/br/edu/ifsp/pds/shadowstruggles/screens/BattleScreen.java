@@ -133,6 +133,7 @@ public class BattleScreen extends BaseScreen {
 				new Asset("magnifier.png", "game_ui_images"),
 				new Asset("back_card.png", "game_ui_images"),
 				new Asset("deck.png", "game_ui_images"),
+				new Asset("deckNotReady.png", "game_ui_images"),
 				new Asset("energy100.png", "game_ui_images"),
 				new Asset("background.png", "game_ui_images"),
 				new Asset("hexagram.png", "game_ui_images"),
