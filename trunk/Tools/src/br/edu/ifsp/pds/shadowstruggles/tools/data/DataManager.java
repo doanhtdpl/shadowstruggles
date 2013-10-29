@@ -80,6 +80,7 @@ public class DataManager {
 				path);
 		Path currentRelativePath = Paths.get("");
 		zip.extractAll(currentRelativePath.toAbsolutePath().toString());
+		this.currentLanguage="en_us";
 		return true;
 	}
 
