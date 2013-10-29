@@ -43,7 +43,7 @@ public class LifeBar extends FixedObject {
 				+ String.valueOf(maxLife);
 		this.life = new Label(lifeString, skin);
 		this.life.setX(this.getX() + 20);
-		this.life.setY(this.getY());
+		this.life.setY(this.getY()-5);
 		this.life.setStyle(new LabelStyle(skin.getFont("basic-font"),
 				Color.WHITE));
 		this.getStage().addActor(life);
@@ -59,7 +59,7 @@ public class LifeBar extends FixedObject {
 	public void move(Stage st, int cameraInitialX) {
 		super.move(st, cameraInitialX);
 		this.life.setX(this.getX() + 20);
-		this.life.setY(this.getY());
+		this.life.setY(this.getY()-5);
 	}
 
 	public void setPercentage(float percentage) {

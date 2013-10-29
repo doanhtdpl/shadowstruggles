@@ -159,8 +159,8 @@ public class SettingsScreen extends BaseScreen {
 
 		languagesBox = new SelectBox(LanguagesDAO.getLanguages().values()
 				.toArray().toArray(), super.getSkin());
-		languagesBox.setSelection(DataManager.getInstance()
-				.getCurrentLanguage());
+		String currentLanguageValue=LanguagesDAO.getLanguages().get(DataManager.getInstance().getCurrentLanguage());
+		languagesBox.setSelection(currentLanguageValue);
 		languagesBox.addListener(new ChangeListener() {
 
 			@Override
