@@ -95,16 +95,12 @@ public class Controller {
 	public void createEnemy() {
 	}
 	
-	public void createFighter(Fighter fighter){
-		try {
-			model.insertObject(fighter, Fighter.class);
-			} catch (IOException e) {			
-			e.printStackTrace();
-		}
+	public void createFighter(Fighter fighter)throws IOException{		
+			model.insertObject(fighter, Fighter.class);			
 	}
 
 	public void updateTableToFighter() {
-		try {
+		/*try {
 			ArrayList<Fighter> fighters = model.searchAllObjects(Fighter.class);
 			System.out.println(fighters.size());
 			if (fighters != null) {
@@ -124,12 +120,12 @@ public class Controller {
 		} catch (IOException e) {
 			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
 			e.printStackTrace();
-		}
-		/*System.out.println("updating Fighters");
+		}*/
+		System.out.println("updating Fighters");
 		ArrayList<Fighter> fighters= new ArrayList<Fighter>();;
 		try {
-			if(model.searchAllObjects(Fighter.class.getClass())!=null)
-			fighters=model.searchAllObjects(Card.class.getClass());
+			if(model.searchAllObjects(Fighter.class)!=null)
+			fighters=model.searchAllObjects(Fighter.class);
 			
 		} catch (IOException e) {
 			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
@@ -144,7 +140,7 @@ public class Controller {
 		}
 		DefaultTableModel dataModel = new DefaultTableModel(tableData, columnNames);
 		viewer.getTable().setModel(dataModel);		
-		dataModel.fireTableDataChanged();*/
+		dataModel.fireTableDataChanged();
 	}
 
 	public void updateTableToTraps() {

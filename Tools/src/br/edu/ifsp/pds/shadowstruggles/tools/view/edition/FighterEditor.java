@@ -19,6 +19,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class FighterEditor extends JFrame {
@@ -132,18 +133,15 @@ public class FighterEditor extends JFrame {
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
 
-		comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"a", "b", "c"}));
+		comboBox = new JComboBox();		
 		comboBox.setBounds(114, 347, 193, 20);
 		contentPane.add(comboBox);
 
-		comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"a", "b", "c"}));
+		comboBox_1 = new JComboBox();		
 		comboBox_1.setBounds(114, 378, 193, 20);
 		contentPane.add(comboBox_1);
 
-		comboBox_2 = new JComboBox();
-		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"a", "b", "c"}));
+		comboBox_2 = new JComboBox();		
 		comboBox_2.setBounds(114, 406, 193, 20);
 		contentPane.add(comboBox_2);
 
@@ -232,17 +230,19 @@ public class FighterEditor extends JFrame {
 				fighter.localizedName = textField_5.getText();
 				fighter.description = textArea.getText();
 				fighter.buyCost = Integer.parseInt(textField_2.getText());
-				fighter.sellable = chckbxSellable.isSelected();
-				fighter.icon = comboBox.getSelectedItem().toString();
-				fighter.availableInMainShop = chckbxAvailableInShop.isSelected();
-				
+				fighter.sellable = chckbxSellable.isSelected();				
+				if(comboBox.getSelectedItem()!=null)
+					fighter.icon = comboBox.getSelectedItem().toString();
+				else fighter.icon = "";
+				fighter.availableInMainShop = chckbxAvailableInShop.isSelected();	
 				
 				fighter.energyCost = Integer.parseInt(textField_3.getText());
 				try{
 				fighter.action = (CardAction) comboBox_1.getSelectedItem();
-				}catch(Exception e){fighter.action =null;}
-				fighter.illustration = comboBox_2.getSelectedItem().toString();
-//				fighter.preRequisites = 
+				}catch(Exception e){fighter.action =null;}				
+				if(comboBox_2.getSelectedItem()!=null)
+					fighter.illustration = comboBox_2.getSelectedItem().toString();
+				else fighter.illustration = "";
 				
 				fighter.maxHealth = Integer.parseInt(textField_6.getText());
 				fighter.damage = Integer.parseInt(textField_4.getText());
@@ -310,7 +310,9 @@ public class FighterEditor extends JFrame {
 	}
 	
 	public void saveFighter(Fighter fighter){
+		try{
 		controller.createFighter(fighter);
 		this.dispose();
+		}catch(IOException e){e.printStackTrace();}
 	}
 }
