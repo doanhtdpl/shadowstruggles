@@ -93,20 +93,10 @@ public class ShadowStruggles extends Game {
 			// Test cases go here.
 			LoaderTest loaderTest = new LoaderTest();
 			loaderTest.testLoading(this);
-			loaderTest.testGetRegion(this);
-			DeckTest.testDeckRead();
-			DeckTest.testDraw();			
-			ProfileTest.testUpdateProfile();		
+			loaderTest.testGetRegion(this);						
 			loaderTest.testDispose(this);
+			DataManager.getInstance();
 			
-			/*CharacterTest characterTest = new CharacterTest();
-			characterTest.WalkDownTest();
-			characterTest.WalkUpTest();
-			characterTest.WalkRightTest();
-			characterTest.WalkLeftTest();
-
-			DataManagerTest dataManagerTest = new DataManagerTest();
-			dataManagerTest.testEncodingDecoding();*/
 
 			// End of test cases.
 			Gdx.app.exit();

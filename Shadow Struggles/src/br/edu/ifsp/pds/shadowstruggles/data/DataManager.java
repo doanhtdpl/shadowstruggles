@@ -55,11 +55,13 @@ public class DataManager {
 	 */
 	@SuppressWarnings("rawtypes")
 	private DataManager(String language) {
+		System.out.println("DataManager: Constructor Called");
 		this.recordSet = new ObjectMap<Class<?>, Array>();
 		this.changeLanguage(language);
 	}
 
 	public void changeLanguage(String language) {
+		System.out.println("DataManager: changeLanguage Called");
 		this.currentLanguage = language;
 		this.retrieve();
 	}
@@ -68,6 +70,7 @@ public class DataManager {
 	 * Stores all data from JSON files into the record set.
 	 */
 	private void retrieve() {
+		System.out.println("DataManager: retrieve Called");
 		for (Class<?> c : FileMap.classToFile.keys()) {
 			Array<Object> objectList = new Array<Object>();
 			String path = localizedPath(currentLanguage,
@@ -76,8 +79,11 @@ public class DataManager {
 			FileHandle handle = Gdx.files.internal(path);
 
 			try {
-				objectList.addAll(MyJson.getJson()
-						.fromJson(Array.class, handle));
+				Array<Object> temp =MyJson.getJson()
+						.fromJson(Array.class, handle);
+				System.out.println("objectList size: "+objectList.size);
+				System.out.println("temp size: "+temp.size);
+				objectList.addAll(temp);
 			} catch (SerializationException ex) {
 				Gdx.app.error(LOG,
 						"Error retrieving localized JSON file from language "
@@ -91,7 +97,12 @@ public class DataManager {
 			String path = FileMap.globalClassToFile.get(c);
 
 			FileHandle handle = Gdx.files.internal(path);
-
+			if(!handle.exists()&& path.equals(FileMap.globalClassToFile.get(Profile.class))){
+				createProfileFile();
+			}
+			else{
+				System.out.println(path+ " exists");
+			}
 			try {
 				objectList.addAll(MyJson.getJson()
 						.fromJson(Array.class, handle));
@@ -129,11 +140,21 @@ public class DataManager {
 					+ profile.getId(), ex);
 		}
 	}
+	
+	public void createProfileFile(){
+		System.out.println("trying to Create Profile File");
+		Array<Profile> profiles = new Array<Profile>();
+		String path = FileMap.globalClassToFile.get(Profile.class);
+		if (!Gdx.files.internal(path).exists()){
+			MyJson.getJson().toJson(profiles, Gdx.files.local(FileMap.globalClassToFile.get(Profile.class)));
+		}
+	}
 
 	/**
 	 * Persists the changes made during the gameplay.
 	 */
 	public void save() {
+		System.out.println("DataManager.save()");
 		String profilesPath = FileMap.globalClassToFile.get(Profile.class);
 		// For Android, it may be necessary to create the file in the local
 		// storage first.

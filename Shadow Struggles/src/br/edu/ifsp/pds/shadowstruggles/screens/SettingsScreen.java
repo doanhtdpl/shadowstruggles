@@ -6,6 +6,7 @@ import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
 import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.LanguagesDAO;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.ProfileDAO;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -106,6 +107,10 @@ public class SettingsScreen extends BaseScreen {
 		confirmButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
+				game.getProfile().setLanguage(DataManager.getInstance().getCurrentLanguage());
+				System.out.println("SettingsScreen: profile language: "+game.getProfile().getLanguage());
+				ProfileDAO.updateProfile(game.getProfile().getId(), game.getProfile());
+				DataManager.getInstance().save();
 				game.getAudio().playSound("button_4");
 				previousScreen.loadLanguage();
 				game.setScreenWithTransition(previousScreen);
