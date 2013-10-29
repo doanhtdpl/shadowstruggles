@@ -59,6 +59,7 @@ public class MainMenu {
 	private JMenuBar menuBar;
 	private JLabel lblOr;
 	private JButton btnCreateZIP;
+	private JScrollPane scrollPane;
 	
 
 	public MainMenu(Controller controller) {
@@ -145,14 +146,23 @@ public class MainMenu {
 
 		btnNewButton.setVisible(false);
 		
+		
+		
+		
+		
 		table = new JTable();
 		table.setVisible(false);
-		table.setBounds(150, 80, 550, 386);
-		frmTitle.getContentPane().add(table);
+		table.setBounds(5, 5, 550, 386);
 		
+		scrollPane = new JScrollPane(table);
+		scrollPane.setBounds(148, 78, 555, 390);
+		scrollPane.setVisible(false);
+		
+		//scrollPane.add(table);
+		frmTitle.getContentPane().add(scrollPane);
+		//frmTitle.getContentPane().add(table);
 		btnNewButton.setBounds(30, 80, 89, 23);
 		frmTitle.getContentPane().add(btnNewButton);
-
 		btnEditButton = new JButton("Edit");
 		btnEditButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -338,6 +348,8 @@ public class MainMenu {
 		btnNewButton.setVisible(true);
 		btnEditButton.setVisible(true);
 		btnDeleteButton.setVisible(true);
+		
+		scrollPane.setVisible(true);
 		table.setVisible(true);
 		btnOpenButton.setVisible(false);
 		lblOr.setVisible(false);
