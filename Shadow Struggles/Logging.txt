@@ -90,3 +90,11 @@ Out 28, 2013 10:29:30 PM br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplic
 SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving localized JSON file from language  - Error reading file: data/files/traps.json
 Out 28, 2013 10:29:30 PM br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
 SEVERE: br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO: Error getting MenuText - 0
+30/10/2013 09:31:36 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving language-independent JSON file - Error reading file: data/profiles.json
+30/10/2013 09:36:31 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving language-independent JSON file - Error reading file: data/profiles.json
+30/10/2013 09:39:43 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving language-independent JSON file - Error reading file: data/profiles.json
+30/10/2013 09:56:17 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving language-independent JSON file - Error reading file: data/profiles.json

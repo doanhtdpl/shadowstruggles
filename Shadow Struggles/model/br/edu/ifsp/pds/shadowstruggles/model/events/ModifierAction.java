@@ -2,7 +2,7 @@ package br.edu.ifsp.pds.shadowstruggles.model.events;
 
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.model.modifiers.Modifier;
-import br.edu.ifsp.pds.shadowstruggles.screens.rpg.Messager;
+import br.edu.ifsp.pds.shadowstruggles.screens.rpg.Messenger;
 import br.edu.ifsp.pds.shadowstruggles.screens.rpg.RpgScreen;
 
 import com.badlogic.gdx.utils.Json;
@@ -24,7 +24,7 @@ public class ModifierAction extends EventAction {
 		modifier.modify();
 		String message = modifier.getMessage();
 		if (message != null) {
-			Messager messager = new Messager(message,
+			Messenger messager = new Messenger(message,
 					ShadowStruggles.getInstance());
 			messager.showOnScreen((RpgScreen) ShadowStruggles.getInstance()
 					.getScreen());

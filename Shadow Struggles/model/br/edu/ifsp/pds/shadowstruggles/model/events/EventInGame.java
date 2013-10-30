@@ -72,7 +72,7 @@ public class EventInGame implements Serializable {
 		json.writeValue("layer", this.layer);
 		json.writeValue("triggerType", this.triggerType);
 		json.writeValue("actions", this.actions);
-		//json.writeValue("character", this.character);
+		json.writeValue("character", this.character);
 		json.writeValue("collidable", this.collidable);
 	}
 

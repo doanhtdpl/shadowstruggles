@@ -24,7 +24,7 @@ import com.badlogic.gdx.utils.Array;
 
 /**
  * The main screen of the RPG World. It gets the user input and sends the
- * command to the RPG Controller. Also, renders all the visual elements.
+ * command to the RPG Controller.
  */
 public class RpgScreen extends BaseScreen implements InputProcessor {
 	// The maximum range for the map region shown on screen. This is done so
@@ -58,10 +58,11 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 			RpgController rpgController) {
 		super(game, controller);
 
-		// The super constructor does some nasty stuff with the camera which we
+		// The super constructor does some nasty stuff to the camera which we
 		// don't want for RpgScreen, so let's create a new one.
 		this.camera = new OrthographicCamera(this.width, this.height);
 		this.camera.position.set(CAMERA_INITIAL_X, CAMERA_INITIAL_Y, 0);
+		this.stage.setCamera(camera);
 
 		rpgController.setViewer(this);
 		this.rpgController = rpgController;

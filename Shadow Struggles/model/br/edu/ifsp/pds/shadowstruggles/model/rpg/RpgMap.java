@@ -25,20 +25,25 @@ public class RpgMap implements TileBasedMap {
 	private String objectLayer;
 	private String tileLayerString;
 	private TiledMapTileLayer tileLayer = null;
-	private ShadowStruggles game;
 
 	private boolean visited[][] = null;
 
-	public RpgMap(ShadowStruggles game, String mapName) {
-		this(game, mapName, SettingsDAO.getSettings().defaultObjLayer,
-				SettingsDAO.getSettings().defaultTileLayer);
+	public RpgMap() {
+		this.mapName = "";
+		this.map = null;
+		this.objectLayer = "";
+		this.tileLayerString = "";
+		this.tileLayer = null;
 	}
 
-	public RpgMap(ShadowStruggles game, String mapName, String objectLayer,
-			String tileLayer) {
-		this.game = game;
+	public RpgMap(String mapName) {
+		this(mapName, SettingsDAO.getSettings().defaultObjLayer, SettingsDAO
+				.getSettings().defaultTileLayer);
+	}
+
+	public RpgMap(String mapName, String objectLayer, String tileLayer) {
 		this.mapName = mapName;
-		this.map = game.getTiledMap(mapName);
+		this.map = ShadowStruggles.getInstance().getTiledMap(mapName);
 		this.objectLayer = objectLayer;
 		this.tileLayerString = tileLayer;
 		if (map != null)
@@ -46,7 +51,6 @@ public class RpgMap implements TileBasedMap {
 	}
 
 	public RpgMap(RpgMap rpgMap) {
-		this.game = rpgMap.getGame();
 		this.mapName = rpgMap.getMapName();
 		this.map = rpgMap.getMap();
 		this.objectLayer = rpgMap.getObjectLayer();
@@ -157,8 +161,8 @@ public class RpgMap implements TileBasedMap {
 	 * Executes the automatic events of the map in the current object layer.
 	 */
 	public void runAutomaticEvents() {
-		Array<EventInGame> events = game.getProfile().getEvents(mapName,
-				objectLayer);
+		Array<EventInGame> events = ShadowStruggles.getInstance().getProfile()
+				.getEvents(mapName, objectLayer);
 		for (EventInGame event : events) {
 			if (event.getTriggerType() == EventInGame.TriggerType.AUTOMATIC) {
 				event.trigger();
@@ -175,8 +179,8 @@ public class RpgMap implements TileBasedMap {
 	 *            events.
 	 */
 	public EventInGame getTouchingEvent(Rectangle charRect) {
-		Array<EventInGame> events = game.getProfile().getEvents(mapName,
-				objectLayer);
+		Array<EventInGame> events = ShadowStruggles.getInstance().getProfile()
+				.getEvents(mapName, objectLayer);
 
 		for (EventInGame event : events) {
 			Rectangle rect = event.getCharacter().getMover().getRectangle();
@@ -272,16 +276,12 @@ public class RpgMap implements TileBasedMap {
 		return this.tileLayer;
 	}
 
-	private ShadowStruggles getGame() {
-		return this.game;
-	}
-
 	/**
 	 * Retrieves the TiledMap and the current layer using the mapName and
 	 * tileLayer attributes.
 	 */
 	public void loadMap() {
-		this.map = game.getTiledMap(mapName);
+		this.map = ShadowStruggles.getInstance().getTiledMap(mapName);
 		this.tileLayer = (TiledMapTileLayer) map.getLayers().get(
 				tileLayerString);
 	}

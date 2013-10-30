@@ -21,7 +21,7 @@ public class RpgPlatform {
 
 	public RpgPlatform(RpgController controller, Character character,
 			ShadowStruggles game) {
-		this(controller, character, new RpgMap(game, "map"));
+		this(controller, character, new RpgMap("map"));
 	}
 
 	public RpgPlatform(RpgController controller, Character character, RpgMap map) {

@@ -14,11 +14,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
  * Displays messages on an {@link RpgScreen} through a background Image and a
  * Label.
  */
-public class Messager {
+public class Messenger {
 	private Image background;
 	private Label textLbl;
 
-	public Messager(String text, ShadowStruggles game) {
+	public Messenger(String text, ShadowStruggles game) {
 		Skin skin = ((BaseScreen) game.getScreen()).getSkin();
 
 		textLbl = new Label(text, skin);

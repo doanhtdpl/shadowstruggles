@@ -2,7 +2,6 @@ package br.edu.ifsp.pds.shadowstruggles.model.rpg.test;
 
 import org.junit.Test;
 
-import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgMap;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgPlatform;
@@ -16,7 +15,7 @@ public class CharacterTest {
 
 	@Test
 	public void WalkUpTest() {
-		RpgMap map = new RpgMap(ShadowStruggles.getInstance(), "map");
+		RpgMap map = new RpgMap("map");
 		int initialTileX = MathUtils.random(map.getWidthInTiles() - 1);
 		int initialTileY = MathUtils.random(1, map.getHeightInTiles() - 1);
 		Character character = new Character(initialTileX, initialTileY, 2, 2,
@@ -37,7 +36,7 @@ public class CharacterTest {
 
 	@Test
 	public void WalkDownTest() {
-		RpgMap map = new RpgMap(ShadowStruggles.getInstance(), "map");
+		RpgMap map = new RpgMap("map");
 		int initialTileX = MathUtils.random(map.getWidthInTiles() - 1);
 		int initialTileY = MathUtils.random(map.getHeightInTiles() - 2);
 		Character character = new Character(initialTileX, initialTileY, 2, 2,
@@ -58,7 +57,7 @@ public class CharacterTest {
 
 	@Test
 	public void WalkLeftTest() {
-		RpgMap map = new RpgMap(ShadowStruggles.getInstance(), "map");
+		RpgMap map = new RpgMap("map");
 		int initialTileX = MathUtils.random(1, map.getWidthInTiles() - 1);
 		int initialTileY = MathUtils.random(map.getHeightInTiles() - 1);
 		Character character = new Character(initialTileX, initialTileY, 2, 2,
@@ -79,7 +78,7 @@ public class CharacterTest {
 
 	@Test
 	public void WalkRightTest() {
-		RpgMap map = new RpgMap(ShadowStruggles.getInstance(), "map");
+		RpgMap map = new RpgMap("map");
 		int initialTileX = MathUtils.random(map.getWidthInTiles() - 2);
 		int initialTileY = MathUtils.random(map.getHeightInTiles() - 1);
 		Character character = new Character(initialTileX, initialTileY, 2, 2,

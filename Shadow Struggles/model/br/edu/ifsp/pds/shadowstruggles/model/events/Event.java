@@ -88,7 +88,7 @@ public class Event implements Serializable {
 	 * Creates a character from this object's parameters.
 	 */
 	public Character getCharacter(ShadowStruggles game) {
-		RpgMap rpgMap = new RpgMap(game, map, layer,
+		RpgMap rpgMap = new RpgMap(map, layer,
 				SettingsDAO.getSettings().defaultTileLayer);
 		Character character = new Character(x, y, width, height, rpgMap);
 		return character;
