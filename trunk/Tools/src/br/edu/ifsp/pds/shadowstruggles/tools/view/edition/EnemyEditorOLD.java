@@ -9,7 +9,7 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
-public class EnemyEditor extends JFrame {
+public class EnemyEditorOLD extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
 	private JPanel contentPane;
@@ -27,7 +27,7 @@ public class EnemyEditor extends JFrame {
 	private JButton btnInsert;
 	private JButton btnCancel;
 
-	public EnemyEditor() {
+	public EnemyEditorOLD() {
 		setVisible(true);
 		setTitle("Enemie Editor");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

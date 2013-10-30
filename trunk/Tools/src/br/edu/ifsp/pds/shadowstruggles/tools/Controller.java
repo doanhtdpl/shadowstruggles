@@ -1,6 +1,5 @@
 package br.edu.ifsp.pds.shadowstruggles.tools;
 
-import java.awt.Color;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,13 +8,12 @@ import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 
 import net.lingala.zip4j.exception.ZipException;
 import br.edu.ifsp.pds.shadowstruggles.tools.data.DataManager;
-import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Card;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.events.Event;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.MainMenu;
 
 public class Controller {
@@ -78,7 +76,8 @@ public class Controller {
 	public void createCard() {
 	}
 
-	public void createEvent() {
+	public void createEvent(Event event) throws IOException {
+		model.insertObject(event, Event.class);
 	}
 
 	public void createBattle() {
@@ -99,29 +98,10 @@ public class Controller {
 	public void createFighter(Fighter fighter)throws IOException{		
 			model.insertObject(fighter, Fighter.class);			
 	}
+	
+	
 
-	public void updateTableToFighter() {
-		/*try {
-			ArrayList<Fighter> fighters = model.searchAllObjects(Fighter.class);
-			System.out.println(fighters.size());
-			if (fighters != null) {
-				int i = 0;
-				Object[][] fighterAttributes = new Object[fighters.size()][2];
-				for (Iterator<Fighter> iterator = fighters.iterator(); iterator
-						.hasNext();) {
-					fighterAttributes[i][0] = fighters.get(i).getId();
-					fighterAttributes[i][1] = fighters.get(i).getName();
-				}
-				Object[] columnNames = { "ID", "Name" };
-				viewer.getTable().setModel(
-						new DefaultTableModel(fighterAttributes, columnNames));
-				viewer.getTable().updateUI();
-			}
-
-		} catch (IOException e) {
-			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
-			e.printStackTrace();
-		}*/
+	public void updateTableToFighter() {		
 		System.out.println("updating Fighters");
 		ArrayList<Fighter> fighters= new ArrayList<Fighter>();;
 		try {
@@ -199,6 +179,27 @@ public class Controller {
 	}
 
 	public void updateTableToEvents() {
+		System.out.println("updating Events");
+		ArrayList<Event> events= new ArrayList<Event>();;
+		try {
+			if(model.searchAllObjects(Event.class)!=null)
+			events=model.searchAllObjects(Event.class);
+			
+		} catch (IOException e) {
+			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
+			e.printStackTrace();			
+		}
+		String[] columnNames={"ID","Trigger Type"};
+		Object[][] tableData = new Object[events.size()][10];
+		int i = 0;
+		for(Event event : events){			
+			tableData[i][0]=event.id;
+			tableData[i][1]=event.triggerType;
+		}
+		DefaultTableModel dataModel = new DefaultTableModel(tableData, columnNames);
+		viewer.getTable().setModel(dataModel);			
+		
+		dataModel.fireTableDataChanged();
 	}
 
 	public void updateTableToScenes() {

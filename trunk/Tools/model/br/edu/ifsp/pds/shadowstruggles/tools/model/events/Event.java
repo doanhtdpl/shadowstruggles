@@ -38,6 +38,7 @@ public class Event implements Serializable {
 		this.collidable = true;
 	}
 	
+		
 	@Override
 	public void read(Json arg0, JsonValue arg1) {
 		try {
