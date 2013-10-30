@@ -1,5 +1,5 @@
 [
-{"class":"br.edu.ifsp.pds.shadowstruggles.model.Scene","id":0,"nextId":1000,"name":"Confrontos Sombrios","script":"Vá além das nuvens e estrelas acima, viaje através da terra e do magma abaixo, transcendendo ambos tempo e espaço. Uma vez lá, você irá encontrar um lugar aonde nem 'vida' ou 'matéria' possuem significados expressivos. A única realidade é aquela da interminável oposição entre duas facções.
+{"class":"Scene","id":0,"nextId":1000,"name":"Confrontos Sombrios","script":"Vá além das nuvens e estrelas acima, viaje através da terra e do magma abaixo, transcendendo ambos tempo e espaço. Uma vez lá, você irá encontrar um lugar aonde nem 'vida' ou 'matéria' possuem significados expressivos. A única realidade é aquela da interminável oposição entre duas facções.
 
 'Luz' e 'Trevas' ou 'Bem' e 'Mal' é como os mortais compreendem estas entidades etéreas, mas isto só se deve às suas próprias existências limitadas. O universo tão precioso deles é nada a não ser uma pequena mancha, resíduo da guerra. Uma sombra indesejada.
 
@@ -10,7 +10,7 @@ No momento que Luz e Trevas se deram conta de tal existência, a sombra já havia 
 "choices":[]
 },
 
-{"class":"br.edu.ifsp.pds.shadowstruggles.model.Scene","id":1000,"nextId":2000,"name":"O Começo","script":"Nos encontramos numa situação bem peculiar.
+{"class":"Scene","id":1000,"nextId":2000,"name":"O Começo","script":"Nos encontramos numa situação bem peculiar.
 
 Auxiliados pelas maravilhas da alquimia, os habitantes de determinado planeta decidiram que era tempo de expandir seus horizontes, mover-se além do que suas experiências limitadas poderiam compreender. E assim começou um novo e excitante capítulo para eles, cheio de mistérios, descobertas, conhecimento, blah blah, e assim por diante. Realmente não importa, já que esta história não tem nada a ver com isso.  
 
@@ -25,7 +25,7 @@ Mais de uma década após a invasão na Terra a pesquisa alquimista é mais intensa 
 "choices":[]
  },
  
- {"class":"br.edu.ifsp.pds.shadowstruggles.model.Scene","id":2000,"nextId":3000,"name":"Mestre e discípulo","script":"After an overly long day of bothersome activities, Lockstar finally finds time to rest under a rotten tree. As if having read his pupil's thoughts, Phoenix approaches him and casually begins to speak:
+ {"class":"Scene","id":2000,"nextId":3000,"name":"Mestre e discípulo","script":"After an overly long day of bothersome activities, Lockstar finally finds time to rest under a rotten tree. As if having read his pupil's thoughts, Phoenix approaches him and casually begins to speak:
 
 - As far as I know, you were the one who chose me, weren't you? No complaints now.
 

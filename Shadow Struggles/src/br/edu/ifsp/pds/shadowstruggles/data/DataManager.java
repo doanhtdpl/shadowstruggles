@@ -61,6 +61,7 @@ public class DataManager {
 
 	public void changeLanguage(String language) {
 		this.currentLanguage = language;
+		System.out.println("DM: currentlanguage= "+language);
 		this.retrieve();
 	}
 
@@ -74,7 +75,9 @@ public class DataManager {
 					FileMap.classToFile.get(c));
 
 			FileHandle handle = Gdx.files.internal(path);
-
+			System.out.println("DM.retrieve: path="+path);
+			System.out.println("DM.retrieve: handle="+handle);
+			
 			try {
 				objectList.addAll(MyJson.getJson()
 						.fromJson(Array.class, handle));

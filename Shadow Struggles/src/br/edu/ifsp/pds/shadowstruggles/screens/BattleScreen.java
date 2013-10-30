@@ -179,7 +179,8 @@ public class BattleScreen extends BaseScreen {
 		Array<Asset> assets = new Array<Asset>(new Asset[] {
 				new Asset(battlePlatform.getMap().getName() + ".png",
 						"battle_maps"),
-				new Asset("energy100.png", "game_ui_images") });
+				new Asset("energy100.png", "game_ui_images")
+				 });
 		return assets;
 	}
 
@@ -594,7 +595,7 @@ public class BattleScreen extends BaseScreen {
 		name.setHeight(1200);
 		name.setWrap(true);
 		name.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
-				Color.BLACK));
+				Color.WHITE));
 		// DESCRI��O
 		Label description = new Label(card.getDescription(), super.getSkin());
 		description.setX(410);
@@ -602,17 +603,15 @@ public class BattleScreen extends BaseScreen {
 		description.setHeight(800);
 		description.setWrap(true);
 		description.setStyle(new LabelStyle(super.getSkin().getFont(
-				"andalus-font"), Color.BLACK));
+				"andalus-font"), Color.WHITE));
 		// BOX
 		Image box = new Image(game
-				.getAssets()
-				.get("data/images/game_ui_images/game_ui_images.atlas",
-						TextureAtlas.class).findRegion("box"));
+				.getTextureRegion("box", "game_ui_images"));
 		ScreenUtils.defineImage(box, 50, 177, 940, 600, 0.9f, 0.76f);
 		// IMAGEM
-		Image cardImage = new Image(game.getAssets()
-				.get("data/images/cards/cards.atlas", TextureAtlas.class)
-				.findRegion(card.getName().toLowerCase()));
+		Image cardImage = new Image(game
+				.getTextureRegion(card.getName().toLowerCase(), "cards"));
+				
 		ScreenUtils.defineImage(cardImage, 60, 205, cardImage.getWidth(),
 				cardImage.getHeight(), 1.5f, 1.5f);
 
@@ -644,7 +643,7 @@ public class BattleScreen extends BaseScreen {
 		Label energyCost = ScreenUtils
 				.defineLabel(
 						new FixedLabel(String.valueOf(card.getEnergyCost()),
-								330, this), 330, 150, 200, 70);
+								365, this), 365, 150, 200, 70);
 		if (card.getClass().equals(Fighter.class)
 				&& !card.getName().equals("Rock")) {
 			FixedLabel life = (FixedLabel) ScreenUtils.defineLabel(
