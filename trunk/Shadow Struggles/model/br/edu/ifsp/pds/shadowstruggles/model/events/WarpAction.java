@@ -41,7 +41,7 @@ public class WarpAction extends EventAction {
 			eventInGame.getCharacter().setPosition(destinyX, destinyY);
 		} else {
 			Character playerChar = game.getProfile().getCharacter();
-			RpgMap newMap = new RpgMap(game, destinyMap, destinyLayer,
+			RpgMap newMap = new RpgMap(destinyMap, destinyLayer,
 					SettingsDAO.getSettings().defaultTileLayer);
 			playerChar.setPosition(destinyX, destinyY);
 			playerChar.setCurrentMap(newMap);
