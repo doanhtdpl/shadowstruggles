@@ -1,4 +1,4 @@
-package br.edu.ifsp.pds.shadowstruggles.tools.view.edition;
+package br.edu.ifsp.pds.shadowstruggles.tools.view.events;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -16,7 +16,7 @@ import javax.swing.JButton;
 
 import br.edu.ifsp.pds.shadowstruggles.tools.model.events.SceneAction;
 
-public class EventEditor extends JFrame {
+public class EventEditorOLD extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private JPanel contentPane;
@@ -61,7 +61,7 @@ public class EventEditor extends JFrame {
 	private int tile_y;
 
 	
-	public EventEditor() {
+	public EventEditorOLD() {
 		setVisible(true);
 		setTitle("Event Editor");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

@@ -34,12 +34,13 @@ import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.ActionEditor;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.BattleEditor;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.DeckEditor;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.EffectEditor;
-import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.EnemyEditor;
-import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.EventEditor;
+import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.EnemyEditorOLD;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.FighterEditor;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.SceneEditor;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.TrapEditor;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.enemies.EnemyGUIFrame;
+import br.edu.ifsp.pds.shadowstruggles.tools.view.events.EventEditor;
+import br.edu.ifsp.pds.shadowstruggles.tools.view.events.EventEditorOLD;
 
 import javax.swing.JLabel;
 
@@ -137,7 +138,7 @@ public class MainMenu {
 				if (selectedTab.equals("Battles"))
 					new BattleEditor();
 				if (selectedTab.equals("Events"))
-					new EventEditor();
+					new EventEditor(controller).setVisible(true);
 				if (selectedTab.equals("Scenes"))
 					new SceneEditor();
 
@@ -158,9 +159,9 @@ public class MainMenu {
 		scrollPane.setBounds(148, 78, 555, 390);
 		scrollPane.setVisible(false);
 		
-		//scrollPane.add(table);
+		
 		frmTitle.getContentPane().add(scrollPane);
-		//frmTitle.getContentPane().add(table);
+		
 		btnNewButton.setBounds(30, 80, 89, 23);
 		frmTitle.getContentPane().add(btnNewButton);
 		btnEditButton = new JButton("Edit");
@@ -180,11 +181,11 @@ public class MainMenu {
 				if (selectedTab.equals("Decks"))
 					new DeckEditor();
 				if (selectedTab.equals("Enemies"))
-					new EnemyEditor();
+					new EnemyEditorOLD();
 				if (selectedTab.equals("Battles"))
 					new BattleEditor();
 				if (selectedTab.equals("Events"))
-					new EventEditor();
+					new EventEditorOLD();
 				if (selectedTab.equals("Scenes"))
 					new SceneEditor();
 				// TODO: (objeto selecionado da tabela como argumento);
