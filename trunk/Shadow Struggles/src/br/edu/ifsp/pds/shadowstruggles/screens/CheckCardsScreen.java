@@ -75,9 +75,9 @@ public class CheckCardsScreen extends BaseScreen {
 
 		right = new Arrow(1, this.getSkin());
 		right.setY(150);
-		right.setX(900);
+		right.setX(820);
 		right.setScaleY(4f);
-		right.setScaleX(1.5f);
+		right.setScaleX(-1.5f);
 		right.setRotation(180);
 
 		right.addListener(new ClickListener() {

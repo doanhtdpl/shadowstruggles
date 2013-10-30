@@ -1,0 +1,8 @@
+[{class:Event,id:10,x:3,y:6,width:2,height:2,map:map,layer:default-objects,sprite:char,triggerType:INTERACT,actions:[{class:SavePointAction}],collidable:true},{class:Event,id:20,x:8,y:6,width:2,height:2,map:map,layer:default-objects,sprite:char,triggerType:TOUCH,actions:[	{
+		class: WarpAction,
+		destinyX: 0,
+		destinyY: 0,
+		destinyMap: map,
+		destinyLayer: default-objects,
+		target: null
+	}],collidable:false},{class:Event,id:30,x:15,y:6,width:2,height:2,map:map,layer:default-objects,sprite:char,triggerType:AUTOMATIC,actions:[],collidable:true}]
