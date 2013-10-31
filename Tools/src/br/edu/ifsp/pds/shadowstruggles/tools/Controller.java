@@ -48,7 +48,7 @@ public class Controller {
 			e.printStackTrace();
 		}catch(NullPointerException e){
 			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
-			//e.printStackTrace();
+			e.printStackTrace();
 		}
 	}
 
