@@ -117,7 +117,7 @@ public class AmountModifier extends Modifier {
 			if (replace)
 				profile.setExperience((int) amount);
 			else
-				profile.setLevel(profile.getExperience() + (int) amount);
+				profile.setExperience(profile.getExperience() + (int) amount);
 		}
 
 		if (attribute == ModifiedAttribute.ENERGY_RECOVERY) {

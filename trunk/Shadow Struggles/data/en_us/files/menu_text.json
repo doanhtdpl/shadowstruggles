@@ -30,5 +30,11 @@
 "languageSelection": "Select your language",
 "retryButton":"Retry",
 "practiceBattle":"Practice",
-"newDeck":"New Deck"
+"newDeck":"New Deck",
+"unlocked":"You have unlocked",
+"newExperience":"You now have have %d experience points!",
+"acquired":"You have acquired",
+"removedItem":"You no longer have",
+"addedQuest":"You have a new quest in progress!",
+"questCompleted":"You have completed the quest!"
 }]

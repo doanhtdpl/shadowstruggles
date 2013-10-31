@@ -14,9 +14,9 @@ import br.edu.ifsp.pds.shadowstruggles.object2d.rpg.Character2D;
 import br.edu.ifsp.pds.shadowstruggles.rpg.RpgRenderer;
 import br.edu.ifsp.pds.shadowstruggles.rpg.RpgController;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -35,13 +35,14 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 
 	private RpgController rpgController;
 	private RpgRenderer renderer;
+	private InputMultiplexer inputSources;
+	private Messenger messenger;
 
 	private PathFinder finder;
 	private Path path;
 
 	private boolean firstRender = true;
 	private float unitScale = 1f;
-	
 
 	/**
 	 * The constructor initializes the objects and defines itself as the
@@ -69,6 +70,10 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		renderer = new RpgRenderer(rpgController.getModel().getRpgMap(),
 				unitScale, getBatch(), game, rpgController.getModel()
 						.getCharacter());
+
+		this.inputSources = new InputMultiplexer();
+		inputSources.addProcessor(stage);
+		inputSources.addProcessor(this);
 	}
 
 	@Override
@@ -120,7 +125,7 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0, 0, 0, 1f);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		Gdx.input.setInputProcessor(this);
+		Gdx.input.setInputProcessor(inputSources);
 
 		camera.update();
 
@@ -174,7 +179,10 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 			if (Gdx.input.isKeyPressed(Input.Keys.Z)
 					|| Gdx.input.isKeyPressed(Input.Keys.ENTER)
 					|| Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
-				rpgController.triggerEvent();
+				if (messenger != null)
+					messenger.advanceMessage();
+				else
+					rpgController.triggerEvent();
 			}
 		}
 	}
@@ -226,6 +234,10 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		return this.renderer.getPlayerCharacter();
 	}
 
+	public InputMultiplexer getInputSources() {
+		return this.inputSources;
+	}
+
 	@Override
 	public boolean keyDown(int keycode) {
 		return false;
@@ -265,4 +277,7 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		return this.rpgController;
 	}
 
+	public void setMessenger(Messenger messenger) {
+		this.messenger = messenger;
+	}
 }
