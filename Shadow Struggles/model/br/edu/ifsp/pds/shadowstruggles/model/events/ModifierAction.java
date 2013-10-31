@@ -3,7 +3,6 @@ package br.edu.ifsp.pds.shadowstruggles.model.events;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.model.modifiers.Modifier;
 import br.edu.ifsp.pds.shadowstruggles.screens.rpg.Messenger;
-import br.edu.ifsp.pds.shadowstruggles.screens.rpg.RpgScreen;
 
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
@@ -24,10 +23,9 @@ public class ModifierAction extends EventAction {
 		modifier.modify();
 		String message = modifier.getMessage();
 		if (message != null) {
-			Messenger messager = new Messenger(message,
+			Messenger messenger = new Messenger(message,
 					ShadowStruggles.getInstance());
-			messager.showOnScreen((RpgScreen) ShadowStruggles.getInstance()
-					.getScreen());
+			messenger.displayMessage();
 		}
 	}
 
@@ -35,13 +33,13 @@ public class ModifierAction extends EventAction {
 	public void read(Json json, JsonValue jsonData) {
 		super.read(json, jsonData);
 
-		this.modifier = json.readValue("modifier", Modifier.class, jsonData);
+		this.modifier = json.readValue("modifier", null, jsonData);
 	}
 
 	@Override
 	public void write(Json json) {
 		super.write(json);
 
-		json.writeValue("modifier", this.modifier);
+		json.writeValue("modifier", this.modifier, ModifierAction.class);
 	}
 }

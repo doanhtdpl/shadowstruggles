@@ -98,3 +98,19 @@ SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving langu
 SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving language-independent JSON file - Error reading file: data/profiles.json
 30/10/2013 09:56:17 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
 SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving language-independent JSON file - Error reading file: data/profiles.json
+30/10/2013 10:57:57 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving localized JSON file from language en_us - Error reading file: data/en_us/files/events.json
+30/10/2013 10:59:56 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving localized JSON file from language en_us - Error reading file: data/en_us/files/events.json
+30/10/2013 11:00:13 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving localized JSON file from language en_us - Error reading file: data/en_us/files/events.json
+30/10/2013 11:18:15 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving language-independent JSON file - Error reading file: data/profiles.json
+30/10/2013 11:20:05 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving localized JSON file from language en_us - Error reading file: data/en_us/files/events.json
+30/10/2013 11:20:05 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving language-independent JSON file - Error reading file: data/profiles.json
+30/10/2013 11:24:53 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving language-independent JSON file - Error reading file: data/profiles.json
+30/10/2013 11:27:24 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving language-independent JSON file - Error reading file: data/profiles.json
