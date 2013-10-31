@@ -177,6 +177,7 @@ public class EventEditor extends JFrame {
 		btnAddEvent.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				try{
 				event.id = Integer.parseInt(idTextField.getText());
 				event.x = Integer.parseInt(xTextField.getText());
 				event.y = Integer.parseInt(yTextField.getText());
@@ -196,6 +197,7 @@ public class EventEditor extends JFrame {
 				} catch (IOException e) {					
 					e.printStackTrace();
 				}
+				}catch(NumberFormatException n){JOptionPane.showMessageDialog(null, "Fill all fields!");}
 			}
 		});
 		btnAddEvent.setBounds(91, 422, 114, 23);

@@ -81,9 +81,15 @@ public class DataManager {
 		Path currentRelativePath = Paths.get("");
 		
 		zip.extractAll(currentRelativePath.toAbsolutePath().toString());
-		this.currentLanguage="en_us";
+		this.currentLanguage="en_us";		
 		File file = new File(searchFile(FileMap.globalClassToFile.get(Languages.class), null,Languages.class ));
+		ArrayList temp = MyJson.getJson().fromJson(ArrayList.class,file);
+		if(temp!=null && (Languages)temp.get(0)!=null)
 		this.languages=(Languages)MyJson.getJson().fromJson(ArrayList.class,file).get(0);
+		else{
+			this.languages.put("en_us", "English");
+			insertObject(languages, Languages.class);
+		}
 		return true;
 	}
 

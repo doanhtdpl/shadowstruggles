@@ -16,6 +16,12 @@ import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.EnergyCondition;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.HealthCondition;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Sequence;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.events.EventAction;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.events.ModifierAction;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.events.SavePointAction;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.events.SceneAction;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.events.ShopAction;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.events.WarpAction;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.profiles.conditions.ProfileCondition;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -23,6 +29,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -31,6 +39,7 @@ public class EventActionEditor extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JList<Condition> conditionsList;
+	private ArrayList<ProfileCondition> actionConditions;
 	//private ArrayList<> conditions;
 	private EventAction action;
 	public JButton btnAddAction;
@@ -38,7 +47,7 @@ public class EventActionEditor extends JFrame {
 
 	public EventActionEditor(EventAction action) {
 		this.action=action;
-
+		this.actionConditions=new ArrayList<ProfileCondition>();
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 405);
 		contentPane = new JPanel();
@@ -150,13 +159,15 @@ public class EventActionEditor extends JFrame {
 	
 	public void buildAction(){
 		String actionType=comboBox.getSelectedItem().toString();
+		
 		switch(actionType){
-		case "Modifier Action":break;
-		case "Save Point Action":break;
-		case "Scene Action":break;
-		case "Shop Action":break;
-		case "Warp Action":break;
+		case "Modifier Action":this.action=new ModifierAction();break;
+		case "Save Point Action":this.action=new SavePointAction();break;
+		case "Scene Action":this.action=new SceneAction();break;
+		case "Shop Action":this.action=new ShopAction();break;
+		case "Warp Action":this.action=new WarpAction();break;		
 		}
+		this.action.conditions=actionConditions;
 	}
 	/*public void updateSequence() {
 		DefaultListModel<Condition> conditionsModel = new DefaultListModel<Condition>();
