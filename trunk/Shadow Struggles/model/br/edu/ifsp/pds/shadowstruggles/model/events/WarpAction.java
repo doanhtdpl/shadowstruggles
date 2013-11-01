@@ -2,6 +2,7 @@ package br.edu.ifsp.pds.shadowstruggles.model.events;
 
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.EventDAO;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgMap;
@@ -20,19 +21,23 @@ public class WarpAction extends EventAction {
 	private int destinyX, destinyY;
 	private String destinyMap;
 	private String destinyLayer;
-	private Event target;
+	private int targetId;
 
 	public WarpAction() {
 		this.destinyX = 0;
 		this.destinyY = 0;
 		this.destinyMap = "";
 		this.destinyLayer = "";
-		this.target = null;
+		this.targetId = 0;
 	}
 
 	@Override
 	public void act() {
 		ShadowStruggles game = ShadowStruggles.getInstance();
+		Event target = null;
+		if (targetId > 0)
+			target = EventDAO.getEvent(targetId);
+
 		if (target != null) {
 			EventInGame eventInGame = game.getProfile()
 					.getEvent(target.getId());
@@ -67,6 +72,9 @@ public class WarpAction extends EventAction {
 	 * WarpAction will affect the player's character.
 	 */
 	private boolean update() {
+		Event target = null;
+		if (targetId > 0)
+			target = EventDAO.getEvent(targetId);
 		if (target == null)
 			return true;
 
@@ -91,7 +99,7 @@ public class WarpAction extends EventAction {
 		this.destinyMap = json.readValue("destinyMap", String.class, jsonData);
 		this.destinyLayer = json.readValue("destinyLayer", String.class,
 				jsonData);
-		this.target = json.readValue("target", Event.class, jsonData);
+		this.targetId = json.readValue("targetId", Integer.class, jsonData);
 	}
 
 	@Override
@@ -102,6 +110,6 @@ public class WarpAction extends EventAction {
 		json.writeValue("destinyY", this.destinyY);
 		json.writeValue("destinyMap", this.destinyMap);
 		json.writeValue("destinyLayer", this.destinyLayer);
-		json.writeValue("target", this.target);
+		json.writeValue("targetId", this.targetId);
 	}
 }
