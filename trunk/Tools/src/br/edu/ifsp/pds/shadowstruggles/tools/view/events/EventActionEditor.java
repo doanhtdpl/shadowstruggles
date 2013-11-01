@@ -40,14 +40,14 @@ public class EventActionEditor extends JFrame {
 	private JPanel contentPane;
 	private JList<Condition> conditionsList;
 	private ArrayList<ProfileCondition> actionConditions;
-	//private ArrayList<> conditions;
+	// private ArrayList<> conditions;
 	private EventAction action;
 	public JButton btnAddAction;
 	private JComboBox comboBox;
 
 	public EventActionEditor(EventAction action) {
-		this.action=action;
-		this.actionConditions=new ArrayList<ProfileCondition>();
+		this.action = action;
+		this.actionConditions = new ArrayList<ProfileCondition>();
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 405);
 		contentPane = new JPanel();
@@ -77,13 +77,15 @@ public class EventActionEditor extends JFrame {
 				if (selected != null) {
 					if (selected instanceof HealthCondition
 							|| selected instanceof EnergyCondition) {
-						/*NumericConditionFrame frame = new NumericConditionFrame(
-								selected);*/
+						/*
+						 * NumericConditionFrame frame = new
+						 * NumericConditionFrame( selected);
+						 */
 						frame.setVisible(true);
 						frame.addWindowListener(new WindowAdapter() {
 							@Override
 							public void windowClosed(WindowEvent e) {
-								//updateSequence();
+								// updateSequence();
 							}
 						});
 					}
@@ -99,7 +101,7 @@ public class EventActionEditor extends JFrame {
 				if (!conditionsList.isSelectionEmpty()) {
 					getAction().conditions.remove(conditionsList
 							.getSelectedValue());
-					//updateSequence();
+					// updateSequence();
 				}
 			}
 		});
@@ -109,17 +111,19 @@ public class EventActionEditor extends JFrame {
 		JButton btnNewCondition = new JButton("New");
 		btnNewCondition.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//final ConditionSelectionFrame frame = new ConditionSelectionFrame();
+				// final ConditionSelectionFrame frame = new
+				// ConditionSelectionFrame();
 				frame.setVisible(true);
 
 				frame.addWindowListener(new WindowAdapter() {
 
 					@Override
 					public void windowClosed(WindowEvent e) {
-						/*if (frame.getCondition() != null) {
-							sequence.conditions.add(frame.getCondition());
-							updateSequence();
-						}*/
+						/*
+						 * if (frame.getCondition() != null) {
+						 * sequence.conditions.add(frame.getCondition());
+						 * updateSequence(); }
+						 */
 					}
 				});
 			}
@@ -127,8 +131,13 @@ public class EventActionEditor extends JFrame {
 
 		btnNewCondition.setBounds(319, 219, 88, 25);
 		conditionsPanel.add(btnNewCondition);
-		
+
 		btnAddAction = new JButton("Choose Action");
+		btnAddAction.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnAddAction.setBounds(22, 332, 123, 23);
 		contentPane.add(btnAddAction);
 		JButton btnCancel = new JButton("Cancel");
@@ -139,15 +148,26 @@ public class EventActionEditor extends JFrame {
 		});
 		btnCancel.setBounds(335, 332, 89, 23);
 		contentPane.add(btnCancel);
-		
+
 		JLabel lblChooseAAction = new JLabel("Choose a Action Type:");
 		lblChooseAAction.setBounds(22, 11, 123, 14);
 		contentPane.add(lblChooseAAction);
-		
+
 		comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Modifier Action", "Save Point Action", "Scene Action", "Shop Action", "Warp Action"}));
-		comboBox.setBounds(179, 11, 160, 20);
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {
+				"Modifier Action", "Save Point Action", "Scene Action",
+				"Shop Action", "Warp Action" }));
+		comboBox.setBounds(170, 8, 160, 20);
 		contentPane.add(comboBox);
+
+		JButton btnBuild = new JButton("Build");
+		btnBuild.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				buildAction();
+			}
+		});
+		btnBuild.setBounds(335, 7, 89, 23);
+		contentPane.add(btnBuild);
 		btnCancel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -155,33 +175,44 @@ public class EventActionEditor extends JFrame {
 			}
 		});
 	}
-	
-	
-	public void buildAction(){
-		String actionType=comboBox.getSelectedItem().toString();
-		
-		switch(actionType){
-		case "Modifier Action":this.action=new ModifierAction();break;
-		case "Save Point Action":this.action=new SavePointAction();break;
-		case "Scene Action":this.action=new SceneAction();break;
-		case "Shop Action":this.action=new ShopAction();break;
-		case "Warp Action":this.action=new WarpAction();break;		
-		}
-		this.action.conditions=actionConditions;
-	}
-	/*public void updateSequence() {
-		DefaultListModel<Condition> conditionsModel = new DefaultListModel<Condition>();
-		for (Condition condition : sequence.conditions) {
-			conditionsModel.addElement(condition);
-		}
-		conditionsList.setModel(conditionsModel);
 
-		DefaultListModel<Action> actionsModel = new DefaultListModel<Action>();
-		for (Action action : sequence.actions) {
-			actionsModel.addElement(action);
+	public void buildAction() {
+		String actionType = comboBox.getSelectedItem().toString();
+
+		switch (actionType) {
+		case "Modifier Action":
+			this.action = new ModifierAction();
+			new ModifierChooser();
+			break;
+		case "Save Point Action":
+			this.action = new SavePointAction();
+			break;
+		case "Scene Action":
+			this.action = new SceneAction();
+			new SceneChooser();
+			break;
+		case "Shop Action":
+			this.action = new ShopAction();
+			new ShopChooser();
+			break;
+		case "Warp Action":
+			this.action = new WarpAction();
+			new WarpChooser();
+			break;
 		}
-		actionsList.setModel(actionsModel);
-	}*/
+		this.action.conditions = actionConditions;
+	}
+
+	/*
+	 * public void updateSequence() { DefaultListModel<Condition>
+	 * conditionsModel = new DefaultListModel<Condition>(); for (Condition
+	 * condition : sequence.conditions) { conditionsModel.addElement(condition);
+	 * } conditionsList.setModel(conditionsModel);
+	 * 
+	 * DefaultListModel<Action> actionsModel = new DefaultListModel<Action>();
+	 * for (Action action : sequence.actions) { actionsModel.addElement(action);
+	 * } actionsList.setModel(actionsModel); }
+	 */
 
 	public EventAction getAction() {
 		return this.action;
