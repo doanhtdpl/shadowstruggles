@@ -142,8 +142,7 @@ public class EventEditor extends JFrame {
 				});
 				frame.btnAddAction.addMouseListener(new MouseAdapter() {
 					@Override
-					public void mouseClicked(MouseEvent e) {
-						frame.buildAction();
+					public void mouseClicked(MouseEvent e) {						
 						actions.add(frame.getAction());
 						updateEventActions();
 						frame.dispose();
