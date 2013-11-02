@@ -36,5 +36,16 @@
 "acquired":"You have acquired",
 "removedItem":"You no longer have",
 "addedQuest":"You have a new quest in progress!",
-"questCompleted":"You have completed the quest!"
+"questCompleted":"You have completed the quest!",
+"status":"Status",
+"inventory":"Inventory",
+"saveGame":"Save Game",
+"settings":"Settings",
+"decks":"Decks",
+"energy":"Energy",
+"energyRestore":"Energy Restore Speed",
+"deckSize":"Deck Size",
+"deckPoints":"Deck Points",
+"lifePoints":"Life Points",
+"doubleDraw":"Chance of Double Draw"
 }]
