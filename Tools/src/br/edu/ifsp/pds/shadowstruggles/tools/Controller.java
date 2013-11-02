@@ -13,7 +13,10 @@ import net.lingala.zip4j.exception.ZipException;
 import br.edu.ifsp.pds.shadowstruggles.tools.data.DataManager;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Enemy;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.events.Event;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.quests.Quest;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.MainMenu;
 
 public class Controller {
@@ -132,6 +135,27 @@ public class Controller {
 	}
 
 	public void updateTableToActions() {
+	}
+	
+	public ArrayList<Enemy> getEnemies(){
+		ArrayList<Enemy> enemies= new ArrayList<Enemy>();
+		try {
+			enemies = model.searchAllObjects(Enemy.class);
+		} catch (IOException e) {			
+			e.printStackTrace();
+		}
+		return enemies;				
+	}
+	public ArrayList<Item> getItems(){
+		ArrayList<Item> items = new ArrayList<Item>();
+		//TODO: retrieve items from file
+		return items;
+	}
+	
+	public ArrayList<Quest> getQuests(){
+		ArrayList<Quest> quests = new ArrayList<Quest>();
+		//TODO: retrieve quests from file
+		return quests;
 	}
 
 	public HashMap<String, String> getLanguages() {

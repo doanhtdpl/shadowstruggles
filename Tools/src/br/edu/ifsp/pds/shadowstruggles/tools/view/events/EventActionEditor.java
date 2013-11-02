@@ -10,6 +10,7 @@ import javax.swing.JList;
 
 import javax.swing.JButton;
 
+import br.edu.ifsp.pds.shadowstruggles.tools.Controller;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Action;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Condition;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.EnergyCondition;
@@ -40,12 +41,14 @@ public class EventActionEditor extends JFrame {
 	private JPanel contentPane;
 	private JList<Condition> conditionsList;
 	private ArrayList<ProfileCondition> actionConditions;
+	private EventEditor previousScreen;
 	// private ArrayList<> conditions;
 	private EventAction action;
 	public JButton btnAddAction;
 	private JComboBox comboBox;
 
-	public EventActionEditor(EventAction action) {
+	public EventActionEditor(EventAction action, EventEditor previousScreen) {
+		this.previousScreen=previousScreen;
 		this.action = action;
 		this.actionConditions = new ArrayList<ProfileCondition>();
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -111,21 +114,8 @@ public class EventActionEditor extends JFrame {
 		JButton btnNewCondition = new JButton("New");
 		btnNewCondition.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// final ConditionSelectionFrame frame = new
-				// ConditionSelectionFrame();
-				frame.setVisible(true);
-
-				frame.addWindowListener(new WindowAdapter() {
-
-					@Override
-					public void windowClosed(WindowEvent e) {
-						/*
-						 * if (frame.getCondition() != null) {
-						 * sequence.conditions.add(frame.getCondition());
-						 * updateSequence(); }
-						 */
-					}
-				});
+				new ProfileConditionChooser(getThis()).setVisible(true);
+				
 			}
 		});
 
@@ -216,5 +206,20 @@ public class EventActionEditor extends JFrame {
 
 	public EventAction getAction() {
 		return this.action;
+	}
+	
+	public Controller getController(){
+		return previousScreen.getController();
+	}
+	
+	public void addCondition(ProfileCondition condition){
+		actionConditions.add(condition);
+		DefaultListModel model = (DefaultListModel)conditionsList.getModel();
+		model.addElement(condition);
+		conditionsList.updateUI();
+	}
+	
+	public EventActionEditor getThis(){
+		return this;
 	}
 }
