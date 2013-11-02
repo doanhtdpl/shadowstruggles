@@ -102,7 +102,7 @@ public class EventEditor extends JFrame {
 		btnEditAction.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				EventActionEditor frame = new EventActionEditor(list
-						.getSelectedValue());
+						.getSelectedValue(),getThis());
 				frame.setVisible(true);
 				frame.addWindowListener(new WindowAdapter() {
 					@Override
@@ -130,7 +130,7 @@ public class EventEditor extends JFrame {
 		JButton btnNew = new JButton("New");
 		btnNew.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				final EventActionEditor frame = new EventActionEditor(null);
+				final EventActionEditor frame = new EventActionEditor(null, getThis());
 				frame.setVisible(true);
 				frame.addWindowListener(new WindowAdapter() {
 					@Override
@@ -297,6 +297,7 @@ public class EventEditor extends JFrame {
 		}
 
 		list.setModel(listModel);
+		list.updateUI();
 	}
 
 	private void generateJson() {
@@ -310,5 +311,9 @@ public class EventEditor extends JFrame {
 	
 	public Controller getController() {
 		return controller;
+	}
+	
+	public EventEditor getThis(){
+		return this;
 	}
 }
