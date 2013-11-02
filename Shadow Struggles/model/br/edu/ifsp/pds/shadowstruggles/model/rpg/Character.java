@@ -79,6 +79,10 @@ public class Character {
 	public boolean walk(WalkDirection direction, RpgMap map) {
 		return walk(direction, map, false, null);
 	}
+	
+	public boolean walk(WalkDirection direction, RpgMap map, boolean inPath) {
+		return walk(direction, map, inPath, null);
+	}
 
 	/**
 	 * Tries to walk a step into the TiledMap. If possible to walk in the

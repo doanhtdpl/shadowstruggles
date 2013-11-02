@@ -6,11 +6,14 @@ import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.Json.Serializable;
 
 public class Scene implements Serializable {
-	public int id;
-	public Ending ending;
-	public String name;
-	public String description;
-	public Array<SceneItem> sceneItems;
+	private int id;
+	private Ending ending;
+	private String name;
+	private String description;
+	private Array<SceneItem> sceneItems;
+
+	// Non-serializable attributes
+	private int currentIndex = 0;
 
 	public Scene() {
 		this.id = 1;
@@ -20,9 +23,17 @@ public class Scene implements Serializable {
 		this.sceneItems = new Array<SceneItem>();
 	}
 
-	public void runScene() {
-		for(SceneItem item : sceneItems) {
+	/**
+	 * Executes the next scene item, specified by the currentIndex. The items
+	 * themselves are responsible for continuing the scene by calling this
+	 * method again, typically after player input.
+	 */
+	public void runNextItem() {
+		if (currentIndex < sceneItems.size) {
+			SceneItem item = sceneItems.get(currentIndex);
+			item.setParentScene(this);
 			item.action();
+			currentIndex++;
 		}
 	}
 

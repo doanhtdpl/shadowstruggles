@@ -2,6 +2,7 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
 import br.edu.ifsp.pds.shadowstruggles.data.Loader.Asset;
 
 import com.badlogic.gdx.Gdx;
@@ -13,6 +14,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Array;
 
 public abstract class BaseScreen implements Screen {
@@ -60,14 +62,14 @@ public abstract class BaseScreen implements Screen {
 	}
 
 	/**
-	 * Specifies the particular texture regions which must be loaded for this screen.
-	 * It returns null by default.
+	 * Specifies the particular texture regions which must be loaded for this
+	 * screen. It returns null by default.
 	 */
 	public Array<Asset> textureRegionsToLoad() {
 		Array<Asset> assets = null;
 		return assets;
 	}
-	
+
 	/**
 	 * Specifies the particular textures which must be loaded for this screen.
 	 * It returns null by default.
@@ -76,19 +78,19 @@ public abstract class BaseScreen implements Screen {
 		Array<Asset> assets = null;
 		return assets;
 	}
-	
+
 	/**
-	 * Specifies the particular sounds which must be loaded for this screen.
-	 * It returns null by default.
+	 * Specifies the particular sounds which must be loaded for this screen. It
+	 * returns null by default.
 	 */
 	public Array<Asset> soundsToLoad() {
 		Array<Asset> assets = null;
 		return assets;
 	}
-	
+
 	/**
-	 * Specifies the particular maps which must be loaded for this screen.
-	 * It returns null by default.
+	 * Specifies the particular maps which must be loaded for this screen. It
+	 * returns null by default.
 	 */
 	public Array<Asset> mapsToLoad() {
 		Array<Asset> assets = null;
@@ -135,9 +137,9 @@ public abstract class BaseScreen implements Screen {
 		Gdx.gl.glClearColor(0, 0, 0, 1f);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		
 		stage.draw();
-
+		if (game.getMode() == RunMode.DEBUG)
+			Table.drawDebug(stage);
 	}
 
 	@Override

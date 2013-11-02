@@ -1,6 +1,7 @@
 package br.edu.ifsp.pds.shadowstruggles.screens.rpg;
 
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.model.scenes.Scene;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
 import com.badlogic.gdx.graphics.Color;
@@ -24,12 +25,14 @@ public class Messenger {
 	private Image background;
 	private Label textLbl;
 	private RpgScreen screen;
-
+	private Scene parentScene;
+	
 	private Array<String> splittedText;
 	private int textIndex = 0;
 
-	public Messenger(String text, ShadowStruggles game) {
+	public Messenger(String text, ShadowStruggles game, Scene parentScene) {
 		this.screen = (RpgScreen) game.getScreen();
+		this.parentScene = parentScene;
 		Skin skin = screen.getSkin();
 
 		splitText(text);
@@ -68,6 +71,9 @@ public class Messenger {
 			screen.getStage().removeActor(background);
 			screen.getStage().removeActor(textLbl);
 			screen.setMessenger(null);
+			
+			if(parentScene != null)
+				parentScene.runNextItem();
 		} else {
 			// Display the next chunk of text.
 			textIndex++;

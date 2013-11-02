@@ -84,8 +84,8 @@ public class VictoryScreen extends BaseScreen {
 				@Override
 				public void clicked(InputEvent event, float x, float y) {
 					game.getAudio().playSound("button_4");
-					game.setScreenWithTransition(new SceneScreen(game,
-							controller));
+//					game.setScreenWithTransition(new NovelScreen(game,
+//							controller));
 
 				}
 			});

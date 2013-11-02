@@ -21,6 +21,10 @@ public class WarpAction extends EventAction {
 	private int destinyX, destinyY;
 	private String destinyMap;
 	private String destinyLayer;
+	/**
+	 * The event's ID. If the ID is zero or there's no correspondent Event with
+	 * the specified ID, it moves the player instead.
+	 */
 	private int targetId;
 
 	public WarpAction() {

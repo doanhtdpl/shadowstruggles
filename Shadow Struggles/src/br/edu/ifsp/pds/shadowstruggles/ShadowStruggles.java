@@ -5,12 +5,8 @@ import br.edu.ifsp.pds.shadowstruggles.data.FileMap;
 import br.edu.ifsp.pds.shadowstruggles.data.Loader;
 import br.edu.ifsp.pds.shadowstruggles.data.Loader.Asset;
 import br.edu.ifsp.pds.shadowstruggles.data.SoundManager;
-import br.edu.ifsp.pds.shadowstruggles.dataTest.DataManagerTest;
 import br.edu.ifsp.pds.shadowstruggles.dataTest.LoaderTest;
 import br.edu.ifsp.pds.shadowstruggles.model.profiles.Profile;
-import br.edu.ifsp.pds.shadowstruggles.model.rpg.test.CharacterTest;
-import br.edu.ifsp.pds.shadowstruggles.modelTest.DeckTest;
-import br.edu.ifsp.pds.shadowstruggles.modelTest.ProfileTest;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.BattleScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.InGameMenu;
@@ -79,7 +75,7 @@ public class ShadowStruggles extends Game {
 	@Override
 	public void create() {
 		this.audio = new SoundManager(assets);
-		this.controller = Controller.getInstance();
+		this.controller = new Controller();
 		this.setAssets(new AssetManager());
 
 		FileMap.initMap();

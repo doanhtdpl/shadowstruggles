@@ -1,39 +1,44 @@
 package br.edu.ifsp.pds.shadowstruggles.model.scenes;
 
+import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.screens.LoadingScreen;
+import br.edu.ifsp.pds.shadowstruggles.screens.NovelScreen;
+
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 
-public class NovelScene extends Scene {
-	public String text;
-	public String background;
-	
+public class NovelScene extends SceneItem {
+	private String text;
+	private String background;
+
 	public NovelScene() {
-		super();
-		
 		this.text = "";
 		this.background = "";
 	}
-	
+
 	@Override
-	public void runScene() {
-		super.runScene();
-		
-		// TODO: Controle visual específico para cenas de visual novel.
+	public void action() {
+		ShadowStruggles game = ShadowStruggles.getInstance();
+		NovelScreen nextScreen = new NovelScreen(game, this);
+		game.setScreenWithTransition(new LoadingScreen(game, nextScreen));
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public String getBackground() {
+		return background;
 	}
 
 	@Override
 	public void read(Json json, JsonValue jsonData) {
-		super.read(json, jsonData);
-		
 		this.text = json.readValue("text", String.class, jsonData);
-		this.background = json
-				.readValue("background", String.class, jsonData);
+		this.background = json.readValue("background", String.class, jsonData);
 	}
 
 	@Override
 	public void write(Json json) {
-		super.write(json);
-		
 		json.writeValue("text", this.text);
 		json.writeValue("background", this.background);
 	}

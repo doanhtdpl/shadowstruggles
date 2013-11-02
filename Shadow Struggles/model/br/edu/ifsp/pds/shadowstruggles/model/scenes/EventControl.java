@@ -1,47 +1,53 @@
 package br.edu.ifsp.pds.shadowstruggles.model.scenes;
 
+import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.model.events.Event;
+import br.edu.ifsp.pds.shadowstruggles.model.events.EventInGame;
+import br.edu.ifsp.pds.shadowstruggles.model.profiles.Profile;
+
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 
 public class EventControl extends SceneItem {
 	public static enum EventManipulation {
-		DELETE_EVENT, TOOGLE_VISIBILITY, CHANGE_LAYER, CHANGE_SPRITE
+		CHANGE_LAYER, CHANGE_SPRITE
 	};
 
-	public EventManipulation manipulationType;
-	public String newLayer;
-	public String newSprite;
+	private Event event;
+	private EventManipulation manipulationType;
+	private String newValue;
 
 	public EventControl() {
-		this.manipulationType = EventManipulation.DELETE_EVENT;
-		this.newLayer = "";
-		this.newSprite = "";
-	}
-
-	public EventControl(EventManipulation manipulationType, String newLayer,
-			String newSprite) {
-		this.manipulationType = manipulationType;
-		this.newLayer = newLayer;
-		this.newSprite = newSprite;
+		this.manipulationType = null;
+		this.newValue = "";
 	}
 
 	@Override
 	public void read(Json json, JsonValue jsonData) {
+		this.event = json.readValue("event", Event.class, jsonData);
 		this.manipulationType = json.readValue("manipulationType",
 				EventManipulation.class, jsonData);
-		this.newLayer = json.readValue("newLayer", String.class, jsonData);
-		this.newSprite = json.readValue("newSprite", String.class, jsonData);
+		this.newValue = json.readValue("newValue", String.class, jsonData);
 	}
 
 	@Override
 	public void write(Json json) {
+		json.writeValue("event", this.event);
 		json.writeValue("manipulationType", this.manipulationType);
-		json.writeValue("newLayer", this.newLayer);
-		json.writeValue("newSprite", this.newSprite);
+		json.writeValue("newValue", this.newValue);
 	}
 
 	@Override
 	public void action() {
-		// TODO: Implementar método.
+		Profile profile = ShadowStruggles.getInstance().getProfile();
+		EventInGame eventInGame = profile.getEvent(event.getId());
+
+		if (manipulationType == EventManipulation.CHANGE_LAYER) {
+			eventInGame.setLayer(newValue);
+		} else if (manipulationType == EventManipulation.CHANGE_SPRITE) {
+			eventInGame.setSprite(newValue);
+		}
+		
+		parentScene.runNextItem();
 	}
 }

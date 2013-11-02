@@ -28,20 +28,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 public class Controller {
 	private BaseScreen currentScreen;
 	private BattlePlatform platform;
-	private static Controller instance;
-
-	public static Controller getInstance() {
-		if (instance != null)
-			return instance;
-		else {
-			instance = new Controller();
-			return instance;
-		}
-	}
-
-	private Controller() {
-
-	}
 
 	// ---------------------------------------------EVENT
 	// HANDLE----------------------------------------------------

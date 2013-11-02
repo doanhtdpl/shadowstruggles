@@ -17,7 +17,7 @@ public class SceneAction extends EventAction {
 
 	@Override
 	public void act() {
-		this.scene.runScene();
+		this.scene.runNextItem();
 	}
 
 	@Override
