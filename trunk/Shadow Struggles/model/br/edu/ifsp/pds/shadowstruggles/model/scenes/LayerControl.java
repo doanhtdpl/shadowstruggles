@@ -1,5 +1,8 @@
 package br.edu.ifsp.pds.shadowstruggles.model.scenes;
 
+import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.model.profiles.Profile;
+
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 
@@ -31,6 +34,8 @@ public class LayerControl extends SceneItem {
 
 	@Override
 	public void action() {
-		// TODO: Implementar método.
+		Profile profile = ShadowStruggles.getInstance().getProfile();
+		profile.getMapLayers().put(map, nextLayer);
+		parentScene.runNextItem();
 	}
 }

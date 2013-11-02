@@ -24,7 +24,7 @@ public class ModifierAction extends EventAction {
 		String message = modifier.getMessage();
 		if (message != null) {
 			Messenger messenger = new Messenger(message,
-					ShadowStruggles.getInstance());
+					ShadowStruggles.getInstance(), null);
 			messenger.displayMessage();
 		}
 	}

@@ -20,6 +20,7 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Array;
 
 /**
@@ -145,6 +146,9 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 			this.rpgController.runAutomaticEvents();
 			firstRender = false;
 		}
+
+		if (game.getMode() == RunMode.DEBUG)
+			Table.drawDebug(stage);
 	}
 
 	@Override

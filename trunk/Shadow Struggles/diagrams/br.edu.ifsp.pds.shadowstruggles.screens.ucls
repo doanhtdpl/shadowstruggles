@@ -11,8 +11,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="br.edu.ifsp.pds.shadowstruggles.screens.SceneScreen" project="ShadowStruggles" 
-    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/screens/SceneScreen.java" binary="false" 
+  <class id="2" language="java" name="br.edu.ifsp.pds.shadowstruggles.screens.NovelScreen" project="ShadowStruggles" 
+    file="/ShadowStruggles/src/br/edu/ifsp/pds/shadowstruggles/screens/NovelScreen.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="657" width="236" x="41" y="878"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 

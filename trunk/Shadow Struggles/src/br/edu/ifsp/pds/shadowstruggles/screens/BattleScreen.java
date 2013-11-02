@@ -36,7 +36,6 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -82,7 +81,6 @@ public class BattleScreen extends BaseScreen {
 
 	protected Deck playerDeck;
 	protected BattlePlatform battlePlatform;
-	protected String name;
 
 	protected Array<FixedImage> fixedImages;
 
@@ -104,11 +102,10 @@ public class BattleScreen extends BaseScreen {
 	 */
 
 	public BattleScreen(ShadowStruggles game, Profile player,
-			Controller controller, BattlePlatform battlePlatform, String name,
+			Controller controller, BattlePlatform battlePlatform,
 			boolean isInCampaign) {
 		super(game, controller);
 
-		this.name = name;
 		this.isInCampaign = isInCampaign;
 		inputSources = new InputMultiplexer();
 		cardInfo = new Array<FixedLabel>();
@@ -179,8 +176,7 @@ public class BattleScreen extends BaseScreen {
 		Array<Asset> assets = new Array<Asset>(new Asset[] {
 				new Asset(battlePlatform.getMap().getName() + ".png",
 						"battle_maps"),
-				new Asset("energy100.png", "game_ui_images")
-				 });
+				new Asset("energy100.png", "game_ui_images") });
 		return assets;
 	}
 
@@ -367,7 +363,7 @@ public class BattleScreen extends BaseScreen {
 	 */
 
 	public void initComponents() {
-		
+
 		if (!initialized) {
 			TextureRegion mapImage = new TextureRegion(game.getTexture(
 					battlePlatform.getMap().getName(), "battle_maps"),
@@ -504,7 +500,7 @@ public class BattleScreen extends BaseScreen {
 		enemyLife.update(battlePlatform.getRules().getEnemyHP(), battlePlatform
 				.getRules().getEnemyHPmax());
 		energyBar.update();
-		
+
 		for (int i = 0; i < 5; i++) {
 			Card temp = battlePlatform.getPlayerDeck().draw();
 			battlePlatform.getPlayerHandCards().add(temp);
@@ -605,13 +601,12 @@ public class BattleScreen extends BaseScreen {
 		description.setStyle(new LabelStyle(super.getSkin().getFont(
 				"andalus-font"), Color.WHITE));
 		// BOX
-		Image box = new Image(game
-				.getTextureRegion("box", "game_ui_images"));
+		Image box = new Image(game.getTextureRegion("box", "game_ui_images"));
 		ScreenUtils.defineImage(box, 50, 177, 940, 600, 0.9f, 0.76f);
 		// IMAGEM
-		Image cardImage = new Image(game
-				.getTextureRegion(card.getName().toLowerCase(), "cards"));
-				
+		Image cardImage = new Image(game.getTextureRegion(card.getName()
+				.toLowerCase(), "cards"));
+
 		ScreenUtils.defineImage(cardImage, 60, 205, cardImage.getWidth(),
 				cardImage.getHeight(), 1.5f, 1.5f);
 
@@ -704,14 +699,6 @@ public class BattleScreen extends BaseScreen {
 
 	public void setInputSources(InputMultiplexer inputSources) {
 		this.inputSources = inputSources;
-	}
-
-	public String getName() {
-		return this.name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public float getTimeDelay() {

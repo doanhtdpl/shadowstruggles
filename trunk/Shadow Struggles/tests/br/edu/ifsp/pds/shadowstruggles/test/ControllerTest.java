@@ -17,21 +17,21 @@ public class ControllerTest {
 
 	@Test
 	public void testBackCardClicked() {
-		fail("Not yet implemented"); //TODO: Implementar teste.
-		
+		fail("Not yet implemented"); // TODO: Implementar teste.
+
 	}
 
 	@Test
 	public void testHexagramClicked() {
-		fail("Not yet implemented"); //TODO: Implementar teste.
+		fail("Not yet implemented"); // TODO: Implementar teste.
 	}
 
 	@Test
 	public void testHandCardClicked() {
-		//fail("Not yet implemented"); //TODO: Implementar teste.
-		Controller control = Controller.getInstance();
+		// fail("Not yet implemented"); //TODO: Implementar teste.
+		Controller control = new Controller();
 		Card card = new Card("Teste", "CartaTeste", 10, "Descrição", 0, null);
-		BattlePlatform platform = new BattlePlatform(new Deck(), new Deck(), 
+		BattlePlatform platform = new BattlePlatform(new Deck(), new Deck(),
 				new BattleMap(""), new DefaultRules());
 		platform.addPlayerHandCard(card);
 		platform.addPlayerHandCard(card);
@@ -44,13 +44,13 @@ public class ControllerTest {
 
 	@Test
 	public void testDeckClicked() {
-		fail("Not yet implemented"); //TODO: Implementar teste.
+		fail("Not yet implemented"); // TODO: Implementar teste.
 	}
 
 	@Test
 	public void testTileChanged() {
-		fail("Not yet implemented"); //TODO: Implementar teste.
-		
+		fail("Not yet implemented"); // TODO: Implementar teste.
+
 	}
 
 	@Test
@@ -60,11 +60,9 @@ public class ControllerTest {
 		int laneTest = 2;
 		int tileTest = 2;
 
-		Controller control = Controller.getInstance();
-		
+		Controller control = new Controller();
+
 		control.playCard(cartaTest, laneTest, tileTest);
-		
-		
 
 	}
 
@@ -74,36 +72,38 @@ public class ControllerTest {
 				null);
 		int laneTest = 3;
 		int tileTest = 3;
-		Controller control = Controller.getInstance();
+		Controller control = new Controller();
 		Image cardImage = new Image();
 
 		control.addCardToMap(cartaTest, cardImage, tileTest, laneTest);
-		boolean cardOnMap = control.getPlatform().getMap().cardOnMap(cartaTest, laneTest, 1);
-		
+		boolean cardOnMap = control.getPlatform().getMap()
+				.cardOnMap(cartaTest, laneTest, 1);
+
 		assertEquals(cardOnMap, true);
-		
+
 	}
 
 	@Test
 	public void testRemoveCard() {
-		Controller control = Controller.getInstance();
+		Controller control = new Controller();
 		Card card = new Card("Teste", "CartaTeste", 10, "Descrição", 1, null);
 		int laneTest = 2;
 		int tileTest = 2;
 		Image cardImage = new Image();
-		
+
 		control.addCardToMap(card, cardImage, tileTest, laneTest);
 		control.removeCard(card);
-		
-		boolean cardOnMap = control.getPlatform().getMap().cardOnMap(card, laneTest, 1);
-		
+
+		boolean cardOnMap = control.getPlatform().getMap()
+				.cardOnMap(card, laneTest, 1);
+
 		assertEquals(cardOnMap, false);
-		
+
 	}
 
 	@Test
 	public void testVerifyValueChange() {
-		Controller controlTest = Controller.getInstance();
+		Controller controlTest = new Controller();
 		int value1 = 200;
 		int valueMax = 300;
 

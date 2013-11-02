@@ -26,6 +26,6 @@ public class SceneControl extends SceneItem {
 
 	@Override
 	public void action() {
-		// TODO: Implementar método.
+		nextScene.runNextItem();
 	}
 }

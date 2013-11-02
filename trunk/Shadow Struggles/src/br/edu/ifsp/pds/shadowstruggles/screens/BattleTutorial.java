@@ -3,7 +3,6 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.data.Loader.Asset;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.DeckDAO;
-import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.TutorialDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.model.TutorialDialog;
@@ -108,8 +107,7 @@ public class BattleTutorial extends BattleScreen {
 	private Array<TutorialDialog> dialogs;
 
 	public BattleTutorial(ShadowStruggles game, BattlePlatform platform) {
-		super(game, game.getProfile(), game.getController(), platform,
-				MenuTextDAO.getMenuText().practiceBattle, false);
+		super(game, game.getProfile(), game.getController(), platform, false);
 	}
 
 	@Override
@@ -121,39 +119,39 @@ public class BattleTutorial extends BattleScreen {
 
 	@Override
 	public void initComponents() {
-		if(!initialized){
-		super.initComponents();
+		if (!initialized) {
+			super.initComponents();
 
-		dialogBox = new FixedImage(game.getTextureRegion("box",
-				"game_ui_images"), 150, this) {
-			@Override
-			public void clicked() {
-				boxClicked();
-			}
-		};
-		dialogBox = (FixedImage) ScreenUtils.defineImage(dialogBox, 150, 370,
-				650, 200);
-		dialogText = new FixedLabel("", 170, this);
-		dialogText = (FixedLabel) ScreenUtils.defineLabel(dialogText, 170, 400,
-				600, 200);
-		dialogText.setWrap(true);
+			dialogBox = new FixedImage(game.getTextureRegion("box",
+					"game_ui_images"), 150, this) {
+				@Override
+				public void clicked() {
+					boxClicked();
+				}
+			};
+			dialogBox = (FixedImage) ScreenUtils.defineImage(dialogBox, 150,
+					370, 650, 200);
+			dialogText = new FixedLabel("", 170, this);
+			dialogText = (FixedLabel) ScreenUtils.defineLabel(dialogText, 170,
+					400, 600, 200);
+			dialogText.setWrap(true);
 
-		inputSources.removeProcessor(map2d);
-		inputSources.addProcessor(dialogBox);
+			inputSources.removeProcessor(map2d);
+			inputSources.addProcessor(dialogBox);
 
-		stage.addActor(dialogBox);
-		stage.addActor(dialogText);
-		fixedImages.add(dialogBox);
+			stage.addActor(dialogBox);
+			stage.addActor(dialogText);
+			fixedImages.add(dialogBox);
 
-		loadData();
+			loadData();
 
-		image = new FixedImage(game.getTextureRegion("indicator",
-				"game_ui_images"), dialogs.get(currentIndex).getIndicatorX(),
-				this);
-		stage.addActor(image);
+			image = new FixedImage(game.getTextureRegion("indicator",
+					"game_ui_images"), dialogs.get(currentIndex)
+					.getIndicatorX(), this);
+			stage.addActor(image);
 
-		nextDialog();
-		initialized=true;
+			nextDialog();
+			initialized = true;
 		}
 	}
 
