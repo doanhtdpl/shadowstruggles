@@ -79,6 +79,21 @@ public class MenuText implements Serializable {
 	public String removedItem = "";
 	public String addedQuest = "";
 	public String questCompleted = "";
+	
+	// RPGMenu
+	public String status = "";
+	public String inventory = "";
+	public String saveGame = "";
+	public String settings = "";
+	public String decks = "";
+	
+	// RPGStatus
+	public String energy = "";
+	public String energyRestore = "";
+	public String deckSize = "";
+	public String deckPoints = "";
+	public String lifePoints = "";
+	public String doubleDraw = "";
 
 	@Override
 	public void read(Json json, JsonValue jsonData) {
@@ -163,6 +178,21 @@ public class MenuText implements Serializable {
 		addedQuest = json.readValue("addedQuest", String.class, jsonData);
 		questCompleted = json.readValue("questCompleted", String.class,
 				jsonData);
+		
+		// RPGMenu
+		status = json.readValue("status", String.class, jsonData);
+		inventory = json.readValue("inventory", String.class, jsonData);
+		saveGame = json.readValue("saveGame", String.class, jsonData);
+		settings = json.readValue("settings", String.class, jsonData);
+		decks = json.readValue("decks", String.class, jsonData);
+		
+		// RPGStatus
+		energy = json.readValue("energy", String.class, jsonData);
+		energyRestore = json.readValue("energyRestore", String.class, jsonData);
+		deckSize = json.readValue("deckSize", String.class, jsonData);
+		deckPoints = json.readValue("deckPoints", String.class, jsonData);
+		lifePoints = json.readValue("lifePoints", String.class, jsonData);
+		doubleDraw = json.readValue("doubleDraw", String.class, jsonData);
 	}
 
 	@Override

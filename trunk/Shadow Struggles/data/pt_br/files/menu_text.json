@@ -30,5 +30,22 @@
 "retryButton":"Reiniciar",
 "defeat":"VocÍ perdeu, tente novamente!",
 "practiceBattle":"Treino",
-"newDeck":"Novo Deck"
+"newDeck":"Novo Deck",
+"unlocked":"Você desbloqueou",
+"newExperience":"Agora você possui %d pontos de experiência!",
+"acquired":"Você conseguiu",
+"removedItem":"Você não possui mais",
+"addedQuest":"Você tem uma nova missão em progresso!",
+"questCompleted":"Você completou a missão!"
+"status":"Status",
+"inventory":"Inventório",
+"saveGame":"Salvar Jogo",
+"settings":"Configuracões",
+"decks":"Decks",
+"energy":"Energia",
+"energyRestore":"Velocidade de Recuperacao de Energia",
+"deckSize":"Tamanho do Deck",
+"deckPoints":"Pontos do Deck",
+"lifePoints":"Pontos de Vida",
+"doubleDraw":"Chance de Duplo Saque"
 }]
