@@ -10,13 +10,10 @@ public class TexturePackerTest {
 
 	@Test
 	public void test() {
-		try {
 			TexturePacker tp = new TexturePacker("hi");
 			System.out.println("Success");
-		} catch (Exception ex) {
 			System.out.println("Fail");
 			fail("não funcionou :(");
-		}
 
 	}
 

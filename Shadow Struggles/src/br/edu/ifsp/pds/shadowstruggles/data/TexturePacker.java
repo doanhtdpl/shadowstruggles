@@ -13,12 +13,10 @@ public class TexturePacker {
 	
 
 	public TexturePacker(String imagePath) {
-		FileHandle handle = Gdx.files.local("encoding-test.json");
 		System.out.println("a");
 		this.imagePath = imagePath;
 		System.out.println("b");
-		pixmap = PixmapIO.readCIM(new FileHandle(new File(
-				"ShadowStruggles/data/images/cards/advanced_carbon.png")));
+		pixmap = new Pixmap(Gdx.files.internal("data/images/cards/advanced_carbon.png"));
 		System.out.println("c");
 		// pixmap = PixmapIO.readCIM(new FileHandle(new File(imagePath)));
 	}
