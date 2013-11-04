@@ -42,10 +42,10 @@
 "saveGame":"Save Game",
 "settings":"Settings",
 "decks":"Decks",
-"energy":"Energy",
-"energyRestore":"Energy Restore Speed",
-"deckSize":"Deck Size",
-"deckPoints":"Deck Points",
-"lifePoints":"Life Points",
+"maxEnergy":"Max Energy",
+"energyRecovery":"Energy Recovery",
+"deckCapacity":"Deck Size",
+"maxCardPoints":"Deck Points",
+"maxHealth":"Health Points",
 "doubleDraw":"Chance of Double Draw"
 }]

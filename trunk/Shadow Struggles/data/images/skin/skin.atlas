@@ -242,18 +242,25 @@ skin4.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
+blue2_bar
+  rotate: false
+  xy: 1, 1
+  size: 512, 128
+  orig: 512, 128
+  offset: 0, 0
+  index: -1
+blue2_bar
+  rotate: false
+  xy: 1, 1
+  size: 512, 128
+  orig: 512, 128
+  offset: 0, 0
+  index: -1
 book
   rotate: false
   xy: 1, 389
   size: 954, 554
   orig: 954, 554
-  offset: 0, 0
-  index: -1
-button_blur
-  rotate: false
-  xy: 1, 1
-  size: 512, 128
-  orig: 512, 128
   offset: 0, 0
   index: -1
 button_down
@@ -268,7 +275,75 @@ skin5.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
+blue_bar
+  rotate: false
+  xy: 1, 781
+  size: 512, 128
+  orig: 512, 128
+  offset: 0, 0
+  index: -1
+blue_bar
+  rotate: false
+  xy: 1, 781
+  size: 512, 128
+  orig: 512, 128
+  offset: 0, 0
+  index: -1
+button_blur
+  rotate: false
+  xy: 1, 651
+  size: 512, 128
+  orig: 512, 128
+  offset: 0, 0
+  index: -1
 decision_box
+  rotate: false
+  xy: 1, 521
+  size: 512, 128
+  orig: 512, 128
+  offset: 0, 0
+  index: -1
+empty_bar
+  rotate: false
+  xy: 1, 391
+  size: 512, 128
+  orig: 512, 128
+  offset: 0, 0
+  index: -1
+empty_bar
+  rotate: false
+  xy: 1, 391
+  size: 512, 128
+  orig: 512, 128
+  offset: 0, 0
+  index: -1
+green_bar
+  rotate: false
+  xy: 1, 261
+  size: 512, 128
+  orig: 512, 128
+  offset: 0, 0
+  index: -1
+purple_bar
+  rotate: false
+  xy: 1, 131
+  size: 512, 128
+  orig: 512, 128
+  offset: 0, 0
+  index: -1
+red_bar
+  rotate: false
+  xy: 1, 1
+  size: 512, 128
+  orig: 512, 128
+  offset: 0, 0
+  index: -1
+
+skin6.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+yellow_bar
   rotate: false
   xy: 1, 1
   size: 512, 128

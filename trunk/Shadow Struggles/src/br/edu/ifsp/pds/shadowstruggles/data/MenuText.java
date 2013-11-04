@@ -88,11 +88,11 @@ public class MenuText implements Serializable {
 	public String decks = "";
 	
 	// RPGStatus
-	public String energy = "";
-	public String energyRestore = "";
-	public String deckSize = "";
-	public String deckPoints = "";
-	public String lifePoints = "";
+	public String maxEnergy = "";
+	public String energyRecovery = "";
+	public String deckCapacity = "";
+	public String maxCardPoints = "";
+	public String maxHealth = "";
 	public String doubleDraw = "";
 
 	@Override
@@ -187,11 +187,11 @@ public class MenuText implements Serializable {
 		decks = json.readValue("decks", String.class, jsonData);
 		
 		// RPGStatus
-		energy = json.readValue("energy", String.class, jsonData);
-		energyRestore = json.readValue("energyRestore", String.class, jsonData);
-		deckSize = json.readValue("deckSize", String.class, jsonData);
-		deckPoints = json.readValue("deckPoints", String.class, jsonData);
-		lifePoints = json.readValue("lifePoints", String.class, jsonData);
+		maxEnergy = json.readValue("maxEnergy", String.class, jsonData);
+		energyRecovery = json.readValue("energyRecovery", String.class, jsonData);
+		deckCapacity = json.readValue("deckCapacity", String.class, jsonData);
+		maxCardPoints = json.readValue("maxCardPoints", String.class, jsonData);
+		maxHealth = json.readValue("maxHealth", String.class, jsonData);
 		doubleDraw = json.readValue("doubleDraw", String.class, jsonData);
 	}
 

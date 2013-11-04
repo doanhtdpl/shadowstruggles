@@ -55,4 +55,54 @@ public class Player implements Serializable {
 		this.doubleDraw = json.readValue("doubleDraw", Float.class, jsonData);
 	}
 
+	public int getMaxHealth() {
+		return maxHealth;
+	}
+
+	public void setMaxHealth(int maxHealth) {
+		this.maxHealth = maxHealth;
+	}
+
+	public int getMaxEnergy() {
+		return maxEnergy;
+	}
+
+	public void setMaxEnergy(int maxEnergy) {
+		this.maxEnergy = maxEnergy;
+	}
+
+	public int getMaxCardPoints() {
+		return maxCardPoints;
+	}
+
+	public void setMaxCardPoints(int maxCardPoints) {
+		this.maxCardPoints = maxCardPoints;
+	}
+
+	public int getDeckCapacity() {
+		return deckCapacity;
+	}
+
+	public void setDeckCapacity(int deckCapacity) {
+		this.deckCapacity = deckCapacity;
+	}
+
+	public int getEnergyRecovery() {
+		return energyRecovery;
+	}
+
+	public void setEnergyRecovery(int energyRecovery) {
+		this.energyRecovery = energyRecovery;
+	}
+
+	public float getDoubleDraw() {
+		return doubleDraw;
+	}
+
+	public void setDoubleDraw(float doubleDraw) {
+		this.doubleDraw = doubleDraw;
+	}
+	
+	
+
 }

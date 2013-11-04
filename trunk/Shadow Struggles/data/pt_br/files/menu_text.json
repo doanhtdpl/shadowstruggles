@@ -42,10 +42,10 @@
 "saveGame":"Salvar Jogo",
 "settings":"Configurac›es",
 "decks":"Decks",
-"energy":"Energia",
-"energyRestore":"Velocidade de Recuperacao de Energia",
-"deckSize":"Tamanho do Deck",
-"deckPoints":"Pontos do Deck",
-"lifePoints":"Pontos de Vida",
+"maxEnergy":"Energia M‡xima",
+"energyRecovery":"Recuperacao de Energia",
+"deckCapacity":"Capacidade do Deck",
+"maxCardPoints":"Pontos do Deck",
+"maxHealth":"Vida M‡xima",
 "doubleDraw":"Chance de Duplo Saque"
 }]
