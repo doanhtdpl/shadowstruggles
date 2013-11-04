@@ -150,6 +150,7 @@ public class StatusScreen extends BaseScreen{
 		doubleDrawBar = new Image(this.getSkin().getDrawable("purple_bar"));
 		
 		//label com os valores
+		maxHealthLbl= new Label("", super.getSkin());
 		maxHealthLbl.setText(String.valueOf(game.getProfile().getPlayer().getMaxHealth())+"/1000");
 		maxHealthLbl.setPosition(maxHealthBar.getX(), maxHealthBar.getY());
 		maxHealthLbl.setStyle(new LabelStyle(getSkin().getFont("basic-font"),
