@@ -124,3 +124,9 @@ SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving langu
 GRAVE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving localized JSON file from language en_us - Error reading file: data/en_us/files/menu_text.json
 02/11/2013 12:48:30 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
 GRAVE: br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO: Error getting MenuText - 0
+03/11/2013 17:26:35 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+GRAVE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving localized JSON file from language pt_br - Error reading file: data/pt_br/files/events.json
+03/11/2013 17:26:35 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+GRAVE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving localized JSON file from language pt_br - Error reading file: data/pt_br/files/menu_text.json
+03/11/2013 17:26:35 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+GRAVE: br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO: Error getting MenuText - 0

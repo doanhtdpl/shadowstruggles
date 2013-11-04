@@ -11,14 +11,17 @@ import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
+import br.edu.ifsp.pds.shadowstruggles.screens.MainScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
 public class RpgMenu extends BaseScreen{
+	
 	private TextButton status;
 	private TextButton inventory;
 	private TextButton saveGame;
 	private TextButton settings;
 	private TextButton decks;
+	private TextButton returnButton;
 	private Image background;
 
 	public RpgMenu(ShadowStruggles game, Controller controller) {
@@ -66,9 +69,23 @@ public class RpgMenu extends BaseScreen{
 		decks =ScreenUtils.defineButton(decks, 0, 0, 0,
 				0, super.getSkin());
 		
+		returnButton = new TextButton(MenuTextDAO.getMenuText().returnToStart,
+				super.getSkin());
+		returnButton = ScreenUtils.defineButton(returnButton, 0, 0, 0, 0,
+				super.getSkin());
+		returnButton.addListener(new ClickListener() {
+
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				game.getAudio().playSound("button_6");
+				game.setScreenWithTransition(new MainScreen(game, controller));
+
+			}
+		});
+		
 		//Table
 		Table menuTable = new Table();
-		menuTable.defaults().width(480).height(110).padTop(10);
+		menuTable.defaults().width(480).height(90).padTop(10);
 		if (game.getMode() == RunMode.DEBUG)
 			menuTable.debug();
 		menuTable.defaults();
@@ -82,6 +99,8 @@ public class RpgMenu extends BaseScreen{
 		menuTable.add(settings);
 		menuTable.row();
 		menuTable.add(decks);
+		menuTable.row();
+		menuTable.add(returnButton);
 		menuTable.setPosition(480,330);
 		
 		stage.addActor(background);

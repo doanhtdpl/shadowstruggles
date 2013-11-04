@@ -1,28 +1,51 @@
 package br.edu.ifsp.pds.shadowstruggles.screens.rpg;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
+import br.edu.ifsp.pds.shadowstruggles.model.Player;
+import br.edu.ifsp.pds.shadowstruggles.model.profiles.Profile;
+import br.edu.ifsp.pds.shadowstruggles.object2d.FixedObject;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.MainScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
 public class StatusScreen extends BaseScreen{
-	private TextButton energy;
-	private TextButton energyRestore;
-	private TextButton deckSize;
-	private TextButton deckPoints;
-	private TextButton lifePoints;
+	private static final int COLUMN = 300;
+	private static final int ROW = 60;
+	private static final int BAR_WIDTH = 550;
+	
+	private TextButton maxEnergy;
+	private TextButton energyRecovery;
+	private TextButton deckCapacity;
+	private TextButton maxCardPoints;
+	private TextButton maxHealth;
 	private TextButton doubleDraw;
 	private TextButton returnButton;
 	private Image background;
+	private Image maxEnergyBar;
+	private Image energyRecoveryBar;
+	private Image deckCapacityBar;
+	private Image maxCardPointsBar;
+	private Image maxHealthBar;
+	private Image doubleDrawBar;
+	private Label maxEnergyLbl;
+	private Label energyRecoveryLbl;
+	private Label deckCapacityLbl;
+	private Label maxCardPointsLbl;
+	private Label maxHealthLbl;
+	private Label doubleDrawLbl;
 
 	public StatusScreen(ShadowStruggles game, Controller controller) {
 		super(game, controller);
@@ -35,82 +58,142 @@ public class StatusScreen extends BaseScreen{
 		background.setScaleX(960f / 512f);
 		background.setScaleY(640f / 380f);
 		
-		energy = new TextButton(MenuTextDAO.getMenuText().energy, 
+		maxHealth = new TextButton(MenuTextDAO.getMenuText().maxHealth, 
 				getSkin());
-		energy =ScreenUtils.defineButton(energy, 0, 0, 0,
+		maxHealth =ScreenUtils.defineButton(maxHealth, 0, 0, 0,
 				0, super.getSkin());
+		maxHealth.addListener(new ClickListener(){
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				game.getProfile().getPlayer().setMaxHealth(game.getProfile().getPlayer().getMaxHealth()+50);
+				updateBar();
+			}
+		});
 		
-		energyRestore = new TextButton(MenuTextDAO.getMenuText().energyRestore, 
+		maxEnergy = new TextButton(MenuTextDAO.getMenuText().maxEnergy, 
 				getSkin());
-		energyRestore =ScreenUtils.defineButton(energyRestore, 0, 0, 0,
+		maxEnergy =ScreenUtils.defineButton(maxEnergy, 0, 0, 0,
 				0, super.getSkin());
+		maxEnergy.addListener(new ClickListener(){
+			 @Override
+			public void clicked(InputEvent event, float x, float y) {
+				game.getProfile().getPlayer().setMaxEnergy(game.getProfile().getPlayer().getMaxEnergy()+10);
+				updateBar();
+			}
+		});
 		
-		deckSize = new TextButton(MenuTextDAO.getMenuText().deckSize, 
+		energyRecovery = new TextButton(MenuTextDAO.getMenuText().energyRecovery, 
 				getSkin());
-		deckSize =ScreenUtils.defineButton(deckSize, 0, 0, 0,
+		energyRecovery =ScreenUtils.defineButton(energyRecovery, 0, 0, 0,
 				0, super.getSkin());
+		energyRecovery.addListener(new ClickListener(){
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				game.getProfile().getPlayer().setEnergyRecovery(game.getProfile().getPlayer().getEnergyRecovery()+1);
+				updateBar();
+			}
+		});
 		
-		deckPoints = new TextButton(MenuTextDAO.getMenuText().deckPoints, 
+		deckCapacity = new TextButton(MenuTextDAO.getMenuText().deckCapacity, 
 				getSkin());
-		deckPoints =ScreenUtils.defineButton(deckPoints, 0, 0, 0,
+		deckCapacity =ScreenUtils.defineButton(deckCapacity, 0, 0, 0,
 				0, super.getSkin());
+		deckCapacity.addListener(new ClickListener(){
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				game.getProfile().getPlayer().setDeckCapacity(game.getProfile().getPlayer().getDeckCapacity()+5);
+				updateBar();
+			}
+		});
 		
-		lifePoints = new TextButton(MenuTextDAO.getMenuText().lifePoints, 
+		maxCardPoints = new TextButton(MenuTextDAO.getMenuText().maxCardPoints, 
 				getSkin());
-		lifePoints =ScreenUtils.defineButton(lifePoints, 0, 0, 0,
+		maxCardPoints =ScreenUtils.defineButton(maxCardPoints, 0, 0, 0,
 				0, super.getSkin());
+		maxCardPoints.addListener(new ClickListener(){
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				game.getProfile().getPlayer().setMaxCardPoints(game.getProfile().getPlayer().getMaxCardPoints()+10);
+				updateBar();
+			}
+		});
 		
 		doubleDraw = new TextButton(MenuTextDAO.getMenuText().doubleDraw, 
 				getSkin());
 		doubleDraw =ScreenUtils.defineButton(doubleDraw, 0, 0, 0,
 				0, super.getSkin());
+		doubleDraw.addListener(new ClickListener(){
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				game.getProfile().getPlayer().setDoubleDraw(game.getProfile().getPlayer().getDoubleDraw()+(float)0.1);
+				updateBar();
+			}
+		});
 		
 		returnButton = new TextButton(MenuTextDAO.getMenuText().returnToStart,
 				super.getSkin());
 		returnButton = ScreenUtils.defineButton(returnButton, 0, 0, 0, 0,
 				super.getSkin());
 		returnButton.addListener(new ClickListener() {
-
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_6");
 				game.setScreenWithTransition(new RpgMenu(game, controller));
-
 			}
 		});
 		
+		maxHealthBar = new Image(this.getSkin().getDrawable("red_bar"));
+		maxEnergyBar = new Image(this.getSkin().getDrawable("blue_bar"));
+		energyRecoveryBar = new Image(this.getSkin().getDrawable("blue2_bar"));
+		deckCapacityBar = new Image(this.getSkin().getDrawable("green_bar"));
+		maxCardPointsBar = new Image(this.getSkin().getDrawable("yellow_bar"));
+		doubleDrawBar = new Image(this.getSkin().getDrawable("purple_bar"));
+		
+		//label com os valores
+		maxHealthLbl.setText(String.valueOf(game.getProfile().getPlayer().getMaxHealth())+"/1000");
+		maxHealthLbl.setPosition(maxHealthBar.getX(), maxHealthBar.getY());
+		maxHealthLbl.setStyle(new LabelStyle(getSkin().getFont("basic-font"),
+				Color.WHITE));
+		
 		Table statusTable = new Table();
-		statusTable.defaults().width(310).height(60).padTop(10);
+		statusTable.defaults().width(COLUMN).height(ROW).padTop(10);
 		if (game.getMode() == RunMode.DEBUG)
 			statusTable.debug();
 		statusTable.defaults();
 		
-		statusTable.add(energy);
-		statusTable.add().width(550);
+		statusTable.add(maxHealth);
+		statusTable.add(maxHealthBar).width(BAR_WIDTH);
 		statusTable.row();
-		statusTable.add(energyRestore);
-		statusTable.add().width(550);
+		statusTable.add(maxEnergy);
+		statusTable.add(maxEnergyBar).width(BAR_WIDTH);
 		statusTable.row();
-		statusTable.add(deckSize);
-		statusTable.add().width(550);
+		statusTable.add(energyRecovery);
+		statusTable.add(energyRecoveryBar).width(BAR_WIDTH);
 		statusTable.row();
-		statusTable.add(deckPoints);
-		statusTable.add().width(550);
+		statusTable.add(deckCapacity);
+		statusTable.add(deckCapacityBar).width(BAR_WIDTH);
 		statusTable.row();
-		statusTable.add(lifePoints);
-		statusTable.add().width(550);
+		statusTable.add(maxCardPoints);
+		statusTable.add(maxCardPointsBar).width(BAR_WIDTH);
 		statusTable.row();
 		statusTable.add(doubleDraw);
-		statusTable.add().width(550);
+		statusTable.add(doubleDrawBar).width(BAR_WIDTH);
 		statusTable.row();
 		statusTable.add(returnButton);
-		statusTable.add().width(550);
-		statusTable.row();
 		statusTable.setPosition(500, 300);
 		
-		
+//		stage.addActor(maxHealthLbl);
 		stage.addActor(background);
 		stage.addActor(statusTable);
+	}
+	
+	public void updateBar() {
+		maxHealthBar.setScaleX((float)game.getProfile().getPlayer().getMaxHealth()/1000);
+		maxEnergyBar.setScaleX((float)game.getProfile().getPlayer().getMaxEnergy()/100);
+		energyRecoveryBar.setScaleX((float)game.getProfile().getPlayer().getEnergyRecovery()/10);
+		deckCapacityBar.setScaleX((float)game.getProfile().getPlayer().getDeckCapacity()/100);
+		maxCardPointsBar.setScaleX((float)game.getProfile().getPlayer().getMaxCardPoints()/100);
+		doubleDrawBar.setScaleX(game.getProfile().getPlayer().getDoubleDraw());
 	}
 	
 	@Override
