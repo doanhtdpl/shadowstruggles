@@ -1,4 +1,4 @@
-package br.edu.ifsp.pds.shadowstruggles.view;
+package br.edu.ifsp.pds.shadowstruggles.tools.view.scenes;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -173,5 +173,6 @@ public class SceneEditor extends JFrame {
 		JButton btnAddSceneItem = new JButton("Add Scene item");
 		btnAddSceneItem.setBounds(337, 323, 122, 23);
 		contentPane.add(btnAddSceneItem);
+		this.setVisible(true);
 	}
 }

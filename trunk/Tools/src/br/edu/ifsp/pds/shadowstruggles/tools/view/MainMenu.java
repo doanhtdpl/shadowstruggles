@@ -5,6 +5,8 @@ import java.awt.Panel;
 import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -36,7 +38,7 @@ import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.DeckEditor;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.EffectEditor;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.EnemyEditorOLD;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.FighterEditor;
-import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.SceneEditor;
+import br.edu.ifsp.pds.shadowstruggles.tools.view.scenes.SceneEditor;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.TrapEditor;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.enemies.EnemyGUIFrame;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.events.EventEditor;
@@ -78,7 +80,7 @@ public class MainMenu {
 		frmTitle = new JFrame();
 		frmTitle.setTitle("Shadow Struggles Editor");
 		frmTitle.setBounds(100, 100, 751, 538);
-		frmTitle.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmTitle.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frmTitle.getContentPane().setLayout(null);
 
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
@@ -112,6 +114,17 @@ public class MainMenu {
 			}
 		});
 		tabbedPane.setVisible(false);
+		frmTitle.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				int save = JOptionPane.showConfirmDialog(frmTitle, "Deseja salvar antes de sair?");
+				if(save ==0){
+					controller.saveZip();					
+				}						
+				if(save!=2)System.exit(0);
+				
+			}
+		});
 
 		
 		
