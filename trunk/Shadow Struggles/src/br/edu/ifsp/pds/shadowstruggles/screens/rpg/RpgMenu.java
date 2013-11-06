@@ -22,7 +22,6 @@ public class RpgMenu extends BaseScreen{
 	private TextButton settings;
 	private TextButton decks;
 	private TextButton returnButton;
-	private Image background;
 
 	public RpgMenu(ShadowStruggles game, Controller controller) {
 		super(game, controller);
@@ -32,9 +31,6 @@ public class RpgMenu extends BaseScreen{
 	@Override
 	public void initComponents() {
 		stage.clear();
-		background = new Image(this.getSkin().getDrawable("msbackground"));
-		background.setScaleX(960f / 512f);
-		background.setScaleY(640f / 380f);
 		
 		status = new TextButton(MenuTextDAO.getMenuText().status, 
 				getSkin());
@@ -103,7 +99,6 @@ public class RpgMenu extends BaseScreen{
 		menuTable.add(returnButton);
 		menuTable.setPosition(480,330);
 		
-		stage.addActor(background);
 		stage.addActor(menuTable);
 	}
 	
