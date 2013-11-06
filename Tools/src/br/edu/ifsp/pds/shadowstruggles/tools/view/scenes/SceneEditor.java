@@ -21,7 +21,6 @@ import javax.swing.DefaultComboBoxModel;
 public class SceneEditor extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField_NvBackground;
 	private JTextField textField_ID;
 	private JTextField textField_Name;
 	private JTextField textField_EndID;
@@ -51,7 +50,7 @@ public class SceneEditor extends JFrame {
 	public SceneEditor() {
 		setTitle("Scene Editor");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 570, 496);
+		setBounds(100, 100, 570, 419);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -73,32 +72,6 @@ public class SceneEditor extends JFrame {
 		lblDescription.setBounds(31, 169, 65, 14);
 		contentPane.add(lblDescription);
 		
-		JCheckBox chckbxNovel = new JCheckBox("Novel");
-		chckbxNovel.setBounds(24, 232, 97, 23);
-		contentPane.add(chckbxNovel);
-		
-		JPanel panel = new JPanel();
-		panel.setBounds(24, 262, 284, 132);
-		contentPane.add(panel);
-		panel.setLayout(null);
-		
-		JLabel lblNoveltext = new JLabel("Text:");
-		lblNoveltext.setBounds(10, 11, 94, 14);
-		panel.add(lblNoveltext);
-		
-		JLabel lblNovelBackground = new JLabel("Background:");
-		lblNovelBackground.setBounds(10, 95, 70, 14);
-		panel.add(lblNovelBackground);
-		
-		textField_NvBackground = new JTextField();
-		textField_NvBackground.setBounds(80, 92, 194, 20);
-		panel.add(textField_NvBackground);
-		textField_NvBackground.setColumns(10);
-		
-		JTextArea textAreaNvtext = new JTextArea();
-		textAreaNvtext.setBounds(80, 6, 194, 78);
-		panel.add(textAreaNvtext);
-		
 		textField_ID = new JTextField();
 		textField_ID.setBounds(101, 8, 114, 20);
 		contentPane.add(textField_ID);
@@ -119,11 +92,11 @@ public class SceneEditor extends JFrame {
 		contentPane.add(textAreaDesc);
 		
 		JButton btnAddScene = new JButton("Add Scene");
-		btnAddScene.setBounds(31, 405, 117, 41);
+		btnAddScene.setBounds(24, 305, 117, 41);
 		contentPane.add(btnAddScene);
 		
 		JButton btnCancel = new JButton("Cancel");
-		btnCancel.setBounds(184, 405, 124, 41);
+		btnCancel.setBounds(167, 305, 124, 41);
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
