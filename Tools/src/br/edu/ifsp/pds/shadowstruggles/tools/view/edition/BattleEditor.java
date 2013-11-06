@@ -76,8 +76,7 @@ public class BattleEditor extends JFrame {
 		comboBox_Enemies = new JComboBox();
 		ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 		enemies = controller.getEnemies();
-		if (enemies!= null) {
-			Enemy[] enemiesArray = (Enemy[]) enemies.toArray();
+		if (enemies!= null) {			
 			comboBox_Enemies.setModel(new DefaultComboBoxModel(enemies
 					.toArray()));
 		}
