@@ -8,6 +8,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -21,6 +22,7 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
 
+import br.edu.ifsp.pds.shadowstruggles.tools.Controller;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Enemy;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Sequence;
 
@@ -35,9 +37,13 @@ public class EnemyGUIFrame extends JFrame {
 	private JList<Sequence> list;
 	private Enemy enemy;
 	private JButton btnAddEnemy;
+	private Controller controller;
 
-	public EnemyGUIFrame() {
+	public EnemyGUIFrame(Controller controller) {
+		setVisible(true);
+		setTitle("Enemy Editor");
 		enemy= new Enemy();
+		this.controller=controller;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 600, 550);
 		contentPane = new JPanel();
@@ -151,6 +157,17 @@ public class EnemyGUIFrame extends JFrame {
 		contentPane.add(btnCancel);
 		
 		btnAddEnemy = new JButton("Add Enemy");
+		btnAddEnemy.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					getController().createEnemy(enemy);
+					getController().updateTableToEnemies();
+					dispose();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnAddEnemy.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -162,16 +179,15 @@ public class EnemyGUIFrame extends JFrame {
 		});
 		btnAddEnemy.setBounds(91, 422, 114, 23);
 		contentPane.add(btnAddEnemy);
-		
-				list = new JList<Sequence>();
-				contentPane.add(list);
-				list.setCellRenderer(new MyCellRenderer());
-				list.setToolTipText("");
-				list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-				list.setBounds(22, 91, 518, 273);
 				JScrollPane scrollPane = new JScrollPane();
 				scrollPane.setBounds(10, 88, 548, 275);
 				contentPane.add(scrollPane);
+				
+						list = new JList<Sequence>();
+						scrollPane.setViewportView(list);
+						list.setCellRenderer(new MyCellRenderer());
+						list.setToolTipText("");
+						list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 		if (enemy != null)
 			updateEnemy();
@@ -199,5 +215,9 @@ public class EnemyGUIFrame extends JFrame {
 					new Json().prettyPrint(enemy));
 			System.out.println(new Json().prettyPrint(enemy));
 		}
+	}
+	
+	public Controller getController() {
+		return controller;
 	}
 }

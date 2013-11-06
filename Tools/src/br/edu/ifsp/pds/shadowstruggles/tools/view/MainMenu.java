@@ -132,6 +132,8 @@ public class MainMenu {
 
 		btnNewButton = new JButton("New");
 		btnNewButton.addMouseListener(new MouseAdapter() {
+			
+
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				String selectedTab = tabbedPane.getTitleAt(tabbedPane
@@ -147,14 +149,14 @@ public class MainMenu {
 				if (selectedTab.equals("Decks"))
 					new DeckEditor();
 				if (selectedTab.equals("Enemies"))
-					new EnemyGUIFrame().setVisible(true);
+					new EnemyGUIFrame(controller);
 				if (selectedTab.equals("Battles"))
-					new BattleEditor();
+					new BattleEditor(controller);
 				if (selectedTab.equals("Events"))
 					new EventEditor(controller).setVisible(true);
 				if (selectedTab.equals("Scenes"))
-					new SceneEditor();
-
+					new SceneEditor(controller);
+			
 			}
 		});
 
@@ -196,11 +198,11 @@ public class MainMenu {
 				if (selectedTab.equals("Enemies"))
 					new EnemyEditorOLD();
 				if (selectedTab.equals("Battles"))
-					new BattleEditor();
+					new BattleEditor(controller);
 				if (selectedTab.equals("Events"))
 					new EventEditorOLD();
 				if (selectedTab.equals("Scenes"))
-					new SceneEditor();
+					new SceneEditor(controller);
 				// TODO: (objeto selecionado da tabela como argumento);
 			}
 		});

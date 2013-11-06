@@ -11,6 +11,9 @@ import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
+
+import br.edu.ifsp.pds.shadowstruggles.tools.model.scenes.Dialogue;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -18,6 +21,8 @@ public class DialogueChooser extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
+	private JTextArea textArea;
+	private SceneEditor previousScreen;
 
 	/**
 	 * Launch the application.
@@ -26,7 +31,7 @@ public class DialogueChooser extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					DialogueChooser frame = new DialogueChooser();
+					DialogueChooser frame = new DialogueChooser(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,7 +43,9 @@ public class DialogueChooser extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public DialogueChooser() {
+	public DialogueChooser(SceneEditor previousScreen) {
+		this.previousScreen=previousScreen;
+		setVisible(true);
 		setTitle("Dialogue Chooser");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 289);
@@ -64,10 +71,19 @@ public class DialogueChooser extends JFrame {
 		scrollPane.setBounds(130, 48, 250, 95);
 		contentPane.add(scrollPane);
 		
-		JTextArea textArea = new JTextArea();
+		textArea = new JTextArea();
 		scrollPane.setViewportView(textArea);
 		
 		JButton btnAddDialogue = new JButton("Add Dialogue");
+		btnAddDialogue.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String text = textArea.getText();
+				String charName = textField.getText();
+				Dialogue dialogue = new Dialogue(text, charName);
+				getPreviousScreen().addSceneItem(dialogue);
+				dispose();
+			}
+		});
 		btnAddDialogue.setBounds(31, 178, 146, 47);
 		contentPane.add(btnAddDialogue);
 		
@@ -79,5 +95,9 @@ public class DialogueChooser extends JFrame {
 		});
 		btnCancel.setBounds(255, 178, 125, 47);
 		contentPane.add(btnCancel);
+	}
+	
+	public SceneEditor getPreviousScreen() {
+		return previousScreen;
 	}
 }

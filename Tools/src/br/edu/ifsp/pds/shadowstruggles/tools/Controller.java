@@ -11,12 +11,14 @@ import javax.swing.table.DefaultTableModel;
 
 import net.lingala.zip4j.exception.ZipException;
 import br.edu.ifsp.pds.shadowstruggles.tools.data.DataManager;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Enemy;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.events.Event;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.quests.Quest;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.scenes.Scene;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.MainMenu;
 
 public class Controller {
@@ -83,7 +85,8 @@ public class Controller {
 		model.insertObject(event, Event.class);
 	}
 
-	public void createBattle() {
+	public void createBattle(BattlePlatform battle) throws IOException{
+		model.insertObject(battle, BattlePlatform.class);
 	}
 
 	public void createRule() {
@@ -95,7 +98,11 @@ public class Controller {
 	public void createDeck() {
 	}
 
-	public void createEnemy() {
+	public void createEnemy(Enemy enemy) throws IOException{
+		model.insertObject(enemy,Enemy.class);
+	}
+	public void createScene(Scene scene)throws IOException{
+		model.insertObject(scene, Scene.class);
 	}
 	
 	public void createFighter(Fighter fighter)throws IOException{		
@@ -227,6 +234,26 @@ public class Controller {
 	}
 
 	public void updateTableToScenes() {
+		try {
+			ArrayList<Scene> scenes = model.searchAllObjects(Scene.class);
+			if (scenes != null) {
+				int i = 0;
+				Object[][] sceneAttributes = new Object[scenes.size()][2];
+				for (Iterator<Scene> iterator = scenes.iterator(); iterator
+						.hasNext();) {
+					sceneAttributes[i][0] = scenes.get(i).id;
+					sceneAttributes[i][1] = scenes.get(i).name;
+				}
+				Object[] columnNames = { "ID", "Name" };
+				viewer.getTable().setModel(
+						new DefaultTableModel(sceneAttributes, columnNames));
+				viewer.getTable().updateUI();
+			}
+
+		} catch (IOException e) {
+			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
+			e.printStackTrace();
+		}
 	}
 	
 	

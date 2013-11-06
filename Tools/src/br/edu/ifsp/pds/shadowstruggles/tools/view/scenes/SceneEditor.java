@@ -6,17 +6,28 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
+import javax.swing.ListModel;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+
+import br.edu.ifsp.pds.shadowstruggles.tools.Controller;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.scenes.Ending;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.scenes.Scene;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.scenes.SceneItem;
 
 public class SceneEditor extends JFrame {
 
@@ -27,6 +38,11 @@ public class SceneEditor extends JFrame {
 	private JList list;
 	private JTextField textField_EndName;
 	private JTextField textField_EndPath;
+	private Scene scene;
+	private JTextArea textAreaDesc;
+	private Controller controller;
+	private JComboBox comboBox;
+	
 
 	/**
 	 * Launch the application.
@@ -35,7 +51,7 @@ public class SceneEditor extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SceneEditor frame = new SceneEditor();
+					SceneEditor frame = new SceneEditor(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +63,10 @@ public class SceneEditor extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public SceneEditor() {
+	public SceneEditor(Controller controller) {
+		this.controller=controller;
+		this.scene=new Scene();
+		this.scene.items= new ArrayList<SceneItem>();
 		setTitle("Scene Editor");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 570, 419);
@@ -87,11 +106,23 @@ public class SceneEditor extends JFrame {
 		contentPane.add(textField_EndID);
 		textField_EndID.setColumns(10);
 		
-		JTextArea textAreaDesc = new JTextArea();
+		textAreaDesc = new JTextArea();
 		textAreaDesc.setBounds(105, 164, 203, 56);
 		contentPane.add(textAreaDesc);
 		
 		JButton btnAddScene = new JButton("Add Scene");
+		btnAddScene.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				buildScene();
+				try {
+					getController().createScene(scene);
+					//getController().updateTableToScenes();
+					dispose();
+				} catch (IOException e1) {					
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnAddScene.setBounds(24, 305, 117, 41);
 		contentPane.add(btnAddScene);
 		
@@ -137,15 +168,55 @@ public class SceneEditor extends JFrame {
 		lblChooseAScene.setBounds(337, 262, 185, 14);
 		contentPane.add(lblChooseAScene);
 		
-		JComboBox comboBox = new JComboBox();
+		comboBox = new JComboBox();
 		comboBox.setMaximumRowCount(9);
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Decision", "Dialogue", "Event Control", "Layer Control", "Movement Control", "Profile Control", "Scene Control", "Scene Item", "Teleport Control"}));
 		comboBox.setBounds(336, 287, 175, 20);
 		contentPane.add(comboBox);
 		
 		JButton btnAddSceneItem = new JButton("Add Scene item");
+		btnAddSceneItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String itemType = comboBox.getSelectedItem().toString();
+				switch(itemType){
+					case "Dialogue":
+						new DialogueChooser(getThis());
+					
+				}
+			}
+		});
 		btnAddSceneItem.setBounds(337, 323, 122, 23);
 		contentPane.add(btnAddSceneItem);
 		this.setVisible(true);
+	}
+	
+	private void buildScene(){		
+		Ending ending=new Ending();
+		ending.id=Integer.parseInt(textField_EndID.getText());
+		ending.name=textField_EndName.getText();
+		ending.path=textField_EndPath.getText();
+		scene.id=Integer.parseInt(textField_ID.getText());
+		scene.name=textField_Name.getText();
+		scene.description=textAreaDesc.getText();
+		scene.ending=ending;			
+	}
+	public Controller getController() {
+		return controller;
+	}
+	public void addSceneItem(SceneItem item){
+		scene.items.add(item);
+		updateList();		
+	}
+	public SceneEditor getThis(){
+		return this;
+	}
+	
+	private void updateList(){
+		DefaultListModel model = new DefaultListModel();
+		for(SceneItem item: scene.items){
+			model.addElement(item);
+		}
+		list.setModel(model);
+		list.updateUI();
 	}
 }

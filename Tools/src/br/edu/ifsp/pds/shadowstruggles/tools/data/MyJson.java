@@ -80,6 +80,7 @@ public class MyJson {
 			json.addClassTag("ProfileCondition", ProfileCondition.class);
 			json.addClassTag("QuestCondition", QuestCondition.class);
 			json.addClassTag("StoryCondition", StoryCondition.class);
+			json.addClassTag("HealthCondition", HealthCondition.class);
 			
 			json.addClassTag("EnemyDefeatRequirement",
 					EnemyDefeatRequirement.class);
