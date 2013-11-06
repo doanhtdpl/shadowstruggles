@@ -9,7 +9,7 @@ public class Dialogue extends SceneItem {
 		this.characterName = "";
 	}
 	
-	public Dialogue(String text, String characterName, String characterImage) {
+	public Dialogue(String text, String characterName) {
 		this.text = text;
 		this.characterName = characterName;
 	}
