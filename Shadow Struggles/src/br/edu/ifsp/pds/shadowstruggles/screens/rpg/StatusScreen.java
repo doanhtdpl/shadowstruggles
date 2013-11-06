@@ -1,24 +1,22 @@
 package br.edu.ifsp.pds.shadowstruggles.screens.rpg;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
+import br.edu.ifsp.pds.shadowstruggles.data.FileMap;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
-import br.edu.ifsp.pds.shadowstruggles.model.Player;
-import br.edu.ifsp.pds.shadowstruggles.model.profiles.Profile;
-import br.edu.ifsp.pds.shadowstruggles.object2d.FixedObject;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
-import br.edu.ifsp.pds.shadowstruggles.screens.MainScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
 public class StatusScreen extends BaseScreen{
@@ -33,19 +31,27 @@ public class StatusScreen extends BaseScreen{
 	private TextButton maxHealth;
 	private TextButton doubleDraw;
 	private TextButton returnButton;
-	private Image background;
-	private Image maxEnergyBar;
+	private StatusBar maxEnergyBar;
 	private Image energyRecoveryBar;
 	private Image deckCapacityBar;
 	private Image maxCardPointsBar;
 	private Image maxHealthBar;
 	private Image doubleDrawBar;
-	private Label maxEnergyLbl;
-	private Label energyRecoveryLbl;
-	private Label deckCapacityLbl;
-	private Label maxCardPointsLbl;
-	private Label maxHealthLbl;
-	private Label doubleDrawLbl;
+	
+	private class StatusBar extends Image{
+		private float status = 0.0f;
+		
+		public StatusBar(int currentStatus, int maxStatus, String region, String resource) {
+			super(new TextureRegion(new Texture(FileMap.resourcesToDirectory.get(resource)+region)));
+			this.setScaleX(status);
+		}
+		
+		public void update(int currentStatus, int maxStatus){
+			status = (float) ((float)currentStatus / (float)maxStatus);
+			this.setScaleX(status);
+		}
+		
+	}
 
 	public StatusScreen(ShadowStruggles game, Controller controller) {
 		super(game, controller);
@@ -54,9 +60,6 @@ public class StatusScreen extends BaseScreen{
 	
 	public void initComponents(){
 		stage.clear();
-		background = new Image(this.getSkin().getDrawable("msbackground"));
-		background.setScaleX(960f / 512f);
-		background.setScaleY(640f / 380f);
 		
 		maxHealth = new TextButton(MenuTextDAO.getMenuText().maxHealth, 
 				getSkin());
@@ -70,7 +73,10 @@ public class StatusScreen extends BaseScreen{
 			}
 		});
 		
-		maxEnergy = new TextButton(MenuTextDAO.getMenuText().maxEnergy, 
+		maxEnergyBar = new StatusBar(game.getProfile().getPlayer().getMaxEnergy(), 1000, "blue_bar.png", "skin");
+		
+		maxEnergy = new TextButton(MenuTextDAO.getMenuText().maxEnergy
+				+ "(" + game.getProfile().getPlayer().getMaxEnergy() + "/" + String.valueOf(1000) + ")", 
 				getSkin());
 		maxEnergy =ScreenUtils.defineButton(maxEnergy, 0, 0, 0,
 				0, super.getSkin());
@@ -78,7 +84,9 @@ public class StatusScreen extends BaseScreen{
 			 @Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getProfile().getPlayer().setMaxEnergy(game.getProfile().getPlayer().getMaxEnergy()+10);
-				updateBar();
+				maxEnergyBar.update(game.getProfile().getPlayer().getMaxEnergy(), 1000);
+				maxEnergy.setText(MenuTextDAO.getMenuText().maxEnergy
+				+ "(" + game.getProfile().getPlayer().getMaxEnergy() + "/" + String.valueOf(1000) + ")");
 			}
 		});
 		
@@ -143,18 +151,18 @@ public class StatusScreen extends BaseScreen{
 		});
 		
 		maxHealthBar = new Image(this.getSkin().getDrawable("red_bar"));
-		maxEnergyBar = new Image(this.getSkin().getDrawable("blue_bar"));
+//		maxEnergyBar = new Image(this.getSkin().getDrawable("blue_bar"));
 		energyRecoveryBar = new Image(this.getSkin().getDrawable("blue2_bar"));
 		deckCapacityBar = new Image(this.getSkin().getDrawable("green_bar"));
 		maxCardPointsBar = new Image(this.getSkin().getDrawable("yellow_bar"));
 		doubleDrawBar = new Image(this.getSkin().getDrawable("purple_bar"));
 		
 		//label com os valores
-		maxHealthLbl= new Label("", super.getSkin());
-		maxHealthLbl.setText(String.valueOf(game.getProfile().getPlayer().getMaxHealth())+"/1000");
-		maxHealthLbl.setPosition(maxHealthBar.getX(), maxHealthBar.getY());
-		maxHealthLbl.setStyle(new LabelStyle(getSkin().getFont("basic-font"),
-				Color.WHITE));
+//		maxHealthLbl= new Label("", super.getSkin());
+//		maxHealthLbl.setText(String.valueOf(game.getProfile().getPlayer().getMaxHealth())+"/1000");
+//		maxHealthLbl.setPosition(maxHealthBar.getX(), maxHealthBar.getY());
+//		maxHealthLbl.setStyle(new LabelStyle(getSkin().getFont("basic-font"),
+//				Color.WHITE));
 		
 		Table statusTable = new Table();
 		statusTable.defaults().width(COLUMN).height(ROW).padTop(10);
@@ -183,14 +191,12 @@ public class StatusScreen extends BaseScreen{
 		statusTable.add(returnButton);
 		statusTable.setPosition(500, 300);
 		
-//		stage.addActor(maxHealthLbl);
-		stage.addActor(background);
 		stage.addActor(statusTable);
 	}
 	
 	public void updateBar() {
 		maxHealthBar.setScaleX((float)game.getProfile().getPlayer().getMaxHealth()/1000);
-		maxEnergyBar.setScaleX((float)game.getProfile().getPlayer().getMaxEnergy()/100);
+//		maxEnergyBar.setScaleX((float)game.getProfile().getPlayer().getMaxEnergy()/1000);
 		energyRecoveryBar.setScaleX((float)game.getProfile().getPlayer().getEnergyRecovery()/10);
 		deckCapacityBar.setScaleX((float)game.getProfile().getPlayer().getDeckCapacity()/100);
 		maxCardPointsBar.setScaleX((float)game.getProfile().getPlayer().getMaxCardPoints()/100);
