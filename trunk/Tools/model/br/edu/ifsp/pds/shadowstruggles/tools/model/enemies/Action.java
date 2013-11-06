@@ -1,5 +1,10 @@
 package br.edu.ifsp.pds.shadowstruggles.tools.model.enemies;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.logging.Logger;
+
+import br.edu.ifsp.pds.shadowstruggles.tools.data.SerializationHelper;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Card;
 
 import com.esotericsoftware.jsonbeans.Json;
@@ -75,17 +80,32 @@ public class Action implements Serializable {
 	}
 
 	@Override
-	public void read(Json json, JsonValue jsonValue) {
-		this.type = json.readValue("type", Attribute.class, jsonValue);
-		this.value = json.readValue("value", Object.class, jsonValue);
-		this.dynamicType = json.readValue("dynamicType", DynamicValue.class,
-				jsonValue);
-	}
+	 public void read(Json arg0, JsonValue arg1) {
+	  try {
+	   ArrayList<String> skipFields =  new ArrayList<String>( Arrays.asList(new String[] { "value" }));
+	   SerializationHelper.read(this, arg0, arg1, skipFields);
+	   this.value = arg0.readValue("value", null, arg1);
+	  } catch (IllegalArgumentException e) {
+	   Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
+	   e.printStackTrace();
+	  } catch (IllegalAccessException e) {
+	   Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
+	   e.printStackTrace();
+	  }
+	 }
 
 	@Override
-	public void write(Json json) {
-		json.writeValue("type", this.type);
-		json.writeValue("value", this.value);
-		json.writeValue("dynamicType", this.dynamicType);
-	}
+	 public void write(Json json) {
+	  try {
+	   ArrayList<String> skipFields = new ArrayList<String>( Arrays.asList(new String[] { "value" }));
+	   SerializationHelper.writeToJson(this, json, skipFields);
+	   json.writeValue("value", this.value, Action.class);
+	  } catch (IllegalArgumentException e) {
+	   Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
+	   e.printStackTrace();
+	  } catch (IllegalAccessException e) {
+	   Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
+	   e.printStackTrace();
+	  }
+	 }
 }
