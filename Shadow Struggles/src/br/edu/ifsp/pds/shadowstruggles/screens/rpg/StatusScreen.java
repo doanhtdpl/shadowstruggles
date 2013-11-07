@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
@@ -13,15 +14,15 @@ import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
 public class StatusScreen extends BaseScreen{
-	private static final int COLUMN = 300;
+	private static final int COLUMN = 350;
 	private static final int ROW = 60;
 	private static final int BAR_WIDTH = 550;
 	private static final int MAX_HEALTH_LIMIT = 1000;
-	private static final int MAX_ENERGY_LIMIT = 1000;
+	private static final int MAX_ENERGY_LIMIT = 500;
 	private static final int ENERGY_RECOVERY_LIMIT = 10;
 	private static final int DECK_CAPACITY_LIMIT = 100;
 	private static final int MAX_CARD_POINTS_LIMIT = 100;
-	private static final float DOUBLE_DRAW_LIMIT = 0.5f; 
+	private static final float DOUBLE_DRAW_LIMIT = 0.7f; 
 	
 	private TextButton maxHealth;
 	private TextButton maxEnergy;
@@ -56,8 +57,8 @@ public class StatusScreen extends BaseScreen{
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				if(game.getProfile().getPlayer().getMaxHealth()<MAX_HEALTH_LIMIT){
-					game.getProfile().getPlayer().setMaxHealth(game.getProfile().getPlayer().getMaxHealth()+50);
-					updateBar();
+					game.getProfile().getPlayer().setMaxHealth(game.getProfile().getPlayer().getMaxHealth()+100);
+					update();
 				}
 			}
 		});
@@ -71,10 +72,8 @@ public class StatusScreen extends BaseScreen{
 			 @Override
 			public void clicked(InputEvent event, float x, float y) {
 				 if(game.getProfile().getPlayer().getMaxEnergy()<MAX_ENERGY_LIMIT){
-					 game.getProfile().getPlayer().setMaxEnergy(game.getProfile().getPlayer().getMaxEnergy()+10);
-						updateBar();
-						maxEnergy.setText(MenuTextDAO.getMenuText().maxEnergy
-						+ "(" + game.getProfile().getPlayer().getMaxEnergy() + "/1000)");
+					 game.getProfile().getPlayer().setMaxEnergy(game.getProfile().getPlayer().getMaxEnergy()+50);
+						update();
 				 }
 				
 			}
@@ -90,7 +89,7 @@ public class StatusScreen extends BaseScreen{
 			public void clicked(InputEvent event, float x, float y) {
 				if(game.getProfile().getPlayer().getEnergyRecovery()<ENERGY_RECOVERY_LIMIT){
 					game.getProfile().getPlayer().setEnergyRecovery(game.getProfile().getPlayer().getEnergyRecovery()+1);
-					updateBar();
+					update();
 				}
 				
 			}
@@ -105,8 +104,8 @@ public class StatusScreen extends BaseScreen{
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				if(game.getProfile().getPlayer().getDeckCapacity()<DECK_CAPACITY_LIMIT){
-					game.getProfile().getPlayer().setDeckCapacity(game.getProfile().getPlayer().getDeckCapacity()+5);
-					updateBar();
+					game.getProfile().getPlayer().setDeckCapacity(game.getProfile().getPlayer().getDeckCapacity()+10);
+					update();
 				}
 			}
 		});
@@ -119,25 +118,29 @@ public class StatusScreen extends BaseScreen{
 		maxCardPoints.addListener(new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				game.getProfile().getPlayer().setMaxCardPoints(game.getProfile().getPlayer().getMaxCardPoints()+10);
-				updateBar();
+				if(game.getProfile().getPlayer().getMaxCardPoints()<MAX_CARD_POINTS_LIMIT){
+					game.getProfile().getPlayer().setMaxCardPoints(game.getProfile().getPlayer().getMaxCardPoints()+10);
+					update();
+				}
 			}
 		});
 		
 		doubleDraw = new TextButton(MenuTextDAO.getMenuText().doubleDraw
-				+ "(" + game.getProfile().getPlayer().getDoubleDraw() + "/50)", 
+				+ "(" + game.getProfile().getPlayer().getDoubleDraw()*100 + "/"+DOUBLE_DRAW_LIMIT+")", 
 				getSkin());
 		doubleDraw =ScreenUtils.defineButton(doubleDraw, 0, 0, 0,
 				0, super.getSkin());
 		doubleDraw.addListener(new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				game.getProfile().getPlayer().setDoubleDraw(game.getProfile().getPlayer().getDoubleDraw()+0.1f);
-				updateBar();
+				if(game.getProfile().getPlayer().getDoubleDraw()<DOUBLE_DRAW_LIMIT){
+					game.getProfile().getPlayer().setDoubleDraw(game.getProfile().getPlayer().getDoubleDraw()+0.07f);
+					update();
+				}
 			}
 		});
 		
-		returnButton = new TextButton(MenuTextDAO.getMenuText().returnToStart,
+		returnButton = new TextButton("Save & "+MenuTextDAO.getMenuText().returnToStart,
 				super.getSkin());
 		returnButton = ScreenUtils.defineButton(returnButton, 0, 0, 0, 0,
 				super.getSkin());
@@ -155,6 +158,8 @@ public class StatusScreen extends BaseScreen{
 		deckCapacityBar = new Image(this.getSkin().getDrawable("green_bar"));
 		maxCardPointsBar = new Image(this.getSkin().getDrawable("yellow_bar"));
 		doubleDrawBar = new Image(this.getSkin().getDrawable("purple_bar"));
+		
+		update();
 		
 		Table statusTable = new Table();
 		statusTable.defaults().width(COLUMN).height(ROW).padTop(10);
@@ -186,13 +191,38 @@ public class StatusScreen extends BaseScreen{
 		stage.addActor(statusTable);
 	}
 	
-	public void updateBar() {
-		maxHealthBar.setScaleX((float) ((float)game.getProfile().getPlayer().getMaxHealth() / 1000.0f));
-		maxEnergyBar.setScaleX((float) ((float)game.getProfile().getPlayer().getMaxEnergy() / 1000.0f));
-		energyRecoveryBar.setScaleX((float) ((float)game.getProfile().getPlayer().getEnergyRecovery() / 10.0f));
-		deckCapacityBar.setScaleX((float) ((float)game.getProfile().getPlayer().getDeckCapacity() / 100.0f));
-		maxCardPointsBar.setScaleX((float) ((float)game.getProfile().getPlayer().getMaxCardPoints() / 100.0f));
-		doubleDrawBar.setScaleX(game.getProfile().getPlayer().getDoubleDraw());
+	public void update() {
+		
+		maxHealth.setText(MenuTextDAO.getMenuText().maxEnergy
+				+ "(" + game.getProfile().getPlayer().getMaxHealth() + "/"
+						+ String.valueOf(MAX_HEALTH_LIMIT)+")");
+		maxHealthBar.setScaleX((float) ((float)game.getProfile().getPlayer().getMaxHealth() / (float)MAX_HEALTH_LIMIT));
+		
+		maxEnergy.setText(MenuTextDAO.getMenuText().maxEnergy
+				+ "(" + game.getProfile().getPlayer().getMaxEnergy() + "/"
+						+ String.valueOf(MAX_ENERGY_LIMIT)+")");
+		maxEnergyBar.setScaleX((float) ((float)game.getProfile().getPlayer().getMaxEnergy() / (float)MAX_ENERGY_LIMIT));
+		
+		energyRecovery.setText(MenuTextDAO.getMenuText().energyRecovery
+				+ "(" + game.getProfile().getPlayer().getEnergyRecovery() + "/"
+						+ String.valueOf(ENERGY_RECOVERY_LIMIT)+")");
+		energyRecoveryBar.setScaleX((float) ((float)game.getProfile().getPlayer().getEnergyRecovery() / (float)ENERGY_RECOVERY_LIMIT));
+		
+		deckCapacity.setText(MenuTextDAO.getMenuText().deckCapacity
+				+ "(" + game.getProfile().getPlayer().getDeckCapacity() + "/"
+						+ String.valueOf(DECK_CAPACITY_LIMIT)+")");
+		deckCapacityBar.setScaleX((float) ((float)game.getProfile().getPlayer().getDeckCapacity() / (float)DECK_CAPACITY_LIMIT));
+		
+		maxCardPoints.setText(MenuTextDAO.getMenuText().maxCardPoints
+				+ "(" + game.getProfile().getPlayer().getMaxCardPoints()+ "/"
+						+ String.valueOf(MAX_CARD_POINTS_LIMIT)+")");
+		maxCardPointsBar.setScaleX((float) ((float)game.getProfile().getPlayer().getMaxCardPoints() / (float)MAX_CARD_POINTS_LIMIT));
+		
+		doubleDraw.setText(MenuTextDAO.getMenuText().doubleDraw
+				+ "(" + game.getProfile().getPlayer().getDoubleDraw()*100 + "%/"
+						+ String.valueOf(DOUBLE_DRAW_LIMIT*100)+"%)");
+		doubleDrawBar.setScaleX(game.getProfile().getPlayer().getDoubleDraw()/DOUBLE_DRAW_LIMIT);
+		
 	}
 	
 	@Override
