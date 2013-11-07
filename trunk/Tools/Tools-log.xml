@@ -3307,4 +3307,663 @@
    action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/MainMenu.java</path>
 </paths>
 </logentry>
+<logentry
+   revision="581">
+<author>Hugo</author>
+<date>2013-10-29T13:47:21.617019Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/data/DataManager.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/Controller.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/edition/FighterEditor.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="582">
+<author>Hugo</author>
+<date>2013-10-29T14:13:44.759118Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/Controller.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/MainMenu.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="583">
+<author>Hugo</author>
+<date>2013-10-29T15:07:57.577649Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/data/DataManager.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/Controller.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/LanguageSelection.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/MainMenu.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/edition/FighterEditor.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="584">
+<author>Hugo</author>
+<date>2013-10-30T03:15:05.656867Z</date>
+<paths>
+<path
+   kind="file"
+   action="D">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/edition/EventEditor.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/SceneChooser.java</path>
+<path
+   kind="dir"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/model/br/edu/ifsp/pds/shadowstruggles/tools/model/events/Event.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/ModifierChooser.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/package-info.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/EventActionEditor.java</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/edition/EventEditor.java"
+   copyfrom-rev="580"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/EventEditorOLD.java</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/edition/EventEditor.java"
+   copyfrom-rev="580"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/EventEditor.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/WarpChooser.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/ShopChooser.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/Tools-log.xml</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/MainMenu.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/Controller.java</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/edition/EnemyEditor.java"
+   copyfrom-rev="580"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/edition/EnemyEditorOLD.java</path>
+<path
+   kind="file"
+   action="D">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/edition/EnemyEditor.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="588">
+<author>Hugo</author>
+<date>2013-10-31T14:05:32.804795Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/data/DataManager.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/Logging.txt</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/Controller.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/EventActionEditor.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/EventEditor.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="590">
+<author>Hugo</author>
+<date>2013-11-01T03:12:16.626532Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/ShopChooser.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/WarpChooser.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/SceneChooser.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/ModifierChooser.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/EventActionEditor.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/EventEditor.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="591">
+<author>Gabriel</author>
+<date>2013-11-01T16:08:17.841269Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Tools/model/br/edu/ifsp/pds/shadowstruggles/tools/model/events/WarpAction.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="593">
+<author>Gabriel</author>
+<date>2013-11-01T16:52:04.687112Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Tools/model/br/edu/ifsp/pds/shadowstruggles/tools/model/scenes/Dialogue.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="594">
+<author>Gabriel</author>
+<date>2013-11-01T23:33:29.033795Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Tools/model/br/edu/ifsp/pds/shadowstruggles/tools/model/scenes/NovelScene.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/model/br/edu/ifsp/pds/shadowstruggles/tools/model/scenes/ProfileControl.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/model/br/edu/ifsp/pds/shadowstruggles/tools/model/scenes/EventControl.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/model/br/edu/ifsp/pds/shadowstruggles/tools/model/scenes/MovementControl.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/model/br/edu/ifsp/pds/shadowstruggles/tools/model/scenes/TeleportControl.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="595">
+<author>Hugo</author>
+<date>2013-11-02T03:35:36.467123Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/QuestChooser.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/Controller.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/BattleConditionChooser.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/EventActionEditor.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/EventEditor.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/ItemConditionChooser.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/ProfileConditionChooser.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/StoryConditionChooser.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="596">
+<author>Hugo</author>
+<date>2013-11-02T04:03:35.260817Z</date>
+<paths>
+<path
+   kind="dir"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/scenes</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/scenes/package-info.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/view/SceneEditor.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="607">
+<author>Hugo</author>
+<date>2013-11-05T14:05:48.407980Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/scenes/DecisionChooser.java</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/view/SceneEditor.java"
+   copyfrom-rev="606"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/scenes/SceneEditor.java</path>
+<path
+   kind="file"
+   action="D">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/view/SceneEditor.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/MainMenu.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/scenes/ChoiceChooser.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="609">
+<author>Hugo</author>
+<date>2013-11-06T01:52:21.696966Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/scenes/LayerControlChooser.java</path>
+<path
+   kind="dir"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/modifiers</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/scenes/SceneEditor.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/modifiers/package-info.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/scenes/EventControlChooser.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/scenes/TeleportControlEditor.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/scenes/NovelSceneEditor.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/scenes/ProfileControlEditor.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/modifiers/AmountModifierEditor.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/scenes/DialogueChooser.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/scenes/MovementControlChooser.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="611">
+<author>Hugo</author>
+<date>2013-11-06T15:19:01.113586Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/enemies/EnemyGUIFrame.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/modifiers/InventoryModifierEditor.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/scenes/SceneEditor.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/model/br/edu/ifsp/pds/shadowstruggles/tools/model/scenes/Dialogue.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/modifiers/QuestModifierEditor.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/Controller.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/MainMenu.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/modifiers/AmountModifierEditor.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/scenes/DialogueChooser.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/edition/BattleEditor.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/data/MyJson.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="613">
+<author>Hugo</author>
+<date>2013-11-06T23:51:29.331543Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Tools/model/br/edu/ifsp/pds/shadowstruggles/tools/model/enemies/Action.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/edition/BattleEditor.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="614">
+<author>Hugo</author>
+<date>2013-11-07T00:43:51.453974Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/enemies/EnemyGUIFrame.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/edition/BattleEditor.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/ResourceEditor.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="616">
+<author>Hugo</author>
+<date>2013-11-07T01:28:55.796595Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/trunk/Tools/model/br/edu/ifsp/pds/shadowstruggles/tools/model/cards/Trap.java</path>
+<path
+   kind="dir"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/items</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/enemies/EnemyGUIFrame.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/items/ItemChooser.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/items/ModifierItemEditor.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/items/package-info.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/model/br/edu/ifsp/pds/shadowstruggles/tools/model/cards/Effect.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/Controller.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/data/FileMap.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/enemies/ActionFrame.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/data/MyJson.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/enemies/SequenceEditorFrame.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="623">
+<author>Hugo</author>
+<date>2013-11-07T03:45:40.967475Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/SceneChooser.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/scenes/SceneEditor.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/scenes/ProfileControlEditor.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/EventActionEditor.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/EventEditorOLD.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/ItemConditionChooser.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/EventEditor.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/ProfileConditionChooser.java</path>
+<path
+   kind="file"
+   action="D">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/edition/SceneEditor.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/items/ItemChooser.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/scenes/BattleControlEditor.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/items/ModifierItemEditor.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/BattleConditionChooser.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/MainMenu.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/Controller.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/data/FileMap.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/StoryConditionChooser.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="624">
+<author>Hugo</author>
+<date>2013-11-07T05:52:04.365952Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Tools/model/br/edu/ifsp/pds/shadowstruggles/tools/model/cards/Fighter.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/data/DataManager.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/model/br/edu/ifsp/pds/shadowstruggles/tools/model/cards/Card.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/scenes/SceneEditor.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/Logging.txt</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/model/br/edu/ifsp/pds/shadowstruggles/tools/model/cards/Effect.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/scenes/ProfileControlEditor.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/Controller.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/MainMenu.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/edition/FighterEditor.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/data/FileMap.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/data/MyJson.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="627">
+<author>Hugo</author>
+<date>2013-11-07T12:36:32.319000Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Tools/model/br/edu/ifsp/pds/shadowstruggles/tools/model/scenes/ProfileControl.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/model/br/edu/ifsp/pds/shadowstruggles/tools/model/cards/Fighter.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/scenes/SceneEditor.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/model/br/edu/ifsp/pds/shadowstruggles/tools/model/enemies/CardOnHand.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/model/br/edu/ifsp/pds/shadowstruggles/tools/model/cards/Effect.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/Logging.txt</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/model/br/edu/ifsp/pds/shadowstruggles/tools/model/enemies/CardOnMap.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/scenes/ProfileControlEditor.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/EventActionEditor.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/ProfileConditionChooser.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Tools/model/br/edu/ifsp/pds/shadowstruggles/tools/model/enemies/BaseAttacked.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/model/br/edu/ifsp/pds/shadowstruggles/tools/model/enemies/Action.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/model/br/edu/ifsp/pds/shadowstruggles/tools/model/cards/Trap.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/model/br/edu/ifsp/pds/shadowstruggles/tools/model/cards/Deck.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/model/br/edu/ifsp/pds/shadowstruggles/tools/model/modifiers/AmountModifier.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/scenes/BattleControlEditor.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/Controller.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/enemies/ActionFrame.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/data/MyJson.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="629">
+<author>Hugo</author>
+<date>2013-11-07T13:21:10.858752Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Tools/model/br/edu/ifsp/pds/shadowstruggles/tools/model/scenes/ProfileControl.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/items/ModifierItemEditor.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/Logging.txt</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/scenes/ProfileControlEditor.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/data/FileMap.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/model/br/edu/ifsp/pds/shadowstruggles/tools/model/items/ModifierItem.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="630">
+<author>Hugo</author>
+<date>2013-11-07T14:02:46.938368Z</date>
+<paths>
+<path
+   kind="file"
+   action="D">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/enemies/EnemyGUIFrame.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/items/ItemChooser.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/SceneChooser.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/scenes/SceneEditor.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/Controller.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/MainMenu.java</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/enemies/EnemyGUIFrame.java"
+   copyfrom-rev="616"
+   action="A">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/enemies/EnemyEditor.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/edition/FighterEditor.java</path>
+<path
+   kind="file"
+   action="D">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/EventEditorOLD.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/events/EventEditor.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/edition/BattleEditor.java</path>
+<path
+   kind="file"
+   action="D">/trunk/Tools/src/br/edu/ifsp/pds/shadowstruggles/tools/view/edition/EnemyEditorOLD.java</path>
+</paths>
+</logentry>
 </log>
