@@ -12,7 +12,8 @@ import br.edu.ifsp.pds.shadowstruggles.model.cards.Trap;
 import br.edu.ifsp.pds.shadowstruggles.model.enemies.Enemy;
 import br.edu.ifsp.pds.shadowstruggles.model.events.Event;
 import br.edu.ifsp.pds.shadowstruggles.model.profiles.Profile;
-import br.edu.ifsp.pds.shadowstruggles.model.Scene;
+import br.edu.ifsp.pds.shadowstruggles.model.scenes.Scene;
+
 
 /**
  * Provides an easy access to the directory structure by mapping classes and

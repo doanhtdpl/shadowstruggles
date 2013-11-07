@@ -1,0 +1,1 @@
+[{class:ModifierItem,id:1,name:"Item1",localizedName:"asd",description:"asd",buyCost:0,sellCost:0,sellable:false,icon:"char",availableInMainShop:false,consumable:false,modifier:{class:AmountModifier,amount:123,replace:false,attribute:HEALTH,text:"123"}}]

@@ -1,7 +1,7 @@
 package br.edu.ifsp.pds.shadowstruggles.data.dao;
 
 import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
-import br.edu.ifsp.pds.shadowstruggles.model.Scene;
+import br.edu.ifsp.pds.shadowstruggles.model.scenes.Scene;
 
 import com.badlogic.gdx.utils.Array;
 
