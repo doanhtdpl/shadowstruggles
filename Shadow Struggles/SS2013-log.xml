@@ -10294,4 +10294,745 @@
    action="M">/trunk/Shadow Struggles/data/profiles.json</path>
 </paths>
 </logentry>
+<logentry
+   revision="578">
+<author>Hugo</author>
+<date>2013-10-24T14:05:48.476521Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/trunk/Shadow Struggles/SS2013-log.xml</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/Logging.txt</path>
+</paths>
+</logentry>
+<logentry
+   revision="579">
+<author>Hugo</author>
+<date>2013-10-29T00:43:35.795316Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/ShadowStruggles.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/model/br/edu/ifsp/pds/shadowstruggles/model/profiles/Profile.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/data/DataManager.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/data/dao/ProfileDAO.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/SaveLoadScreen.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/Logging.txt</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/SettingsScreen.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="580">
+<author>Hugo</author>
+<date>2013-10-29T01:14:43.316911Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/BattleScreen.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/DesktopStarter.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/object2d/LifeBar.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/SettingsScreen.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="585">
+<author>Gabriel</author>
+<date>2013-10-30T11:57:32.057990Z</date>
+<paths>
+<path
+   kind="file"
+   action="R">/trunk/Shadow Struggles/data/profiles.json</path>
+</paths>
+</logentry>
+<logentry
+   revision="586">
+<author>Gabriel</author>
+<date>2013-10-30T12:00:40.294919Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/FreePlayScreen.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/model/br/edu/ifsp/pds/shadowstruggles/model/events/ModifierAction.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/data/DataManager.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/tests/br/edu/ifsp/pds/shadowstruggles/model/rpg/test/CharacterTest.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/model/br/edu/ifsp/pds/shadowstruggles/model/events/EventInGame.java</path>
+<path
+   kind="file"
+   action="D">/trunk/Shadow Struggles/model/br/edu/ifsp/pds/shadowstruggles/model/rpg/pathfinder/PathTest.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/rpg/RpgScreen.java</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/rpg/Messager.java"
+   copyfrom-rev="573"
+   action="A">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/rpg/Messenger.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/model/br/edu/ifsp/pds/shadowstruggles/model/events/WarpAction.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/MainScreen.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/model/br/edu/ifsp/pds/shadowstruggles/model/rpg/RpgMap.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/model/br/edu/ifsp/pds/shadowstruggles/model/rpg/RpgPlatform.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/model/br/edu/ifsp/pds/shadowstruggles/model/events/Event.java</path>
+<path
+   kind="file"
+   action="D">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/rpg/Messager.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/data/dao/ProfileDAO.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/Logging.txt</path>
+</paths>
+</logentry>
+<logentry
+   revision="587">
+<author>Hugo</author>
+<date>2013-10-30T13:22:54.986428Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/pt_br/files/effects.json</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/pt_br/files/scenes.json</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/pt_br/files/tutorial.json</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/pt_br/files/events.json</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/pt_br/files/enemies.json</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/CheckCardsScreen.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/data/DataManager.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/BattleScreen.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/pt_br/files/menu_text.json</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/pt_br/files/decks.json</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/pt_br/files/traps.json</path>
+<path
+   kind="file"
+   action="A">/trunk/Shadow Struggles/data/pt_br/files/battle_maps.json</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/pt_br/files/fighters.json</path>
+</paths>
+</logentry>
+<logentry
+   revision="589">
+<author>Gabriel</author>
+<date>2013-10-31T14:19:50.149751Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/model/br/edu/ifsp/pds/shadowstruggles/model/events/ModifierAction.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/model/br/edu/ifsp/pds/shadowstruggles/model/modifiers/AmountModifier.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/en_us/files/events.json</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/model/br/edu/ifsp/pds/shadowstruggles/model/events/EventInGame.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/Logging.txt</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/en_us/files/menu_text.json</path>
+<path
+   kind="file"
+   action="R">/trunk/Shadow Struggles/data/profiles.json</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/rpg/Messenger.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/rpg/RpgScreen.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="592">
+<author>Gabriel</author>
+<date>2013-11-01T16:17:42.880001Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/en_us/files/events.json</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/data/DataManager.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/Logging.txt</path>
+<path
+   kind="file"
+   action="R">/trunk/Shadow Struggles/data/profiles.json</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/model/br/edu/ifsp/pds/shadowstruggles/model/events/WarpAction.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="597">
+<author>Gabriel</author>
+<date>2013-11-02T14:04:48.847841Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/model/br/edu/ifsp/pds/shadowstruggles/model/scenes/BattleControl.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/model/br/edu/ifsp/pds/shadowstruggles/model/scenes/LayerControl.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/model/br/edu/ifsp/pds/shadowstruggles/model/events/SceneAction.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/model/br/edu/ifsp/pds/shadowstruggles/model/scenes/EventControl.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/BattleScreen.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/tests/br/edu/ifsp/pds/shadowstruggles/test/ControllerTest.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/rpg/Messenger.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/skin.json</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/model/br/edu/ifsp/pds/shadowstruggles/model/scenes/Dialogue.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/rpg/RpgScreen.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/model/br/edu/ifsp/pds/shadowstruggles/model/events/WarpAction.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/model/br/edu/ifsp/pds/shadowstruggles/model/scenes/Decision.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/model/br/edu/ifsp/pds/shadowstruggles/model/scenes/SceneControl.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/model/br/edu/ifsp/pds/shadowstruggles/model/scenes/ProfileControl.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/model/br/edu/ifsp/pds/shadowstruggles/model/scenes/NovelScene.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/model/br/edu/ifsp/pds/shadowstruggles/model/rpg/Character.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/BattleTutorial.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Shadow Struggles/data/images/skin/decision_box.jpg</path>
+<path
+   kind="file"
+   action="A">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/rpg/DecisionDisplayer.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/model/br/edu/ifsp/pds/shadowstruggles/model/scenes/SceneItem.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/model/br/edu/ifsp/pds/shadowstruggles/model/events/ModifierAction.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/BaseScreen.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/diagrams/br.edu.ifsp.pds.shadowstruggles.screens.ucls</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/Controller.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/model/br/edu/ifsp/pds/shadowstruggles/model/scenes/MovementControl.java</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/SceneScreen.java"
+   copyfrom-rev="588"
+   action="A">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/NovelScreen.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/ShadowStruggles.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/games/Practice.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/model/br/edu/ifsp/pds/shadowstruggles/model/scenes/Scene.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/images/skin/skin.atlas</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/model/br/edu/ifsp/pds/shadowstruggles/model/scenes/TeleportControl.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Shadow Struggles/data/images/skin/skin5.png</path>
+<path
+   kind="file"
+   action="D">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/SceneScreen.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/VictoryScreen.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="598">
+<author>Hideki</author>
+<date>2013-11-02T15:08:37.544321Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/MainScreen.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/rpg/RpgMenu.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/rpg/StatusScreen.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/pt_br/files/menu_text.json</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/Logging.txt</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/en_us/files/menu_text.json</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/data/MenuText.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="599">
+<author>Leon</author>
+<date>2013-11-03T14:59:41.000080Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/trunk/Shadow Struggles/tests/br/edu/ifsp/pds/shadowstruggles/dataTest/TexturePackerTest.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/data/TexturePacker.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="600">
+<author>Leon</author>
+<date>2013-11-03T15:16:44.183815Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/data/TexturePacker.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="601">
+<author>Leon</author>
+<date>2013-11-03T15:43:57.534223Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/tests/br/edu/ifsp/pds/shadowstruggles/dataTest/TexturePackerTest.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/data/TexturePacker.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="602">
+<author>Leon</author>
+<date>2013-11-03T16:42:45.424483Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/tests/br/edu/ifsp/pds/shadowstruggles/dataTest/TexturePackerTest.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/data/TexturePacker.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="603">
+<author>Leon</author>
+<date>2013-11-03T23:16:49.931386Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/ShadowStruggles.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/tests/br/edu/ifsp/pds/shadowstruggles/dataTest/TexturePackerTest.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/data/TexturePacker.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="604">
+<author>Hideki</author>
+<date>2013-11-04T00:43:09.655010Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/model/br/edu/ifsp/pds/shadowstruggles/model/Player.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/rpg/RpgMenu.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Shadow Struggles/data/images/skin/blue_bar.png</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/rpg/StatusScreen.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Shadow Struggles/data/images/skin/blue2_bar_1.png</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/data/MenuText.java</path>
+<path
+   kind="file"
+   action="A">/trunk/Shadow Struggles/data/images/skin/empty_bar.png</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/images/skin/skin.atlas</path>
+<path
+   kind="file"
+   action="A">/trunk/Shadow Struggles/data/images/skin/green_bar.png</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/images/skin/skin4.png</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/images/skin/skin5.png</path>
+<path
+   kind="file"
+   action="A">/trunk/Shadow Struggles/data/images/skin/purple_bar.png</path>
+<path
+   kind="file"
+   action="A">/trunk/Shadow Struggles/data/images/skin/blue_bar_1.png</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/pt_br/files/menu_text.json</path>
+<path
+   kind="file"
+   action="A">/trunk/Shadow Struggles/data/images/skin/blue2_bar.png</path>
+<path
+   kind="file"
+   action="A">/trunk/Shadow Struggles/data/images/skin/red_bar.png</path>
+<path
+   kind="file"
+   action="A">/trunk/Shadow Struggles/data/images/skin/yellow_bar.png</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/en_us/files/menu_text.json</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/Logging.txt</path>
+<path
+   kind="file"
+   action="A">/trunk/Shadow Struggles/data/images/skin/empty_bar_1.png</path>
+</paths>
+</logentry>
+<logentry
+   revision="605">
+<author>Hugo</author>
+<date>2013-11-04T11:59:30.287269Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/trunk/Shadow Struggles/data/images/skin/skin6.png</path>
+</paths>
+</logentry>
+<logentry
+   revision="606">
+<author>Hugo</author>
+<date>2013-11-04T12:03:15.556237Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/rpg/StatusScreen.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="608">
+<author>Hideki</author>
+<date>2013-11-06T01:34:23.758138Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/rpg/RpgMenu.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/rpg/StatusScreen.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="610">
+<author>Leon</author>
+<date>2013-11-06T03:41:08.886008Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/data/TexturePacker.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="612">
+<author>Hideki</author>
+<date>2013-11-06T22:22:36.520965Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/rpg/StatusScreen.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="615">
+<author>Leon</author>
+<date>2013-11-07T01:14:10.583410Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/tests/br/edu/ifsp/pds/shadowstruggles/dataTest/TexturePackerTest.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/data/TexturePacker.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="617">
+<author>Hideki</author>
+<date>2013-11-07T01:29:06.765472Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/screens/rpg/StatusScreen.java</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/pt_br/files/menu_text.json</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/en_us/files/menu_text.json</path>
+</paths>
+</logentry>
+<logentry
+   revision="618">
+<author>Leon</author>
+<date>2013-11-07T01:34:18.825295Z</date>
+<paths>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Shadow Struggles/data/images/skin/blue2_bar.png"
+   copyfrom-rev="615"
+   action="A">/trunk/Shadow Struggles/data/images/skin/blue2_bar'.png</path>
+<path
+   kind="file"
+   action="R">/trunk/Shadow Struggles/data/images/skin/green_bar.png</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Shadow Struggles/data/images/skin/red_bar.png"
+   copyfrom-rev="615"
+   action="A">/trunk/Shadow Struggles/data/images/skin/red_bar'.png</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Shadow Struggles/data/images/skin/yellow_bar.png"
+   copyfrom-rev="615"
+   action="A">/trunk/Shadow Struggles/data/images/skin/yellow_bar'.png</path>
+<path
+   kind="file"
+   action="R">/trunk/Shadow Struggles/data/images/skin/blue_bar.png</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Shadow Struggles/data/images/skin/green_bar.png"
+   copyfrom-rev="615"
+   action="A">/trunk/Shadow Struggles/data/images/skin/green_bar'.png</path>
+<path
+   kind="file"
+   action="R">/trunk/Shadow Struggles/data/images/skin/purple_bar.png</path>
+<path
+   kind="file"
+   action="R">/trunk/Shadow Struggles/data/images/skin/blue2_bar.png</path>
+<path
+   kind="file"
+   action="R">/trunk/Shadow Struggles/data/images/skin/red_bar.png</path>
+<path
+   kind="file"
+   action="R">/trunk/Shadow Struggles/data/images/skin/yellow_bar.png</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Shadow Struggles/data/images/skin/blue_bar.png"
+   copyfrom-rev="615"
+   action="A">/trunk/Shadow Struggles/data/images/skin/blue_bar'.png</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Shadow Struggles/data/images/skin/purple_bar.png"
+   copyfrom-rev="615"
+   action="A">/trunk/Shadow Struggles/data/images/skin/purple_bar'.png</path>
+</paths>
+</logentry>
+<logentry
+   revision="619">
+<author>Leon</author>
+<date>2013-11-07T01:39:13.041487Z</date>
+<paths>
+<path
+   kind="file"
+   action="D">/trunk/Shadow Struggles/data/images/skin/blue_bar.png</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Shadow Struggles/data/images/skin/blue_bar.png"
+   copyfrom-rev="618"
+   action="R">/trunk/Shadow Struggles/data/images/skin/blue_bar_1.png</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Shadow Struggles/data/images/skin/blue_bar_1.png"
+   copyfrom-rev="615"
+   action="A">/trunk/Shadow Struggles/data/images/skin/blue_bar_1'.png</path>
+</paths>
+</logentry>
+<logentry
+   revision="620">
+<author>Hideki</author>
+<date>2013-11-07T02:37:02.332129Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/images/skin/skin.atlas</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/images/skin/skin5.png</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/images/skin/skin6.png</path>
+</paths>
+</logentry>
+<logentry
+   revision="621">
+<author>Leon</author>
+<date>2013-11-07T03:12:50.097224Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/data/TexturePacker.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="622">
+<author>Leon</author>
+<date>2013-11-07T03:15:17.969079Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/src/br/edu/ifsp/pds/shadowstruggles/data/TexturePacker.java</path>
+</paths>
+</logentry>
+<logentry
+   revision="625">
+<author>Hugo</author>
+<date>2013-11-07T10:54:11.632719Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/pt_br/files/events.json</path>
+<path
+   kind="file"
+   action="R">/trunk/Shadow Struggles/data/pt_br/files/enemies.json</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/en_us/files/enemies.json</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/pt_br/files/menu_text.json</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/Logging.txt</path>
+</paths>
+</logentry>
+<logentry
+   revision="626">
+<author>Hugo</author>
+<date>2013-11-07T11:01:57.145958Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/en_us/files/decks.json</path>
+</paths>
+</logentry>
+<logentry
+   revision="628">
+<author>Hugo</author>
+<date>2013-11-07T13:20:26.804913Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/en_us/files/scenes.json</path>
+<path
+   kind="file"
+   action="M">/trunk/Shadow Struggles/data/en_us/files/events.json</path>
+<path
+   kind="dir"
+   action="A">/trunk/Shadow Struggles/data/images/item_icons</path>
+</paths>
+</logentry>
 </log>
