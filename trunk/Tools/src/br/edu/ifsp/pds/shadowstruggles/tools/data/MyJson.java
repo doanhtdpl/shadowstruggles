@@ -43,6 +43,9 @@ public class MyJson {
 			json.addClassTag("CardAction", CardAction.class);
 			json.addClassTag("Deck", Deck.class);
 			json.addClassTag("DefaultAction", DefaultAction.class);
+			json.addClassTag("RecoveryAction", RecoveryAction.class);
+			json.addClassTag("MineralogyAction", MineralogyAction.class);
+			
 
 			json.addClassTag("Action", Action.class);
 			json.addClassTag("Condition", Condition.class);

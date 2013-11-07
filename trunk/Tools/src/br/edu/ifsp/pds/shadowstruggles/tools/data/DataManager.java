@@ -308,10 +308,12 @@ public class DataManager {
 			path = FileMap.globalClassToFile.get(c);
 		if (FileMap.classToFile.containsKey(c))
 			path = FileMap.classToFile.get(c);
-
+		
 		if (searchFile(path, null, c) != null) {
 			File file = new File(searchFile(path, null, c));
+			System.out.println("?????????");
 			list = MyJson.getJson().fromJson(ArrayList.class, file);
+			System.out.println("?????????2222222");
 			System.out.println("SearchAllObjects: searchFile searching: "+file);
 			return list;
 		} else

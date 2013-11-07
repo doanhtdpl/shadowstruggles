@@ -27,6 +27,7 @@ public class ProfileControlEditor extends JFrame {
 	private JTextField textField;
 	private JComboBox comboBox;
 	private SceneEditor previousScreen;
+	private ProfileControl control;
 
 	/**
 	 * Launch the application.
@@ -78,8 +79,9 @@ public class ProfileControlEditor extends JFrame {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							editor.buildModifier();
-							getPreviousScreen().addSceneItem(new ProfileControl(editor.getModifier()));
-							dispose();
+							control=new ProfileControl(editor.getModifier());
+							textField.setText(control.modifier.toString());
+							editor.dispose();
 						}
 					});
 				}
@@ -99,6 +101,12 @@ public class ProfileControlEditor extends JFrame {
 		textField.setColumns(10);
 		
 		JButton btnAddControl = new JButton("Add Control");
+		btnAddControl.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				getPreviousScreen().addSceneItem(control);
+				dispose();
+			}
+		});
 		btnAddControl.setBounds(27, 81, 126, 38);
 		contentPane.add(btnAddControl);
 		

@@ -43,8 +43,7 @@ public class FileMap {
 		resourcesToDirectory.put("sound_effects", "data/audio/sound_effects/");
 		resourcesToDirectory.put("soundtrack", "data/audio/soundtrack/");
 
-		classToFile.put(BattleMap.class, "data/files/battle_maps.json");
-		classToFile.put(Card.class, "data/files/cards.json");
+		classToFile.put(BattleMap.class, "data/files/battle_maps.json");		
 		classToFile.put(Deck.class, "data/files/decks.json");
 		classToFile.put(Fighter.class, "data/files/fighters.json");
 		classToFile.put(Trap.class, "data/files/traps.json");
@@ -58,8 +57,7 @@ public class FileMap {
 		classToFile.put(Quest.class, "data/files/quests.json");
 		classToFile.put(Scene.class, "data/files/scenes.json");
 		
-		classToFile.put(Shop.class, "data/files/shops.json");
-		classToFile.put(Item.class, "data/files/items.json");
+		classToFile.put(Shop.class, "data/files/shops.json");		
 		classToFile.put(TutorialDialog.class, "data/files/tutorial.json");
 
 		resourcesToDirectory.put("battle_maps", "data/images/battle_maps/");
@@ -69,12 +67,16 @@ public class FileMap {
 		resourcesToDirectory.put("card_effects", "data/images/card_effects/");
 		resourcesToDirectory.put("card_images", "data/images/card_images/");
 		resourcesToDirectory.put("card_walking", "data/images/card_walking/");
+		resourcesToDirectory.put("char", "data/images/char/");
 		resourcesToDirectory.put("cards", "data/images/cards/");
 		resourcesToDirectory.put("item_icons", "data/images/item_icons/");
 		resourcesToDirectory.put("game_ui_images",
 				"data/images/game_ui_images/");
 		resourcesToDirectory.put("novel_images", "data/images/novel_images/");
+		resourcesToDirectory.put("screens", "data/images/screens/");
+		resourcesToDirectory.put("slices", "data/images/screens/slices");
 		resourcesToDirectory.put("rpg_maps", "data/rpg_maps/");
+		resourcesToDirectory.put("fonts", "data/fonts/");
 		resourcesToDirectory.put("skin", "data/images/skin/");
 
 		globalClassToFile.put(Languages.class, "data/languages.json");

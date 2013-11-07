@@ -20,17 +20,16 @@ public class Fighter extends Card implements Serializable {
 	public static final float MOV_SPEED_NORMAL = 0.20F;
 	public static final float MOV_SPEED_FAST = 0.3F;
 
-	public int health;
-	public int maxHealth;
+	public int health;	
 	public int damage;
 	public float speed;
 	public int range;
 	public boolean hasEffect;
 	public float attackDelay;
 	public String size;
-	public float delay;
+	/*public float delay;
 	public float moveTimer;
-	public boolean attacking;
+	public boolean attacking;*/
 
 	public Fighter() {
 		super();
