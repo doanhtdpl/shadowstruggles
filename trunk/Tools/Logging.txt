@@ -180,3 +180,5 @@ Nov 07, 2013 8:50:13 AM br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item r
 SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.profileOwnerId to null value
 Nov 07, 2013 8:50:13 AM br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item read
 SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.profileOwnerId to null value
+Nov 07, 2013 11:16:13 AM br.edu.ifsp.pds.shadowstruggles.tools.view.MainMenu openZipDialog
+SEVERE: net.lingala.zip4j.exception.ZipException: net.lingala.zip4j.exception.ZipException: net.lingala.zip4j.exception.ZipException: java.io.FileNotFoundException: E:\workspace\Tools\data\images\screens\slices\blur_line.png (O sistema não pode encontrar o caminho especificado)

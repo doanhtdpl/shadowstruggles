@@ -197,6 +197,7 @@ public class ModifierItemEditor extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					getController().createItem(item);
+					getController().updateTableToItems();
 					dispose();
 				} catch (IOException e) {
 					e.printStackTrace();

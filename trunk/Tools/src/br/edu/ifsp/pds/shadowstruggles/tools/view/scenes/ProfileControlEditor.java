@@ -105,6 +105,7 @@ public class ProfileControlEditor extends JFrame {
 		btnAddControl.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				getPreviousScreen().addSceneItem(control);
+				System.out.println(control.modifier.getClass());
 				dispose();
 			}
 		});
