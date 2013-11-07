@@ -309,6 +309,11 @@ public class FighterEditor extends JFrame {
 		if(this.fighter==null) this.fighter= new Fighter();
 	}
 	
+	
+	public void buildFighter(){
+		
+	}
+	
 	public void saveFighter(Fighter fighter){
 		try{
 		controller.createFighter(fighter);

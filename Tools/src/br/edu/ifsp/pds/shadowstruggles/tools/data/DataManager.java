@@ -343,9 +343,8 @@ public class DataManager {
 			Field id = c.getField("id");
 			if (key == id.getInt(obj)) {
 				int previousIndex = objects.indexOf(obj);
-				objects.remove(obj);
+				objects.remove(obj);				
 				objects.add(previousIndex, editedObject);
-
 				break;
 			}
 		}

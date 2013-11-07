@@ -53,6 +53,7 @@ public class EventEditor extends JFrame {
 	private JTextField spriteTextField;
 	private JComboBox comboBox;
 	private JCheckBox chckbxCollidable;
+	private boolean editing=false;
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public EventEditor(Controller controller, Event eventToEdit) {
@@ -62,7 +63,7 @@ public class EventEditor extends JFrame {
 		this.actions = new ArrayList<EventAction>();
 		this.event = eventToEdit;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 600, 550);
+		setBounds(100, 100, 600, 506);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -155,15 +156,6 @@ public class EventEditor extends JFrame {
 		btnNew.setBounds(271, 374, 89, 25);
 		contentPane.add(btnNew);
 
-		JButton btnGenerateJson = new JButton("Generate JSON");
-		btnGenerateJson.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				generateJson();
-			}
-		});
-		btnGenerateJson.setBounds(135, 476, 139, 25);
-		contentPane.add(btnGenerateJson);
-
 		JButton btnCancel = new JButton("Cancel");
 		final EventEditor frame = this;
 		btnCancel.addActionListener(new ActionListener() {
@@ -171,26 +163,16 @@ public class EventEditor extends JFrame {
 				frame.dispose();
 			}
 		});
-		btnCancel.setBounds(271, 422, 89, 23);
+		btnCancel.setBounds(271, 410, 89, 46);
 		contentPane.add(btnCancel);
 
 		btnAddEvent = new JButton("Add Event");
+		
 		btnAddEvent.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				try{
-				event.id = Integer.parseInt(idTextField.getText());
-				event.x = Integer.parseInt(xTextField.getText());
-				event.y = Integer.parseInt(yTextField.getText());
-				event.width = Integer.parseInt(widthTextField.getText());
-				event.height = Integer.parseInt(heightTextField.getText());
-				event.map = mapTextField.getText();
-				event.layer = layerTextField.getText();
-				event.sprite = spriteTextField.getText();
-				event.triggerType = (TriggerType) comboBox
-						.getSelectedItem();
-				event.collidable = chckbxCollidable.isSelected();
-				event.actions=actions;
+				buildEvent();
 				try {
 					createEvent();
 					getController().updateTableToEvents();
@@ -201,7 +183,7 @@ public class EventEditor extends JFrame {
 				}catch(NumberFormatException n){JOptionPane.showMessageDialog(null, "Fill all fields!");}
 			}
 		});
-		btnAddEvent.setBounds(91, 422, 114, 23);
+		btnAddEvent.setBounds(46, 410, 133, 46);
 		contentPane.add(btnAddEvent);
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 159, 548, 204);
@@ -280,35 +262,77 @@ public class EventEditor extends JFrame {
 		chckbxCollidable.setBounds(221, 106, 97, 23);
 		contentPane.add(chckbxCollidable);
 
-		if (event != null)
-			updateEventActions();
+		if (event != null){
+			fillFields();
+			editing=true;
+			btnAddEvent.setText("Update");
+			btnAddEvent.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					buildEvent();
+					try {
+						getController().updateObject(event.id, Event.class, event);
+						getController().updateTableToEvents();
+						dispose();
+					} catch (NoSuchFieldException | SecurityException
+							| IllegalArgumentException | IllegalAccessException
+							| IOException e1) {						
+						e1.printStackTrace();
+					}
+				}
+			});
+		}
 		else event= new Event();
 	}
 
+	private void fillFields(){
+		idTextField.setText(String.valueOf(event.id));
+		mapTextField.setText(event.map);
+		layerTextField.setText(event.layer);
+		xTextField.setText(String.valueOf(event.x));
+		yTextField.setText(String.valueOf(event.y));
+		widthTextField.setText(String.valueOf(event.width));
+		heightTextField.setText(String.valueOf(event.height));
+		spriteTextField.setText(event.sprite);
+		comboBox.setSelectedItem(event.triggerType);
+		chckbxCollidable.setSelected(event.collidable);
+		DefaultListModel model = new DefaultListModel();
+		for(EventAction action:event.actions){
+			model.addElement(action);
+		}
+		list.setModel(model);
+		list.updateUI();
+		
+	}
+	
+	public void buildEvent(){
+		event.id = Integer.parseInt(idTextField.getText());
+		event.x = Integer.parseInt(xTextField.getText());
+		event.y = Integer.parseInt(yTextField.getText());
+		event.width = Float.parseFloat(widthTextField.getText());
+		event.height = Float.parseFloat(heightTextField.getText());
+		event.map = mapTextField.getText();
+		event.layer = layerTextField.getText();
+		event.sprite = spriteTextField.getText();
+		event.triggerType = (TriggerType) comboBox
+				.getSelectedItem();
+		event.collidable = chckbxCollidable.isSelected();
+		event.actions=actions;
+	}
 	private void createEvent() throws IOException {
 		controller.createEvent(event);
 	}
 
 	private void updateEventActions() {
-		idTextField.setText(Integer.toString(event.id));
 
 		DefaultListModel<EventAction> listModel = new DefaultListModel<EventAction>();
 
-		for (EventAction action : event.actions) {
+		for (EventAction action : actions) {
 			listModel.addElement(action);
 		}
 
 		list.setModel(listModel);
 		list.updateUI();
-	}
-
-	private void generateJson() {
-		if (event == null)
-			JOptionPane.showMessageDialog(this, "Incomplete object");
-		else {
-			JOptionPane.showMessageDialog(this, new Json().prettyPrint(event));
-			System.out.println(new Json().prettyPrint(event));
-		}
 	}
 	
 	public Controller getController() {
@@ -320,7 +344,7 @@ public class EventEditor extends JFrame {
 	}
 	
 	public void addAction(EventAction action){
-		event.actions.add(action);
+		actions.add(action);
 		updateEventActions();
 	}
 }

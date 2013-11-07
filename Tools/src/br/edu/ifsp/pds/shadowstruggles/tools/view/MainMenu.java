@@ -41,11 +41,13 @@ import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Trap;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Enemy;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.events.Event;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.items.Shop;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.scenes.Scene;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.ActionEditor;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.BattleEditor;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.DeckEditor;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.EffectEditor;
+import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.ShopEditor;
 
 import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.FighterEditor;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.scenes.SceneEditor;
@@ -122,6 +124,8 @@ public class MainMenu {
 					controller.updateTableToScenes();
 				if(selectedTab.equals("Items"))
 					controller.updateTableToItems();
+				if(selectedTab.equals("Shops"))
+					controller.updateTableToShop();
 				}catch(Exception e){}
 
 			}
@@ -171,7 +175,8 @@ public class MainMenu {
 					new SceneEditor(controller, null);
 				if(selectedTab.equals("Items"))
 					new ItemChooser(controller, null);
-			
+				if(selectedTab.equals("Shops"))
+					new ShopEditor(controller);
 			}
 		});
 
@@ -221,6 +226,8 @@ public class MainMenu {
 					new SceneEditor(controller, (Scene)getSelectedObject());
 				if(selectedTab.equals("Items"))
 					new ItemChooser(controller, (Item)getSelectedObject());
+				if(selectedTab.equals("Shops"))
+					new ShopEditor(controller);
 				// TODO: (objeto selecionado da tabela como argumento);
 			}
 		});
@@ -235,9 +242,7 @@ public class MainMenu {
 				int answer = JOptionPane.showConfirmDialog(frmTitle,
 						"Do you really want to delete this element?");
 				if (answer == 0) {
-					String selectedTab = tabbedPane.getTitleAt(tabbedPane
-							.getSelectedIndex());
-					// TODO: decidir qual método "delete" da controller chamar
+					deleteSelecteditem();
 				}
 			}
 		});
@@ -288,6 +293,9 @@ public class MainMenu {
 		
 		JPanel panel_8 = new JPanel();
 		tabbedPane.addTab("Items", null, panel_8, null);
+		
+		JPanel panel_9 = new JPanel();
+		tabbedPane.addTab("Shops", null, panel_9, null);
 
 		menuBar = new JMenuBar();
 		menuBar.setVisible(false);
@@ -433,10 +441,62 @@ public class MainMenu {
 		return table;
 	}
 	
+	public void deleteSelecteditem(){
+		try {
+			controller.deleteObject(getSelectedTableItem(), getSelectedClass());		
+			updateTable();
+		} catch (NoSuchFieldException | SecurityException
+				| IllegalArgumentException | IllegalAccessException
+				| IOException e) {			
+			e.printStackTrace();
+		}
+	}
+	
+	public void updateTable(){
+		Class<?> c = getSelectedClass();
+		if(c.equals(Fighter.class))controller.updateTableToFighter();
+		if(c.equals(Trap.class))controller.updateTableToTraps();
+		if(c.equals(Effect.class))controller.updateTableToEffects();
+		if(c.equals(Deck.class))controller.updateTableToDecks();
+		if(c.equals(Enemy.class))controller.updateTableToEnemies();
+		if(c.equals(BattlePlatform.class))controller.updateTableToBattles();
+		if(c.equals(Event.class))controller.updateTableToEvents();
+		if(c.equals(Scene.class))controller.updateTableToScenes();
+		if(c.equals(Item.class))controller.updateTableToItems();
+		if(c.equals(Shop.class))controller.updateTableToShop();
+	}
+	
 	public Integer getSelectedTableItem(){
 		Object value = ((DefaultTableModel)table.getModel()).getValueAt(table.getSelectedRow(),0);
 		System.out.println(value);
 		return (Integer)value;
+	}
+	
+	public Class getSelectedClass(){
+		Class<?> c=Fighter.class;
+		String selectedTab = tabbedPane.getTitleAt(tabbedPane
+				.getSelectedIndex());
+		if (selectedTab.equals("Fighters"))
+			c=Fighter.class;
+		if (selectedTab.equals("Traps"))
+			c=Trap.class;
+		if (selectedTab.equals("Effects"))
+			c=Effect.class;			
+		if (selectedTab.equals("Decks"))
+			c=Deck.class;
+		if (selectedTab.equals("Enemies"))
+			c=Enemy.class;
+		if (selectedTab.equals("Battles"))
+			c=BattlePlatform.class;
+		if (selectedTab.equals("Events"))
+			c=Event.class;
+		if (selectedTab.equals("Scenes"))
+			c=Scene.class;
+		if(selectedTab.equals("Items"))
+			c=Item.class;
+		if(selectedTab.equals("Shops"))
+			c=Shop.class;
+		return c;
 	}
 	
 	public Object getSelectedObject(){
@@ -461,6 +521,8 @@ public class MainMenu {
 			c=Scene.class;
 		if(selectedTab.equals("Items"))
 			c=Item.class;
+		if(selectedTab.equals("Shops"))
+			c=Shop.class;
 		Object object = new Object();
 		try {
 			object = controller.getObject(getSelectedTableItem(), c);

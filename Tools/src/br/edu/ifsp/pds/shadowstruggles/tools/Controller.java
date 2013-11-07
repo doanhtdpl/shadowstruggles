@@ -20,6 +20,7 @@ import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Trap;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Enemy;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.events.Event;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.items.Shop;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.quests.Quest;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.scenes.Scene;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.MainMenu;
@@ -123,7 +124,9 @@ public class Controller {
 	public void createTrap(Trap trap)throws IOException{		
 		model.insertObject(trap, Trap.class);			
 	}
-	
+	public void createShop(Shop shop)throws IOException{		
+		model.insertObject(shop, Shop.class);			
+	}
 	
 
 	public void createLanguage(String code, String name) throws IOException{
@@ -211,7 +214,7 @@ public class Controller {
 			items=model.searchAllObjects(Item.class);
 		} catch (IOException e) {			
 			e.printStackTrace();
-		}
+		}		
 		return items;
 	}
 	
@@ -225,6 +228,18 @@ public class Controller {
 
 	public HashMap<String, String> getLanguages() {
 		return model.getLanguages().languages;
+	}
+	
+	public Object getObject(int id, Class <?> c) throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException, IOException{
+		return model.searchObject(id, c);
+	}
+	
+	public void updateObject(int id, Class<?> c, Object editedObject) throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException, IOException{
+		model.update(id, c, editedObject);
+	}
+	
+	public void deleteObject(int id, Class<?> c) throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException, IOException{
+		model.deleteObject(id, c);
 	}
 	
 	public void updateTableToFighter() {		
@@ -302,9 +317,7 @@ public class Controller {
 		dataModel.fireTableDataChanged();
 	}
 	
-	public Object getObject(int id, Class <?> c) throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException, IOException{
-		return model.searchObject(id, c);
-	}
+	
 
 	public void updateTableToDecks() {
 		System.out.println("updating Decks");
@@ -453,6 +466,30 @@ public class Controller {
 		for(Scene scene : scenes){			
 			tableData[i][0]=scene.id;
 			tableData[i][1]=scene.name;
+			i++;
+		}
+		DefaultTableModel dataModel = new DefaultTableModel(tableData, columnNames);
+		viewer.getTable().setModel(dataModel);			
+		
+		dataModel.fireTableDataChanged();
+	}
+	
+	public void updateTableToShop() {		
+		System.out.println("updating Shops");
+		ArrayList<Shop> shops= new ArrayList<Shop>();;
+		try {
+			if(model.searchAllObjects(Shop.class)!=null)
+				shops=model.searchAllObjects(Shop.class);
+			
+		} catch (IOException e) {
+			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
+			e.printStackTrace();			
+		}
+		String[] columnNames={"ID"};
+		Object[][] tableData = new Object[shops.size()][10];
+		int i = 0;
+		for(Shop shop : shops){			
+			tableData[i][0]=shop.id;			
 			i++;
 		}
 		DefaultTableModel dataModel = new DefaultTableModel(tableData, columnNames);

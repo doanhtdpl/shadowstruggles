@@ -44,21 +44,7 @@ public class ModifierItemEditor extends JFrame {
 	private JTextArea textArea;
 	private ModifierItem item;
 	private Controller controller;
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ModifierItemEditor frame = new ModifierItemEditor(null);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.

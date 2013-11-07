@@ -12,94 +12,85 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+
+import br.edu.ifsp.pds.shadowstruggles.tools.model.events.WarpAction;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class WarpChooser extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					WarpChooser frame = new WarpChooser();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private JTextField textFieldX;
+	private JTextField textFieldY;
+	private JTextField textFieldMap;
+	private JTextField textFieldLayer;
+	private JTextField textFieldId;
+	private WarpAction action;
+	private EventActionEditor previousScreen;
+	
 
 	/**
 	 * Create the frame.
 	 */
-	public WarpChooser() {
+	public WarpChooser(EventActionEditor previousScreen) {
+		this.previousScreen=previousScreen;
+		setVisible(true);
+		this.action= new WarpAction();
 		setTitle("Warp Chooser");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 391, 300);
+		setBounds(100, 100, 358, 272);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JRadioButton rdbtnChooseAWarppoint = new JRadioButton("Choose a WarpPoint:");
-		rdbtnChooseAWarppoint.setBounds(36, 18, 139, 23);
-		contentPane.add(rdbtnChooseAWarppoint);
-		
-		JRadioButton rdbtnCreateAWarp = new JRadioButton("Create a Warp Point");
-		rdbtnCreateAWarp.setBounds(36, 56, 139, 23);
-		contentPane.add(rdbtnCreateAWarp);
-		
 		ButtonGroup radioGroup = new ButtonGroup();
-		radioGroup.add(rdbtnCreateAWarp);
-		radioGroup.add(rdbtnChooseAWarppoint);
 		JLabel lblDestinyX = new JLabel("Destiny X:");
-		lblDestinyX.setBounds(69, 96, 72, 14);
+		lblDestinyX.setBounds(27, 35, 72, 14);
 		contentPane.add(lblDestinyX);
 		
-		textField = new JTextField();
-		textField.setBounds(151, 93, 42, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		textFieldX = new JTextField();
+		textFieldX.setBounds(109, 32, 42, 20);
+		contentPane.add(textFieldX);
+		textFieldX.setColumns(10);
 		
 		JLabel lblDestinyY = new JLabel("Destiny Y:");
-		lblDestinyY.setBounds(237, 96, 63, 14);
+		lblDestinyY.setBounds(195, 35, 63, 14);
 		contentPane.add(lblDestinyY);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(304, 93, 42, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		textFieldY = new JTextField();
+		textFieldY.setBounds(262, 32, 42, 20);
+		contentPane.add(textFieldY);
+		textFieldY.setColumns(10);
 		
 		JLabel lblDestinyMap = new JLabel("Destiny Map:");
-		lblDestinyMap.setBounds(69, 124, 72, 14);
+		lblDestinyMap.setBounds(27, 63, 72, 14);
 		contentPane.add(lblDestinyMap);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(151, 121, 195, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		textFieldMap = new JTextField();
+		textFieldMap.setBounds(109, 60, 195, 20);
+		contentPane.add(textFieldMap);
+		textFieldMap.setColumns(10);
 		
 		JLabel lblDestinyLayer = new JLabel("Destiny Layer:");
-		lblDestinyLayer.setBounds(69, 163, 72, 14);
+		lblDestinyLayer.setBounds(27, 102, 72, 14);
 		contentPane.add(lblDestinyLayer);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(151, 160, 195, 20);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
+		textFieldLayer = new JTextField();
+		textFieldLayer.setBounds(109, 99, 195, 20);
+		contentPane.add(textFieldLayer);
+		textFieldLayer.setColumns(10);
 		
 		JButton btnChooseWarpPoint = new JButton("Choose Warp Point");
-		btnChooseWarpPoint.setBounds(52, 203, 141, 47);
+		btnChooseWarpPoint.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				buildWarpPoint();
+				getPreviousScreen().setAction(action);
+				dispose();
+			}
+		});
+		btnChooseWarpPoint.setBounds(10, 142, 141, 47);
 		contentPane.add(btnChooseWarpPoint);
 		
 		JButton btnCancel = new JButton("Cancel");
@@ -108,11 +99,28 @@ public class WarpChooser extends JFrame {
 				dispose();
 			}
 		});
-		btnCancel.setBounds(227, 203, 119, 47);
+		btnCancel.setBounds(185, 142, 119, 47);
 		contentPane.add(btnCancel);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(181, 19, 165, 20);
-		contentPane.add(comboBox);
+		JLabel lblTargetId = new JLabel("Target Id:");
+		lblTargetId.setBounds(27, 10, 63, 14);
+		contentPane.add(lblTargetId);
+		
+		textFieldId = new JTextField();
+		textFieldId.setBounds(109, 7, 42, 20);
+		contentPane.add(textFieldId);
+		textFieldId.setColumns(10);
+	}
+	
+	public void buildWarpPoint(){
+		action.destinyLayer=textFieldLayer.getText();
+		action.destinyMap=textFieldMap.getText();
+		action.destinyX=Integer.parseInt(textFieldX.getText());
+		action.destinyY=Integer.parseInt(textFieldY.getText());
+		action.targetId=Integer.parseInt(textFieldId.getText());
+	}
+	
+	public EventActionEditor getPreviousScreen() {
+		return previousScreen;
 	}
 }
