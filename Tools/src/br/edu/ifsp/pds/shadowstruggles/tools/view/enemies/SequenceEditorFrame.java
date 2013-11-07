@@ -10,6 +10,7 @@ import javax.swing.JList;
 
 import javax.swing.JButton;
 
+import br.edu.ifsp.pds.shadowstruggles.tools.Controller;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Action;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Condition;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.EnergyCondition;
@@ -32,7 +33,7 @@ public class SequenceEditorFrame extends JFrame {
 	private Sequence sequence;
 	public JButton btnAddStrategy;
 
-	public SequenceEditorFrame(Sequence seq) {
+	public SequenceEditorFrame(Sequence seq, final Controller controller) {
 		this.sequence = seq;
 
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -61,7 +62,7 @@ public class SequenceEditorFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Action selected = actionsList.getSelectedValue();
 				if (selected != null) {
-					ActionFrame frame = new ActionFrame(selected);
+					ActionFrame frame = new ActionFrame(selected, controller);
 					frame.setVisible(true);
 					frame.addWindowListener(new WindowAdapter() {
 						@Override
@@ -90,7 +91,7 @@ public class SequenceEditorFrame extends JFrame {
 		JButton btnNewAction = new JButton("New");
 		btnNewAction.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				final ActionFrame frame = new ActionFrame(null);
+				final ActionFrame frame = new ActionFrame(null,null);
 				frame.setVisible(true);
 				frame.addWindowListener(new WindowAdapter() {
 					@Override

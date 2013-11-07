@@ -37,6 +37,9 @@ public class MyJson {
 			json.addClassTag("TutorialDialog", TutorialDialog.class);
 
 			json.addClassTag("Card", Card.class);
+			json.addClassTag("Fighter", Fighter.class);
+			json.addClassTag("Effect", Effect.class);
+			json.addClassTag("Trap", Trap.class);
 			json.addClassTag("CardAction", CardAction.class);
 			json.addClassTag("Deck", Deck.class);
 			json.addClassTag("DefaultAction", DefaultAction.class);

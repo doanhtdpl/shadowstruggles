@@ -12,14 +12,18 @@ import javax.swing.table.DefaultTableModel;
 import net.lingala.zip4j.exception.ZipException;
 import br.edu.ifsp.pds.shadowstruggles.tools.data.DataManager;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.BattlePlatform;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Card;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Effect;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Trap;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Enemy;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.events.Event;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.quests.Quest;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.scenes.Scene;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.MainMenu;
+import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.EffectEditor;
 
 public class Controller {
 	private MainMenu viewer;
@@ -153,6 +157,52 @@ public class Controller {
 		}
 		return enemies;				
 	}
+	
+	public ArrayList<Fighter> getFighters(){
+		ArrayList<Fighter> fighters = new ArrayList<Fighter>();
+		try {
+			fighters=model.searchAllObjects(Fighter.class);
+		} catch (IOException e) {			
+			e.printStackTrace();
+		}
+		return fighters;
+	}
+	
+	public ArrayList<Effect> getEffects(){
+		ArrayList<Effect> effects = new ArrayList<Effect>();
+		try {
+			effects=model.searchAllObjects(Effect.class);
+		} catch (IOException e) {			
+			e.printStackTrace();
+		}
+		return effects;
+	}
+	
+	public ArrayList<Trap> getTraps(){
+		ArrayList<Trap> traps = new ArrayList<Trap>();
+		try {
+			traps=model.searchAllObjects(Trap.class);
+		} catch (IOException e) {			
+			e.printStackTrace();
+		}
+		return traps;
+	}
+	
+	
+	public Card getCardByName(String name){		
+		ArrayList<Fighter> fighters = getFighters();
+		for(Fighter fighter : fighters)
+			if(fighter.name.equals(name))return fighter;
+		ArrayList<Trap> traps = getTraps();
+		for(Trap trap : traps)
+			if(trap.name.equals(name))return trap;
+		ArrayList<Effect> effects = getEffects();
+		for(Effect effect : effects)
+			if(effect.name.equals(name))return effect;
+		return null;	
+		
+	}
+	
 	public ArrayList<Item> getItems(){
 		ArrayList<Item> items = new ArrayList<Item>();
 		//TODO: retrieve items from file
