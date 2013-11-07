@@ -28,6 +28,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class BattleEditor extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -42,9 +43,11 @@ public class BattleEditor extends JFrame {
 	private JList list;
 	private JComboBox comboBox_Enemies;
 	private JComboBox comboBox_RewardType;
+	private HashMap<String, Enemy> enemies;
 
 	public BattleEditor(Controller controller) {
 		this.battle = new BattlePlatform();
+		this.enemies= new HashMap<String,Enemy>();
 		battle.rewards = new ArrayList<Modifier>();
 		this.controller = controller;
 		setTitle("Battle Editor");
@@ -73,11 +76,16 @@ public class BattleEditor extends JFrame {
 		contentPane.add(textField_Id);
 		textField_Id.setColumns(10);
 
-		comboBox_Enemies = new JComboBox();
-		ArrayList<Enemy> enemies = new ArrayList<Enemy>();
-		enemies = controller.getEnemies();
-		if (enemies!= null) {			
-			comboBox_Enemies.setModel(new DefaultComboBoxModel(enemies
+		comboBox_Enemies = new JComboBox();		
+		ArrayList<Enemy> enemiesArray = controller.getEnemies();
+		System.out.println("Enemy quantity: "+enemiesArray.size());
+		ArrayList<String> enemiesNames= new ArrayList<String>();
+		for(Enemy enemy: enemiesArray){
+			enemies.put(enemy.name, enemy);
+			enemiesNames.add(enemy.name);
+		}
+		if (enemiesArray!= null) {			
+			comboBox_Enemies.setModel(new DefaultComboBoxModel(enemiesNames
 					.toArray()));
 		}
 		comboBox_Enemies.setBounds(298, 8, 126, 20);
@@ -174,9 +182,14 @@ public class BattleEditor extends JFrame {
 		battle.id = Integer.parseInt(textField_Id.getText());
 		battle.map = new BattleMap(Integer.parseInt(textField_MapId.getText()),
 				textField_MapName.getText());
-		battle.opponent = (Enemy) comboBox_Enemies.getSelectedItem();
+		battle.opponent = getSelectedEnemy();
 		battle.rules = new DefaultRules();
 		battle.tutorial = chckbxTutorial.isSelected();
+	}
+	
+	private Enemy getSelectedEnemy(){
+		Enemy enemy = enemies.get(comboBox_Enemies.getSelectedItem().toString());
+		return enemy;
 	}
 
 	public Controller getController() {

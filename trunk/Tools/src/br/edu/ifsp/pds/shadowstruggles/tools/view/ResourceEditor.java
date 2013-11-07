@@ -76,7 +76,10 @@ public class ResourceEditor extends JFrame {
 						"Image Files", "jpg", "png");
 				FileNameExtensionFilter audioFilter = new FileNameExtensionFilter(
 						"Audio Files", "ogg");
+				FileNameExtensionFilter mapFilter = new FileNameExtensionFilter(
+						"Map Files", "tmx");
 				chooser.addChoosableFileFilter(filter);
+				chooser.addChoosableFileFilter(mapFilter);
 				chooser.addChoosableFileFilter(audioFilter);
 				chooser.setAcceptAllFileFilterUsed(false);
 				chooser.setFileFilter(filter);
