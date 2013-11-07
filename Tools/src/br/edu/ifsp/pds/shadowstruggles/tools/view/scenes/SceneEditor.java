@@ -185,6 +185,9 @@ public class SceneEditor extends JFrame {
 					case "Battle Control": 
 						new BattleControlEditor(getThis());
 						break;
+					case "Profile Control":
+						new ProfileControlEditor(getThis());
+						break;
 					
 				}
 			}

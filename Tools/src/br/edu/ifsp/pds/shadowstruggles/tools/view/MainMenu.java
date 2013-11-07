@@ -110,6 +110,8 @@ public class MainMenu {
 					controller.updateTableToEvents();
 				if (selectedTab.equals("Scenes"))
 					controller.updateTableToScenes();
+				if(selectedTab.equals("Items"))
+					controller.updateTableToItems();
 				}catch(Exception e){}
 
 			}
@@ -206,6 +208,8 @@ public class MainMenu {
 					new EventEditorOLD();
 				if (selectedTab.equals("Scenes"))
 					new SceneEditor(controller);
+				if(selectedTab.equals("Items"))
+					new ItemChooser(controller);
 				// TODO: (objeto selecionado da tabela como argumento);
 			}
 		});

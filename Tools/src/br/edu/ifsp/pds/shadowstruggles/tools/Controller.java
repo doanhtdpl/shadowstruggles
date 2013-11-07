@@ -82,9 +82,7 @@ public class Controller {
 	public void closeZipClicked() {
 	}
 
-	public void createCard() {
-	}
-
+	
 	public void createEvent(Event event) throws IOException {
 		model.insertObject(event, Event.class);
 	}
@@ -109,6 +107,7 @@ public class Controller {
 	public void createEnemy(Enemy enemy) throws IOException{
 		model.insertObject(enemy,Enemy.class);
 	}
+
 	public void createScene(Scene scene)throws IOException{
 		model.insertObject(scene, Scene.class);
 	}
@@ -117,41 +116,20 @@ public class Controller {
 			model.insertObject(fighter, Fighter.class);			
 	}
 	
-	
-
-	public void updateTableToFighter() {		
-		System.out.println("updating Fighters");
-		ArrayList<Fighter> fighters= new ArrayList<Fighter>();;
-		try {
-			if(model.searchAllObjects(Fighter.class)!=null)
-			fighters=model.searchAllObjects(Fighter.class);
-			
-		} catch (IOException e) {
-			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
-			e.printStackTrace();			
-		}
-		String[] columnNames={"ID","Name"};
-		Object[][] tableData = new Object[fighters.size()][10];
-		int i = 0;
-		for(Fighter fighter : fighters){			
-			tableData[i][0]=fighter.id;
-			tableData[i][1]=fighter.name;
-		}
-		DefaultTableModel dataModel = new DefaultTableModel(tableData, columnNames);
-		viewer.getTable().setModel(dataModel);			
-		
-		dataModel.fireTableDataChanged();
-	}
-
-	public void updateTableToTraps() {
-	}
-
-	public void updateTableToEffects() {
-	}
-
-	public void updateTableToActions() {
+	public void createEffect(Effect effect)throws IOException{		
+		model.insertObject(effect, Effect.class);			
 	}
 	
+	public void createTrap(Trap trap)throws IOException{		
+		model.insertObject(trap, Trap.class);			
+	}
+	
+	
+
+	public void createLanguage(String code, String name) throws IOException{
+		model.insertLanguage(code, name);
+	}
+
 	public ArrayList<Enemy> getEnemies(){
 		ArrayList<Enemy> enemies= new ArrayList<Enemy>();
 		try {
@@ -247,12 +225,79 @@ public class Controller {
 		return model.getLanguages().languages;
 	}
 	
-	public void setLanguage(String language){
-		model.setCurrentLanguage(language);
+	public void updateTableToFighter() {		
+		System.out.println("updating Fighters");
+		ArrayList<Fighter> fighters= new ArrayList<Fighter>();;
+		try {
+			if(model.searchAllObjects(Fighter.class)!=null)
+			fighters=model.searchAllObjects(Fighter.class);
+			
+		} catch (IOException e) {
+			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
+			e.printStackTrace();			
+		}
+		String[] columnNames={"ID","Name"};
+		Object[][] tableData = new Object[fighters.size()][10];
+		int i = 0;
+		for(Fighter fighter : fighters){			
+			tableData[i][0]=fighter.id;
+			tableData[i][1]=fighter.name;
+			i++;
+		}
+		DefaultTableModel dataModel = new DefaultTableModel(tableData, columnNames);
+		viewer.getTable().setModel(dataModel);			
+		
+		dataModel.fireTableDataChanged();
 	}
-	
-	public void createLanguage(String code, String name) throws IOException{
-		model.insertLanguage(code, name);
+
+	public void updateTableToTraps() {
+		System.out.println("updating Traps");
+		ArrayList<Trap> traps= new ArrayList<Trap>();;
+		try {
+			if(model.searchAllObjects(Trap.class)!=null)
+				traps=model.searchAllObjects(Trap.class);
+			
+		} catch (IOException e) {
+			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
+			e.printStackTrace();			
+		}
+		String[] columnNames={"ID","Name"};
+		Object[][] tableData = new Object[traps.size()][10];
+		int i = 0;
+		for(Trap trap : traps){			
+			tableData[i][0]=trap.id;
+			tableData[i][1]=trap.name;
+			i++;
+		}
+		DefaultTableModel dataModel = new DefaultTableModel(tableData, columnNames);
+		viewer.getTable().setModel(dataModel);			
+		
+		dataModel.fireTableDataChanged();
+	}
+
+	public void updateTableToEffects() {
+		System.out.println("updating Effects");
+		ArrayList<Effect> effects= new ArrayList<Effect>();;
+		try {
+			if(model.searchAllObjects(Effect.class)!=null)
+				effects=model.searchAllObjects(Effect.class);
+			
+		} catch (IOException e) {
+			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
+			e.printStackTrace();			
+		}
+		String[] columnNames={"ID","Name"};
+		Object[][] tableData = new Object[effects.size()][10];
+		int i = 0;
+		for(Effect effect : effects){			
+			tableData[i][0]=effect.id;
+			tableData[i][1]=effect.name;
+			i++;
+		}
+		DefaultTableModel dataModel = new DefaultTableModel(tableData, columnNames);
+		viewer.getTable().setModel(dataModel);			
+		
+		dataModel.fireTableDataChanged();
 	}
 
 	public void updateTableToDecks() {
@@ -278,13 +323,84 @@ public class Controller {
 		}
 	}
 
+	public void updateTableToActions() {
+	}
+
 	public void updateTableToEnemies() {
+		System.out.println("updating Enemies");
+		ArrayList<Enemy> enemies= new ArrayList<Enemy>();;
+		try {
+			if(model.searchAllObjects(Enemy.class)!=null)
+			enemies=model.searchAllObjects(Enemy.class);
+			
+		} catch (IOException e) {
+			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
+			e.printStackTrace();			
+		}
+		String[] columnNames={"ID","Name"};
+		Object[][] tableData = new Object[enemies.size()][10];
+		int i = 0;
+		for(Enemy enemy : enemies){			
+			tableData[i][0]=enemy.id;
+			tableData[i][1]=enemy.name;
+			i++;
+		}
+		DefaultTableModel dataModel = new DefaultTableModel(tableData, columnNames);
+		viewer.getTable().setModel(dataModel);			
+		
+		dataModel.fireTableDataChanged();
 	}
 
 	public void updateTableToRules() {
 	}
 
 	public void updateTableToBattles() {
+		System.out.println("updating Battles");
+		ArrayList<BattlePlatform> battles= new ArrayList<BattlePlatform>();;
+		try {
+			if(model.searchAllObjects(BattlePlatform.class)!=null)
+			battles=model.searchAllObjects(BattlePlatform.class);
+			
+		} catch (IOException e) {
+			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
+			e.printStackTrace();			
+		}
+		String[] columnNames={"ID"};
+		Object[][] tableData = new Object[battles.size()][10];
+		int i = 0;
+		for(BattlePlatform battle : battles){			
+			tableData[i][0]=battle.id;			
+			i++;
+		}
+		DefaultTableModel dataModel = new DefaultTableModel(tableData, columnNames);
+		viewer.getTable().setModel(dataModel);			
+		
+		dataModel.fireTableDataChanged();
+	}
+	
+	public void updateTableToItems(){
+		System.out.println("updating Items");
+		ArrayList<Item> items= new ArrayList<Item>();;
+		try {
+			if(model.searchAllObjects(Item.class)!=null)
+			items=model.searchAllObjects(Item.class);
+			
+		} catch (IOException e) {
+			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
+			e.printStackTrace();			
+		}
+		String[] columnNames={"ID","Name"};
+		Object[][] tableData = new Object[items.size()][10];
+		int i = 0;
+		for(Item item : items){			
+			tableData[i][0]=item.id;
+			tableData[i][1]=item.name;
+			i++;
+		}
+		DefaultTableModel dataModel = new DefaultTableModel(tableData, columnNames);
+		viewer.getTable().setModel(dataModel);			
+		
+		dataModel.fireTableDataChanged();
 	}
 
 	public void updateTableToEvents() {
@@ -304,6 +420,7 @@ public class Controller {
 		for(Event event : events){			
 			tableData[i][0]=event.id;
 			tableData[i][1]=event.triggerType;
+			i++;
 		}
 		DefaultTableModel dataModel = new DefaultTableModel(tableData, columnNames);
 		viewer.getTable().setModel(dataModel);			
@@ -312,7 +429,7 @@ public class Controller {
 	}
 
 	public void updateTableToScenes() {
-		try {
+		/*try {
 			ArrayList<Scene> scenes = model.searchAllObjects(Scene.class);
 			if (scenes != null) {
 				int i = 0;
@@ -331,13 +448,17 @@ public class Controller {
 		} catch (IOException e) {
 			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
 			e.printStackTrace();
-		}
+		}*/
 	}
 	
 	
 
 	public void setViewer(MainMenu viewer) {
 		this.viewer = viewer;
+	}
+
+	public void setLanguage(String language){
+		model.setCurrentLanguage(language);
 	}
 
 }

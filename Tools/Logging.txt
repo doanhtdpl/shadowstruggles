@@ -36,3 +36,67 @@ Out 30, 2013 11:59:30 PM br.edu.ifsp.pds.shadowstruggles.tools.Controller newZip
 SEVERE: java.lang.NullPointerException
 Out 31, 2013 11:54:51 AM br.edu.ifsp.pds.shadowstruggles.tools.Controller newZipClicked
 SEVERE: java.lang.NullPointerException
+Nov 07, 2013 2:03:29 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.maxHealth to null value
+Nov 07, 2013 2:03:29 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.maxHealth to null value
+Nov 07, 2013 2:03:29 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.maxHealth to null value
+Nov 07, 2013 2:03:29 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.maxHealth to null value
+Nov 07, 2013 2:03:29 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.maxHealth to null value
+Nov 07, 2013 2:03:29 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.maxHealth to null value
+Nov 07, 2013 2:03:29 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.maxHealth to null value
+Nov 07, 2013 2:03:29 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.maxHealth to null value
+Nov 07, 2013 2:03:29 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.maxHealth to null value
+Nov 07, 2013 2:03:29 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.maxHealth to null value
+Nov 07, 2013 2:03:29 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.maxHealth to null value
+Nov 07, 2013 2:03:29 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.maxHealth to null value
+Nov 07, 2013 2:03:29 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.maxHealth to null value
+Nov 07, 2013 2:03:29 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.maxHealth to null value
+Nov 07, 2013 2:03:29 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.maxHealth to null value
+Nov 07, 2013 2:03:29 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.maxHealth to null value
+Nov 07, 2013 2:06:00 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set float field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.delay to null value
+Nov 07, 2013 2:06:00 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set float field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.delay to null value
+Nov 07, 2013 2:06:00 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set float field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.delay to null value
+Nov 07, 2013 2:06:00 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set float field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.delay to null value
+Nov 07, 2013 2:06:00 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set float field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.delay to null value
+Nov 07, 2013 2:06:00 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set float field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.delay to null value
+Nov 07, 2013 2:06:00 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set float field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.delay to null value
+Nov 07, 2013 2:06:00 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set float field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.delay to null value
+Nov 07, 2013 2:06:00 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set float field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.delay to null value
+Nov 07, 2013 2:06:00 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set float field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.delay to null value
+Nov 07, 2013 2:06:00 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set float field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.delay to null value
+Nov 07, 2013 2:06:00 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set float field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.delay to null value
+Nov 07, 2013 2:06:00 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set float field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.delay to null value
+Nov 07, 2013 2:06:00 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set float field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.delay to null value
+Nov 07, 2013 2:06:00 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set float field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.delay to null value
+Nov 07, 2013 2:06:00 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
+SEVERE: java.lang.IllegalArgumentException: Can not set float field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.delay to null value

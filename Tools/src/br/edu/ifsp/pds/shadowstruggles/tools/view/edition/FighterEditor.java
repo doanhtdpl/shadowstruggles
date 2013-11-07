@@ -240,11 +240,9 @@ public class FighterEditor extends JFrame {
 				try{
 				fighter.action = (CardAction) comboBox_1.getSelectedItem();
 				}catch(Exception e){fighter.action =null;}				
-				if(comboBox_2.getSelectedItem()!=null)
-					fighter.illustration = comboBox_2.getSelectedItem().toString();
-				else fighter.illustration = "";
 				
-				fighter.maxHealth = Integer.parseInt(textField_6.getText());
+				
+				fighter.health = Integer.parseInt(textField_6.getText());
 				fighter.damage = Integer.parseInt(textField_4.getText());
 				switch (comboBox_4.getSelectedItem().toString()) {
 				case "SLOW":
