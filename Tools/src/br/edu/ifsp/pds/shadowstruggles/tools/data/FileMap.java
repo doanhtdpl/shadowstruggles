@@ -74,7 +74,7 @@ public class FileMap {
 				"data/images/game_ui_images/");
 		resourcesToDirectory.put("novel_images", "data/images/novel_images/");
 		resourcesToDirectory.put("screens", "data/images/screens/");
-		resourcesToDirectory.put("slices", "data/images/screens/slices");
+		resourcesToDirectory.put("slices", "data/images/screens/slices/");
 		resourcesToDirectory.put("rpg_maps", "data/rpg_maps/");
 		resourcesToDirectory.put("fonts", "data/fonts/");
 		resourcesToDirectory.put("skin", "data/images/skin/");
