@@ -80,6 +80,7 @@ public class ProfileControlEditor extends JFrame {
 						public void mouseClicked(MouseEvent e) {
 							editor.buildModifier();
 							control=new ProfileControl(editor.getModifier());
+							System.out.println(control.modifier);
 							textField.setText(control.modifier.toString());
 							editor.dispose();
 						}

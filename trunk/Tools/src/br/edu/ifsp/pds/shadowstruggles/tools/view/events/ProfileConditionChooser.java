@@ -54,6 +54,7 @@ public class ProfileConditionChooser extends JFrame {
 		btnBattleCondition.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new BattleConditionChooser(getPreviousScreen());
+				dispose();
 			}
 		});
 		btnBattleCondition.setBounds(38, 36, 121, 40);
@@ -63,6 +64,7 @@ public class ProfileConditionChooser extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new ItemConditionChooser(getPreviousScreen());
+				dispose();
 			}
 		});
 		btnNewButton.setBounds(169, 36, 114, 40);
@@ -72,6 +74,7 @@ public class ProfileConditionChooser extends JFrame {
 		btnQuestCondition.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new QuestChooser(getPreviousScreen());
+				dispose();
 			}
 		});
 		btnQuestCondition.setBounds(38, 87, 121, 40);

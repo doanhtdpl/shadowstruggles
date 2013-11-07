@@ -6,7 +6,7 @@ public class ProfileControl extends SceneItem {
 	public Modifier modifier;
 	
 	public ProfileControl() {
-		this.modifier = null;
+		
 	}
 	
 	public ProfileControl(Modifier modifier) {

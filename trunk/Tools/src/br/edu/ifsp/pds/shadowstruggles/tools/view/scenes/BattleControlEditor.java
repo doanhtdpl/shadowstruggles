@@ -81,7 +81,8 @@ public class BattleControlEditor extends JFrame {
 		btnAddControl.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BattleControl control = new BattleControl();
-				control.nextBattle=battles.get(comboBox.getSelectedItem().toString());
+				control.nextBattle=battles.get(Integer.parseInt(comboBox.getSelectedItem().toString()));
+				System.out.println("BCE: "+control.nextBattle);
 				getPreviousScreen().addSceneItem(control);
 				dispose();
 			}

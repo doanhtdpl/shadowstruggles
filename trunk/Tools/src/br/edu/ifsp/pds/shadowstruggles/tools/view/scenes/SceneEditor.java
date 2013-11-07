@@ -116,7 +116,7 @@ public class SceneEditor extends JFrame {
 				buildScene();
 				try {
 					getController().createScene(scene);
-					//getController().updateTableToScenes();
+					getController().updateTableToScenes();
 					dispose();
 				} catch (IOException e1) {					
 					e1.printStackTrace();
@@ -170,7 +170,7 @@ public class SceneEditor extends JFrame {
 		
 		comboBox = new JComboBox();
 		comboBox.setMaximumRowCount(10);
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Dialogue", "Battle Control", "Decision", "Event Control", "Layer Control", "Movement Control", "Profile Control", "Scene Control", "Scene Item", "Teleport Control"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Dialogue", "Battle Control", "Profile Control"}));
 		comboBox.setBounds(336, 287, 175, 20);
 		contentPane.add(comboBox);
 		

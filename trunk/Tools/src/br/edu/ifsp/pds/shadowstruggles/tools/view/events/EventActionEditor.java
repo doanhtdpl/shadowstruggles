@@ -220,8 +220,11 @@ public class EventActionEditor extends JFrame {
 	
 	public void addCondition(ProfileCondition condition){
 		actionConditions.add(condition);
-		DefaultListModel model = (DefaultListModel)conditionsList.getModel();
-		model.addElement(condition);
+		DefaultListModel model = new DefaultListModel();
+		for(ProfileCondition cond: actionConditions){
+			model.addElement(cond);
+		}
+		conditionsList.setModel(model);
 		conditionsList.updateUI();
 	}
 	
