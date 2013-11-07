@@ -28,21 +28,7 @@ public class SceneChooser extends JFrame {
 	private HashMap<String, Scene> scenes;
 	
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SceneChooser frame = new SceneChooser(null);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
@@ -80,7 +66,7 @@ public class SceneChooser extends JFrame {
 		JButton btnNewScene = new JButton("New Scene");
 		btnNewScene.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new SceneEditor(getPreviousScreen().getController());
+				new SceneEditor(getPreviousScreen().getController(), null);
 			}
 		});
 		btnNewScene.setBounds(335, 23, 89, 23);

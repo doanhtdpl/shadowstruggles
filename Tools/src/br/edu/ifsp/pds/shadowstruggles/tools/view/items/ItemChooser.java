@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import br.edu.ifsp.pds.shadowstruggles.tools.Controller;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -17,26 +19,11 @@ public class ItemChooser extends JFrame {
 	private JPanel contentPane;
 	private Controller controller;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ItemChooser frame = new ItemChooser(null);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	/**
 	 * Create the frame.
 	 */
-	public ItemChooser(final Controller controller) {
+	public ItemChooser(final Controller controller, Item itemToEdit) {
 		setVisible(true);
 		setTitle("Item Chooser");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -63,6 +50,9 @@ public class ItemChooser extends JFrame {
 		JButton btnPack = new JButton("Pack");
 		btnPack.setBounds(31, 117, 121, 37);
 		contentPane.add(btnPack);
+		if(itemToEdit!=null){
+			//TODO: instanciar a frame da classe do Item
+		}
 	}
 	public Controller getController() {
 		return controller;
