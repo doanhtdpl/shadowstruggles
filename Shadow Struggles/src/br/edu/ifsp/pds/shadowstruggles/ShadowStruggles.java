@@ -6,7 +6,6 @@ import br.edu.ifsp.pds.shadowstruggles.data.Loader;
 import br.edu.ifsp.pds.shadowstruggles.data.Loader.Asset;
 import br.edu.ifsp.pds.shadowstruggles.data.SoundManager;
 import br.edu.ifsp.pds.shadowstruggles.dataTest.LoaderTest;
-import br.edu.ifsp.pds.shadowstruggles.dataTest.TexturePackerTest;
 import br.edu.ifsp.pds.shadowstruggles.model.profiles.Profile;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.BattleScreen;
@@ -92,10 +91,6 @@ public class ShadowStruggles extends Game {
 			loaderTest.testLoading(this);
 			loaderTest.testGetRegion(this);						
 			loaderTest.testDispose(this);
-			TexturePackerTest tptest = new TexturePackerTest();
-			tptest.test(this);
-			DataManager.getInstance();
-			
 
 			// End of test cases.
 			Gdx.app.exit();
