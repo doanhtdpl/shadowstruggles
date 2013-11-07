@@ -4,6 +4,7 @@ import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
+import br.edu.ifsp.pds.shadowstruggles.model.items.Shop;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgMap;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgPlatform;
@@ -38,7 +39,7 @@ public class MainScreen extends BaseScreen {
 	@Override
 	public void resize(int width, int height) {
 		super.resize(width, height);
-
+		initComponents();
 	}
 
 	public void initComponents() {
@@ -116,7 +117,7 @@ public class MainScreen extends BaseScreen {
 				game.getAudio().playSound("button_4");
 				ShopScreen nextScreen = new ShopScreen(game, null, controller,
 						screen);
-				game.setScreenWithTransition(new LoadingScreen(game, nextScreen));
+				game.setScreenWithTransition(nextScreen);
 			}
 
 		});
@@ -192,12 +193,7 @@ public class MainScreen extends BaseScreen {
 		freePlay.setText(MenuTextDAO.getMenuText().freePlay);
 		editDeck.setText(MenuTextDAO.getMenuText().editDeck);
 		shop.setText(MenuTextDAO.getMenuText().shop);
-	}
-
-	@Override
-	public void show() {
-		super.show();
-	}
+	}	
 
 	@Override
 	public void render(float delta) {

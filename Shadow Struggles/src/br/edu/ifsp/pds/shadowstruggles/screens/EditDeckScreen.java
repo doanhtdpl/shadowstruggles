@@ -52,12 +52,14 @@ public class EditDeckScreen extends BaseScreen {
 		}
 		
 		this.selectedDeck = game.getProfile().getSelectedDeck();
+		
 	}
 
 	public void setPreviousScreen(BaseScreen previousScreen) {
 		this.previousScreen = previousScreen;
 	}
 
+	
 	public void initComponents() {
 		int MENUTABLE_PADTOP = 10;
 		int MENUTABLE_WIDTH = 160;
@@ -226,7 +228,9 @@ public class EditDeckScreen extends BaseScreen {
 
 	@Override
 	public Array<Asset> textureRegionsToLoad() {
-		Array<Asset> assets = new Array<Asset>();
+		Array<Asset> assets = new Array<Asset>(new Asset[]{
+				new Asset("box.png","game_ui_images")
+		});
 		// Array for keeping track of cards, making sure that there are no
 		// duplicates.
 		Array<String> previousCards = new Array<String>();
