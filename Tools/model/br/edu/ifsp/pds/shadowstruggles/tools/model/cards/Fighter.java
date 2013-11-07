@@ -72,7 +72,7 @@ public class Fighter extends Card implements Serializable {
 		skipFields.add("MOV_SPEED_NORMAL");
 		skipFields.add("MOV_SPEED_FAST");
 		try {
-			SerializationHelper.writeToJson(this, arg0, new ArrayList<String>());
+			SerializationHelper.writeToJson(this, arg0, skipFields);
 		} catch (IllegalArgumentException e) {
 			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
 			e.printStackTrace();

@@ -71,10 +71,9 @@ public class Effect extends Card {
 	@Override
 	public void write(Json arg0) {
 		ArrayList<String> skipFields = new ArrayList<String>();
-		skipFields.add("isActivated");
-		
+		skipFields.add("isActivated");		
 		try {
-			SerializationHelper.writeToJson(this, arg0, new ArrayList<String>());
+			SerializationHelper.writeToJson(this, arg0, skipFields);
 		} catch (IllegalArgumentException e) {
 			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
 			e.printStackTrace();

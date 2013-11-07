@@ -58,7 +58,7 @@ public class ActionFrame extends JFrame {
 
 		attributeCBox = new JComboBox<String>();
 		attributeCBox.setModel(new DefaultComboBoxModel<String>(new String[] {
-				"Card", "Lane", "Column" }));
+				"Card", "Lane", "Tile" }));
 		attributeCBox.setBounds(12, 39, 89, 24);
 		contentPane.add(attributeCBox);
 
@@ -92,13 +92,13 @@ public class ActionFrame extends JFrame {
 					attribute = Attribute.CARD;
 				if (attributeCBox.getSelectedItem().equals("Lane"))
 					attribute = Attribute.LANE;
-				if (attributeCBox.getSelectedItem().equals("Column"))
-					attribute = Attribute.COLUMN;
+				if (attributeCBox.getSelectedItem().equals("Tile"))
+					attribute = Attribute.TILE;
 
 				if (typeCBox.getSelectedItem().equals("Random lane"))
 					dynamicType = DynamicValue.RANDOM_LANE;
-				if (typeCBox.getSelectedItem().equals("Random column"))
-					dynamicType = DynamicValue.RANDOM_COLUMN;
+				if (typeCBox.getSelectedItem().equals("Random tile"))
+					dynamicType = DynamicValue.RANDOM_TILE;
 				if (typeCBox.getSelectedItem().equals("Constant value")) {
 					value = getController().getCardByName(valueTField.getText());
 					if (attribute != Attribute.CARD)
@@ -142,12 +142,12 @@ public class ActionFrame extends JFrame {
 			attribute = "Card";
 		if (action.type == Attribute.LANE)
 			attribute = "Lane";
-		if (action.type == Attribute.COLUMN)
+		if (action.type == Attribute.TILE)
 			attribute = "Column";
 
 		if (action.dynamicType == DynamicValue.RANDOM_LANE)
 			type = "Random lane";
-		else if (action.dynamicType == DynamicValue.RANDOM_COLUMN)
+		else if (action.dynamicType == DynamicValue.RANDOM_TILE)
 			type = "Random column";
 		else
 			type = "Constant value";

@@ -100,3 +100,83 @@ Nov 07, 2013 2:06:00 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighte
 SEVERE: java.lang.IllegalArgumentException: Can not set float field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.delay to null value
 Nov 07, 2013 2:06:00 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter read
 SEVERE: java.lang.IllegalArgumentException: Can not set float field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter.delay to null value
+Nov 07, 2013 8:36:12 AM br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.totalCardPoints to null value
+Nov 07, 2013 8:36:12 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.totalCardPoints to null value
+Nov 07, 2013 8:36:12 AM br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.totalCardPoints to null value
+Nov 07, 2013 8:36:12 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.totalCardPoints to null value
+Nov 07, 2013 8:36:12 AM br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.totalCardPoints to null value
+Nov 07, 2013 8:36:12 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.totalCardPoints to null value
+Nov 07, 2013 8:36:12 AM br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.totalCardPoints to null value
+Nov 07, 2013 8:36:12 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.totalCardPoints to null value
+Nov 07, 2013 8:36:45 AM br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.totalCardPoints to null value
+Nov 07, 2013 8:36:45 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.totalCardPoints to null value
+Nov 07, 2013 8:36:45 AM br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.totalCardPoints to null value
+Nov 07, 2013 8:36:45 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.totalCardPoints to null value
+Nov 07, 2013 8:36:45 AM br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.totalCardPoints to null value
+Nov 07, 2013 8:36:45 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.totalCardPoints to null value
+Nov 07, 2013 8:36:45 AM br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.totalCardPoints to null value
+Nov 07, 2013 8:36:45 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.totalCardPoints to null value
+Nov 07, 2013 8:38:27 AM br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.totalCardPoints to null value
+Nov 07, 2013 8:38:27 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.profileOwnerId to null value
+Nov 07, 2013 8:38:27 AM br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.totalCardPoints to null value
+Nov 07, 2013 8:38:27 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.profileOwnerId to null value
+Nov 07, 2013 8:38:27 AM br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.totalCardPoints to null value
+Nov 07, 2013 8:38:27 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.profileOwnerId to null value
+Nov 07, 2013 8:38:27 AM br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.totalCardPoints to null value
+Nov 07, 2013 8:38:27 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.profileOwnerId to null value
+Nov 07, 2013 8:39:14 AM br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.totalCardPoints to null value
+Nov 07, 2013 8:39:14 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item.id to null value
+Nov 07, 2013 8:39:14 AM br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.totalCardPoints to null value
+Nov 07, 2013 8:39:14 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item.id to null value
+Nov 07, 2013 8:39:14 AM br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.totalCardPoints to null value
+Nov 07, 2013 8:39:14 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item.id to null value
+Nov 07, 2013 8:39:14 AM br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.totalCardPoints to null value
+Nov 07, 2013 8:39:14 AM br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item.id to null value
+Nov 07, 2013 8:48:47 AM br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.totalCardPoints to null value
+Nov 07, 2013 8:48:47 AM br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.totalCardPoints to null value
+Nov 07, 2013 8:48:47 AM br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.totalCardPoints to null value
+Nov 07, 2013 8:48:47 AM br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.totalCardPoints to null value
+Nov 07, 2013 8:50:12 AM br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.profileOwnerId to null value
+Nov 07, 2013 8:50:12 AM br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.profileOwnerId to null value
+Nov 07, 2013 8:50:13 AM br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.profileOwnerId to null value
+Nov 07, 2013 8:50:13 AM br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item read
+SEVERE: java.lang.IllegalArgumentException: Can not set int field br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck.profileOwnerId to null value

@@ -45,6 +45,8 @@ public class MyJson {
 			json.addClassTag("DefaultAction", DefaultAction.class);
 			json.addClassTag("RecoveryAction", RecoveryAction.class);
 			json.addClassTag("MineralogyAction", MineralogyAction.class);
+			json.addClassTag("HackingAction", HackingAction.class);
+			json.addClassTag("EletricCurrent1Action", EletricCurrent1Action.class);
 			
 
 			json.addClassTag("Action", Action.class);
@@ -58,6 +60,7 @@ public class MyJson {
 			json.addClassTag("SceneAction", SceneAction.class);
 			json.addClassTag("ShopAction", ShopAction.class);
 			json.addClassTag("WarpAction", WarpAction.class);
+			json.addClassTag("ModifierAction", ModifierAction.class);
 
 			json.addClassTag("Item", Item.class);
 			json.addClassTag("ModifierItem", ModifierItem.class);
@@ -87,6 +90,9 @@ public class MyJson {
 			json.addClassTag("QuestCondition", QuestCondition.class);
 			json.addClassTag("StoryCondition", StoryCondition.class);
 			json.addClassTag("HealthCondition", HealthCondition.class);
+			json.addClassTag("CardOnHand", CardOnHand.class);
+			json.addClassTag("CardOnMap", CardOnMap.class);
+			json.addClassTag("BaseAttacked", BaseAttacked.class);
 			
 			json.addClassTag("EnemyDefeatRequirement",
 					EnemyDefeatRequirement.class);

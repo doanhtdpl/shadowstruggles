@@ -20,14 +20,14 @@ import com.esotericsoftware.jsonbeans.JsonValue;
  */
 public class Action implements Serializable {
 	public static enum Attribute {
-		LANE, COLUMN, CARD
+		LANE, TILE, CARD
 	};
 
 	/**
 	 * Dynamic values such as random ones are retrieved during battles.
 	 */
 	public static enum DynamicValue {
-		RANDOM_COLUMN, RANDOM_LANE
+		RANDOM_TILE, RANDOM_LANE, ATTACKED_LANE, NEXT_AVAILABLE_LANE, LANE_WITH_MORE_ENEMIES, LANE_WITH_LESS_ALLIES, LANES_WITH_MORE_ENEMIES_INVADING
 	};
 
 	public Attribute type;
@@ -66,12 +66,12 @@ public class Action implements Serializable {
 			}
 		}
 
-		if (this.type == Attribute.COLUMN) {
+		if (this.type == Attribute.TILE) {
 			attributeString = "column";
 			if (this.value != null)
 				valueString = ((Integer) value).toString();
 			else {
-				if (this.dynamicType == DynamicValue.RANDOM_COLUMN)
+				if (this.dynamicType == DynamicValue.RANDOM_TILE)
 					valueString = "randomly";
 			}
 		}

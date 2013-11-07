@@ -215,6 +215,8 @@ public class Controller {
 		return items;
 	}
 	
+
+	
 	public ArrayList<Quest> getQuests(){
 		ArrayList<Quest> quests = new ArrayList<Quest>();
 		//TODO: retrieve quests from file
@@ -301,26 +303,28 @@ public class Controller {
 	}
 
 	public void updateTableToDecks() {
+		System.out.println("updating Decks");
+		ArrayList<Deck> decks= new ArrayList<Deck>();;
 		try {
-			ArrayList<Deck> decks = model.searchAllObjects(Deck.class);
-			if (decks != null) {
-				int i = 0;
-				Object[][] deckAttributes = new Object[decks.size()][2];
-				for (Iterator<Deck> iterator = decks.iterator(); iterator
-						.hasNext();) {
-					deckAttributes[i][0] = decks.get(i).getId();
-					deckAttributes[i][1] = decks.get(i).getName();
-				}
-				Object[] columnNames = { "ID", "Name" };
-				viewer.getTable().setModel(
-						new DefaultTableModel(deckAttributes, columnNames));
-				viewer.getTable().updateUI();
-			}
-
+			if(model.searchAllObjects(Deck.class)!=null)
+			decks=model.searchAllObjects(Deck.class);
+			
 		} catch (IOException e) {
 			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
-			e.printStackTrace();
+			e.printStackTrace();			
 		}
+		String[] columnNames={"ID","Name"};
+		Object[][] tableData = new Object[decks.size()][10];
+		int i = 0;
+		for(Deck deck : decks){			
+			tableData[i][0]=deck.id;
+			tableData[i][1]=deck.name;
+			i++;
+		}
+		DefaultTableModel dataModel = new DefaultTableModel(tableData, columnNames);
+		viewer.getTable().setModel(dataModel);			
+		
+		dataModel.fireTableDataChanged();
 	}
 
 	public void updateTableToActions() {
@@ -428,27 +432,29 @@ public class Controller {
 		dataModel.fireTableDataChanged();
 	}
 
-	public void updateTableToScenes() {
-		/*try {
-			ArrayList<Scene> scenes = model.searchAllObjects(Scene.class);
-			if (scenes != null) {
-				int i = 0;
-				Object[][] sceneAttributes = new Object[scenes.size()][2];
-				for (Iterator<Scene> iterator = scenes.iterator(); iterator
-						.hasNext();) {
-					sceneAttributes[i][0] = scenes.get(i).id;
-					sceneAttributes[i][1] = scenes.get(i).name;
-				}
-				Object[] columnNames = { "ID", "Name" };
-				viewer.getTable().setModel(
-						new DefaultTableModel(sceneAttributes, columnNames));
-				viewer.getTable().updateUI();
-			}
-
+	public void updateTableToScenes() {		
+		System.out.println("updating Scenes");
+		ArrayList<Scene> scenes= new ArrayList<Scene>();;
+		try {
+			if(model.searchAllObjects(Scene.class)!=null)
+				scenes=model.searchAllObjects(Scene.class);
+			
 		} catch (IOException e) {
 			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
-			e.printStackTrace();
-		}*/
+			e.printStackTrace();			
+		}
+		String[] columnNames={"ID","Name"};
+		Object[][] tableData = new Object[scenes.size()][10];
+		int i = 0;
+		for(Scene scene : scenes){			
+			tableData[i][0]=scene.id;
+			tableData[i][1]=scene.name;
+			i++;
+		}
+		DefaultTableModel dataModel = new DefaultTableModel(tableData, columnNames);
+		viewer.getTable().setModel(dataModel);			
+		
+		dataModel.fireTableDataChanged();
 	}
 	
 	
