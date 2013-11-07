@@ -56,4 +56,8 @@ public class Scene implements Serializable {
 		json.writeValue("description", this.description);
 		json.writeValue("sceneItems", this.sceneItems);
 	}
+	
+	public int getId() {
+		return id;
+	}
 }

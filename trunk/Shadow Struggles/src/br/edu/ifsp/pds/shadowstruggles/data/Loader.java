@@ -14,6 +14,7 @@ import com.badlogic.gdx.tools.imagepacker.TexturePacker2;
 import com.badlogic.gdx.utils.Array;
 
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.pds.shadowstruggles.texturepacker.MyTexturePacker;
 
 /**
  * Class for dealing with general resources management.
