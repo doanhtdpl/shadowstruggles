@@ -41,8 +41,7 @@ public class EnemyGUIFrame extends JFrame {
 
 	public EnemyGUIFrame(Controller controller) {
 		setVisible(true);
-		setTitle("Enemy Editor");
-		enemy= new Enemy();
+		setTitle("Enemy Editor");		
 		this.controller=controller;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 600, 550);
@@ -160,6 +159,7 @@ public class EnemyGUIFrame extends JFrame {
 		btnAddEnemy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
+					enemy.name=nameTextField.getText();
 					getController().createEnemy(enemy);
 					getController().updateTableToEnemies();
 					dispose();
@@ -170,11 +170,8 @@ public class EnemyGUIFrame extends JFrame {
 		});
 		btnAddEnemy.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				System.out.println(enemy.id);
-				System.out.println(enemy.name);
-				enemy.name=nameTextField.getText();
-				System.out.println(enemy.strategy);
+			public void mouseClicked(MouseEvent arg0) {				
+				enemy.name=nameTextField.getText();				
 			}
 		});
 		btnAddEnemy.setBounds(91, 422, 114, 23);
@@ -191,6 +188,7 @@ public class EnemyGUIFrame extends JFrame {
 
 		if (enemy != null)
 			updateEnemy();
+		else enemy= new Enemy();
 	}
 	
 	
