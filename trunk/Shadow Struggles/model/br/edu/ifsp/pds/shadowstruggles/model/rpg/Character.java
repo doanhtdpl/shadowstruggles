@@ -274,4 +274,8 @@ public class Character {
 	public void setCurrentMap(RpgMap currentMap) {
 		this.currentMap = currentMap;
 	}
+	
+	private void read() {
+		
+	}
 }

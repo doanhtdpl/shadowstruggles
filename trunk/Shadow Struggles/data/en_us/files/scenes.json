@@ -1,0 +1,66 @@
+[
+{"class":"br.edu.ifsp.pds.shadowstruggles.model.Scene","id":0,"nextId":1000,"name":"The Shadow Struggles","script":"Go beyond the clouds and the stars above, travel beneath the earth and the magma below, transcending both time and space. Once there, you will find a place in which neither 'life' nor 'matter' have any special meaning. The only reality is that of an endless opposition between two factions.
+
+'Light' and 'Darkness' or 'Good' and 'Evil' is how mortals perceive these ethereal entities, but that is only because of their own limited existences. Their so precious universe is nothing but a small stain, residues of the war. An uninvited shadow.
+
+By the time Light and Darkness took notice of it, the shadow had already grown significantly. In wonder, they decided to entertain themselves and try to solve the conflict in a different way, through that funny new toy. Thus, the Shadow Struggles began.",
+"language":"en_us",
+"backgroundImage":"data/images/scenes/light_darkness_2.png",
+"backgroundMusic":"intro",
+"choices":[]
+},
+
+{"class":"br.edu.ifsp.pds.shadowstruggles.model.Scene","id":1000,"nextId":2000,"name":"The beginning","script":"We now find ourselves in a very peculiar situation.
+
+/:/Aided by the wonders of alchemy, the inhabitants of a certain planet decided it was time to expand their horizons, move beyond what their limited experience could comprehend. And so began a new and exciting chapter for them, full of mysteries, discoveries, knowledge, blah blah, and so forth. It doesn't really matter, since this story has nothing to do with any of that.
+
+/:/The alchemists and some families chose to remain on the planet, living a peaceful life and appreciating their home as much as they could. They were very successful, at least until an alien race suddenly came and claimed control over them. And that's our main topic today.
+
+/:/In case you were wondering, the planet's name is Earth, but this shouldn't be very important.
+
+/:/Over a decade after the Earth's invasion, alchemy research is more intense than ever in order to amplify the alien's military power. The young apprentice Lockstar is about to continue his training under Phoenix, albeit not in the way he had expected: it's a battle training. According to Phoenix, it is important for an alchemist to know how to defend himself and deal with different situations... Also, someone had to use those robots at least once.",
+"language":"en_us",
+"backgroundImage":"data/images/maps/cena1.png",
+"backgroundMusic":"intro",
+"choices":[]
+ },
+ 
+ {"class":"br.edu.ifsp.pds.shadowstruggles.model.Scene","id":2000,"nextId":3000,"name":"Master and pupil","script":"After an overly long day of bothersome activities, Lockstar finally finds time to rest under a rotten tree. As if having read his pupil's thoughts, Phoenix approaches him and casually begins to speak:
+
+- As far as I know, you were the one who chose me, weren't you? No complaints now.
+
+Indeed, Lockstar knew very well of Phoenix' fame even before enrolling in the academy. An elite among elite, the professor is revered and feared by humans and even aliens from all over the world, alchemists or not. One would expect him to be a strict teacher, and would be correct. But that's not the end of it.
+
+Phoenix is actually quite passionate about human development, to a point of deciding his students' schedules, living with them under the same roof and completely crossing the line of what's acceptable in a normal academic relationship in general.
+
+- You are correct, sir - Lockstar says -. I want to become the best alchemist I can, to penetrate the secrets, to master the art of transformation, to...
+
+- Don't get any funny ideas now, sparky dog. In case you've forgotten, we are Specialists. We build things, we destroy things, we fix things. Fantasizing about the 'magical power of alchemy' is for those rotten relics who call themselves Orthodoxies. Frankly, they make us serious alchemists look like idiots who know nothing about scientific method. But how could that be true, if everything we have today, including space exploration, is thanks to alchemy, huh? Why doesn't anyone try to answer that?
+
+As a matter of fact, Phoenix himself has answered these questions countless times on many essays. He was also the one who coined the pejorative term 'Orthodoxies' to designate theorists and philosophers of alchemy, and now this is their usual denomination. Since everyone calls them that way, Orthodoxies see no choice but to accept it.
+
+Despite having to do the impossible to deal with Phoenix and his ferocity, Lockstar has never once doubted: he was on the right path towards a brilliant future. Even when his master seemed desperate about something, he knew it was because of Phoenix' natural dedication, and respected him for this.
+
+Nothing will ever change, he won't allow it. As an alchemist, he will be the one to trigger any kind of transformation. He is the master, not the slave.",
+"language":"en_us",
+"backgroundImage":"data/images/scenes/sunset.png",
+"backgroundMusic":"intro",
+"choices":[]
+ },
+ 
+ {"class":"br.edu.ifsp.pds.shadowstruggles.model.Scene","id":3000,"nextId":3000,"name":"Ominous feelings","script":"The chilling wind of midnight whispers tales of tragedy and loneliness to the trees. And this is one of them; a tale of pain.
+ 
+Phoenix quietly wanders around the academic center on the way to his laboratory, keeping an unshakable authority and resolution the whole time. He has to, or he won't be able to survive against himself.
+
+Once in his sanctuary, an alchemist is no longer a man in flesh and bones. He is a nothing but a medium for the invisible elements to act upon, relying only on the power of reason and the power of the Spirit. There is no room for personal feelings... not now, it's too late. All that's left is performing the experiment.
+
+The process itself is not difficult at all after years of research and preparation. No one could have imagined that a respectable professor drawing a few symbols on the walls of his laboratory would have led to the horrors which followed soon after. No one could have stopped it, either. But we will never understand entirely what happened, as these secrets lie within Phoenix and will be his exclusive company until he perishes.
+
+
+To be continued...",
+"language":"en_us",
+"backgroundImage":"",
+"backgroundMusic":"",
+"choices":[]
+ }
+ ]

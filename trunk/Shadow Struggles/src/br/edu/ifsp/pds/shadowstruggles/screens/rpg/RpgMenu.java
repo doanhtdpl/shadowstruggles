@@ -10,21 +10,28 @@ import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
+import br.edu.ifsp.pds.shadowstruggles.rpg.RpgController;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
+import br.edu.ifsp.pds.shadowstruggles.screens.LoadingScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.MainScreen;
+import br.edu.ifsp.pds.shadowstruggles.screens.SaveLoadScreen;
+import br.edu.ifsp.pds.shadowstruggles.screens.SaveLoadScreen.Mode;
+import br.edu.ifsp.pds.shadowstruggles.screens.SettingsScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
 public class RpgMenu extends BaseScreen{
 	
 	private TextButton status;
 	private TextButton inventory;
-	private TextButton saveGame;
+	private TextButton loadGame;
 	private TextButton settings;
 	private TextButton decks;
 	private TextButton returnButton;
+	private BaseScreen previousScreen;
 
-	public RpgMenu(ShadowStruggles game, Controller controller) {
-		super(game, controller);
+	public RpgMenu(BaseScreen previousScreen) {		
+		super(ShadowStruggles.getInstance(), ShadowStruggles.getInstance().getController());
+		this.previousScreen=previousScreen;
 		initComponents();
 	}
 	
@@ -40,7 +47,7 @@ public class RpgMenu extends BaseScreen{
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_4");
-				StatusScreen statusScreen = new StatusScreen(game, controller);
+				StatusScreen statusScreen = new StatusScreen(getThis());
 				game.setScreenWithTransition(statusScreen);
 			}
 		});
@@ -50,15 +57,28 @@ public class RpgMenu extends BaseScreen{
 		inventory =ScreenUtils.defineButton(inventory, 0, 0, 0,
 				0, super.getSkin());
 		
-		saveGame = new TextButton(MenuTextDAO.getMenuText().saveGame, 
+		loadGame = new TextButton(MenuTextDAO.getMenuText().loadGame, 
 				getSkin());
-		saveGame =ScreenUtils.defineButton(saveGame, 0, 0, 0,
+		loadGame =ScreenUtils.defineButton(loadGame, 0, 0, 0,
 				0, super.getSkin());
-		
+		loadGame.addListener(new ClickListener(){@Override
+		public void clicked(InputEvent event, float x, float y) {
+			game.getAudio().playSound("button_4");
+			SaveLoadScreen loadScreen = new SaveLoadScreen(game,controller,Mode.LOAD,getThis());
+			game.setScreenWithTransition(loadScreen);
+		}});
 		settings = new TextButton(MenuTextDAO.getMenuText().settings, 
 				getSkin());
 		settings =ScreenUtils.defineButton(settings, 0, 0, 0,
 				0, super.getSkin());
+		settings.addListener(new ClickListener(){
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				game.getAudio().playSound("button_4");
+				SettingsScreen settingsScreen = new SettingsScreen(game, controller, getThis());
+				game.setScreenWithTransition(settingsScreen);
+			}
+		});
 		
 		decks = new TextButton(MenuTextDAO.getMenuText().decks, 
 				getSkin());
@@ -74,7 +94,14 @@ public class RpgMenu extends BaseScreen{
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_6");
-				game.setScreenWithTransition(new MainScreen(game, controller));
+				 RpgScreen previousRpgScreen = (RpgScreen) previousScreen;
+			       Controller controller = previousRpgScreen.getController();
+			       RpgController rpgController = previousRpgScreen.getRpgController();
+
+			       RpgScreen nextScreen = new RpgScreen(game, controller,
+			         rpgController);
+			       game.setScreenWithTransition(new LoadingScreen(
+			         game, nextScreen));
 
 			}
 		});
@@ -90,7 +117,7 @@ public class RpgMenu extends BaseScreen{
 		menuTable.row();
 		menuTable.add(inventory);
 		menuTable.row();
-		menuTable.add(saveGame);
+		menuTable.add(loadGame);
 		menuTable.row();
 		menuTable.add(settings);
 		menuTable.row();
@@ -106,6 +133,10 @@ public class RpgMenu extends BaseScreen{
 	public void render(float delta){
 		super.render(delta);
 		Table.drawDebug(stage);
+	}
+	
+	public RpgMenu getThis(){
+		return this;
 	}
 	
 	@Override
