@@ -130,3 +130,19 @@ GRAVE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving locali
 GRAVE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving localized JSON file from language pt_br - Error reading file: data/pt_br/files/menu_text.json
 03/11/2013 17:26:35 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
 GRAVE: br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO: Error getting MenuText - 0
+Nov 07, 2013 4:20:46 AM br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving localized JSON file from language pt_br - Error reading file: data/pt_br/files/menu_text.json
+Nov 07, 2013 4:20:47 AM br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving localized JSON file from language pt_br - Error reading file: data/pt_br/files/events.json
+Nov 07, 2013 4:20:47 AM br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+SEVERE: br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO: Error getting MenuText - 0
+Nov 07, 2013 4:23:06 AM br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving localized JSON file from language pt_br - Error reading file: data/pt_br/files/menu_text.json
+Nov 07, 2013 4:23:06 AM br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving localized JSON file from language pt_br - Error reading file: data/pt_br/files/events.json
+Nov 07, 2013 4:23:06 AM br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+SEVERE: br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO: Error getting MenuText - 0
+Nov 07, 2013 4:24:44 AM br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving localized JSON file from language pt_br - Error reading file: data/pt_br/files/events.json
+Nov 07, 2013 8:16:23 AM br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
+SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving language-independent JSON file - Error reading file: data/profiles.json
