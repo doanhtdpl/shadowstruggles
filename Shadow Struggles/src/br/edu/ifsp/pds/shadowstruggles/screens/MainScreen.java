@@ -62,19 +62,19 @@ public class MainScreen extends BaseScreen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_4");
-//				RpgController rpgController = new RpgController();
-//				RpgMap rpgMap = new RpgMap("map");
-//				Character character = new Character(0, 0, 2, 2, rpgMap);
-//				game.getProfile().setCharacter(character);
-//				@SuppressWarnings("unused")
-//				RpgPlatform platform = new RpgPlatform(rpgController,
-//						character, rpgMap);
-//				RpgScreen nextScreen = new RpgScreen(game, controller,
-//						rpgController);
-//				game.setScreenWithTransition(new LoadingScreen(game, nextScreen));
+				RpgController rpgController = new RpgController();
+				RpgMap rpgMap = new RpgMap("map");
+				Character character = new Character(0, 0, 2, 2, rpgMap);
+				game.getProfile().setCharacter(character);
+				@SuppressWarnings("unused")
+				RpgPlatform platform = new RpgPlatform(rpgController,
+						character, rpgMap);
+				RpgScreen nextScreen = new RpgScreen(game, controller,
+						rpgController);
+				game.setScreenWithTransition(new LoadingScreen(game, nextScreen));
 				
-				RpgMenu rpgMenu = new RpgMenu(game, controller);
-				game.setScreenWithTransition(rpgMenu);
+				
+				
 
 			}
 		});

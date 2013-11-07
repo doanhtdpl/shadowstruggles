@@ -84,6 +84,7 @@ public class MenuText implements Serializable {
 	public String status = "";
 	public String inventory = "";
 	public String saveGame = "";
+	public String loadGame="";
 	public String settings = "";
 	public String decks = "";
 	
@@ -183,6 +184,7 @@ public class MenuText implements Serializable {
 		status = json.readValue("status", String.class, jsonData);
 		inventory = json.readValue("inventory", String.class, jsonData);
 		saveGame = json.readValue("saveGame", String.class, jsonData);
+		loadGame = json.readValue("loadGame", String.class, jsonData);
 		settings = json.readValue("settings", String.class, jsonData);
 		decks = json.readValue("decks", String.class, jsonData);
 		

@@ -40,6 +40,7 @@
 "status":"Status",
 "inventory":"Inventory",
 "saveGame":"Save Game",
+"loadGame":"Load Game",
 "settings":"Settings",
 "decks":"Decks",
 "maxEnergy":"Max Energy",

@@ -211,6 +211,9 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		if(screenX<60 && screenY <60){
+			game.setScreenWithTransition(new RpgMenu(this));
+		}else{
 		int[] currentPos = pixelsToTile((int) renderer.getPlayerCharacter()
 				.getX(), (int) renderer.getPlayerCharacter().getY());
 		int[] destinationPos = pixelsToTile(screenX, height - screenY);
@@ -220,7 +223,7 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 				destinationPos[1]);
 
 		rpgController.moveCharacter(path, destinationPos);
-
+		}
 		return true;
 	}
 

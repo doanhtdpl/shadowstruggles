@@ -11,7 +11,7 @@ public class TexturePackerTest {
 
 	@Test
 	public void test(ShadowStruggles game) {
-			TexturePacker tp = new TexturePacker("hi", game);
+			//TexturePacker tp = new TexturePacker("hi", game);
 			System.out.println("Success");
 
 	}

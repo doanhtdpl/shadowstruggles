@@ -13,13 +13,16 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.Json.Serializable;
+import com.badlogic.gdx.utils.JsonValue;
 
 /**
  * The map representation used by the pathfinder algorithm and other classes
  * which manipulate the map in some way. It serves as a wrapper for the tiled
  * map itself.
  */
-public class RpgMap implements TileBasedMap {
+public class RpgMap implements TileBasedMap , Serializable{
 	private String mapName;
 	private TiledMap map;
 	private String objectLayer;
@@ -285,4 +288,21 @@ public class RpgMap implements TileBasedMap {
 		this.tileLayer = (TiledMapTileLayer) map.getLayers().get(
 				tileLayerString);
 	}
+
+	@Override
+	public void write(Json json) {
+		json.writeValue("mapName", mapName);
+		json.writeValue("objectLayer", objectLayer);
+		json.writeValue("tileLayerString", tileLayerString);		
+	}
+
+	@Override
+	public void read(Json json, JsonValue jsonData) {
+		json.readValue("mapName", String.class, jsonData);
+		json.readValue("objectLayer", String.class, jsonData);
+		json.readValue("tileLayerString", String.class, jsonData);
+		
+	}
+	
+	
 }

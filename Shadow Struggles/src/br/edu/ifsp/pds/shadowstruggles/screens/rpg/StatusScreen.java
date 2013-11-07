@@ -38,10 +38,12 @@ public class StatusScreen extends BaseScreen{
 	private Image deckCapacityBar;
 	private Image maxCardPointsBar;
 	private Image doubleDrawBar;
+	private BaseScreen previousScreen;
 	
 
-	public StatusScreen(ShadowStruggles game, Controller controller) {
-		super(game, controller);
+	public StatusScreen(BaseScreen previousScreen) {
+		super(ShadowStruggles.getInstance(), ShadowStruggles.getInstance().getController());
+		this.previousScreen=previousScreen;
 		initComponents();
 	}
 	
@@ -148,7 +150,7 @@ public class StatusScreen extends BaseScreen{
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_6");
-				game.setScreenWithTransition(new RpgMenu(game, controller));
+				game.setScreenWithTransition(previousScreen);
 			}
 		});
 		
