@@ -80,16 +80,15 @@ public class ShopScreen extends BaseScreen {
 		this.currentCategory = Category.CARD;
 		if (shop == null)
 			this.mainShop = true;
+		initComponents();
 	}
 
+	@Override
 	public void initComponents() {
+		stage.clear();
 		final BaseScreen menu = this.previousScreen;
 
-		Table menuTable = new Table();
-		menuTable.defaults().padTop(10).width(160).height(50);
-
-		if (game.getMode() == RunMode.DEBUG)
-			menuTable.debug();
+		
 
 		packsButton = new TextButton(MenuTextDAO.getMenuText().packs, getSkin());
 		packsButton = ScreenUtils.defineButton(packsButton, 0, 0, 0, 0,
@@ -144,7 +143,13 @@ public class ShopScreen extends BaseScreen {
 				game.setScreenWithTransition(menu);
 			}
 		});
+		
+		Table menuTable = new Table();
+		menuTable.defaults().padTop(10).width(160).height(50);
 
+		if (game.getMode() == RunMode.DEBUG)
+			menuTable.debug();
+		menuTable.defaults();
 		menuTable.add(packsButton);
 		menuTable.row();
 		menuTable.add(extraButton);
@@ -323,10 +328,7 @@ public class ShopScreen extends BaseScreen {
 
 	@Override
 	public void render(float delta) {
-		stage.act(delta);
-		Gdx.gl.glClearColor(0, 0, 0, 200);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		stage.draw();
+		super.render(delta);
 		Table.drawDebug(stage);
 	}
 

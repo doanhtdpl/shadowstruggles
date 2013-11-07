@@ -363,7 +363,7 @@ public class BattleScreen extends BaseScreen {
 	 */
 
 	public void initComponents() {
-
+		System.out.println("BattleScreen: initComponents");
 		if (!initialized) {
 			TextureRegion mapImage = new TextureRegion(game.getTexture(
 					battlePlatform.getMap().getName(), "battle_maps"),

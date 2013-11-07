@@ -117,8 +117,9 @@ public class BattleTutorial extends BattleScreen {
 		return assets;
 	}
 
-	@Override
+
 	public void initComponents() {
+	
 		if (!initialized) {
 			super.initComponents();
 
