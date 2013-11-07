@@ -1,7 +1,5 @@
 package br.edu.ifsp.pds.shadowstruggles.data;
 
-import java.io.File;
-
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 
 import com.badlogic.gdx.Gdx;
@@ -9,6 +7,7 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.PixmapIO;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas.TextureAtlasData.Page;
 import com.badlogic.gdx.math.Rectangle;
 
 public class TexturePacker {
@@ -20,43 +19,44 @@ public class TexturePacker {
 	int qtdArquivos = 0, i = 0;
 	long totalArea = 0;
 
-	public TexturePacker(String imagePath, ShadowStruggles game) {
+	public TexturePacker(Page pages[], ShadowStruggles game) {
+		//INICIO
 		this.game = game;
-		// System.out.println("a");
-		// this.imagePath = imagePath;
-		// System.out.println("b");
-		// pixmap = new Pixmap(
-		// Gdx.files.internal("data/images/cards/advanced_carbon.png"));
-		//
-		// System.out.println("c");
-		// // pixmap = PixmapIO.readCIM(new FileHandle(new File(imagePath)));
+		for (Page page : pages) {
+			// pegar as texturas e suas localizações e colocar no pixmap, depois
+			// gravar em png, não esquecendo de gravar também as localizações
+		}
+		//FIM
 
-		System.out.println("Nome de todos os arquivos de imagens:\n");
-		FileHandle handle = Gdx.files.internal("data/images");
-		explore(handle);
-		System.out.println("End of explore, qtdArquivos = " + qtdArquivos);
-		imagens = new FileHandle[qtdArquivos];
-		getImages(handle);
-		System.out.println("End of getImages, i = " + i);
-		getTextures();
-		System.out.println("End of getTextures, i = " + i);
-		continuePacking();
-		System.out.println("End of continuePacking, i = " + i);
-
-		// System.out.println("Tentativa de manipular imagem!");
-		// // FileHandle image =
-		// // Gdx.files.internal("data/images/card_effects/cloning.png");
-		// FileHandle image = Gdx.files
-		// .internal("data/images/card_images/cloning.jpg");
-		// if (image.exists())
-		// System.out.println("O arquivo existe!");
-		//
-		// Texture tex = new Texture(image);
-		// System.out.println("Imagem lida!\nAltura: " + tex.getHeight()
-		// + "\nLargura: " + tex.getWidth());
-
+		/*
+		 * // System.out.println("a"); // this.imagePath = imagePath; //
+		 * System.out.println("b"); // pixmap = new Pixmap( //
+		 * Gdx.files.internal("data/images/cards/advanced_carbon.png")); // //
+		 * System.out.println("c"); // // pixmap = PixmapIO.readCIM(new
+		 * FileHandle(new File(imagePath)));
+		 * 
+		 * System.out.println("Nome de todos os arquivos de imagens:\n");
+		 * FileHandle handle = Gdx.files.internal("data/images");
+		 * explore(handle); System.out.println("End of explore, qtdArquivos = "
+		 * + qtdArquivos); imagens = new FileHandle[qtdArquivos];
+		 * getImages(handle); System.out.println("End of getImages, i = " + i);
+		 * getTextures(); System.out.println("End of getTextures, i = " + i);
+		 * continuePacking(); System.out.println("End of continuePacking, i = "
+		 * + i);
+		 * 
+		 * // System.out.println("Tentativa de manipular imagem!"); // //
+		 * FileHandle image = // //
+		 * Gdx.files.internal("data/images/card_effects/cloning.png"); //
+		 * FileHandle image = Gdx.files //
+		 * .internal("data/images/card_images/cloning.jpg"); // if
+		 * (image.exists()) // System.out.println("O arquivo existe!"); // //
+		 * Texture tex = new Texture(image); //
+		 * System.out.println("Imagem lida!\nAltura: " + tex.getHeight() // +
+		 * "\nLargura: " + tex.getWidth());
+		 */
 	}
 
+	/*
 	private void continuePacking() {
 		// find longest edge and total area of all source textures!
 		int longest_width = 0;
@@ -89,15 +89,17 @@ public class TexturePacker {
 			b = false;
 		}
 		i = 0;
-		for (Texture t : textures) {
-			if (t != null) {
-				if (t.getWidth() > longest_width)
-					longest_width = t.getWidth();
-				if (t.getHeight() > longest_height)
-					longest_height = t.getHeight();
-				total_area = +t.getWidth() * t.getHeight();
+		int selected_index = 0;
+		for (i = 0; i < qtdArquivos; i++) {
+			longest_height = 0;
+			longest_width = 0;
+			if (textures[i] != null) {
+				if (textures[i].getWidth() > longest_width && !placed[i])
+					longest_width = textures[i].getWidth();
+				if (textures[i].getHeight() > longest_height && !placed[i])
+					longest_height = textures[i].getHeight();
+				total_area = +textures[i].getWidth() * textures[i].getHeight();
 			}
-			i++;
 		}
 
 	}
@@ -154,4 +156,4 @@ public class TexturePacker {
 			}
 		}
 	}
-}
+}*/
