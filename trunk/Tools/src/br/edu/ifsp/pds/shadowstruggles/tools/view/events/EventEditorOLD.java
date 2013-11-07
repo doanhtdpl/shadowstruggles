@@ -216,7 +216,7 @@ public class EventEditorOLD extends JFrame {
 	}
 
 	private void printEventData() {
-		// TODO Auto-generated method stub
+		
 		System.out.print("\nEvent data:\n\n");
 		System.out.println("Id: \t\t"+id);
 		System.out.println("Trigger Type: \t"+triggerType);

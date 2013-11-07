@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 
 import br.edu.ifsp.pds.shadowstruggles.tools.Controller;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ItemChooser extends JFrame {
 
@@ -34,7 +36,8 @@ public class ItemChooser extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ItemChooser(Controller controller) {
+	public ItemChooser(final Controller controller) {
+		setVisible(true);
 		setTitle("Item Chooser");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 205, 220);
@@ -44,6 +47,12 @@ public class ItemChooser extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnModifierItem = new JButton("Modifier Item");
+		btnModifierItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new ModifierItemEditor(controller);
+				dispose();
+			}
+		});
 		btnModifierItem.setBounds(31, 11, 121, 37);
 		contentPane.add(btnModifierItem);
 		

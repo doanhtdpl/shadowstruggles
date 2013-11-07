@@ -201,16 +201,15 @@ public class EventEditor extends JFrame {
 		});
 		btnAddEvent.setBounds(91, 422, 114, 23);
 		contentPane.add(btnAddEvent);
-
-		list = new JList<EventAction>();
-		contentPane.add(list);
-		list.setCellRenderer(new MyCellRenderer());
-		list.setToolTipText("");
-		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		list.setBounds(22, 170, 518, 194);
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 159, 548, 204);
 		contentPane.add(scrollPane);
+		
+				list = new JList<EventAction>();
+				scrollPane.setViewportView(list);
+				list.setCellRenderer(new MyCellRenderer());
+				list.setToolTipText("");
+				list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 		JLabel lblY = new JLabel("Y:");
 		lblY.setBounds(369, 25, 19, 14);
@@ -315,5 +314,10 @@ public class EventEditor extends JFrame {
 	
 	public EventEditor getThis(){
 		return this;
+	}
+	
+	public void addAction(EventAction action){
+		event.actions.add(action);
+		updateEventActions();
 	}
 }

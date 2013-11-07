@@ -51,6 +51,7 @@ public class BattleConditionChooser extends JFrame {
 	 * Create the frame.
 	 */
 	public BattleConditionChooser(EventActionEditor previousScreen) {
+		setVisible(true);
 		this.enemyDefeats= new ArrayList<EnemyDefeat>();
 		this.previousScreen=previousScreen;
 		setTitle("Battle Condition Chooser");

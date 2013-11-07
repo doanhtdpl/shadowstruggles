@@ -55,6 +55,7 @@ public class StoryConditionChooser extends JFrame {
 	 * Create the frame.
 	 */
 	public StoryConditionChooser(EventActionEditor previousScreen) {
+		setVisible(true);
 		this.endings= new ArrayList<Ending>();
 		setTitle("Conditional Story Chooser");
 		this.previousScreen=previousScreen;

@@ -114,8 +114,7 @@ public class EventActionEditor extends JFrame {
 		JButton btnNewCondition = new JButton("New");
 		btnNewCondition.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new ProfileConditionChooser(getThis()).setVisible(true);
-				
+				new ProfileConditionChooser(getThis());				
 			}
 		});
 
@@ -125,6 +124,9 @@ public class EventActionEditor extends JFrame {
 		btnAddAction = new JButton("Choose Action");
 		btnAddAction.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				getAction().conditions=actionConditions;
+				getPreviousScreen().addAction(getAction());
+				dispose();
 				
 			}
 		});
@@ -179,7 +181,7 @@ public class EventActionEditor extends JFrame {
 			break;
 		case "Scene Action":
 			this.action = new SceneAction();
-			new SceneChooser();
+			new SceneChooser(getThis());
 			break;
 		case "Shop Action":
 			this.action = new ShopAction();
@@ -190,7 +192,7 @@ public class EventActionEditor extends JFrame {
 			new WarpChooser();
 			break;
 		}
-		this.action.conditions = actionConditions;
+		
 	}
 
 	/*
@@ -208,6 +210,10 @@ public class EventActionEditor extends JFrame {
 		return this.action;
 	}
 	
+	public void setAction(EventAction action){
+		this.action=action;
+	}
+	
 	public Controller getController(){
 		return previousScreen.getController();
 	}
@@ -221,5 +227,9 @@ public class EventActionEditor extends JFrame {
 	
 	public EventActionEditor getThis(){
 		return this;
+	}
+	
+	public EventEditor getPreviousScreen() {
+		return previousScreen;
 	}
 }

@@ -43,6 +43,7 @@ import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.TrapEditor;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.enemies.EnemyGUIFrame;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.events.EventEditor;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.events.EventEditorOLD;
+import br.edu.ifsp.pds.shadowstruggles.tools.view.items.ItemChooser;
 
 import javax.swing.JLabel;
 
@@ -156,6 +157,8 @@ public class MainMenu {
 					new EventEditor(controller).setVisible(true);
 				if (selectedTab.equals("Scenes"))
 					new SceneEditor(controller);
+				if(selectedTab.equals("Items"))
+					new ItemChooser(controller);
 			
 			}
 		});
@@ -267,6 +270,9 @@ public class MainMenu {
 
 		JPanel panel_7 = new JPanel();
 		tabbedPane.addTab("Scenes", null, panel_7, null);
+		
+		JPanel panel_8 = new JPanel();
+		tabbedPane.addTab("Items", null, panel_8, null);
 
 		menuBar = new JMenuBar();
 		menuBar.setVisible(false);
