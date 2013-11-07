@@ -301,6 +301,10 @@ public class Controller {
 		
 		dataModel.fireTableDataChanged();
 	}
+	
+	public Object getObject(int id, Class <?> c) throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException, IOException{
+		return model.searchObject(id, c);
+	}
 
 	public void updateTableToDecks() {
 		System.out.println("updating Decks");

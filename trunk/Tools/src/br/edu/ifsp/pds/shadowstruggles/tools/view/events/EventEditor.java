@@ -55,10 +55,12 @@ public class EventEditor extends JFrame {
 	private JCheckBox chckbxCollidable;
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public EventEditor(Controller controller) {
+	public EventEditor(Controller controller, Event eventToEdit) {
+		setVisible(true);
+		setTitle("Event Editor");
 		this.controller = controller;
 		this.actions = new ArrayList<EventAction>();
-		event = new Event();
+		this.event = eventToEdit;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 600, 550);
 		contentPane = new JPanel();
@@ -280,6 +282,7 @@ public class EventEditor extends JFrame {
 
 		if (event != null)
 			updateEventActions();
+		else event= new Event();
 	}
 
 	private void createEvent() throws IOException {

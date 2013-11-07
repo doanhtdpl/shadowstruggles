@@ -29,20 +29,30 @@ import java.util.logging.Logger;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 
 import net.lingala.zip4j.exception.ZipException;
 import br.edu.ifsp.pds.shadowstruggles.tools.Controller;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.BattlePlatform;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Effect;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Trap;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Enemy;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.events.Event;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.scenes.Scene;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.ActionEditor;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.BattleEditor;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.DeckEditor;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.EffectEditor;
-import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.EnemyEditorOLD;
+
 import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.FighterEditor;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.scenes.SceneEditor;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.edition.TrapEditor;
-import br.edu.ifsp.pds.shadowstruggles.tools.view.enemies.EnemyGUIFrame;
+import br.edu.ifsp.pds.shadowstruggles.tools.view.enemies.EnemyEditor;
 import br.edu.ifsp.pds.shadowstruggles.tools.view.events.EventEditor;
-import br.edu.ifsp.pds.shadowstruggles.tools.view.events.EventEditorOLD;
+
 import br.edu.ifsp.pds.shadowstruggles.tools.view.items.ItemChooser;
 
 import javax.swing.JLabel;
@@ -142,7 +152,7 @@ public class MainMenu {
 				String selectedTab = tabbedPane.getTitleAt(tabbedPane
 						.getSelectedIndex());
 				if (selectedTab.equals("Fighters"))
-					new FighterEditor(controller);
+					new FighterEditor(controller, null);
 				if (selectedTab.equals("Traps"))
 					new TrapEditor();
 				if (selectedTab.equals("Effects"))
@@ -152,15 +162,15 @@ public class MainMenu {
 				if (selectedTab.equals("Decks"))
 					new DeckEditor();
 				if (selectedTab.equals("Enemies"))
-					new EnemyGUIFrame(controller);
+					new EnemyEditor(controller, null);
 				if (selectedTab.equals("Battles"))
-					new BattleEditor(controller);
+					new BattleEditor(controller, null);
 				if (selectedTab.equals("Events"))
-					new EventEditor(controller).setVisible(true);
+					new EventEditor(controller, null);
 				if (selectedTab.equals("Scenes"))
-					new SceneEditor(controller);
+					new SceneEditor(controller, null);
 				if(selectedTab.equals("Items"))
-					new ItemChooser(controller);
+					new ItemChooser(controller, null);
 			
 			}
 		});
@@ -188,10 +198,11 @@ public class MainMenu {
 		btnEditButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				getSelectedTableItem();
 				String selectedTab = tabbedPane.getTitleAt(tabbedPane
 						.getSelectedIndex());
 				if (selectedTab.equals("Fighters"))
-					new FighterEditor(controller);
+					new FighterEditor(controller,(Fighter)getSelectedObject());
 				if (selectedTab.equals("Traps"))
 					new TrapEditor();
 				if (selectedTab.equals("Effects"))
@@ -201,15 +212,15 @@ public class MainMenu {
 				if (selectedTab.equals("Decks"))
 					new DeckEditor();
 				if (selectedTab.equals("Enemies"))
-					new EnemyEditorOLD();
+					new EnemyEditor(controller, (Enemy)getSelectedObject());
 				if (selectedTab.equals("Battles"))
-					new BattleEditor(controller);
+					new BattleEditor(controller, (BattlePlatform)getSelectedObject());
 				if (selectedTab.equals("Events"))
-					new EventEditorOLD();
+					new EventEditor(controller,(Event)getSelectedObject());
 				if (selectedTab.equals("Scenes"))
-					new SceneEditor(controller);
+					new SceneEditor(controller, (Scene)getSelectedObject());
 				if(selectedTab.equals("Items"))
-					new ItemChooser(controller);
+					new ItemChooser(controller, (Item)getSelectedObject());
 				// TODO: (objeto selecionado da tabela como argumento);
 			}
 		});
@@ -226,7 +237,7 @@ public class MainMenu {
 				if (answer == 0) {
 					String selectedTab = tabbedPane.getTitleAt(tabbedPane
 							.getSelectedIndex());
-					// TODO: decidir qual mï¿½todo "delete" da controller chamar
+					// TODO: decidir qual método "delete" da controller chamar
 				}
 			}
 		});
@@ -420,5 +431,44 @@ public class MainMenu {
 
 	public JTable getTable() {
 		return table;
+	}
+	
+	public Integer getSelectedTableItem(){
+		Object value = ((DefaultTableModel)table.getModel()).getValueAt(table.getSelectedRow(),0);
+		System.out.println(value);
+		return (Integer)value;
+	}
+	
+	public Object getSelectedObject(){
+		Class<?> c=Fighter.class;
+		String selectedTab = tabbedPane.getTitleAt(tabbedPane
+				.getSelectedIndex());
+		if (selectedTab.equals("Fighters"))
+			c=Fighter.class;
+		if (selectedTab.equals("Traps"))
+			c=Trap.class;
+		if (selectedTab.equals("Effects"))
+			c=Effect.class;			
+		if (selectedTab.equals("Decks"))
+			c=Deck.class;
+		if (selectedTab.equals("Enemies"))
+			c=Enemy.class;
+		if (selectedTab.equals("Battles"))
+			c=BattlePlatform.class;
+		if (selectedTab.equals("Events"))
+			c=Event.class;
+		if (selectedTab.equals("Scenes"))
+			c=Scene.class;
+		if(selectedTab.equals("Items"))
+			c=Item.class;
+		Object object = new Object();
+		try {
+			object = controller.getObject(getSelectedTableItem(), c);
+		} catch (NoSuchFieldException | SecurityException
+				| IllegalArgumentException | IllegalAccessException
+				| IOException e) {			
+			e.printStackTrace();
+		}
+		return object;
 	}
 }

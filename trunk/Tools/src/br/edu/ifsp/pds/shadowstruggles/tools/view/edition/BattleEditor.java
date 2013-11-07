@@ -45,10 +45,10 @@ public class BattleEditor extends JFrame {
 	private JComboBox comboBox_RewardType;
 	private HashMap<String, Enemy> enemies;
 
-	public BattleEditor(Controller controller) {
-		this.battle = new BattlePlatform();
+	public BattleEditor(Controller controller, BattlePlatform battleToEdit) {
+		this.battle = battleToEdit;
 		this.enemies= new HashMap<String,Enemy>();
-		battle.rewards = new ArrayList<Modifier>();
+		
 		this.controller = controller;
 		setTitle("Battle Editor");
 		setVisible(true);
@@ -176,6 +176,10 @@ public class BattleEditor extends JFrame {
 				"Item", "Attribute", "Quest", "Unlock", "" }));
 		comboBox_RewardType.setBounds(226, 158, 91, 20);
 		contentPane.add(comboBox_RewardType);
+		if(this.battle==null){
+			this.battle= new BattlePlatform();
+			this.battle.rewards= new ArrayList<Modifier>();
+		}
 	}
 
 	public void buildBattle() {

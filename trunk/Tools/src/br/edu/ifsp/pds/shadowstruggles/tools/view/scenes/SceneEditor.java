@@ -44,29 +44,13 @@ public class SceneEditor extends JFrame {
 	private JComboBox comboBox;
 	
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SceneEditor frame = new SceneEditor(null);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
-	public SceneEditor(Controller controller) {
+	public SceneEditor(Controller controller, Scene sceneToEdit) {
 		this.controller=controller;
-		this.scene=new Scene();
-		this.scene.items= new ArrayList<SceneItem>();
+		this.scene=sceneToEdit;
 		setTitle("Scene Editor");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 570, 419);
@@ -195,6 +179,10 @@ public class SceneEditor extends JFrame {
 		btnAddSceneItem.setBounds(337, 323, 122, 23);
 		contentPane.add(btnAddSceneItem);
 		this.setVisible(true);
+		if(this.scene==null){
+			this.scene = new Scene();
+			this.scene.items= new ArrayList<SceneItem>();
+		}
 	}
 	
 	private void buildScene(){		

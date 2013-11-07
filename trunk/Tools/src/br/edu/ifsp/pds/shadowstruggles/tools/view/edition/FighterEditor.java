@@ -53,8 +53,9 @@ public class FighterEditor extends JFrame {
 	private JCheckBox chckbxHasEffect;
 	private JCheckBox chckbxAvailableInShop;
 	private Controller controller;
+	private Fighter fighter;
 
-	public FighterEditor(Controller controller) {
+	public FighterEditor(Controller controller, Fighter fighter) {
 		this.controller=controller;
 		setVisible(true);
 		setTitle("Fighter Editor");
@@ -64,7 +65,7 @@ public class FighterEditor extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
+		this.fighter=fighter;
 		lblNewLabel = new JLabel("ID");
 		lblNewLabel.setBounds(32, 24, 46, 14);
 		contentPane.add(lblNewLabel);
@@ -305,6 +306,7 @@ public class FighterEditor extends JFrame {
 		});
 		btnCancel.setBounds(257, 528, 89, 23);
 		contentPane.add(btnCancel);
+		if(this.fighter==null) this.fighter= new Fighter();
 	}
 	
 	public void saveFighter(Fighter fighter){

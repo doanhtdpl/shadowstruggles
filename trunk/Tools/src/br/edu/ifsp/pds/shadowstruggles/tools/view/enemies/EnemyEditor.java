@@ -28,7 +28,7 @@ import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Sequence;
 
 import com.esotericsoftware.jsonbeans.Json;
 
-public class EnemyGUIFrame extends JFrame {
+public class EnemyEditor extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -39,10 +39,11 @@ public class EnemyGUIFrame extends JFrame {
 	private JButton btnAddEnemy;
 	private Controller controller;
 
-	public EnemyGUIFrame(Controller controller) {
+	public EnemyEditor(Controller controller, Enemy enemyToEdit) {
 		setVisible(true);
 		setTitle("Enemy Editor");		
 		this.controller=controller;
+		this.enemy=enemyToEdit;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 600, 550);
 		contentPane = new JPanel();
@@ -146,7 +147,7 @@ public class EnemyGUIFrame extends JFrame {
 		contentPane.add(btnGenerateJson);
 		
 		JButton btnCancel = new JButton("Cancel");
-		final EnemyGUIFrame frame = this;
+		final EnemyEditor frame = this;
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
