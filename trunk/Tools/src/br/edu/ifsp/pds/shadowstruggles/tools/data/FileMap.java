@@ -7,7 +7,9 @@ import br.edu.ifsp.pds.shadowstruggles.tools.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.TutorialDialog;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Card;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Deck;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Effect;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Fighter;
+import br.edu.ifsp.pds.shadowstruggles.tools.model.cards.Trap;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Enemy;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.events.Event;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item;
@@ -45,6 +47,8 @@ public class FileMap {
 		classToFile.put(Card.class, "data/files/cards.json");
 		classToFile.put(Deck.class, "data/files/decks.json");
 		classToFile.put(Fighter.class, "data/files/fighters.json");
+		classToFile.put(Trap.class, "data/files/traps.json");
+		classToFile.put(Effect.class, "data/files/effects.json");
 		classToFile.put(Ending.class, "data/files/endings.json");
 		classToFile.put(Enemy.class, "data/files/enemies.json");
 		classToFile.put(Event.class, "data/files/events.json");

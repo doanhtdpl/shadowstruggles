@@ -86,7 +86,7 @@ public class EnemyGUIFrame extends JFrame {
 		btnEditSequence.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SequenceEditorFrame frame = new SequenceEditorFrame(list
-						.getSelectedValue());
+						.getSelectedValue(), getController());
 				frame.setVisible(true);
 				frame.addWindowListener(new WindowAdapter() {@Override
 				public void windowClosed(WindowEvent e) {					
@@ -113,7 +113,7 @@ public class EnemyGUIFrame extends JFrame {
 		JButton btnNew = new JButton("New");
 		btnNew.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				final SequenceEditorFrame frame = new SequenceEditorFrame(null);
+				final SequenceEditorFrame frame = new SequenceEditorFrame(null,getController());
 				frame.setVisible(true);
 				frame.addWindowListener(new WindowAdapter() {
 					@Override

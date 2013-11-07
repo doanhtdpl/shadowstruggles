@@ -11,6 +11,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
+import br.edu.ifsp.pds.shadowstruggles.tools.Controller;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Action;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Action.Attribute;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.enemies.Action.DynamicValue;
@@ -31,10 +32,11 @@ public class ActionFrame extends JFrame {
 	private JComboBox<String> attributeCBox;
 	private JComboBox<String> typeCBox;
 	private JLabel lblValue;
+	private Controller controller;
 
-	public ActionFrame(Action act) {
+	public ActionFrame(Action act, Controller controller) {
 		this.action = act;
-
+		this.controller=controller;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 462, 191);
 		contentPane = new JPanel();
@@ -98,7 +100,7 @@ public class ActionFrame extends JFrame {
 				if (typeCBox.getSelectedItem().equals("Random column"))
 					dynamicType = DynamicValue.RANDOM_COLUMN;
 				if (typeCBox.getSelectedItem().equals("Constant value")) {
-					value = new Card(valueTField.getText());
+					value = getController().getCardByName(valueTField.getText());
 					if (attribute != Attribute.CARD)
 						value = Integer.parseInt((String) value);
 				}
@@ -158,6 +160,10 @@ public class ActionFrame extends JFrame {
 			lblValue.setVisible(true);
 			valueTField.setVisible(true);
 		}
+	}
+	
+	public Controller getController() {
+		return controller;
 	}
 
 	public Action getAction() {
