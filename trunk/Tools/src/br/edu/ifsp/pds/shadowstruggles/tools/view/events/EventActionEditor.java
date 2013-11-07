@@ -125,6 +125,7 @@ public class EventActionEditor extends JFrame {
 		btnAddAction.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				getAction().conditions=actionConditions;
+				System.out.println(getAction());
 				getPreviousScreen().addAction(getAction());
 				dispose();
 				
@@ -189,7 +190,7 @@ public class EventActionEditor extends JFrame {
 			break;
 		case "Warp Action":
 			this.action = new WarpAction();
-			new WarpChooser();
+			new WarpChooser(getThis());
 			break;
 		}
 		
