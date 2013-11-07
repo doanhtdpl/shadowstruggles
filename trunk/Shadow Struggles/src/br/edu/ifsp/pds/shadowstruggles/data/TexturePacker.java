@@ -9,6 +9,7 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.PixmapIO;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Rectangle;
 
 public class TexturePacker {
 	Pixmap pixmap;
@@ -39,6 +40,8 @@ public class TexturePacker {
 		System.out.println("End of getImages, i = " + i);
 		getTextures();
 		System.out.println("End of getTextures, i = " + i);
+		continuePacking();
+		System.out.println("End of continuePacking, i = " + i);
 
 		// System.out.println("Tentativa de manipular imagem!");
 		// // FileHandle image =
@@ -54,18 +57,65 @@ public class TexturePacker {
 
 	}
 
+	private void continuePacking() {
+		// find longest edge and total area of all source textures!
+		int longest_width = 0;
+		int longest_height = 0;
+		long total_area = 0;
+		for (Texture t : textures) {
+			if (t != null) {
+				if (t.getWidth() > longest_width)
+					longest_width = t.getWidth();
+				if (t.getHeight() > longest_height)
+					longest_height = t.getHeight();
+				total_area = +t.getWidth() * t.getHeight();
+			}
+		}
+
+		// Create a single large rectangle big enough to fit all textures; round
+		// up to the nearest power of two if necessary.
+		int aux = 1;
+		while ((longest_width * aux * longest_height) < total_area) {
+			aux = aux * 2;
+		}
+		Rectangle r = new Rectangle(0, 0, longest_width * aux, longest_height);
+		System.out.println("Rectangle width: " + r.width + ", height:"
+				+ r.height + ".");
+
+		// Place each texture, first by finding the texture with the largest
+		// area and longest edge that has not yet been placed.
+		boolean placed[] = new boolean[qtdArquivos];
+		for (boolean b : placed) {
+			b = false;
+		}
+		i = 0;
+		for (Texture t : textures) {
+			if (t != null) {
+				if (t.getWidth() > longest_width)
+					longest_width = t.getWidth();
+				if (t.getHeight() > longest_height)
+					longest_height = t.getHeight();
+				total_area = +t.getWidth() * t.getHeight();
+			}
+			i++;
+		}
+
+	}
+
 	// Pega as imagens e coloca no array textures
 	private void getTextures() {
-		System.out.println("a");
-		i=0;
-		System.out.println("b");
+		i = 0;
 		textures = new Texture[qtdArquivos];
-		System.out.println("c");
-		for(FileHandle imagem : imagens){
-			textures[i]= new Texture(imagem);
-			System.out.println("d");
+		for (FileHandle imagem : imagens) {
+			try {
+				textures[i] = new Texture(imagem);
+				System.out.println("Imagem " + imagem.name() + " adicionada!");
+			} catch (Exception ex) {
+				System.out.println("Imagem " + imagem.name()
+						+ " NÃO adicionada! (" + ex.getMessage() + ")");
+			}
+
 			i++;
-			System.out.println("e");
 		}
 	}
 
