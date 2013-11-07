@@ -11,12 +11,8 @@ public class TexturePackerTest {
 
 	@Test
 	public void test(ShadowStruggles game) {
-		try{
 			TexturePacker tp = new TexturePacker("hi", game);
 			System.out.println("Success");
-		}catch(Exception ex){
-			fail("Fail!!!");
-		}
 
 	}
 
