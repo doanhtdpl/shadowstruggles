@@ -36,6 +36,7 @@ public class ProfileConditionChooser extends JFrame {
 	 * Create the frame.
 	 */
 	public ProfileConditionChooser(EventActionEditor previousScreen) {
+		setVisible(true);
 		this.previousScreen=previousScreen;
 		setTitle("Condition Chooser");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

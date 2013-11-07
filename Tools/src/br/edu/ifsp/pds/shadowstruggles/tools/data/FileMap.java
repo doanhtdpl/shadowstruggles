@@ -57,7 +57,9 @@ public class FileMap {
 		classToFile.put(Pack.class, "data/files/packs.json");
 		classToFile.put(Quest.class, "data/files/quests.json");
 		classToFile.put(Scene.class, "data/files/scenes.json");
+		
 		classToFile.put(Shop.class, "data/files/shops.json");
+		classToFile.put(Item.class, "data/files/items.json");
 		classToFile.put(TutorialDialog.class, "data/files/tutorial.json");
 
 		resourcesToDirectory.put("battle_maps", "data/images/battle_maps/");

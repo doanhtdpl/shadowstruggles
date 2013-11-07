@@ -101,6 +101,10 @@ public class Controller {
 
 	public void createDeck() {
 	}
+	
+	public void createItem(Item item)throws IOException{
+		model.insertObject(item, Item.class);
+	}
 
 	public void createEnemy(Enemy enemy) throws IOException{
 		model.insertObject(enemy,Enemy.class);
@@ -158,6 +162,26 @@ public class Controller {
 		return enemies;				
 	}
 	
+	public ArrayList<Scene> getScenes(){
+		ArrayList<Scene> scenes= new ArrayList<Scene>();
+		try {
+			scenes = model.searchAllObjects(Scene.class);
+		} catch (IOException e) {			
+			e.printStackTrace();
+		}
+		return scenes;				
+	}
+	
+	public ArrayList<BattlePlatform> getBattles(){
+		ArrayList<BattlePlatform> battles= new ArrayList<BattlePlatform>();
+		try {
+			battles = model.searchAllObjects(BattlePlatform.class);
+		} catch (IOException e) {			
+			e.printStackTrace();
+		}
+		return battles;				
+	}
+	
 	public ArrayList<Fighter> getFighters(){
 		ArrayList<Fighter> fighters = new ArrayList<Fighter>();
 		try {
@@ -205,7 +229,11 @@ public class Controller {
 	
 	public ArrayList<Item> getItems(){
 		ArrayList<Item> items = new ArrayList<Item>();
-		//TODO: retrieve items from file
+		try {
+			items=model.searchAllObjects(Item.class);
+		} catch (IOException e) {			
+			e.printStackTrace();
+		}
 		return items;
 	}
 	

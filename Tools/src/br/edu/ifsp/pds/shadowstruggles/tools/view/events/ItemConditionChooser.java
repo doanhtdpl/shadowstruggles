@@ -51,6 +51,7 @@ public class ItemConditionChooser extends JFrame {
 	 * Create the frame.
 	 */
 	public ItemConditionChooser(EventActionEditor previousScreen) {
+		setVisible(true);
 		this.items= new ArrayList<Item>();
 		this.previousScreen=previousScreen;
 		

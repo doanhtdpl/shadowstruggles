@@ -169,8 +169,8 @@ public class SceneEditor extends JFrame {
 		contentPane.add(lblChooseAScene);
 		
 		comboBox = new JComboBox();
-		comboBox.setMaximumRowCount(9);
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Decision", "Dialogue", "Event Control", "Layer Control", "Movement Control", "Profile Control", "Scene Control", "Scene Item", "Teleport Control"}));
+		comboBox.setMaximumRowCount(10);
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Dialogue", "Battle Control", "Decision", "Event Control", "Layer Control", "Movement Control", "Profile Control", "Scene Control", "Scene Item", "Teleport Control"}));
 		comboBox.setBounds(336, 287, 175, 20);
 		contentPane.add(comboBox);
 		
@@ -181,6 +181,10 @@ public class SceneEditor extends JFrame {
 				switch(itemType){
 					case "Dialogue":
 						new DialogueChooser(getThis());
+						break;
+					case "Battle Control": 
+						new BattleControlEditor(getThis());
+						break;
 					
 				}
 			}
