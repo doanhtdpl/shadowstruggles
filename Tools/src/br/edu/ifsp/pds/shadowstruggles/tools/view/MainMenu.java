@@ -164,7 +164,7 @@ public class MainMenu {
 				if (selectedTab.equals("Card Actions"))
 					new ActionEditor();
 				if (selectedTab.equals("Decks"))
-					new DeckEditor();
+					new DeckEditor(controller,null);
 				if (selectedTab.equals("Enemies"))
 					new EnemyEditor(controller, null);
 				if (selectedTab.equals("Battles"))
@@ -215,7 +215,7 @@ public class MainMenu {
 				if (selectedTab.equals("Card Actions"))
 					new ActionEditor();
 				if (selectedTab.equals("Decks"))
-					new DeckEditor();
+					new DeckEditor(controller,(Deck)getSelectedObject());
 				if (selectedTab.equals("Enemies"))
 					new EnemyEditor(controller, (Enemy)getSelectedObject());
 				if (selectedTab.equals("Battles"))

@@ -14,25 +14,20 @@ import br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item;
 public class Deck extends Item {
 	public int minCapacity;
 	public int maxCapacity;
-	public ArrayList<Card> cards;
-	public String deckImage;
-	public String name;
 	public int totalCardPoints;	
-	public int profileOwnerId;
+	public ArrayList<Card> cards;	
+	//TODO: consertar leitura e gravação de CardAction
 
 	public Deck() {
 		super();
-		this.cards = new ArrayList<Card>();
-		this.deckImage = "";
+		this.cards = new ArrayList<Card>();		
 		this.totalCardPoints = 0;
 	}
 	
 	@Override
-	public void read(Json arg0, JsonValue arg1) {
-		super.read(arg0, arg1);
-		
+	public void read(Json arg0, JsonValue arg1) {		
 		try {
-			SerializationHelper.read(this, arg0, arg1, new ArrayList<String>(Arrays.asList(new String[] {"totalCardPoints","profileOwnerId"})));
+			SerializationHelper.read(this, arg0, arg1, new ArrayList<String>(Arrays.asList(new String[] {"totalCardPoints"})));
 		} catch (IllegalArgumentException e) {
 			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
 			e.printStackTrace();
@@ -43,11 +38,10 @@ public class Deck extends Item {
 	}
 
 	@Override
-	public void write(Json arg0) {
-		super.write(arg0);
+	public void write(Json arg0) {	
 		
 		try {
-			SerializationHelper.writeToJson(this, arg0, new ArrayList<String>(Arrays.asList(new String[] {"totalCardPoints","profileOwnerId"})));
+			SerializationHelper.writeToJson(this, arg0, new ArrayList<String>(Arrays.asList(new String[] {})));
 		} catch (IllegalArgumentException e) {
 			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
 			e.printStackTrace();
@@ -55,6 +49,7 @@ public class Deck extends Item {
 			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
 			e.printStackTrace();
 		}
+		
 		
 	}
 	

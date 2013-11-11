@@ -29,6 +29,7 @@ public class SerializationHelper {
 
 		for (Field field : fields) {
 			if (!skipFields.contains(field.getName())) {
+				System.out.println("Writing: "+field.getName());
 				json.writeValue(field.getName(), field.get(object));
 			}
 		}

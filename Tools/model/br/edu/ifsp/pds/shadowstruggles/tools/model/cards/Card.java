@@ -13,15 +13,13 @@ import br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item;
 
 public class Card extends Item implements Serializable {
 	public int energyCost;
-	public CardAction action;
-	public BattlePlatform platform;	
+	public CardAction action;	
 	public ArrayList<String> preRequisites = new ArrayList<String>();
 
 	public Card() {
 		super();
 		this.energyCost = 0;
-		this.action = new DefaultAction();
-		this.platform = new BattlePlatform();		
+		this.action = new DefaultAction();			
 		this.preRequisites = new ArrayList<String>();
 	}
 	
@@ -31,11 +29,10 @@ public class Card extends Item implements Serializable {
 	
 	@Override
 	public void write(Json arg0) {
-		ArrayList<String> skipFields = new ArrayList<String>();
-		skipFields.add("platform");
-		
+		ArrayList<String> skipFields = new ArrayList<String>();	
+		skipFields.add("action");
 		try {
-			SerializationHelper.writeToJson(this, arg0, new ArrayList<String>());
+			SerializationHelper.writeToJson(this, arg0, skipFields);
 		} catch (IllegalArgumentException e) {
 			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
 			e.printStackTrace();
@@ -47,9 +44,8 @@ public class Card extends Item implements Serializable {
 	
 	@Override
 	public void read(Json arg0, JsonValue arg1) {
-		ArrayList<String> skipFields = new ArrayList<String>();
-		skipFields.add("platform");
-		
+		ArrayList<String> skipFields = new ArrayList<String>();		
+		skipFields.add("action");
 		try {
 			SerializationHelper.read(this, arg0, arg1, skipFields);
 		} catch (IllegalArgumentException e) {
