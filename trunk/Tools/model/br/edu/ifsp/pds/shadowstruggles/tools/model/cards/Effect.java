@@ -56,7 +56,8 @@ public class Effect extends Card {
 	public void read(Json arg0, JsonValue arg1) {
 		ArrayList<String> skipFields = new ArrayList<String>();
 		skipFields.add("isActivated");
-		
+		skipFields.add("platform");
+		skipFields.add("action");
 		try {
 			SerializationHelper.read(this, arg0, arg1, skipFields);
 		} catch (IllegalArgumentException e) {
@@ -72,6 +73,8 @@ public class Effect extends Card {
 	public void write(Json arg0) {
 		ArrayList<String> skipFields = new ArrayList<String>();
 		skipFields.add("isActivated");		
+		skipFields.add("platform");
+		skipFields.add("action");
 		try {
 			SerializationHelper.writeToJson(this, arg0, skipFields);
 		} catch (IllegalArgumentException e) {

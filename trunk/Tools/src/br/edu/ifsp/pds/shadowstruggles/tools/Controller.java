@@ -98,7 +98,8 @@ public class Controller {
 	public void createAction() {
 	}
 
-	public void createDeck() {
+	public void createDeck(Deck deck) throws IOException {
+		model.insertObject(deck, Deck.class);
 	}
 	
 	public void createItem(Item item)throws IOException{
@@ -206,6 +207,21 @@ public class Controller {
 			if(effect.name.equals(name))return effect;
 		return null;	
 		
+	}
+	
+	public ArrayList<Card> getCards(){
+		ArrayList<Card> cards = new ArrayList<Card>();
+		try {			
+			for(Object obj : model.searchAllObjects(Fighter.class))
+			cards.add((Card)obj);
+			for(Object obj : model.searchAllObjects(Trap.class))
+				cards.add((Card)obj);
+			for(Object obj : model.searchAllObjects(Effect.class))
+				cards.add((Card)obj);
+		} catch (IOException e) {			
+			e.printStackTrace();
+		}
+		return cards;
 	}
 	
 	public ArrayList<Item> getItems(){
