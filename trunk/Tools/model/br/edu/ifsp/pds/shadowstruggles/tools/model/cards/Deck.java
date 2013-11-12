@@ -15,8 +15,7 @@ public class Deck extends Item {
 	public int minCapacity;
 	public int maxCapacity;
 	public int totalCardPoints;	
-	public ArrayList<Card> cards;	
-	//TODO: consertar leitura e gravação de CardAction
+	public ArrayList<Card> cards;		
 
 	public Deck() {
 		super();

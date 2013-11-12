@@ -64,6 +64,7 @@ public class Trap extends Card {
 			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
 			e.printStackTrace();
 		}
+		this.action = arg0.readValue("action", CardAction.class, arg1);
 	}
 	
 	@Override
@@ -81,6 +82,7 @@ public class Trap extends Card {
 			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
 			e.printStackTrace();
 		}
+		arg0.writeValue("action", this.action, CardAction.class);
 	}
 
 

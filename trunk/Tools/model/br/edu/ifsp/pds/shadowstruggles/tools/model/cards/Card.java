@@ -3,13 +3,12 @@ package br.edu.ifsp.pds.shadowstruggles.tools.model.cards;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
-import com.esotericsoftware.jsonbeans.Json;
-import com.esotericsoftware.jsonbeans.JsonValue;
-import com.esotericsoftware.jsonbeans.Json.Serializable;
-
 import br.edu.ifsp.pds.shadowstruggles.tools.data.SerializationHelper;
-import br.edu.ifsp.pds.shadowstruggles.tools.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.tools.model.items.Item;
+
+import com.esotericsoftware.jsonbeans.Json;
+import com.esotericsoftware.jsonbeans.Json.Serializable;
+import com.esotericsoftware.jsonbeans.JsonValue;
 
 public class Card extends Item implements Serializable {
 	public int energyCost;
@@ -40,6 +39,7 @@ public class Card extends Item implements Serializable {
 			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
 			e.printStackTrace();
 		}
+		arg0.writeValue("action", this.action);
 	}
 	
 	@Override
@@ -55,5 +55,7 @@ public class Card extends Item implements Serializable {
 			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(e.toString());
 			e.printStackTrace();
 		}
+		this.action = arg0.readValue("action", CardAction.class, arg1);
+		
 	}
 }
