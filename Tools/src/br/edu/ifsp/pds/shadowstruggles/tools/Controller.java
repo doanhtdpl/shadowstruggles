@@ -234,11 +234,25 @@ public class Controller {
 		return items;
 	}
 	
+	public ArrayList<Shop> getShops(){
+		ArrayList<Shop> shops = new ArrayList<Shop>();
+		try {
+			shops=model.searchAllObjects(Shop.class);
+		} catch (IOException e) {			
+			e.printStackTrace();
+		}		
+		return shops;
+	}
+	
 
 	
 	public ArrayList<Quest> getQuests(){
 		ArrayList<Quest> quests = new ArrayList<Quest>();
-		//TODO: retrieve quests from file
+		try {
+			quests= model.searchAllObjects(Quest.class);
+		} catch (IOException e) {			
+			e.printStackTrace();
+		}
 		return quests;
 	}
 

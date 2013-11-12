@@ -65,11 +65,7 @@ public class DeckEditor extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		btnAddDeck = new JButton("Add Deck");
-		btnAddDeck.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+		btnAddDeck = new JButton("Add Deck");		
 		btnAddDeck.setBounds(21, 551, 110, 37);
 		contentPane.add(btnAddDeck);
 		btnAddDeck.addMouseListener(new MouseAdapter() {

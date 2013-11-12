@@ -46,8 +46,10 @@ public class EventActionEditor extends JFrame {
 	private EventAction action;
 	public JButton btnAddAction;
 	private JComboBox comboBox;
+	private JLabel lblAction;
 
 	public EventActionEditor(EventAction action, EventEditor previousScreen) {
+		setTitle("Event Action Editor");
 		this.previousScreen=previousScreen;
 		this.action = action;
 		this.actionConditions = new ArrayList<ProfileCondition>();
@@ -161,6 +163,10 @@ public class EventActionEditor extends JFrame {
 		});
 		btnBuild.setBounds(335, 7, 89, 23);
 		contentPane.add(btnBuild);
+		
+		lblAction = new JLabel("");
+		lblAction.setBounds(170, 33, 46, 14);
+		contentPane.add(lblAction);
 		btnCancel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -186,7 +192,7 @@ public class EventActionEditor extends JFrame {
 			break;
 		case "Shop Action":
 			this.action = new ShopAction();
-			new ShopChooser();
+			new ShopChooser(getThis());
 			break;
 		case "Warp Action":
 			this.action = new WarpAction();
