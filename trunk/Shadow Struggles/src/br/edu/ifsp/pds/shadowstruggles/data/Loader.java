@@ -1,7 +1,8 @@
 package br.edu.ifsp.pds.shadowstruggles.data;
 
+import java.io.IOException;
+
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
@@ -10,7 +11,6 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.tools.imagepacker.TexturePacker2;
 import com.badlogic.gdx.utils.Array;
 
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
@@ -21,6 +21,7 @@ import br.edu.ifsp.pds.shadowstruggles.texturepacker.MyTexturePacker;
  */
 
 public class Loader {
+	public static final String LOG = DataManager.class.getName();
 
 	public static class Asset {
 		public String assetName;
@@ -50,8 +51,9 @@ public class Loader {
 	public Loader(ShadowStruggles game) {
 		this.game = game;
 
+		MyFileHandleResolver resolver = new MyFileHandleResolver();
 		this.game.getAssets().setLoader(TiledMap.class,
-				new TmxMapLoader(new InternalFileHandleResolver()));
+				new TmxMapLoader(resolver));
 	}
 
 	/**
@@ -88,7 +90,11 @@ public class Loader {
 	 * called first.
 	 */
 	public void loadAssets() {
-		createTextureAtlas();
+		try {
+			createTextureAtlas();
+		} catch (IOException e) {
+			Gdx.app.error(LOG, "Error creating texture atlas: ", e);
+		}
 
 		loadTextureAtlas();
 		loadTextures();
@@ -295,7 +301,7 @@ public class Loader {
 	/**
 	 * Dynamically creates an atlas for the textureRegions which will be used.
 	 */
-	private void createTextureAtlas() {
+	private void createTextureAtlas() throws IOException {
 		if (this.textureRegions != null) {
 			if (Gdx.files.local("tmp").exists()) {
 				if (Gdx.files.local("tmp/tmp.atlas").exists()
@@ -317,7 +323,7 @@ public class Loader {
 			}
 
 			// Next, pack them all into a single TextureAtlas.
-			TexturePacker2.process("tmp", "tmp", "tmp");
+			MyTexturePacker.process("tmp/", "tmp/", "tmp");
 		}
 	}
 }
