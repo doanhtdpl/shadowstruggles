@@ -1,9 +1,9 @@
 package br.edu.ifsp.pds.shadowstruggles;
 
-import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
 import br.edu.ifsp.pds.shadowstruggles.data.FileMap;
 import br.edu.ifsp.pds.shadowstruggles.data.Loader;
 import br.edu.ifsp.pds.shadowstruggles.data.Loader.Asset;
+import br.edu.ifsp.pds.shadowstruggles.data.MyFileHandleResolver;
 import br.edu.ifsp.pds.shadowstruggles.data.SoundManager;
 import br.edu.ifsp.pds.shadowstruggles.dataTest.LoaderTest;
 import br.edu.ifsp.pds.shadowstruggles.model.profiles.Profile;
@@ -76,7 +76,7 @@ public class ShadowStruggles extends Game {
 	public void create() {
 		this.audio = new SoundManager(assets);
 		this.controller = new Controller();
-		this.setAssets(new AssetManager());
+		this.setAssets(new AssetManager(new MyFileHandleResolver()));
 
 		FileMap.initMap();
 
@@ -89,7 +89,7 @@ public class ShadowStruggles extends Game {
 			// Test cases go here.
 			LoaderTest loaderTest = new LoaderTest();
 			loaderTest.testLoading(this);
-			loaderTest.testGetRegion(this);						
+			loaderTest.testGetRegion(this);
 			loaderTest.testDispose(this);
 
 			// End of test cases.
