@@ -1,8 +1,10 @@
 package br.edu.ifsp.pds.shadowstruggles.texturepacker;
 
+import java.io.IOException;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.tools.imagepacker.TexturePacker2;
 import com.badlogic.gdx.utils.Array;
@@ -24,11 +26,12 @@ public class MyTexturePacker {
 	 *            The name (without extensions) of the generated atlas file.
 	 */
 	public static void process(String originDir, String destinyDir,
-			String packName) {
+			String packName) throws IOException {
 		Array<TextureLocation> textures = retrieveTextures(originDir);
-		Array<MyPage> pages = PackingAlgorithm.calculateAtlas(textures, 1024, 1024);
-		MyImageProcessor.createImages(pages, destinyDir, packName);
+		Array<MyPage> pages = PackingAlgorithm.calculateAtlas(textures, 1024,
+				1024);
 		makeAtlasFile(pages, destinyDir, packName);
+		MyImageProcessor.createImages(pages, destinyDir, packName);
 	}
 
 	private static Array<TextureLocation> retrieveTextures(String originDir) {
@@ -42,11 +45,11 @@ public class MyTexturePacker {
 		for (FileHandle dir : childrenDirs) {
 			if (dir.isDirectory())
 				textures.addAll(retrieveTextures(dir));
-			else if (dir.extension().equals(".png")
-					|| dir.extension().equals(".jpg")) {
-				Texture texture = new Texture(dir);
-				Rectangle rect = new Rectangle(0, 0, texture.getWidth(),
-						texture.getHeight());
+			else if (dir.extension().equals("png")
+					|| dir.extension().equals("jpg")) {
+				Pixmap pixmap = new Pixmap(dir);
+				Rectangle rect = new Rectangle(0, 0, pixmap.getWidth(),
+						pixmap.getHeight());
 				textures.add(new TextureLocation(dir, rect));
 			}
 		}
@@ -55,7 +58,7 @@ public class MyTexturePacker {
 	}
 
 	private static void makeAtlasFile(Array<MyPage> pages, String destinyDir,
-			String packName) {
+			String packName) throws IOException {
 		String text = "";
 
 		int i = 1;
@@ -68,22 +71,26 @@ public class MyTexturePacker {
 			for (TextureLocation texture : textures) {
 				Rectangle rect = texture.getTextureRect();
 
-				text += texture.getFile().nameWithoutExtension();
+				text += "\n"
+						+ texture.getFile().pathWithoutExtension()
+								.replace(destinyDir, "");
 				text += "\n\trotate: false";
-				text += "\n\txy: " + rect.x + ", " + rect.y;
-				text += "\n\tsize: " + rect.width + ", " + rect.height;
-				text += "\n\torig: " + rect.width + ", " + rect.height;
+				text += "\n\txy: " + (int) rect.x + ", " + (int) rect.y;
+				text += "\n\tsize: " + (int) rect.width + ", "
+						+ (int) rect.height;
+				text += "\n\torig: " + (int) rect.width + ", "
+						+ (int) rect.height;
 				text += "\n\toffset: 0, 0";
 				text += "\n\tindex: -1";
 			}
 
 			i++;
-			if (i < pagesSize)
-				text += "\n";
+			if(i <= pagesSize)
+				text += "\n\n";
 		}
 
 		FileHandle file = Gdx.files.local(destinyDir + packName + ".atlas");
-		file.mkdirs();
+		file.file().createNewFile();
 		file.writeString(text, false);
 	}
 }
