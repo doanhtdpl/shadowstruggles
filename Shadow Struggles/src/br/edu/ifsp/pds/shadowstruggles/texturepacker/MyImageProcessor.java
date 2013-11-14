@@ -29,22 +29,17 @@ public class MyImageProcessor {
 			String baseName) throws IOException {
 		int index = 1;
 		for (MyPage page : pages) {
-//			System.out.println("Page " + index + " - " + page.getWidth() + "x"
-//					+ page.getHeight());
 			Pixmap pixmap = new Pixmap(page.getWidth(), page.getHeight(),
 					Pixmap.Format.RGBA8888);
 
 			Array<TextureLocation> textures = page.getTextures();
 			for (TextureLocation texture : textures) {
 				Pixmap textureMap = new Pixmap(texture.getFile());
-//				System.out.println("Texture " + texture.getFile().path()
-//						+ " - " + texture.getTextureRect());
 				Rectangle textureRect = texture.getTextureRect();
 
 				pixmap.drawPixmap(textureMap, (int) textureRect.x,
 						(int) textureRect.y);
 			}
-//			System.out.println(pixmap + " - " + pixmap.getPixels());
 
 			FileHandle file = Gdx.files.local(destinyDir + baseName + index
 					+ ".png");
