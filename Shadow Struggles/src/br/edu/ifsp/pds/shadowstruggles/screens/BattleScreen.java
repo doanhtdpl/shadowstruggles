@@ -52,9 +52,6 @@ import com.badlogic.gdx.utils.Array;
  */
 
 public class BattleScreen extends BaseScreen {
-
-	// public final static float FPS = 65;
-
 	private Timer2D timer;
 	private EnergyBar energyBar;
 	private LifeBar playerLife;
@@ -126,7 +123,6 @@ public class BattleScreen extends BaseScreen {
 
 	@Override
 	public Array<Asset> textureRegionsToLoad() {
-		System.out.println("BattleScreen: texturesRegionToLoad");
 		Array<Asset> assets = new Array<Asset>(new Asset[] {
 				new Asset("magnifier.png", "game_ui_images"),
 				new Asset("back_card.png", "game_ui_images"),

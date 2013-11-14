@@ -30,7 +30,7 @@ public class MyTexturePacker {
 	public static void process(String originDir, String destinyDir,
 			String packName) throws IOException {
 		Array<TextureLocation> textures = retrieveTextures(Gdx.files
-				.internal(originDir));
+				.local(originDir));
 		Array<MyPage> pages = PackingAlgorithm.calculateAtlas(textures, 1024,
 				1024);
 		makeAtlasFile(pages, destinyDir, packName);
@@ -42,9 +42,9 @@ public class MyTexturePacker {
 		FileHandle[] childrenDirs = parentDir.list();
 
 		for (FileHandle dir : childrenDirs) {
-			if (dir.isDirectory())
+			if (dir.isDirectory()) {
 				textures.addAll(retrieveTextures(dir));
-			else if (dir.extension().equals("png")
+			} else if (dir.extension().equals("png")
 					|| dir.extension().equals("jpg")) {
 				Pixmap pixmap = new Pixmap(dir);
 				Rectangle rect = new Rectangle(0, 0, pixmap.getWidth(),
