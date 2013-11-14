@@ -58,24 +58,21 @@ public class MyPage {
 	 */
 	public void calculateDimensions() {
 		// Get the width by adding up all textures on the first row (i.e.,
-		// textures with the largest y values).
+		// textures with the least y values).
 		textures.sort(new Comparator<TextureLocation>() {
 			@Override
 			public int compare(TextureLocation o1, TextureLocation o2) {
-				return (int) (o2.getTextureRect().y - o1.getTextureRect().y);
+				return (int) (o1.getTextureRect().y - o2.getTextureRect().y);
 			}
 		});
 
-		float largestY = textures.get(0).getTextureRect().y;
+		float leastY = textures.get(0).getTextureRect().y;
 		width = 0;
 		for (TextureLocation texture : textures) {
 			float y = texture.getTextureRect().y;
-			if (y != largestY)
+			if (y != leastY)
 				break;
 			width += texture.getTextureRect().width;
-//			System.out.println("Found texture on first row: " + texture.getFile().name()
-//					+ " - " + texture.getTextureRect()
-//					+ " and my width is now " + width);
 		}
 		width = MathUtils.nextPowerOfTwo(width);
 
@@ -84,20 +81,17 @@ public class MyPage {
 		textures.sort(new Comparator<TextureLocation>() {
 			@Override
 			public int compare(TextureLocation o1, TextureLocation o2) {
-				return (int) (o2.getTextureRect().x - o1.getTextureRect().x);
+				return (int) (o1.getTextureRect().x - o2.getTextureRect().x);
 			}
 		});
 
-		float largestX = textures.get(0).getTextureRect().x;
+		float leastX = textures.get(0).getTextureRect().x;
 		height = 0;
 		for (TextureLocation texture : textures) {
 			float x = texture.getTextureRect().x;
-			if (x != largestX)
+			if (x != leastX)
 				break;
 			height += texture.getTextureRect().height;
-//			System.out.println("Found texture on first column " + texture.getFile().name()
-//					+ " - " + texture.getTextureRect()
-//					+ " and my height is now " + height);
 		}
 		height = MathUtils.nextPowerOfTwo(height);
 	}

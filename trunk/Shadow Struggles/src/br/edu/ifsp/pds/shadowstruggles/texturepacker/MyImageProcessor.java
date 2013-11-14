@@ -19,7 +19,7 @@ public class MyImageProcessor {
 	 * @param pages
 	 *            The atlas pages.
 	 * @param destinyDir
-	 *            The output directory.
+	 *            The output directory. It must end with a forward slash ('/').
 	 * @param baseName
 	 *            Base name for the image files. Each file is generated
 	 *            sequentially in the following format: baseNamei.png, where i
@@ -29,17 +29,22 @@ public class MyImageProcessor {
 			String baseName) throws IOException {
 		int index = 1;
 		for (MyPage page : pages) {
+//			System.out.println("Page " + index + " - " + page.getWidth() + "x"
+//					+ page.getHeight());
 			Pixmap pixmap = new Pixmap(page.getWidth(), page.getHeight(),
 					Pixmap.Format.RGBA8888);
 
 			Array<TextureLocation> textures = page.getTextures();
 			for (TextureLocation texture : textures) {
 				Pixmap textureMap = new Pixmap(texture.getFile());
+//				System.out.println("Texture " + texture.getFile().path()
+//						+ " - " + texture.getTextureRect());
 				Rectangle textureRect = texture.getTextureRect();
 
 				pixmap.drawPixmap(textureMap, (int) textureRect.x,
 						(int) textureRect.y);
 			}
+//			System.out.println(pixmap + " - " + pixmap.getPixels());
 
 			FileHandle file = Gdx.files.local(destinyDir + baseName + index
 					+ ".png");

@@ -25,8 +25,6 @@ public class PackingAlgorithm {
 		}
 
 		public void place(float x, float y) {
-//			System.out.println("Placing " + texture.getFile().name() + " at "
-//					+ x + " - " + y);
 			texture.getTextureRect().x = x;
 			texture.getTextureRect().y = y;
 			placed = true;
@@ -67,38 +65,58 @@ public class PackingAlgorithm {
 		currentPage.newFree(0, 0, maxWidth, maxHeight);
 		pages.add(currentPage);
 
-		for (Rect rect : rects) {
-			if (!rect.placed) {
-				// Make sure to pick the texture with the greatest area.
-				int index = rects.indexOf(rect, true);
-				int rectsSize = rects.size;
-				for (int i = index; i < rectsSize; i++) {
-					Rect rect2 = rects.get(i);
-					if (rect2.longestEdge < rect.longestEdge)
-						break;
-					if (rect2.area > rect.area)
-						rect = rect2;
-				}
+		boolean continueLoop = true;
+		while (continueLoop) {
+			continueLoop = false;
+			for (Rect rect : rects) {
+				if (!rect.placed) {
+					// Make sure to pick the texture with the greatest area.
+					Rect correctRect = rect;
+					int index = rects.indexOf(rect, true);
+					int rectsSize = rects.size;
+					for (int i = index; i < rectsSize; i++) {
+						Rect rect2 = rects.get(i);
+						if (rect2.longestEdge < rect.longestEdge)
+							break;
+						if (rect2.area > rect.area)
+							correctRect = rect2;
+					}
 
-				totalArea += rect.area;
-				boolean lastRect = rects.indexOf(rect, true) == rects.size - 1;
+					totalArea += correctRect.area;
+					boolean lastRect = rects.indexOf(correctRect, true) == rects.size - 1;
 
-				if (totalArea > maxArea) {
-					currentPage.calculateDimensions();
+					if (totalArea > maxArea) {
+						currentPage.calculateDimensions();
 
-					if (!lastRect) {
-						// Create a new page and continue.
+						if (!lastRect) {
+							// Create a new page and continue.
+							currentPage = new MyPage();
+							currentPage.newFree(0, 0, maxWidth, maxHeight);
+							pages.add(currentPage);
+							totalArea = rect.area;
+						}
+					}
+
+					Rect placedRect = allocateNextSpot(correctRect, currentPage);
+					if (placedRect != null) {
+						currentPage.getTextures().add(placedRect.texture);
+						if (lastRect)
+							currentPage.calculateDimensions();
+					} else if (placedRect == null && lastRect) {
+						// It's the last rectangle and it couldn't fit? Then we
+						// need to create a new page and reset the loop (but
+						// first, calculate the dimensions for the current
+						// page).
+						currentPage.calculateDimensions();
+
 						currentPage = new MyPage();
 						currentPage.newFree(0, 0, maxWidth, maxHeight);
 						pages.add(currentPage);
-						totalArea = rect.area;
+
+						totalArea = 0;
+						continueLoop = true;
 					}
 				}
-
-				rect = allocateNextSpot(rect, currentPage);
-				currentPage.getTextures().add(rect.texture);
-				if (lastRect)
-					currentPage.calculateDimensions();
 			}
 		}
 
@@ -119,9 +137,6 @@ public class PackingAlgorithm {
 			int ec = next.fits(r.width, r.height);
 
 			if (ec >= 0) {
-//				System.out.println("Texture " + rect.texture.getFile().name()
-//						+ " - " + r + " fits in node " + next.rect + " with "
-//						+ ec + " edges");
 				edgeCount = ec;
 
 				if (ec == 2) {
@@ -131,13 +146,11 @@ public class PackingAlgorithm {
 				}
 
 				if (next.rect.y < leastY || leastY == 0) {
-//					System.out.println("Potential bestFit found because next.rect.y < leastY");
 					leastX = next.rect.x;
 					leastY = next.rect.y;
 					previousBestFit = previousNode;
 					bestFit = next;
 				} else if (next.rect.y == leastY && next.rect.x < leastX) {
-//					System.out.println("Potential bestFit found because next.rect.x < leastX");
 					leastX = next.rect.x;
 					previousBestFit = previousNode;
 					bestFit = next;
@@ -158,6 +171,10 @@ public class PackingAlgorithm {
 					currentPage.newFree(bestFit.rect.x, bestFit.rect.y
 							+ textureRect.height, bestFit.rect.width,
 							bestFit.rect.height - textureRect.height);
+					currentPage.getNextFreeNode().nextNode = new Node(
+							bestFit.rect.x + textureRect.width, bestFit.rect.y,
+							bestFit.rect.width - textureRect.width,
+							textureRect.height);
 
 					bestFit.rect.x += textureRect.width;
 					bestFit.rect.width -= textureRect.width;
@@ -183,6 +200,8 @@ public class PackingAlgorithm {
 					}
 				}
 			} while (currentPage.mergeNodes());
+		} else {
+			rect = null;
 		}
 
 		return rect;

@@ -19,23 +19,22 @@ public class MyTexturePacker {
 	 * 
 	 * @param originDir
 	 *            The parent directory of the image files to be packed (which
-	 *            includes all children directories).
+	 *            includes all children directories). It must end with a forward
+	 *            slash ('/').
 	 * @param destinyDir
 	 *            The output directory for the generated image and atlas files.
+	 *            It must end with a forward slash ('/').
 	 * @param packName
 	 *            The name (without extensions) of the generated atlas file.
 	 */
 	public static void process(String originDir, String destinyDir,
 			String packName) throws IOException {
-		Array<TextureLocation> textures = retrieveTextures(originDir);
+		Array<TextureLocation> textures = retrieveTextures(Gdx.files
+				.internal(originDir));
 		Array<MyPage> pages = PackingAlgorithm.calculateAtlas(textures, 1024,
 				1024);
 		makeAtlasFile(pages, destinyDir, packName);
 		MyImageProcessor.createImages(pages, destinyDir, packName);
-	}
-
-	private static Array<TextureLocation> retrieveTextures(String originDir) {
-		return retrieveTextures(Gdx.files.internal(originDir));
 	}
 
 	private static Array<TextureLocation> retrieveTextures(FileHandle parentDir) {
@@ -85,7 +84,7 @@ public class MyTexturePacker {
 			}
 
 			i++;
-			if(i <= pagesSize)
+			if (i <= pagesSize)
 				text += "\n\n";
 		}
 

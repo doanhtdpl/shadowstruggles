@@ -4,13 +4,11 @@ import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
-import br.edu.ifsp.pds.shadowstruggles.model.items.Shop;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgMap;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgPlatform;
 import br.edu.ifsp.pds.shadowstruggles.rpg.RpgController;
 import br.edu.ifsp.pds.shadowstruggles.screens.SaveLoadScreen.Mode;
-import br.edu.ifsp.pds.shadowstruggles.screens.rpg.RpgMenu;
 import br.edu.ifsp.pds.shadowstruggles.screens.rpg.RpgScreen;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -24,7 +22,6 @@ public class MainScreen extends BaseScreen {
 
 	private Image background;
 	private Image locker;
-	private Image tableBg;
 	private TextButton campaign;
 	private TextButton freePlay;
 	private TextButton shop;
@@ -54,8 +51,10 @@ public class MainScreen extends BaseScreen {
 		// Images.
 
 		background = new Image(this.getSkin().getDrawable("msbackground2"));
-		tableBg = new Image(this.getSkin().getDrawable("armario"));
-		tableBg.setBounds(120, 20, 720, 600);
+		// TODO: Ajustar a imagem de forma mais apropriada à tabela principal.
+		locker = new Image(this.getSkin().getDrawable("locker"));
+		locker.setScale(0.8f);
+		locker.setPosition(140, 70);
 
 		// Text Buttons.
 
@@ -187,7 +186,7 @@ public class MainScreen extends BaseScreen {
 
 		
 		stage.addActor(background);
-		stage.addActor(tableBg);
+		stage.addActor(locker);
 		stage.addActor(changeTable);
 		stage.addActor(menuTable);
 		stage.addActor(configTable);
