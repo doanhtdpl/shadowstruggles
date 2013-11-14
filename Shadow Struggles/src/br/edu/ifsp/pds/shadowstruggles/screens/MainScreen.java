@@ -24,6 +24,7 @@ public class MainScreen extends BaseScreen {
 
 	private Image background;
 	private Image locker;
+	private Image tableBg;
 	private TextButton campaign;
 	private TextButton freePlay;
 	private TextButton shop;
@@ -53,6 +54,8 @@ public class MainScreen extends BaseScreen {
 		// Images.
 
 		background = new Image(this.getSkin().getDrawable("msbackground2"));
+		tableBg = new Image(this.getSkin().getDrawable("armario"));
+		tableBg.setBounds(120, 20, 720, 600);
 
 		// Text Buttons.
 
@@ -161,6 +164,7 @@ public class MainScreen extends BaseScreen {
 		changeTable.setPosition(80, 80);
 
 		Table menuTable = new Table();
+		
 		menuTable.defaults().width(480).height(110).padTop(10);
 		if (game.getMode() == RunMode.DEBUG)
 			menuTable.debug();
@@ -181,7 +185,9 @@ public class MainScreen extends BaseScreen {
 		configTable.add(config);
 		configTable.setPosition(900, 80);
 
+		
 		stage.addActor(background);
+		stage.addActor(tableBg);
 		stage.addActor(changeTable);
 		stage.addActor(menuTable);
 		stage.addActor(configTable);
