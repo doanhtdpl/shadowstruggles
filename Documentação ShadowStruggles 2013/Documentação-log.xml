@@ -1,0 +1,1087 @@
+<?xml version="1.0"?>
+<log>
+<logentry
+   revision="487">
+<author>Hugo</author>
+<date>2013-09-26T23:56:27.571326Z</date>
+<paths>
+<path
+   kind="dir"
+   action="A">/trunk/Documentação ShadowStruggles 2013</path>
+</paths>
+</logentry>
+<logentry
+   revision="488">
+<author>Hugo</author>
+<date>2013-09-26T23:57:36.595005Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/.project</path>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Documentação Shadow Struggles.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="489">
+<author>Hugo</author>
+<date>2013-09-27T00:05:09.357889Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Análise de Nicho.doc</path>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Conclusão.doc</path>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Caracterização do Projeto.doc</path>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Descrição da Navegação.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="490">
+<author>Hugo</author>
+<date>2013-09-27T00:32:19.424026Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Epígrafo.doc</path>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Escolhas e Descartes.doc</path>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Problemas.doc</path>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Teste.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="491">
+<author>Hugo</author>
+<date>2013-09-27T00:51:51.334918Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Mecânica do Jogo.doc</path>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Armazenamento de Dados (Projeto Tools).doc</path>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Ferramentas e Tecnologias Utilizadas.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="492">
+<author>Hugo</author>
+<date>2013-09-27T15:07:57.207293Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Histórico de Atividades.docx</path>
+</paths>
+</logentry>
+<logentry
+   revision="493">
+<author>Hideki</author>
+<date>2013-09-29T03:38:08.595143Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Descrição da Navegação.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="495">
+<author>Hugo</author>
+<date>2013-10-01T14:56:07.969965Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Armazenamento de Dados (Projeto Tools).doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="496">
+<author>Hugo</author>
+<date>2013-10-02T15:12:26.740876Z</date>
+<paths>
+<path
+   kind="file"
+   action="D">/trunk/Documentação ShadowStruggles 2013/Epígrafo.doc</path>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Histórico de Atividades.docx</path>
+</paths>
+</logentry>
+<logentry
+   revision="497">
+<author>Hugo</author>
+<date>2013-10-03T23:40:44.708523Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Publicações Semanais.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="498">
+<author>Hideki</author>
+<date>2013-10-03T23:41:19.808332Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Ferramentas e Tecnologias Utilizadas.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="499">
+<author>Hugo</author>
+<date>2013-10-04T00:23:30.702541Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Histórico de Atividades.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="500">
+<author>Leon</author>
+<date>2013-10-04T01:02:09.317445Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Mecânica do Jogo.docx</path>
+</paths>
+</logentry>
+<logentry
+   revision="501">
+<author>Hideki</author>
+<date>2013-10-04T01:10:40.431548Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Escolhas e Descartes.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="502">
+<author>Hideki</author>
+<date>2013-10-05T20:23:23.603883Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Análise de Nicho.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="503">
+<author>Hideki</author>
+<date>2013-10-07T00:14:47.002566Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Escolhas e Descartes.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="504">
+<author>Hideki</author>
+<date>2013-10-07T00:20:25.090559Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Escolhas e Descartes.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="506">
+<author>Hugo</author>
+<date>2013-10-10T23:54:10.964477Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Cronograma.xls</path>
+</paths>
+</logentry>
+<logentry
+   revision="507">
+<author>Hugo</author>
+<date>2013-10-10T23:55:12.605196Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - RPG.doc</path>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - Batalha.doc</path>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - Navegação.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="508">
+<author>Hugo</author>
+<date>2013-10-11T01:00:40.248548Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - RPG.doc</path>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - Batalha.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="515">
+<author>Hideki</author>
+<date>2013-10-17T00:50:31.755423Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Problemas.doc</path>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - Navegação.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="517">
+<author>Hugo</author>
+<date>2013-10-17T16:03:47.533500Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - Batalha.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="518">
+<author>Hugo</author>
+<date>2013-10-18T00:30:24.426140Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - Geral.doc</path>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - Batalha.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="519">
+<author>Hugo</author>
+<date>2013-10-18T01:08:14.801246Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - Geral.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="520">
+<author>Hideki</author>
+<date>2013-10-18T01:19:43.790148Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - Navegação.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="522">
+<author>Hugo</author>
+<date>2013-10-20T03:56:13.083945Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - Geral.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="523">
+<author>Hugo</author>
+<date>2013-10-20T17:42:41.773855Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - Geral.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="524">
+<author>Hugo</author>
+<date>2013-10-20T21:01:46.643105Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - Geral.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="525">
+<author>Hideki</author>
+<date>2013-10-20T23:25:45.299951Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/~WRL0003.tmp</path>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Manual do Usuário - RPG.doc</path>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Manual do Usuário - Navegação.doc</path>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Manual do Usuário - Tools.doc</path>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Ferramentas e Tecnologias Utilizadas.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="526">
+<author>Hugo</author>
+<date>2013-10-21T00:04:39.222013Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - Geral.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="527">
+<author>Leon</author>
+<date>2013-10-21T00:35:18.061367Z</date>
+<paths>
+<path
+   kind="file"
+   action="R">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - RPG.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="528">
+<author>Hugo</author>
+<date>2013-10-21T00:45:37.731518Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Documentação Shadow Struggles.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="529">
+<author>Hideki</author>
+<date>2013-10-21T01:13:46.455513Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Manual do Usuário - Geral.doc</path>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual do Usuário - Navegação.doc</path>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Descrição da Navegação.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="532">
+<author>Hugo</author>
+<date>2013-10-21T02:18:52.501631Z</date>
+<paths>
+<path
+   kind="file"
+   action="D">/trunk/Documentação ShadowStruggles 2013/~WRL0003.tmp</path>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Documentação Shadow Struggles.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="533">
+<author>Hugo</author>
+<date>2013-10-21T14:03:42.115803Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - Geral.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="534">
+<author>Hideki</author>
+<date>2013-10-22T01:55:43.613884Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual do Usuário - Tools.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="535">
+<author>Hideki</author>
+<date>2013-10-22T01:57:17.810691Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual do Usuário - Geral.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="536">
+<author>Hugo</author>
+<date>2013-10-22T03:05:11.168843Z</date>
+<paths>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Documentação ShadowStruggles 2013/Manual Técnico - Navegação.doc"
+   copyfrom-rev="533"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Arquivos/Manual Técnico - Navegação.doc</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Documentação ShadowStruggles 2013/Cronograma.xls"
+   copyfrom-rev="533"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Arquivos/Cronograma.xls</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Documentação ShadowStruggles 2013/Armazenamento de Dados (Projeto Tools).doc"
+   copyfrom-rev="533"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Arquivos/Armazenamento de Dados (Projeto Tools).doc</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Documentação ShadowStruggles 2013/Publicações Semanais.doc"
+   copyfrom-rev="533"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Arquivos/Publicações Semanais.doc</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Documentação ShadowStruggles 2013/Conclusão.doc"
+   copyfrom-rev="533"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Arquivos/Conclusão.doc</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Documentação ShadowStruggles 2013/Manual do Usuário - Geral.doc"
+   copyfrom-rev="533"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Manual do Usuário - Shadow Struggles 2013.doc</path>
+<path
+   kind="dir"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Arquivos</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Documentação ShadowStruggles 2013/Ferramentas e Tecnologias Utilizadas.doc"
+   copyfrom-rev="533"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Arquivos/Ferramentas e Tecnologias Utilizadas.doc</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Documentação ShadowStruggles 2013/Descrição da Navegação.doc"
+   copyfrom-rev="533"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Arquivos/Descrição da Navegação.doc</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Documentação ShadowStruggles 2013/Mecânica do Jogo.docx"
+   copyfrom-rev="533"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Arquivos/Mecânica do Jogo.docx</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Documentação ShadowStruggles 2013/Manual do Usuário - RPG.doc"
+   copyfrom-rev="533"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Arquivos/Manual do Usuário - RPG.doc</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Documentação ShadowStruggles 2013/Documentação Shadow Struggles.doc"
+   copyfrom-rev="533"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Relatório de Desenvolvimento - Shadow Struggles 2013.doc</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Documentação ShadowStruggles 2013/Escolhas e Descartes.doc"
+   copyfrom-rev="533"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Arquivos/Escolhas e Descartes.doc</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Documentação ShadowStruggles 2013/Mecânica do Jogo.doc"
+   copyfrom-rev="533"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Arquivos/Mecânica do Jogo.doc</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Documentação ShadowStruggles 2013/Manual do Usuário - Navegação.doc"
+   copyfrom-rev="533"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Arquivos/Manual do Usuário - Navegação.doc</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Documentação ShadowStruggles 2013/Histórico de Atividades.docx"
+   copyfrom-rev="533"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Arquivos/Histórico de Atividades.docx</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Documentação ShadowStruggles 2013/Análise de Nicho.doc"
+   copyfrom-rev="533"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Arquivos/Análise de Nicho.doc</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Documentação ShadowStruggles 2013/Manual do Usuário - Tools.doc"
+   copyfrom-rev="533"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Arquivos/Manual do Usuário - Tools.doc</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Documentação ShadowStruggles 2013/Manual Técnico - Geral.doc"
+   copyfrom-rev="533"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - Shadow Struggles 2013.doc</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Documentação ShadowStruggles 2013/Caracterização do Projeto.doc"
+   copyfrom-rev="533"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Arquivos/Caracterização do Projeto.doc</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Documentação ShadowStruggles 2013/Manual Técnico - RPG.doc"
+   copyfrom-rev="533"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Arquivos/Manual Técnico - RPG.doc</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Documentação ShadowStruggles 2013/Histórico de Atividades.doc"
+   copyfrom-rev="533"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Arquivos/Histórico de Atividades.doc</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Documentação ShadowStruggles 2013/Manual Técnico - Batalha.doc"
+   copyfrom-rev="533"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Arquivos/Manual Técnico - Batalha.doc</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Documentação ShadowStruggles 2013/Problemas.doc"
+   copyfrom-rev="533"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Arquivos/Problemas.doc</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Documentação ShadowStruggles 2013/Teste.doc"
+   copyfrom-rev="533"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Arquivos/Teste.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="537">
+<author>Leon</author>
+<date>2013-10-22T11:47:55.864407Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Arquivos/Caracterização do Projeto.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="538">
+<author>Leon</author>
+<date>2013-10-22T12:33:00.968835Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual do Usuário - RPG.doc</path>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Caracterização do Projeto.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="539">
+<author>Leon</author>
+<date>2013-10-22T12:48:49.159173Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - RPG.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="540">
+<author>Leon</author>
+<date>2013-10-22T13:15:05.459544Z</date>
+<paths>
+<path
+   kind="file"
+   action="R">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - RPG.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="541">
+<author>Hugo</author>
+<date>2013-10-22T13:20:14.642893Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Relatório de Desenvolvimento - Shadow Struggles 2013.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="542">
+<author>Hugo</author>
+<date>2013-10-22T13:22:37.731338Z</date>
+<paths>
+<path
+   kind="file"
+   action="D">/trunk/Documentação ShadowStruggles 2013/Escolhas e Descartes.doc</path>
+<path
+   kind="file"
+   action="D">/trunk/Documentação ShadowStruggles 2013/Mecânica do Jogo.doc</path>
+<path
+   kind="file"
+   action="D">/trunk/Documentação ShadowStruggles 2013/Histórico de Atividades.docx</path>
+<path
+   kind="file"
+   action="D">/trunk/Documentação ShadowStruggles 2013/Análise de Nicho.doc</path>
+<path
+   kind="file"
+   action="D">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - Geral.doc</path>
+<path
+   kind="file"
+   action="D">/trunk/Documentação ShadowStruggles 2013/Histórico de Atividades.doc</path>
+<path
+   kind="file"
+   action="D">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - Batalha.doc</path>
+<path
+   kind="file"
+   action="D">/trunk/Documentação ShadowStruggles 2013/Problemas.doc</path>
+<path
+   kind="file"
+   action="D">/trunk/Documentação ShadowStruggles 2013/Teste.doc</path>
+<path
+   kind="file"
+   action="D">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - Navegação.doc</path>
+<path
+   kind="file"
+   action="D">/trunk/Documentação ShadowStruggles 2013/Cronograma.xls</path>
+<path
+   kind="file"
+   action="D">/trunk/Documentação ShadowStruggles 2013/Publicações Semanais.doc</path>
+<path
+   kind="file"
+   action="D">/trunk/Documentação ShadowStruggles 2013/Armazenamento de Dados (Projeto Tools).doc</path>
+<path
+   kind="file"
+   action="D">/trunk/Documentação ShadowStruggles 2013/Conclusão.doc</path>
+<path
+   kind="file"
+   action="D">/trunk/Documentação ShadowStruggles 2013/Mecânica do Jogo.docx</path>
+<path
+   kind="file"
+   action="D">/trunk/Documentação ShadowStruggles 2013/Ferramentas e Tecnologias Utilizadas.doc</path>
+<path
+   kind="file"
+   action="D">/trunk/Documentação ShadowStruggles 2013/Descrição da Navegação.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="543">
+<author>Hugo</author>
+<date>2013-10-22T14:11:31.160711Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Relatório de Desenvolvimento - Shadow Struggles 2013.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="544">
+<author>Hugo</author>
+<date>2013-10-22T14:56:24.802746Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Relatório de Desenvolvimento - Shadow Struggles 2013.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="546">
+<author>Hideki</author>
+<date>2013-10-22T18:26:16.438911Z</date>
+<paths>
+<path
+   kind="file"
+   action="D">/trunk/Documentação ShadowStruggles 2013/Manual do Usuário - Geral.doc</path>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual do Usuário - Shadow Struggles 2013.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="547">
+<author>Hugo</author>
+<date>2013-10-22T22:11:12.579386Z</date>
+<paths>
+<path
+   kind="file"
+   action="D">/trunk/Documentação ShadowStruggles 2013/Documentação Shadow Struggles.doc</path>
+<path
+   kind="file"
+   action="D">/trunk/Documentação ShadowStruggles 2013/Manual do Usuário - Navegação.doc</path>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Relatório de Desenvolvimento - Shadow Struggles 2013.doc</path>
+<path
+   kind="file"
+   action="D">/trunk/Documentação ShadowStruggles 2013/Caracterização do Projeto.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="548">
+<author>Hideki</author>
+<date>2013-10-22T23:19:13.290779Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Relatório de Desenvolvimento - Shadow Struggles 2013.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="549">
+<author>Hugo</author>
+<date>2013-10-22T23:44:12.216593Z</date>
+<paths>
+<path
+   kind="file"
+   action="R">/trunk/Documentação ShadowStruggles 2013/Relatório de Desenvolvimento - Shadow Struggles 2013.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="550">
+<author>Leon</author>
+<date>2013-10-22T23:51:48.185554Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Arquivos/Mecânica do Jogo.docx</path>
+</paths>
+</logentry>
+<logentry
+   revision="551">
+<author>Leon</author>
+<date>2013-10-22T23:55:35.304352Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Arquivos/Mecânica do Jogo.docx</path>
+</paths>
+</logentry>
+<logentry
+   revision="552">
+<author>Leon</author>
+<date>2013-10-22T23:56:22.817934Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Arquivos/Mecânica do Jogo.docx</path>
+</paths>
+</logentry>
+<logentry
+   revision="553">
+<author>Leon</author>
+<date>2013-10-23T00:07:30.282102Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Relatório de Desenvolvimento - Shadow Struggles 2013.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="554">
+<author>Leon</author>
+<date>2013-10-23T00:10:19.341934Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Relatório de Desenvolvimento - Shadow Struggles 2013.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="555">
+<author>Hugo</author>
+<date>2013-10-23T00:22:48.543385Z</date>
+<paths>
+<path
+   kind="file"
+   action="R">/trunk/Documentação ShadowStruggles 2013/Relatório de Desenvolvimento - Shadow Struggles 2013.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="556">
+<author>Hugo</author>
+<date>2013-10-23T01:19:08.915245Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Relatório de Desenvolvimento - Shadow Struggles 2013.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="557">
+<author>Hugo</author>
+<date>2013-10-23T03:30:43.286020Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - Shadow Struggles 2013.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="558">
+<author>Hugo</author>
+<date>2013-10-23T15:25:51.312581Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - Shadow Struggles 2013.doc</path>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Relatório de Desenvolvimento - Shadow Struggles 2013.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="559">
+<author>Hideki</author>
+<date>2013-10-23T21:55:52.584135Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - Shadow Struggles 2013.doc</path>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual do Usuário - Shadow Struggles 2013.doc</path>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Relatório de Desenvolvimento - Shadow Struggles 2013.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="560">
+<author>Hideki</author>
+<date>2013-10-23T22:34:31.392787Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - Shadow Struggles 2013.doc</path>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual do Usuário - Shadow Struggles 2013.doc</path>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual do Usuário - Tools.doc</path>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Relatório de Desenvolvimento - Shadow Struggles 2013.doc</path>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Lista de Recursos Faltantes.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="561">
+<author>Hideki</author>
+<date>2013-10-23T23:01:10.438097Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Lista de Recursos Faltantes.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="562">
+<author>Leon</author>
+<date>2013-10-23T23:54:43.526563Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - Shadow Struggles 2013.doc</path>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual do Usuário - Shadow Struggles 2013.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="563">
+<author>Hugo</author>
+<date>2013-10-24T00:13:27.631031Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - Shadow Struggles 2013.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="564">
+<author>Hugo</author>
+<date>2013-10-24T00:17:57.206053Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual do Usuário - Shadow Struggles 2013.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="565">
+<author>Hugo</author>
+<date>2013-10-24T00:25:30.355489Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Relatório de Desenvolvimento - Shadow Struggles 2013.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="566">
+<author>Hugo</author>
+<date>2013-10-24T00:32:37.527069Z</date>
+<paths>
+<path
+   kind="file"
+   action="D">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - RPG.doc</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Documentação ShadowStruggles 2013/Lista de Recursos Faltantes.doc"
+   copyfrom-rev="562"
+   action="A">/trunk/Documentação ShadowStruggles 2013/Arquivos/Lista de Recursos Faltantes.doc</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Documentação ShadowStruggles 2013/Manual Técnico - RPG.doc"
+   copyfrom-rev="562"
+   action="R">/trunk/Documentação ShadowStruggles 2013/Arquivos/Manual Técnico - RPG.doc</path>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual do Usuário - Tools.doc</path>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Relatório de Desenvolvimento - Shadow Struggles 2013.doc</path>
+<path
+   kind="file"
+   action="D">/trunk/Documentação ShadowStruggles 2013/Lista de Recursos Faltantes.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="567">
+<author>Hideki</author>
+<date>2013-10-24T00:49:53.923136Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual Técnico - Shadow Struggles 2013.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="568">
+<author>Hugo</author>
+<date>2013-10-24T01:10:54.213958Z</date>
+<paths>
+<path
+   kind="file"
+   action="R">/trunk/Documentação ShadowStruggles 2013/Relatório de Desenvolvimento - Shadow Struggles 2013.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="569">
+<author>Leon</author>
+<date>2013-10-24T02:32:09.258148Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Arquivos/Manual do Usuário - RPG.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="570">
+<author>Leon</author>
+<date>2013-10-24T02:33:26.049036Z</date>
+<paths>
+<path
+   kind="file"
+   action="R">/trunk/Documentação ShadowStruggles 2013/Manual do Usuário - RPG.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="571">
+<author>Leon</author>
+<date>2013-10-24T03:30:27.799246Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual do Usuário - Shadow Struggles 2013.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="574">
+<author>Hugo</author>
+<date>2013-10-24T04:40:26.921304Z</date>
+<paths>
+<path
+   kind="file"
+   action="D">/trunk/Documentação ShadowStruggles 2013/Manual do Usuário - RPG.doc</path>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual do Usuário - Shadow Struggles 2013.doc</path>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual do Usuário - Tools.doc</path>
+<path
+   kind="file"
+   copyfrom-path="/trunk/Documentação ShadowStruggles 2013/Manual do Usuário - RPG.doc"
+   copyfrom-rev="573"
+   action="R">/trunk/Documentação ShadowStruggles 2013/Arquivos/Manual do Usuário - RPG.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="575">
+<author>Hideki</author>
+<date>2013-10-24T08:12:40.530251Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Manual do Usuário - Tools.doc</path>
+</paths>
+</logentry>
+<logentry
+   revision="576">
+<author>Hugo</author>
+<date>2013-10-24T11:14:54.221549Z</date>
+<paths>
+<path
+   kind="dir"
+   action="A">/trunk/Documentação ShadowStruggles 2013/CD</path>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/CD/Manual do Usuário - Tools.pdf</path>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/CD/Apresentação Inicial.pdf</path>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/CD/Relatório de Desenvolvimento - Shadow Struggles 2013.pdf</path>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/CD/Sobre o JAR.txt</path>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/CD/Proposta Inicial.pdf</path>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/CD/Manual Técnico - Shadow Struggles 2013.pdf</path>
+<path
+   kind="file"
+   action="A">/trunk/Documentação ShadowStruggles 2013/CD/Manual do Usuário - Shadow Struggles 2013.pdf</path>
+</paths>
+</logentry>
+<logentry
+   revision="577">
+<author>Hugo</author>
+<date>2013-10-24T13:51:59.748621Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/trunk/Documentação ShadowStruggles 2013/Relatório de Desenvolvimento - Shadow Struggles 2013.doc</path>
+</paths>
+</logentry>
+</log>
