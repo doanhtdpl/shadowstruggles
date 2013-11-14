@@ -108,6 +108,10 @@ public class ShadowStruggles extends Game {
 
 		Array<Asset> sounds = new Array<Asset>(new Asset[] {
 				new Asset("intro.ogg", "soundtrack"),
+				new Asset("m2.ogg", "soundtrack"),
+				new Asset("m1.ogg", "soundtrack"),
+				new Asset("m3.ogg", "soundtrack"),
+				new Asset("m4.ogg", "soundtrack"),
 				new Asset("button_1.ogg", "sound_effects"),
 				new Asset("button_2.ogg", "sound_effects"),
 				new Asset("button_3.ogg", "sound_effects"),

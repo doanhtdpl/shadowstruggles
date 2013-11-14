@@ -95,6 +95,12 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 
 	@Override
 	public void initComponents() {
+		
+		if (!game.getAudio().getMusicName().equals("m3")) {
+			game.getAudio().stop();
+			game.getAudio().setMusic("m3");
+		}
+		
 		rpgController.getModel().getRpgMap().loadMap();
 		renderer.setMap(rpgController.getMap());
 		finder = new AStarPathFinder(rpgController.getModel().getRpgMap(), 500,

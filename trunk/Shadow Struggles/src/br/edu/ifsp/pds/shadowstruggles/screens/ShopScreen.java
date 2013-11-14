@@ -8,6 +8,7 @@ import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.items.Item;
 import br.edu.ifsp.pds.shadowstruggles.model.items.Pack;
 import br.edu.ifsp.pds.shadowstruggles.model.items.Shop;
+import br.edu.ifsp.pds.shadowstruggles.model.quests.MoneyRequirement;
 import br.edu.ifsp.pds.shadowstruggles.model.cards.Card;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Arrow;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
@@ -57,6 +58,9 @@ public class ShopScreen extends BaseScreen {
 	private TextButton extraButton;
 	private TextButton cardsButton;
 	private TextButton buySellButton;
+	private Label playermoney;
+	private boolean assetsLoaded;
+	private boolean itemsInitialized;
 
 	/**
 	 * Temporary table used for CardDialog.
@@ -73,7 +77,8 @@ public class ShopScreen extends BaseScreen {
 	public ShopScreen(ShadowStruggles game, Shop shop, Controller controller,
 			BaseScreen previousScreen) {
 		super(game, controller);
-
+		assetsLoaded=false;
+		itemsInitialized=false;
 		this.previousScreen = previousScreen;
 		this.shop = shop;
 		this.currentMode = Mode.BUY;
@@ -87,8 +92,10 @@ public class ShopScreen extends BaseScreen {
 	public void initComponents() {
 		stage.clear();
 		final BaseScreen menu = this.previousScreen;
-
-		
+		if (!game.getAudio().getMusicName().equals("m1")) {
+			game.getAudio().stop();
+			game.getAudio().setMusic("m1");
+		}
 
 		packsButton = new TextButton(MenuTextDAO.getMenuText().packs, getSkin());
 		packsButton = ScreenUtils.defineButton(packsButton, 0, 0, 0, 0,
@@ -164,7 +171,7 @@ public class ShopScreen extends BaseScreen {
 
 		stage.addActor(menuTable);
 
-		showItems();
+		
 
 		Table rightButtonTable = new Table();
 		if (game.getMode() == RunMode.DEBUG)
@@ -200,13 +207,14 @@ public class ShopScreen extends BaseScreen {
 
 		stage.addActor(leftButtonTable);
 		stage.addActor(rightButtonTable);
+		
 	}
 
 	/**
 	 * Creates and displays the items table according to the current category
 	 * and mode.
 	 */
-	private void showItems() {
+	public void showItems() {
 		if (itemsTable != null)
 			stage.removeActor(itemsTable);
 		itemsTable = new Table();
@@ -257,7 +265,10 @@ public class ShopScreen extends BaseScreen {
 
 						tmpTable.setPosition(450, 340);
 						tmpTable.add(
-								new CardDialog(game, itemAsCard, getSkin()))
+								new CardDialog(game, itemAsCard, getSkin()){@Override
+								public void updateMoney() {
+									updateMoneyLabel();
+								}})
 								.width(900).height(500);
 						stage.addActor(tmpTable);
 					}
@@ -269,7 +280,7 @@ public class ShopScreen extends BaseScreen {
 			name.setStyle(new LabelStyle(super.getSkin()
 					.getFont("andalus-font"), Color.WHITE));
 
-			Label price = new Label("1000", super.getSkin());
+			Label price = new Label("$ "+ item.getBuyCost(), super.getSkin());
 			price.setStyle(new LabelStyle(super.getSkin().getFont(
 					"andalus-font"), Color.WHITE));
 
@@ -293,6 +304,13 @@ public class ShopScreen extends BaseScreen {
 			i++;
 		}
 		stage.addActor(itemsTable);
+		this.playermoney= new Label("Money:  $ "+String.valueOf(ShadowStruggles.getInstance().getProfile().getMoney()), getSkin());
+		Table moneyTable = new Table();
+		moneyTable.defaults().padTop(10).width(160).height(50);
+		moneyTable.add(playermoney);
+		moneyTable.setPosition(750, 600);
+		stage.addActor(moneyTable);
+		itemsInitialized=true;
 	}
 
 	/**
@@ -327,9 +345,17 @@ public class ShopScreen extends BaseScreen {
 	}
 
 	@Override
-	public void render(float delta) {
+	public void render(float delta) {	
+		if(!itemsInitialized && assetsLoaded)showItems();
 		super.render(delta);
+		//playermoney.setText("Money:  $ "+String.valueOf(ShadowStruggles.getInstance().getProfile().getMoney()));
+				
 		Table.drawDebug(stage);
+	}
+	
+	public void updateMoneyLabel(){
+		playermoney.setText("Money:  $ "+String.valueOf(ShadowStruggles.getInstance().getProfile().getMoney()));
+		
 	}
 
 	@Override
@@ -340,17 +366,20 @@ public class ShopScreen extends BaseScreen {
 		Array<String> previousItems = new Array<String>();
 
 		Array<Item> shopItems = null;
-		if (this.mainShop)
+		if (this.mainShop){
 			shopItems = game.getProfile().getUnlockedItems();
-		else
+			System.out.println("It's a main shop");
+		}else
 			shopItems = shop.getItems();
 
 		for (Item i : shopItems) {
 			String itemName = i.getName().toLowerCase();
 			if (!previousItems.contains(itemName, false)) {
-				if (i instanceof Card)
+				if (i instanceof Card){
+					System.out.println("It's a Card");
 					assets.add(new Asset(itemName + ".png", "cards"));
-				else
+					System.out.println(itemName + ".png added");
+				}else
 					assets.add(new Asset(itemName + ".png", "item_icons"));
 				previousItems.add(itemName);
 			}
@@ -366,7 +395,7 @@ public class ShopScreen extends BaseScreen {
 				previousItems.add(i.getName());
 			}
 		}
-
+		assetsLoaded=true;
 		return assets;
 	}
 
