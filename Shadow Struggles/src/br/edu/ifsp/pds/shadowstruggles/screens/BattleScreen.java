@@ -126,6 +126,7 @@ public class BattleScreen extends BaseScreen {
 
 	@Override
 	public Array<Asset> textureRegionsToLoad() {
+		System.out.println("BattleScreen: texturesRegionToLoad");
 		Array<Asset> assets = new Array<Asset>(new Asset[] {
 				new Asset("magnifier.png", "game_ui_images"),
 				new Asset("back_card.png", "game_ui_images"),

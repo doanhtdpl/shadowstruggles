@@ -107,7 +107,7 @@ public class LoadingScreen extends BaseScreen {
 
 			if (nextScreen instanceof SaveLoadScreen) {
 				game.setAudio(new SoundManager(game.getAssets()));
-				game.getAudio().setMusic("intro");
+				game.getAudio().setMusic("m2");
 			}
 
 			nextScreen.initComponents();

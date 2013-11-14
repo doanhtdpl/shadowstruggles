@@ -8,7 +8,9 @@ import com.badlogic.gdx.utils.ObjectMap;
 
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.EventDAO;
+import br.edu.ifsp.pds.shadowstruggles.data.dao.FighterDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.cards.Deck;
+import br.edu.ifsp.pds.shadowstruggles.model.cards.Fighter;
 import br.edu.ifsp.pds.shadowstruggles.model.events.Event;
 import br.edu.ifsp.pds.shadowstruggles.model.events.EventInGame;
 import br.edu.ifsp.pds.shadowstruggles.model.items.Item;
@@ -60,7 +62,7 @@ public class Profile implements Serializable, Comparable<Object> {
 		this.storyPoints = 0;
 		this.path = "";
 		this.selectedDeck = new Deck();
-		this.money = 0;
+		this.money = 100;
 		this.experience = 0;
 		this.level = 1;
 		this.distributionPoints = 0;
@@ -72,10 +74,8 @@ public class Profile implements Serializable, Comparable<Object> {
 		this.defeatedEnemies = new Array<EnemyDefeat>();
 		this.endings = new Array<Ending>();
 		this.unlockedItems = new Array<Item>();
-
 		this.events = new ObjectMap<String, Array<EventInGame>>();
 		this.mapLayers = new ObjectMap<String, String>();
-
 		this.distributionPointsFormula = null;
 		this.attributePointsFormula = null;
 		this.experienceNextLevelFormula = null;
@@ -196,6 +196,20 @@ public class Profile implements Serializable, Comparable<Object> {
 		}
 
 		return null;
+	}
+
+	public void unlockItems() {
+
+		if (unlockedItems.size < 1) {
+			System.out.println("Unlocking items");
+			Array<Fighter> fighters = FighterDAO.getFighters();
+			for (Fighter fighter : fighters) {
+				if (fighter.getName().contains("DR")) {
+					System.out.println("Unlocking " + fighter.getName());
+					unlockedItems.add(fighter);
+				}
+			}
+		}
 	}
 
 	/**
@@ -350,4 +364,6 @@ public class Profile implements Serializable, Comparable<Object> {
 	public Array<Ending> getEndings() {
 		return endings;
 	}
+	
+	
 }

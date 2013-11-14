@@ -75,7 +75,7 @@ public class Card extends Item {
 
 		json.writeValue("energyCost", this.energyCost);
 		json.writeValue("preRequisites", this.preRequisites);
-		json.writeValue("action", this.action);
+		json.writeValue("action", this.action, CardAction.class);
 	}
 
 	@SuppressWarnings("unchecked")

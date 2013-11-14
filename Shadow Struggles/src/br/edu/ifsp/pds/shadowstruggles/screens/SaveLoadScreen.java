@@ -185,8 +185,10 @@ public class SaveLoadScreen extends BaseScreen {
 			newProfile.createEventsInGame(game);
 			ProfileDAO.createProfile(newProfile);
 			game.setProfile(newProfile);
+			game.getProfile().unlockItems();
+			DataManager.getInstance().save();
 			game.getAudio().playSound("button_4");
-
+			
 			if (mode == Mode.START)
 				game.setScreenWithTransition(new MainScreen(game, controller));
 			else if (mode == Mode.SAVE)
@@ -196,6 +198,8 @@ public class SaveLoadScreen extends BaseScreen {
 			newProfile.createEventsInGame(game);
 			ProfileDAO.createProfile(newProfile);
 			game.setProfile(newProfile);
+			game.getProfile().unlockItems();
+			DataManager.getInstance().save();
 			game.getAudio().playSound("button_4");
 			game.setScreenWithTransition(new MainScreen(game, controller));
 		}
