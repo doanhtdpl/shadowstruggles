@@ -106,11 +106,16 @@ public class MyJson {
 
 			json.addClassTag("AttributePointsFormula",
 					AttributePointsFormula.class);
+			json.addClassTag("ConstantDistributionPoints",
+					ConstantDistributionPoints.class);
+			json.addClassTag("ConstantPointsAttribution",
+					ConstantPointsAttribution.class);
 			json.addClassTag("DistributionPointsFormula",
 					DistributionPointsFormula.class);
 			json.addClassTag("EnemyDefeat", EnemyDefeat.class);
 			json.addClassTag("ExperienceNextLevelFormula",
 					ExperienceNextLevelFormula.class);
+			json.addClassTag("LinearExperience", LinearExperience.class);
 			json.addClassTag("Player", Player.class);
 			json.addClassTag("Profile", Profile.class);
 

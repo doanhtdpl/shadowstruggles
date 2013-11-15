@@ -4,6 +4,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.SerializationException;
 
 import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
+import br.edu.ifsp.pds.shadowstruggles.data.Settings;
 import br.edu.ifsp.pds.shadowstruggles.model.cards.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.cards.Effect;
 import br.edu.ifsp.pds.shadowstruggles.model.cards.Fighter;
@@ -65,6 +66,14 @@ public class ProfileDAO {
 	}
 
 	public static void createProfile(Profile profile) {
+		Settings settings = SettingsDAO.getSettings();
+		if (profile.getAttributePointsFormula() == null)
+			profile.setAttributePointsFormula(settings.attributePointsFormula);
+		if (profile.getDistributionPointsFormula() == null)
+			profile.setDistributionPointsFormula(settings.distributionPointsFormula);
+		if (profile.getExperienceNextLevelFormula() == null)
+			profile.setExperienceNextLevelFormula(settings.experienceNextLevelFormula);
+
 		DataManager.getInstance().writeProfile(profile);
 	}
 
