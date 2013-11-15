@@ -1,0 +1,1 @@
+Before compiling, you must update the assets folder (copy the main project's 'data' folder into it).
