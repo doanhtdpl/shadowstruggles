@@ -21,6 +21,8 @@ public class AmountModifier extends Modifier {
 	private boolean replace;
 	private ModifiedAttribute attribute;
 
+	private boolean leveledUp;
+
 	public AmountModifier() {
 		this.amount = 0;
 		this.attribute = null;
@@ -115,9 +117,10 @@ public class AmountModifier extends Modifier {
 
 		if (attribute == ModifiedAttribute.EXPERIENCE) {
 			if (replace)
-				profile.setExperience((int) amount);
+				leveledUp = profile.setExperience((int) amount);
 			else
-				profile.setExperience(profile.getExperience() + (int) amount);
+				leveledUp = profile.setExperience(profile.getExperience()
+						+ (int) amount);
 		}
 
 		if (attribute == ModifiedAttribute.ENERGY_RECOVERY) {
@@ -181,8 +184,13 @@ public class AmountModifier extends Modifier {
 		}
 
 		if (attribute == ModifiedAttribute.EXPERIENCE) {
-			return text.newExperience.replace("%d",
+			String msg = text.newExperience.replace("%d",
 					Integer.toString(profile.getExperience()));
+			if (leveledUp)
+				msg += " "
+						+ text.newLevel.replace("%d",
+								Integer.toString(profile.getLevel()));
+			return msg;
 		}
 
 		if (attribute == ModifiedAttribute.ENERGY_RECOVERY) {

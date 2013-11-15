@@ -1,5 +1,9 @@
 package br.edu.ifsp.pds.shadowstruggles.data;
 
+import br.edu.ifsp.pds.shadowstruggles.model.profiles.AttributePointsFormula;
+import br.edu.ifsp.pds.shadowstruggles.model.profiles.DistributionPointsFormula;
+import br.edu.ifsp.pds.shadowstruggles.model.profiles.ExperienceNextLevelFormula;
+
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Json.Serializable;
 import com.badlogic.gdx.utils.JsonValue;
@@ -49,6 +53,11 @@ public class Settings implements Serializable {
 	public String defaultTileLayer = "tiles";
 	public String collidableTile = "obstacle";
 
+	// Formulas to use for the profile.
+	public AttributePointsFormula attributePointsFormula = null;
+	public DistributionPointsFormula distributionPointsFormula = null;
+	public ExperienceNextLevelFormula experienceNextLevelFormula = null;
+
 	@Override
 	public void write(Json json) {
 		json.writeValue("tileWidth", tileWidth);
@@ -83,6 +92,11 @@ public class Settings implements Serializable {
 		json.writeValue("defaultObjLayer", defaultObjLayer);
 		json.writeValue("defaultTileLayer", defaultTileLayer);
 		json.writeValue("collidableTile", collidableTile);
+
+		json.writeValue("attributePointsFormula", attributePointsFormula);
+		json.writeValue("distributionPointsFormula", distributionPointsFormula);
+		json.writeValue("experienceNextLevelFormula",
+				experienceNextLevelFormula);
 	}
 
 	@Override
@@ -128,6 +142,14 @@ public class Settings implements Serializable {
 		defaultTileLayer = json.readValue("defaultTileLayer", String.class,
 				jsonData);
 		collidableTile = json.readValue("collidableTile", String.class,
+				jsonData);
+
+		attributePointsFormula = json.readValue("attributePointsFormula",
+				AttributePointsFormula.class, jsonData);
+		distributionPointsFormula = json.readValue("distributionPointsFormula",
+				DistributionPointsFormula.class, jsonData);
+		experienceNextLevelFormula = json.readValue(
+				"experienceNextLevelFormula", ExperienceNextLevelFormula.class,
 				jsonData);
 	}
 

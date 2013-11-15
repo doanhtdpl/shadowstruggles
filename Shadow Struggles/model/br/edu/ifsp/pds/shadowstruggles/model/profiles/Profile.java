@@ -257,6 +257,32 @@ public class Profile implements Serializable, Comparable<Object> {
 		}
 	}
 
+	public int getExperience() {
+		return experience;
+	}
+
+	/**
+	 * Sets experience points, leveling up appropriately, and informs whether or
+	 * not the character has leveled up.
+	 */
+	public boolean setExperience(int experience) {
+		boolean leveledUp = false;
+		this.experience = experience;
+
+		if (this.experienceNextLevelFormula != null) {
+			while (this.experience > experienceNextLevel) {
+				level += 1;
+				distributionPoints += distributionPointsFormula
+						.getDistributionPoints(this);
+				experienceNextLevel = experienceNextLevelFormula
+						.getExperienceNextLevel(this);
+				leveledUp = true;
+			}
+		}
+
+		return leveledUp;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -309,14 +335,6 @@ public class Profile implements Serializable, Comparable<Object> {
 		this.path = path;
 	}
 
-	public int getExperience() {
-		return experience;
-	}
-
-	public void setExperience(int experience) {
-		this.experience = experience;
-	}
-
 	public int getLevel() {
 		return level;
 	}
@@ -364,6 +382,31 @@ public class Profile implements Serializable, Comparable<Object> {
 	public Array<Ending> getEndings() {
 		return endings;
 	}
-	
-	
+
+	public DistributionPointsFormula getDistributionPointsFormula() {
+		return distributionPointsFormula;
+	}
+
+	public void setDistributionPointsFormula(
+			DistributionPointsFormula distributionPointsFormula) {
+		this.distributionPointsFormula = distributionPointsFormula;
+	}
+
+	public AttributePointsFormula getAttributePointsFormula() {
+		return attributePointsFormula;
+	}
+
+	public void setAttributePointsFormula(
+			AttributePointsFormula attributePointsFormula) {
+		this.attributePointsFormula = attributePointsFormula;
+	}
+
+	public ExperienceNextLevelFormula getExperienceNextLevelFormula() {
+		return experienceNextLevelFormula;
+	}
+
+	public void setExperienceNextLevelFormula(
+			ExperienceNextLevelFormula experienceNextLevelFormula) {
+		this.experienceNextLevelFormula = experienceNextLevelFormula;
+	}
 }
