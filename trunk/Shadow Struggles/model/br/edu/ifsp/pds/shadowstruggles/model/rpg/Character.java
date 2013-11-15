@@ -79,7 +79,7 @@ public class Character {
 	public boolean walk(WalkDirection direction, RpgMap map) {
 		return walk(direction, map, false, null);
 	}
-	
+
 	public boolean walk(WalkDirection direction, RpgMap map, boolean inPath) {
 		return walk(direction, map, inPath, null);
 	}
@@ -273,9 +273,5 @@ public class Character {
 
 	public void setCurrentMap(RpgMap currentMap) {
 		this.currentMap = currentMap;
-	}
-	
-	private void read() {
-		
 	}
 }

@@ -22,7 +22,7 @@ import com.badlogic.gdx.utils.JsonValue;
  * which manipulate the map in some way. It serves as a wrapper for the tiled
  * map itself.
  */
-public class RpgMap implements TileBasedMap , Serializable{
+public class RpgMap implements TileBasedMap, Serializable {
 	private String mapName;
 	private TiledMap map;
 	private String objectLayer;
@@ -293,7 +293,7 @@ public class RpgMap implements TileBasedMap , Serializable{
 	public void write(Json json) {
 		json.writeValue("mapName", mapName);
 		json.writeValue("objectLayer", objectLayer);
-		json.writeValue("tileLayerString", tileLayerString);		
+		json.writeValue("tileLayerString", tileLayerString);
 	}
 
 	@Override
@@ -301,8 +301,7 @@ public class RpgMap implements TileBasedMap , Serializable{
 		json.readValue("mapName", String.class, jsonData);
 		json.readValue("objectLayer", String.class, jsonData);
 		json.readValue("tileLayerString", String.class, jsonData);
-		
+
 	}
-	
-	
+
 }

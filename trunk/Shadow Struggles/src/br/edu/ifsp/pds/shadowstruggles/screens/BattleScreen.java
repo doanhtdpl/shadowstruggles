@@ -210,11 +210,9 @@ public class BattleScreen extends BaseScreen {
 
 			}
 
-			// if (time >= (float) (1 / FPS)) {
 			setTime(0);
 			update(delta);
 
-			// }
 			battlePlatform.getEnemy().action(battlePlatform, this, delta);
 			setTime(getTime() + delta);
 			camera.update();
@@ -360,7 +358,6 @@ public class BattleScreen extends BaseScreen {
 	 */
 
 	public void initComponents() {
-		System.out.println("BattleScreen: initComponents");
 		if (!initialized) {
 			TextureRegion mapImage = new TextureRegion(game.getTexture(
 					battlePlatform.getMap().getName(), "battle_maps"),

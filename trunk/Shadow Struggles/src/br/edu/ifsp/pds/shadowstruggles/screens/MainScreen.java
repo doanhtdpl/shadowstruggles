@@ -50,7 +50,7 @@ public class MainScreen extends BaseScreen {
 
 		// Images.
 
-		background = new Image(this.getSkin().getDrawable("msbackground2"));
+		background = new Image(this.getSkin().getDrawable("msbackground"));
 		// TODO: Ajustar a imagem de forma mais apropriada à tabela principal.
 		locker = new Image(this.getSkin().getDrawable("locker"));
 		locker.setScale(0.8f);

@@ -26,7 +26,7 @@ public class Messenger {
 	private Label textLbl;
 	private RpgScreen screen;
 	private Scene parentScene;
-	
+
 	private Array<String> splittedText;
 	private int textIndex = 0;
 
@@ -37,7 +37,8 @@ public class Messenger {
 
 		splitText(text);
 
-		background = new Image(skin, "default-window");
+		background = new Image(game.getTextureRegion("rpg_balloon",
+				"game_ui_images"));
 		background = ScreenUtils.defineImage(background, 0, 0, 960, 180);
 		background.addListener(new ClickListener() {
 			@Override
@@ -49,7 +50,7 @@ public class Messenger {
 		textLbl = new Label(splittedText.get(textIndex), skin);
 		textLbl = ScreenUtils.defineLabel(textLbl, 80, 5, 830, 180);
 		textLbl.setStyle(new LabelStyle(skin.getFont("andalus-font"),
-				Color.BLACK));
+				Color.WHITE));
 		textLbl.setWrap(true);
 		textLbl.addListener(new ClickListener() {
 			@Override
@@ -71,8 +72,8 @@ public class Messenger {
 			screen.getStage().removeActor(background);
 			screen.getStage().removeActor(textLbl);
 			screen.setMessenger(null);
-			
-			if(parentScene != null)
+
+			if (parentScene != null)
 				parentScene.runNextItem();
 		} else {
 			// Display the next chunk of text.

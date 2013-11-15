@@ -13,7 +13,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 public class InGameMenu extends BaseScreen {
-	private Image background;
 	private TextButton returnToGame;
 	private TextButton exitGame;
 	private TextButton config;
@@ -41,10 +40,6 @@ public class InGameMenu extends BaseScreen {
 	}
 
 	public void initComponents() {
-		background = new Image(this.getSkin().getDrawable("msbackground"));
-		background.setScaleX(960f / 512f);
-		background.setScaleY(640f / 380f);
-
 		returnToGame = new TextButton(MenuTextDAO.getMenuText().returnToGame,
 				getSkin());
 		returnToGame = ScreenUtils.defineButton(returnToGame, 230, 500, 500,
@@ -103,7 +98,6 @@ public class InGameMenu extends BaseScreen {
 			}
 
 		});
-		stage.addActor(background);
 		stage.addActor(checkCards);
 		stage.addActor(config);
 		stage.addActor(exitGame);

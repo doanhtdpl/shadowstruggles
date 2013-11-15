@@ -4,6 +4,7 @@ import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
 import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
+import br.edu.ifsp.pds.shadowstruggles.data.Loader.Asset;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.ProfileDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.profiles.Profile;
@@ -62,6 +63,18 @@ public class SaveLoadScreen extends BaseScreen {
 		super.resize(width, height);
 	}
 
+	@Override
+	public Array<Asset> textureRegionsToLoad() {
+		Array<Asset> regions = new Array<Asset>();
+		regions.addAll((new Asset[] {
+				new Asset("table_texture.jpg", "game_ui_images"),
+				new Asset("book.png", "game_ui_images"),
+				new Asset("beaker.png", "game_ui_images"),
+				new Asset("candle.png", "game_ui_images"),
+				new Asset("tripod.png", "game_ui_images") }));
+		return regions;
+	}
+
 	public void initComponents() {
 		stage.clear();
 	}
@@ -70,14 +83,15 @@ public class SaveLoadScreen extends BaseScreen {
 	public void show() {
 		super.show();
 
-		tableTexture = new Image(this.getSkin().getDrawable("table_texture"));
-		book = new Image(this.getSkin().getDrawable("book"));
+		tableTexture = new Image(game.getTextureRegion("table_texture",
+				"game_ui_images"));
+		book = new Image(game.getTextureRegion("book", "game_ui_images"));
 		book.setScale(0.9f);
 		book.setX(book.getX() + 50);
 		book.setY(book.getY() + 10);
-		beaker = new Image(this.getSkin().getDrawable("beaker"));
-		candle = new Image(this.getSkin().getDrawable("candle"));
-		tripod = new Image(this.getSkin().getDrawable("tripod"));
+		beaker = new Image(game.getTextureRegion("beaker", "game_ui_images"));
+		candle = new Image(game.getTextureRegion("candle", "game_ui_images"));
+		tripod = new Image(game.getTextureRegion("tripod", "game_ui_images"));
 
 		if (mode == Mode.SAVE)
 			firstButton = new TextButton(MenuTextDAO.getMenuText().newGame,
@@ -120,11 +134,13 @@ public class SaveLoadScreen extends BaseScreen {
 					else if (mode == Mode.SAVE) {
 						if (previousScreen instanceof RpgScreen) {
 							RpgScreen previousRpgScreen = (RpgScreen) previousScreen;
-							Controller controller = previousRpgScreen.getController();
-							RpgController rpgController = previousRpgScreen.getRpgController();
+							Controller controller = previousRpgScreen
+									.getController();
+							RpgController rpgController = previousRpgScreen
+									.getRpgController();
 
-							RpgScreen nextScreen = new RpgScreen(game, controller,
-									rpgController);
+							RpgScreen nextScreen = new RpgScreen(game,
+									controller, rpgController);
 							game.setScreenWithTransition(new LoadingScreen(
 									game, nextScreen));
 						} else
@@ -188,7 +204,7 @@ public class SaveLoadScreen extends BaseScreen {
 			game.getProfile().unlockItems();
 			DataManager.getInstance().save();
 			game.getAudio().playSound("button_4");
-			
+
 			if (mode == Mode.START)
 				game.setScreenWithTransition(new MainScreen(game, controller));
 			else if (mode == Mode.SAVE)
