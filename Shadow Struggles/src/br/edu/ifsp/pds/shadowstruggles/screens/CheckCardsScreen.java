@@ -22,7 +22,6 @@ public class CheckCardsScreen extends BaseScreen {
 
 	private InGameMenu menu;
 	private Image selectedImage;
-	private Image background;
 	private Label name;
 	private Label description;
 	private Arrow right;
@@ -52,8 +51,6 @@ public class CheckCardsScreen extends BaseScreen {
 		int WIDTH_LABEL = 500;
 
 		final InGameMenu menu = this.menu;
-		background = new Image(this.getSkin().getDrawable("msbackground"));
-		background.setScale(X_SCALE, Y_SCALE);
 
 		name = new Label("", super.getSkin());
 		name.setX(X_LABEL);
@@ -116,7 +113,6 @@ public class CheckCardsScreen extends BaseScreen {
 			}
 		});
 
-		stage.addActor(background);
 		stage.addActor(box);
 		stage.addActor(name);
 		stage.addActor(description);

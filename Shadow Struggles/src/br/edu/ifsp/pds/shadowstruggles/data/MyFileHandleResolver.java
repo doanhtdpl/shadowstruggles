@@ -14,7 +14,12 @@ public class MyFileHandleResolver implements FileHandleResolver {
 	public FileHandle resolve(String fileName) {
 		if (Gdx.files.internal(fileName).exists())
 			return Gdx.files.internal(fileName);
+
+		// If the file name starts with the prefix for local files on Android,
+		// then we don't need to resolve it; just instantiate a new FileHandle.
+		String localPrefix = "/data/data/br.edu.ifsp.pds.shadowstruggles.android/files/";
+		if (fileName.startsWith(localPrefix))
+			return new FileHandle(fileName);
 		return Gdx.files.local(fileName);
 	}
-
 }

@@ -6,6 +6,7 @@ import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
 import br.edu.ifsp.pds.shadowstruggles.data.Loader.Asset;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.SettingsDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.Character.WalkDirection;
+import br.edu.ifsp.pds.shadowstruggles.model.rpg.RpgMap;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.AStarPathFinder;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.ManhattanHeuristic;
 import br.edu.ifsp.pds.shadowstruggles.model.rpg.pathfinder.Path;
@@ -20,6 +21,7 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Array;
 
@@ -34,7 +36,11 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	private static final int maxWidthRange = 960;
 	private static final int maxHeightRange = 640;
 
+	private static final int tileSize = SettingsDAO.getSettings().rpgTileSize;
+
 	private RpgController rpgController;
+	private RpgMap map;
+	private OrthographicCamera stageCamera;
 	private RpgRenderer renderer;
 	private InputMultiplexer inputSources;
 	private Messenger messenger;
@@ -44,6 +50,8 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 
 	private boolean firstRender = true;
 	private float unitScale = 1f;
+	// Keeps track of the camera position and dimensions, in logical units.
+	private Rectangle cameraRect;
 
 	/**
 	 * The constructor initializes the objects and defines itself as the
@@ -64,13 +72,17 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		// don't want for RpgScreen, so let's create a new one.
 		this.camera = new OrthographicCamera(this.width, this.height);
 		this.camera.position.set(CAMERA_INITIAL_X, CAMERA_INITIAL_Y, 0);
-		this.stage.setCamera(camera);
+		this.cameraRect = new Rectangle();
+
+		this.stageCamera = new OrthographicCamera(this.width, this.height);
+		this.stageCamera.position.set(CAMERA_INITIAL_X, CAMERA_INITIAL_Y, 0);
+		this.stage.setCamera(stageCamera);
 
 		rpgController.setViewer(this);
 		this.rpgController = rpgController;
-		renderer = new RpgRenderer(rpgController.getModel().getRpgMap(),
-				unitScale, getBatch(), game, rpgController.getModel()
-						.getCharacter());
+		this.map = rpgController.getModel().getRpgMap();
+		renderer = new RpgRenderer(map, unitScale, getBatch(), game,
+				rpgController.getModel().getCharacter());
 
 		this.inputSources = new InputMultiplexer();
 		inputSources.addProcessor(stage);
@@ -80,31 +92,33 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	@Override
 	public Array<Asset> textureRegionsToLoad() {
 		Array<Asset> assets = renderer.textureRegionsToLoad();
-		if (assets.size == 0)
-			return null;
+		assets.addAll(new Asset[] { new Asset("red_bar.png", "game_ui_images"),
+				new Asset("blue_bar.png", "game_ui_images"),
+				new Asset("blue2_bar.png", "game_ui_images"),
+				new Asset("purple_bar.png", "game_ui_images"),
+				new Asset("green_bar.png", "game_ui_images"),
+				new Asset("yellow_bar.png", "game_ui_images"),
+				new Asset("rpg_balloon.png", "game_ui_images") });
 		return assets;
 	}
 
 	@Override
 	public Array<Asset> mapsToLoad() {
 		Array<Asset> assets = new Array<Asset>();
-		assets.add(new Asset(rpgController.getModel().getRpgMap().getMapName()
-				+ ".tmx", "rpg_maps"));
+		assets.add(new Asset(map.getMapName() + ".tmx", "rpg_maps"));
 		return assets;
 	}
 
 	@Override
 	public void initComponents() {
-		
 		if (!game.getAudio().getMusicName().equals("m3")) {
 			game.getAudio().stop();
 			game.getAudio().setMusic("m3");
 		}
-		
-		rpgController.getModel().getRpgMap().loadMap();
+
+		map.loadMap();
 		renderer.setMap(rpgController.getMap());
-		finder = new AStarPathFinder(rpgController.getModel().getRpgMap(), 500,
-				false, new ManhattanHeuristic(1));
+		finder = new AStarPathFinder(map, 500, false, new ManhattanHeuristic(1));
 
 		renderer.prepareCharacters();
 	}
@@ -122,6 +136,9 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 			viewportHeight = maxHeightRange * unitScale;
 
 		camera.setToOrtho(false, viewportWidth, viewportHeight);
+
+		// Keep the dimensions for the stage elements absolute.
+		stageCamera.setToOrtho(false, 960, 640);
 	}
 
 	/**
@@ -135,6 +152,11 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 		Gdx.input.setInputProcessor(inputSources);
 
 		camera.update();
+		cameraRect.set((camera.position.x - camera.viewportWidth / 2)
+				/ tileSize, (camera.position.y - camera.viewportHeight / 2)
+				/ tileSize, camera.viewportWidth / tileSize,
+				camera.viewportHeight / tileSize);
+		checkCameraPosition();
 
 		renderer.setView(camera);
 		renderer.render();
@@ -155,6 +177,30 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 
 		if (game.getMode() == RunMode.DEBUG)
 			Table.drawDebug(stage);
+	}
+
+	/**
+	 * Checks if the character is out of the player's vision and moves the
+	 * camera appropriately.
+	 */
+	private void checkCameraPosition() {
+		Character2D playerChar = renderer.getPlayerCharacter();
+		if (playerChar != null) {
+			Rectangle playerCharRect = playerChar.getCharModel().getMover()
+					.getRectangle();
+
+			if (cameraRect.x != playerCharRect.x
+					|| cameraRect.y != playerCharRect.y) {
+				if ((playerCharRect.x < cameraRect.x && cameraRect.x > 0)
+						|| (playerCharRect.x > cameraRect.x && cameraRect.x < map
+								.getWidthInTiles() - cameraRect.width))
+					camera.translate(playerCharRect.x - cameraRect.x, 0);
+				if ((playerCharRect.y < cameraRect.y && cameraRect.y > 0)
+						|| (playerCharRect.y > cameraRect.y && cameraRect.y < map
+								.getHeightInTiles() - cameraRect.height))
+					camera.translate(0, playerCharRect.y - cameraRect.y);
+			}
+		}
 	}
 
 	@Override
@@ -202,8 +248,10 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 	 * representation (walking event).
 	 */
 	public void moveCharacter2d(WalkDirection direction) {
-		if (renderer.getPlayerCharacter() != null)
-			renderer.getPlayerCharacter().move(direction);
+		Character2D playerChar = renderer.getPlayerCharacter();
+		if (playerChar != null) {
+			playerChar.move(direction);
+		}
 	}
 
 	/**
@@ -217,25 +265,24 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		if(screenX<60 && screenY <60){
+		if (screenX < 60 && screenY < 60) {
 			game.setScreenWithTransition(new RpgMenu(this));
-		}else{
-		int[] currentPos = pixelsToTile((int) renderer.getPlayerCharacter()
-				.getX(), (int) renderer.getPlayerCharacter().getY());
-		int[] destinationPos = pixelsToTile(screenX, height - screenY);
+		} else {
+			int[] currentPos = pixelsToTile((int) renderer.getPlayerCharacter()
+					.getX(), (int) renderer.getPlayerCharacter().getY());
+			int[] destinationPos = pixelsToTile(screenX, height - screenY);
 
-		path = finder.findPath(rpgController.getModel().getCharacter()
-				.getMover(), currentPos[0], currentPos[1], destinationPos[0],
-				destinationPos[1]);
+			path = finder.findPath(rpgController.getModel().getCharacter()
+					.getMover(), currentPos[0], currentPos[1],
+					destinationPos[0], destinationPos[1]);
 
-		rpgController.moveCharacter(path, destinationPos);
+			rpgController.moveCharacter(path, destinationPos);
 		}
 		return true;
 	}
 
 	private static int[] pixelsToTile(int x, int y) {
 		int[] tile = { 0, 0 };
-		int tileSize = SettingsDAO.getSettings().rpgTileSize;
 
 		tile[0] = x / tileSize;
 		tile[1] = y / tileSize;
@@ -292,5 +339,9 @@ public class RpgScreen extends BaseScreen implements InputProcessor {
 
 	public void setMessenger(Messenger messenger) {
 		this.messenger = messenger;
+	}
+
+	public OrthographicCamera getStageCamera() {
+		return this.stageCamera;
 	}
 }

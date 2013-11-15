@@ -148,3 +148,2341 @@ Nov 07, 2013 8:16:23 AM br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplica
 SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving language-independent JSON file - Error reading file: data/profiles.json
 Nov 07, 2013 2:57:12 PM br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication error
 SEVERE: br.edu.ifsp.pds.shadowstruggles.data.DataManager: Error retrieving language-independent JSON file - Error reading file: data/profiles.json
+14/11/2013 19:25:54 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Page 1 - 1024X1024
+14/11/2013 19:25:55 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Texture: tmp/game_ui_images/box.png - java.nio.DirectByteBuffer[pos=0 lim=2088968 cap=2088968]
+14/11/2013 19:25:55 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Texture: tmp/cards/dr-002.png - java.nio.DirectByteBuffer[pos=0 lim=262144 cap=262144]
+14/11/2013 19:25:55 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Texture: tmp/cards/dr-003.png - java.nio.DirectByteBuffer[pos=0 lim=262144 cap=262144]
+14/11/2013 19:25:55 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Texture: tmp/cards/electric_current_level_one.png - java.nio.DirectByteBuffer[pos=0 lim=262144 cap=262144]
+14/11/2013 19:25:55 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Texture: tmp/cards/hacking.png - java.nio.DirectByteBuffer[pos=0 lim=262144 cap=262144]
+14/11/2013 19:25:56 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: File created: tmp/tmp1.png, pixmap: java.nio.DirectByteBuffer[pos=0 lim=4194304 cap=4194304]
+14/11/2013 19:25:56 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Pixmap retrieved from file: com.badlogic.gdx.graphics.Pixmap@6cb8 - java.nio.DirectByteBuffer[pos=0 lim=4194304 cap=4194304]
+14/11/2013 19:25:56 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Page 2 - 1024X256
+14/11/2013 19:25:56 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Texture: tmp/card_attacking/rock.png - java.nio.DirectByteBuffer[pos=0 lim=262144 cap=262144]
+14/11/2013 19:25:56 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Texture: tmp/card_effects/electric_current_level_one.png - java.nio.DirectByteBuffer[pos=0 lim=262144 cap=262144]
+14/11/2013 19:25:56 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Texture: tmp/card_effects/hacking.png - java.nio.DirectByteBuffer[pos=0 lim=262144 cap=262144]
+14/11/2013 19:25:56 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Texture: tmp/card_effects/mineralogy.png - java.nio.DirectByteBuffer[pos=0 lim=262144 cap=262144]
+14/11/2013 19:25:56 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: File created: tmp/tmp2.png, pixmap: java.nio.DirectByteBuffer[pos=0 lim=1048576 cap=1048576]
+14/11/2013 19:25:56 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Pixmap retrieved from file: com.badlogic.gdx.graphics.Pixmap@f01a1e - java.nio.DirectByteBuffer[pos=0 lim=1048576 cap=1048576]
+14/11/2013 19:25:56 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Page 3 - 1024X256
+14/11/2013 19:25:56 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Texture: tmp/cards/mineralogy.png - java.nio.DirectByteBuffer[pos=0 lim=262144 cap=262144]
+14/11/2013 19:25:56 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Texture: tmp/cards/rock.png - java.nio.DirectByteBuffer[pos=0 lim=262144 cap=262144]
+14/11/2013 19:25:56 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Texture: tmp/card_attacking/dr-002.png - java.nio.DirectByteBuffer[pos=0 lim=262144 cap=262144]
+14/11/2013 19:25:56 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Texture: tmp/card_attacking/dr-003.png - java.nio.DirectByteBuffer[pos=0 lim=262144 cap=262144]
+14/11/2013 19:25:56 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: File created: tmp/tmp3.png, pixmap: java.nio.DirectByteBuffer[pos=0 lim=1048576 cap=1048576]
+14/11/2013 19:25:56 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Pixmap retrieved from file: com.badlogic.gdx.graphics.Pixmap@126f75b - java.nio.DirectByteBuffer[pos=0 lim=1048576 cap=1048576]
+14/11/2013 19:25:56 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Page 4 - 1024X256
+14/11/2013 19:25:56 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Texture: tmp/card_walking/dr-002.png - java.nio.DirectByteBuffer[pos=0 lim=262144 cap=262144]
+14/11/2013 19:25:56 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Texture: tmp/card_walking/dr-003.png - java.nio.DirectByteBuffer[pos=0 lim=262144 cap=262144]
+14/11/2013 19:25:56 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Texture: tmp/card_walking/rock.png - java.nio.DirectByteBuffer[pos=0 lim=262144 cap=262144]
+14/11/2013 19:25:56 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Texture: tmp/game_ui_images/energy100.png - java.nio.DirectByteBuffer[pos=0 lim=65536 cap=65536]
+14/11/2013 19:25:56 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Texture: tmp/game_ui_images/hexagram.png - java.nio.DirectByteBuffer[pos=0 lim=65536 cap=65536]
+14/11/2013 19:25:57 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: File created: tmp/tmp4.png, pixmap: java.nio.DirectByteBuffer[pos=0 lim=1048576 cap=1048576]
+14/11/2013 19:25:57 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Pixmap retrieved from file: com.badlogic.gdx.graphics.Pixmap@41d05d - java.nio.DirectByteBuffer[pos=0 lim=1048576 cap=1048576]
+14/11/2013 19:25:57 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Page 5 - 1024X512
+14/11/2013 19:25:57 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Texture: tmp/game_ui_images/background.png - java.nio.DirectByteBuffer[pos=0 lim=609288 cap=609288]
+14/11/2013 19:25:57 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Texture: tmp/game_ui_images/indicator.png - java.nio.DirectByteBuffer[pos=0 lim=65536 cap=65536]
+14/11/2013 19:25:57 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Texture: tmp/game_ui_images/magnifier.png - java.nio.DirectByteBuffer[pos=0 lim=65536 cap=65536]
+14/11/2013 19:25:57 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Texture: tmp/game_ui_images/deck.png - java.nio.DirectByteBuffer[pos=0 lim=16384 cap=16384]
+14/11/2013 19:25:57 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Texture: tmp/game_ui_images/deckNotReady.png - java.nio.DirectByteBuffer[pos=0 lim=16384 cap=16384]
+14/11/2013 19:25:57 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Texture: tmp/game_ui_images/back_card.png - java.nio.DirectByteBuffer[pos=0 lim=12288 cap=12288]
+14/11/2013 19:25:57 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Texture: tmp/game_ui_images/pause.png - java.nio.DirectByteBuffer[pos=0 lim=7744 cap=7744]
+14/11/2013 19:25:57 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Texture: tmp/game_ui_images/life100.png - java.nio.DirectByteBuffer[pos=0 lim=18432 cap=18432]
+14/11/2013 19:25:57 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: File created: tmp/tmp5.png, pixmap: java.nio.DirectByteBuffer[pos=0 lim=2097152 cap=2097152]
+14/11/2013 19:25:57 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Pixmap retrieved from file: com.badlogic.gdx.graphics.Pixmap@9df6f1 - java.nio.DirectByteBuffer[pos=0 lim=2097152 cap=2097152]
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 22:53:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:51 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Ok, trying to get region char - sprites, but first, the textures inside of atlas...
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Here's a region in atlas: sprites/char
+14/11/2013 23:04:52 br.edu.ifsp.pds.shadowstruggles.DesktopStarter$MyApplication log
+FINE: TEST: Region has been succesfully found! sprites/char

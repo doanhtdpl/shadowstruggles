@@ -120,7 +120,8 @@ public class Loader {
 				&& FileMap.resourcesToDirectory.containsKey(resourceType)) {
 			TextureAtlas atlas = game.getAssets().get("tmp/tmp.atlas",
 					TextureAtlas.class);
-			region = atlas.findRegion(resourceType + "/" + regionName);
+			region = atlas.findRegion(Gdx.files.local(
+					resourceType + "/" + regionName).path());
 		}
 
 		return region;
