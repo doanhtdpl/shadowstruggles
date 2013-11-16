@@ -60,7 +60,6 @@ public class LoadingScreen extends BaseScreen {
 
 	private Image background;
 	private LoadingBar bar;
-	private float percent;
 
 	public LoadingScreen(ShadowStruggles game, BaseScreen nextScreen) {
 		super(game);
@@ -121,10 +120,7 @@ public class LoadingScreen extends BaseScreen {
 				barLoaded = true;
 			}
 
-			percent += 0.005f;
-			if (game.getAssets().getProgress() - percent > 0.0f)
-				percent += (game.getAssets().getProgress() - percent) * 0.9f;
-			bar.update(percent);
+			bar.update(game.getAssets().getProgress());
 			bar.drawLabel(super.getSkin());
 		}
 	}
