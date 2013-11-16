@@ -75,9 +75,6 @@ public class MainScreen extends BaseScreen {
 				RpgScreen nextScreen = new RpgScreen(game, controller,
 						rpgController);
 				game.setScreenWithTransition(new LoadingScreen(game, nextScreen));
-				
-				
-				
 
 			}
 		});
@@ -119,7 +116,7 @@ public class MainScreen extends BaseScreen {
 				game.getAudio().playSound("button_4");
 				ShopScreen nextScreen = new ShopScreen(game, null, controller,
 						screen);
-				game.setScreenWithTransition(nextScreen);
+				game.setScreenWithTransition(new LoadingScreen(game, nextScreen));
 			}
 
 		});
@@ -163,7 +160,7 @@ public class MainScreen extends BaseScreen {
 		changeTable.setPosition(80, 80);
 
 		Table menuTable = new Table();
-		
+
 		menuTable.defaults().width(480).height(110).padTop(10);
 		if (game.getMode() == RunMode.DEBUG)
 			menuTable.debug();
@@ -184,7 +181,6 @@ public class MainScreen extends BaseScreen {
 		configTable.add(config);
 		configTable.setPosition(900, 80);
 
-		
 		stage.addActor(background);
 		stage.addActor(locker);
 		stage.addActor(changeTable);
@@ -198,7 +194,7 @@ public class MainScreen extends BaseScreen {
 		freePlay.setText(MenuTextDAO.getMenuText().freePlay);
 		editDeck.setText(MenuTextDAO.getMenuText().editDeck);
 		shop.setText(MenuTextDAO.getMenuText().shop);
-	}	
+	}
 
 	@Override
 	public void render(float delta) {

@@ -8,14 +8,11 @@ import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.items.Item;
 import br.edu.ifsp.pds.shadowstruggles.model.items.Pack;
 import br.edu.ifsp.pds.shadowstruggles.model.items.Shop;
-import br.edu.ifsp.pds.shadowstruggles.model.quests.MoneyRequirement;
 import br.edu.ifsp.pds.shadowstruggles.model.cards.Card;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Arrow;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
@@ -26,7 +23,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 
-// TODO: Acrescentar label para o dinheiro.
 public class ShopScreen extends BaseScreen {
 	/**
 	 * Maximum size for the items displayed on screen.
@@ -77,15 +73,14 @@ public class ShopScreen extends BaseScreen {
 	public ShopScreen(ShadowStruggles game, Shop shop, Controller controller,
 			BaseScreen previousScreen) {
 		super(game, controller);
-		assetsLoaded=false;
-		itemsInitialized=false;
+		assetsLoaded = false;
+		itemsInitialized = false;
 		this.previousScreen = previousScreen;
 		this.shop = shop;
 		this.currentMode = Mode.BUY;
 		this.currentCategory = Category.CARD;
 		if (shop == null)
 			this.mainShop = true;
-		initComponents();
 	}
 
 	@Override
@@ -135,7 +130,9 @@ public class ShopScreen extends BaseScreen {
 		buySellButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				changeMode(Mode.SELL);
+				changeMode(currentMode == Mode.BUY ? Mode.SELL : Mode.BUY);
+				buySellButton.setText(currentMode == Mode.BUY ? MenuTextDAO
+						.getMenuText().sell : MenuTextDAO.getMenuText().buy);
 			}
 		});
 
@@ -150,7 +147,7 @@ public class ShopScreen extends BaseScreen {
 				game.setScreenWithTransition(menu);
 			}
 		});
-		
+
 		Table menuTable = new Table();
 		menuTable.defaults().padTop(10).width(160).height(50);
 
@@ -170,8 +167,6 @@ public class ShopScreen extends BaseScreen {
 		menuTable.setPosition(100, 350);
 
 		stage.addActor(menuTable);
-
-		
 
 		Table rightButtonTable = new Table();
 		if (game.getMode() == RunMode.DEBUG)
@@ -207,7 +202,7 @@ public class ShopScreen extends BaseScreen {
 
 		stage.addActor(leftButtonTable);
 		stage.addActor(rightButtonTable);
-		
+
 	}
 
 	/**
@@ -236,7 +231,7 @@ public class ShopScreen extends BaseScreen {
 		// Auxiliary variables for adding rows in the table as necessary,
 		// according to the maximum amount of columns.
 		int cols = 0, maxCols = 3;
-		for (int i = startIndex; i < startIndex + SELECTION_SIZE;) {
+		for (int i = startIndex; i < startIndex + SELECTION_SIZE; i++) {
 			if (i >= items.size)
 				break;
 
@@ -249,8 +244,15 @@ public class ShopScreen extends BaseScreen {
 			if (this.currentCategory == Category.CARD)
 				resourceType = "cards";
 
-			Image cardImage = new Image(game.getTextureRegion(item.getName()
-					.toLowerCase(), resourceType));
+			// If the card image is null, we can infer that there are no items
+			// in the specified category.
+			Image cardImage = null;
+			try {
+				cardImage = new Image(game.getTextureRegion(item.getName()
+						.toLowerCase(), resourceType));
+			} catch (NullPointerException ex) {
+				break;
+			}
 			ImageButton cardImgButton = new ImageButton(cardImage.getDrawable());
 
 			// If card, display CardDialog when clicked.
@@ -263,13 +265,14 @@ public class ShopScreen extends BaseScreen {
 						if (game.getMode() == RunMode.DEBUG)
 							tmpTable.debug();
 
-						tmpTable.setPosition(450, 340);
+						tmpTable.setPosition(480, 340);
 						tmpTable.add(
-								new CardDialog(game, itemAsCard, getSkin()){@Override
-								public void updateMoney() {
-									updateMoneyLabel();
-								}})
-								.width(900).height(500);
+								new CardDialog(game, itemAsCard, getSkin()) {
+									@Override
+									public void updateMoney() {
+										updateMoneyLabel();
+									}
+								}).width(800).height(550);
 						stage.addActor(tmpTable);
 					}
 				});
@@ -280,7 +283,7 @@ public class ShopScreen extends BaseScreen {
 			name.setStyle(new LabelStyle(super.getSkin()
 					.getFont("andalus-font"), Color.WHITE));
 
-			Label price = new Label("$ "+ item.getBuyCost(), super.getSkin());
+			Label price = new Label("$ " + item.getBuyCost(), super.getSkin());
 			price.setStyle(new LabelStyle(super.getSkin().getFont(
 					"andalus-font"), Color.WHITE));
 
@@ -301,16 +304,17 @@ public class ShopScreen extends BaseScreen {
 			}
 			itemsTable.add(itemTable);
 			cols++;
-			i++;
 		}
 		stage.addActor(itemsTable);
-		this.playermoney= new Label("Money:  $ "+String.valueOf(ShadowStruggles.getInstance().getProfile().getMoney()), getSkin());
+		this.playermoney = new Label("Money:  $ "
+				+ String.valueOf(ShadowStruggles.getInstance().getProfile()
+						.getMoney()), getSkin());
 		Table moneyTable = new Table();
 		moneyTable.defaults().padTop(10).width(160).height(50);
 		moneyTable.add(playermoney);
 		moneyTable.setPosition(750, 600);
 		stage.addActor(moneyTable);
-		itemsInitialized=true;
+		itemsInitialized = true;
 	}
 
 	/**
@@ -345,17 +349,18 @@ public class ShopScreen extends BaseScreen {
 	}
 
 	@Override
-	public void render(float delta) {	
-		if(!itemsInitialized && assetsLoaded)showItems();
+	public void render(float delta) {
+		if (!itemsInitialized && assetsLoaded)
+			showItems();
 		super.render(delta);
-		//playermoney.setText("Money:  $ "+String.valueOf(ShadowStruggles.getInstance().getProfile().getMoney()));
-				
+
 		Table.drawDebug(stage);
 	}
-	
-	public void updateMoneyLabel(){
-		playermoney.setText("Money:  $ "+String.valueOf(ShadowStruggles.getInstance().getProfile().getMoney()));
-		
+
+	public void updateMoneyLabel() {
+		playermoney.setText("Money:  $ "
+				+ String.valueOf(ShadowStruggles.getInstance().getProfile()
+						.getMoney()));
 	}
 
 	@Override
@@ -366,20 +371,17 @@ public class ShopScreen extends BaseScreen {
 		Array<String> previousItems = new Array<String>();
 
 		Array<Item> shopItems = null;
-		if (this.mainShop){
+		if (this.mainShop) {
 			shopItems = game.getProfile().getUnlockedItems();
-			System.out.println("It's a main shop");
-		}else
+		} else
 			shopItems = shop.getItems();
 
 		for (Item i : shopItems) {
 			String itemName = i.getName().toLowerCase();
 			if (!previousItems.contains(itemName, false)) {
-				if (i instanceof Card){
-					System.out.println("It's a Card");
+				if (i instanceof Card) {
 					assets.add(new Asset(itemName + ".png", "cards"));
-					System.out.println(itemName + ".png added");
-				}else
+				} else
 					assets.add(new Asset(itemName + ".png", "item_icons"));
 				previousItems.add(itemName);
 			}
@@ -395,7 +397,7 @@ public class ShopScreen extends BaseScreen {
 				previousItems.add(i.getName());
 			}
 		}
-		assetsLoaded=true;
+		assetsLoaded = true;
 		return assets;
 	}
 
