@@ -2,7 +2,6 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles.RunMode;
-import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
 import br.edu.ifsp.pds.shadowstruggles.data.dao.MenuTextDAO;
 import br.edu.ifsp.pds.shadowstruggles.model.cards.Card;
 
@@ -53,7 +52,7 @@ public class CardDialog extends Dialog {
 
 	private void initComponents() {
 		Table inTable = new Table();
-		inTable.defaults().height(400).width(400);
+		inTable.defaults().height(400).width(250);
 		if (game.getMode() == RunMode.DEBUG)
 			inTable.debug();
 
@@ -71,30 +70,36 @@ public class CardDialog extends Dialog {
 				remove();
 			}
 		});
-		this.buyButton= new TextButton(MenuTextDAO.getMenuText().buy, skin);
-		this.buyButton.addListener(new ClickListener(){
+		this.buyButton = new TextButton(MenuTextDAO.getMenuText().buy + "/"
+				+ MenuTextDAO.getMenuText().sell, skin);
+		this.buyButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getProfile().getInventory().add(card);
-				game.getProfile().setMoney(game.getProfile().getMoney()-card.getBuyCost());
-				DataManager.getInstance().save();
+				game.getProfile().setMoney(
+						game.getProfile().getMoney() - card.getBuyCost());
 				updateMoney();
 				remove();
 			}
 		});
 		scroll = new ScrollPane(description, skin);
 		scroll.setFadeScrollBars(false);
-		
+
 		inTable.add(scroll);
 		inTable.add(this.cardImage).padRight(30);
 		inTable.row();
 		inTable.add(this.okButton).height(50).colspan(2);
-		if(game.getProfile().getMoney()>card.getBuyCost())
-		inTable.add(this.buyButton).height(50).right();
+		if (game.getProfile().getMoney() > card.getBuyCost())
+			inTable.add(this.buyButton).height(50).right();
 
 		this.add(inTable);
 	}
-	public void updateMoney(){
-		
+
+	/**
+	 * A draft method for updating money, if necessary, to be implemented by the
+	 * class that uses this object.
+	 */
+	public void updateMoney() {
+
 	}
 }
