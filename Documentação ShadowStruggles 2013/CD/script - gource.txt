@@ -1,0 +1,21 @@
+Infelizmente não tivemos sucesso em utilizar um script inteligente para substituir os user id pelo nomes dos desenvolvedores.
+Por conta disso, fizemos os processo manualmente editando os logs.
+
+E: dir
+cd E:\workspace\ShadowStruggles
+svn log -r 1:HEAD --xml --verbose --quiet > SS2013-log.xml
+*Substituição de Nomes
+gource -f --highlight-all-users --seconds-per-day 3 SS2013-log.xml
+
+E: dir
+cd E:\workspace\Tools
+svn log -r 1:HEAD --xml --verbose --quiet > Tools-log.xml
+*Substituição de Nomes
+gource -f --highlight-all-users --seconds-per-day 3 Tools-log.xml
+
+E: dir
+cd E:\workspace\Documentação ShadowStruggles 2013
+svn log -r 1:HEAD --xml --verbose --quiet > Documentação-log.xml
+*Substituição de Nomes
+gource -f --highlight-all-users --seconds-per-day 3 Documentação-log.xml
+
